@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 [Serializable]
@@ -6,20 +7,23 @@ public class EnemyGroup
 {
     [Space(5)]
     [SerializeField]
-    [Min(1)]
-    private int _enemyNumber;
+    private List<EnemyPattern> _enemyPatterns;
 
     [SerializeField]
     private Enemy _enemyUsed;
 
     [SerializeField]
     [Min(0.1f)]
-    private float _timeBetweenEnemies;
+    private float _timeBetweenPattern;
 
 
-    public int GetEnemyNumber() { return _enemyNumber; }
+    public List<EnemyPattern> GetEnemyPatterns() { return _enemyPatterns; }
+
+    public EnemyPattern GetEnemyPattern(int index) { return _enemyPatterns[index]; }
+
+    public int GetEnemyPatternCount() { return _enemyPatterns.Count; }
 
     public Enemy GetEnemyUsed() { return _enemyUsed; }
 
-    public float GetTimeBetweenEnemies() { return _timeBetweenEnemies; }
+    public float GetTimeBetweenPattern() { return _timeBetweenPattern; }
 }

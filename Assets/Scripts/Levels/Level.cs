@@ -9,4 +9,8 @@ public class Level : ScriptableObject
 
 
     public List<Wave> GetWaves() { return _availableWaves; }
+
+    public Wave GetWave(int index) { return _availableWaves[index]; }
+
+    public int GetWaveCount() { return _availableWaves.Count; }
 }

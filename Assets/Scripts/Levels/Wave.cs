@@ -15,5 +15,9 @@ public class Wave : ScriptableObject
 
     public float GetTimeBeforeNextWave() { return _timeBeforeNextWave; }
 
-    public List<EnemyGroup> GetEnemyGroup() { return _availableEnemyGroups; }
+    public List<EnemyGroup> GetEnemyGroups() { return _availableEnemyGroups; }
+
+    public EnemyGroup GetEnemyGroup(int index) { return _availableEnemyGroups[index]; }
+
+    public int GetNumberOfEnemyGroup() { return _availableEnemyGroups.Count; }
 }
