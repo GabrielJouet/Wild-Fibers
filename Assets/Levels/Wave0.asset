@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c38062d58063c489c1f62c7a95a8ce, type: 3}
+  m_Name: Wave0
+  m_EditorClassIdentifier: 
+  _availableEnemyGroups:
+  - _enemyPatterns:
+    - _numberOfEnemies: 3
+      _timeBetweenEnemies: 0.5
+    - _numberOfEnemies: 2
+      _timeBetweenEnemies: 0.5
+    - _numberOfEnemies: 3
+      _timeBetweenEnemies: 0.5
+    - _numberOfEnemies: 2
+      _timeBetweenEnemies: 0.5
+    _enemyUsed: {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4,
+      type: 3}
+    _timeBetweenPattern: 1
+  - _enemyPatterns:
+    - _numberOfEnemies: 4
+      _timeBetweenEnemies: 0.1
+    - _numberOfEnemies: 2
+      _timeBetweenEnemies: 0.5
+    - _numberOfEnemies: 3
+      _timeBetweenEnemies: 0.5
+    - _numberOfEnemies: 2
+      _timeBetweenEnemies: 0.5
+    - _numberOfEnemies: 2
+      _timeBetweenEnemies: 0.5
+    _enemyUsed: {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4,
+      type: 3}
+    _timeBetweenPattern: 2
+  _timeBeforeNextWave: 2
