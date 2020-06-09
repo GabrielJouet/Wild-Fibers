@@ -11,7 +11,7 @@ public class LevelController : MonoBehaviour
 
     [SerializeField]
     private Spawner _spawnerPrefab;
-    private List<Spawner> _spawners;
+    private List<Spawner> _spawners = new List<Spawner>();
 
 
     private void Start()
@@ -46,17 +46,17 @@ public class LevelController : MonoBehaviour
         bool result = true;
 
         foreach (Spawner current in _spawners)
-            if (!current.GetCanSpawn())
+            if (!current.GetWaveFinished())
                 result = false;
 
-        if(result)
+        if (result)
             StartCoroutine(DelayWave());
     }
 
 
     private IEnumerator DelayWave()
     {
-        if (_waveIndex < _level.GetWaveCount())
+        if (_waveIndex + 1 < _level.GetWaveCount())
         {
             _waveIndex++;
 

@@ -8,11 +8,13 @@ public class Spawner : MonoBehaviour
     private int _patternIndex = 0;
     private int _enemyIndex = 0;
 
-    private bool _canSpawn = true;
+    private bool _waveFinished = false;
+
 
     public void SetNewGroup(EnemyGroup newGroup)
     {
         _enemyGroup = newGroup;
+        _waveFinished = false;
 
         StartCoroutine(SpawnEnemies());
     }
@@ -20,9 +22,9 @@ public class Spawner : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
-        while(_canSpawn)
+        while(!_waveFinished)
         {
-            if(_enemyIndex < _enemyGroup.GetEnemyPattern(_patternIndex).GetNumberOfEnemies())
+            if (_enemyIndex < _enemyGroup.GetEnemyPattern(_patternIndex).GetNumberOfEnemies())
             {
                 _enemyIndex ++;
                 Instantiate(_enemyGroup.GetEnemyUsed());
@@ -30,12 +32,15 @@ public class Spawner : MonoBehaviour
             }
             else
             {
-                if (_patternIndex < _enemyGroup.GetEnemyPatternCount())
+                if (_patternIndex + 1 < _enemyGroup.GetEnemyPatternCount())
+                {
                     _patternIndex++;
+                    _enemyIndex = 0;
+
+                    yield return new WaitForSeconds(_enemyGroup.GetTimeBetweenPattern());
+                }
                 else
                     EndSpawn();
-
-                yield return new WaitForSeconds(_enemyGroup.GetTimeBetweenPattern());
             }
         }
     }
@@ -44,13 +49,14 @@ public class Spawner : MonoBehaviour
     private void EndSpawn()
     {
         _patternIndex = 0;
+        _enemyIndex = 0;
         _enemyGroup = null;
-        _canSpawn = false;
+        _waveFinished = true;
         StopAllCoroutines();
 
         FindObjectOfType<LevelController>().EndWave();
     }
 
 
-    public bool GetCanSpawn() { return _canSpawn; }
+    public bool GetWaveFinished() { return _waveFinished; }
 }
