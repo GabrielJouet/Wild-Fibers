@@ -14,6 +14,7 @@ public class EnemyPattern
     private float _timeBetweenEnemies;
 
 
+
     public int GetNumberOfEnemies() { return _numberOfEnemies; }
 
     public float GetTimeBetweenEnemies() { return _timeBetweenEnemies; }

@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class LevelController : MonoBehaviour
 {
+    //Level loaded
     [SerializeField]
     private Level _level;
 
-    private int _waveIndex = 0;
 
     [SerializeField]
     private Spawner _spawnerPrefab;
     private List<Spawner> _spawners = new List<Spawner>();
+
+
+    private int _waveIndex = 0;
+
 
 
     private void Start()
@@ -23,28 +27,27 @@ public class LevelController : MonoBehaviour
     }
 
 
+
     private void StartWave()
     {
         int spawnerLeft = _level.GetWave(_waveIndex).GetNumberOfEnemyGroup() - _spawners.Count;
 
+        //We instantiate enough spawner for each enemy group
         for(int i = 0; i < spawnerLeft; i ++)
-            InstantiateSpawners();
+            _spawners.Add(Instantiate(_spawnerPrefab));
 
-        for(int i = 0 ; i < _level.GetWave(_waveIndex).GetNumberOfEnemyGroup(); i ++)
-            _spawners[i].SetNewGroup(_level.GetWave(_waveIndex).GetEnemyGroup(i));
+        //And we give them instructions
+        for (int i = 0 ; i < _level.GetWave(_waveIndex).GetNumberOfEnemyGroup(); i ++)
+            _spawners[i].SetNewGroup(_level.GetWave(_waveIndex).GetEnemyGroup(i), this);
     }
 
 
-    private void InstantiateSpawners()
-    {
-        _spawners.Add(Instantiate(_spawnerPrefab));
-    }
-
-
+    //Method used by Spawner when the wave is done
     public void EndWave()
     {
         bool result = true;
 
+        //If one of the spawner has not done its wave yet
         foreach (Spawner current in _spawners)
             if (!current.GetWaveFinished())
                 result = false;
@@ -54,6 +57,7 @@ public class LevelController : MonoBehaviour
     }
 
 
+    //Coroutine used to delay next wave
     private IEnumerator DelayWave()
     {
         if (_waveIndex + 1 < _level.GetWaveCount())

@@ -8,6 +8,7 @@ public class Level : ScriptableObject
     private List<Wave> _availableWaves;
 
 
+
     public List<Wave> GetWaves() { return _availableWaves; }
 
     public Wave GetWave(int index) { return _availableWaves[index]; }

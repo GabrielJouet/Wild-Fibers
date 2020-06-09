@@ -17,6 +17,7 @@ public class EnemyGroup
     private float _timeBetweenPattern;
 
 
+
     public List<EnemyPattern> GetEnemyPatterns() { return _enemyPatterns; }
 
     public EnemyPattern GetEnemyPattern(int index) { return _enemyPatterns[index]; }

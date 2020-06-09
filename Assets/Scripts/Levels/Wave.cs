@@ -7,10 +7,12 @@ public class Wave : ScriptableObject
     [SerializeField]
     private List<EnemyGroup> _availableEnemyGroups;
 
+
     [Space(10)]
     [SerializeField]
     [Min(0.1f)]
     private float _timeBeforeNextWave;
+
 
 
     public float GetTimeBeforeNextWave() { return _timeBeforeNextWave; }
