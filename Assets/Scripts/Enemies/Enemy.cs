@@ -27,6 +27,49 @@ public class Enemy : MonoBehaviour
     protected int _numberOfLivesTaken;
 
 
+
+    public void Initialize()
+    {
+        //TO DO
+    }
+
+
+    public void TakeDamage(float damage)
+    {
+        //TO DO
+    }
+
+
+    public void ApplySlowDown(/*TO DO*/)
+    {
+        //TO DO
+    }
+
+
+    public void ApplyDot(/*TO DO*/)
+    {
+        //TO DO
+    }
+
+
+    public void ApplyMark(/*TO DO*/)
+    {
+        //TO DO
+    }
+
+
+    public void TeleportBack(/*TO DO*/)
+    {
+        //TO DO
+    }
+
+
+    protected void Die()
+    {
+        //TO DO
+    }
+
+
     public string GetName() { return _displayName; }
 
     public string GetDescription() { return _displayDescription; }
