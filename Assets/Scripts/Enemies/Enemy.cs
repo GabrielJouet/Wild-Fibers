@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -26,32 +26,58 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected int _numberOfLivesTaken;
 
-    private Path _path;
-    private int _pathIndex;
+    [SerializeField]
+    protected int _goldGained;
 
 
-    public void Initialize(Path newPath)
+    protected Path _path;
+    protected int _pathIndex;
+
+    protected RessourceController _ressourceController;
+
+
+    protected bool _moving = false;
+
+
+    public void Initialize(Path newPath, RessourceController newRessourceController)
     {
         _speed = _speedMax;
         _pathIndex = 0;
 
         transform.position = newPath.GetPathPosition(0);
         _path = newPath;
+
+        _ressourceController = newRessourceController;
+
+        _moving = true;
     }
 
     private void Update()
     {
-        FollowPath();
+        if(_moving)
+            FollowPath();
     }
 
 
-    private void FollowPath()
+    protected void FollowPath()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _path.GetPath()[_pathIndex], Time.deltaTime / 2f * _speed);
+        transform.position = Vector3.MoveTowards(transform.position, _path.GetPath()[_pathIndex], Time.deltaTime * _speed);
 
         if (transform.position == _path.GetPath()[_pathIndex] && _pathIndex + 1 < _path.GetPath().Count)
             _pathIndex++;
+        else if (_pathIndex + 1 == _path.GetPath().Count)
+        {
+            _moving = false;
+            ReachEnd();
+        }
     }
+
+
+    protected void ReachEnd()
+    {
+        _ressourceController.RemoveLives(_numberOfLivesTaken);
+    }
+
 
     public void TakeDamage(float damage)
     {
@@ -86,6 +112,7 @@ public class Enemy : MonoBehaviour
     protected void Die()
     {
         //TO DO
+        _ressourceController.AddGold(_goldGained);
     }
 
 
