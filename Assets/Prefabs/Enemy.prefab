@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8438d5264a9edaa46ba70c6903e74aba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 72f1b96acf7551e4cba2a61bc7fe864c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,6 +95,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _displayName: 
+  _displayDescription: 
+  _healthMax: 0
+  _armorMax: 0
+  _speedMax: 0.2
+  _numberOfLivesTaken: 0
 --- !u!114 &2416215748048360603
 MonoBehaviour:
   m_ObjectHideFlags: 0

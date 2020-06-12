@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -25,6 +25,34 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     protected int _numberOfLivesTaken;
+
+
+    private Path _path;
+    private int _pathIndex;
+
+
+    public void Initialize(Path newPath)
+    {
+        _speed = _speedMax;
+        _pathIndex = 0;
+
+        transform.position = newPath.GetPathPosition(0);
+        _path = newPath;
+    }
+
+    private void Update()
+    {
+        FollowPath();
+    }
+
+
+    private void FollowPath()
+    {
+        transform.position = Vector3.MoveTowards(transform.position, _path.GetPath()[_pathIndex], Time.deltaTime / 2f * _speed);
+
+        if (transform.position == _path.GetPath()[_pathIndex] && _pathIndex + 1 < _path.GetPath().Count)
+            _pathIndex++;
+    }
 
 
     public string GetName() { return _displayName; }

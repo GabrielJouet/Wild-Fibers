@@ -14,7 +14,6 @@ public class Wave : ScriptableObject
     private float _timeBeforeNextWave;
 
 
-
     public float GetTimeBeforeNextWave() { return _timeBeforeNextWave; }
 
     public List<EnemyGroup> GetEnemyGroups() { return _availableEnemyGroups; }
