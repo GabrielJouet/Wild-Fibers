@@ -17,6 +17,10 @@ public class EnemyGroup
     private float _timeBetweenPattern;
 
 
+    [SerializeField]
+    private int _pathIndex;
+
+
 
     public List<EnemyPattern> GetEnemyPatterns() { return _enemyPatterns; }
 
@@ -27,4 +31,6 @@ public class EnemyGroup
     public Enemy GetEnemyUsed() { return _enemyUsed; }
 
     public float GetTimeBetweenPattern() { return _timeBetweenPattern; }
+
+    public int GetPathIndex() { return _pathIndex; }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -12,13 +13,16 @@ public class Spawner : MonoBehaviour
 
     private LevelController _levelController;
 
+    private List<Path> _paths = new List<Path>();
+
 
 
     //Method used by LevelController to set a new enemy group and start spawning entities
-    public void SetNewGroup(EnemyGroup newGroup, LevelController newLevelController)
+    public void SetNewGroup(EnemyGroup newGroup, LevelController newLevelController, List<Path> newPaths)
     {
         _levelController = newLevelController;
         _enemyGroup = newGroup;
+        _paths = newPaths;
 
         _waveFinished = false;
 
@@ -35,7 +39,7 @@ public class Spawner : MonoBehaviour
             if (_enemyIndex < _enemyGroup.GetEnemyPattern(_patternIndex).GetNumberOfEnemies())
             {
                 _enemyIndex ++;
-                Instantiate(_enemyGroup.GetEnemyUsed());
+                Instantiate(_enemyGroup.GetEnemyUsed()).Initialize(_paths[_enemyGroup.GetPathIndex()]);
                 yield return new WaitForSeconds(_enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies());
             }
             //Else if the pattern is finished
