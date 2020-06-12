@@ -40,6 +40,29 @@ public class Tower : MonoBehaviour
     protected CapsuleCollider2D _collider;
 
 
+    protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Enemy enemy))
+            _availableEnemies.Add(enemy);
+    }
+
+
+    protected void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out Enemy enemy))
+        {
+            if (_availableEnemies.Contains(enemy))
+                _availableEnemies.Remove(enemy);
+        }
+    }
+
+
+    protected void Shoot()
+    {
+        //TO DO
+    }
+
+
 
     public string GetName() { return _displayName; }
 

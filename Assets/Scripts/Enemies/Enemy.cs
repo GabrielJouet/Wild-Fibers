@@ -26,7 +26,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected int _numberOfLivesTaken;
 
-
     private Path _path;
     private int _pathIndex;
 
@@ -52,6 +51,41 @@ public class Enemy : MonoBehaviour
 
         if (transform.position == _path.GetPath()[_pathIndex] && _pathIndex + 1 < _path.GetPath().Count)
             _pathIndex++;
+    }
+
+    public void TakeDamage(float damage)
+    {
+        //TO DO
+    }
+
+
+    public void ApplySlowDown(/*TO DO*/)
+    {
+        //TO DO
+    }
+
+
+    public void ApplyDot(/*TO DO*/)
+    {
+        //TO DO
+    }
+
+
+    public void ApplyMark(/*TO DO*/)
+    {
+        //TO DO
+    }
+
+
+    public void TeleportBack(/*TO DO*/)
+    {
+        //TO DO
+    }
+
+
+    protected void Die()
+    {
+        //TO DO
     }
 
 
