@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
         _path = newPath;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         FollowPath();
     }
