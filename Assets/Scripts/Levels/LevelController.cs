@@ -14,6 +14,9 @@ public class LevelController : MonoBehaviour
     private List<Spawner> _spawners = new List<Spawner>();
 
 
+    [SerializeField]
+    private List<Path> _availablePaths;
+
     private int _waveIndex = 0;
 
 
@@ -23,6 +26,13 @@ public class LevelController : MonoBehaviour
         Debug.Log("Waves number " + _level.GetWaveCount());
         Debug.Log("Waves " + _waveIndex + " / " + _level.GetWaveCount());
 
+        StartCoroutine(Delay());
+    }
+
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(0.5f);
         StartWave();
     }
 
@@ -38,7 +48,7 @@ public class LevelController : MonoBehaviour
 
         //And we give them instructions
         for (int i = 0 ; i < _level.GetWave(_waveIndex).GetNumberOfEnemyGroup(); i ++)
-            _spawners[i].SetNewGroup(_level.GetWave(_waveIndex).GetEnemyGroup(i), this);
+            _spawners[i].SetNewGroup(_level.GetWave(_waveIndex).GetEnemyGroup(i), this, _availablePaths);
     }
 
 
