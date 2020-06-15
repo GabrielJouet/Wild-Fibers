@@ -2028,9 +2028,38 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: _availableTowers.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _chooseButton
       value: 
       objectReference: {fileID: 408832404}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _availableTowers.Array.data[0]
+      value: 
+      objectReference: {fileID: 7550639336727220395, guid: b0c8be174e4aa4a4aa4fcf05b6b62cfa,
+        type: 3}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _availableTowers.Array.data[1]
+      value: 
+      objectReference: {fileID: 481758128716525908, guid: 7e5fc179ffd633e4a950e34a2229c96c,
+        type: 3}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _availableTowers.Array.data[2]
+      value: 
+      objectReference: {fileID: 4165984789505894521, guid: 37e81790ef7ed3343951f47742770ac0,
+        type: 3}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _availableTowers.Array.data[3]
+      value: 
+      objectReference: {fileID: 8850598077300942728, guid: 260e56dedf64a1e4db4b79d96e4a2d01,
+        type: 3}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x

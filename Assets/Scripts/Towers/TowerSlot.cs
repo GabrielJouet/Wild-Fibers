@@ -22,6 +22,7 @@ public class TowerSlot : MonoBehaviour
 
     public void ChooseTower(int index)
     {
-        Instantiate(_availableTowers[index]);
+        Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
+        _chooseButton.SetActive(false);
     }
 }
