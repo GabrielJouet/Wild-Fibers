@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Tower : MonoBehaviour
@@ -60,6 +61,16 @@ public class Tower : MonoBehaviour
     protected void Shoot()
     {
         //TO DO
+    }
+
+
+
+    protected void SortEnemies()
+    {
+        Array.Sort(_availableEnemies.ToArray(), (a, b) => a.GetPathPercentage().CompareTo(b.GetPathPercentage()));
+
+        foreach(Enemy current in _availableEnemies)
+            Debug.Log(current + " : " + current.GetPathPercentage());
     }
 
 

@@ -133,4 +133,6 @@ public class Enemy : MonoBehaviour
     public float GetMaxSpeed() { return _speedMax; }
 
     public int GetNumberOfLivesTaken() { return _numberOfLivesTaken; }
+
+    public float GetPathPercentage() { return _pathIndex / _path.GetPath().Count; }
 }
