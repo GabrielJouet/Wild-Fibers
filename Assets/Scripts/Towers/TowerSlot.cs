@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerSlot : MonoBehaviour
@@ -11,12 +10,18 @@ public class TowerSlot : MonoBehaviour
     private GameObject _chooseButton;
 
 
+    private bool _towerCreated = false;
+
     private void OnMouseDown()
     {
-        _chooseButton.SetActive(true);
-        Vector2 cameraScreen = Camera.main.WorldToScreenPoint(transform.position);
+        if(!_towerCreated)
+        {
+            _chooseButton.SetActive(true);
 
-        _chooseButton.GetComponent<RectTransform>().localPosition = new Vector2(cameraScreen.x - Screen.width/2, cameraScreen.y - Screen.height / 2);
+            Vector2 cameraScreen = Camera.main.WorldToScreenPoint(transform.position);
+            Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
+            _chooseButton.GetComponent<ChooseButton>().Activate(finalPosition, this);
+        }
     }
 
 
@@ -24,5 +29,7 @@ public class TowerSlot : MonoBehaviour
     {
         Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
         _chooseButton.SetActive(false);
+
+        _towerCreated = true;
     }
 }
