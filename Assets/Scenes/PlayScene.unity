@@ -151,6 +151,7 @@ Transform:
   m_Children:
   - {fileID: 726227256}
   - {fileID: 598987630}
+  - {fileID: 2091549078}
   - {fileID: 577915424}
   m_Father: {fileID: 1757871408}
   m_RootOrder: 0
@@ -169,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _startPoint: {fileID: 726227256}
   _parameterStartPoint: {fileID: 598987630}
-  _endPoint: {fileID: 210878388}
+  _endPoint: {fileID: 2091549078}
   _parameterEndPoint: {fileID: 577915424}
   _numberOfIterations: 100
 --- !u!1 &85735133
@@ -347,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startPoint: {fileID: 210878388}
+  _startPoint: {fileID: 2091549078}
   _parameterStartPoint: {fileID: 1828751594}
   _endPoint: {fileID: 1510045044}
   _parameterEndPoint: {fileID: 1411310845}
@@ -368,7 +369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &187838251
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -553,7 +554,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -586,6 +586,7 @@ MonoBehaviour:
     type: 3}
   _availablePaths:
   - {fileID: 1757871409}
+  _ressourceController: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -930,7 +931,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 25926226}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &598987629
 GameObject:
