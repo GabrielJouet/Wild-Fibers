@@ -9,27 +9,44 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private GameObject _chooseButton;
 
+    [SerializeField]
+    private GameObject _sellButton;
 
-    private bool _towerCreated = false;
+
+    private Tower _currentTower = null;
+
 
     private void OnMouseDown()
     {
-        if(!_towerCreated)
+        Vector2 cameraScreen = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
+
+        if (_currentTower == null)
         {
             _chooseButton.SetActive(true);
-
-            Vector2 cameraScreen = Camera.main.WorldToScreenPoint(transform.position);
-            Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
             _chooseButton.GetComponent<ChooseButton>().Activate(finalPosition, this);
+        }
+        else
+        {
+            _sellButton.SetActive(true);
+            _sellButton.GetComponent<SellButton>().Activate(finalPosition, this);
         }
     }
 
 
     public void ChooseTower(int index)
     {
-        Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
-        _chooseButton.SetActive(false);
+        _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
 
-        _towerCreated = true;
+        _chooseButton.SetActive(false);
+    }
+
+
+    public void ResellTower()
+    {
+        Destroy(_currentTower.gameObject);
+        _currentTower = null;
+
+        _sellButton.SetActive(false);
     }
 }
