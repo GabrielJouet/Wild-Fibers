@@ -50,7 +50,7 @@ public class LevelController : MonoBehaviour
 
         //We instantiate enough spawner for each enemy group
         for(int i = 0; i < spawnerLeft; i ++)
-            _spawners.Add(Instantiate(_spawnerPrefab));
+            _spawners.Add(Instantiate(_spawnerPrefab, transform));
 
         //And we give them instructions
         for (int i = 0; i < _level.GetWave(_waveIndex).GetNumberOfEnemyGroup(); i++)
