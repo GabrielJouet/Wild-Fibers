@@ -13,7 +13,19 @@ public class TowerSlot : MonoBehaviour
     private GameObject _sellButton;
 
 
+    private List<TowerSlot> _otherSlots = new List<TowerSlot>();
+
     private Tower _currentTower = null;
+    private bool _chooserActive = false;
+    private bool _sellerActive = false;
+
+
+    private void Start()
+    {
+        foreach (TowerSlot current in FindObjectsOfType<TowerSlot>())
+            if(current != this)
+                _otherSlots.Add(current);
+    }
 
 
     private void OnMouseDown()
@@ -21,15 +33,23 @@ public class TowerSlot : MonoBehaviour
         Vector2 cameraScreen = Camera.main.WorldToScreenPoint(transform.position);
         Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
 
+        ResetOtherChooser();
+
         if (_currentTower == null)
         {
-            _chooseButton.SetActive(true);
-            _chooseButton.GetComponent<ChooseButton>().Activate(finalPosition, this);
+            if(!_chooserActive)
+                _chooseButton.GetComponent<ChooseButton>().Activate(finalPosition, this);
+
+            _chooseButton.SetActive(!_chooserActive);
+            _chooserActive = !_chooserActive;
         }
         else
         {
-            _sellButton.SetActive(true);
-            _sellButton.GetComponent<SellButton>().Activate(finalPosition, this);
+            if(!_sellerActive)
+                _sellButton.GetComponent<SellButton>().Activate(finalPosition, this);
+
+            _sellButton.SetActive(!_sellerActive);
+            _sellerActive = !_sellerActive;
         }
     }
 
@@ -48,5 +68,22 @@ public class TowerSlot : MonoBehaviour
         _currentTower = null;
 
         _sellButton.SetActive(false);
+    }
+
+
+    public void ResetChooser()
+    {
+        _chooserActive = false;
+        _sellerActive = false;
+    }
+
+
+    private void ResetOtherChooser()
+    {
+        _chooseButton.SetActive(false);
+        _sellButton.SetActive(false);
+
+        foreach (TowerSlot current in _otherSlots)
+            current.ResetChooser();
     }
 }
