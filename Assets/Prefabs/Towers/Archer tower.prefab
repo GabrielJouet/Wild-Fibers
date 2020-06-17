@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _displayName: 
   _displayDescription: 
-  _price: 0
+  _price: 150
   _timeBetweenShots: 0
   _damage: 0
   _armorThrough: 0
