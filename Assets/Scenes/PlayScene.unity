@@ -1268,6 +1268,11 @@ PrefabInstance:
       propertyPath: _sellButton
       value: 
       objectReference: {fileID: 1642564924}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _ressourceController
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1376,6 +1381,11 @@ PrefabInstance:
       propertyPath: _sellButton
       value: 
       objectReference: {fileID: 1642564924}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _ressourceController
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2268,6 +2278,11 @@ PrefabInstance:
       propertyPath: _sellButton
       value: 
       objectReference: {fileID: 1642564924}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _ressourceController
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2662,6 +2677,11 @@ PrefabInstance:
       propertyPath: _sellButton
       value: 
       objectReference: {fileID: 1642564924}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _ressourceController
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2770,6 +2790,11 @@ PrefabInstance:
       propertyPath: _sellButton
       value: 
       objectReference: {fileID: 1642564924}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _ressourceController
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3410,6 +3435,11 @@ PrefabInstance:
       propertyPath: _sellButton
       value: 
       objectReference: {fileID: 1642564924}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _ressourceController
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x

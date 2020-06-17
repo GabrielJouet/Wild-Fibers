@@ -12,6 +12,9 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private GameObject _sellButton;
 
+    [SerializeField]
+    private RessourceController _ressourceController;
+
 
     private List<TowerSlot> _otherSlots = new List<TowerSlot>();
 
@@ -56,14 +59,24 @@ public class TowerSlot : MonoBehaviour
 
     public void ChooseTower(int index)
     {
-        _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
+        if(_ressourceController.GetGoldCount() < _availableTowers[index].GetPrice())
+        {
+            //TO DO DISPLAY BAD CHOICE
+        }
+        else
+        {
+            _ressourceController.RemoveGold(_availableTowers[index].GetPrice());
 
-        _chooseButton.SetActive(false);
+            _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
+            _chooseButton.SetActive(false);
+        }
     }
 
 
     public void ResellTower()
     {
+        _ressourceController.AddGold(Mathf.FloorToInt(_currentTower.GetPrice() / 4));
+
         Destroy(_currentTower.gameObject);
         _currentTower = null;
 
