@@ -5,7 +5,7 @@ public class EnemyPool : MonoBehaviour
 {
     private GameObject _enemyPrefab;
 
-    private Stack<GameObject> _enemyPool = new Stack<GameObject>();
+    private readonly Stack<GameObject> _enemyPool = new Stack<GameObject>();
 
 
     public GameObject GetOneEnemy()

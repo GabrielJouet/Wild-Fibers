@@ -3,17 +3,20 @@ using UnityEngine;
 
 public class Path : MonoBehaviour
 {
+    [Header("All curves")]
     [SerializeField]
     private List<BezierCurve> _curves;
 
 
-    private List<Vector3> _finalPath = new List<Vector3>();
+    private readonly List<Vector3> _finalPath = new List<Vector3>();
+
 
 
     private void Start()
     {
         CalculatePath();
     }
+
 
 
     private void CalculatePath()

@@ -6,13 +6,10 @@ public class BezierCurve : MonoBehaviour
     [Header("Points")]
     [SerializeField]
     private Transform _startPoint;
-
     [SerializeField]
     private Transform _parameterStartPoint;
-
     [SerializeField]
     private Transform _endPoint;
-
     [SerializeField]
     private Transform _parameterEndPoint;
 
@@ -22,13 +19,15 @@ public class BezierCurve : MonoBehaviour
     private int _numberOfIterations;
 
 
-    private List<Vector3> _curve = new List<Vector3>();
+    private readonly List<Vector3> _curve = new List<Vector3>();
+
 
 
     private void Awake()
     {
         ComputePath();
     }
+
 
     private void OnDrawGizmos()
     {

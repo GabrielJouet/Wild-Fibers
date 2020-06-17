@@ -3,13 +3,16 @@ using UnityEngine;
 
 public class EnemiesController : MonoBehaviour
 {
+    [Header("Enemy-related prefabs")]
     [SerializeField]
     private List<Enemy> _enemiesAvailables;
 
     [SerializeField]
     private EnemyPool _enemyPoolPrefab;
 
-    private List<EnemyPool> _enemyPools = new List<EnemyPool>();
+
+    private readonly List<EnemyPool> _enemyPools = new List<EnemyPool>();
+
 
 
     private void Awake()

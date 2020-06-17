@@ -2,10 +2,13 @@
 
 public class DepthManager : MonoBehaviour
 {
+    [Header("Component")]
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
 
     private Camera _mainCamera;
+
+
 
     private void Start()
     {
