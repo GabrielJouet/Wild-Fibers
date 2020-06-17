@@ -1,30 +1,37 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerSlot : MonoBehaviour
 {
+    [Header("Tower Information")]
     [SerializeField]
     private List<Tower> _availableTowers;
 
+
+    [Header("UI Button")]
     [SerializeField]
     private GameObject _chooseButton;
-
     [SerializeField]
     private GameObject _sellButton;
 
+
+    [Header("Component")]
     [SerializeField]
     private RessourceController _ressourceController;
 
 
-    private List<TowerSlot> _otherSlots = new List<TowerSlot>();
+    private readonly List<TowerSlot> _otherSlots = new List<TowerSlot>();
 
     private Tower _currentTower = null;
+
     private bool _chooserActive = false;
     private bool _sellerActive = false;
 
 
+
     private void Start()
     {
+        //We recover every other slots in order to desactivate them when we click
         foreach (TowerSlot current in FindObjectsOfType<TowerSlot>())
             if(current != this)
                 _otherSlots.Add(current);

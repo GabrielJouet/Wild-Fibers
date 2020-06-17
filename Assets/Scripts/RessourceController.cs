@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class RessourceController : MonoBehaviour
 {
+    [Header("Start conditions")]
     [SerializeField]
     private int _goldCount;
 
@@ -10,6 +11,7 @@ public class RessourceController : MonoBehaviour
     private int _lifeCount;
 
 
+    [Header("UI Elements")]
     [SerializeField]
     private Text _lifeText;
 

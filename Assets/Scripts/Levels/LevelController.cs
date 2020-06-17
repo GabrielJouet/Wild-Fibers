@@ -5,28 +5,32 @@ using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
-    //Level loaded
+    [Header("Level Parameters")]
     [SerializeField]
     private Level _level;
 
 
+    [Header("UI related")]
     [SerializeField]
     private Text _waveText;
 
 
+    [Header("Prefab")]
     [SerializeField]
     private Spawner _spawnerPrefab;
-    private List<Spawner> _spawners = new List<Spawner>();
+    private readonly List<Spawner> _spawners = new List<Spawner>();
 
 
     [SerializeField]
     private List<Path> _availablePaths;
 
+
+    [Header("Components")]
     [SerializeField]
     private RessourceController _ressourceController;
-
     [SerializeField]
     private EnemiesController _enemiesController;
+
 
     private int _waveIndex = 0;
 
@@ -44,7 +48,6 @@ public class LevelController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         StartWave();
     }
-
 
 
     private void StartWave()

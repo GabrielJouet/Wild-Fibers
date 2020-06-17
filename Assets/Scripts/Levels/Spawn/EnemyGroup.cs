@@ -9,6 +9,7 @@ public class EnemyGroup
     [SerializeField]
     private List<EnemyPattern> _enemyPatterns;
 
+    [Space(15)]
     [SerializeField]
     private Enemy _enemyUsed;
 

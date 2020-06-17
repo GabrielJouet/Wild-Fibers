@@ -4,7 +4,7 @@ using UnityEngine;
 [Serializable]
 public class EnemyPattern
 {
-    [Space(2)]
+    [Space(10)]
     [SerializeField]
     [Min(1)]
     private int _numberOfEnemies;
