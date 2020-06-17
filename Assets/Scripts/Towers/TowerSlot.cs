@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerSlot : MonoBehaviour
@@ -81,6 +81,8 @@ public class TowerSlot : MonoBehaviour
         _currentTower = null;
 
         _sellButton.SetActive(false);
+
+        ResetChooser();
     }
 
 
