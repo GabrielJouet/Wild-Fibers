@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelController : MonoBehaviour
 {
     //Level loaded
     [SerializeField]
     private Level _level;
+
+
+    [SerializeField]
+    private Text _waveText;
 
 
     [SerializeField]
@@ -29,9 +34,7 @@ public class LevelController : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("Waves number " + _level.GetWaveCount());
-        Debug.Log("Waves " + _waveIndex + " / " + _level.GetWaveCount());
-
+        _waveText.text = _waveIndex + " / " + _level.GetWaveCount();
         StartCoroutine(Delay());
     }
 
@@ -46,6 +49,8 @@ public class LevelController : MonoBehaviour
 
     private void StartWave()
     {
+        _waveText.text = _waveIndex + " / " + _level.GetWaveCount();
+
         int spawnerLeft = _level.GetWave(_waveIndex).GetNumberOfEnemyGroup() - _spawners.Count;
 
         //We instantiate enough spawner for each enemy group
