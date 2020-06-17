@@ -34,13 +34,16 @@ public class Enemy : MonoBehaviour
     protected int _pathIndex;
 
     protected RessourceController _ressourceController;
+    protected EnemiesController _enemiesController;
 
 
     protected bool _moving = false;
 
 
-    public void Initialize(Path newPath, RessourceController newRessourceController)
+    public void Initialize(Path newPath, RessourceController newRessourceController, EnemiesController newEnemiesController)
     {
+        gameObject.SetActive(true);
+
         _speed = _speedMax;
         _pathIndex = 0;
 
@@ -48,9 +51,19 @@ public class Enemy : MonoBehaviour
         _path = newPath;
 
         _ressourceController = newRessourceController;
+        _enemiesController = newEnemiesController;
 
         _moving = true;
     }
+
+
+
+    public void ResetEnemy()
+    {
+        gameObject.SetActive(false);
+    }
+
+
 
     private void Update()
     {
@@ -76,6 +89,8 @@ public class Enemy : MonoBehaviour
     protected void ReachEnd()
     {
         _ressourceController.RemoveLives(_numberOfLivesTaken);
+        ResetEnemy();
+        _enemiesController.AddOneEnemy(this);
     }
 
 
@@ -113,6 +128,8 @@ public class Enemy : MonoBehaviour
     {
         //TO DO
         _ressourceController.AddGold(_goldGained);
+        ResetEnemy();
+        _enemiesController.AddOneEnemy(this);
     }
 
 
