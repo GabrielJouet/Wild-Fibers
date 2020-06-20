@@ -113,3 +113,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _availableTowers: []
   _chooseButton: {fileID: 0}
+  _sellButton: {fileID: 0}
+  _ressourceController: {fileID: 0}
+  _informationUIController: {fileID: 0}
