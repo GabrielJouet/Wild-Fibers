@@ -18,6 +18,8 @@ public class TowerSlot : MonoBehaviour
     [Header("Component")]
     [SerializeField]
     private RessourceController _ressourceController;
+    [SerializeField]
+    private InformationUIController _informationUIController;
 
 
     private readonly List<TowerSlot> _otherSlots = new List<TowerSlot>();
