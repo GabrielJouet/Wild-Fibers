@@ -30,6 +30,8 @@ public class LevelController : MonoBehaviour
     private RessourceController _ressourceController;
     [SerializeField]
     private EnemiesController _enemiesController;
+    [SerializeField]
+    private InformationUIController _informationUIController;
 
 
     private int _waveIndex = 0;
@@ -62,7 +64,7 @@ public class LevelController : MonoBehaviour
 
         //And we give them instructions
         for (int i = 0; i < _level.GetWave(_waveIndex).GetNumberOfEnemyGroup(); i++)
-            _spawners[i].SetNewGroup(_level.GetWave(_waveIndex).GetEnemyGroup(i), this, _availablePaths, _ressourceController, _enemiesController);
+            _spawners[i].SetNewGroup(_level.GetWave(_waveIndex).GetEnemyGroup(i), this, _availablePaths, _ressourceController, _enemiesController, _informationUIController);
     }
 
 

@@ -35,12 +35,13 @@ public class Enemy : MonoBehaviour
 
     protected RessourceController _ressourceController;
     protected EnemiesController _enemiesController;
+    protected InformationUIController _informationUiController; 
 
 
     protected bool _moving = false;
 
 
-    public void Initialize(Path newPath, RessourceController newRessourceController, EnemiesController newEnemiesController)
+    public void Initialize(Path newPath, RessourceController newRessourceController, EnemiesController newEnemiesController, InformationUIController newInformationUIController)
     {
         gameObject.SetActive(true);
 
@@ -130,6 +131,13 @@ public class Enemy : MonoBehaviour
         _ressourceController.AddGold(_goldGained);
         ResetEnemy();
         _enemiesController.AddOneEnemy(this);
+    }
+
+
+
+    private void OnMouseDown()
+    {
+        
     }
 
 
