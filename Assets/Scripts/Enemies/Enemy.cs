@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -56,6 +56,7 @@ public class Enemy : MonoBehaviour
 
         _ressourceController = newRessourceController;
         _enemiesController = newEnemiesController;
+        _informationUiController = newInformationUIController;
 
         _moving = true;
     }
@@ -140,7 +141,7 @@ public class Enemy : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
+        _informationUiController.SetEnemyInformation(_icon, _displayName, Mathf.FloorToInt(_health), _armorMax, _numberOfLivesTaken);
     }
 
 

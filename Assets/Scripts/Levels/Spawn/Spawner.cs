@@ -26,6 +26,7 @@ public class Spawner : MonoBehaviour
         _ressourceController = newRessourceController;
         _levelController = newLevelController;
         _enemiesController = newEnemiesController;
+        _informationUIController = newInformationUIController;
 
         _enemyGroup = newGroup;
         _paths = newPaths;
