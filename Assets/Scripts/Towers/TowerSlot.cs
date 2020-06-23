@@ -18,6 +18,8 @@ public class TowerSlot : MonoBehaviour
     [Header("Component")]
     [SerializeField]
     private RessourceController _ressourceController;
+    [SerializeField]
+    private InformationUIController _informationUIController;
 
 
     private readonly List<TowerSlot> _otherSlots = new List<TowerSlot>();
@@ -47,8 +49,7 @@ public class TowerSlot : MonoBehaviour
 
         if (_currentTower == null)
         {
-            if(!_chooserActive)
-                _chooseButton.GetComponent<ChooseButton>().Activate(finalPosition, this);
+            _chooseButton.GetComponent<ChooseButton>().Activate(finalPosition, this);
 
             _chooseButton.SetActive(!_chooserActive);
             _chooserActive = !_chooserActive;
@@ -56,7 +57,16 @@ public class TowerSlot : MonoBehaviour
         else
         {
             if(!_sellerActive)
+            {
                 _sellButton.GetComponent<SellButton>().Activate(finalPosition, this);
+                _informationUIController.SetTowerInformation(_currentTower.GetIcon(), 
+                                                             _currentTower.GetName(), 
+                                                             _currentTower.GetDamage(), 
+                                                             _currentTower.GetArmorThrough(), 
+                                                             _currentTower.GetTimeBetweenShots());
+            }
+            else
+                _informationUIController.DisableTowerInformation();
 
             _sellButton.SetActive(!_sellerActive);
             _sellerActive = !_sellerActive;
@@ -83,6 +93,7 @@ public class TowerSlot : MonoBehaviour
     public void ResellTower()
     {
         _ressourceController.AddGold(Mathf.FloorToInt(_currentTower.GetPrice() / 4));
+        _informationUIController.DisableTowerInformation();
 
         Destroy(_currentTower.gameObject);
         _currentTower = null;

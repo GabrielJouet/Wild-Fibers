@@ -9,6 +9,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected string _displayDescription;
 
+    [SerializeField]
+    protected Sprite _icon;
+
 
     [Header("Behaviour Variables")]
     [SerializeField]
@@ -35,12 +38,13 @@ public class Enemy : MonoBehaviour
 
     protected RessourceController _ressourceController;
     protected EnemiesController _enemiesController;
+    protected InformationUIController _informationUiController; 
 
 
     protected bool _moving = false;
 
 
-    public void Initialize(Path newPath, RessourceController newRessourceController, EnemiesController newEnemiesController)
+    public void Initialize(Path newPath, RessourceController newRessourceController, EnemiesController newEnemiesController, InformationUIController newInformationUIController)
     {
         gameObject.SetActive(true);
 
@@ -52,6 +56,7 @@ public class Enemy : MonoBehaviour
 
         _ressourceController = newRessourceController;
         _enemiesController = newEnemiesController;
+        _informationUiController = newInformationUIController;
 
         _moving = true;
     }
@@ -130,6 +135,13 @@ public class Enemy : MonoBehaviour
         _ressourceController.AddGold(_goldGained);
         ResetEnemy();
         _enemiesController.AddOneEnemy(this);
+    }
+
+
+
+    private void OnMouseDown()
+    {
+        _informationUiController.SetEnemyInformation(_icon, _displayName, Mathf.FloorToInt(_health), _armorMax, _numberOfLivesTaken);
     }
 
 

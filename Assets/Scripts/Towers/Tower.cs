@@ -14,6 +14,9 @@ public class Tower : MonoBehaviour
     [SerializeField]
     protected int _price;
 
+    [SerializeField]
+    protected Sprite _icon;
+
 
 
     [Header("Damage Related")]
@@ -92,4 +95,6 @@ public class Tower : MonoBehaviour
     public GameObject GetProjectileUsed() { return _projectileUsed; }
 
     public float GetRange() { return _range; }
+
+    public Sprite GetIcon() { return _icon; }
 }
