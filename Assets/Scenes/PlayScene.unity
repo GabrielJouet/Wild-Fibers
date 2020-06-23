@@ -267,6 +267,7 @@ GameObject:
   - component: {fileID: 85735137}
   - component: {fileID: 85735136}
   - component: {fileID: 85735135}
+  - component: {fileID: 85735138}
   m_Layer: 5
   m_Name: FourthTower
   m_TagString: Untagged
@@ -384,6 +385,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85735133}
   m_CullTransparentMesh: 0
+--- !u!135 &85735138
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85735133}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 16
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &150188282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1019,7 +1033,7 @@ MonoBehaviour:
   - {fileID: 1757871409}
   _ressourceController: {fileID: 519420034}
   _enemiesController: {fileID: 519420033}
-  _informationUIController: {fileID: 0}
+  _informationUIController: {fileID: 1930817397}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1121,6 +1135,7 @@ GameObject:
   - component: {fileID: 535669052}
   - component: {fileID: 535669051}
   - component: {fileID: 535669050}
+  - component: {fileID: 535669053}
   m_Layer: 5
   m_Name: FirstTower
   m_TagString: Untagged
@@ -1238,6 +1253,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535669048}
   m_CullTransparentMesh: 0
+--- !u!135 &535669053
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535669048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 16
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &543718219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,6 +1356,7 @@ GameObject:
   - component: {fileID: 559279353}
   - component: {fileID: 559279352}
   - component: {fileID: 559279351}
+  - component: {fileID: 559279354}
   m_Layer: 5
   m_Name: SecondTower
   m_TagString: Untagged
@@ -1445,6 +1474,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559279349}
   m_CullTransparentMesh: 0
+--- !u!135 &559279354
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559279349}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 16
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &568681014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1973,6 +2015,7 @@ GameObject:
   - component: {fileID: 680543935}
   - component: {fileID: 680543934}
   - component: {fileID: 680543933}
+  - component: {fileID: 680543936}
   m_Layer: 5
   m_Name: Sell
   m_TagString: Untagged
@@ -2090,6 +2133,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680543931}
   m_CullTransparentMesh: 0
+--- !u!135 &680543936
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680543931}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 16
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &726227255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3063,7 +3119,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 5
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -4622,6 +4678,8 @@ MonoBehaviour:
   _lifeValue: {fileID: 906303762}
   _armorValue: {fileID: 188228083}
   _livesLostValue: {fileID: 1047749997}
+  _chooseButton: {fileID: 408832404}
+  _sellButton: {fileID: 1642564924}
 --- !u!1 &2076329784
 GameObject:
   m_ObjectHideFlags: 0
@@ -4817,6 +4875,7 @@ GameObject:
   - component: {fileID: 2108358272}
   - component: {fileID: 2108358271}
   - component: {fileID: 2108358270}
+  - component: {fileID: 2108358273}
   m_Layer: 5
   m_Name: ThirdTower
   m_TagString: Untagged
@@ -4934,6 +4993,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108358268}
   m_CullTransparentMesh: 0
+--- !u!135 &2108358273
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108358268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 16
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2119968700
 GameObject:
   m_ObjectHideFlags: 0
@@ -5035,7 +5107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125523292}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 187838252}
@@ -5091,32 +5163,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2125523295
-BoxCollider2D:
+--- !u!65 &2125523295
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125523292}
-  m_Enabled: 1
-  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.76, y: 7.04}
-    newSize: {x: 12.76, y: 7.04}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 12.76, y: 7.04}
-  m_EdgeRadius: 0
+  m_Size: {x: 12.76, y: 7.04, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2125523296
 MonoBehaviour:
   m_ObjectHideFlags: 0

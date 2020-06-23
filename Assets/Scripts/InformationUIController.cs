@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class InformationUIController : MonoBehaviour
@@ -43,7 +43,12 @@ public class InformationUIController : MonoBehaviour
     private Text _livesLostValue;
 
 
-    public void SetTowerInformation(Sprite newTowerIcon, string newTowerName, int newDamageValue, int newBreakArmorValue, int newFireRateValue)
+    [Header("Tower buttons related")]
+    [SerializeField]
+    private GameObject _chooseButton;
+
+    [SerializeField]
+    private GameObject _sellButton;
     {
         _towerInformationPanel.SetActive(true);
 
