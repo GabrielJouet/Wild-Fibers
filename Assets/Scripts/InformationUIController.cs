@@ -1,3 +1,4 @@
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -49,7 +50,15 @@ public class InformationUIController : MonoBehaviour
 
     [SerializeField]
     private GameObject _sellButton;
+
+    private readonly List<TowerSlot> _otherSlots = new List<TowerSlot>();
+
+
+    public void SetTowerInformation(Sprite newTowerIcon, string newTowerName, int newDamageValue, float newBreakArmorValue, float newFireRateValue)
     {
+        if (_enemyInformationPanel.activeSelf)
+            DisableEnemyInformation();
+
         _towerInformationPanel.SetActive(true);
 
         _towerIcon.sprite = newTowerIcon;
@@ -67,8 +76,11 @@ public class InformationUIController : MonoBehaviour
 
 
 
-    public void SetEnemyInformation(Sprite newEnemyIcon, string newEnemyName, int newLifeValue, int newArmorValue, int newLivesLostValue)
+    public void SetEnemyInformation(Sprite newEnemyIcon, string newEnemyName, int newLifeValue, float newArmorValue, int newLivesLostValue)
     {
+        if (_towerInformationPanel.activeSelf)
+            DisableTowerInformation();
+
         _enemyInformationPanel.SetActive(true);
 
         _enemyIcon.sprite = newEnemyIcon;
@@ -82,5 +94,38 @@ public class InformationUIController : MonoBehaviour
     public void DisableEnemyInformation()
     {
         _enemyInformationPanel.SetActive(false);
+    }
+
+
+    public void DisableTowerSellButton()
+    {
+        _sellButton.SetActive(false);
+
+        if (_otherSlots.Count == 0)
+            RecoverTowerSlots();
+
+        foreach (TowerSlot current in _otherSlots)
+            current.ResetChooser();
+    }
+
+
+    public void DisableTowerChooseButton()
+    {
+        _chooseButton.SetActive(false);
+
+        if (_otherSlots.Count == 0)
+            RecoverTowerSlots();
+
+        foreach (TowerSlot current in _otherSlots)
+            current.ResetChooser();
+    }
+
+
+    private void RecoverTowerSlots()
+    {
+        //We recover every other slots in order to desactivate them when we click
+        foreach (TowerSlot current in FindObjectsOfType<TowerSlot>())
+            if (current != this)
+                _otherSlots.Add(current);
     }
 }
