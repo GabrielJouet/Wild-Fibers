@@ -1237,6 +1237,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemiesAvailables:
   - {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4, type: 3}
+  - {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1, type: 3}
+  - {fileID: 5682064432001086994, guid: 3a10d5fb2f081234aba26b426ea831c4, type: 3}
   _enemyPoolPrefab: {fileID: 126690080380749959, guid: 5290313942fd44c47a415e04a43f7199,
     type: 3}
 --- !u!114 &519420034
@@ -3434,7 +3436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -277.5, y: 0}
+  m_AnchoredPosition: {x: 29.899994, y: 0}
   m_SizeDelta: {x: 32, y: 32}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1161512155
@@ -4290,7 +4292,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -203.69995, y: 0}
+  m_AnchoredPosition: {x: 110.5, y: 0}
   m_SizeDelta: {x: 95, y: 45}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616128853
