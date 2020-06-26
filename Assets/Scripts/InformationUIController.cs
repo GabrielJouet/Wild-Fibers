@@ -51,7 +51,9 @@ public class InformationUIController : MonoBehaviour
     [SerializeField]
     private GameObject _sellButton;
 
-    private readonly List<TowerSlot> _otherSlots = new List<TowerSlot>();
+
+    private List<TowerSlot> _otherSlots = new List<TowerSlot>();
+
 
 
     public void SetTowerInformation(Sprite newTowerIcon, string newTowerName, int newDamageValue, float newBreakArmorValue, float newFireRateValue)
@@ -97,35 +99,43 @@ public class InformationUIController : MonoBehaviour
     }
 
 
-    public void DisableTowerSellButton()
+    public void ActivateTowerChooseButton(Vector2 newPosition, TowerSlot activatedSlot)
     {
-        _sellButton.SetActive(false);
+        ResetOtherSlots();
 
-        if (_otherSlots.Count == 0)
-            RecoverTowerSlots();
-
-        foreach (TowerSlot current in _otherSlots)
-            current.ResetChooser();
+        _chooseButton.SetActive(true);
+        _chooseButton.GetComponent<ChooseButton>().Activate(newPosition, activatedSlot);
     }
 
 
     public void DisableTowerChooseButton()
     {
         _chooseButton.SetActive(false);
-
-        if (_otherSlots.Count == 0)
-            RecoverTowerSlots();
-
-        foreach (TowerSlot current in _otherSlots)
-            current.ResetChooser();
     }
 
 
-    private void RecoverTowerSlots()
+    public void ActivateTowerSellButton(Vector2 newPosition, TowerSlot activatedSlot)
     {
-        //We recover every other slots in order to desactivate them when we click
-        foreach (TowerSlot current in FindObjectsOfType<TowerSlot>())
-            if (current != this)
-                _otherSlots.Add(current);
+        ResetOtherSlots();
+
+        _sellButton.SetActive(true);
+        _sellButton.GetComponent<SellButton>().Activate(newPosition, activatedSlot);
+    }
+
+
+
+    public void DisableTowerSellButton()
+    {
+        _sellButton.SetActive(false);
+    }
+
+
+    private void ResetOtherSlots()
+    {
+        if (_otherSlots.Count == 0)
+            _otherSlots = new List<TowerSlot>(FindObjectsOfType<TowerSlot>());
+
+        foreach (TowerSlot current in _otherSlots)
+            current.ResetChooser();
     }
 }

@@ -8,13 +8,6 @@ public class TowerSlot : MonoBehaviour
     private List<Tower> _availableTowers;
 
 
-    [Header("UI Button")]
-    [SerializeField]
-    private GameObject _chooseButton;
-    [SerializeField]
-    private GameObject _sellButton;
-
-
     [Header("Component")]
     [SerializeField]
     private RessourceController _ressourceController;
@@ -22,22 +15,10 @@ public class TowerSlot : MonoBehaviour
     private InformationUIController _informationUIController;
 
 
-    private readonly List<TowerSlot> _otherSlots = new List<TowerSlot>();
-
     private Tower _currentTower = null;
 
     private bool _chooserActive = false;
     private bool _sellerActive = false;
-
-
-
-    private void Start()
-    {
-        //We recover every other slots in order to desactivate them when we click
-        foreach (TowerSlot current in FindObjectsOfType<TowerSlot>())
-            if(current != this)
-                _otherSlots.Add(current);
-    }
 
 
     private void OnMouseDown()
@@ -45,20 +26,21 @@ public class TowerSlot : MonoBehaviour
         Vector2 cameraScreen = Camera.main.WorldToScreenPoint(transform.position);
         Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
 
-        ResetOtherChooser();
-
         if (_currentTower == null)
         {
-            _chooseButton.GetComponent<ChooseButton>().Activate(finalPosition, this);
+            if(!_chooserActive)
+                _informationUIController.ActivateTowerChooseButton(finalPosition, this);
+            else
+                _informationUIController.DisableTowerChooseButton();
 
-            _chooseButton.SetActive(!_chooserActive);
             _chooserActive = !_chooserActive;
         }
         else
         {
             if(!_sellerActive)
             {
-                _sellButton.GetComponent<SellButton>().Activate(finalPosition, this);
+                _informationUIController.ActivateTowerSellButton(finalPosition, this);
+
                 _informationUIController.SetTowerInformation(_currentTower.GetIcon(), 
                                                              _currentTower.GetName(), 
                                                              _currentTower.GetDamage(), 
@@ -66,9 +48,11 @@ public class TowerSlot : MonoBehaviour
                                                              _currentTower.GetTimeBetweenShots());
             }
             else
+            {
                 _informationUIController.DisableTowerInformation();
+                _informationUIController.DisableTowerSellButton();
+            }
 
-            _sellButton.SetActive(!_sellerActive);
             _sellerActive = !_sellerActive;
         }
     }
@@ -85,7 +69,7 @@ public class TowerSlot : MonoBehaviour
             _ressourceController.RemoveGold(_availableTowers[index].GetPrice());
 
             _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
-            _chooseButton.SetActive(false);
+            _informationUIController.DisableTowerChooseButton();
         }
     }
 
@@ -98,9 +82,7 @@ public class TowerSlot : MonoBehaviour
         Destroy(_currentTower.gameObject);
         _currentTower = null;
 
-        _sellButton.SetActive(false);
-
-        ResetChooser();
+        _informationUIController.DisableTowerSellButton();
     }
 
 
@@ -108,15 +90,5 @@ public class TowerSlot : MonoBehaviour
     {
         _chooserActive = false;
         _sellerActive = false;
-    }
-
-
-    private void ResetOtherChooser()
-    {
-        _chooseButton.SetActive(false);
-        _sellButton.SetActive(false);
-
-        foreach (TowerSlot current in _otherSlots)
-            current.ResetChooser();
     }
 }
