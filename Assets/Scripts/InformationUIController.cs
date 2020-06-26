@@ -114,12 +114,12 @@ public class InformationUIController : MonoBehaviour
     }
 
 
-    public void ActivateTowerSellButton(Vector2 newPosition, TowerSlot activatedSlot)
+    public void ActivateTowerSellButton(Vector2 newPosition, TowerSlot activatedSlot, int price)
     {
         ResetOtherSlots();
 
         _sellButton.SetActive(true);
-        _sellButton.GetComponent<SellButton>().Activate(newPosition, activatedSlot);
+        _sellButton.GetComponent<SellButton>().Activate(newPosition, activatedSlot, price);
     }
 
 

@@ -39,7 +39,7 @@ public class TowerSlot : MonoBehaviour
         {
             if(!_sellerActive)
             {
-                _informationUIController.ActivateTowerSellButton(finalPosition, this);
+                _informationUIController.ActivateTowerSellButton(finalPosition, this, Mathf.FloorToInt(_currentTower.GetPrice() / 4));
 
                 _informationUIController.SetTowerInformation(_currentTower.GetIcon(), 
                                                              _currentTower.GetName(), 
