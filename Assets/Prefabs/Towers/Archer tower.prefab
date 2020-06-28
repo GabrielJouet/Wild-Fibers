@@ -94,12 +94,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62934fb3f91fb11469c0b459f50e4046, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: 
+  _displayName: Archer
   _displayDescription: 
   _price: 150
-  _timeBetweenShots: 0
-  _damage: 0
-  _armorThrough: 0
-  _numberOfShots: 0
+  _icon: {fileID: 0}
+  _timeBetweenShots: 0.5
+  _damage: 4
+  _armorThrough: 15
+  _numberOfShots: 1
   _projectileUsed: {fileID: 0}
-  _range: 0
+  _range: 3

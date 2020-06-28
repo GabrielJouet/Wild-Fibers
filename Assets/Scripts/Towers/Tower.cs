@@ -9,9 +9,6 @@ public class Tower : MonoBehaviour
     protected string _displayName;
 
     [SerializeField]
-    protected string _displayDescription;
-
-    [SerializeField]
     protected int _price;
 
     [SerializeField]
@@ -79,8 +76,6 @@ public class Tower : MonoBehaviour
 
 
     public string GetName() { return _displayName; }
-
-    public string GetDescription() { return _displayDescription; }
 
     public int GetPrice() { return _price; }
 
