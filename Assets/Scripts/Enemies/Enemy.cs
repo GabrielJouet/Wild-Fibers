@@ -6,12 +6,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected string _displayName;
 
-    [SerializeField]
-    protected string _displayDescription;
-
-    [SerializeField]
-    protected Sprite _icon;
-
 
     [Header("Behaviour Variables")]
     [SerializeField]
@@ -31,6 +25,11 @@ public class Enemy : MonoBehaviour
 
     [SerializeField]
     protected int _goldGained;
+
+
+    [Header("Selection")]
+    [SerializeField]
+    protected GameObject _selector;
 
 
     protected Path _path;
@@ -141,13 +140,14 @@ public class Enemy : MonoBehaviour
 
     private void OnMouseDown()
     {
-        _informationUiController.SetEnemyInformation(_icon, _displayName, Mathf.FloorToInt(_health), _armorMax, _numberOfLivesTaken);
+        _informationUiController.ResetEnemies();
+
+        _informationUiController.SetEnemyInformation(_displayName, Mathf.FloorToInt(_health), Mathf.FloorToInt(_healthMax), _armorMax, _numberOfLivesTaken);
+        _selector.SetActive(true);
     }
 
 
     public string GetName() { return _displayName; }
-
-    public string GetDescription() { return _displayDescription; }
 
     public float GetHealth() { return _health; }
 
@@ -164,4 +164,9 @@ public class Enemy : MonoBehaviour
     public int GetNumberOfLivesTaken() { return _numberOfLivesTaken; }
 
     public float GetPathPercentage() { return _pathIndex / _path.GetPath().Count; }
+
+    public void ResetSelector()
+    {
+        _selector.SetActive(false);
+    }
 }

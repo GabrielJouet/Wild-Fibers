@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -137,5 +137,12 @@ public class InformationUIController : MonoBehaviour
 
         foreach (TowerSlot current in _otherSlots)
             current.ResetChooser();
+    }
+
+
+    public void ResetEnemies()
+    {
+        foreach (Enemy current in FindObjectsOfType<Enemy>())
+            current.ResetSelector();
     }
 }

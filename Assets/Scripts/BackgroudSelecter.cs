@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class BackgroudSelecter : MonoBehaviour
 {
@@ -25,5 +25,6 @@ public class BackgroudSelecter : MonoBehaviour
         _informationUIController.DisableTowerChooseButton();
         _informationUIController.DisableTowerSellButton();
         _informationUIController.ResetOtherSlots();
+        _informationUIController.ResetEnemies();
     }
 }
