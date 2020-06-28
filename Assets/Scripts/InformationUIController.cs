@@ -130,7 +130,7 @@ public class InformationUIController : MonoBehaviour
     }
 
 
-    private void ResetOtherSlots()
+    public void ResetOtherSlots()
     {
         if (_otherSlots.Count == 0)
             _otherSlots = new List<TowerSlot>(FindObjectsOfType<TowerSlot>());
