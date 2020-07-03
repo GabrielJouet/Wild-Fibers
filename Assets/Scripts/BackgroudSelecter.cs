@@ -13,19 +13,7 @@ public class BackgroudSelecter : MonoBehaviour
         {
             if (Physics.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward, out RaycastHit hit, Mathf.Infinity))
                 if(hit.collider.gameObject == gameObject)
-                    ResetInformation();
+                    _informationUIController.BackgroundClick();
         }
-    }
-
-
-    private void ResetInformation()
-    {
-        _informationUIController.DisableEnemyInformation();
-        _informationUIController.DisableTowerInformation();
-        _informationUIController.DisableTowerChooseButton();
-        _informationUIController.DisableTowerSellButton();
-
-        _informationUIController.ResetSlots();
-        _informationUIController.ResetEnemies();
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -123,6 +123,19 @@ public class InformationUIController : MonoBehaviour
     public void DisableTowerSellButton()
     {
         _sellButton.SetActive(false);
+    }
+
+
+    public void BackgroundClick()
+    {
+        DisableEnemyInformation();
+        DisableTowerInformation();
+        DisableTowerChooseButton();
+        DisableTowerSellButton();
+
+        ResetSlots();
+        ResetTowers();
+        ResetEnemies();
     }
 
 
