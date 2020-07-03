@@ -31,6 +31,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected GameObject _selector;
 
+    [SerializeField]
+    protected HealthBar _healthBar;
+
 
     protected Path _path;
     protected int _pathIndex;
@@ -47,7 +50,14 @@ public class Enemy : MonoBehaviour
     {
         gameObject.SetActive(true);
 
+        if(!_healthBar.GetInitialized())
+            _healthBar.RecoverVectors();
+
+        _healthBar.ResetSize();
+
         _speed = _speedMax;
+        _health = _healthMax;
+
         _pathIndex = 0;
 
         transform.position = newPath.GetPathPosition(0);
@@ -61,10 +71,10 @@ public class Enemy : MonoBehaviour
     }
 
 
-
-    public void ResetEnemy()
+    protected void StopEnemy()
     {
         gameObject.SetActive(false);
+        _enemiesController.AddOneEnemy(this);
     }
 
 
@@ -93,14 +103,14 @@ public class Enemy : MonoBehaviour
     protected void ReachEnd()
     {
         _ressourceController.RemoveLives(_numberOfLivesTaken);
-        ResetEnemy();
-        _enemiesController.AddOneEnemy(this);
+        StopEnemy();
     }
 
 
     public void TakeDamage(float damage)
     {
         //TO DO
+        _healthBar.ChangeSize((_health - damage) / _healthMax);
     }
 
 
@@ -132,8 +142,7 @@ public class Enemy : MonoBehaviour
     {
         //TO DO
         _ressourceController.AddGold(_goldGained);
-        ResetEnemy();
-        _enemiesController.AddOneEnemy(this);
+        StopEnemy();
     }
 
 
