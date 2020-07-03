@@ -7,19 +7,14 @@ public class InformationUIController : MonoBehaviour
     [Header("Tower related objects")]
     [SerializeField]
     private GameObject _towerInformationPanel;
-
     [SerializeField]
     private Image _towerIcon;
-
     [SerializeField]
     private Text _towerName;
-
     [SerializeField]
     private Text _damageText;
-
     [SerializeField]
     private Text _breakArmorText;
-
     [SerializeField]
     private Text _fireRateText;
 
@@ -27,16 +22,12 @@ public class InformationUIController : MonoBehaviour
     [Header("Enemy related objects")]
     [SerializeField]
     private GameObject _enemyInformationPanel;
-
     [SerializeField]
     private Text _enemyName;
-
     [SerializeField]
     private Text _lifeValue;
-
     [SerializeField]
     private Text _armorValue;
-
     [SerializeField]
     private Text _livesLostValue;
 
@@ -44,7 +35,6 @@ public class InformationUIController : MonoBehaviour
     [Header("Tower buttons related")]
     [SerializeField]
     private GameObject _chooseButton;
-
     [SerializeField]
     private GameObject _sellButton;
 

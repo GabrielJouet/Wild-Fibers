@@ -7,10 +7,8 @@ public class Tower : MonoBehaviour
     [Header("Description")]
     [SerializeField]
     protected string _displayName;
-
     [SerializeField]
     protected int _price;
-
     [SerializeField]
     protected Sprite _icon;
 
@@ -18,23 +16,17 @@ public class Tower : MonoBehaviour
     protected Transform _transformRange;
 
 
-
     [Header("Damage Related")]
     [SerializeField]
     protected float _timeBetweenShots;
-
     [SerializeField]
     protected int _damage;
-
     [SerializeField]
     protected float _armorThrough;
-
     [SerializeField]
     protected int _numberOfShots;
-
     [SerializeField]
     protected GameObject _projectileUsed;
-
     [SerializeField]
     protected float _range;
 

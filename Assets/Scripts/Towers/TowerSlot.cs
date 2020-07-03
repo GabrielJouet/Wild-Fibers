@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerSlot : MonoBehaviour
@@ -13,7 +13,6 @@ public class TowerSlot : MonoBehaviour
     private RessourceController _ressourceController;
     [SerializeField]
     private InformationUIController _informationUIController;
-
 
     private Tower _currentTower = null;
 
