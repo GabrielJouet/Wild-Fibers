@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +13,9 @@ public class Tower : MonoBehaviour
 
     [SerializeField]
     protected Sprite _icon;
+
+    [SerializeField]
+    protected Transform _transformRange;
 
 
 
