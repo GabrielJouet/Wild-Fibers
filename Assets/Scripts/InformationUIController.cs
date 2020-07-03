@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -100,12 +100,12 @@ public class InformationUIController : MonoBehaviour
     }
 
 
-    public void ActivateTowerSellButton(Vector2 newPosition, TowerSlot activatedSlot, int price)
+    public void ActivateTowerSellButton(Vector2 newPosition, Tower activatedTower, int price)
     {
         ResetSlots();
 
         _sellButton.SetActive(true);
-        _sellButton.GetComponent<SellButton>().Activate(newPosition, activatedSlot, price);
+        _sellButton.GetComponent<SellButton>().Activate(newPosition, activatedTower, price);
     }
 
 
@@ -136,6 +136,13 @@ public class InformationUIController : MonoBehaviour
 
         foreach (TowerSlot current in _otherSlots)
             current.ResetChooser();
+    }
+
+
+    public void ResetTowers()
+    {
+        foreach (Tower current in FindObjectsOfType<Tower>())
+            current.ResetTowerDisplay();
     }
 
 

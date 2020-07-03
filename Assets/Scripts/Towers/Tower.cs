@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,8 +12,6 @@ public class Tower : MonoBehaviour
     [SerializeField]
     protected Sprite _icon;
 
-    [SerializeField]
-    protected Transform _transformRange;
 
 
     [Header("Damage Related")]
@@ -31,27 +29,88 @@ public class Tower : MonoBehaviour
     protected float _range;
 
 
-    protected List<Enemy> _availableEnemies = new List<Enemy>();
+    [Header("In game")]
+    [SerializeField]
+    protected Transform _transformRange;
+    [SerializeField]
+    protected GameObject _selector;
 
+
+    protected InformationUIController _informationUIController;
+    protected TowerSlot _currentSlot;
+    protected RessourceController _ressourceController;
+    protected bool _sellerActive = false; 
+    protected List<Enemy> _availableEnemies = new List<Enemy>();
     protected CapsuleCollider2D _collider;
 
 
-    protected void OnTriggerEnter2D(Collider2D collision)
+    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, InformationUIController newInformationUIController)
     {
-        if (collision.TryGetComponent(out Enemy enemy))
-            _availableEnemies.Add(enemy);
+        _informationUIController = newInformationUIController;
+        _ressourceController = newRessourceController;
+        _currentSlot = newSlot;
+
+        _transformRange.localScale *= _range; 
     }
 
 
-    protected void OnTriggerExit2D(Collider2D collision)
+
+    protected void OnTriggerEnter(Collider collision)
+    {
+        if (collision.TryGetComponent(out Enemy enemy))
+            _availableEnemies.Add(enemy);
+
+        Debug.Log("one more");
+    }
+
+
+    protected void OnTriggerExit(Collider collision)
     {
         if (collision.TryGetComponent(out Enemy enemy))
         {
             if (_availableEnemies.Contains(enemy))
                 _availableEnemies.Remove(enemy);
         }
+
+        Debug.Log("one left");
     }
 
+
+
+    private void OnMouseDown()
+    {
+        Vector2 cameraScreen = Camera.main.WorldToScreenPoint(transform.position);
+        Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
+
+        if (!_sellerActive)
+        {
+            _informationUIController.ActivateTowerSellButton(finalPosition, this, Mathf.FloorToInt(_price / 4));
+            _informationUIController.SetTowerInformation(_icon, _displayName, _damage, _armorThrough, _timeBetweenShots);
+
+            ActivateRangeDisplay();
+        }
+        else
+        {
+            _informationUIController.DisableTowerInformation();
+            _informationUIController.DisableTowerSellButton();
+
+            DesactivateRangeDisplay();
+        }
+
+        _sellerActive = !_sellerActive;
+    }
+
+
+    public void ResellTower()
+    {
+        _ressourceController.AddGold(Mathf.FloorToInt(_price / 4));
+        _informationUIController.DisableTowerInformation();
+
+        _informationUIController.DisableTowerSellButton();
+        _currentSlot.ResetSlot();
+        Destroy(gameObject);
+    }
+    
 
     protected void Shoot()
     {
@@ -66,6 +125,27 @@ public class Tower : MonoBehaviour
 
         foreach(Enemy current in _availableEnemies)
             Debug.Log(current + " : " + current.GetPathPercentage());
+    }
+
+
+    public void ActivateRangeDisplay()
+    {
+        _transformRange.gameObject.SetActive(true);
+        _selector.SetActive(true);
+    }
+
+
+    public void DesactivateRangeDisplay()
+    {
+        _transformRange.gameObject.SetActive(false);
+        _selector.SetActive(false);
+    }
+
+
+    public void ResetTowerDisplay()
+    {
+        DesactivateRangeDisplay();
+        _sellerActive = false;
     }
 
 

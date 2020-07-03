@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerSlot : MonoBehaviour
@@ -13,46 +13,27 @@ public class TowerSlot : MonoBehaviour
     private RessourceController _ressourceController;
     [SerializeField]
     private InformationUIController _informationUIController;
+    [SerializeField]
+    private SphereCollider _collider;
 
     private Tower _currentTower = null;
 
     private bool _chooserActive = false;
-    private bool _sellerActive = false;
 
 
     private void OnMouseDown()
     {
-        Vector2 cameraScreen = Camera.main.WorldToScreenPoint(transform.position);
-        Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
-
-        if (_currentTower == null)
+        if(_currentTower == null)
         {
-            if(!_chooserActive)
+            Vector2 cameraScreen = Camera.main.WorldToScreenPoint(transform.position);
+            Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
+
+            if (!_chooserActive)
                 _informationUIController.ActivateTowerChooseButton(finalPosition, this);
             else
                 _informationUIController.DisableTowerChooseButton();
 
             _chooserActive = !_chooserActive;
-        }
-        else
-        {
-            if(!_sellerActive)
-            {
-                _informationUIController.ActivateTowerSellButton(finalPosition, this, Mathf.FloorToInt(_currentTower.GetPrice() / 4));
-
-                _informationUIController.SetTowerInformation(_currentTower.GetIcon(), 
-                                                             _currentTower.GetName(), 
-                                                             _currentTower.GetDamage(), 
-                                                             _currentTower.GetArmorThrough(), 
-                                                             _currentTower.GetTimeBetweenShots());
-            }
-            else
-            {
-                _informationUIController.DisableTowerInformation();
-                _informationUIController.DisableTowerSellButton();
-            }
-
-            _sellerActive = !_sellerActive;
         }
     }
 
@@ -68,26 +49,23 @@ public class TowerSlot : MonoBehaviour
             _ressourceController.RemoveGold(_availableTowers[index].GetPrice());
 
             _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
+            _currentTower.Initialize(this, _ressourceController, _informationUIController);
+
+            _collider.enabled = false;
             _informationUIController.DisableTowerChooseButton();
         }
-    }
-
-
-    public void ResellTower()
-    {
-        _ressourceController.AddGold(Mathf.FloorToInt(_currentTower.GetPrice() / 4));
-        _informationUIController.DisableTowerInformation();
-
-        Destroy(_currentTower.gameObject);
-        _currentTower = null;
-
-        _informationUIController.DisableTowerSellButton();
     }
 
 
     public void ResetChooser()
     {
         _chooserActive = false;
-        _sellerActive = false;
+    }
+
+
+    public void ResetSlot()
+    {
+        _currentTower = null;
+        _collider.enabled = true;
     }
 }
