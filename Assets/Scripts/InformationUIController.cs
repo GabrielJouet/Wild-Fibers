@@ -7,19 +7,14 @@ public class InformationUIController : MonoBehaviour
     [Header("Tower related objects")]
     [SerializeField]
     private GameObject _towerInformationPanel;
-
     [SerializeField]
     private Image _towerIcon;
-
     [SerializeField]
     private Text _towerName;
-
     [SerializeField]
     private Text _damageText;
-
     [SerializeField]
     private Text _breakArmorText;
-
     [SerializeField]
     private Text _fireRateText;
 
@@ -27,19 +22,12 @@ public class InformationUIController : MonoBehaviour
     [Header("Enemy related objects")]
     [SerializeField]
     private GameObject _enemyInformationPanel;
-
-    [SerializeField]
-    private Image _enemyIcon;
-
     [SerializeField]
     private Text _enemyName;
-
     [SerializeField]
     private Text _lifeValue;
-
     [SerializeField]
     private Text _armorValue;
-
     [SerializeField]
     private Text _livesLostValue;
 
@@ -47,11 +35,12 @@ public class InformationUIController : MonoBehaviour
     [Header("Tower buttons related")]
     [SerializeField]
     private GameObject _chooseButton;
-
     [SerializeField]
     private GameObject _sellButton;
 
-    private readonly List<TowerSlot> _otherSlots = new List<TowerSlot>();
+
+    private List<TowerSlot> _otherSlots = new List<TowerSlot>();
+
 
 
     public void SetTowerInformation(Sprite newTowerIcon, string newTowerName, int newDamageValue, float newBreakArmorValue, float newFireRateValue)
@@ -64,8 +53,8 @@ public class InformationUIController : MonoBehaviour
         _towerIcon.sprite = newTowerIcon;
         _towerName.text = newTowerName;
         _damageText.text = newDamageValue.ToString();
-        _breakArmorText.text = newBreakArmorValue.ToString();
-        _fireRateText.text = newFireRateValue.ToString();
+        _breakArmorText.text = newBreakArmorValue + " % ";
+        _fireRateText.text = 1 / newFireRateValue + " / sec";
     }
 
 
@@ -76,17 +65,16 @@ public class InformationUIController : MonoBehaviour
 
 
 
-    public void SetEnemyInformation(Sprite newEnemyIcon, string newEnemyName, int newLifeValue, float newArmorValue, int newLivesLostValue)
+    public void SetEnemyInformation(string newEnemyName, int newLifeValue, int newLifeMaxValue, float newArmorValue, int newLivesLostValue)
     {
         if (_towerInformationPanel.activeSelf)
             DisableTowerInformation();
 
         _enemyInformationPanel.SetActive(true);
 
-        _enemyIcon.sprite = newEnemyIcon;
         _enemyName.text = newEnemyName;
-        _lifeValue.text = newLifeValue.ToString();
-        _armorValue.text = newArmorValue.ToString();
+        _lifeValue.text = newLifeValue + " / " + newLifeMaxValue;
+        _armorValue.text = newArmorValue + " %";
         _livesLostValue.text = newLivesLostValue.ToString();
     }
 
@@ -97,35 +85,70 @@ public class InformationUIController : MonoBehaviour
     }
 
 
-    public void DisableTowerSellButton()
+    public void ActivateTowerChooseButton(Vector2 newPosition, TowerSlot activatedSlot)
     {
-        _sellButton.SetActive(false);
+        ResetSlots();
 
-        if (_otherSlots.Count == 0)
-            RecoverTowerSlots();
-
-        foreach (TowerSlot current in _otherSlots)
-            current.ResetChooser();
+        _chooseButton.SetActive(true);
+        _chooseButton.GetComponent<ChooseButton>().Activate(newPosition, activatedSlot);
     }
 
 
     public void DisableTowerChooseButton()
     {
         _chooseButton.SetActive(false);
+    }
 
+
+    public void ActivateTowerSellButton(Vector2 newPosition, Tower activatedTower, int price)
+    {
+        ResetSlots();
+
+        _sellButton.SetActive(true);
+        _sellButton.GetComponent<SellButton>().Activate(newPosition, activatedTower, price);
+    }
+
+
+
+    public void DisableTowerSellButton()
+    {
+        _sellButton.SetActive(false);
+    }
+
+
+    public void BackgroundClick()
+    {
+        DisableEnemyInformation();
+        DisableTowerInformation();
+        DisableTowerChooseButton();
+        DisableTowerSellButton();
+
+        ResetSlots();
+        ResetTowers();
+        ResetEnemies();
+    }
+
+
+    public void ResetSlots()
+    {
         if (_otherSlots.Count == 0)
-            RecoverTowerSlots();
+            _otherSlots = new List<TowerSlot>(FindObjectsOfType<TowerSlot>());
 
         foreach (TowerSlot current in _otherSlots)
             current.ResetChooser();
     }
 
 
-    private void RecoverTowerSlots()
+    public void ResetTowers()
     {
-        //We recover every other slots in order to desactivate them when we click
-        foreach (TowerSlot current in FindObjectsOfType<TowerSlot>())
-            if (current != this)
-                _otherSlots.Add(current);
+        foreach (Tower current in FindObjectsOfType<Tower>())
+            current.ResetTowerDisplay();
+    }
+
+
+    public void ResetEnemies()
+    {
+        foreach (Enemy current in FindObjectsOfType<Enemy>())
+            current.ResetSelector();
     }
 }

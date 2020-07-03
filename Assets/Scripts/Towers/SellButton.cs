@@ -9,12 +9,16 @@ public class SellButton : MonoBehaviour
     [SerializeField]
     private RectTransform _rectTransform;
 
+    [SerializeField]
+    private Text _price;
 
-    public void Activate(Vector2 newPosition, TowerSlot newUsedTowerSlot)
+
+    public void Activate(Vector2 newPosition, Tower newUsedTower, int newPrice)
     {
         _rectTransform.localPosition = newPosition;
+        _price.text = newPrice.ToString();
 
         _sellButton.onClick.RemoveAllListeners();
-        _sellButton.onClick.AddListener(() => newUsedTowerSlot.ResellTower());
+        _sellButton.onClick.AddListener(() => newUsedTower.ResellTower());
     }
 }

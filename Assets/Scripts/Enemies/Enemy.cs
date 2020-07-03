@@ -6,12 +6,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected string _displayName;
 
-    [SerializeField]
-    protected string _displayDescription;
-
-    [SerializeField]
-    protected Sprite _icon;
-
 
     [Header("Behaviour Variables")]
     [SerializeField]
@@ -33,6 +27,14 @@ public class Enemy : MonoBehaviour
     protected int _goldGained;
 
 
+    [Header("Selection")]
+    [SerializeField]
+    protected GameObject _selector;
+
+    [SerializeField]
+    protected HealthBar _healthBar;
+
+
     protected Path _path;
     protected int _pathIndex;
 
@@ -48,7 +50,14 @@ public class Enemy : MonoBehaviour
     {
         gameObject.SetActive(true);
 
+        if(!_healthBar.GetInitialized())
+            _healthBar.RecoverVectors();
+
+        _healthBar.ResetSize();
+
         _speed = _speedMax;
+        _health = _healthMax;
+
         _pathIndex = 0;
 
         transform.position = newPath.GetPathPosition(0);
@@ -62,10 +71,10 @@ public class Enemy : MonoBehaviour
     }
 
 
-
-    public void ResetEnemy()
+    protected void StopEnemy()
     {
         gameObject.SetActive(false);
+        _enemiesController.AddOneEnemy(this);
     }
 
 
@@ -94,14 +103,14 @@ public class Enemy : MonoBehaviour
     protected void ReachEnd()
     {
         _ressourceController.RemoveLives(_numberOfLivesTaken);
-        ResetEnemy();
-        _enemiesController.AddOneEnemy(this);
+        StopEnemy();
     }
 
 
     public void TakeDamage(float damage)
     {
         //TO DO
+        _healthBar.ChangeSize((_health - damage) / _healthMax);
     }
 
 
@@ -133,21 +142,21 @@ public class Enemy : MonoBehaviour
     {
         //TO DO
         _ressourceController.AddGold(_goldGained);
-        ResetEnemy();
-        _enemiesController.AddOneEnemy(this);
+        StopEnemy();
     }
 
 
 
     private void OnMouseDown()
     {
-        _informationUiController.SetEnemyInformation(_icon, _displayName, Mathf.FloorToInt(_health), _armorMax, _numberOfLivesTaken);
+        _informationUiController.ResetEnemies();
+
+        _informationUiController.SetEnemyInformation(_displayName, Mathf.FloorToInt(_health), Mathf.FloorToInt(_healthMax), _armorMax, _numberOfLivesTaken);
+        _selector.SetActive(true);
     }
 
 
     public string GetName() { return _displayName; }
-
-    public string GetDescription() { return _displayDescription; }
 
     public float GetHealth() { return _health; }
 
@@ -164,4 +173,9 @@ public class Enemy : MonoBehaviour
     public int GetNumberOfLivesTaken() { return _numberOfLivesTaken; }
 
     public float GetPathPercentage() { return _pathIndex / _path.GetPath().Count; }
+
+    public void ResetSelector()
+    {
+        _selector.SetActive(false);
+    }
 }

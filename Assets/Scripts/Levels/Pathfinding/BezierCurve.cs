@@ -28,7 +28,7 @@ public class BezierCurve : MonoBehaviour
         ComputePath();
     }
 
-
+    /*
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -55,6 +55,7 @@ public class BezierCurve : MonoBehaviour
             lastPosition = oneMinusT * P + t * T;
         }
     }
+    */
 
 
     private void ComputePath()
