@@ -12,30 +12,13 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private RessourceController _ressourceController;
     [SerializeField]
-    private InformationUIController _informationUIController;
+    private BackgroudSelecter _backgroundSelecter;
     [SerializeField]
-    private SphereCollider _collider;
+    private CircleCollider2D _collider;
 
     private Tower _currentTower = null;
 
     private bool _chooserActive = false;
-
-
-    private void OnMouseDown()
-    {
-        if(_currentTower == null)
-        {
-            Vector2 cameraScreen = Camera.main.WorldToScreenPoint(transform.position);
-            Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
-
-            if (!_chooserActive)
-                _informationUIController.ActivateTowerChooseButton(finalPosition, this);
-            else
-                _informationUIController.DisableTowerChooseButton();
-
-            _chooserActive = !_chooserActive;
-        }
-    }
 
 
     public void ChooseTower(int index)
@@ -49,17 +32,11 @@ public class TowerSlot : MonoBehaviour
             _ressourceController.RemoveGold(_availableTowers[index].GetPrice());
 
             _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
-            _currentTower.Initialize(this, _ressourceController, _informationUIController);
+            _currentTower.Initialize(this, _ressourceController, _backgroundSelecter);
 
             _collider.enabled = false;
-            _informationUIController.DisableTowerChooseButton();
+            _backgroundSelecter.DisableTowerChooseButton();
         }
-    }
-
-
-    public void ResetChooser()
-    {
-        _chooserActive = false;
     }
 
 
@@ -68,4 +45,13 @@ public class TowerSlot : MonoBehaviour
         _currentTower = null;
         _collider.enabled = true;
     }
+
+
+    public Tower GetCurrentTower() { return _currentTower; }
+
+    public bool GetChooserActive() { return _chooserActive; }
+
+    public void RevertChooserActive() { _chooserActive = !_chooserActive; }
+
+    public void ResetChooserActive() { _chooserActive = false; }
 }

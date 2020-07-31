@@ -386,19 +386,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85735133}
   m_CullTransparentMesh: 0
---- !u!135 &85735138
-SphereCollider:
+--- !u!58 &85735138
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 85735133}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 32
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &150188282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1245,7 +1248,7 @@ MonoBehaviour:
   - {fileID: 1757871409}
   _ressourceController: {fileID: 519420034}
   _enemiesController: {fileID: 519420033}
-  _informationUIController: {fileID: 1930817397}
+  _informationUIController: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1468,19 +1471,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535669048}
   m_CullTransparentMesh: 0
---- !u!135 &535669053
-SphereCollider:
+--- !u!58 &535669053
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 535669048}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 32
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &543718219
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,19 +1696,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559279349}
   m_CullTransparentMesh: 0
---- !u!135 &559279354
-SphereCollider:
+--- !u!58 &559279354
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 559279349}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 32
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &568681014
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,7 +2032,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _informationUIController
       value: 
-      objectReference: {fileID: 1930817397}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_SortingLayer
@@ -2146,7 +2155,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _informationUIController
       value: 
-      objectReference: {fileID: 1930817397}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -2350,19 +2359,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680543931}
   m_CullTransparentMesh: 0
---- !u!135 &680543936
-SphereCollider:
+--- !u!58 &680543936
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680543931}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 32
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &726227255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3851,7 +3863,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _informationUIController
       value: 
-      objectReference: {fileID: 1930817397}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -4427,7 +4439,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _informationUIController
       value: 
-      objectReference: {fileID: 1930817397}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -4633,7 +4645,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _informationUIController
       value: 
-      objectReference: {fileID: 1930817397}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_SortingLayerID
@@ -5244,7 +5256,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1930817394}
-  - component: {fileID: 1930817397}
   m_Layer: 5
   m_Name: SelectionInformationPanel
   m_TagString: Untagged
@@ -5273,31 +5284,6 @@ RectTransform:
   m_AnchoredPosition: {x: 335, y: -975}
   m_SizeDelta: {x: 625, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1930817397
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930817393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e90e099b1f6d92f4d9829a02a7562b22, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _towerInformationPanel: {fileID: 18790795}
-  _towerIcon: {fileID: 2119968702}
-  _towerName: {fileID: 543718221}
-  _damageText: {fileID: 214137229}
-  _breakArmorText: {fileID: 992859170}
-  _fireRateText: {fileID: 365142664}
-  _enemyInformationPanel: {fileID: 1094080043}
-  _enemyName: {fileID: 1616128853}
-  _lifeValue: {fileID: 906303762}
-  _armorValue: {fileID: 188228083}
-  _livesLostValue: {fileID: 1047749997}
-  _chooseButton: {fileID: 408832404}
-  _sellButton: {fileID: 1642564924}
 --- !u!1 &2076329784
 GameObject:
   m_ObjectHideFlags: 0
@@ -5612,19 +5598,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108358268}
   m_CullTransparentMesh: 0
---- !u!135 &2108358273
-SphereCollider:
+--- !u!58 &2108358273
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108358268}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 32
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2119968700
 GameObject:
   m_ObjectHideFlags: 0
@@ -5709,8 +5698,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2125523293}
   - component: {fileID: 2125523294}
-  - component: {fileID: 2125523295}
   - component: {fileID: 2125523296}
+  - component: {fileID: 2125523295}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -5782,19 +5771,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &2125523295
-BoxCollider:
+--- !u!61 &2125523295
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2125523292}
+  m_Enabled: 1
+  m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 12.76, y: 7.04}
+    newSize: {x: 12.76, y: 7.04}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12.76, y: 7.04, z: 0.2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 12.76, y: 7.04}
+  m_EdgeRadius: 0
 --- !u!114 &2125523296
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5807,7 +5809,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17da3aba860f22c4b8cdb3efe33c3722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _informationUIController: {fileID: 1930817397}
+  _towerInformationPanel: {fileID: 0}
+  _towerIcon: {fileID: 0}
+  _towerName: {fileID: 0}
+  _damageText: {fileID: 0}
+  _breakArmorText: {fileID: 0}
+  _fireRateText: {fileID: 0}
+  _enemyInformationPanel: {fileID: 0}
+  _enemyName: {fileID: 0}
+  _lifeValue: {fileID: 0}
+  _armorValue: {fileID: 0}
+  _livesLostValue: {fileID: 0}
+  _chooseButton: {fileID: 0}
+  _sellButton: {fileID: 0}
 --- !u!1001 &1656969507094830070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5863,7 +5877,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _informationUIController
       value: 
-      objectReference: {fileID: 1930817397}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_SortingLayerID
