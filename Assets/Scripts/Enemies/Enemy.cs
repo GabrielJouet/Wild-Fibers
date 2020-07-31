@@ -40,13 +40,12 @@ public class Enemy : MonoBehaviour
 
     protected RessourceController _ressourceController;
     protected EnemiesController _enemiesController;
-    protected InformationUIController _informationUiController; 
 
 
     protected bool _moving = false;
 
 
-    public void Initialize(Path newPath, RessourceController newRessourceController, EnemiesController newEnemiesController, InformationUIController newInformationUIController)
+    public void Initialize(Path newPath, RessourceController newRessourceController, EnemiesController newEnemiesController)
     {
         gameObject.SetActive(true);
 
@@ -65,7 +64,6 @@ public class Enemy : MonoBehaviour
 
         _ressourceController = newRessourceController;
         _enemiesController = newEnemiesController;
-        _informationUiController = newInformationUIController;
 
         _moving = true;
     }
