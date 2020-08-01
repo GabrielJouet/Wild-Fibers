@@ -40,13 +40,12 @@ public class Enemy : MonoBehaviour
 
     protected RessourceController _ressourceController;
     protected EnemiesController _enemiesController;
-    protected InformationUIController _informationUiController; 
 
 
     protected bool _moving = false;
 
 
-    public void Initialize(Path newPath, RessourceController newRessourceController, EnemiesController newEnemiesController, InformationUIController newInformationUIController)
+    public void Initialize(Path newPath, RessourceController newRessourceController, EnemiesController newEnemiesController)
     {
         gameObject.SetActive(true);
 
@@ -65,7 +64,6 @@ public class Enemy : MonoBehaviour
 
         _ressourceController = newRessourceController;
         _enemiesController = newEnemiesController;
-        _informationUiController = newInformationUIController;
 
         _moving = true;
     }
@@ -97,6 +95,8 @@ public class Enemy : MonoBehaviour
             _moving = false;
             ReachEnd();
         }
+
+        GetComponent<SpriteRenderer>().flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
     }
 
 
@@ -146,16 +146,6 @@ public class Enemy : MonoBehaviour
     }
 
 
-
-    private void OnMouseDown()
-    {
-        _informationUiController.ResetEnemies();
-
-        _informationUiController.SetEnemyInformation(_displayName, Mathf.FloorToInt(_health), Mathf.FloorToInt(_healthMax), _armorMax, _numberOfLivesTaken);
-        _selector.SetActive(true);
-    }
-
-
     public string GetName() { return _displayName; }
 
     public float GetHealth() { return _health; }
@@ -174,8 +164,7 @@ public class Enemy : MonoBehaviour
 
     public float GetPathPercentage() { return _pathIndex / _path.GetPath().Count; }
 
-    public void ResetSelector()
-    {
-        _selector.SetActive(false);
-    }
+    public void SetSelector() { _selector.SetActive(true); }
+
+    public void ResetSelector() { _selector.SetActive(false); }
 }

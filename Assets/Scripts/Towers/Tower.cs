@@ -35,18 +35,17 @@ public class Tower : MonoBehaviour
     [SerializeField]
     protected GameObject _selector;
 
-
-    protected InformationUIController _informationUIController;
+    private BackgroudSelecter _backgroundSelecter;
     protected TowerSlot _currentSlot;
     protected RessourceController _ressourceController;
     protected bool _sellerActive = false; 
     protected List<Enemy> _availableEnemies = new List<Enemy>();
-    protected CapsuleCollider2D _collider;
+    protected CircleCollider2D _collider;
 
 
-    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, InformationUIController newInformationUIController)
+    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter)
     {
-        _informationUIController = newInformationUIController;
+        _backgroundSelecter = newBackgroundSelecter;
         _ressourceController = newRessourceController;
         _currentSlot = newSlot;
 
@@ -76,37 +75,12 @@ public class Tower : MonoBehaviour
     }
 
 
-
-    private void OnMouseDown()
-    {
-        Vector2 cameraScreen = Camera.main.WorldToScreenPoint(transform.position);
-        Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
-
-        if (!_sellerActive)
-        {
-            _informationUIController.ActivateTowerSellButton(finalPosition, this, Mathf.FloorToInt(_price / 4));
-            _informationUIController.SetTowerInformation(_icon, _displayName, _damage, _armorThrough, _timeBetweenShots);
-
-            ActivateRangeDisplay();
-        }
-        else
-        {
-            _informationUIController.DisableTowerInformation();
-            _informationUIController.DisableTowerSellButton();
-
-            DesactivateRangeDisplay();
-        }
-
-        _sellerActive = !_sellerActive;
-    }
-
-
     public void ResellTower()
     {
         _ressourceController.AddGold(Mathf.FloorToInt(_price / 4));
-        _informationUIController.DisableTowerInformation();
+        _backgroundSelecter.DisableTowerInformation();
 
-        _informationUIController.DisableTowerSellButton();
+        _backgroundSelecter.DisableTowerSellButton();
         _currentSlot.ResetSlot();
         Destroy(gameObject);
     }
@@ -167,4 +141,8 @@ public class Tower : MonoBehaviour
     public float GetRange() { return _range; }
 
     public Sprite GetIcon() { return _icon; }
+
+    public bool GetSellerActive() { return _sellerActive; }
+
+    public void RevertSellerActive() { _sellerActive = !_sellerActive; }
 }
