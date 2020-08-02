@@ -52,34 +52,50 @@ public class BackgroudSelecter : MonoBehaviour
 
             if (hit.collider != null)
             {
-                if(!hit.collider.GetComponent<Button>())
-                    DesactivatePreviousOnes();
-
                 if (hit.collider.TryGetComponent(out Enemy selectedEnemy))
-                    ActivateEnemy(selectedEnemy);
+                    TouchEnemy(selectedEnemy);
                 else if(hit.collider.TryGetComponent(out Tower selectedTower))
-                    ActivateTower(selectedTower);
+                    TouchTower(selectedTower);
                 else if (hit.collider.TryGetComponent(out TowerSlot selectedTowerSlot))
-                    ActivateTowerSlot(selectedTowerSlot);
-                else if(hit.collider.gameObject == gameObject)
+                    TouchSlot(selectedTowerSlot);
+                else if(!hit.collider.GetComponent<Button>())
                     BackgroundClick();
             }
         }
     }
 
 
-                        /*Enemy related*/
-    private void ActivateEnemy(Enemy selectedEnemy)
+    /*Enemy related*/
+    #region
+    private void TouchEnemy(Enemy selectedEnemy)
     {
-        if (_previousEnemy == selectedEnemy)
-            DesactivateEnemy();
-        else
-        {
-            SetEnemyInformation(selectedEnemy);
-            selectedEnemy.SetSelector();
+        if(_previousTower)
+            DesactivateTower();
 
-            _previousEnemy = selectedEnemy;
+        if(_previousSlot)
+            DesactivateTowerSlot();
+
+
+        if(_previousEnemy != null)
+        {
+            Enemy enemyBuffer = _previousEnemy;
+
+            DesactivateEnemy();
+
+            if(enemyBuffer != selectedEnemy)
+                ActivateEnemy(selectedEnemy);
         }
+        else
+            ActivateEnemy(selectedEnemy);
+    }
+
+
+    private void ActivateEnemy(Enemy enemy)
+    {
+        SetEnemyInformation(enemy);
+        enemy.SetSelector();
+
+        _previousEnemy = enemy;
     }
 
 
@@ -88,7 +104,6 @@ public class BackgroudSelecter : MonoBehaviour
         _previousEnemy.ResetSelector();
 
         DisableEnemyInformation();
-
         ResetPrevious();
     }
 
@@ -111,38 +126,57 @@ public class BackgroudSelecter : MonoBehaviour
     {
         _enemyInformationPanel.SetActive(false);
     }
+    #endregion
 
 
 
+    /*Tower related*/
+    #region
+    private void TouchTower(Tower selectedTower)
+    {
+        if (_previousSlot)
+            DesactivateTowerSlot();
 
-                        /*Tower related*/
+        if (_previousEnemy)
+            DesactivateEnemy();
+
+
+        if (_previousTower != null)
+        {
+            Tower towerBuffer = _previousTower;
+
+            DesactivateTower();
+
+            if (towerBuffer != selectedTower)
+                ActivateTower(selectedTower);
+        }
+        else
+            ActivateTower(selectedTower);
+    }
+
+
     private void ActivateTower(Tower selectedTower)
     {
-        if (_previousTower == selectedTower)
-            DesactivateTower();
+        Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedTower.transform.position);
+        Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
+
+        if (!selectedTower.GetSellerActive())
+        {
+            ActivateTowerSellButton(finalPosition, selectedTower, Mathf.FloorToInt(selectedTower.GetPrice() / 4));
+            SetTowerInformation(selectedTower.GetIcon(), selectedTower.GetName(), selectedTower.GetDamage(), selectedTower.GetArmorThrough(), selectedTower.GetTimeBetweenShots());
+
+            selectedTower.ActivateRangeDisplay();
+        }
         else
         {
-            Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedTower.transform.position);
-            Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
+            DisableTowerInformation();
+            DisableTowerSellButton();
 
-            if (!selectedTower.GetSellerActive())
-            {
-                ActivateTowerSellButton(finalPosition, selectedTower, Mathf.FloorToInt(selectedTower.GetPrice() / 4));
-                SetTowerInformation(selectedTower.GetIcon(), selectedTower.GetName(), selectedTower.GetDamage(), selectedTower.GetArmorThrough(), selectedTower.GetTimeBetweenShots());
-
-                selectedTower.ActivateRangeDisplay();
-            }
-            else
-            {
-                DisableTowerInformation();
-                DisableTowerSellButton();
-
-                selectedTower.DesactivateRangeDisplay();
-            }
-            selectedTower.RevertSellerActive();
-
-            _previousTower = selectedTower;
+            selectedTower.DesactivateRangeDisplay();
         }
+        selectedTower.RevertSellerActive();
+
+        _previousTower = selectedTower;
     }
 
 
@@ -178,29 +212,49 @@ public class BackgroudSelecter : MonoBehaviour
     {
         _towerInformationPanel.SetActive(false);
     }
+    #endregion
 
 
-                                /*Tower slot and buttons related*/
+    /*Tower slot and buttons related*/
+    #region
+    private void TouchSlot(TowerSlot selectedSlot)
+    {
+        if (_previousTower)
+            DesactivateTower();
+
+        if (_previousEnemy)
+            DesactivateEnemy();
+
+
+        if (_previousSlot != null)
+        {
+            TowerSlot slotBuffer = _previousSlot;
+
+            DesactivateTowerSlot();
+
+            if (slotBuffer != selectedSlot)
+                ActivateTowerSlot(selectedSlot);
+        }
+        else
+            ActivateTowerSlot(selectedSlot);
+    }
+
+
     private void ActivateTowerSlot(TowerSlot selectedSlot)
     {
-        if (_previousSlot == selectedSlot)
-            DesactivateTowerSlot();
-        else
+        if (selectedSlot.GetCurrentTower() == null)
         {
-            if (selectedSlot.GetCurrentTower() == null)
-            {
-                Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedSlot.transform.position);
-                Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
+            Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedSlot.transform.position);
+            Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
 
-                if (!selectedSlot.GetChooserActive())
-                    ActivateTowerChooseButton(finalPosition, selectedSlot);
-                else
-                    DisableTowerChooseButton();
+            if (!selectedSlot.GetChooserActive())
+                ActivateTowerChooseButton(finalPosition, selectedSlot);
+            else
+                DisableTowerChooseButton();
 
-                selectedSlot.RevertChooserActive();
+            selectedSlot.RevertChooserActive();
 
-                _previousSlot = selectedSlot;
-            }
+            _previousSlot = selectedSlot;
         }
     }
 
@@ -239,10 +293,10 @@ public class BackgroudSelecter : MonoBehaviour
     {
         _sellButton.SetActive(false);
     }
+    #endregion
 
 
-
-                            /*Desactivate all*/
+    /*Desactivate all*/
     private void DesactivatePreviousOnes()
     {
         if (_previousEnemy)
@@ -258,6 +312,8 @@ public class BackgroudSelecter : MonoBehaviour
 
     private void BackgroundClick()
     {
+        DesactivatePreviousOnes();
+
         DisableEnemyInformation();
         DisableTowerInformation();
         DisableTowerChooseButton();
