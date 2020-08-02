@@ -110,6 +110,11 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         //TO DO
+        if (_health - damage <= 0)
+            Die();
+        else 
+            _health -= damage;
+
         _healthBar.ChangeSize((_health - damage) / _healthMax);
     }
 
@@ -167,4 +172,16 @@ public class Enemy : MonoBehaviour
     public void SetSelector() { _selector.SetActive(true); }
 
     public void ResetSelector() { _selector.SetActive(false); }
+
+    protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out TowerCollider towerCollider))
+            towerCollider.EnemyCollide(this);
+    }
+
+    protected void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out TowerCollider towerCollider))
+            towerCollider.EnemyExit(this);
+    }
 }

@@ -27,6 +27,8 @@ public class Tower : MonoBehaviour
     protected GameObject _projectileUsed;
     [SerializeField]
     protected float _range;
+    [SerializeField]
+    protected GameObject _collider;
 
 
     [Header("In game")]
@@ -40,7 +42,6 @@ public class Tower : MonoBehaviour
     protected RessourceController _ressourceController;
     protected bool _sellerActive = false; 
     protected List<Enemy> _availableEnemies = new List<Enemy>();
-    protected CircleCollider2D _collider;
 
 
     public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter)
@@ -49,29 +50,8 @@ public class Tower : MonoBehaviour
         _ressourceController = newRessourceController;
         _currentSlot = newSlot;
 
-        _transformRange.localScale *= _range; 
-    }
-
-
-
-    protected void OnTriggerEnter(Collider collision)
-    {
-        if (collision.TryGetComponent(out Enemy enemy))
-            _availableEnemies.Add(enemy);
-
-        Debug.Log("one more");
-    }
-
-
-    protected void OnTriggerExit(Collider collision)
-    {
-        if (collision.TryGetComponent(out Enemy enemy))
-        {
-            if (_availableEnemies.Contains(enemy))
-                _availableEnemies.Remove(enemy);
-        }
-
-        Debug.Log("one left");
+        _transformRange.localScale *= _range;
+        _collider.transform.localScale *= _range;
     }
 
 
@@ -84,11 +64,18 @@ public class Tower : MonoBehaviour
         _currentSlot.ResetSlot();
         Destroy(gameObject);
     }
-    
 
-    protected void Shoot()
+
+    public void AddEnemy(Enemy enemy)
     {
-        //TO DO
+        _availableEnemies.Add(enemy);
+    }
+
+
+    public void RemoveEnemy(Enemy enemy)
+    {
+        if (_availableEnemies.Contains(enemy))
+            _availableEnemies.Remove(enemy);
     }
 
 
