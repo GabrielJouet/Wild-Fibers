@@ -110,6 +110,11 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damage)
     {
         //TO DO
+        if (_health - damage <= 0)
+            Die();
+        else 
+            _health -= damage;
+
         _healthBar.ChangeSize((_health - damage) / _healthMax);
     }
 
