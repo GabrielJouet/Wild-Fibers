@@ -167,4 +167,16 @@ public class Enemy : MonoBehaviour
     public void SetSelector() { _selector.SetActive(true); }
 
     public void ResetSelector() { _selector.SetActive(false); }
+
+    protected void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out TowerCollider towerCollider))
+            towerCollider.EnemyCollide(this);
+    }
+
+    protected void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out TowerCollider towerCollider))
+            towerCollider.EnemyExit(this);
+    }
 }
