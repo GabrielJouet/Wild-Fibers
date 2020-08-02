@@ -114,8 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _availableTowers: []
   _ressourceController: {fileID: 0}
-  _informationUIController: {fileID: 0}
-  _collider: {fileID: 7014706406856993432}
+  _backgroundSelecter: {fileID: 0}
+  _collider: {fileID: 9171394062896323989}
 --- !u!1 &2689191595496720116
 GameObject:
   m_ObjectHideFlags: 0
