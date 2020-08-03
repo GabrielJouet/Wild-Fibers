@@ -83,9 +83,6 @@ public class Tower : MonoBehaviour
     protected void SortEnemies()
     {
         Array.Sort(_availableEnemies.ToArray(), (a, b) => a.GetPathPercentage().CompareTo(b.GetPathPercentage()));
-
-        foreach(Enemy current in _availableEnemies)
-            Debug.Log(current + " : " + current.GetPathPercentage());
     }
 
 

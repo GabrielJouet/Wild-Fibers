@@ -27,7 +27,6 @@ public class ChocTower : Tower
 
             int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
 
-            Debug.Log(numberOfStrikes);
             for(int i = 0; i < numberOfStrikes; i ++)
             {
                 if(_availableSpikes.Count > 0)
