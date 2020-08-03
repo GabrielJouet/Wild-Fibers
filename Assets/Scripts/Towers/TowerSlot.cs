@@ -14,7 +14,7 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private BackgroudSelecter _backgroundSelecter;
     [SerializeField]
-    private CircleCollider2D _collider;
+    private CapsuleCollider2D _collider;
 
     private Tower _currentTower = null;
 
