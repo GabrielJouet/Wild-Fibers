@@ -179,6 +179,12 @@ MonoBehaviour:
   _endPoint: {fileID: 2091549078}
   _parameterEndPoint: {fileID: 577915424}
   _numberOfIterations: 100
+--- !u!224 &76563471 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4541158168921798197, guid: ab062a4349966594386bc59557a6906a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4541158167840557062}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &150188282
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +846,7 @@ PrefabInstance:
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_SortingLayer
-      value: -1
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
@@ -2638,6 +2644,7 @@ MonoBehaviour:
   _livesLostValue: {fileID: 1047749997}
   _chooseButton: {fileID: 408832404}
   _sellButton: {fileID: 1642564924}
+  _canvas: {fileID: 76563471}
 --- !u!1001 &1656969507094830070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2778,6 +2785,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4541158168249385362, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4541158168501935615, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: _backgroundSelecter

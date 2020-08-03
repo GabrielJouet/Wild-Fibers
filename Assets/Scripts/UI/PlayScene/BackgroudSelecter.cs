@@ -36,6 +36,8 @@ public class BackgroudSelecter : MonoBehaviour
     private GameObject _chooseButton;
     [SerializeField]
     private GameObject _sellButton;
+    [SerializeField]
+    private RectTransform _canvas;
 
     private Enemy _previousEnemy;
 
@@ -158,7 +160,7 @@ public class BackgroudSelecter : MonoBehaviour
     private void ActivateTower(Tower selectedTower)
     {
         Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedTower.transform.position);
-        Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
+        Vector2 finalPosition = new Vector2(cameraScreen.x - _canvas.rect.width / 2, cameraScreen.y - _canvas.rect.height / 2);
 
         if (!selectedTower.GetSellerActive())
         {
@@ -245,7 +247,7 @@ public class BackgroudSelecter : MonoBehaviour
         if (selectedSlot.GetCurrentTower() == null)
         {
             Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedSlot.transform.position);
-            Vector2 finalPosition = new Vector2(cameraScreen.x - Screen.width / 2, cameraScreen.y - Screen.height / 2);
+            Vector2 finalPosition = new Vector2(cameraScreen.x - _canvas.rect.width / 2, cameraScreen.y - _canvas.rect.height / 2);
 
             if (!selectedSlot.GetChooserActive())
                 ActivateTowerChooseButton(finalPosition, selectedSlot);
