@@ -38,7 +38,7 @@ public class ChocTower : Tower
                     _availableSpikes.Remove(_availableSpikes[0]);
                 }
                 else
-                    Instantiate(_projectileUsed).GetComponent<ChocSpikes>().Initialize(_damage, _availableEnemies[i], this);
+                    Instantiate(_projectileUsed, transform).GetComponent<ChocSpikes>().Initialize(_damage, _availableEnemies[i], this);
 
             }
 
