@@ -18,6 +18,7 @@ public class ChocSpikes : MonoBehaviour
 
     public void Initialize(float newDamage, Enemy newEnemy, ChocTower newParent)
     {
+        _stopped = false;
         transform.position = newEnemy.transform.position;
         _enemyToTrack = newEnemy;
         _damage = newDamage;
