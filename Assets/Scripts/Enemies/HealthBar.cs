@@ -4,31 +4,28 @@ public class HealthBar : MonoBehaviour
 {
     [SerializeField]
     private Transform _healthBar;
+    [SerializeField]
+    private SpriteRenderer _sprite;
 
-    private Vector3 _initialPosition;
-    private Vector3 _initialScale;
+    private float _initialYScale = 0.0f;
 
 
-    public void RecoverVectors()
+    private void Start()
     {
-        _initialScale = _healthBar.localScale;
-        _initialPosition = _healthBar.localPosition;
+        _initialYScale = _healthBar.localScale.y;
     }
 
 
     public void ChangeSize(float percentage)
     {
-        _healthBar.localScale = new Vector3(percentage * _initialScale.x, _initialScale.y, 1);
-        _healthBar.localPosition = new Vector3(_initialPosition.x - (_initialScale.x - _healthBar.localScale.x) /2, _initialPosition.y, 0);
+        _healthBar.localScale = new Vector3(percentage, _initialYScale, 1);
+        _healthBar.localPosition = new Vector3(-(1 - _healthBar.localScale.x) * _sprite.size.x / 2, 0, 0);
     }
 
 
     public void ResetSize()
     {
-        _healthBar.localScale = _initialScale;
-        _healthBar.localPosition = _initialPosition;
+        _healthBar.localScale = new Vector3(1,1,1);
+        _healthBar.localPosition = new Vector3(0, 0, 0);
     }
-
-
-    public bool GetInitialized() { return _initialPosition != new Vector3(); }
 }

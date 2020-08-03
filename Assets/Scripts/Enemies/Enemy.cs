@@ -49,9 +49,6 @@ public class Enemy : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        if(!_healthBar.GetInitialized())
-            _healthBar.RecoverVectors();
-
         _healthBar.ResetSize();
 
         _speed = _speedMax;
@@ -115,7 +112,7 @@ public class Enemy : MonoBehaviour
         else 
             _health -= damage;
 
-        _healthBar.ChangeSize((_health - damage) / _healthMax);
+        _healthBar.ChangeSize(_health / _healthMax);
     }
 
 
@@ -145,8 +142,8 @@ public class Enemy : MonoBehaviour
 
     protected void Die()
     {
-        //TO DO
         _ressourceController.AddGold(_goldGained);
+
         StopEnemy();
     }
 
