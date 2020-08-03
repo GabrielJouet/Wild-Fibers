@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2555164510054651097}
   - component: {fileID: 6041825930671476915}
+  - component: {fileID: 7442608901713563836}
   - component: {fileID: 5238891444791806870}
   m_Layer: 0
   m_Name: Choc Spikes
@@ -83,6 +84,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7442608901713563836
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3530943198929188429}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af1fc70d46da7b048bb786e8eb373aa9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5238891444791806870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,4 +115,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5620a51918810408deeaf6418fc04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToStrike: 0.5
+  _timeToStrike: 1
