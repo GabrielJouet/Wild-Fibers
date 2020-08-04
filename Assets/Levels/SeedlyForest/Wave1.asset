@@ -20,6 +20,8 @@ MonoBehaviour:
       _timeBetweenEnemies: 3.5
     - _numberOfEnemies: 1
       _timeBetweenEnemies: 3.5
+    - _numberOfEnemies: 2
+      _timeBetweenEnemies: 5.5
     _enemyUsed: {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1,
       type: 3}
     _timeBetweenPattern: 2
