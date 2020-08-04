@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerSlot : MonoBehaviour
@@ -31,12 +32,20 @@ public class TowerSlot : MonoBehaviour
         {
             _ressourceController.RemoveGold(_availableTowers[index].GetPrice());
 
-            _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
-            _currentTower.Initialize(this, _ressourceController, _backgroundSelecter);
-
             _collider.enabled = false;
             _backgroundSelecter.DisableTowerChooseButton();
+
+            StartCoroutine(DelayConstruct(index));
         }
+    }
+
+
+    private IEnumerator DelayConstruct(int index)
+    {
+        yield return new WaitForSeconds(0.75f);
+
+        _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
+        _currentTower.Initialize(this, _ressourceController, _backgroundSelecter);
     }
 
 
