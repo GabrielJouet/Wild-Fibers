@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 public class ChocSpikes : MonoBehaviour
@@ -8,6 +8,8 @@ public class ChocSpikes : MonoBehaviour
 
     private float _damage;
 
+    private float _armorThrough;
+
     private Enemy _enemyToTrack;
 
     private ChocTower _parentTower;
@@ -16,13 +18,14 @@ public class ChocSpikes : MonoBehaviour
 
 
 
-    public void Initialize(float newDamage, Enemy newEnemy, ChocTower newParent)
+    public void Initialize(float newDamage, float newArmorThrough, Enemy newEnemy, ChocTower newParent)
     {
         _stopped = false;
         transform.position = newEnemy.transform.position;
         _enemyToTrack = newEnemy;
         _damage = newDamage;
         _parentTower = newParent;
+        _armorThrough = newArmorThrough;
 
         StartCoroutine(Strike());
     }
@@ -38,7 +41,8 @@ public class ChocSpikes : MonoBehaviour
     private IEnumerator Strike()
     {
         yield return new WaitForSeconds(_timeToStrike);
-        _enemyToTrack.TakeDamage(_damage);
+        if(_enemyToTrack)
+            _enemyToTrack.TakeDamage(_damage, _armorThrough);
         _stopped = true;
 
         yield return new WaitForSeconds(_timeToStrike / 3f);

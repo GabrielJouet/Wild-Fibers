@@ -32,12 +32,12 @@ public class ChocTower : Tower
                 if(_availableSpikes.Count > 0)
                 {
                     _availableSpikes[0].gameObject.SetActive(true);
-                    _availableSpikes[0].Initialize(_damage, _availableEnemies[i], this);
+                    _availableSpikes[0].Initialize(_damage, _armorThrough, _availableEnemies[i], this);
 
                     _availableSpikes.Remove(_availableSpikes[0]);
                 }
                 else
-                    Instantiate(_projectileUsed, transform).GetComponent<ChocSpikes>().Initialize(_damage, _availableEnemies[i], this);
+                    Instantiate(_projectileUsed, transform).GetComponent<ChocSpikes>().Initialize(_damage, _armorThrough, _availableEnemies[i], this);
 
             }
 
