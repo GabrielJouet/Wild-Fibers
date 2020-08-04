@@ -52,8 +52,6 @@ public class LevelController : MonoBehaviour
 
             _enemyPools.Add(newEnemyPool);
         }
-
-        _waveText.text = _waveIndex + " / " + _level.GetWaveCount();
         StartCoroutine(Delay());
     }
 
@@ -67,7 +65,7 @@ public class LevelController : MonoBehaviour
 
     private void StartWave()
     {
-        _waveText.text = _waveIndex + " / " + _level.GetWaveCount();
+        _waveText.text = (_waveIndex + 1) + " / " + _level.GetWaveCount();
 
         int spawnerLeft = _level.GetWave(_waveIndex).GetNumberOfEnemyGroup() - _spawners.Count;
 
