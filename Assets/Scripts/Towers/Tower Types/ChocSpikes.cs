@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class ChocSpikes : MonoBehaviour
@@ -33,8 +33,19 @@ public class ChocSpikes : MonoBehaviour
 
     private void Update()
     {
-        if(!_stopped)
-            transform.position = _enemyToTrack.transform.position;
+        if(_enemyToTrack)
+        {
+            if (_enemyToTrack.gameObject.activeSelf)
+            {
+                if (!_stopped)
+                    transform.position = _enemyToTrack.transform.position;
+            }
+            else
+            {
+                _stopped = true;
+                _enemyToTrack = null;
+            }
+        }
     }
 
 
@@ -46,6 +57,12 @@ public class ChocSpikes : MonoBehaviour
         _stopped = true;
 
         yield return new WaitForSeconds(_timeToStrike / 3f);
+        StopSpike();
+    }
+
+
+    private void StopSpike()
+    {
         gameObject.SetActive(false);
         _parentTower.RecoverSpike(this);
     }
