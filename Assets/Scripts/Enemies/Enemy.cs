@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -47,10 +47,10 @@ public class Enemy : MonoBehaviour
     {
         gameObject.SetActive(true);
 
-        _healthBar.ResetSize();
-
         _speed = _speedMax;
         _health = _healthMax;
+
+        _healthBar.ResetSize();
 
         _pathIndex = 0;
 
