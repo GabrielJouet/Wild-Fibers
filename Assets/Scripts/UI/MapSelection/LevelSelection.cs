@@ -32,7 +32,7 @@ public class LevelSelection : MonoBehaviour
     private bool _opened = false;
 
     
-    public void ActivateLevelSelectionMenu(LevelParameters newParameters)
+    public void ActivateLevelSelectionMenu(Level newParameters)
     {
         _levelSelectionMenu.SetActive(!_opened);
         _hider.SetActive(!_opened);

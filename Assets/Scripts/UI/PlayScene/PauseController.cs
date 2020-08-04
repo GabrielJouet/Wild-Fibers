@@ -46,8 +46,6 @@ public class PauseController : MonoBehaviour
 
         FindObjectOfType<LevelController>().enabled = _paused;
 
-        FindObjectOfType<EnemiesController>().enabled = _paused;
-
         _paused = !_paused;
     }
 }

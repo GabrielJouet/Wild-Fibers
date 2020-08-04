@@ -28,16 +28,31 @@ public class LevelController : MonoBehaviour
     [Header("Components")]
     [SerializeField]
     private RessourceController _ressourceController;
-    [SerializeField]
-    private EnemiesController _enemiesController;
 
 
     private int _waveIndex = 0;
 
+    [Header("Enemy-related prefabs")]
+    [SerializeField]
+    private List<Enemy> _enemiesAvailables;
+
+    [SerializeField]
+    private EnemyPool _enemyPoolPrefab;
+
+
+    private readonly List<EnemyPool> _enemyPools = new List<EnemyPool>();
 
 
     private void Start()
     {
+        for (int i = 0; i < _enemiesAvailables.Count; i++)
+        {
+            EnemyPool newEnemyPool = Instantiate(_enemyPoolPrefab, transform);
+            newEnemyPool.Initialize(_enemiesAvailables[i].gameObject, _ressourceController);
+
+            _enemyPools.Add(newEnemyPool);
+        }
+
         _waveText.text = _waveIndex + " / " + _level.GetWaveCount();
         StartCoroutine(Delay());
     }
@@ -61,8 +76,16 @@ public class LevelController : MonoBehaviour
             _spawners.Add(Instantiate(_spawnerPrefab, transform));
 
         //And we give them instructions
+        EnemyPool bufferPool = null;
         for (int i = 0; i < _level.GetWave(_waveIndex).GetNumberOfEnemyGroup(); i++)
-            _spawners[i].SetNewGroup(_level.GetWave(_waveIndex).GetEnemyGroup(i), this, _availablePaths, _ressourceController, _enemiesController);
+        {
+            foreach(EnemyPool current in _enemyPools)
+            {
+                if (current.GetPrefab() == _level.GetWave(_waveIndex).GetEnemyGroup(i).GetEnemyUsed().gameObject)
+                    bufferPool = current;
+            }
+            _spawners[i].SetNewGroup(_level.GetWave(_waveIndex).GetEnemyGroup(i), this, _availablePaths, bufferPool);
+        }
     }
 
 

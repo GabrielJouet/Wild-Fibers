@@ -3,7 +3,7 @@
 public class LevelButton : MonoBehaviour
 {
     [SerializeField]
-    private LevelParameters _levelParameters;
+    private Level _levelParameters;
 
     [SerializeField]
     private LevelSelection _levelSelection;

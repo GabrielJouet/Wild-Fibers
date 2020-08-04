@@ -34,4 +34,4 @@ MonoBehaviour:
       type: 3}
     _timeBetweenPattern: 1
     _pathIndex: 0
-  _timeBeforeNextWave: 2
+  _timeBeforeNextWave: 5
