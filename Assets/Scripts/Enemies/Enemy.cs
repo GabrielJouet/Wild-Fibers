@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
 
         _speed = _speedMax;
         _health = _healthMax;
+        _armor = _armorMax;
 
         _healthBar.ResetSize();
 
@@ -85,19 +86,14 @@ public class Enemy : MonoBehaviour
     }
 
 
-    protected void ReachEnd()
+    public void TakeDamage(float damage, float armorThrough)
     {
-        _enemyPool.AddOneEnemy(gameObject, true, _numberOfLivesTaken);
-    }
+        int damageLeft = Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor)/100)/2 : damage - ((_armor - armorThrough)/100 * damage));
 
-
-    public void TakeDamage(float damage)
-    {
-        //TO DO
-        if (_health - damage <= 0)
+        if (_health - damageLeft <= 0)
             Die();
         else 
-            _health -= damage;
+            _health -= damageLeft;
 
         _healthBar.ChangeSize(_health / _healthMax);
     }
@@ -130,6 +126,12 @@ public class Enemy : MonoBehaviour
     protected void Die()
     {
         _enemyPool.AddOneEnemy(gameObject, false, _goldGained);
+    }
+
+
+    protected void ReachEnd()
+    {
+        _enemyPool.AddOneEnemy(gameObject, true, _numberOfLivesTaken);
     }
 
 
