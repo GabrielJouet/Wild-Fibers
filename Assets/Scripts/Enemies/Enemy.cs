@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
@@ -51,6 +51,7 @@ public class Enemy : MonoBehaviour
 
         _speed = _speedMax;
         _health = _healthMax;
+        _armor = _armorMax;
 
         _pathIndex = 0;
 
