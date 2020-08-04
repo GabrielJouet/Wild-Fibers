@@ -12,19 +12,17 @@ public class Spawner : MonoBehaviour
     private bool _waveFinished = false;
 
     private LevelController _levelController;
-    private RessourceController _ressourceController;
-    private EnemiesController _enemiesController;
+    private EnemyPool _enemyPool;
 
     private List<Path> _paths = new List<Path>();
 
 
 
     //Method used by LevelController to set a new enemy group and start spawning entities
-    public void SetNewGroup(EnemyGroup newGroup, LevelController newLevelController, List<Path> newPaths, RessourceController newRessourceController, EnemiesController newEnemiesController)
+    public void SetNewGroup(EnemyGroup newGroup, LevelController newLevelController, List<Path> newPaths, EnemyPool newEnemyPool)
     {
-        _ressourceController = newRessourceController;
         _levelController = newLevelController;
-        _enemiesController = newEnemiesController;
+        _enemyPool = newEnemyPool;
 
         _enemyGroup = newGroup;
         _paths = newPaths;
@@ -46,7 +44,7 @@ public class Spawner : MonoBehaviour
             if (_enemyIndex < _enemyGroup.GetEnemyPattern(_patternIndex).GetNumberOfEnemies())
             {
                 _enemyIndex ++;
-                _enemiesController.RecoverOneEnemy(_enemyGroup.GetEnemyUsed()).GetComponent<Enemy>().Initialize(_paths[_enemyGroup.GetPathIndex()], _ressourceController, _enemiesController);
+                _enemyPool.GetOneEnemy().GetComponent<Enemy>().Initialize(_paths[_enemyGroup.GetPathIndex()], _enemyPool);
                 yield return new WaitForSeconds(_enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies());
             }
             //Else if the pattern is finished
