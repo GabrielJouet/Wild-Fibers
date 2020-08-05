@@ -16,7 +16,7 @@ public class RessourceController : MonoBehaviour
     [SerializeField]
     private Text _goldText;
     [SerializeField]
-    private GameObject _gameOverScreen;
+    private GameOverScreen _gameOverScreen;
 
 
     private bool _stopped = false;
@@ -73,7 +73,7 @@ public class RessourceController : MonoBehaviour
         _lifeCount = 0;
         _stopped = true;
 
-        _gameOverScreen.SetActive(true);
+        _gameOverScreen.ActivateWin();
     }
     #endregion
 }

@@ -13,6 +13,8 @@ public class LevelController : MonoBehaviour
     [Header("UI related")]
     [SerializeField]
     private Text _waveText;
+    [SerializeField]
+    private GameOverScreen _gameOverScreen;
 
 
     [Header("Prefab")]
@@ -34,16 +36,18 @@ public class LevelController : MonoBehaviour
     [Header("Components")]
     [SerializeField]
     private RessourceController _ressourceController;
+    [SerializeField]
+    private NextWaveButton _nextWaveButton;
 
 
     private int _waveIndex = 0;
 
+    private bool _waitForWin = false;
 
 
     private void Start()
     {
         SpawnEnemyPools();
-        StartWave();
     }
 
 
@@ -57,6 +61,15 @@ public class LevelController : MonoBehaviour
 
             _enemyPools.Add(newEnemyPool);
         }
+    }
+
+
+    public void StartWaveViaButton(float timeLeft)
+    {
+        StartWave();
+
+        if (timeLeft > 0)
+            _ressourceController.AddGold(Mathf.FloorToInt(_level.GetWave(_waveIndex).GetGoldBonus() * (timeLeft / _level.GetWave(_waveIndex).GetTimeBeforeNextWave())));
     }
 
 
@@ -94,7 +107,9 @@ public class LevelController : MonoBehaviour
             if (!current.GetWaveFinished())
                 result = false;
 
-        if (result)
+        if (result && _waitForWin)
+            _gameOverScreen.ActivateWin();
+        else if (result && !_waitForWin)
             StartCoroutine(DelayWave());
     }
 
@@ -106,11 +121,11 @@ public class LevelController : MonoBehaviour
         {
             _waveIndex++;
 
-            yield return new WaitForSeconds(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
+            yield return new WaitForSeconds(3);
 
-            StartWave();
+            _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
         }
         else
-            Debug.Log("fini");
+            _waitForWin = true;
     }
 }
