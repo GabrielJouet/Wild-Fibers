@@ -6,12 +6,11 @@ public class ChocSpikes : MonoBehaviour
     [SerializeField]
     private float _timeToStrike;
 
-    private float _damage;
 
+    private float _damage;
     private float _armorThrough;
 
     private Enemy _enemyToTrack;
-
     private ChocTower _parentTower;
 
     private bool _stopped = false;

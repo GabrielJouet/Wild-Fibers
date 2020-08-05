@@ -2,12 +2,15 @@
 
 public class HealthBar : MonoBehaviour
 {
+    [Header("Components")]
     [SerializeField]
     private Transform _healthBar;
     [SerializeField]
     private SpriteRenderer _sprite;
 
+
     private float _initialYScale = 0.0f;
+
 
 
     private void Start()
@@ -16,6 +19,8 @@ public class HealthBar : MonoBehaviour
     }
 
 
+    /*Size related*/
+    #region
     public void ChangeSize(float percentage)
     {
         _healthBar.localScale = new Vector3(percentage, _initialYScale, 1);
@@ -28,4 +33,5 @@ public class HealthBar : MonoBehaviour
         _healthBar.localScale = new Vector3(1,1,1);
         _healthBar.localPosition = new Vector3(0, 0, 0);
     }
+    #endregion
 }

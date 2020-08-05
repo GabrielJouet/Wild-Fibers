@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    private EnemyGroup _enemyGroup;
-
     private int _patternIndex = 0;
     private int _enemyIndex = 0;
 
     private bool _waveFinished = false;
 
+    private EnemyGroup _enemyGroup;
     private LevelController _levelController;
     private EnemyPool _enemyPool;
 

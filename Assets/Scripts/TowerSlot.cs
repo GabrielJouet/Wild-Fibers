@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class TowerSlot : MonoBehaviour
 {
-    [Header("Tower Information")]
+    [Header("Tower Prefabs")]
     [SerializeField]
     private List<Tower> _availableTowers;
 
 
-    [Header("Component")]
+    [Header("Components")]
     [SerializeField]
     private RessourceController _ressourceController;
     [SerializeField]
@@ -17,11 +17,15 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private CapsuleCollider2D _collider;
 
+
     private Tower _currentTower = null;
 
     private bool _chooserActive = false;
 
 
+    /*Construction related*/
+    #region
+    //Method used to construct a new tower from scratch
     public void ChooseTower(int index)
     {
         if(_ressourceController.GetGoldCount() < _availableTowers[index].GetPrice())
@@ -40,6 +44,7 @@ public class TowerSlot : MonoBehaviour
     }
 
 
+    //Method used to delay the construction of a new tower
     private IEnumerator DelayConstruct(int index)
     {
         yield return new WaitForSeconds(0.75f);
@@ -47,20 +52,29 @@ public class TowerSlot : MonoBehaviour
         _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
         _currentTower.Initialize(this, _ressourceController, _backgroundSelecter);
     }
+    #endregion
 
 
+
+    /*Reset related*/
+    #region
     public void ResetSlot()
     {
         _currentTower = null;
         _collider.enabled = true;
     }
 
-
-    public Tower GetCurrentTower() { return _currentTower; }
-
-    public bool GetChooserActive() { return _chooserActive; }
-
     public void RevertChooserActive() { _chooserActive = !_chooserActive; }
 
     public void ResetChooserActive() { _chooserActive = false; }
+    #endregion
+
+
+
+    /*Getters*/
+    #region
+    public Tower GetCurrentTower() { return _currentTower; }
+
+    public bool GetChooserActive() { return _chooserActive; }
+    #endregion
 }

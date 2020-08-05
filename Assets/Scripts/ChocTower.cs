@@ -7,7 +7,8 @@ public class ChocTower : Tower
     private bool _coroutineStarted = false;
 
 
-    private List<ChocSpikes> _availableSpikes = new List<ChocSpikes>();
+    private readonly List<ChocSpikes> _availableSpikes = new List<ChocSpikes>();
+
 
 
     private void FixedUpdate()
@@ -15,6 +16,7 @@ public class ChocTower : Tower
         if (_availableEnemies.Count > 0 && !_coroutineStarted)
             StartCoroutine(SummonSpikes());
     }
+
 
 
     private IEnumerator SummonSpikes()

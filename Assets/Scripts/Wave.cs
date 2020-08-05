@@ -7,17 +7,17 @@ public class Wave : ScriptableObject
     [SerializeField]
     private List<EnemyGroup> _availableEnemyGroups;
 
-
-    [SerializeField]
     [Min(0.1f)]
+    [SerializeField]
     private float _timeBeforeNextWave;
 
 
+    /*Getters*/
+    #region
     public float GetTimeBeforeNextWave() { return _timeBeforeNextWave; }
-
-    public List<EnemyGroup> GetEnemyGroups() { return _availableEnemyGroups; }
 
     public EnemyGroup GetEnemyGroup(int index) { return _availableEnemyGroups[index]; }
 
     public int GetNumberOfEnemyGroup() { return _availableEnemyGroups.Count; }
+    #endregion
 }

@@ -299,6 +299,7 @@ public class BackgroudSelecter : MonoBehaviour
 
 
     /*Desactivate all*/
+    #region
     private void DesactivatePreviousOnes()
     {
         if (_previousEnemy)
@@ -333,4 +334,5 @@ public class BackgroudSelecter : MonoBehaviour
 
         _previousTower = null;
     }
+    #endregion
 }

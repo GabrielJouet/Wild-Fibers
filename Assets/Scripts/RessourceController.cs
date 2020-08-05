@@ -6,7 +6,6 @@ public class RessourceController : MonoBehaviour
     [Header("Start conditions")]
     [SerializeField]
     private int _goldCount;
-
     [SerializeField]
     private int _lifeCount;
 
@@ -14,9 +13,10 @@ public class RessourceController : MonoBehaviour
     [Header("UI Elements")]
     [SerializeField]
     private Text _lifeText;
-
     [SerializeField]
     private Text _goldText;
+    [SerializeField]
+    private GameObject _gameOverScreen;
 
 
     private bool _stopped = false;
@@ -31,6 +31,8 @@ public class RessourceController : MonoBehaviour
 
 
 
+    /*Gold Related*/
+    #region
     public void AddGold(int count)
     {
         _goldCount += count;
@@ -45,6 +47,13 @@ public class RessourceController : MonoBehaviour
     }
 
 
+    public int GetGoldCount() { return _goldCount; }
+    #endregion
+
+
+
+    /*Lives related*/
+    #region
     public void RemoveLives(int count)
     {
         if (!_stopped)
@@ -63,8 +72,8 @@ public class RessourceController : MonoBehaviour
     {
         _lifeCount = 0;
         _stopped = true;
+
+        _gameOverScreen.SetActive(true);
     }
-
-
-    public int GetGoldCount() { return _goldCount; }
+    #endregion
 }

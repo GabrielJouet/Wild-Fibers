@@ -6,6 +6,7 @@ public class DepthManager : MonoBehaviour
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
 
+
     private Camera _mainCamera;
 
 

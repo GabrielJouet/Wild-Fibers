@@ -19,8 +19,14 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     private Spawner _spawnerPrefab;
     private readonly List<Spawner> _spawners = new List<Spawner>();
+    [SerializeField]
+    private List<Enemy> _enemiesAvailables;
+    [SerializeField]
+    private EnemyPool _enemyPoolPrefab;
+    private readonly List<EnemyPool> _enemyPools = new List<EnemyPool>();
 
 
+    [Header("Available Paths")]
     [SerializeField]
     private List<Path> _availablePaths;
 
@@ -32,18 +38,17 @@ public class LevelController : MonoBehaviour
 
     private int _waveIndex = 0;
 
-    [Header("Enemy-related prefabs")]
-    [SerializeField]
-    private List<Enemy> _enemiesAvailables;
-
-    [SerializeField]
-    private EnemyPool _enemyPoolPrefab;
-
-
-    private readonly List<EnemyPool> _enemyPools = new List<EnemyPool>();
 
 
     private void Start()
+    {
+        SpawnEnemyPools();
+        StartWave();
+    }
+
+
+
+    private void SpawnEnemyPools()
     {
         for (int i = 0; i < _enemiesAvailables.Count; i++)
         {
@@ -52,14 +57,6 @@ public class LevelController : MonoBehaviour
 
             _enemyPools.Add(newEnemyPool);
         }
-        StartCoroutine(Delay());
-    }
-
-
-    private IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(0.5f);
-        StartWave();
     }
 
 

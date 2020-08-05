@@ -37,11 +37,13 @@ public class Tower : MonoBehaviour
     [SerializeField]
     protected GameObject _selector;
 
+
     private BackgroudSelecter _backgroundSelecter;
     protected TowerSlot _currentSlot;
     protected RessourceController _ressourceController;
     protected bool _sellerActive = false; 
     protected List<Enemy> _availableEnemies = new List<Enemy>();
+
 
 
     public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter)
@@ -55,6 +57,9 @@ public class Tower : MonoBehaviour
     }
 
 
+
+    /*Upgrades and Money related*/
+    #region
     public void ResellTower()
     {
         _ressourceController.AddGold(Mathf.FloorToInt(_price / 4));
@@ -66,6 +71,16 @@ public class Tower : MonoBehaviour
     }
 
 
+    public void UpgradeTower()
+    {
+        //TO DO
+    }
+    #endregion
+
+
+
+    /*Enemies interaction*/
+    #region
     public void AddEnemy(Enemy enemy)
     {
         _availableEnemies.Add(enemy);
@@ -84,8 +99,12 @@ public class Tower : MonoBehaviour
     {
         Array.Sort(_availableEnemies.ToArray(), (a, b) => a.GetPathPercentage().CompareTo(b.GetPathPercentage()));
     }
+    #endregion
 
 
+
+    /*Reset related*/
+    #region
     public void ActivateRangeDisplay()
     {
         _transformRange.gameObject.SetActive(true);
@@ -106,8 +125,13 @@ public class Tower : MonoBehaviour
         _sellerActive = false;
     }
 
+    public void RevertSellerActive() { _sellerActive = !_sellerActive; }
+    #endregion
 
 
+
+    /*Getters*/
+    #region
     public string GetName() { return _displayName; }
 
     public int GetPrice() { return _price; }
@@ -127,6 +151,5 @@ public class Tower : MonoBehaviour
     public Sprite GetIcon() { return _icon; }
 
     public bool GetSellerActive() { return _sellerActive; }
-
-    public void RevertSellerActive() { _sellerActive = !_sellerActive; }
+    #endregion
 }

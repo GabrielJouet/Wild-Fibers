@@ -10,6 +10,7 @@ public class EnemyPool : MonoBehaviour
     private RessourceController _ressourceController;
 
 
+
     public void Initialize(GameObject newPrefab, RessourceController newRessourceController)
     {
         _ressourceController = newRessourceController;

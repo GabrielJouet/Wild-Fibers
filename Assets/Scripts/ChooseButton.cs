@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class ChooseButton : MonoBehaviour
 {
+    [Header("Button Elements")]
     [SerializeField]
     private List<Button> _interactableButtons;
-
     [SerializeField]
     private RectTransform _rectTransform;
-
     [SerializeField]
     private List<Text> _prices;
+
 
 
     public void Activate(Vector2 newPosition, TowerSlot newUsedTowerSlot)

@@ -3,10 +3,9 @@ using UnityEngine;
 
 public class Path : MonoBehaviour
 {
-    [Header("All curves")]
+    [Header("Beziers Curves")]
     [SerializeField]
     private List<BezierCurve> _curves;
-
 
     private readonly List<Vector3> _finalPath = new List<Vector3>();
 
@@ -18,7 +17,7 @@ public class Path : MonoBehaviour
     }
 
 
-
+    //We "sum" each Bezier curve in order to create the final path
     private void CalculatePath()
     {
         foreach(BezierCurve current in _curves)

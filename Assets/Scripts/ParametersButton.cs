@@ -2,9 +2,9 @@
 
 public class ParametersButton : MonoBehaviour
 {
+    [Header("UI Elements")]
     [SerializeField]
     private GameObject _menuObject;
-
     [SerializeField]
     private GameObject _hider;
 
