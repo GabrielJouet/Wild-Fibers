@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Choc Tower
-  _price: 80
+  _price: 120
   _icon: {fileID: 21300000, guid: c60deed1eaa580045a0816877023952a, type: 3}
   _timeBetweenShots: 2.2
   _damage: 7
