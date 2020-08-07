@@ -21,14 +21,14 @@ public class PauseController : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            PauseGame();
+            PauseGame(_menuObject);
     }
 
 
-    public void PauseGame()
+    public void PauseGame(GameObject menuToActivate)
     {
         //TO REWORK
-        _menuObject.SetActive(!_paused);
+        menuToActivate.SetActive(!_paused);
         _hider.SetActive(!_paused);
         _backgroundSelecter.enabled = _paused;
 

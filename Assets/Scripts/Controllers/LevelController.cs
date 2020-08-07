@@ -38,6 +38,8 @@ public class LevelController : MonoBehaviour
     private RessourceController _ressourceController;
     [SerializeField]
     private NextWaveButton _nextWaveButton;
+    [SerializeField]
+    private PauseController _pauseController;
 
 
     private int _waveIndex = 0;
@@ -120,7 +122,7 @@ public class LevelController : MonoBehaviour
                 result = false;
 
         if (result)
-            _gameOverScreen.ActivateWin();
+            _gameOverScreen.Activate(true);
     }
 
 
