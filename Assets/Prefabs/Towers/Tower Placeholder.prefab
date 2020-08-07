@@ -112,7 +112,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d384ee91fd6da94ca63fb6ab9dc37ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _availableTowers: []
+  _availableTowers:
+  - {fileID: 7248711420065350947, guid: b0c8be174e4aa4a4aa4fcf05b6b62cfa, type: 3}
+  - {fileID: 8854172079906978944, guid: 7e5fc179ffd633e4a950e34a2229c96c, type: 3}
+  - {fileID: -8003392099937102339, guid: 37e81790ef7ed3343951f47742770ac0, type: 3}
+  - {fileID: 95656636279286502, guid: 260e56dedf64a1e4db4b79d96e4a2d01, type: 3}
   _ressourceController: {fileID: 0}
   _backgroundSelecter: {fileID: 0}
   _collider: {fileID: 8038465595182889075}

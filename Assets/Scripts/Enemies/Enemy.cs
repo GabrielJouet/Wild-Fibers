@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -11,28 +12,32 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected float _healthMax;
     protected float _health;
-
     [SerializeField]
     protected float _armorMax;
     protected float _armor;
-
     [SerializeField]
     protected float _speedMax;
     protected float _speed;
-
     [SerializeField]
     protected int _numberOfLivesTaken;
-
     [SerializeField]
     protected int _goldGained;
 
+    protected float _dotDuration;
+    protected float _healthMalus = 0;
 
-    [Header("Selection")]
+
+    [Header("Display")]
     [SerializeField]
     protected GameObject _selector;
-
     [SerializeField]
     protected HealthBar _healthBar;
+    [SerializeField]
+    protected SpriteRenderer _dotDisplay;
+    protected Sprite _dotEffect;
+
+    protected bool _dotApplied = false;
+
 
 
     protected Path _path;
@@ -45,6 +50,8 @@ public class Enemy : MonoBehaviour
 
     public void Initialize(Path newPath, EnemyPool newPool)
     {
+        _dotApplied = false;
+        _dotDisplay.sprite = null;
         gameObject.SetActive(true);
 
         _speed = _speedMax;
@@ -99,15 +106,48 @@ public class Enemy : MonoBehaviour
     }
 
 
+    public void TakeDamage(float damage)
+    {
+        if (_health - damage <= 0)
+            Die();
+        else
+            _health -= damage;
+
+        _healthBar.ChangeSize(_health / _healthMax);
+    }
+
+
     public void ApplySlowDown(/*TO DO*/)
     {
         //TO DO
     }
 
 
-    public void ApplyDot(/*TO DO*/)
+    public void ApplyDot(float armorThroughMalus, float healthMalus, float duration, Sprite newIcon)
     {
-        //TO DO
+        _armor -= armorThroughMalus;
+        _healthMalus += healthMalus;
+        _dotDuration = duration;
+        _dotDisplay.sprite = newIcon;
+
+        if(!_dotApplied)
+            StartCoroutine(TakePersistentDamage());
+    }
+
+
+    protected IEnumerator TakePersistentDamage()
+    {
+        _dotApplied = true;
+
+        while(_dotDuration >= 0)
+        {
+            _dotDuration -= 0.5f;
+            TakeDamage(_healthMalus);
+            yield return new WaitForSeconds(0.5f);
+        }
+
+        _dotDisplay.sprite = null;
+        _dotApplied = false;
     }
 
 
@@ -126,12 +166,16 @@ public class Enemy : MonoBehaviour
     protected void Die()
     {
         _enemyPool.AddOneEnemy(gameObject, false, _goldGained);
+
+        StopAllCoroutines();
     }
 
 
     protected void ReachEnd()
     {
         _enemyPool.AddOneEnemy(gameObject, true, _numberOfLivesTaken);
+
+        StopAllCoroutines();
     }
 
 
@@ -162,6 +206,7 @@ public class Enemy : MonoBehaviour
         if (collision.TryGetComponent(out TowerCollider towerCollider))
             towerCollider.EnemyCollide(this);
     }
+
 
     protected void OnTriggerExit2D(Collider2D collision)
     {

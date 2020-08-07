@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 481758128716525909}
   - component: {fileID: 481758128716525914}
   - component: {fileID: 8122643514199073911}
-  - component: {fileID: 481758128716525908}
+  - component: {fileID: 8854172079906978944}
   m_Layer: 0
   m_Name: Bramble tower
   m_TagString: Untagged
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
---- !u!114 &481758128716525908
+--- !u!114 &8854172079906978944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,17 +111,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 481758128716525915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62934fb3f91fb11469c0b459f50e4046, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c9fed3d3421b8f4db8dc82975b3ae50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: 
+  _displayName: Bramble
   _price: 50
   _icon: {fileID: 21300000, guid: a5674d241e91fd54b9bf5586ca2d6ee8, type: 3}
-  _timeBetweenShots: 0
-  _damage: 0
-  _armorThrough: 0
-  _numberOfShots: 0
-  _projectileUsed: {fileID: 0}
+  _timeBetweenShots: 2.5
+  _damage: 10
+  _armorThrough: 35
+  _numberOfShots: 1
+  _projectileUsed: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,
+    type: 3}
   _range: 1
   _collider: {fileID: 8286330291336779572}
   _transformRange: {fileID: 1026581157735740721}
@@ -393,7 +394,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _parentTower
       value: 
-      objectReference: {fileID: 481758128716525908}
+      objectReference: {fileID: 8854172079906978944}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0747cfa70861f444a27da50f9419661, type: 3}
 --- !u!1 &8286330291336779572 stripped
