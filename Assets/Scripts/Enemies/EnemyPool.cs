@@ -36,7 +36,7 @@ public class EnemyPool : MonoBehaviour
         }
         else
         {
-            enemyBuffered = Instantiate(_enemyPrefab);
+            enemyBuffered = Instantiate(_enemyPrefab, transform);
             _livingEnemies.Add(enemyBuffered);
             return enemyBuffered;
         }
