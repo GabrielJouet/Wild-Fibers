@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7550639336727220404}
   - component: {fileID: 7550639336727220405}
   - component: {fileID: 2195790016789209931}
-  - component: {fileID: 7550639336727220395}
+  - component: {fileID: 7248711420065350947}
   m_Layer: 0
   m_Name: Archer tower
   m_TagString: Untagged
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
---- !u!114 &7550639336727220395
+--- !u!114 &7248711420065350947
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,18 +111,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 7550639336727220406}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62934fb3f91fb11469c0b459f50e4046, type: 3}
+  m_Script: {fileID: 11500000, guid: 9aa4077e69657c049873b3b4f28735b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Archer
   _price: 150
   _icon: {fileID: 21300000, guid: 7b35af33f62aeca4c9ab120d37761d3d, type: 3}
-  _timeBetweenShots: 0.5
-  _damage: 4
+  _timeBetweenShots: 1
+  _damage: 7
   _armorThrough: 15
   _numberOfShots: 1
-  _projectileUsed: {fileID: 0}
-  _range: 1.5
+  _projectileUsed: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
+    type: 3}
+  _range: 2
   _collider: {fileID: 756056050505896787}
   _transformRange: {fileID: 7277304674411692777}
   _selector: {fileID: 1918773186726736401}
@@ -282,7 +283,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _parentTower
       value: 
-      objectReference: {fileID: 7550639336727220395}
+      objectReference: {fileID: 7248711420065350947}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0747cfa70861f444a27da50f9419661, type: 3}
 --- !u!1 &756056050505896787 stripped

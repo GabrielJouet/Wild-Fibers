@@ -22,29 +22,26 @@ public class ChocTower : Tower
     private IEnumerator SummonSpikes()
     {
         _coroutineStarted = true;
+        SortEnemies();
 
-        while(true)
+        int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
+
+        for(int i = 0; i < numberOfStrikes; i ++)
         {
-            SortEnemies();
-
-            int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
-
-            for(int i = 0; i < numberOfStrikes; i ++)
+            if(_availableSpikes.Count > 0)
             {
-                if(_availableSpikes.Count > 0)
-                {
-                    _availableSpikes[0].gameObject.SetActive(true);
-                    _availableSpikes[0].Initialize(_damage, _armorThrough, _availableEnemies[i], this);
+                _availableSpikes[0].gameObject.SetActive(true);
+                _availableSpikes[0].Initialize(_damage, _armorThrough, _availableEnemies[i], this);
 
-                    _availableSpikes.Remove(_availableSpikes[0]);
-                }
-                else
-                    Instantiate(_projectileUsed, transform).GetComponent<ChocSpikes>().Initialize(_damage, _armorThrough, _availableEnemies[i], this);
-
+                _availableSpikes.Remove(_availableSpikes[0]);
             }
+            else
+                Instantiate(_projectileUsed, transform).GetComponent<ChocSpikes>().Initialize(_damage, _armorThrough, _availableEnemies[i], this);
 
-            yield return new WaitForSeconds(_timeBetweenShots);
         }
+
+        yield return new WaitForSeconds(_timeBetweenShots);
+        _coroutineStarted = false;
     }
 
 
