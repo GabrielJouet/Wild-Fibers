@@ -15,6 +15,8 @@ public class Spawner : MonoBehaviour
 
     private List<Path> _paths = new List<Path>();
 
+    private bool _enemiesKilled = false;
+
 
 
     //Method used by LevelController to set a new enemy group and start spawning entities
@@ -72,11 +74,25 @@ public class Spawner : MonoBehaviour
         _enemyIndex = 0;
         _enemyGroup = null;
         _waveFinished = true;
-        StopAllCoroutines();
 
         _levelController.EndWave();
     }
 
+
+    public void NotifyPool()
+    {
+        _enemyPool.RecordLevelEnd(this);
+    }
+
+
+    public void EnemiesKilled()
+    {
+        _enemiesKilled = true;
+        _levelController.EndLevel();
+    }
+
+
+    public bool GetEnemiesKilled() { return _enemiesKilled; }
 
     public bool GetWaveFinished() { return _waveFinished; }
 }

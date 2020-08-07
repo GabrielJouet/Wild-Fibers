@@ -9,6 +9,12 @@ public class EnemyPool : MonoBehaviour
 
     private RessourceController _ressourceController;
 
+    private readonly List<GameObject> _livingEnemies = new List<GameObject>();
+
+    private bool _waitForEnd = false;
+
+    private Spawner _spawner;
+
 
 
     public void Initialize(GameObject newPrefab, RessourceController newRessourceController)
@@ -20,15 +26,28 @@ public class EnemyPool : MonoBehaviour
 
     public GameObject GetOneEnemy()
     {
+        GameObject enemyBuffered;
+
         if (_enemyPool.Count > 0)
-            return _enemyPool.Pop();
+        {
+            enemyBuffered = _enemyPool.Pop();
+            _livingEnemies.Add(enemyBuffered);
+            return enemyBuffered;
+        }
         else
-            return Instantiate(_enemyPrefab);
+        {
+            enemyBuffered = Instantiate(_enemyPrefab);
+            _livingEnemies.Add(enemyBuffered);
+            return enemyBuffered;
+        }
     }
 
 
     public void AddOneEnemy(GameObject newEnemy, bool stillAlive, int livesLostOrGoldGained) 
     {
+        if (_livingEnemies.Contains(newEnemy))
+            _livingEnemies.Remove(newEnemy);
+
         newEnemy.SetActive(false);
         _enemyPool.Push(newEnemy);
 
@@ -36,8 +55,21 @@ public class EnemyPool : MonoBehaviour
             _ressourceController.RemoveLives(livesLostOrGoldGained);
         else
             _ressourceController.AddGold(livesLostOrGoldGained);
+
+        if (_waitForEnd && _livingEnemies.Count == 0)
+            _spawner.EnemiesKilled();
     }
 
 
     public GameObject GetPrefab() { return _enemyPrefab; }
+
+
+    public void RecordLevelEnd(Spawner newSpawner)
+    {
+        _waitForEnd = true;
+        _spawner = newSpawner;
+
+        if (_livingEnemies.Count == 0)
+            _spawner.EnemiesKilled();
+    }
 }

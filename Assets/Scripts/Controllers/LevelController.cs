@@ -42,8 +42,6 @@ public class LevelController : MonoBehaviour
 
     private int _waveIndex = 0;
 
-    private bool _waitForWin = false;
-
 
     private void Start()
     {
@@ -107,10 +105,22 @@ public class LevelController : MonoBehaviour
             if (!current.GetWaveFinished())
                 result = false;
 
-        if (result && _waitForWin)
-            _gameOverScreen.ActivateWin();
-        else if (result && !_waitForWin)
+        if (result)
             StartCoroutine(DelayWave());
+    }
+
+
+    public void EndLevel()
+    {
+        bool result = true;
+
+        //If one of the spawner has not done its wave yet
+        foreach (Spawner current in _spawners)
+            if (!current.GetEnemiesKilled())
+                result = false;
+
+        if (result)
+            _gameOverScreen.ActivateWin();
     }
 
 
@@ -126,6 +136,9 @@ public class LevelController : MonoBehaviour
             _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
         }
         else
-            _waitForWin = true;
+        {
+            foreach (Spawner current in _spawners)
+                current.NotifyPool();
+        }
     }
 }
