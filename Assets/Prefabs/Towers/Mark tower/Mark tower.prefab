@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8850598077300942727}
   - component: {fileID: 8850598077300942726}
   - component: {fileID: 1224906033431812011}
-  - component: {fileID: 8850598077300942728}
+  - component: {fileID: 95656636279286502}
   m_Layer: 0
   m_Name: Mark tower
   m_TagString: Untagged
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.16
---- !u!114 &8850598077300942728
+--- !u!114 &95656636279286502
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,21 +111,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 8850598077300942725}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62934fb3f91fb11469c0b459f50e4046, type: 3}
+  m_Script: {fileID: 11500000, guid: 0a465e19c8b98c446b5d66e1c9a446e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: 
+  _displayName: Mark
   _price: 80
   _icon: {fileID: 21300000, guid: 4e89cc22c94d273409d0b16b9e86f6d9, type: 3}
-  _timeBetweenShots: 0
-  _damage: 0
+  _timeBetweenShots: 2.5
+  _damage: 2
   _armorThrough: 0
-  _numberOfShots: 0
-  _projectileUsed: {fileID: 0}
-  _range: 2.5
+  _numberOfShots: 2
+  _projectileUsed: {fileID: 6202831532110672975, guid: 6d1ab6e57f0408b46b61c99a97400f16,
+    type: 3}
+  _range: 2
   _collider: {fileID: 3295141800489100807}
   _transformRange: {fileID: 2624728119978696838}
   _selector: {fileID: 4784898504028139547}
+  _armorThroughMalus: 15
+  _damageOverTime: 1
+  _dotDuration: 2.5
 --- !u!1001 &714503325273250468
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -197,7 +201,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _parentTower
       value: 
-      objectReference: {fileID: 8850598077300942728}
+      objectReference: {fileID: 95656636279286502}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0747cfa70861f444a27da50f9419661, type: 3}
 --- !u!1 &3295141800489100807 stripped
