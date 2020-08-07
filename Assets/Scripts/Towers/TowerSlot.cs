@@ -49,7 +49,7 @@ public class TowerSlot : MonoBehaviour
     {
         yield return new WaitForSeconds(0.75f);
 
-        _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity);
+        _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity, transform);
         _currentTower.Initialize(this, _ressourceController, _backgroundSelecter);
     }
     #endregion

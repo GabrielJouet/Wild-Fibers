@@ -1,31 +1,39 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class GameOverScreen : MonoBehaviour
 {
     [SerializeField]
     private Text _mainText;
-
     [SerializeField]
     private GameObject _gameScreen;
 
     [SerializeField]
-    private GameObject _hider;
+    private PauseController _pauseController;
 
 
 
-    public void ActivateWin()
+    public void Activate(bool win) 
     {
-        _hider.SetActive(true);
-        _gameScreen.SetActive(true);
-        _mainText.text = "Win";
+        gameObject.SetActive(true);
+        StartCoroutine(DelayShow(win)); 
     }
 
 
-    public void ActivateLose()
+    private IEnumerator DelayShow(bool win)
     {
-        _hider.SetActive(false);
-        _gameScreen.SetActive(true);
-        _mainText.text = "Lose";
+        yield return new WaitForSeconds(1.5f);
+
+        if (win)
+        {
+            _pauseController.PauseGame(_gameScreen);
+            _mainText.text = "Win";
+        }
+        else
+        {
+            _pauseController.PauseGame(_gameScreen);
+            _mainText.text = "Lose";
+        }
     }
 }

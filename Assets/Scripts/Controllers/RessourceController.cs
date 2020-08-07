@@ -58,7 +58,7 @@ public class RessourceController : MonoBehaviour
     {
         if (!_stopped)
         {
-            if (_lifeCount - count < 0)
+            if (_lifeCount - count <= 0)
                 GameOver();
             else
                 _lifeCount -= count;
@@ -73,7 +73,7 @@ public class RessourceController : MonoBehaviour
         _lifeCount = 0;
         _stopped = true;
 
-        _gameOverScreen.ActivateWin();
+        _gameOverScreen.Activate(false);
     }
     #endregion
 }
