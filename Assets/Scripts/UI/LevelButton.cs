@@ -9,8 +9,7 @@ public class LevelButton : MonoBehaviour
     private LevelSelection _levelSelection;
 
 
-
-    private void OnMouseDown()
+    public void Activate()
     {
         _levelSelection.ActivateLevelSelectionMenu(_levelParameters);
     }
