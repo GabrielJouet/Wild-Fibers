@@ -98,6 +98,7 @@ public class BackgroudSelecter : MonoBehaviour
         enemy.SetSelector();
 
         _previousEnemy = enemy;
+        _previousEnemy.SetInformationUI(this);
     }
 
 
@@ -124,9 +125,24 @@ public class BackgroudSelecter : MonoBehaviour
     }
 
 
+    public void UpdateEnemyInformation(Enemy enemyToDisplay)
+    {
+        _enemyName.text = enemyToDisplay.GetName();
+        _lifeValue.text = enemyToDisplay.GetHealth() + " / " + enemyToDisplay.GetMaxHealth();
+        _armorValue.text = enemyToDisplay.GetMaxArmor() + " %";
+        _livesLostValue.text = enemyToDisplay.GetNumberOfLivesTaken().ToString();
+    }
+
+
     public void DisableEnemyInformation()
     {
         _enemyInformationPanel.SetActive(false);
+    }
+
+
+    public void ErasePreviousEnemy()
+    {
+        _previousEnemy = null;
     }
     #endregion
 

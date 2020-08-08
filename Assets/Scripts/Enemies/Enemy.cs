@@ -45,13 +45,15 @@ public class Enemy : MonoBehaviour
     protected Path _path;
     protected int _pathIndex;
     protected EnemyPool _enemyPool;
-
+    protected BackgroudSelecter _informationUI;
 
     protected bool _moving = false;
 
 
     public void Initialize(Path newPath, EnemyPool newPool)
     {
+        _informationUI = null;
+
         _dotApplied = false;
         _dotDisplay.sprite = null;
         gameObject.SetActive(true);
@@ -76,6 +78,13 @@ public class Enemy : MonoBehaviour
     {
         if(_moving)
             FollowPath();
+    }
+
+
+    private void FixedUpdate()
+    {
+        if (_informationUI != null)
+            _informationUI.UpdateEnemyInformation(this);
     }
 
 
@@ -170,6 +179,12 @@ public class Enemy : MonoBehaviour
     {
         _enemyPool.AddOneEnemy(gameObject, false, _goldGained);
 
+        if(_informationUI)
+        {
+            _informationUI.ErasePreviousEnemy();
+            _informationUI.DisableEnemyInformation();
+        }
+
         StopAllCoroutines();
     }
 
@@ -179,6 +194,12 @@ public class Enemy : MonoBehaviour
         _enemyPool.AddOneEnemy(gameObject, true, _numberOfLivesTaken);
 
         StopAllCoroutines();
+    }
+
+
+    public void SetInformationUI(BackgroudSelecter newUI)
+    {
+        _informationUI = newUI;
     }
 
 
