@@ -73,6 +73,7 @@ public class RessourceController : MonoBehaviour
         _lifeCount = 0;
         _stopped = true;
 
+        _gameOverScreen.gameObject.SetActive(true);
         _gameOverScreen.Activate(false);
     }
     #endregion

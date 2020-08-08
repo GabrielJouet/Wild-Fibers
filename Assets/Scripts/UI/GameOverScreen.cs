@@ -16,7 +16,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void Activate(bool win) 
     {
-        gameObject.SetActive(true);
+        _gameScreen.SetActive(true);
         StartCoroutine(DelayShow(win)); 
     }
 

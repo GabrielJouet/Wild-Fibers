@@ -122,7 +122,10 @@ public class LevelController : MonoBehaviour
                 result = false;
 
         if (result)
+        {
+            _gameOverScreen.gameObject.SetActive(true);
             _gameOverScreen.Activate(true);
+        }
     }
 
 
