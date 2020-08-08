@@ -34,6 +34,8 @@ public class Enemy : MonoBehaviour
     protected HealthBar _healthBar;
     [SerializeField]
     protected SpriteRenderer _dotDisplay;
+    [SerializeField]
+    protected SpriteRenderer _spriteRenderer;
     protected Sprite _dotEffect;
 
     protected bool _dotApplied = false;
@@ -89,7 +91,7 @@ public class Enemy : MonoBehaviour
             ReachEnd();
         }
 
-        GetComponent<SpriteRenderer>().flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
+        _spriteRenderer.flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
     }
 
 
@@ -148,6 +150,7 @@ public class Enemy : MonoBehaviour
 
         _dotDisplay.sprite = null;
         _dotApplied = false;
+        _armor = _armorMax;
     }
 
 
