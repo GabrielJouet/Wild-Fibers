@@ -183,6 +183,7 @@ public class Enemy : MonoBehaviour
         {
             _informationUI.ErasePreviousEnemy();
             _informationUI.DisableEnemyInformation();
+            _selector.SetActive(false);
         }
 
         StopAllCoroutines();

@@ -104,6 +104,7 @@ public class BackgroudSelecter : MonoBehaviour
 
     private void DesactivateEnemy()
     {
+        _previousEnemy.SetInformationUI(null);
         _previousEnemy.ResetSelector();
 
         DisableEnemyInformation();
@@ -120,7 +121,7 @@ public class BackgroudSelecter : MonoBehaviour
 
         _enemyName.text = enemyToDisplay.GetName();
         _lifeValue.text = enemyToDisplay.GetHealth() + " / " + enemyToDisplay.GetMaxHealth();
-        _armorValue.text = enemyToDisplay.GetMaxArmor() + " %";
+        _armorValue.text = enemyToDisplay.GetArmor() + " %";
         _livesLostValue.text = enemyToDisplay.GetNumberOfLivesTaken().ToString();
     }
 
@@ -129,7 +130,7 @@ public class BackgroudSelecter : MonoBehaviour
     {
         _enemyName.text = enemyToDisplay.GetName();
         _lifeValue.text = enemyToDisplay.GetHealth() + " / " + enemyToDisplay.GetMaxHealth();
-        _armorValue.text = enemyToDisplay.GetMaxArmor() + " %";
+        _armorValue.text = enemyToDisplay.GetArmor() + " %";
         _livesLostValue.text = enemyToDisplay.GetNumberOfLivesTaken().ToString();
     }
 
