@@ -37,6 +37,8 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected SpriteRenderer _spriteRenderer;
     protected Sprite _dotEffect;
+    [SerializeField]
+    protected Animator _animator;
 
     protected bool _dotApplied = false;
 
@@ -77,7 +79,13 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         if(_moving)
+        {
             FollowPath();
+
+            if(_animator)
+                _animator.SetBool("horizontal", transform.position.x - _path.GetPath()[_pathIndex].x >= transform.position.y - _path.GetPath()[_pathIndex].y);
+            _spriteRenderer.flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
+        }
     }
 
 
@@ -99,8 +107,6 @@ public class Enemy : MonoBehaviour
             _moving = false;
             ReachEnd();
         }
-
-        _spriteRenderer.flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
     }
 
 
