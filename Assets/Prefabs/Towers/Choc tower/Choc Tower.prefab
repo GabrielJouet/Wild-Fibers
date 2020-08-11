@@ -123,7 +123,7 @@ MonoBehaviour:
   _numberOfShots: 4
   _projectileUsed: {fileID: 3530943198929188429, guid: 486543b54c3e008478b0aa8e5834702f,
     type: 3}
-  _range: 1.5
+  _range: 1.3
   _collider: {fileID: 2411049756566483756}
   _transformRange: {fileID: 4488155929224265266}
   _selector: {fileID: 8267501991302241355}
