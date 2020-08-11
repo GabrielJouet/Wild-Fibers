@@ -16,6 +16,8 @@ public class TowerSlot : MonoBehaviour
     private BackgroudSelecter _backgroundSelecter;
     [SerializeField]
     private CapsuleCollider2D _collider;
+    [SerializeField]
+    private Animator _animator;
 
 
     private Tower _currentTower = null;
@@ -47,8 +49,11 @@ public class TowerSlot : MonoBehaviour
     //Method used to delay the construction of a new tower
     private IEnumerator DelayConstruct(int index)
     {
+        _animator.enabled = true;
+        _animator.SetInteger("towerIndex", index);
         yield return new WaitForSeconds(0.75f);
 
+        _animator.enabled = false;
         _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity, transform);
         _currentTower.Initialize(this, _ressourceController, _backgroundSelecter);
     }
