@@ -179,12 +179,8 @@ public class Enemy : MonoBehaviour
     {
         _enemyPool.AddOneEnemy(gameObject, false, _goldGained);
 
-        if(_informationUI)
-        {
-            _informationUI.ErasePreviousEnemy();
-            _informationUI.DisableEnemyInformation();
-            _selector.SetActive(false);
-        }
+        if (_informationUI)
+            DesactivateUI();
 
         StopAllCoroutines();
     }
@@ -194,6 +190,9 @@ public class Enemy : MonoBehaviour
     {
         _enemyPool.AddOneEnemy(gameObject, true, _numberOfLivesTaken);
 
+        if (_informationUI) 
+            DesactivateUI();
+
         StopAllCoroutines();
     }
 
@@ -201,6 +200,16 @@ public class Enemy : MonoBehaviour
     public void SetInformationUI(BackgroudSelecter newUI)
     {
         _informationUI = newUI;
+    }
+
+
+    protected void DesactivateUI()
+    {
+        _informationUI.ErasePreviousEnemy();
+        _informationUI.DisableEnemyInformation();
+        _selector.SetActive(false);
+
+        _informationUI = null;
     }
 
 
