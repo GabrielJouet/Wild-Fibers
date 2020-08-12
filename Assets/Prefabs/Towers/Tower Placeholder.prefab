@@ -140,3 +140,5 @@ MonoBehaviour:
   _backgroundSelecter: {fileID: 0}
   _collider: {fileID: 8038465595182889075}
   _animator: {fileID: 6955374712806415187}
+  _defaultSprite: {fileID: 21300000, guid: b26cc49d5848b274696204909961f7f5, type: 3}
+  _spriteRenderer: {fileID: 1656969507452241418}

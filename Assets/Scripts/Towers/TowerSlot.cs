@@ -18,6 +18,10 @@ public class TowerSlot : MonoBehaviour
     private CapsuleCollider2D _collider;
     [SerializeField]
     private Animator _animator;
+    [SerializeField]
+    private Sprite _defaultSprite;
+    [SerializeField]
+    private SpriteRenderer _spriteRenderer;
 
 
     private Tower _currentTower = null;
@@ -50,10 +54,13 @@ public class TowerSlot : MonoBehaviour
     private IEnumerator DelayConstruct(int index)
     {
         _animator.enabled = true;
-        _animator.SetInteger("towerIndex", index);
-        yield return new WaitForSeconds(0.75f);
+        _animator.SetTrigger(_availableTowers[index].GetName());
+
+        yield return new WaitForSeconds(1f);
 
         _animator.enabled = false;
+        _spriteRenderer.sprite = _defaultSprite;
+
         _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity, transform);
         _currentTower.Initialize(this, _ressourceController, _backgroundSelecter);
     }
