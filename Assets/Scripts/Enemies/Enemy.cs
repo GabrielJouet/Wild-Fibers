@@ -210,6 +210,12 @@ public class Enemy : MonoBehaviour
     }
 
 
+    public void Pause(bool paused)
+    {
+        _animator.enabled = paused;
+    }
+
+
     public string GetName() { return _displayName; }
 
     public float GetHealth() { return _health; }
