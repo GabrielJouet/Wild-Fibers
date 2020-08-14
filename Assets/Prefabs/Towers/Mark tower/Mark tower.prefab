@@ -125,6 +125,7 @@ MonoBehaviour:
     type: 3}
   _range: 1.6
   _collider: {fileID: 3295141800489100807}
+  _canHitFlying: 1
   _transformRange: {fileID: 2624728119978696838}
   _selector: {fileID: 4784898504028139547}
   _armorThroughMalus: 15

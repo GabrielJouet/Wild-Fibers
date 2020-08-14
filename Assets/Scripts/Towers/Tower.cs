@@ -29,6 +29,8 @@ public class Tower : MonoBehaviour
     protected float _range;
     [SerializeField]
     protected GameObject _collider;
+    [SerializeField]
+    protected bool _canHitFlying;
 
 
     [Header("In game")]
@@ -83,7 +85,8 @@ public class Tower : MonoBehaviour
     #region
     public void AddEnemy(Enemy enemy)
     {
-        _availableEnemies.Add(enemy);
+        if(!(!_canHitFlying && enemy.GetFlying()))
+            _availableEnemies.Add(enemy);
     }
 
 

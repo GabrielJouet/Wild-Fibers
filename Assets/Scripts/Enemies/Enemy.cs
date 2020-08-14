@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
     protected int _numberOfLivesTaken;
     [SerializeField]
     protected int _goldGained;
+    [SerializeField]
+    protected bool _flying;
 
     protected float _dotDuration;
     protected float _healthMalus = 0;
@@ -230,6 +232,9 @@ public class Enemy : MonoBehaviour
     public int GetNumberOfLivesTaken() { return _numberOfLivesTaken; }
 
     public float GetPathPercentage() { return _pathIndex / _path.GetPath().Count; }
+
+    public bool GetFlying() { return _flying; }
+
 
     public void SetSelector() { _selector.SetActive(true); }
 

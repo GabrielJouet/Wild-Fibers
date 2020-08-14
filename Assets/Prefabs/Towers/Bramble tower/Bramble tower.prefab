@@ -125,6 +125,7 @@ MonoBehaviour:
     type: 3}
   _range: 1
   _collider: {fileID: 8286330291336779572}
+  _canHitFlying: 1
   _transformRange: {fileID: 1026581157735740721}
   _selector: {fileID: 3965696945235996696}
 --- !u!1001 &4787936218271721102
