@@ -122,6 +122,7 @@ MonoBehaviour:
   _speedMax: 0.3
   _numberOfLivesTaken: 3
   _goldGained: 22
+  _flying: 0
   _selector: {fileID: 3926785066840358764}
   _healthBar: {fileID: 763738226875758226}
   _dotDisplay: {fileID: 9119725614028554439}
@@ -210,6 +211,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4714962810088372888, guid: 715ad6c1a5b12c549904843e41aef7f5,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9210405577189694847, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}

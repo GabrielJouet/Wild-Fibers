@@ -24,14 +24,14 @@ public class HealthBar : MonoBehaviour
     public void ChangeSize(float percentage)
     {
         _healthBar.localScale = new Vector3(percentage, _initialYScale, 1);
-        _healthBar.localPosition = new Vector3(-(1 - _healthBar.localScale.x) * _sprite.size.x / 2, 0, 0);
+        _healthBar.localPosition = new Vector3(-(1 - _healthBar.localScale.x) * _sprite.size.x / 2 + 0.005f, 0.005f, 0);
     }
 
 
     public void ResetSize()
     {
         _healthBar.localScale = new Vector3(1,1,1);
-        _healthBar.localPosition = new Vector3(0, 0, 0);
+        _healthBar.localPosition = new Vector3(0.005f, 0.005f, 0);
     }
     #endregion
 }
