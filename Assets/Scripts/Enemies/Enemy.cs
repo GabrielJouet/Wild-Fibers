@@ -83,7 +83,11 @@ public class Enemy : MonoBehaviour
             FollowPath();
 
             if(_animator)
+            {
                 _animator.SetBool("horizontal", transform.position.x - _path.GetPath()[_pathIndex].x >= transform.position.y - _path.GetPath()[_pathIndex].y);
+                _animator.SetBool("flipped", transform.position.y - _path.GetPath()[_pathIndex].y < 0);
+            }
+
             _spriteRenderer.flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
         }
     }
