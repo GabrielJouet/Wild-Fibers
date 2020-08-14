@@ -2783,7 +2783,11 @@ MonoBehaviour:
   - {fileID: 4541158168707397240}
   - {fileID: 4541158167758520025}
   _rectTransform: {fileID: 4541158168249385363}
-  _prices: []
+  _prices:
+  - {fileID: 4541158168950965839}
+  - {fileID: 4541158168081746889}
+  - {fileID: 4541158168325739217}
+  - {fileID: 4541158167713509141}
 --- !u!1 &4541158168315769909
 GameObject:
   m_ObjectHideFlags: 0

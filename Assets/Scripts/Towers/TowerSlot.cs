@@ -1,14 +1,8 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TowerSlot : MonoBehaviour
 {
-    [Header("Tower Prefabs")]
-    [SerializeField]
-    private List<Tower> _availableTowers;
-
-
     [Header("Components")]
     [SerializeField]
     private RessourceController _ressourceController;
@@ -32,36 +26,36 @@ public class TowerSlot : MonoBehaviour
     /*Construction related*/
     #region
     //Method used to construct a new tower from scratch
-    public void ChooseTower(int index)
+    public void ChooseTower(Tower tower)
     {
-        if(_ressourceController.GetGoldCount() < _availableTowers[index].GetPrice())
+        if(_ressourceController.GetGoldCount() < tower.GetPrice())
         {
             //TO DO DISPLAY BAD CHOICE
         }
         else
         {
-            _ressourceController.RemoveGold(_availableTowers[index].GetPrice());
+            _ressourceController.RemoveGold(tower.GetPrice());
 
             _collider.enabled = false;
             _backgroundSelecter.DisableTowerChooseButton();
 
-            StartCoroutine(DelayConstruct(index));
+            StartCoroutine(DelayConstruct(tower));
         }
     }
 
 
     //Method used to delay the construction of a new tower
-    private IEnumerator DelayConstruct(int index)
+    private IEnumerator DelayConstruct(Tower tower)
     {
         _animator.enabled = true;
-        _animator.SetTrigger(_availableTowers[index].GetName());
+        _animator.SetTrigger(tower.GetName());
 
         yield return new WaitForSeconds(1f);
 
         _animator.enabled = false;
         _spriteRenderer.sprite = _defaultSprite;
 
-        _currentTower = Instantiate(_availableTowers[index], transform.position, Quaternion.identity, transform);
+        _currentTower = Instantiate(tower, transform.position, Quaternion.identity, transform);
         _currentTower.Initialize(this, _ressourceController, _backgroundSelecter);
     }
     #endregion

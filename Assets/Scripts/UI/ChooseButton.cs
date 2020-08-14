@@ -4,6 +4,11 @@ using UnityEngine.UI;
 
 public class ChooseButton : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField]
+    private PlayerController _playerController;
+
+
     [Header("Button Elements")]
     [SerializeField]
     private List<Button> _interactableButtons;
@@ -14,6 +19,18 @@ public class ChooseButton : MonoBehaviour
 
 
 
+    private void Start()
+    {
+        List<Tower> buffer = _playerController.GetTowers();
+
+        for(int i = 0; i < _interactableButtons.Count; i ++)
+        {
+            _interactableButtons[i].image.sprite = buffer[i].GetIcon();
+            _prices[i].text = buffer[i].GetPrice().ToString();
+        }
+    }
+
+
     public void Activate(Vector2 newPosition, TowerSlot newUsedTowerSlot)
     {
         _rectTransform.localPosition = newPosition;
@@ -22,7 +39,7 @@ public class ChooseButton : MonoBehaviour
         {
             int a = i;
             _interactableButtons[i].onClick.RemoveAllListeners();
-            _interactableButtons[i].onClick.AddListener(() => newUsedTowerSlot.ChooseTower(a));
+            _interactableButtons[i].onClick.AddListener(() => newUsedTowerSlot.ChooseTower(_playerController.GetTower(a)));
         }
     }
 }
