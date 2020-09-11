@@ -2,26 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * This class is used to control one enemy pool and enemy spawn
+ */
 public class Spawner : MonoBehaviour
 {
+    //Index of the enemy pattern inside a wave
     private int _patternIndex = 0;
+
+    //Index of enemy inside a pattern
     private int _enemyIndex = 0;
 
+
+    //Does the wave finished?
     private bool _waveFinished = false;
 
+
+    //Enemy group used in spawn
     private EnemyGroup _enemyGroup;
+
+    //Level controller used when no enemies are left or wave is finished
     private LevelController _levelController;
+
+    //Enemy pool of the current wave
     private EnemyPool _enemyPool;
 
+
+    //Available paths for enemies
     private List<Path> _paths = new List<Path>();
 
+
+    //Does every enemy is dead?
     private bool _enemiesKilled = false;
 
 
 
     //Method used by LevelController to set a new enemy group and start spawning entities
+    //
+    //Parameters => newGroup, the new group of enemy for this wave
+    //              newLevelController, the level controller of the current level
+    //              newPaths, available paths on this level
+    //              newEnemyPool, enemy pool to retrieve already instantiated enemies
     public void SetNewGroup(EnemyGroup newGroup, LevelController newLevelController, List<Path> newPaths, EnemyPool newEnemyPool)
     {
+        //We reset and set variables
         _levelController = newLevelController;
         _enemyPool = newEnemyPool;
 
@@ -30,6 +54,7 @@ public class Spawner : MonoBehaviour
 
         _waveFinished = false;
 
+        //And we launch enemies spawn
         StartCoroutine(SpawnEnemies());
     }
 
@@ -79,12 +104,14 @@ public class Spawner : MonoBehaviour
     }
 
 
+    //Method used when all waves are spawned and level is finished
     public void NotifyPool()
     {
         _enemyPool.RecordLevelEnd(this);
     }
 
 
+    //Method used when every enemy of the group is killed
     public void EnemiesKilled()
     {
         _enemiesKilled = true;
@@ -92,6 +119,8 @@ public class Spawner : MonoBehaviour
     }
 
 
+
+    //Getters
     public bool GetEnemiesKilled() { return _enemiesKilled; }
 
     public bool GetWaveFinished() { return _waveFinished; }
