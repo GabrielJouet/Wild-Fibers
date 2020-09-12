@@ -67,9 +67,12 @@ public class SaveController : MonoBehaviour
 
 
 	//Method used to save level data when changed
-	public void SaveLevelData(int levelIndex, int newLivesLost, bool isCompleted, bool sideLevel, bool challengeLevel, bool isUnlocked)
+	public void SaveLevelData(int levelIndex, int newLivesLost, bool isCompleted, bool sideLevel, bool challengeLevel, bool unlockNext)
 	{
-		_saveFile.UpdateLevelSave(levelIndex, new LevelSave(newLivesLost, isCompleted, sideLevel, challengeLevel, isUnlocked));
+		_saveFile.UpdateLevelSave(levelIndex, new LevelSave(newLivesLost, isCompleted, sideLevel, challengeLevel, true));
+
+		if(unlockNext && levelIndex + 1 < _numberOfLevel)
+			_saveFile.UpdateLevelSave(levelIndex + 1, new LevelSave(0, false, false, false, true));
 
 		SaveData();
 	}
