@@ -1,16 +1,24 @@
 ﻿using System;
 
+/*
+ * Class used to save data of one level
+ */
 [Serializable]
 public class LevelSave
 {
+    //Number of lives lost on this level
     private readonly int _livesLostCount;
 
+    //Does the level is finished?
     private readonly bool _isCompleted;
 
+    //Does the side level is finished?
     private readonly bool _sideLevelCompleted;
 
+    //Does the challenge level is finished?
     private readonly bool _challengeLevelCompleted;
 
+    //Does this level is unlocked?
     private readonly bool _isUnlocked;
 
 
