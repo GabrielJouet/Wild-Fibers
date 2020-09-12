@@ -2,58 +2,100 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Tower class is the main object of the game, they shoot enemies
+ */
 public class Tower : MonoBehaviour
 {
     [Header("Description")]
+    //Name display on UI
     [SerializeField]
     protected string _displayName;
+
+    //Price of the tower to build it
     [SerializeField]
     protected int _price;
+
+    //Icon used in buttons and UI
     [SerializeField]
     protected Sprite _icon;
 
 
 
     [Header("Damage Related")]
+    //How many seconds between each attacks?
     [SerializeField]
     protected float _timeBetweenShots;
+
+    //How much damage an attack does?
     [SerializeField]
     protected int _damage;
+
+    //How much armor an attack breaks?
     [SerializeField]
     protected float _armorThrough;
+
+    //Number of projectiles in one attack
     [SerializeField]
     protected int _numberOfShots;
+
+    //Projectile used in attack
     [SerializeField]
     protected GameObject _projectileUsed;
+
+    //Tower range
     [SerializeField]
     protected float _range;
+
+    //Tower Collider used to recover enemies
     [SerializeField]
     protected GameObject _collider;
+
+    //Can the tower hit flying targets?
     [SerializeField]
     protected bool _canHitFlying;
 
 
     [Header("In game")]
+    //Range display object
     [SerializeField]
     protected Transform _transformRange;
+
+    //Selector object
     [SerializeField]
     protected GameObject _selector;
 
 
+    //Information UI
     private BackgroudSelecter _backgroundSelecter;
+
+    //Which tower slot the tower is based on?
     protected TowerSlot _currentSlot;
+
+    //Ressource controller used to record money
     protected RessourceController _ressourceController;
+
+    //Does the seller UI is active?
     protected bool _sellerActive = false; 
+
+    //List of in-range enemies
     protected List<Enemy> _availableEnemies = new List<Enemy>();
 
 
 
+    //Method used to initialize class (like a constructor)
+    //
+    //Parameters => newSlot, the tower slot related to this tower
+    //              newRessourceController, ressource controller used in this game
+    //              newBackgroundSelecter, used to display UI information
     public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter)
     {
+        //We set variables
         _backgroundSelecter = newBackgroundSelecter;
         _ressourceController = newRessourceController;
         _currentSlot = newSlot;
 
+        //And we change tower range 
         _transformRange.localScale *= _range;
         _collider.transform.localScale *= _range;
     }
@@ -62,6 +104,7 @@ public class Tower : MonoBehaviour
 
     /*Upgrades and Money related*/
     #region
+    //Method used to resell a tower and destroy it
     public void ResellTower()
     {
         _ressourceController.AddGold(Mathf.FloorToInt(_price / 4));
@@ -73,6 +116,7 @@ public class Tower : MonoBehaviour
     }
 
 
+    //Method used to upgrade a tower
     public void UpgradeTower()
     {
         //TO DO
@@ -83,6 +127,7 @@ public class Tower : MonoBehaviour
 
     /*Enemies interaction*/
     #region
+    //Method used to add one enemy from its list
     public void AddEnemy(Enemy enemy)
     {
         if(!(!_canHitFlying && enemy.GetFlying()))
@@ -90,6 +135,7 @@ public class Tower : MonoBehaviour
     }
 
 
+    //Method used to remove one enemy from its list
     public void RemoveEnemy(Enemy enemy)
     {
         if (_availableEnemies.Contains(enemy))
@@ -97,7 +143,7 @@ public class Tower : MonoBehaviour
     }
 
 
-
+    //Method used to sort enemies by their position toward the end of the path
     protected void SortEnemies()
     {
         Array.Sort(_availableEnemies.ToArray(), (a, b) => a.GetPathPercentage().CompareTo(b.GetPathPercentage()));
@@ -108,6 +154,7 @@ public class Tower : MonoBehaviour
 
     /*Reset related*/
     #region
+    //Method used to activate range display (when selected)
     public void ActivateRangeDisplay()
     {
         _transformRange.gameObject.SetActive(true);
@@ -115,6 +162,7 @@ public class Tower : MonoBehaviour
     }
 
 
+    //Method used to desactivate range display (when no longer selected)
     public void DesactivateRangeDisplay()
     {
         _transformRange.gameObject.SetActive(false);
@@ -122,12 +170,15 @@ public class Tower : MonoBehaviour
     }
 
 
+    //Method used to desactivate tower display (UI)
     public void ResetTowerDisplay()
     {
         DesactivateRangeDisplay();
         _sellerActive = false;
     }
 
+
+    //Method used to revert seller UI state
     public void RevertSellerActive() { _sellerActive = !_sellerActive; }
     #endregion
 
