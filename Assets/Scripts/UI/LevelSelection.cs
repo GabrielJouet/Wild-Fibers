@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.UI;
 
 /*
@@ -27,6 +28,10 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private Button _launchBattleMenu;
 
+    //Level buttons on level button selection screen
+    [SerializeField]
+    private List<LevelButton> _levelButtons;
+
 
     [Header("Component")]
     //Scene Loader used to change level
@@ -47,7 +52,26 @@ public class LevelSelection : MonoBehaviour
     //Does the level selection screen already opened?
     private bool _opened = false;
 
-    
+
+
+    //Start method
+    private void Start()
+    {
+        //For each level we check the save to see if level are unlocked, finished and completed
+        List<LevelSave> levelSaves = FindObjectOfType<SaveController>().GetSaveFile().GetLevelsData();
+
+        for (int i = 0; i < levelSaves.Count; i ++)
+        {
+            if (!levelSaves[i].GetIsUnlocked())
+                _levelButtons[i].LockLevel();
+            else if (levelSaves[i].GetIsCompleted())
+                _levelButtons[i].SetCompleted();
+            else if (levelSaves[i].GetChallengeLevelCompleted())
+                _levelButtons[i].SetChallenged();
+        }
+    }
+
+
 
     //Method used to activate level selection menu
     //

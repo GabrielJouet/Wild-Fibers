@@ -176,4 +176,9 @@ public class LevelController : MonoBehaviour
             foreach (Spawner current in _spawners)
                 current.NotifyPool();
     }
+
+
+
+    //Getter
+    public int GetLevelIndex() { return _level.GetNumber(); }
 }

@@ -12,6 +12,7 @@ public class RessourceController : MonoBehaviour
     private int _goldCount;
     //Player life count, when dropping to 0 the game is finished
     [SerializeField]
+    private int _lifeCountMax;
     private int _lifeCount;
 
 
@@ -36,6 +37,7 @@ public class RessourceController : MonoBehaviour
     //Called when the game object is initialized
     private void Start()
     {
+        _lifeCount = _lifeCountMax;
         _goldText.text = _goldCount.ToString();
         _lifeText.text = _lifeCount.ToString();
     }
@@ -103,4 +105,8 @@ public class RessourceController : MonoBehaviour
         _gameOverScreen.Activate(false);
     }
     #endregion
+
+
+    //Getter
+    public int GetLivesLost() { return _lifeCountMax - _lifeCount; }
 }
