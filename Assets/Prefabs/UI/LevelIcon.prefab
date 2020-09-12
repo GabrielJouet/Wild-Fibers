@@ -144,3 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelParameters: {fileID: 11400000, guid: 7b1bc5ec89c95a846b583f549b2629a6, type: 2}
   _levelSelection: {fileID: 0}
+  _buttonDisplay: {fileID: 5623099589317693377}
+  _desactivatedSprite: {fileID: 0}
+  _completedSprite: {fileID: 0}
+  _challengedSprite: {fileID: 0}

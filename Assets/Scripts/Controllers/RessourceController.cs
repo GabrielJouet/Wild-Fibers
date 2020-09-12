@@ -107,5 +107,6 @@ public class RessourceController : MonoBehaviour
     #endregion
 
 
+    //Getter
     public int GetLivesLost() { return _lifeCountMax - _lifeCount; }
 }
