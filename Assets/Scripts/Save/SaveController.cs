@@ -25,13 +25,11 @@ public class SaveController : MonoBehaviour
 		_binaryFormatter = new BinaryFormatter();
 
 		RecoverSave();
-    }
+	}
 
 
 	private void CreateSave()
 	{
-		File.Create(_gameSavePath);
-
 		List<LevelSave> allSaves = new List<LevelSave>();
 
 		for (int i = 0; i < _numberOfLevel; i ++)
@@ -42,14 +40,30 @@ public class SaveController : MonoBehaviour
 				allSaves.Add(new LevelSave(0, false, false, false, false));
 		}
 
-		_saveFile = new SaveFile(allSaves);
+		_saveFile = new SaveFile(allSaves, 1, 1);
+
+		SaveData();
 	}
 
 
-	private void SaveData(int levelIndex, int newLivesLost, bool isCompleted, bool sideLevel, bool challengeLevel, bool isUnlocked)
+	private void SaveMusicLevel(float newMusicLevel, float newSoundLevel)
 	{
-		_saveFile.UpdateSave(levelIndex, new LevelSave(newLivesLost, isCompleted, sideLevel, challengeLevel, isUnlocked));
-		
+		_saveFile.UpdateSoundAndMusicSave(newMusicLevel, newSoundLevel);
+
+		SaveData();
+	}
+
+
+	public void SaveLevelData(int levelIndex, int newLivesLost, bool isCompleted, bool sideLevel, bool challengeLevel, bool isUnlocked)
+	{
+		_saveFile.UpdateLevelSave(levelIndex, new LevelSave(newLivesLost, isCompleted, sideLevel, challengeLevel, isUnlocked));
+
+		SaveData();
+	}
+
+
+	private void SaveData()
+	{
 		FileStream file = File.Create(_gameSavePath);
 
 		_binaryFormatter.Serialize(file, _saveFile);

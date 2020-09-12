@@ -1,4 +1,7 @@
-﻿ public class LevelSave
+﻿using System;
+
+[Serializable]
+public class LevelSave
 {
     private readonly int _livesLostCount;
 
