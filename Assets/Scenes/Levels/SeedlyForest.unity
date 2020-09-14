@@ -654,7 +654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goldCount: 500
-  _lifeCount: 20
+  _lifeCountMax: 20
   _lifeText: {fileID: 568681016}
   _goldText: {fileID: 1354676963}
   _gameOverScreen: {fileID: 4541158167840557064}
