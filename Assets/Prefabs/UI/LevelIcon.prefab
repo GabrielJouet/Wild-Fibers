@@ -270,6 +270,8 @@ MonoBehaviour:
     type: 3}
   _finishedHover: {fileID: -2154632028628315019, guid: b4e13f50d3fb2c64296a123d08333805,
     type: 3}
-  _asideHover: {fileID: 0}
-  _challengedHover: {fileID: 0}
+  _asideHover: {fileID: 3811417429819893015, guid: b4e13f50d3fb2c64296a123d08333805,
+    type: 3}
+  _challengedHover: {fileID: 2694338018779796811, guid: b4e13f50d3fb2c64296a123d08333805,
+    type: 3}
   isOver: 0

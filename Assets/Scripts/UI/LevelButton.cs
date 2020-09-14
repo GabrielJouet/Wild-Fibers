@@ -28,7 +28,6 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private Sprite _challengedHover;
 
 
-    public bool isOver = false;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -36,6 +35,7 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         _hoverDisplayer.sprite = _unlockedHover;
         _hoverDisplayer.SetNativeSize();
     }
+
 
     public void OnPointerExit(PointerEventData eventData)
     {

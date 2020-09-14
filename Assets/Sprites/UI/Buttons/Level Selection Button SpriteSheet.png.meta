@@ -20,6 +20,24 @@ TextureImporter:
   - first:
       213: -2154632028628315019
     second: Level Selection Button SpriteSheet_3
+  - first:
+      213: 5558821389644304331
+    second: Level Selection Button SpriteSheet_2
+  - first:
+      213: 2286154767853422350
+    second: Level Selection Button SpriteSheet_3
+  - first:
+      213: 4910959925763933065
+    second: Level Selection Button SpriteSheet_4
+  - first:
+      213: 357011432055814445
+    second: Level Selection Button SpriteSheet_5
+  - first:
+      213: 3811417429819893015
+    second: Level Selection Button SpriteSheet_6
+  - first:
+      213: 2694338018779796811
+    second: Level Selection Button SpriteSheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -150,6 +168,48 @@ TextureImporter:
       name: Level Selection Button SpriteSheet_2
       rect:
         serializedVersion: 2
+        x: 160
+        y: 80
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcf879b1a96e42d40800000000000000
+      internalID: 5558821389644304331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level Selection Button SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 80
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e07087716ad0abf10800000000000000
+      internalID: 2286154767853422350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level Selection Button SpriteSheet_4
+      rect:
+        serializedVersion: 2
         x: 0
         y: 0
         width: 80
@@ -161,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bea89984a1c632200800000000000000
-      internalID: 154085672403700459
+      spriteID: 9838659780c372440800000000000000
+      internalID: 4910959925763933065
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Level Selection Button SpriteSheet_3
+      name: Level Selection Button SpriteSheet_5
       rect:
         serializedVersion: 2
         x: 80
@@ -182,8 +242,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5741eefe5953912e0800000000000000
-      internalID: -2154632028628315019
+      spriteID: d29b074810c54f400800000000000000
+      internalID: 357011432055814445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level Selection Button SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715a52b65ffd4e430800000000000000
+      internalID: 3811417429819893015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level Selection Button SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 80
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4513322726346520800000000000000
+      internalID: 2694338018779796811
       vertices: []
       indices: 
       edges: []
