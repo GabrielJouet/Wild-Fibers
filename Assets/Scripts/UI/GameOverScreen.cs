@@ -27,7 +27,6 @@ public class GameOverScreen : MonoBehaviour
     //Parameter => win, does the player win this level?
     public void Activate(bool win) 
     {
-        _gameScreen.SetActive(true);
         StartCoroutine(DelayShow(win)); 
     }
 
@@ -36,6 +35,7 @@ public class GameOverScreen : MonoBehaviour
     private IEnumerator DelayShow(bool win)
     {
         yield return new WaitForSeconds(1f);
+        _gameScreen.SetActive(true);
 
         if (win)
         {
