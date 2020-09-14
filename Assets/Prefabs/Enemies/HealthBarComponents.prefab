@@ -208,4 +208,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _healthBar: {fileID: 2303993568667558135}
-  _sprite: {fileID: 2377368128723064262}
+  _spriteRenderer: {fileID: 2377368128723064262}
