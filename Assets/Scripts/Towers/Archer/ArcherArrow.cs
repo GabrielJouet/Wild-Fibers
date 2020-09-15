@@ -21,6 +21,8 @@ public class ArcherArrow : MonoBehaviour
     //Parent tower that creates this projectile
     private ArcherTower _parentTower;
 
+    private Vector3 _goalPosition;
+
 
 
     //Method used to initialize class (like a constructor)
@@ -44,23 +46,35 @@ public class ArcherArrow : MonoBehaviour
     {
         if (_enemyToTrack.gameObject.activeSelf)
         {
-            if ((transform.position - _enemyToTrack.transform.position).magnitude > 0.1f)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, _enemyToTrack.transform.position, _speed * Time.deltaTime);
-
-                Vector3 vectorToTarget = _enemyToTrack.transform.position - transform.position;
-                float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
-
-                transform.rotation = Quaternion.Euler(0, 0, angle);
-            }
-            else
+            if(FollowPoint(_enemyToTrack.transform.position))
             {
                 _enemyToTrack.TakeDamage(_damage, _armorThrough);
                 StopArrow();
             }
         }
         else
-            StopArrow();
+        {
+            if (_goalPosition == Vector3.zero)
+                _goalPosition = _enemyToTrack.transform.position;
+            else
+            {
+                if (FollowPoint(_goalPosition))
+                    StopArrow();
+            }
+        }
+    }
+
+
+    private bool FollowPoint(Vector3 position)
+    {
+        transform.position = Vector3.MoveTowards(transform.position, position, _speed * Time.deltaTime);
+
+        Vector3 vectorToTarget = position - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+
+        return (transform.position - position).magnitude < 0.05f;
     }
 
 
@@ -69,5 +83,7 @@ public class ArcherArrow : MonoBehaviour
     {
         gameObject.SetActive(false);
         _parentTower.RecoverArrow(this);
+
+        _goalPosition = Vector3.zero;
     }
 }
