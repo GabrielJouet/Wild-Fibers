@@ -13,6 +13,8 @@ public class ChooseButton : MonoBehaviour
     [SerializeField]
     private List<Button> _interactableButtons;
     [SerializeField]
+    private List<Image> _buttonSprites;
+    [SerializeField]
     private RectTransform _rectTransform;
     [SerializeField]
     private List<Text> _prices;
@@ -25,7 +27,7 @@ public class ChooseButton : MonoBehaviour
 
         for(int i = 0; i < _interactableButtons.Count; i ++)
         {
-            _interactableButtons[i].image.sprite = buffer[i].GetIcon();
+            _buttonSprites[i].sprite = buffer[i].GetIcon();
             _prices[i].text = buffer[i].GetPrice().ToString();
         }
     }
