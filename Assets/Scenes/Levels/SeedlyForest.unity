@@ -2794,12 +2794,11 @@ PrefabInstance:
       propertyPath: _levelController
       value: 
       objectReference: {fileID: 519420030}
-    - target: {fileID: 4541158167581865250, guid: ab062a4349966594386bc59557a6906a,
+    - target: {fileID: 4541158167310529355, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 26b5e5cf802f89541a99c50783651647,
-        type: 3}
+      propertyPath: m_Text
+      value: Archer
+      objectReference: {fileID: 0}
     - target: {fileID: 4541158167585586161, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_LocalPosition.x
