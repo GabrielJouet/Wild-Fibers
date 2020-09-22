@@ -2814,6 +2814,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 519420035}
+    - target: {fileID: 4541158168249385362, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4541158168452975449, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2962,6 +2967,26 @@ PrefabInstance:
     - target: {fileID: 4541158168921798197, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541158168921798197, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541158168921798197, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541158168921798197, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541158168921798199, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_UiScaleMode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4541158168926365068, guid: ab062a4349966594386bc59557a6906a,
