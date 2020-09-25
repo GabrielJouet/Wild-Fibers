@@ -649,7 +649,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Wild Fibers
+  m_Text: 'Wild Fibers
+
+    Fever Battle'
 --- !u!222 &589066405
 CanvasRenderer:
   m_ObjectHideFlags: 0
