@@ -73,6 +73,8 @@ public class Enemy : MonoBehaviour
 
     //Sprite used in dot effect
     protected Sprite _dotEffect;
+    [SerializeField]
+    protected Animator _animator;
 
     //Does the enemy currently has a dot effect?
     protected bool _dotApplied = false;
@@ -128,9 +130,17 @@ public class Enemy : MonoBehaviour
     //Update method, called each frame
     private void Update()
     {
-        //If the enemy can move, then move
         if(_moving)
+        {
             FollowPath();
+
+            //TO ADD WHEN FACE AND BACK ANIMATIONS ARE DONE
+            /*if(_animator)
+            {
+                _animator.SetBool("horizontal", transform.position.x - _path.GetPath()[_pathIndex].x >= transform.position.y - _path.GetPath()[_pathIndex].y);
+                _animator.SetBool("flipped", transform.position.y - _path.GetPath()[_pathIndex].y < 0);
+            }*/
+        }
     }
 
 
@@ -148,6 +158,8 @@ public class Enemy : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, _path.GetPath()[_pathIndex], Time.deltaTime * _speed);
 
+        _spriteRenderer.flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
+
         //If the enemy position is reaching the end of the path part we increase the path index
         if (transform.position == _path.GetPath()[_pathIndex] && _pathIndex + 1 < _path.GetPath().Count)
             _pathIndex++;
@@ -157,9 +169,6 @@ public class Enemy : MonoBehaviour
             _moving = false;
             ReachEnd();
         }
-
-        //We flip sprite depending of the way of moving
-        _spriteRenderer.flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
     }
 
 
@@ -289,6 +298,12 @@ public class Enemy : MonoBehaviour
     }
 
 
+    public void Pause(bool paused)
+    {
+        _animator.enabled = paused;
+    }
+    
+    
     //Getters
     public string GetName() { return _displayName; }
 
