@@ -35,5 +35,4 @@ MonoBehaviour:
     _timeBetweenPattern: 1
     _pathIndex: 0
   _timeBeforeNextWave: 5
-  _waveTime: 15
   _goldBonus: 10

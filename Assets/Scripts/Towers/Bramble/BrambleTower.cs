@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Bramble tower is a tower that creates shockwaves
+ */
 public class BrambleTower : Tower
 {
+    //Does the attack started?
     private bool _coroutineStarted = false;
 
 
+    //List of available waves (pool)
     private readonly List<BrambleShockWave> _availableWaves = new List<BrambleShockWave>();
 
 
 
+    //Fixed Update method, called 50 times a second
     private void FixedUpdate()
     {
         if (_availableEnemies.Count > 0 && !_coroutineStarted)
@@ -19,6 +25,7 @@ public class BrambleTower : Tower
 
 
 
+    //Couroutine used to attack and summon a wave
     private IEnumerator SummonWave()
     {
         _coroutineStarted = true;
@@ -38,6 +45,10 @@ public class BrambleTower : Tower
     }
 
 
+
+    //Method used to recover a desactivated wave
+    //
+    //Parameter => wave, desactivated wave to add to pool
     public void RecoverWave(BrambleShockWave wave)
     {
         if (!_availableWaves.Contains(wave))
