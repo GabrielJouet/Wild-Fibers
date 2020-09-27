@@ -158,8 +158,6 @@ public class Enemy : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, _path.GetPath()[_pathIndex], Time.deltaTime * _speed);
 
-        _spriteRenderer.flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
-
         //If the enemy position is reaching the end of the path part we increase the path index
         if (transform.position == _path.GetPath()[_pathIndex] && _pathIndex + 1 < _path.GetPath().Count)
             _pathIndex++;
@@ -169,6 +167,8 @@ public class Enemy : MonoBehaviour
             _moving = false;
             ReachEnd();
         }
+
+        _spriteRenderer.flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
     }
 
 
