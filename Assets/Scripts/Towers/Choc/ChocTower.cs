@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Choc tower summons spiky roots to attack
+ */
 public class ChocTower : Tower
 {
+    //Does the attack started?
     private bool _coroutineStarted = false;
 
 
+    //List of available spikes (pool)
     private readonly List<ChocSpikes> _availableSpikes = new List<ChocSpikes>();
 
 
 
+    //Fixed Update method, called times a second
     private void FixedUpdate()
     {
         if (_availableEnemies.Count > 0 && !_coroutineStarted)
@@ -19,6 +25,7 @@ public class ChocTower : Tower
 
 
 
+    //Coroutine used to summon spike in order to attack
     private IEnumerator SummonSpikes()
     {
         _coroutineStarted = true;
@@ -45,6 +52,9 @@ public class ChocTower : Tower
     }
 
 
+    //Method used to recover spike and place it into the pool
+    //
+    //Parameter => spikes, the new desactivated spike
     public void RecoverSpike(ChocSpikes spikes)
     {
         if (!_availableSpikes.Contains(spikes))
