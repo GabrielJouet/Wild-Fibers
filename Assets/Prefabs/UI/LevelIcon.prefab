@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.4056604, g: 0.4056604, b: 0.4056604, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -265,6 +265,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelParameters: {fileID: 11400000, guid: 7b1bc5ec89c95a846b583f549b2629a6, type: 2}
   _levelSelection: {fileID: 0}
+  _buttonDisplay: {fileID: 2685172475516571550}
+  _desactivatedSprite: {fileID: 7254002967335079205, guid: b4e13f50d3fb2c64296a123d08333805,
+    type: 3}
+  _completedSprite: {fileID: 5876473196031235697, guid: b4e13f50d3fb2c64296a123d08333805,
+    type: 3}
+  _challengedSprite: {fileID: 154085672403700459, guid: b4e13f50d3fb2c64296a123d08333805,
+    type: 3}
   _hoverDisplayer: {fileID: 6725778110092988269}
   _unlockedHover: {fileID: 154085672403700459, guid: b4e13f50d3fb2c64296a123d08333805,
     type: 3}
@@ -274,4 +281,3 @@ MonoBehaviour:
     type: 3}
   _challengedHover: {fileID: 2694338018779796811, guid: b4e13f50d3fb2c64296a123d08333805,
     type: 3}
-  isOver: 0
