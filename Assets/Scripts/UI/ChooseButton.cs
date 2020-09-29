@@ -20,6 +20,8 @@ public class ChooseButton : MonoBehaviour
 
     //Transform component of choose button
     [SerializeField]
+    private List<Image> _buttonSprites;
+    [SerializeField]
     private RectTransform _rectTransform;
 
     //List of texts components handling prices
@@ -35,7 +37,7 @@ public class ChooseButton : MonoBehaviour
 
         for(int i = 0; i < _interactableButtons.Count; i ++)
         {
-            _interactableButtons[i].image.sprite = buffer[i].GetIcon();
+            _buttonSprites[i].sprite = buffer[i].GetIcon();
             _prices[i].text = buffer[i].GetPrice().ToString();
         }
     }
