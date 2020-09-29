@@ -75,4 +75,10 @@ public class MarkTower : Tower
         if (!_availableMarks.Contains(dot))
             _availableMarks.Add(dot);
     }
+
+
+    public override void PauseBehavior()
+    {
+
+    }
 }

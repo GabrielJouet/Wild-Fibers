@@ -180,6 +180,9 @@ public class Tower : MonoBehaviour
 
     //Method used to revert seller UI state
     public void RevertSellerActive() { _sellerActive = !_sellerActive; }
+
+
+    public virtual void PauseBehavior() { }
     #endregion
 
 

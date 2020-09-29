@@ -61,4 +61,10 @@ public class ArcherTower : Tower
         if (!_availableProjectiles.Contains(arrow))
             _availableProjectiles.Add(arrow);
     }
+
+
+    public override void PauseBehavior()
+    {
+
+    }
 }

@@ -54,4 +54,10 @@ public class BrambleTower : Tower
         if (!_availableWaves.Contains(wave))
             _availableWaves.Add(wave);
     }
+
+
+    public override void PauseBehavior()
+    {
+
+    }
 }

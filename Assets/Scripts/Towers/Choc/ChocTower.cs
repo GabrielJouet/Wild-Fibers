@@ -60,4 +60,10 @@ public class ChocTower : Tower
         if (!_availableSpikes.Contains(spikes))
             _availableSpikes.Add(spikes);
     }
+
+
+    public override void PauseBehavior()
+    {
+
+    }
 }
