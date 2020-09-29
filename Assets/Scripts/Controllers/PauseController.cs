@@ -62,7 +62,7 @@ public class PauseController : MonoBehaviour
         }
 
         foreach (Spawner current in FindObjectsOfType<Spawner>())
-            current.enabled = _paused;
+            current.PauseSpawn();
 
         foreach (EnemyPool current in FindObjectsOfType<EnemyPool>())
             current.enabled = _paused;

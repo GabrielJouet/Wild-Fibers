@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -36,6 +37,13 @@ public class Spawner : MonoBehaviour
     private bool _enemiesKilled = false;
 
 
+    private DateTime _coroutineStartTime;
+
+    private float _coroutineTimeNeeded = 0f;
+
+    private bool _spawnPaused = false;
+
+
 
     //Method used by LevelController to set a new enemy group and start spawning entities
     //
@@ -62,15 +70,29 @@ public class Spawner : MonoBehaviour
     //Coroutine used to spawn enemies in group
     private IEnumerator SpawnEnemies()
     {
-        yield return new WaitForSeconds(2f);
+        //If the coroutine was previously stopped
+        if(_coroutineTimeNeeded != 0)
+        {
+            _coroutineStartTime = DateTime.Now;
+            yield return new WaitForSeconds(_coroutineTimeNeeded);
+        }
+        else
+        {
+            _coroutineStartTime = DateTime.Now;
+            _coroutineTimeNeeded = 2f;
+            yield return new WaitForSeconds(2f);
+        }
 
-        while(!_waveFinished)
+        while (!_waveFinished)
         {
             //If we are not at the end of the pattern
             if (_enemyIndex < _enemyGroup.GetEnemyPattern(_patternIndex).GetNumberOfEnemies())
             {
-                _enemyIndex ++;
+                _enemyIndex++;
                 _enemyPool.GetOneEnemy().GetComponent<Enemy>().Initialize(_paths[_enemyGroup.GetPathIndex()], _enemyPool);
+
+                _coroutineStartTime = DateTime.Now;
+                _coroutineTimeNeeded = _enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies();
                 yield return new WaitForSeconds(_enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies());
             }
             //Else if the pattern is finished
@@ -82,6 +104,8 @@ public class Spawner : MonoBehaviour
                     _patternIndex++;
                     _enemyIndex = 0;
 
+                    _coroutineStartTime = DateTime.Now;
+                    _coroutineTimeNeeded = _enemyGroup.GetTimeBetweenPattern();
                     yield return new WaitForSeconds(_enemyGroup.GetTimeBetweenPattern());
                 }
                 //If the wave is finished
@@ -89,6 +113,21 @@ public class Spawner : MonoBehaviour
                     EndSpawn();
             }
         }
+    }
+
+
+    //Method used to pause spawn enemy when Pause Controller is called
+    public void PauseSpawn()
+    {
+        if (!_spawnPaused)
+        {
+            StopAllCoroutines();
+            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
+        }
+        else
+            StartCoroutine(SpawnEnemies());
+
+        _spawnPaused = !_spawnPaused;
     }
 
 
