@@ -57,17 +57,32 @@ public class LevelSelection : MonoBehaviour
     //Start method
     private void Start()
     {
+        SetButtonStates();
+    }
+
+
+
+    //Method used to retrieve saved data and apply it to level button
+    private void SetButtonStates()
+    {
         //For each level we check the save to see if level are unlocked, finished and completed
         List<LevelSave> levelSaves = FindObjectOfType<SaveController>().GetSaveFile().GetLevelsData();
 
-        for (int i = 0; i < levelSaves.Count; i ++)
+        for (int i = 0; i < levelSaves.Count; i++)
         {
             if (!levelSaves[i].GetIsUnlocked())
                 _levelButtons[i].LockLevel();
-            else if (levelSaves[i].GetIsCompleted())
-                _levelButtons[i].SetCompleted();
-            else if (levelSaves[i].GetChallengeLevelCompleted())
-                _levelButtons[i].SetChallenged();
+            else
+            {
+                if (levelSaves[i].GetIsCompleted())
+                    _levelButtons[i].SetCompleted();
+                else if (levelSaves[i].GetSideLevelCompleted())
+                    _levelButtons[i].SetSided();
+                else if (levelSaves[i].GetChallengeLevelCompleted())
+                    _levelButtons[i].SetChallenged();
+                else
+                    _levelButtons[i].UnlockLevel();
+            }
         }
     }
 

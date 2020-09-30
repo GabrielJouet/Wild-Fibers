@@ -30,6 +30,9 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField]
     private Sprite _completedSprite;
 
+    [SerializeField]
+    private Sprite _sidedSprite;
+
     //Challenged sprite if level is completed
     [SerializeField]
     private Sprite _challengedSprite;
@@ -55,11 +58,13 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private bool _isLocked;
 
 
+    private Sprite _loadedHover;
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         _hoverDisplayer.gameObject.SetActive(true);
-        _hoverDisplayer.sprite = _unlockedHover;
+        _hoverDisplayer.sprite = _loadedHover;
         _hoverDisplayer.SetNativeSize();
     }
 
@@ -83,6 +88,14 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         _isLocked = true;
         _buttonDisplay.sprite = _desactivatedSprite;
+        _loadedHover = null;
+    }
+
+
+    //Method used when the level is not yet unlocked
+    public void UnlockLevel()
+    {
+        _loadedHover = _unlockedHover;
     }
 
 
@@ -90,6 +103,15 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void SetCompleted()
     {
         _buttonDisplay.sprite = _completedSprite;
+        _loadedHover = _finishedHover;
+    }
+
+
+    //Method used when the side level is completed
+    public void SetSided()
+    {
+        _buttonDisplay.sprite = _sidedSprite;
+        _loadedHover = _asideHover;
     }
 
 
@@ -97,5 +119,6 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void SetChallenged()
     {
         _buttonDisplay.sprite = _challengedSprite;
+        _loadedHover = _challengedHover;
     }
 }
