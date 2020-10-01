@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,12 +29,21 @@ public class MarkTower : Tower
     //List of available marks (pool)
     private readonly List<MarkDot> _availableMarks = new List<MarkDot>();
 
+    private readonly List<MarkDot> _allMarks = new List<MarkDot>();
+
+
+    private bool _stopped = false;
+
+    private DateTime _projectileCreationCoroutineStartTime;
+
+    private float _projectileCreationCoroutineTimeNeeded = 0f;
+
 
     //Fixed Update method, called  times a second
     private void FixedUpdate()
     {
         //If enemies are in range and we can start shooting, we shoot
-        if (_availableEnemies.Count > 0 && !_coroutineStarted)
+        if (_availableEnemies.Count > 0 && !_coroutineStarted && !_stopped)
             StartCoroutine(SummonMarks());
     }
 
@@ -43,6 +53,13 @@ public class MarkTower : Tower
     private IEnumerator SummonMarks()
     {
         _coroutineStarted = true;
+
+        if (_projectileCreationCoroutineTimeNeeded != 0f)
+        {
+            _projectileCreationCoroutineStartTime = DateTime.Now;
+            yield return new WaitForSeconds(_projectileCreationCoroutineTimeNeeded);
+            _projectileCreationCoroutineTimeNeeded = 0f;
+        }
 
         int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
 
@@ -58,10 +75,15 @@ public class MarkTower : Tower
                 _availableMarks.Remove(_availableMarks[0]);
             }
             else
-                Instantiate(_projectileUsed, transform).GetComponent<MarkDot>().Initialize(_damage, _armorThrough, _availableEnemies[i], this, _armorThroughMalus, _damageOverTime, _dotDuration);
-
+            {
+                MarkDot bufferDot = Instantiate(_projectileUsed, transform).GetComponent<MarkDot>();
+                bufferDot.Initialize(_damage, _armorThrough, _availableEnemies[i], this, _armorThroughMalus, _damageOverTime, _dotDuration);
+                _allMarks.Add(bufferDot);
+            }
         }
 
+        _projectileCreationCoroutineStartTime = DateTime.Now;
+        _projectileCreationCoroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;
     }
@@ -79,6 +101,17 @@ public class MarkTower : Tower
 
     public override void PauseBehavior()
     {
+        if (!_stopped)
+        {
+            StopAllCoroutines();
+            _projectileCreationCoroutineTimeNeeded -= (float)(DateTime.Now - _projectileCreationCoroutineStartTime).TotalSeconds;
+        }
+        else
+            StartCoroutine(SummonMarks());
 
+        _stopped = !_stopped;
+
+        foreach (MarkDot current in _allMarks)
+            current.StopBehavior();
     }
 }
