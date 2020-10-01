@@ -38,6 +38,8 @@ public class ChooseButton : MonoBehaviour
         for(int i = 0; i < _interactableButtons.Count; i ++)
         {
             _buttonSprites[i].sprite = buffer[i].GetIcon();
+            _buttonSprites[i].SetNativeSize();
+            _buttonSprites[i].rectTransform.sizeDelta *= 2.4f;
             _prices[i].text = buffer[i].GetPrice().ToString();
         }
     }
