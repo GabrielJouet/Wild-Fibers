@@ -196,9 +196,11 @@ public class Tower : MonoBehaviour
     public void RevertSellerActive() { _sellerActive = !_sellerActive; }
 
 
+    //Method used to pause behavior of tower children
     public virtual void PauseBehavior() { }
 
 
+    //Method to delay action when pause is unpaused
     protected IEnumerator UnPauseDelay()
     {
         _coroutineStartTime = DateTime.Now;

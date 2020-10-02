@@ -25,6 +25,7 @@ public class MarkTower : Tower
     //List of available marks (pool)
     private readonly List<MarkDot> _availableMarks = new List<MarkDot>();
 
+    //All dots without restriction
     private readonly List<MarkDot> _allMarks = new List<MarkDot>();
 
 
@@ -43,13 +44,6 @@ public class MarkTower : Tower
     private IEnumerator SummonMarks()
     {
         _coroutineStarted = true;
-
-        if (_coroutineTimeNeeded != 0f)
-        {
-            _coroutineStartTime = DateTime.Now;
-            yield return new WaitForSeconds(_coroutineTimeNeeded);
-            _coroutineTimeNeeded = 0f;
-        }
 
         int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
 
@@ -89,6 +83,7 @@ public class MarkTower : Tower
     }
 
 
+    //Method used to pause tower behavior when pause button is hit
     public override void PauseBehavior()
     {
         if (!_paused)

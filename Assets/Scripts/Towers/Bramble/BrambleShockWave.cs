@@ -26,6 +26,7 @@ public class BrambleShockWave : MonoBehaviour
     private Vector3 _previousScale;
 
 
+    //Does the projectile is paused?
     private bool _paused = false;
 
 
@@ -89,6 +90,7 @@ public class BrambleShockWave : MonoBehaviour
     }
 
 
+    //Method used to stop projectile behavior
     public void StopBehavior()
     {
         _paused = !_paused;

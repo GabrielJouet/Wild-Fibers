@@ -24,6 +24,7 @@ public class ArcherArrow : MonoBehaviour
     private Vector3 _goalPosition;
 
 
+    //Does the projectile is paused?
     private bool _paused = false;
 
 
@@ -94,6 +95,7 @@ public class ArcherArrow : MonoBehaviour
     }
 
 
+    //Method used to stop projectile behavior
     public void StopBehavior()
     {
         _paused = !_paused;

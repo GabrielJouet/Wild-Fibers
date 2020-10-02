@@ -33,6 +33,7 @@ public class MarkDot : MonoBehaviour
     private Vector3 _goalPosition;
 
 
+    //Does the projectile is paused? (by PauseController)
     private bool _paused = false;
 
 
@@ -109,6 +110,7 @@ public class MarkDot : MonoBehaviour
     }
 
 
+    //Method used to stop projectile behavior
     public void StopBehavior()
     {
         _paused = !_paused;

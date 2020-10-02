@@ -11,6 +11,7 @@ public class ArcherTower : Tower
     //List of availables projectiles (pool)
     private readonly List<ArcherArrow> _availableProjectiles = new List<ArcherArrow>();
 
+    //All arrows without restriction
     private readonly List<ArcherArrow> _allArrows = new List<ArcherArrow>();
 
 
@@ -68,6 +69,7 @@ public class ArcherTower : Tower
     }
 
 
+    //Method used to pause tower behavior when pause button is hit
     public override void PauseBehavior()
     {
         if (!_paused)

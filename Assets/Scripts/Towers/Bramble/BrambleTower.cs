@@ -11,6 +11,7 @@ public class BrambleTower : Tower
     //List of available waves (pool)
     private readonly List<BrambleShockWave> _availableWaves = new List<BrambleShockWave>();
 
+    //All waves without restriction
     private readonly List<BrambleShockWave> _allWaves = new List<BrambleShockWave>();
 
 
@@ -60,7 +61,8 @@ public class BrambleTower : Tower
             _availableWaves.Add(wave);
     }
 
-
+    
+    //Method used to pause tower behavior when pause button is hit
     public override void PauseBehavior()
     {
         if (!_paused)

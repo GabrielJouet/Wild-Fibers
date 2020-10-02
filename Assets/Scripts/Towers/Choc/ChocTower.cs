@@ -11,6 +11,7 @@ public class ChocTower : Tower
     //List of available spikes (pool)
     private readonly List<ChocSpikes> _availableSpikes = new List<ChocSpikes>();
 
+    //All spikes without restriction
     private readonly List<ChocSpikes> _allSpikes = new List<ChocSpikes>();
 
 
@@ -67,6 +68,7 @@ public class ChocTower : Tower
     }
 
 
+    //Method used to pause tower behavior when pause button is hit
     public override void PauseBehavior()
     {
         if (!_paused)

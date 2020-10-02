@@ -110,6 +110,7 @@ public class ChocSpikes : MonoBehaviour
     }
 
 
+    //Method used to pause projectile behavior when pause button is hit
     public void StopBehavior()
     {
         if (!_paused)
