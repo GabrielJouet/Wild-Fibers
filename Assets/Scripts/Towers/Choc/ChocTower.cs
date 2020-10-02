@@ -8,21 +8,10 @@ using UnityEngine;
  */
 public class ChocTower : Tower
 {
-    //Does the attack started?
-    private bool _coroutineStarted = false;
-
-
     //List of available spikes (pool)
     private readonly List<ChocSpikes> _availableSpikes = new List<ChocSpikes>();
 
     private readonly List<ChocSpikes> _allSpikes = new List<ChocSpikes>();
-
-
-    private bool _paused = false;
-
-    private DateTime _coroutineStartTime;
-
-    private float _coroutineTimeNeeded = 0f;
 
 
 
@@ -86,7 +75,7 @@ public class ChocTower : Tower
             _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
         }
         else
-            StartCoroutine(SummonSpikes());
+            StartCoroutine(UnPauseDelay());
 
         _paused = !_paused;
 

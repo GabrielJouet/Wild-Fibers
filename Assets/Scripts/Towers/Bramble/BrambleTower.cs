@@ -8,21 +8,10 @@ using UnityEngine;
  */
 public class BrambleTower : Tower
 {
-    //Does the attack started?
-    private bool _coroutineStarted = false;
-
-
     //List of available waves (pool)
     private readonly List<BrambleShockWave> _availableWaves = new List<BrambleShockWave>();
 
     private readonly List<BrambleShockWave> _allWaves = new List<BrambleShockWave>();
-
-
-    private bool _paused = false;
-
-    private DateTime _coroutineStartTime;
-
-    private float _coroutineTimeNeeded = 0f;
 
 
 
@@ -39,13 +28,6 @@ public class BrambleTower : Tower
     private IEnumerator SummonWave()
     {
         _coroutineStarted = true;
-
-        if (_coroutineTimeNeeded != 0f)
-        {
-            _coroutineStartTime = DateTime.Now;
-            yield return new WaitForSeconds(_coroutineTimeNeeded);
-            _coroutineTimeNeeded = 0f;
-        }
 
         if (_availableWaves.Count > 0)
         {
@@ -87,7 +69,7 @@ public class BrambleTower : Tower
             _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
         }
         else
-            StartCoroutine(SummonWave());
+            StartCoroutine(UnPauseDelay());
 
         _paused = !_paused;
 

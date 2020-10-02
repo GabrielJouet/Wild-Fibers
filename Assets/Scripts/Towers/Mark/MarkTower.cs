@@ -22,21 +22,11 @@ public class MarkTower : Tower
     private float _dotDuration;
 
 
-    //Does the coroutine already started?
-    private bool _coroutineStarted = false;
-
-
     //List of available marks (pool)
     private readonly List<MarkDot> _availableMarks = new List<MarkDot>();
 
     private readonly List<MarkDot> _allMarks = new List<MarkDot>();
 
-
-    private bool _paused = false;
-
-    private DateTime _coroutineStartTime;
-
-    private float _coroutineTimeNeeded = 0f;
 
 
     //Fixed Update method, called  times a second
@@ -107,7 +97,7 @@ public class MarkTower : Tower
             _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
         }
         else
-            StartCoroutine(SummonMarks());
+            StartCoroutine(UnPauseDelay());
 
         _paused = !_paused;
 

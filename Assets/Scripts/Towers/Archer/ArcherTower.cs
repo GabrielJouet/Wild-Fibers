@@ -8,21 +8,10 @@ using UnityEngine;
  */
 public class ArcherTower : Tower
 {
-    //Does the attack already started?
-    private bool _coroutineStarted = false;
-
-
     //List of availables projectiles (pool)
     private readonly List<ArcherArrow> _availableProjectiles = new List<ArcherArrow>();
 
     private readonly List<ArcherArrow> _allArrows = new List<ArcherArrow>();
-
-
-    private bool _paused = false;
-
-    private DateTime _coroutineStartTime;
-
-    private float _coroutineTimeNeeded = 0f;
 
 
 
@@ -39,13 +28,6 @@ public class ArcherTower : Tower
     private IEnumerator SummonArrows()
     {
         _coroutineStarted = true;
-
-        if (_coroutineTimeNeeded != 0f)
-        {
-            _coroutineStartTime = DateTime.Now;
-            yield return new WaitForSeconds(_coroutineTimeNeeded);
-            _coroutineTimeNeeded = 0f;
-        }
 
         int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
 
@@ -94,7 +76,7 @@ public class ArcherTower : Tower
             _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
         }
         else
-            StartCoroutine(SummonArrows());
+            StartCoroutine(UnPauseDelay());
 
         _paused = !_paused;
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -80,6 +81,19 @@ public class Tower : MonoBehaviour
 
     //List of in-range enemies
     protected List<Enemy> _availableEnemies = new List<Enemy>();
+
+
+    //Does the tower is currently paused? (by Pause Controller)
+    protected bool _paused = false;
+
+    //Coroutine Start Time (used if the tower is paused)
+    protected DateTime _coroutineStartTime;
+
+    //Coroutine time needed to reset
+    protected float _coroutineTimeNeeded = 0f;
+
+    //Does the attack already started?
+    protected bool _coroutineStarted = false;
 
 
 
@@ -183,6 +197,15 @@ public class Tower : MonoBehaviour
 
 
     public virtual void PauseBehavior() { }
+
+
+    protected IEnumerator UnPauseDelay()
+    {
+        _coroutineStartTime = DateTime.Now;
+        yield return new WaitForSeconds(_coroutineTimeNeeded);
+        _coroutineStarted = false;
+        _coroutineTimeNeeded = 0f;
+    }
     #endregion
 
 
