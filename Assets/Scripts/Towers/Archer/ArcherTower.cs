@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,15 @@ public class ArcherTower : Tower
 
     //List of availables projectiles (pool)
     private readonly List<ArcherArrow> _availableProjectiles = new List<ArcherArrow>();
+
+    private readonly List<ArcherArrow> _allArrows = new List<ArcherArrow>();
+
+
+    private bool _paused = false;
+
+    private DateTime _coroutineStartTime;
+
+    private float _coroutineTimeNeeded = 0f;
 
 
 
@@ -30,6 +40,13 @@ public class ArcherTower : Tower
     {
         _coroutineStarted = true;
 
+        if (_coroutineTimeNeeded != 0f)
+        {
+            _coroutineStartTime = DateTime.Now;
+            yield return new WaitForSeconds(_coroutineTimeNeeded);
+            _coroutineTimeNeeded = 0f;
+        }
+
         int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
 
         SortEnemies();
@@ -44,10 +61,16 @@ public class ArcherTower : Tower
                 _availableProjectiles.Remove(_availableProjectiles[0]);
             }
             else
-                Instantiate(_projectileUsed, transform).GetComponent<ArcherArrow>().Initialize(_damage, _armorThrough, _availableEnemies[i], this);
+            {
+                ArcherArrow bufferArrow = Instantiate(_projectileUsed, transform).GetComponent<ArcherArrow>();
+                bufferArrow.Initialize(_damage, _armorThrough, _availableEnemies[i], this);
+                _allArrows.Add(bufferArrow);
+            }
 
         }
 
+        _coroutineStartTime = DateTime.Now;
+        _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;
     }
@@ -65,6 +88,17 @@ public class ArcherTower : Tower
 
     public override void PauseBehavior()
     {
+        if (!_paused)
+        {
+            StopAllCoroutines();
+            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
+        }
+        else
+            StartCoroutine(SummonArrows());
 
+        _paused = !_paused;
+
+        foreach (ArcherArrow current in _allArrows)
+            current.StopBehavior();
     }
 }
