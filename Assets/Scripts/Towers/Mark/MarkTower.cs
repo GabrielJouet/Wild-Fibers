@@ -32,18 +32,18 @@ public class MarkTower : Tower
     private readonly List<MarkDot> _allMarks = new List<MarkDot>();
 
 
-    private bool _stopped = false;
+    private bool _paused = false;
 
-    private DateTime _projectileCreationCoroutineStartTime;
+    private DateTime _coroutineStartTime;
 
-    private float _projectileCreationCoroutineTimeNeeded = 0f;
+    private float _coroutineTimeNeeded = 0f;
 
 
     //Fixed Update method, called  times a second
     private void FixedUpdate()
     {
         //If enemies are in range and we can start shooting, we shoot
-        if (_availableEnemies.Count > 0 && !_coroutineStarted && !_stopped)
+        if (_availableEnemies.Count > 0 && !_coroutineStarted && !_paused)
             StartCoroutine(SummonMarks());
     }
 
@@ -54,11 +54,11 @@ public class MarkTower : Tower
     {
         _coroutineStarted = true;
 
-        if (_projectileCreationCoroutineTimeNeeded != 0f)
+        if (_coroutineTimeNeeded != 0f)
         {
-            _projectileCreationCoroutineStartTime = DateTime.Now;
-            yield return new WaitForSeconds(_projectileCreationCoroutineTimeNeeded);
-            _projectileCreationCoroutineTimeNeeded = 0f;
+            _coroutineStartTime = DateTime.Now;
+            yield return new WaitForSeconds(_coroutineTimeNeeded);
+            _coroutineTimeNeeded = 0f;
         }
 
         int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
@@ -82,8 +82,8 @@ public class MarkTower : Tower
             }
         }
 
-        _projectileCreationCoroutineStartTime = DateTime.Now;
-        _projectileCreationCoroutineTimeNeeded = _timeBetweenShots;
+        _coroutineStartTime = DateTime.Now;
+        _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;
     }
@@ -101,15 +101,15 @@ public class MarkTower : Tower
 
     public override void PauseBehavior()
     {
-        if (!_stopped)
+        if (!_paused)
         {
             StopAllCoroutines();
-            _projectileCreationCoroutineTimeNeeded -= (float)(DateTime.Now - _projectileCreationCoroutineStartTime).TotalSeconds;
+            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
         }
         else
             StartCoroutine(SummonMarks());
 
-        _stopped = !_stopped;
+        _paused = !_paused;
 
         foreach (MarkDot current in _allMarks)
             current.StopBehavior();

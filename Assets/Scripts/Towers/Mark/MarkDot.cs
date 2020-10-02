@@ -33,7 +33,7 @@ public class MarkDot : MonoBehaviour
     private Vector3 _goalPosition;
 
 
-    private bool _stopped;
+    private bool _paused = false;
 
 
 
@@ -63,7 +63,7 @@ public class MarkDot : MonoBehaviour
     //Update method, called every frame
     private void Update()
     {
-        if(!_stopped)
+        if(!_paused)
         {
             if (_enemyToTrack.gameObject.activeSelf)
             {
@@ -111,6 +111,6 @@ public class MarkDot : MonoBehaviour
 
     public void StopBehavior()
     {
-        _stopped = !_stopped;
+        _paused = !_paused;
     }
 }
