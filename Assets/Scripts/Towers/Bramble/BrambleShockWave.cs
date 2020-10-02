@@ -26,6 +26,9 @@ public class BrambleShockWave : MonoBehaviour
     private Vector3 _previousScale;
 
 
+    private bool _paused = false;
+
+
 
     //Method used to initialize class (like a constructor)
     //
@@ -53,15 +56,18 @@ public class BrambleShockWave : MonoBehaviour
     //Update method, called every frame
     private void Update()
     {
-        if (transform.localScale.x < _maxRange)
+        if(!_paused)
         {
-            _previousScale.x += _expansionRate * Time.deltaTime;
-            _previousScale.y += _expansionRate * Time.deltaTime;
+            if (transform.localScale.x < _maxRange)
+            {
+                _previousScale.x += _expansionRate * Time.deltaTime;
+                _previousScale.y += _expansionRate * Time.deltaTime;
 
-            transform.localScale = _previousScale;
+                transform.localScale = _previousScale;
+            }
+            else
+                StopWave();
         }
-        else
-            StopWave();
     }
 
 
@@ -80,5 +86,11 @@ public class BrambleShockWave : MonoBehaviour
     {
         gameObject.SetActive(false);
         _parentTower.RecoverWave(this);
+    }
+
+
+    public void StopBehavior()
+    {
+        _paused = !_paused;
     }
 }
