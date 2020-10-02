@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 /*
@@ -26,6 +27,13 @@ public class ChocSpikes : MonoBehaviour
     private bool _stopped = false;
 
 
+    private bool _paused = false;
+
+    private DateTime _coroutineStartTime;
+
+    private float _coroutineTimeNeeded = 0f;
+
+
 
     //Method used to initialize class (like a constructor)
     //
@@ -49,7 +57,7 @@ public class ChocSpikes : MonoBehaviour
     //Update method, called every frame
     private void Update()
     {
-        if(_enemyToTrack)
+        if(_enemyToTrack && !_paused)
         {
             if (_enemyToTrack.gameObject.activeSelf)
             {
@@ -68,13 +76,27 @@ public class ChocSpikes : MonoBehaviour
     //Couroutine used to attack
     private IEnumerator Strike()
     {
-        //Time to attack
-        yield return new WaitForSeconds(_timeToStrike);
-        if(_enemyToTrack)
-            _enemyToTrack.TakeDamage(_damage, _armorThrough);
-        _stopped = true;
+        if (_coroutineTimeNeeded != 0f)
+        {
+            _coroutineStartTime = DateTime.Now;
+            yield return new WaitForSeconds(_coroutineTimeNeeded);
+            _coroutineTimeNeeded = 0f;
+        }
+
+        if (!_stopped)
+        {
+            //Time to attack
+            _coroutineStartTime = DateTime.Now;
+            _coroutineTimeNeeded = _timeToStrike;
+            yield return new WaitForSeconds(_timeToStrike);
+            if (_enemyToTrack)
+                _enemyToTrack.TakeDamage(_damage, _armorThrough);
+            _stopped = true;
+        }
 
         //Time to stay a little longer, visibility purpose
+        _coroutineStartTime = DateTime.Now;
+        _coroutineTimeNeeded = _timeToStrike / 3f;
         yield return new WaitForSeconds(_timeToStrike / 3f);
         StopSpike();
     }
@@ -85,5 +107,20 @@ public class ChocSpikes : MonoBehaviour
     {
         gameObject.SetActive(false);
         _parentTower.RecoverSpike(this);
+    }
+
+
+    //Method used to pause projectile behavior when pause button is hit
+    public void StopBehavior()
+    {
+        if (!_paused)
+        {
+            StopAllCoroutines();
+            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
+        }
+        else
+            StartCoroutine(Strike());
+
+        _paused = !_paused;
     }
 }

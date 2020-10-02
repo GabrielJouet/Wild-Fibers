@@ -45,7 +45,7 @@ public class PauseController : MonoBehaviour
         _backgroundSelecter.enabled = _paused;
 
         foreach (Tower current in FindObjectsOfType<Tower>())
-            current.enabled = _paused;
+            current.PauseBehavior();
 
         foreach (Enemy current in FindObjectsOfType<Enemy>())
         {

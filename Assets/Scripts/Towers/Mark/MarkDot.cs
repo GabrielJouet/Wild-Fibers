@@ -33,6 +33,10 @@ public class MarkDot : MonoBehaviour
     private Vector3 _goalPosition;
 
 
+    //Does the projectile is paused? (by PauseController)
+    private bool _paused = false;
+
+
 
     //Method used to initialize class (like a constructor)
     //
@@ -60,23 +64,26 @@ public class MarkDot : MonoBehaviour
     //Update method, called every frame
     private void Update()
     {
-        if (_enemyToTrack.gameObject.activeSelf)
+        if(!_paused)
         {
-            if (FollowPoint(_enemyToTrack.transform.position))
+            if (_enemyToTrack.gameObject.activeSelf)
             {
-                _enemyToTrack.TakeDamage(_damage, _armorThrough);
-                _enemyToTrack.ApplyDot(_armorThroughMalus, _damageOverTime, _dotDuration, _dotIcon);
-                StopDot();
+                if (FollowPoint(_enemyToTrack.transform.position))
+                {
+                    _enemyToTrack.TakeDamage(_damage, _armorThrough);
+                    _enemyToTrack.ApplyDot(_armorThroughMalus, _damageOverTime, _dotDuration, _dotIcon);
+                    StopDot();
+                }
             }
-        }
-        else
-        {
-            if (_goalPosition == Vector3.zero)
-                _goalPosition = _enemyToTrack.transform.position;
             else
             {
-                if (FollowPoint(_goalPosition))
-                    StopDot();
+                if (_goalPosition == Vector3.zero)
+                    _goalPosition = _enemyToTrack.transform.position;
+                else
+                {
+                    if (FollowPoint(_goalPosition))
+                        StopDot();
+                }
             }
         }
     }
@@ -100,5 +107,12 @@ public class MarkDot : MonoBehaviour
     {
         gameObject.SetActive(false);
         _parentTower.RecoverDot(this);
+    }
+
+
+    //Method used to stop projectile behavior
+    public void StopBehavior()
+    {
+        _paused = !_paused;
     }
 }

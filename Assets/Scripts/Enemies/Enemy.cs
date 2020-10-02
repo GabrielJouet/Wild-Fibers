@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -95,6 +96,13 @@ public class Enemy : MonoBehaviour
 
     //Does the enemy is moving?
     protected bool _moving = false;
+
+
+    private DateTime _dotCoroutineStartTime;
+
+    private float _dotCoroutineTimeNeeded = 0f;
+
+    private bool _enemyPaused = false;
 
 
 
@@ -235,11 +243,19 @@ public class Enemy : MonoBehaviour
     protected IEnumerator TakePersistentDamage()
     {
         _dotApplied = true;
+        if (_dotCoroutineTimeNeeded != 0)
+        {
+            _dotCoroutineStartTime = DateTime.Now;
+            yield return new WaitForSeconds(_dotCoroutineTimeNeeded);
+            _dotCoroutineTimeNeeded = 0;
+        }
 
         while(_dotDuration >= 0)
         {
             _dotDuration -= 0.5f;
             TakeDamage(_healthMalus);
+            _dotCoroutineStartTime = DateTime.Now;
+            _dotCoroutineTimeNeeded = 0.5f;
             yield return new WaitForSeconds(0.5f);
         }
 
@@ -301,6 +317,16 @@ public class Enemy : MonoBehaviour
     public void Pause(bool paused)
     {
         _animator.enabled = paused;
+
+        if (!_enemyPaused)
+        {
+            StopAllCoroutines();
+            _dotCoroutineTimeNeeded -= (float)(DateTime.Now - _dotCoroutineStartTime).TotalSeconds;
+        }
+        else
+            StartCoroutine(TakePersistentDamage());
+
+        _enemyPaused = !_enemyPaused;
     }
     
     
