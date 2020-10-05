@@ -66,7 +66,7 @@ public class MarkDot : MonoBehaviour
     {
         if(!_paused)
         {
-            if (_enemyToTrack.gameObject.activeSelf)
+            if (_enemyToTrack != null || _enemyToTrack.gameObject.activeSelf)
             {
                 if (FollowPoint(_enemyToTrack.transform.position))
                 {
@@ -77,6 +77,7 @@ public class MarkDot : MonoBehaviour
             }
             else
             {
+                _enemyToTrack = null;
                 if (_goalPosition == Vector3.zero)
                     _goalPosition = _enemyToTrack.transform.position;
                 else

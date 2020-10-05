@@ -50,7 +50,7 @@ public class ArcherArrow : MonoBehaviour
     {
         if (!_paused)
         {
-            if (_enemyToTrack.gameObject.activeSelf)
+            if (_enemyToTrack != null || _enemyToTrack.gameObject.activeSelf)
             {
                 if (FollowPoint(_enemyToTrack.transform.position))
                 {
@@ -60,6 +60,7 @@ public class ArcherArrow : MonoBehaviour
             }
             else
             {
+                _enemyToTrack = null;
                 if (_goalPosition == Vector3.zero)
                     _goalPosition = _enemyToTrack.transform.position;
                 else
