@@ -26,6 +26,10 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField]
     private Sprite _desactivatedSprite;
 
+    //Activated sprite if unlocked
+    [SerializeField]
+    private Sprite _activatedSprite;
+
     //Completed sprite
     [SerializeField]
     private Sprite _completedSprite;
@@ -41,6 +45,9 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [Header("Selection")]
     [SerializeField]
     private Image _hoverDisplayer;
+
+    [SerializeField]
+    private Sprite _lockedHover;
 
     [SerializeField]
     private Sprite _unlockedHover;
@@ -96,6 +103,7 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void UnlockLevel()
     {
         _loadedHover = _unlockedHover;
+        _buttonDisplay.sprite = _activatedSprite;
     }
 
 
