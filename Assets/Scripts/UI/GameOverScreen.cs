@@ -41,10 +41,7 @@ public class GameOverScreen : MonoBehaviour
         {
             FindObjectOfType<SaveController>().SaveLevelData(FindObjectOfType<LevelController>().GetLevelIndex(),
                                                              FindObjectOfType<RessourceController>().GetLivesLost(),
-                                                             true,
-                                                             false,
-                                                             false,
-                                                             true);
+                                                             LevelState.COMPLETED);
             _pauseController.PauseGame(_gameScreen);
             _mainText.text = "Win";
         }
