@@ -117,6 +117,7 @@ public class Enemy : MonoBehaviour
 
         _dotApplied = false;
         _dotDisplay.sprite = null;
+        _healthMalus = 0;
         gameObject.SetActive(true);
 
         _speed = _speedMax;
@@ -229,13 +230,15 @@ public class Enemy : MonoBehaviour
     //              newIcon, dot icon on enemy
     public void ApplyDot(float armorThroughMalus, float healthMalus, float duration, Sprite newIcon)
     {
-        _armor -= armorThroughMalus;
-        _healthMalus += healthMalus;
+        _healthMalus = healthMalus;
         _dotDuration = duration;
         _dotDisplay.sprite = newIcon;
 
         if(!_dotApplied)
+        {
             StartCoroutine(TakePersistentDamage());
+            _armor -= armorThroughMalus;
+        }
     }
 
 
@@ -282,12 +285,12 @@ public class Enemy : MonoBehaviour
     //Method called when the enemy health drops below 0
     protected void Die()
     {
-        _enemyPool.AddOneEnemy(gameObject, false, _goldGained);
-
         if (_informationUI)
             DesactivateUI();
 
         StopAllCoroutines();
+
+        _enemyPool.AddOneEnemy(gameObject, false, _goldGained);
     }
 
 
