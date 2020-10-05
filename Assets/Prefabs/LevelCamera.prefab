@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 571994285330439441}
   - component: {fileID: 571994285330439446}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: LevelCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goldCount: 500
-  _lifeCount: 20
+  _lifeCountMax: 20
   _lifeText: {fileID: 0}
   _goldText: {fileID: 0}
   _gameOverScreen: {fileID: 0}
