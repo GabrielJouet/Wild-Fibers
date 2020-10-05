@@ -68,6 +68,7 @@ public class LevelController : MonoBehaviour
     //Called when the game object is initialized
     private void Start()
     {
+        _waveText.text = 0 + " / " + _level.GetWaveCount();
         SpawnEnemyPools();
     }
 
