@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7388368827716972525}
   - component: {fileID: 6967853627392934148}
   - component: {fileID: 1503345609760783017}
-  - component: {fileID: 216978444522273731}
+  - component: {fileID: 7471685019326640457}
   - component: {fileID: 5682064432001086994}
   - component: {fileID: 2416215748048360603}
   m_Layer: 0
@@ -78,7 +78,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8438d5264a9edaa46ba70c6903e74aba, type: 3}
+  m_Sprite: {fileID: 1229087058977180590, guid: 0f33c11a24d6d13498965f8aa91adaf6,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,7 +106,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.46, y: 0.2}
   m_Direction: 1
---- !u!95 &216978444522273731
+--- !u!95 &7471685019326640457
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -115,7 +116,7 @@ Animator:
   m_GameObject: {fileID: 6914183812568595844}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d485fa07d1673514597d9cd89e341f89, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -148,8 +149,7 @@ MonoBehaviour:
   _healthBar: {fileID: 763738226875758226}
   _dotDisplay: {fileID: 9119725614028554439}
   _spriteRenderer: {fileID: 6967853627392934148}
-  _animator: {fileID: 216978444522273731}
---- !u!114 &2416215748048360603
+  _animator: {fileID: 7471685019326640457}
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -517,17 +517,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 2a5d6a7b075ea714ebf2752fa83a1be9,
+      objectReference: {fileID: -1331780560651042014, guid: 0f33c11a24d6d13498965f8aa91adaf6,
         type: 3}
     - target: {fileID: 7090599122710879685, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.32
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 7090599122710879685, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7090599122710879685, guid: c1d79214be3f0e64babfd78791ecb9fd,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.24
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d79214be3f0e64babfd78791ecb9fd, type: 3}
