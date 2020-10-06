@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1503345609760783017}
   - component: {fileID: 7471685019326640457}
   - component: {fileID: 5682064432001086994}
-  - component: {fileID: 2416215748048360603}
+  - component: {fileID: 3095814878159754224}
   m_Layer: 0
   m_Name: Blusim
   m_TagString: Untagged
@@ -150,6 +150,7 @@ MonoBehaviour:
   _dotDisplay: {fileID: 9119725614028554439}
   _spriteRenderer: {fileID: 6967853627392934148}
   _animator: {fileID: 7471685019326640457}
+--- !u!114 &3095814878159754224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
