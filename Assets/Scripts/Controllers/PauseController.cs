@@ -39,7 +39,6 @@ public class PauseController : MonoBehaviour
     //Parameter => The menu related to this pause
     public void PauseGame(GameObject menuToActivate)
     {
-        //TO REWORK
         menuToActivate.SetActive(!_paused);
         _hider.SetActive(!_paused);
         _backgroundSelecter.enabled = _paused;
@@ -49,27 +48,14 @@ public class PauseController : MonoBehaviour
 
         foreach (Enemy current in FindObjectsOfType<Enemy>())
         {
-            if(current.isActiveAndEnabled)
-            {
-                current.Pause(_paused);
-                current.enabled = _paused;
-            }
-            else
-            {
-                current.enabled = _paused;
-                current.Pause(_paused);
-            }
+            current.Pause(_paused);
+            current.enabled = _paused;
         }
 
         foreach (Spawner current in FindObjectsOfType<Spawner>())
             current.PauseSpawn();
 
-        foreach (EnemyPool current in FindObjectsOfType<EnemyPool>())
-            current.enabled = _paused;
-
-        FindObjectOfType<RessourceController>().enabled = _paused;
-
-        FindObjectOfType<LevelController>().enabled = _paused;
+        FindObjectOfType<LevelController>().PauseBehavior();
 
         _paused = !_paused;
     }

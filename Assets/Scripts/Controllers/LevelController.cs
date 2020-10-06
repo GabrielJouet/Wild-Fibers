@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -61,6 +62,16 @@ public class LevelController : MonoBehaviour
 
     //Index for saving wave progress
     private int _waveIndex = 0;
+
+
+    //Does the tower is currently paused? (by Pause Controller)
+    protected bool _paused = false;
+
+    //Coroutine Start Time (used if the tower is paused)
+    protected DateTime _coroutineStartTime;
+
+    //Coroutine time needed to reset
+    protected float _coroutineTimeNeeded = 0f;
 
 
 
@@ -169,6 +180,8 @@ public class LevelController : MonoBehaviour
         {
             _waveIndex++;
 
+            _coroutineStartTime = DateTime.Now;
+            _coroutineTimeNeeded = 3;
             yield return new WaitForSeconds(3);
 
             _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
@@ -178,6 +191,28 @@ public class LevelController : MonoBehaviour
                 current.NotifyPool();
     }
 
+
+    //Method used by pause controller to pause level controller behavior
+    public void PauseBehavior()
+    {
+        if (!_paused)
+        {
+            StopAllCoroutines();
+            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
+        }
+        else
+            StartCoroutine(DelayUnPause());
+
+        _paused = !_paused;
+    }
+
+
+    //Coroutine used to delay unpause after being paused
+    private IEnumerator DelayUnPause()
+    {
+        yield return new WaitForSeconds(_coroutineTimeNeeded);
+        _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
+    }
 
 
     //Getter
