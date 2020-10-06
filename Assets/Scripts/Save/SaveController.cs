@@ -46,9 +46,9 @@ public class SaveController : MonoBehaviour
 		{
 			//First level always unlocked
 			if (i == 0)
-				allSaves.Add(new LevelSave(0, false, false, false, true));
+				allSaves.Add(new LevelSave(0, LevelState.UNLOCKED));
 			else
-				allSaves.Add(new LevelSave(0, false, false, false, false));
+				allSaves.Add(new LevelSave(0, LevelState.LOCKED));
 		}
 
 		_saveFile = new SaveFile(allSaves, 1, 1);
@@ -67,12 +67,12 @@ public class SaveController : MonoBehaviour
 
 
 	//Method used to save level data when changed
-	public void SaveLevelData(int levelIndex, int newLivesLost, bool isCompleted, bool sideLevel, bool challengeLevel, bool unlockNext)
+	public void SaveLevelData(int levelIndex, int newLivesLost, LevelState newState)
 	{
-		_saveFile.UpdateLevelSave(levelIndex, new LevelSave(newLivesLost, isCompleted, sideLevel, challengeLevel, true));
+		_saveFile.UpdateLevelSave(levelIndex, new LevelSave(newLivesLost, newState));
 
-		if(unlockNext && levelIndex + 1 < _numberOfLevel)
-			_saveFile.UpdateLevelSave(levelIndex + 1, new LevelSave(0, false, false, false, true));
+		if(levelIndex + 1 < _numberOfLevel)
+			_saveFile.UpdateLevelSave(levelIndex + 1, new LevelSave(0, LevelState.UNLOCKED));
 
 		SaveData();
 	}

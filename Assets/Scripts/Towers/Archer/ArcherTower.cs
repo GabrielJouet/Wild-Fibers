@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,12 +8,11 @@ using UnityEngine;
  */
 public class ArcherTower : Tower
 {
-    //Does the attack already started?
-    private bool _coroutineStarted = false;
-
-
     //List of availables projectiles (pool)
     private readonly List<ArcherArrow> _availableProjectiles = new List<ArcherArrow>();
+
+    //All arrows without restriction
+    private readonly List<ArcherArrow> _allArrows = new List<ArcherArrow>();
 
 
 
@@ -44,10 +44,16 @@ public class ArcherTower : Tower
                 _availableProjectiles.Remove(_availableProjectiles[0]);
             }
             else
-                Instantiate(_projectileUsed, transform).GetComponent<ArcherArrow>().Initialize(_damage, _armorThrough, _availableEnemies[i], this);
+            {
+                ArcherArrow bufferArrow = Instantiate(_projectileUsed, transform).GetComponent<ArcherArrow>();
+                bufferArrow.Initialize(_damage, _armorThrough, _availableEnemies[i], this);
+                _allArrows.Add(bufferArrow);
+            }
 
         }
 
+        _coroutineStartTime = DateTime.Now;
+        _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;
     }
@@ -60,5 +66,23 @@ public class ArcherTower : Tower
     {
         if (!_availableProjectiles.Contains(arrow))
             _availableProjectiles.Add(arrow);
+    }
+
+
+    //Method used to pause tower behavior when pause button is hit
+    public override void PauseBehavior()
+    {
+        if (!_paused)
+        {
+            StopAllCoroutines();
+            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
+        }
+        else
+            StartCoroutine(UnPauseDelay());
+
+        _paused = !_paused;
+
+        foreach (ArcherArrow current in _allArrows)
+            current.StopBehavior();
     }
 }

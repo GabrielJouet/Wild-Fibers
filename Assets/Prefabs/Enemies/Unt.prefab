@@ -144,6 +144,7 @@ MonoBehaviour:
   _numberOfLivesTaken: 1
   _goldGained: 8
   _flying: 0
+  _damagePosition: {fileID: 7388368827716972525}
   _selector: {fileID: 2085913866704790849}
   _healthBar: {fileID: 7119458455901253684}
   _dotDisplay: {fileID: 3811364187011065786}
@@ -265,6 +266,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7388368827716972525}
     m_Modifications:
+    - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -273,7 +294,7 @@ PrefabInstance:
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
