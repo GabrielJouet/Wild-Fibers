@@ -71,7 +71,9 @@ public class MarkDot : MonoBehaviour
                 if (FollowPoint(_enemyToTrack.GetDamagePosition()))
                 {
                     _enemyToTrack.TakeDamage(_damage, _armorThrough);
-                    _enemyToTrack.ApplyDot(_armorThroughMalus, _damageOverTime, _dotDuration, _dotIcon);
+
+                    if(_enemyToTrack.gameObject.activeSelf)
+                        _enemyToTrack.ApplyDot(_armorThroughMalus, _damageOverTime, _dotDuration, _dotIcon);
                     StopDot();
                 }
             }
