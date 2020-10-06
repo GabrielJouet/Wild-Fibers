@@ -72,7 +72,7 @@ public class SaveController : MonoBehaviour
 		_saveFile.UpdateLevelSave(levelIndex, new LevelSave(newLivesLost, newState));
 
 		if(levelIndex + 1 < _numberOfLevel)
-			_saveFile.UpdateLevelSave(levelIndex + 1, new LevelSave(0, newState));
+			_saveFile.UpdateLevelSave(levelIndex + 1, new LevelSave(0, LevelState.UNLOCKED));
 
 		SaveData();
 	}

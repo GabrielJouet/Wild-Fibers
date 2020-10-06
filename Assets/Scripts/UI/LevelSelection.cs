@@ -101,7 +101,7 @@ public class LevelSelection : MonoBehaviour
         RevertState();
 
         _levelName.text = newParameters.GetName();
-        _levelIndex.text = newParameters.GetNumber().ToString();
+        _levelIndex.text = (newParameters.GetNumber() + 1).ToString();
         _levelPicture.sprite = newParameters.GetPicture();
         _levelDescription.text = newParameters.GetDescription();
 

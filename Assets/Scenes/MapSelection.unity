@@ -1311,6 +1311,12 @@ PrefabInstance:
       propertyPath: _levelSelection
       value: 
       objectReference: {fileID: 1409857561}
+    - target: {fileID: 5623099589317693378, guid: 20ef5d9497745fa4d8ac9f8cd91dc13a,
+        type: 3}
+      propertyPath: _levelParameters
+      value: 
+      objectReference: {fileID: 11400000, guid: b0b6b55dcb0a19e4288fe2b941a54ed4,
+        type: 2}
     - target: {fileID: 5623099589317693382, guid: 20ef5d9497745fa4d8ac9f8cd91dc13a,
         type: 3}
       propertyPath: m_LocalPosition.x
