@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7388368827716972525}
   - component: {fileID: 6967853627392934148}
   - component: {fileID: 1503345609760783017}
+  - component: {fileID: 216978444522273731}
   - component: {fileID: 5682064432001086994}
   - component: {fileID: 2416215748048360603}
   m_Layer: 0
@@ -104,6 +105,25 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.46, y: 0.2}
   m_Direction: 1
+--- !u!95 &216978444522273731
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6914183812568595844}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5682064432001086994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,7 +148,7 @@ MonoBehaviour:
   _healthBar: {fileID: 763738226875758226}
   _dotDisplay: {fileID: 9119725614028554439}
   _spriteRenderer: {fileID: 6967853627392934148}
-  _animator: {fileID: 0}
+  _animator: {fileID: 216978444522273731}
 --- !u!114 &2416215748048360603
 MonoBehaviour:
   m_ObjectHideFlags: 0
