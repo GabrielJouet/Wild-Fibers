@@ -123,10 +123,12 @@ MonoBehaviour:
   _numberOfLivesTaken: 3
   _goldGained: 22
   _flying: 0
+  _damagePosition: {fileID: 7388368827716972525}
   _selector: {fileID: 3926785066840358764}
   _healthBar: {fileID: 763738226875758226}
   _dotDisplay: {fileID: 9119725614028554439}
   _spriteRenderer: {fileID: 6967853627392934148}
+  _animator: {fileID: 0}
 --- !u!114 &2416215748048360603
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 /*
  * Projectile of the archer tower
@@ -52,7 +52,7 @@ public class ArcherArrow : MonoBehaviour
         {
             if (_enemyToTrack != null || _enemyToTrack.gameObject.activeSelf)
             {
-                if (FollowPoint(_enemyToTrack.transform.position))
+                if (FollowPoint(_enemyToTrack.GetDamagePosition()))
                 {
                     _enemyToTrack.TakeDamage(_damage, _armorThrough);
                     StopArrow();
@@ -60,14 +60,14 @@ public class ArcherArrow : MonoBehaviour
             }
             else
             {
-                _enemyToTrack = null;
                 if (_goalPosition == Vector3.zero)
-                    _goalPosition = _enemyToTrack.transform.position;
+                    _goalPosition = _enemyToTrack.GetDamagePosition();
                 else
                 {
                     if (FollowPoint(_goalPosition))
                         StopArrow();
                 }
+                _enemyToTrack = null;
             }
         }
     }

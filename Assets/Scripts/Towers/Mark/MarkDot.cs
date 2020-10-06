@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 /*
  * Class used alongside Mark Tower, it is the mark tower dot projectile
@@ -68,7 +68,7 @@ public class MarkDot : MonoBehaviour
         {
             if (_enemyToTrack != null || _enemyToTrack.gameObject.activeSelf)
             {
-                if (FollowPoint(_enemyToTrack.transform.position))
+                if (FollowPoint(_enemyToTrack.GetDamagePosition()))
                 {
                     _enemyToTrack.TakeDamage(_damage, _armorThrough);
                     _enemyToTrack.ApplyDot(_armorThroughMalus, _damageOverTime, _dotDuration, _dotIcon);
@@ -77,14 +77,14 @@ public class MarkDot : MonoBehaviour
             }
             else
             {
-                _enemyToTrack = null;
                 if (_goalPosition == Vector3.zero)
-                    _goalPosition = _enemyToTrack.transform.position;
+                    _goalPosition = _enemyToTrack.GetDamagePosition();
                 else
                 {
                     if (FollowPoint(_goalPosition))
                         StopDot();
                 }
+                _enemyToTrack = null;
             }
         }
     }

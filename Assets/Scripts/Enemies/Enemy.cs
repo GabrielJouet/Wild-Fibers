@@ -47,6 +47,9 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected bool _flying;
 
+    [SerializeField]
+    protected Transform _damagePosition;
+
 
     //Dot duration in seconds
     protected float _dotDuration;
@@ -353,6 +356,8 @@ public class Enemy : MonoBehaviour
     public float GetPathPercentage() { return _pathIndex / _path.GetPath().Count; }
 
     public bool GetFlying() { return _flying; }
+
+    public Vector2 GetDamagePosition() { return _damagePosition.position; }
 
 
     //Setters
