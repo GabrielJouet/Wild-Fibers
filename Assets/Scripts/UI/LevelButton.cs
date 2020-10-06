@@ -70,15 +70,19 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _hoverDisplayer.gameObject.SetActive(true);
-        _hoverDisplayer.sprite = _loadedHover;
-        _hoverDisplayer.SetNativeSize();
+        if(!_isLocked)
+        {
+            _hoverDisplayer.gameObject.SetActive(true);
+            _hoverDisplayer.sprite = _loadedHover;
+            _hoverDisplayer.SetNativeSize();
+        }
     }
 
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        _hoverDisplayer.gameObject.SetActive(false);
+        if(!_isLocked)
+            _hoverDisplayer.gameObject.SetActive(false);
     }
 
 
@@ -95,7 +99,7 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         _isLocked = true;
         _buttonDisplay.sprite = _desactivatedSprite;
-        _loadedHover = null;
+        _loadedHover = _lockedHover;
     }
 
 
