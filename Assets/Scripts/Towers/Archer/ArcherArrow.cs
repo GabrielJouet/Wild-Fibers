@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 /*
  * Projectile of the archer tower
@@ -82,7 +82,7 @@ public class ArcherArrow : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        return (transform.position - position).magnitude < 0.05f;
+        return (transform.position - position).magnitude < 0.025f;
     }
 
 

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 /*
  * Class used alongside Mark Tower, it is the mark tower dot projectile
@@ -99,7 +99,7 @@ public class MarkDot : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        return (transform.position - position).magnitude < 0.05f;
+        return (transform.position - position).magnitude < 0.025f;
     }
 
 
