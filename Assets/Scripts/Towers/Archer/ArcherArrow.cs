@@ -50,29 +50,36 @@ public class ArcherArrow : MonoBehaviour
     {
         if (!_paused)
         {
-            if (_enemyToTrack != null || _enemyToTrack.gameObject.activeSelf)
-            {
-                if (FollowPoint(_enemyToTrack.GetDamagePosition()))
-                {
-                    _enemyToTrack.TakeDamage(_damage, _armorThrough);
+            if (_enemyToTrack != null)
+                TrackEnemy();
+            else if(FollowPoint(_goalPosition))
                     StopArrow();
-                }
-            }
-            else
-            {
-                if (_goalPosition == Vector3.zero)
-                    _goalPosition = _enemyToTrack.GetDamagePosition();
-                else
-                {
-                    if (FollowPoint(_goalPosition))
-                        StopArrow();
-                }
-                _enemyToTrack = null;
-            }
         }
     }
 
 
+    //Method used to track an enemy moving 
+    private void TrackEnemy()
+    {
+        if (_enemyToTrack.gameObject.activeSelf)
+        {
+            if (FollowPoint(_enemyToTrack.GetDamagePosition()))
+            {
+                _enemyToTrack.TakeDamage(_damage, _armorThrough);
+                StopArrow();
+            }
+        }
+        else
+        {
+            _goalPosition = _enemyToTrack.GetDamagePosition();
+            _enemyToTrack = null;
+        }
+    }
+
+    
+    //Method used to follow a point moving in space
+    //
+    //Parameter => the point position in a vector 3
     private bool FollowPoint(Vector3 position)
     {
         transform.position = Vector3.MoveTowards(transform.position, position, _speed * Time.deltaTime);
