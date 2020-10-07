@@ -52,6 +52,9 @@ public class PauseController : MonoBehaviour
             current.enabled = _paused;
         }
 
+        foreach (TowerSlot current in FindObjectsOfType<TowerSlot>())
+            current.PauseBehavior();
+
         foreach (Spawner current in FindObjectsOfType<Spawner>())
             current.PauseSpawn();
 
