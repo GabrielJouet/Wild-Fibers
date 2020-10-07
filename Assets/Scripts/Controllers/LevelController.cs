@@ -200,7 +200,7 @@ public class LevelController : MonoBehaviour
             StopAllCoroutines();
             _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
         }
-        else
+        else if (_coroutineTimeNeeded > 0f)
             StartCoroutine(DelayUnPause());
 
         _paused = !_paused;
