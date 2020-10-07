@@ -11,6 +11,12 @@ public class ChocSpikes : MonoBehaviour
     [SerializeField]
     private float _timeToStrike;
 
+    [SerializeField]
+    private Animator _animator;
+
+    [SerializeField]
+    private Animator _baseAnimator;
+
 
     //Attack variables
     private float _damage;
@@ -76,29 +82,29 @@ public class ChocSpikes : MonoBehaviour
     //Couroutine used to attack
     private IEnumerator Strike()
     {
-        if (_coroutineTimeNeeded != 0f)
-        {
-            _coroutineStartTime = DateTime.Now;
-            yield return new WaitForSeconds(_coroutineTimeNeeded);
-            _coroutineTimeNeeded = 0f;
-        }
-
         if (!_stopped)
         {
             //Time to attack
             _coroutineStartTime = DateTime.Now;
             _coroutineTimeNeeded = _timeToStrike;
             yield return new WaitForSeconds(_timeToStrike);
-            if (_enemyToTrack)
-                _enemyToTrack.TakeDamage(_damage, _armorThrough);
-            _stopped = true;
+            DamageEnemy();
         }
 
         //Time to stay a little longer, visibility purpose
         _coroutineStartTime = DateTime.Now;
-        _coroutineTimeNeeded = _timeToStrike / 3f;
-        yield return new WaitForSeconds(_timeToStrike / 3f);
+        _coroutineTimeNeeded = _timeToStrike / 2f;
+        yield return new WaitForSeconds(_timeToStrike / 2f);
         StopSpike();
+    }
+
+
+    //Method used to damage enemy and stop spike (used to handle pause correctly too)
+    private void DamageEnemy()
+    {
+        if (_enemyToTrack)
+            _enemyToTrack.TakeDamage(_damage, _armorThrough);
+        _stopped = true;
     }
 
 
@@ -107,6 +113,7 @@ public class ChocSpikes : MonoBehaviour
     {
         gameObject.SetActive(false);
         _parentTower.RecoverSpike(this);
+        _coroutineTimeNeeded = 0;
     }
 
 
@@ -118,9 +125,25 @@ public class ChocSpikes : MonoBehaviour
             StopAllCoroutines();
             _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
         }
-        else
-            StartCoroutine(Strike());
+        else if (_coroutineTimeNeeded > 0f)
+            StartCoroutine(UnPauseDelay());
 
+        _animator.enabled = _paused;
+        _baseAnimator.enabled = _paused;
         _paused = !_paused;
+    }
+
+
+    //Method used when unpausing the game
+    private IEnumerator UnPauseDelay()
+    {
+        _coroutineStartTime = DateTime.Now;
+        yield return new WaitForSeconds(_coroutineTimeNeeded);
+        _coroutineTimeNeeded = 0;
+
+        if (!_stopped)
+            DamageEnemy();
+        else
+            StopSpike();
     }
 }

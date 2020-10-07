@@ -82,6 +82,9 @@ public class ChocTower : Tower
         _paused = !_paused;
 
         foreach (ChocSpikes current in _allSpikes)
-            current.StopBehavior();
+        {
+            if(current.gameObject.activeSelf)
+                current.StopBehavior();
+        }
     }
 }

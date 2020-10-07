@@ -117,6 +117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timeToStrike: 1
+  _animator: {fileID: 7442608901713563836}
+  _baseAnimator: {fileID: 685102490897573727}
 --- !u!1 &4021254742804779215
 GameObject:
   m_ObjectHideFlags: 0

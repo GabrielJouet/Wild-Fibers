@@ -76,6 +76,9 @@ public class BrambleTower : Tower
         _paused = !_paused;
 
         foreach (BrambleShockWave current in _allWaves)
-            current.StopBehavior();
+        {
+            if (current.gameObject.activeSelf)
+                current.StopBehavior();
+        }
     }
 }

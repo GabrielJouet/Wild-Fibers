@@ -83,6 +83,7 @@ public class ArcherTower : Tower
         _paused = !_paused;
 
         foreach (ArcherArrow current in _allArrows)
-            current.StopBehavior();
+            if (current.gameObject.activeSelf)
+                current.StopBehavior();
     }
 }
