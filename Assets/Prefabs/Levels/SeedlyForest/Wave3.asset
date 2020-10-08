@@ -43,22 +43,21 @@ MonoBehaviour:
     _timeBetweenPattern: 1
     _pathIndex: 0
   - _enemyPatterns:
-    - _numberOfEnemies: 3
-      _timeBetweenEnemies: 1.5
-    - _numberOfEnemies: 3
-      _timeBetweenEnemies: 2
     - _numberOfEnemies: 2
-      _timeBetweenEnemies: 1.5
-    - _numberOfEnemies: 1
-      _timeBetweenEnemies: 1.5
+      _timeBetweenEnemies: 3
     - _numberOfEnemies: 1
       _timeBetweenEnemies: 2
     - _numberOfEnemies: 2
-      _timeBetweenEnemies: 1.5
+      _timeBetweenEnemies: 3
+    - _numberOfEnemies: 1
+      _timeBetweenEnemies: 2
+    - _numberOfEnemies: 1
+      _timeBetweenEnemies: 2
+    - _numberOfEnemies: 2
+      _timeBetweenEnemies: 3
     _enemyUsed: {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1,
       type: 3}
     _timeBetweenPattern: 3
     _pathIndex: 0
   _timeBeforeNextWave: 10
-  _waveTime: 40
   _goldBonus: 20
