@@ -144,7 +144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2b12cda0278be1f4d98d482bd15ea86e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -205,6 +205,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainText: {fileID: 5253031741689758237}
   _gameScreen: {fileID: 2886570652521276066}
+  _winScreen: {fileID: 21300000, guid: 2b12cda0278be1f4d98d482bd15ea86e, type: 3}
+  _loseScreen: {fileID: 21300000, guid: 2b12cda0278be1f4d98d482bd15ea86e, type: 3}
   _pauseController: {fileID: 0}
 --- !u!1 &4541158167286608330
 GameObject:

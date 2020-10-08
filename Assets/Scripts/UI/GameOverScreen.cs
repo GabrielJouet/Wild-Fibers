@@ -15,6 +15,12 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField]
     private GameObject _gameScreen;
 
+    [SerializeField]
+    private Sprite _winScreen;
+
+    [SerializeField]
+    private Sprite _loseScreen;
+
 
     //Pause controller used to stop everything
     [SerializeField]
@@ -39,16 +45,18 @@ public class GameOverScreen : MonoBehaviour
 
         if (win)
         {
+            _gameScreen.GetComponent<Image>().sprite = _winScreen;
             FindObjectOfType<SaveController>().SaveLevelData(FindObjectOfType<LevelController>().GetLevelIndex(),
                                                              FindObjectOfType<RessourceController>().GetLivesLost(),
                                                              LevelState.COMPLETED);
-            _pauseController.PauseGame(_gameScreen);
             _mainText.text = "Win";
         }
         else
         {
-            _pauseController.PauseGame(_gameScreen);
+            _gameScreen.GetComponent<Image>().sprite = _loseScreen;
             _mainText.text = "Lose";
         }
+
+        _pauseController.PauseGame(_gameScreen);
     }
 }
