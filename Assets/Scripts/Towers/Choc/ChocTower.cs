@@ -1,24 +1,31 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Choc tower summons spiky roots to attack
+ */
 public class ChocTower : Tower
 {
-    private bool _coroutineStarted = false;
-
-
+    //List of available spikes (pool)
     private readonly List<ChocSpikes> _availableSpikes = new List<ChocSpikes>();
 
+    //All spikes without restriction
+    private readonly List<ChocSpikes> _allSpikes = new List<ChocSpikes>();
 
 
+
+    //Fixed Update method, called times a second
     private void FixedUpdate()
     {
-        if (_availableEnemies.Count > 0 && !_coroutineStarted)
+        if (_availableEnemies.Count > 0 && !_coroutineStarted && !_paused)
             StartCoroutine(SummonSpikes());
     }
 
 
 
+    //Coroutine used to summon spike in order to attack
     private IEnumerator SummonSpikes()
     {
         _coroutineStarted = true;
@@ -36,18 +43,48 @@ public class ChocTower : Tower
                 _availableSpikes.Remove(_availableSpikes[0]);
             }
             else
-                Instantiate(_projectileUsed, transform).GetComponent<ChocSpikes>().Initialize(_damage, _armorThrough, _availableEnemies[i], this);
+            {
+                ChocSpikes bufferSpike = Instantiate(_projectileUsed, transform).GetComponent<ChocSpikes>();
+                bufferSpike.Initialize(_damage, _armorThrough, _availableEnemies[i], this);
+                _allSpikes.Add(bufferSpike);
+            }
 
         }
 
+        _coroutineStartTime = DateTime.Now;
+        _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;
     }
 
 
+    //Method used to recover spike and place it into the pool
+    //
+    //Parameter => spikes, the new desactivated spike
     public void RecoverSpike(ChocSpikes spikes)
     {
         if (!_availableSpikes.Contains(spikes))
             _availableSpikes.Add(spikes);
+    }
+
+
+    //Method used to pause tower behavior when pause button is hit
+    public override void PauseBehavior()
+    {
+        if (!_paused)
+        {
+            StopAllCoroutines();
+            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
+        }
+        else
+            StartCoroutine(UnPauseDelay());
+
+        _paused = !_paused;
+
+        foreach (ChocSpikes current in _allSpikes)
+        {
+            if(current.gameObject.activeSelf)
+                current.StopBehavior();
+        }
     }
 }

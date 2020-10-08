@@ -1,33 +1,46 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Mark tower is a tower that shoots dot (Damage Over Time) projectile
+ */
 public class MarkTower : Tower
 {
     [Header("Dot related")]
+    //Armor through negative effect on enemy
     [SerializeField]
     private float _armorThroughMalus;
+
+    //How much damage the dot will do?
     [SerializeField]
     private float _damageOverTime;
+
+    //Duration of the dot in seconds
     [SerializeField]
     private float _dotDuration;
 
 
-    private bool _coroutineStarted = false;
-
-
+    //List of available marks (pool)
     private readonly List<MarkDot> _availableMarks = new List<MarkDot>();
 
+    //All dots without restriction
+    private readonly List<MarkDot> _allMarks = new List<MarkDot>();
 
 
+
+    //Fixed Update method, called  times a second
     private void FixedUpdate()
     {
-        if (_availableEnemies.Count > 0 && !_coroutineStarted)
+        //If enemies are in range and we can start shooting, we shoot
+        if (_availableEnemies.Count > 0 && !_coroutineStarted && !_paused)
             StartCoroutine(SummonMarks());
     }
 
 
 
+    //Coroutine used to summon dot projectiles
     private IEnumerator SummonMarks()
     {
         _coroutineStarted = true;
@@ -46,18 +59,44 @@ public class MarkTower : Tower
                 _availableMarks.Remove(_availableMarks[0]);
             }
             else
-                Instantiate(_projectileUsed, transform).GetComponent<MarkDot>().Initialize(_damage, _armorThrough, _availableEnemies[i], this, _armorThroughMalus, _damageOverTime, _dotDuration);
-
+            {
+                MarkDot bufferDot = Instantiate(_projectileUsed, transform).GetComponent<MarkDot>();
+                bufferDot.Initialize(_damage, _armorThrough, _availableEnemies[i], this, _armorThroughMalus, _damageOverTime, _dotDuration);
+                _allMarks.Add(bufferDot);
+            }
         }
 
+        _coroutineStartTime = DateTime.Now;
+        _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;
     }
 
 
+    //Method used to recover dot and add it to the pool
+    //
+    //Parameter => dot, the new projectile to add to the pool
     public void RecoverDot(MarkDot dot)
     {
         if (!_availableMarks.Contains(dot))
             _availableMarks.Add(dot);
+    }
+
+
+    //Method used to pause tower behavior when pause button is hit
+    public override void PauseBehavior()
+    {
+        if (!_paused)
+        {
+            StopAllCoroutines();
+            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
+        }
+        else
+            StartCoroutine(UnPauseDelay());
+
+        _paused = !_paused;
+
+        foreach (MarkDot current in _allMarks)
+            current.StopBehavior();
     }
 }

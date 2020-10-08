@@ -1,33 +1,48 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Class used to create a curved line
+ */
 public class BezierCurve : MonoBehaviour
 {
     [Header("Points")]
+    //Start point for bezier curve
     [SerializeField]
     private Transform _startPoint;
+
+    //Parameter start point for curve
     [SerializeField]
     private Transform _parameterStartPoint;
+
+    //End point for bezier curve
     [SerializeField]
     private Transform _endPoint;
+
+    //Parameter end point for curve
     [SerializeField]
     private Transform _parameterEndPoint;
 
 
     [Header("Precision")]
+    //Precision of the curve
     [SerializeField]
     private int _numberOfIterations;
 
 
+    //List of position in each curve
     private readonly List<Vector3> _curve = new List<Vector3>();
 
 
 
+    //Awake method called when the object is awaked (before Start)
     private void Awake()
     {
         ComputePath();
     }
 
+
+    //OnDrawGizmos method used to draw in Editor
     /*
     private void OnDrawGizmos()
     {
@@ -58,6 +73,7 @@ public class BezierCurve : MonoBehaviour
     */
 
 
+    //Method used to create a bezier curve with parameters points
     private void ComputePath()
     {
         Vector3 A = _startPoint.position;
@@ -82,5 +98,6 @@ public class BezierCurve : MonoBehaviour
     }
 
 
+    //Getter
     public List<Vector3> GetCurve() { return _curve; }
 }

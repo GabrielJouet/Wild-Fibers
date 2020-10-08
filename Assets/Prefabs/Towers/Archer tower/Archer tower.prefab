@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 7b35af33f62aeca4c9ab120d37761d3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5cc98120afa167f418a5dbb387436012, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -115,16 +115,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Archer
-  _price: 150
-  _icon: {fileID: 21300000, guid: 7b35af33f62aeca4c9ab120d37761d3d, type: 3}
+  _price: 110
+  _icon: {fileID: 21300000, guid: 5ed3a4f20aaaeac44ae8fdc3c9d41487, type: 3}
   _timeBetweenShots: 1
-  _damage: 7
-  _armorThrough: 15
+  _damage: 12
+  _armorThrough: 5
   _numberOfShots: 1
   _projectileUsed: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
     type: 3}
-  _range: 2
+  _range: 1.5
   _collider: {fileID: 756056050505896787}
+  _canHitFlying: 1
   _transformRange: {fileID: 7277304674411692777}
   _selector: {fileID: 1918773186726736401}
 --- !u!1001 &2932725765533061462
