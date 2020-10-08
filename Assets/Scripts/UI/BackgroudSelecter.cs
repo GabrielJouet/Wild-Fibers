@@ -283,6 +283,8 @@ public class BackgroudSelecter : MonoBehaviour
         _towerInformationPanel.SetActive(true);
 
         _towerIcon.sprite = newTowerIcon;
+        _towerIcon.SetNativeSize();
+        _towerIcon.rectTransform.sizeDelta *= 2.4f;
         _towerName.text = newTowerName;
         _damageText.text = newDamageValue.ToString();
         _breakArmorText.text = newBreakArmorValue + " % ";
