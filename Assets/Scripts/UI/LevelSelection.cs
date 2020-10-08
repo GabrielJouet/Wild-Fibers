@@ -12,10 +12,6 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private Text _levelName;
 
-    //Text component handling level number
-    [SerializeField]
-    private Text _levelIndex;
-
     //Image component handling level thumbnail
     [SerializeField]
     private Image _levelPicture;

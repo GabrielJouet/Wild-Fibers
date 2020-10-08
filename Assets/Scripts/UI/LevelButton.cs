@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -26,6 +26,10 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField]
     private Sprite _desactivatedSprite;
 
+    //Activated sprite if unlocked
+    [SerializeField]
+    private Sprite _activatedSprite;
+
     //Completed sprite
     [SerializeField]
     private Sprite _completedSprite;
@@ -41,6 +45,9 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [Header("Selection")]
     [SerializeField]
     private Image _hoverDisplayer;
+
+    [SerializeField]
+    private Sprite _lockedHover;
 
     [SerializeField]
     private Sprite _unlockedHover;
@@ -63,9 +70,12 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _hoverDisplayer.gameObject.SetActive(true);
-        _hoverDisplayer.sprite = _loadedHover;
-        _hoverDisplayer.SetNativeSize();
+        if(!_isLocked)
+        {
+            _hoverDisplayer.gameObject.SetActive(true);
+            _hoverDisplayer.sprite = _loadedHover;
+            _hoverDisplayer.SetNativeSize();
+        }
     }
 
 
@@ -84,18 +94,18 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
 
     //Method used when the level is not yet unlocked
+    public void UnlockLevel()
+    {
+        _loadedHover = _unlockedHover;
+        _buttonDisplay.sprite = _activatedSprite;
+    }
+    
+    
     public void LockLevel()
     {
         _isLocked = true;
         _buttonDisplay.sprite = _desactivatedSprite;
         _loadedHover = null;
-    }
-
-
-    //Method used when the level is not yet unlocked
-    public void UnlockLevel()
-    {
-        _loadedHover = _unlockedHover;
     }
 
 
