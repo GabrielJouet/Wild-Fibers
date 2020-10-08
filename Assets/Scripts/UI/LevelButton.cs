@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -81,8 +81,7 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if(!_isLocked)
-            _hoverDisplayer.gameObject.SetActive(false);
+        _hoverDisplayer.gameObject.SetActive(false);
     }
 
 
@@ -95,19 +94,18 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
 
     //Method used when the level is not yet unlocked
-    public void LockLevel()
-    {
-        _isLocked = true;
-        _buttonDisplay.sprite = _desactivatedSprite;
-        _loadedHover = _lockedHover;
-    }
-
-
-    //Method used when the level is not yet unlocked
     public void UnlockLevel()
     {
         _loadedHover = _unlockedHover;
         _buttonDisplay.sprite = _activatedSprite;
+    }
+    
+    
+    public void LockLevel()
+    {
+        _isLocked = true;
+        _buttonDisplay.sprite = _desactivatedSprite;
+        _loadedHover = null;
     }
 
 

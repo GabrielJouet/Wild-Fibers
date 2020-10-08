@@ -144,6 +144,7 @@ MonoBehaviour:
   _numberOfLivesTaken: 1
   _goldGained: 8
   _flying: 0
+  _damagePosition: {fileID: 7388368827716972525}
   _selector: {fileID: 2085913866704790849}
   _healthBar: {fileID: 7119458455901253684}
   _dotDisplay: {fileID: 3811364187011065786}

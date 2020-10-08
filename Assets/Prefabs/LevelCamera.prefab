@@ -15,9 +15,8 @@ GameObject:
   - component: {fileID: 571994285330439440}
   - component: {fileID: 571994285330439443}
   - component: {fileID: 571994285330439441}
-  - component: {fileID: 571994285330439446}
   m_Layer: 0
-  m_Name: Camera
+  m_Name: LevelCamera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _goldCount: 500
-  _lifeCount: 20
+  _lifeCountMax: 20
   _lifeText: {fileID: 0}
   _goldText: {fileID: 0}
   _gameOverScreen: {fileID: 0}
@@ -165,18 +164,3 @@ MonoBehaviour:
   - {fileID: 8854172079906978944, guid: 7e5fc179ffd633e4a950e34a2229c96c, type: 3}
   - {fileID: -8003392099937102339, guid: 37e81790ef7ed3343951f47742770ac0, type: 3}
   - {fileID: 95656636279286502, guid: 260e56dedf64a1e4db4b79d96e4a2d01, type: 3}
---- !u!114 &571994285330439446
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571994285330439662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35b823e1df884f74f8dc8d8f962e3903, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _mainCamera: {fileID: 571994285330439661}
-  _widht: 1920
-  _height: 1080

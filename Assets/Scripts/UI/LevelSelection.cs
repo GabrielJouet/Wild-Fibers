@@ -66,18 +66,23 @@ public class LevelSelection : MonoBehaviour
 
         for (int i = 0; i < levelSaves.Count; i++)
         {
-            if (!levelSaves[i].GetIsUnlocked())
-                _levelButtons[i].LockLevel();
-            else
+            switch (levelSaves[i].GetState())
             {
-                if (levelSaves[i].GetIsCompleted())
-                    _levelButtons[i].SetCompleted();
-                else if (levelSaves[i].GetSideLevelCompleted())
-                    _levelButtons[i].SetSided();
-                else if (levelSaves[i].GetChallengeLevelCompleted())
-                    _levelButtons[i].SetChallenged();
-                else
+                case LevelState.LOCKED:
+                    _levelButtons[i].LockLevel();
+                    break;
+                case LevelState.UNLOCKED:
                     _levelButtons[i].UnlockLevel();
+                    break;
+                case LevelState.COMPLETED:
+                    _levelButtons[i].SetCompleted();
+                    break;
+                case LevelState.SIDED:
+                    _levelButtons[i].SetSided();
+                    break;
+                case LevelState.CHALLENGED:
+                    _levelButtons[i].SetChallenged();
+                    break;
             }
         }
     }
@@ -92,6 +97,7 @@ public class LevelSelection : MonoBehaviour
         RevertState();
 
         _levelName.text = newParameters.GetName();
+        _levelIndex.text = (newParameters.GetNumber() + 1).ToString();
         _levelPicture.sprite = newParameters.GetPicture();
         _levelDescription.text = newParameters.GetDescription();
 

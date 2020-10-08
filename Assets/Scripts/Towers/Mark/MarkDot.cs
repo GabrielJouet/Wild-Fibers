@@ -33,6 +33,10 @@ public class MarkDot : MonoBehaviour
     private Vector3 _goalPosition;
 
 
+    //Does the projectile is paused? (by PauseController)
+    private bool _paused = false;
+
+
 
     //Method used to initialize class (like a constructor)
     //
@@ -60,28 +64,42 @@ public class MarkDot : MonoBehaviour
     //Update method, called every frame
     private void Update()
     {
+        if(!_paused)
+        {
+            if (_enemyToTrack != null)
+                TrackEnemy();
+            else if(FollowPoint(_goalPosition))
+                    StopDot();
+        }
+    }
+
+
+    //Method used to track an enemy moving 
+    private void TrackEnemy()
+    {
         if (_enemyToTrack.gameObject.activeSelf)
         {
-            if (FollowPoint(_enemyToTrack.transform.position))
+            if (FollowPoint(_enemyToTrack.GetDamagePosition()))
             {
                 _enemyToTrack.TakeDamage(_damage, _armorThrough);
-                _enemyToTrack.ApplyDot(_armorThroughMalus, _damageOverTime, _dotDuration, _dotIcon);
+
+                if (_enemyToTrack.gameObject.activeSelf)
+                    _enemyToTrack.ApplyDot(_armorThroughMalus, _damageOverTime, _dotDuration, _dotIcon);
+
                 StopDot();
             }
         }
         else
         {
-            if (_goalPosition == Vector3.zero)
-                _goalPosition = _enemyToTrack.transform.position;
-            else
-            {
-                if (FollowPoint(_goalPosition))
-                    StopDot();
-            }
+            _goalPosition = _enemyToTrack.GetDamagePosition();
+            _enemyToTrack = null;
         }
     }
 
 
+    //Method used to follow a point moving in space
+    //
+    //Parameter => the point position in a vector 3
     private bool FollowPoint(Vector3 position)
     {
         transform.position = Vector3.MoveTowards(transform.position, position, _speed * Time.deltaTime);
@@ -91,7 +109,7 @@ public class MarkDot : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
-        return (transform.position - position).magnitude < 0.05f;
+        return (transform.position - position).magnitude < 0.025f;
     }
 
 
@@ -100,5 +118,12 @@ public class MarkDot : MonoBehaviour
     {
         gameObject.SetActive(false);
         _parentTower.RecoverDot(this);
+    }
+
+
+    //Method used to stop projectile behavior
+    public void StopBehavior()
+    {
+        _paused = !_paused;
     }
 }

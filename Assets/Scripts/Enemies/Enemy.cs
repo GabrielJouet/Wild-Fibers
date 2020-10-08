@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -45,6 +46,9 @@ public class Enemy : MonoBehaviour
     //Does the enemy flies?
     [SerializeField]
     protected bool _flying;
+
+    [SerializeField]
+    protected Transform _damagePosition;
 
 
     //Dot duration in seconds
@@ -97,6 +101,13 @@ public class Enemy : MonoBehaviour
     protected bool _moving = false;
 
 
+    private DateTime _dotCoroutineStartTime;
+
+    private float _dotCoroutineTimeNeeded = 0f;
+
+    private bool _enemyPaused = false;
+
+
 
     //Method used instead of using start (kinda a constructor)
     //
@@ -109,6 +120,7 @@ public class Enemy : MonoBehaviour
 
         _dotApplied = false;
         _dotDisplay.sprite = null;
+        _healthMalus = 0;
         gameObject.SetActive(true);
 
         _speed = _speedMax;
@@ -221,13 +233,15 @@ public class Enemy : MonoBehaviour
     //              newIcon, dot icon on enemy
     public void ApplyDot(float armorThroughMalus, float healthMalus, float duration, Sprite newIcon)
     {
-        _armor -= armorThroughMalus;
-        _healthMalus += healthMalus;
+        _healthMalus = healthMalus;
         _dotDuration = duration;
         _dotDisplay.sprite = newIcon;
 
         if(!_dotApplied)
+        {
             StartCoroutine(TakePersistentDamage());
+            _armor -= armorThroughMalus;
+        }
     }
 
 
@@ -235,11 +249,19 @@ public class Enemy : MonoBehaviour
     protected IEnumerator TakePersistentDamage()
     {
         _dotApplied = true;
+        if (_dotCoroutineTimeNeeded != 0)
+        {
+            _dotCoroutineStartTime = DateTime.Now;
+            yield return new WaitForSeconds(_dotCoroutineTimeNeeded);
+            _dotCoroutineTimeNeeded = 0;
+        }
 
         while(_dotDuration >= 0)
         {
             _dotDuration -= 0.5f;
             TakeDamage(_healthMalus);
+            _dotCoroutineStartTime = DateTime.Now;
+            _dotCoroutineTimeNeeded = 0.5f;
             yield return new WaitForSeconds(0.5f);
         }
 
@@ -266,12 +288,12 @@ public class Enemy : MonoBehaviour
     //Method called when the enemy health drops below 0
     protected void Die()
     {
-        _enemyPool.AddOneEnemy(gameObject, false, _goldGained);
-
         if (_informationUI)
             DesactivateUI();
 
         StopAllCoroutines();
+
+        _enemyPool.AddOneEnemy(gameObject, false, _goldGained);
     }
 
 
@@ -301,6 +323,16 @@ public class Enemy : MonoBehaviour
     public void Pause(bool paused)
     {
         _animator.enabled = paused;
+
+        if (!_enemyPaused)
+        {
+            StopAllCoroutines();
+            _dotCoroutineTimeNeeded -= (float)(DateTime.Now - _dotCoroutineStartTime).TotalSeconds;
+        }
+        else
+            StartCoroutine(TakePersistentDamage());
+
+        _enemyPaused = !_enemyPaused;
     }
     
     
@@ -324,6 +356,8 @@ public class Enemy : MonoBehaviour
     public float GetPathPercentage() { return _pathIndex / _path.GetPath().Count; }
 
     public bool GetFlying() { return _flying; }
+
+    public Vector2 GetDamagePosition() { return _damagePosition.position; }
 
 
     //Setters

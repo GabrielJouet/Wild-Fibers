@@ -9,28 +9,15 @@ public class LevelSave
     //Number of lives lost on this level
     private readonly int _livesLostCount;
 
-    //Does the level is finished?
-    private readonly bool _isCompleted;
-
-    //Does the side level is finished?
-    private readonly bool _sideLevelCompleted;
-
-    //Does the challenge level is finished?
-    private readonly bool _challengeLevelCompleted;
-
-    //Does this level is unlocked?
-    private readonly bool _isUnlocked;
+    private readonly LevelState _levelState;
 
 
 
     //Constructor
-    public LevelSave(int newLivesLost, bool isCompleted, bool sideLevel, bool challengeLevel, bool isUnlocked)
+    public LevelSave(int newLivesLost, LevelState newLevelState)
     {
         _livesLostCount = newLivesLost;
-        _isCompleted = isCompleted;
-        _sideLevelCompleted = sideLevel;
-        _challengeLevelCompleted = challengeLevel;
-        _isUnlocked = isUnlocked;
+        _levelState = newLevelState;
     }
 
 
@@ -38,11 +25,5 @@ public class LevelSave
     //Getters
     public int GetLivesLostCount() { return _livesLostCount; }
 
-    public bool GetIsCompleted() { return _isCompleted; }
-
-    public bool GetSideLevelCompleted() { return _sideLevelCompleted; }
-
-    public bool GetChallengeLevelCompleted() { return _challengeLevelCompleted; }
-
-    public bool GetIsUnlocked() { return _isUnlocked; }
+    public LevelState GetState() { return _levelState; }
 }
