@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -28,9 +27,7 @@ public class Spawner : MonoBehaviour
     //Enemy pool of the current wave
     private EnemyPool _enemyPool;
 
-
-    //Available paths for enemies
-    private List<Path> _paths = new List<Path>();
+    private RandomPath _randomPath;
 
 
     //Does every enemy is dead?
@@ -49,16 +46,15 @@ public class Spawner : MonoBehaviour
     //
     //Parameters => newGroup, the new group of enemy for this wave
     //              newLevelController, the level controller of the current level
-    //              newPaths, available paths on this level
     //              newEnemyPool, enemy pool to retrieve already instantiated enemies
-    public void SetNewGroup(EnemyGroup newGroup, LevelController newLevelController, List<Path> newPaths, EnemyPool newEnemyPool)
+    public void SetNewGroup(RandomPath newRandomPath, EnemyGroup newGroup, LevelController newLevelController, EnemyPool newEnemyPool)
     {
         //We reset and set variables
         _levelController = newLevelController;
         _enemyPool = newEnemyPool;
 
         _enemyGroup = newGroup;
-        _paths = newPaths;
+        _randomPath = newRandomPath;
 
         _waveFinished = false;
 
@@ -89,7 +85,7 @@ public class Spawner : MonoBehaviour
             if (_enemyIndex < _enemyGroup.GetEnemyPattern(_patternIndex).GetNumberOfEnemies())
             {
                 _enemyIndex++;
-                _enemyPool.GetOneEnemy().GetComponent<Enemy>().Initialize(_paths[_enemyGroup.GetPathIndex()], _enemyPool);
+                _enemyPool.GetOneEnemy().GetComponent<Enemy>().Initialize(_randomPath.CalculateRandomPath(), _enemyPool);
 
                 _coroutineStartTime = DateTime.Now;
                 _coroutineTimeNeeded = _enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies();

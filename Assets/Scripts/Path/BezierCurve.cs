@@ -42,8 +42,8 @@ public class BezierCurve : MonoBehaviour
     }
 
 
-    //OnDrawGizmos method used to draw in Editor
     /*
+    //OnDrawGizmos method used to draw in Editor
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
