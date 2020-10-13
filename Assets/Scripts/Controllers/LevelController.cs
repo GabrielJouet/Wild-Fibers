@@ -42,12 +42,6 @@ public class LevelController : MonoBehaviour
     private readonly List<EnemyPool> _enemyPools = new List<EnemyPool>();
 
 
-    [Header("Available Paths")]
-    //Available Bezier paths for enemies
-    [SerializeField]
-    private List<Path> _availablePaths;
-
-
     [Header("Components")]
     //Ressource controller that controls lives and money
     [SerializeField]
@@ -58,6 +52,8 @@ public class LevelController : MonoBehaviour
     //Pause controller used to handle pause and stuff
     [SerializeField]
     private PauseController _pauseController;
+    [SerializeField]
+    private List<RandomPath> _availablePath;
 
 
     //Index for saving wave progress
@@ -131,7 +127,7 @@ public class LevelController : MonoBehaviour
                 if (current.GetPrefab() == _level.GetWave(_waveIndex).GetEnemyGroup(i).GetEnemyUsed().gameObject)
                     bufferPool = current;
             }
-            _spawners[i].SetNewGroup(_level.GetWave(_waveIndex).GetEnemyGroup(i), this, _availablePaths, bufferPool);
+            _spawners[i].SetNewGroup(_availablePath[_level.GetWave(_waveIndex).GetEnemyGroup(i).GetPathIndex()], _level.GetWave(_waveIndex).GetEnemyGroup(i), this, bufferPool);
         }
     }
 
