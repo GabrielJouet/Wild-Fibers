@@ -49,9 +49,6 @@ public class TowerSlot : MonoBehaviour
     //Coroutine time needed to reset
     private float _coroutineTimeNeeded = 0f;
 
-    //Does the attack already started?
-    private bool _coroutineStarted = false;
-
 
     private Tower _chosenTower;
 
