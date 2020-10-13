@@ -53,7 +53,7 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     private PauseController _pauseController;
     [SerializeField]
-    private RandomPath _randomPath;
+    private List<RandomPath> _availablePath;
 
 
     //Index for saving wave progress
@@ -127,7 +127,7 @@ public class LevelController : MonoBehaviour
                 if (current.GetPrefab() == _level.GetWave(_waveIndex).GetEnemyGroup(i).GetEnemyUsed().gameObject)
                     bufferPool = current;
             }
-            _spawners[i].SetNewGroup(_randomPath, _level.GetWave(_waveIndex).GetEnemyGroup(i), this, bufferPool);
+            _spawners[i].SetNewGroup(_availablePath[_level.GetWave(_waveIndex).GetEnemyGroup(i).GetPathIndex()], _level.GetWave(_waveIndex).GetEnemyGroup(i), this, bufferPool);
         }
     }
 
