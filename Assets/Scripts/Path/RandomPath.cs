@@ -3,15 +3,22 @@ using UnityEngine;
 
 public class RandomPath : MonoBehaviour
 {
+    [Header("Bezier Curves")]
     [SerializeField]
     private List<BezierCurve> _firstBezierCurves;
 
     [SerializeField]
     private List<BezierCurve> _secondBezierCurves;
 
+    [Header("Generation variables")]
+    [SerializeField]
+    private int _numberOfAlreadyGeneratedPaths;
+
 
     private readonly Path _firstPath = new Path();
     private readonly Path _secondPath = new Path();
+
+    private readonly List<Path> _alreadyGeneratedPaths = new List<Path>();
 
 
     //Start method called when the object is started
@@ -35,14 +42,20 @@ public class RandomPath : MonoBehaviour
 
     public Path CalculateRandomPath()
     {
-        float ratio = Random.Range(0, 100f);
-        Path newPath = new Path();
-        List<Vector3> firstPathBuffer = _firstPath.GetPath();
-        List<Vector3> secondPathBuffer = _secondPath.GetPath();
+        if(_alreadyGeneratedPaths.Count < _numberOfAlreadyGeneratedPaths)
+        {
+            float ratio = Random.Range(0, 100f);
+            Path newPath = new Path();
+            List<Vector3> firstPathBuffer = _firstPath.GetPath();
+            List<Vector3> secondPathBuffer = _secondPath.GetPath();
 
-        for (int i = 0; i < _firstPath.GetPathLength(); i ++)
-            newPath.AddPoint((ratio * firstPathBuffer[i] + (100f - ratio) * secondPathBuffer[i]) / 100f);
+            for (int i = 0; i < _firstPath.GetPathLength(); i++)
+                newPath.AddPoint((ratio * firstPathBuffer[i] + (100f - ratio) * secondPathBuffer[i]) / 100f);
 
-        return newPath;
+            _alreadyGeneratedPaths.Add(newPath);
+            return newPath;
+        }
+        else
+            return _alreadyGeneratedPaths[Random.Range(0, _alreadyGeneratedPaths.Count)];
     }
 }
