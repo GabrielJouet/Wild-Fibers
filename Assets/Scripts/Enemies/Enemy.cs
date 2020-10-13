@@ -339,7 +339,7 @@ public class Enemy : MonoBehaviour
         {
             if (_dotApplied)
                 StartCoroutine(UnPauseDotDelay());
-            else if (_isSlowDown)
+            if (_isSlowDown)
                 StartCoroutine(UnPauseSlowDelay());
         }
         _enemyPaused = !_enemyPaused;
