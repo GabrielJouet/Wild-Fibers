@@ -17,21 +17,18 @@ public class Enemy : MonoBehaviour
     //Health max
     [SerializeField]
     protected float _healthMax;
-
     //Current health
     protected float _health;
 
     //Armor max
     [SerializeField]
     protected float _armorMax;
-
     //Current armor
     protected float _armor;
 
     //Speed max
     [SerializeField]
     protected float _speedMax;
-
     //Current speed
     protected float _speed;
 
@@ -56,6 +53,11 @@ public class Enemy : MonoBehaviour
 
     //Dot damage per half second
     protected float _healthMalus = 0;
+
+    //Does the enemy is moving?
+    protected bool _moving = false;
+
+    protected bool _isSlowDown = false;
 
 
     [Header("Display")]
@@ -97,15 +99,15 @@ public class Enemy : MonoBehaviour
     protected BackgroudSelecter _informationUI;
 
 
-    //Does the enemy is moving?
-    protected bool _moving = false;
-
-
     private DateTime _dotCoroutineStartTime;
 
     private float _dotCoroutineTimeNeeded = 0f;
 
     private bool _enemyPaused = false;
+
+    private DateTime _slowDownCoroutineStartTime;
+
+    private float _slowDownCoroutineTimeNeeded = 0f;
 
 
 
@@ -120,6 +122,8 @@ public class Enemy : MonoBehaviour
 
         _dotApplied = false;
         _dotDisplay.sprite = null;
+        _isSlowDown = false;
+
         _healthMalus = 0;
         gameObject.SetActive(true);
 
@@ -219,9 +223,24 @@ public class Enemy : MonoBehaviour
 
 
     //Method used to apply a slow down on enemies
-    public void ApplySlowDown(/*TO DO*/)
+    public void ApplySlowDown(float slowDownRatio, float slowDownTime)
     {
-        //TO DO
+        if(!_isSlowDown)
+        {
+            _isSlowDown = true;
+            StartCoroutine(ResetSlowDown(slowDownTime));
+            _speed = _speedMax * (100 - slowDownRatio) / 100f;
+        }
+    }
+
+
+    protected IEnumerator ResetSlowDown(float slowDownTime)
+    {
+        _slowDownCoroutineStartTime = DateTime.Now;
+        _slowDownCoroutineTimeNeeded = 0;
+        yield return new WaitForSeconds(slowDownTime);
+        _isSlowDown = false;
+        _speed = _speedMax;
     }
 
 
@@ -249,13 +268,6 @@ public class Enemy : MonoBehaviour
     protected IEnumerator TakePersistentDamage()
     {
         _dotApplied = true;
-        if (_dotCoroutineTimeNeeded != 0)
-        {
-            _dotCoroutineStartTime = DateTime.Now;
-            yield return new WaitForSeconds(_dotCoroutineTimeNeeded);
-            _dotCoroutineTimeNeeded = 0;
-        }
-
         while(_dotDuration >= 0)
         {
             _dotDuration -= 0.5f;
@@ -268,13 +280,6 @@ public class Enemy : MonoBehaviour
         _dotDisplay.sprite = null;
         _dotApplied = false;
         _armor = _armorMax;
-    }
-
-
-    //Method used to apply a mark on enemy
-    public void ApplyMark(/*TO DO*/)
-    {
-        //TO DO
     }
 
 
@@ -330,12 +335,39 @@ public class Enemy : MonoBehaviour
             _dotCoroutineTimeNeeded -= (float)(DateTime.Now - _dotCoroutineStartTime).TotalSeconds;
         }
         else
-            StartCoroutine(TakePersistentDamage());
-
+        {
+            if (_dotApplied)
+                StartCoroutine(UnPauseDotDelay());
+            else if (_isSlowDown)
+                StartCoroutine(UnPauseSlowDelay());
+        }
         _enemyPaused = !_enemyPaused;
     }
-    
-    
+
+
+    //Method to delay action when pause is unpaused
+    protected IEnumerator UnPauseDotDelay()
+    {
+        _dotCoroutineStartTime = DateTime.Now;
+        yield return new WaitForSeconds(_dotCoroutineTimeNeeded);
+        _dotDisplay.sprite = null;
+        _dotApplied = false;
+        _armor = _armorMax;
+        _dotCoroutineTimeNeeded = 0f;
+    }
+
+
+    //Method to delay action when pause is unpaused
+    protected IEnumerator UnPauseSlowDelay()
+    {
+        _slowDownCoroutineStartTime = DateTime.Now;
+        yield return new WaitForSeconds(_slowDownCoroutineTimeNeeded);
+        _isSlowDown = false;
+        _speed = _speedMax;
+        _dotCoroutineTimeNeeded = 0f;
+    }
+
+
     //Getters
     public string GetName() { return _displayName; }
 
