@@ -333,8 +333,9 @@ public class Enemy : MonoBehaviour
         {
             StopAllCoroutines();
             _dotCoroutineTimeNeeded -= (float)(DateTime.Now - _dotCoroutineStartTime).TotalSeconds;
+            _slowDownCoroutineTimeNeeded -= (float)(DateTime.Now - _slowDownCoroutineStartTime).TotalSeconds;
         }
-        else
+        else if(_slowDownCoroutineTimeNeeded != 0 || _dotCoroutineTimeNeeded != 0)
         {
             if (_dotApplied)
                 StartCoroutine(UnPauseDotDelay());
