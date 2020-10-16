@@ -115,15 +115,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Mark
-  _price: 120
+  _price: 160
   _icon: {fileID: 21300000, guid: 9e800b1a3b271c04a956ee99c67b88e7, type: 3}
-  _timeBetweenShots: 2.5
-  _damage: 4
+  _timeBetweenShots: 2
+  _damage: 3
   _armorThrough: 0
-  _numberOfShots: 2
+  _numberOfShots: 3
   _projectileUsed: {fileID: 6202831532110672975, guid: 6d1ab6e57f0408b46b61c99a97400f16,
     type: 3}
-  _range: 1.75
+  _range: 2
   _collider: {fileID: 3295141800489100807}
   _canHitFlying: 1
   _transformRange: {fileID: 2624728119978696838}

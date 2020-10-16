@@ -115,9 +115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Bramble
-  _price: 140
+  _price: 175
   _icon: {fileID: 21300000, guid: c1fa3d8df2f3f0d45b2ad70274838675, type: 3}
-  _timeBetweenShots: 3
+  _timeBetweenShots: 5
   _damage: 10
   _armorThrough: 0
   _numberOfShots: 1
