@@ -50,7 +50,7 @@ public class ChocSpikes : MonoBehaviour
     public void Initialize(float newDamage, float newArmorThrough, Enemy newEnemy, ChocTower newParent)
     {
         _stopped = false;
-        transform.position = newEnemy.transform.position;
+        transform.position = newEnemy.GetDamagePosition();
         _enemyToTrack = newEnemy;
         _damage = newDamage;
         _parentTower = newParent;
@@ -68,7 +68,7 @@ public class ChocSpikes : MonoBehaviour
             if (_enemyToTrack.gameObject.activeSelf)
             {
                 if (!_stopped)
-                    transform.position = _enemyToTrack.transform.position;
+                    transform.position = _enemyToTrack.GetDamagePosition();
             }
             else
             {
