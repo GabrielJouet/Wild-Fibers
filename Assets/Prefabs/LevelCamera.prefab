@@ -110,11 +110,10 @@ MonoBehaviour:
   - {fileID: 5682064432001086994, guid: 3a10d5fb2f081234aba26b426ea831c4, type: 3}
   _enemyPoolPrefab: {fileID: 126690080380749959, guid: 5290313942fd44c47a415e04a43f7199,
     type: 3}
-  _availablePaths:
-  - {fileID: 0}
   _ressourceController: {fileID: 571994285330439440}
   _nextWaveButton: {fileID: 0}
   _pauseController: {fileID: 571994285330439443}
+  _availablePath: []
 --- !u!114 &571994285330439440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,8 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260fd861c1ec51047a97ac81619d8349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goldCount: 500
-  _lifeCountMax: 20
+  _levelController: {fileID: 571994285330439660}
   _lifeText: {fileID: 0}
   _goldText: {fileID: 0}
   _gameOverScreen: {fileID: 0}

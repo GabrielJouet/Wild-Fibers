@@ -213,4 +213,6 @@ public class LevelController : MonoBehaviour
 
     //Getter
     public int GetLevelIndex() { return _level.GetNumber(); }
+
+    public Level GetLoadedLevel() { return _level; }
 }

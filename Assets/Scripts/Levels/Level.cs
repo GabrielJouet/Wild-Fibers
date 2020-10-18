@@ -34,6 +34,16 @@ public class Level : ScriptableObject
     [SerializeField]
     private List<Wave> _availableWaves;
 
+    //Lives allowed at the start of the level
+    [SerializeField]
+    [Range(1,50)]
+    private int _lifeCount;
+
+    //Gold amount allowed at the start of the level
+    [SerializeField]
+    [Min(150)]
+    private int _goldCount;
+
 
 
     /*Getters*/
@@ -51,5 +61,9 @@ public class Level : ScriptableObject
     public string GetDescription() { return _description; }
 
     public string GetPlaySceneName() { return _playSceneName; }
+
+    public int GetLifeCount() { return _lifeCount; }
+
+    public int GetGoldCount() { return _goldCount; }
     #endregion
 }

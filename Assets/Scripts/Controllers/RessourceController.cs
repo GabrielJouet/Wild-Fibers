@@ -6,14 +6,8 @@ using UnityEngine.UI;
  */
 public class RessourceController : MonoBehaviour
 {
-    [Header("Start conditions")]
-    //Player money count, used in purchases
     [SerializeField]
-    private int _goldCount;
-    //Player life count, when dropping to 0 the game is finished
-    [SerializeField]
-    private int _lifeCountMax;
-    private int _lifeCount;
+    private LevelController _levelController;
 
 
     [Header("UI Elements")]
@@ -32,12 +26,20 @@ public class RessourceController : MonoBehaviour
     //Did the game actually stopped or not?
     private bool _stopped = false;
 
+    //Player money count, used in purchases
+    private int _goldCount;
+    //Player life count, when dropping to 0 the game is finished
+    private int _lifeCountMax;
+    private int _lifeCount;
+
 
     //Start Method
     //Called when the game object is initialized
     private void Start()
     {
+        _lifeCountMax = _levelController.GetLoadedLevel().GetLifeCount();
         _lifeCount = _lifeCountMax;
+        _goldCount = _levelController.GetLoadedLevel().GetGoldCount();
         _goldText.text = _goldCount.ToString();
         _lifeText.text = _lifeCount.ToString();
     }
