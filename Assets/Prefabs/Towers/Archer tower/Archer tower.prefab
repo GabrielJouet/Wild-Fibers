@@ -115,15 +115,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Archer
-  _price: 110
+  _price: 90
   _icon: {fileID: 21300000, guid: 5ed3a4f20aaaeac44ae8fdc3c9d41487, type: 3}
-  _timeBetweenShots: 1
+  _timeBetweenShots: 1.2
   _damage: 12
   _armorThrough: 5
   _numberOfShots: 1
   _projectileUsed: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
     type: 3}
-  _range: 1.5
+  _range: 1.1
   _collider: {fileID: 756056050505896787}
   _canHitFlying: 1
   _transformRange: {fileID: 7277304674411692777}
