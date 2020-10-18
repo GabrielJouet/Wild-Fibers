@@ -14,30 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _availableEnemyGroups:
   - _enemyPatterns:
-    - _numberOfEnemies: 4
-      _timeBetweenEnemies: 1
+    - _numberOfEnemies: 7
+      _timeBetweenEnemies: 0.7
     - _numberOfEnemies: 2
-      _timeBetweenEnemies: 1
-    - _numberOfEnemies: 3
-      _timeBetweenEnemies: 0.5
-    - _numberOfEnemies: 4
-      _timeBetweenEnemies: 1
+      _timeBetweenEnemies: 0.2
+    - _numberOfEnemies: 8
+      _timeBetweenEnemies: 0.75
+    - _numberOfEnemies: 7
+      _timeBetweenEnemies: 0.7
+    - _numberOfEnemies: 9
+      _timeBetweenEnemies: 0.55
     _enemyUsed: {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4,
       type: 3}
-    _timeBetweenPattern: 1
+    _timeBetweenPattern: 2.5
     _pathIndex: 0
   - _enemyPatterns:
-    - _numberOfEnemies: 2
-      _timeBetweenEnemies: 3
-    - _numberOfEnemies: 1
-      _timeBetweenEnemies: 2
-    - _numberOfEnemies: 2
-      _timeBetweenEnemies: 3
-    - _numberOfEnemies: 1
-      _timeBetweenEnemies: 2
-    _enemyUsed: {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1,
+    - _numberOfEnemies: 4
+      _timeBetweenEnemies: 4
+    _enemyUsed: {fileID: 5682064432001086994, guid: 3a10d5fb2f081234aba26b426ea831c4,
       type: 3}
-    _timeBetweenPattern: 3
+    _timeBetweenPattern: 2.5
     _pathIndex: 0
   _timeBeforeNextWave: 10
   _goldBonus: 20
