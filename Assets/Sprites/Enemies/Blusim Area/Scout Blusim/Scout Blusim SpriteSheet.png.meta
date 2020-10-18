@@ -26,6 +26,30 @@ TextureImporter:
   - first:
       213: -3233833641719234815
     second: Blusam SpriteSheet_7
+  - first:
+      213: 6106091521053623392
+    second: Scout Blusim SpriteSheet_0
+  - first:
+      213: -8482718535239177821
+    second: Scout Blusim SpriteSheet_1
+  - first:
+      213: 8807882923970149107
+    second: Scout Blusim SpriteSheet_2
+  - first:
+      213: 540219911480685128
+    second: Scout Blusim SpriteSheet_3
+  - first:
+      213: 4665209622220288978
+    second: Scout Blusim SpriteSheet_4
+  - first:
+      213: -8253930121347833817
+    second: Scout Blusim SpriteSheet_5
+  - first:
+      213: -5131448517636972785
+    second: Scout Blusim SpriteSheet_6
+  - first:
+      213: 9212283791406915769
+    second: Scout Blusim SpriteSheet_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,7 +135,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blusam SpriteSheet_0
+      name: Scout Blusim SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -125,14 +149,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc19d7438f978a5c0800000000000000
-      internalID: -4203976145210863153
+      spriteID: 0640d6e03e13db450800000000000000
+      internalID: 6106091521053623392
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusam SpriteSheet_1
+      name: Scout Blusim SpriteSheet_1
       rect:
         serializedVersion: 2
         x: 48
@@ -146,14 +170,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25c578c7b31b2c890800000000000000
-      internalID: -7439188765412205486
+      spriteID: 3a962718f64574a80800000000000000
+      internalID: -8482718535239177821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusam SpriteSheet_2
+      name: Scout Blusim SpriteSheet_2
       rect:
         serializedVersion: 2
         x: 96
@@ -167,14 +191,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27eb25bba00705380800000000000000
-      internalID: -8984558065209393550
+      spriteID: 3fa387a6ad2eb3a70800000000000000
+      internalID: 8807882923970149107
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusam SpriteSheet_3
+      name: Scout Blusim SpriteSheet_3
       rect:
         serializedVersion: 2
         x: 144
@@ -188,14 +212,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca3bb5f45185db1e0800000000000000
-      internalID: -2180489796028484692
+      spriteID: 8423664b52f3f7700800000000000000
+      internalID: 540219911480685128
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusam SpriteSheet_4
+      name: Scout Blusim SpriteSheet_4
       rect:
         serializedVersion: 2
         x: 0
@@ -209,14 +233,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39e6c1bb01f7c7b80800000000000000
-      internalID: -8395695895490040173
+      spriteID: 2d3bc2f1f672eb040800000000000000
+      internalID: 4665209622220288978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusam SpriteSheet_5
+      name: Scout Blusim SpriteSheet_5
       rect:
         serializedVersion: 2
         x: 48
@@ -230,14 +254,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfdcc9b4e62a32420800000000000000
-      internalID: 2604103604148948475
+      spriteID: 7206a2c2946247d80800000000000000
+      internalID: -8253930121347833817
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusam SpriteSheet_6
+      name: Scout Blusim SpriteSheet_6
       rect:
         serializedVersion: 2
         x: 96
@@ -251,14 +275,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 124478ccd300024f0800000000000000
-      internalID: -855683663775972319
+      spriteID: f0f1b03c2ce69c8b0800000000000000
+      internalID: -5131448517636972785
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusam SpriteSheet_7
+      name: Scout Blusim SpriteSheet_7
       rect:
         serializedVersion: 2
         x: 144
@@ -272,8 +296,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 10ffd9abf6d1f13d0800000000000000
-      internalID: -3233833641719234815
+      spriteID: 9b0e5ecac4b98df70800000000000000
+      internalID: 9212283791406915769
       vertices: []
       indices: 
       edges: []
