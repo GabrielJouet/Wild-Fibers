@@ -30,16 +30,13 @@ public class LevelController : MonoBehaviour
     private Spawner _spawnerPrefab;
     //List of available spawners to use
     private readonly List<Spawner> _spawners = new List<Spawner>();
-
-    //Every available enemies in this level 
-    //TO CHANGE CAN BE MORE DYNAMIC
-    [SerializeField]
-    private List<Enemy> _enemiesAvailables;
     //An enemy pool prefab, each enemy pool contains enemies references
     [SerializeField]
     private EnemyPool _enemyPoolPrefab;
     //List of available enemy pools to use
     private readonly List<EnemyPool> _enemyPools = new List<EnemyPool>();
+    //Every available enemies in this level 
+    private List<Enemy> _enemiesAvailables;
 
 
     [Header("Components")]
@@ -84,6 +81,7 @@ public class LevelController : MonoBehaviour
     //Each enemy type will need its own pool
     private void SpawnEnemyPools()
     {
+        _enemiesAvailables = new List<Enemy>(_level.GetEnemiesAvailable());
         for (int i = 0; i < _enemiesAvailables.Count; i++)
         {
             EnemyPool newEnemyPool = Instantiate(_enemyPoolPrefab, transform);

@@ -4046,6 +4046,12 @@ PrefabInstance:
       propertyPath: _availablePath.Array.data[0]
       value: 
       objectReference: {fileID: 1996686435}
+    - target: {fileID: 571994285330439660, guid: 3a3887dcbdbd89b499727d31651bc979,
+        type: 3}
+      propertyPath: _level
+      value: 
+      objectReference: {fileID: 11400000, guid: b0b6b55dcb0a19e4288fe2b941a54ed4,
+        type: 2}
     - target: {fileID: 571994285330439662, guid: 3a3887dcbdbd89b499727d31651bc979,
         type: 3}
       propertyPath: m_Name
@@ -4784,6 +4790,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 6736208184060233371, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7316781347235863435, guid: ab062a4349966594386bc59557a6906a,
         type: 3}

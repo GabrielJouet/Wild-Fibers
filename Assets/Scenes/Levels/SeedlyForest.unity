@@ -4046,6 +4046,12 @@ PrefabInstance:
       propertyPath: _availablePath.Array.data[0]
       value: 
       objectReference: {fileID: 1015429494}
+    - target: {fileID: 571994285330439660, guid: 3a3887dcbdbd89b499727d31651bc979,
+        type: 3}
+      propertyPath: _level
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b1bc5ec89c95a846b583f549b2629a6,
+        type: 2}
     - target: {fileID: 571994285330439662, guid: 3a3887dcbdbd89b499727d31651bc979,
         type: 3}
       propertyPath: m_Name

@@ -34,6 +34,8 @@ public class Level : ScriptableObject
     [SerializeField]
     private List<Wave> _availableWaves;
 
+    [Space(10)]
+
     //Lives allowed at the start of the level
     [SerializeField]
     [Range(1,50)]
@@ -43,6 +45,12 @@ public class Level : ScriptableObject
     [SerializeField]
     [Min(150)]
     private int _goldCount;
+
+    [Space(10)]
+
+    //Enemies available in this level
+    [SerializeField]
+    private List<Enemy> _enemyAvailables;
 
 
 
@@ -65,5 +73,7 @@ public class Level : ScriptableObject
     public int GetLifeCount() { return _lifeCount; }
 
     public int GetGoldCount() { return _goldCount; }
+
+    public List<Enemy> GetEnemiesAvailable() { return _enemyAvailables; }
     #endregion
 }
