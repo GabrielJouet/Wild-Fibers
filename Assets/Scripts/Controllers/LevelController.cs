@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -216,4 +216,6 @@ public class LevelController : MonoBehaviour
     public int GetLevelIndex() { return _level.GetNumber(); }
 
     public Level GetLoadedLevel() { return _level; }
+
+    public List<Spawner> GetSpawners() { return _spawners; }
 }

@@ -18,6 +18,8 @@ public class PauseController : MonoBehaviour
     //Background selecter used when clicking on the background of the game
     [SerializeField]
     private BackgroudSelecter _backgroundSelecter;
+    [SerializeField]
+    private LevelController _levelController;
 
 
     //Did the game actually paused or not?
@@ -55,10 +57,10 @@ public class PauseController : MonoBehaviour
         foreach (TowerSlot current in FindObjectsOfType<TowerSlot>())
             current.PauseBehavior();
 
-        foreach (Spawner current in FindObjectsOfType<Spawner>())
+        foreach (Spawner current in _levelController.GetSpawners())
             current.PauseSpawn();
 
-        FindObjectOfType<LevelController>().PauseBehavior();
+        _levelController.enabled = _paused;
 
         _paused = !_paused;
     }
