@@ -179,10 +179,7 @@ public class Enemy : MonoBehaviour
             _pathIndex++;
         //Else if the enemy reaches the end of the path
         else if (_pathIndex + 1 == _path.GetPath().Count)
-        {
-            _moving = false;
             ReachEnd();
-        }
 
         _spriteRenderer.flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
     }
@@ -305,6 +302,7 @@ public class Enemy : MonoBehaviour
     //Method called when an enemy reaches the end of the path
     protected void ReachEnd()
     {
+        _moving = false;
         _enemyPool.AddOneEnemy(gameObject, true, _numberOfLivesTaken);
 
         if (_informationUI) 
@@ -335,7 +333,7 @@ public class Enemy : MonoBehaviour
             _dotCoroutineTimeNeeded -= (float)(DateTime.Now - _dotCoroutineStartTime).TotalSeconds;
             _slowDownCoroutineTimeNeeded -= (float)(DateTime.Now - _slowDownCoroutineStartTime).TotalSeconds;
         }
-        else if(_slowDownCoroutineTimeNeeded != 0 || _dotCoroutineTimeNeeded != 0)
+        else
         {
             if (_dotApplied)
                 StartCoroutine(UnPauseDotDelay());
