@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +9,12 @@ using UnityEngine.UI;
  */
 public class LevelController : MonoBehaviour
 {
+    [Header("Constant")]
+    [Range(3, 10)]
+    //Time between an end of wave and next wave display
+    [SerializeField]
+    private float _timeBetweenNextWaveButtonDisplay = 5f;
+
     [Header("Level Parameters")]
     //Loaded level with parameters
     [SerializeField]
@@ -46,9 +52,7 @@ public class LevelController : MonoBehaviour
     //Next Wave Button used in wave generation
     [SerializeField]
     private NextWaveButton _nextWaveButton;
-    //Pause controller used to handle pause and stuff
-    [SerializeField]
-    private PauseController _pauseController;
+    //Available Paths in level
     [SerializeField]
     private List<RandomPath> _availablePath;
 
@@ -172,13 +176,12 @@ public class LevelController : MonoBehaviour
         //If there is another wave after that one
         if (_waveIndex + 1 < _level.GetWaveCount())
         {
-            _waveIndex++;
-
             _coroutineStartTime = DateTime.Now;
-            _coroutineTimeNeeded = 3;
-            yield return new WaitForSeconds(3);
+            _coroutineTimeNeeded = _timeBetweenNextWaveButtonDisplay;
+            yield return new WaitForSeconds(_timeBetweenNextWaveButtonDisplay);
 
             _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
+            _waveIndex++;
         }
         else
             foreach (Spawner current in _spawners)
