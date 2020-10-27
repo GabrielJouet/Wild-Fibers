@@ -17,6 +17,9 @@ public class NextWaveButton : MonoBehaviour
     [SerializeField]
     private LevelController _levelController;
 
+    [SerializeField]
+    private Animator _animator;
+
 
     //Time left before next wave
     private float _timeLeft = 0;
@@ -24,12 +27,15 @@ public class NextWaveButton : MonoBehaviour
     //Does the time actually decrease?
     private bool _timeDecrease = false;
 
+    //Does the tower is currently paused? (by Pause Controller)
+    protected bool _paused = false;
+
 
 
     //Fixed Update, called 50 times a second
     private void FixedUpdate()
     {
-        if(_timeDecrease)
+        if(_timeDecrease && !_paused)
         {
             if (_timeLeft - Time.fixedDeltaTime < 0)
                 PressNewWaveButton();
@@ -58,5 +64,14 @@ public class NextWaveButton : MonoBehaviour
         _timeDecrease = false;
 
         _newWaveButton.SetActive(false);
+    }
+
+
+    //Method used to pause tower behavior when pause button is hit
+    public void PauseBehavior()
+    {
+        _animator.enabled = _paused;
+
+        _paused = !_paused;
     }
 }

@@ -179,9 +179,7 @@ public class LevelController : MonoBehaviour
             _coroutineStartTime = DateTime.Now;
             _coroutineTimeNeeded = _timeBetweenNextWaveButtonDisplay;
             yield return new WaitForSeconds(_timeBetweenNextWaveButtonDisplay);
-
-            _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
-            _waveIndex++;
+            DelayBehavior();
         }
         else
             foreach (Spawner current in _spawners)
@@ -189,7 +187,15 @@ public class LevelController : MonoBehaviour
     }
 
 
-    //Method used by pause controller to pause level controller behavior
+    //Method used for pause handling 
+    private void DelayBehavior()
+    {
+        _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
+        _waveIndex++;
+    }
+
+
+    //Method used by pause controller to pause behavior
     public void PauseBehavior()
     {
         if (!_paused)
@@ -207,9 +213,9 @@ public class LevelController : MonoBehaviour
     //Coroutine used to delay unpause after being paused
     private IEnumerator DelayUnPause()
     {
+        _coroutineStartTime = DateTime.Now;
         yield return new WaitForSeconds(_coroutineTimeNeeded);
-        _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
-        _waveIndex++;
+        DelayBehavior();
     }
 
 

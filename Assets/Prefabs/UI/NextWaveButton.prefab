@@ -166,6 +166,7 @@ MonoBehaviour:
   _newWaveButton: {fileID: 6487703202978138490}
   _newWaveFiller: {fileID: 0}
   _levelController: {fileID: 0}
+  _animator: {fileID: 6787765394368279840}
 --- !u!1 &8456643784515552066
 GameObject:
   m_ObjectHideFlags: 0

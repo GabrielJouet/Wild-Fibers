@@ -66,19 +66,6 @@ public class Spawner : MonoBehaviour
     //Coroutine used to spawn enemies in group
     private IEnumerator SpawnEnemies()
     {
-        //If the coroutine was previously stopped
-        if(_coroutineTimeNeeded != 0)
-        {
-            _coroutineStartTime = DateTime.Now;
-            yield return new WaitForSeconds(_coroutineTimeNeeded);
-        }
-        else
-        {
-            _coroutineStartTime = DateTime.Now;
-            _coroutineTimeNeeded = 2f;
-            yield return new WaitForSeconds(2f);
-        }
-
         while (!_waveFinished)
         {
             //If we are not at the end of the pattern
@@ -120,10 +107,19 @@ public class Spawner : MonoBehaviour
             StopAllCoroutines();
             _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
         }
-        else
-            StartCoroutine(SpawnEnemies());
+        else if(_coroutineTimeNeeded != 0)
+            StartCoroutine(DelayUnPause());
 
         _spawnPaused = !_spawnPaused;
+    }
+
+
+    //Coroutine used to delay unpause after being paused
+    private IEnumerator DelayUnPause()
+    {
+        _coroutineStartTime = DateTime.Now;
+        yield return new WaitForSeconds(_coroutineTimeNeeded);
+        StartCoroutine(SpawnEnemies());
     }
 
 

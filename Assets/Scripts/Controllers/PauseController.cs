@@ -20,7 +20,10 @@ public class PauseController : MonoBehaviour
     private BackgroudSelecter _backgroundSelecter;
     [SerializeField]
     private LevelController _levelController;
-
+    [SerializeField]
+    private GameOverScreen _gameOverScreen;
+    [SerializeField]
+    private NextWaveButton _nextWaveButton;
 
     //Did the game actually paused or not?
     private bool _paused = false;
@@ -61,6 +64,8 @@ public class PauseController : MonoBehaviour
             current.PauseSpawn();
 
         _levelController.PauseBehavior();
+        _gameOverScreen.PauseBehavior();
+        _nextWaveButton.PauseBehavior();
 
         _paused = !_paused;
     }

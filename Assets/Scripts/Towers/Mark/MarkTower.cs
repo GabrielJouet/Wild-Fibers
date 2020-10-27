@@ -44,7 +44,6 @@ public class MarkTower : Tower
     private IEnumerator SummonMarks()
     {
         _coroutineStarted = true;
-
         int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
 
         _availableEnemies.Shuffle();
@@ -69,7 +68,7 @@ public class MarkTower : Tower
         _coroutineStartTime = DateTime.Now;
         _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
-        _coroutineStarted = false;
+        UnPauseMethod();
     }
 
 
@@ -94,9 +93,9 @@ public class MarkTower : Tower
         else
             StartCoroutine(UnPauseDelay());
 
-        _paused = !_paused;
-
         foreach (MarkDot current in _allMarks)
-            current.StopBehavior();
+            current.enabled = _paused;
+
+        _paused = !_paused;
     }
 }

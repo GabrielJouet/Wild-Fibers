@@ -139,7 +139,6 @@ public class ChocSpikes : MonoBehaviour
     {
         _coroutineStartTime = DateTime.Now;
         yield return new WaitForSeconds(_coroutineTimeNeeded);
-        _coroutineTimeNeeded = 0;
 
         if (!_stopped)
             DamageEnemy();
