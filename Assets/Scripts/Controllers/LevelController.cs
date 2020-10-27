@@ -209,6 +209,7 @@ public class LevelController : MonoBehaviour
     {
         yield return new WaitForSeconds(_coroutineTimeNeeded);
         _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
+        _waveIndex++;
     }
 
 

@@ -60,7 +60,7 @@ public class PauseController : MonoBehaviour
         foreach (Spawner current in _levelController.GetSpawners())
             current.PauseSpawn();
 
-        _levelController.enabled = _paused;
+        _levelController.PauseBehavior();
 
         _paused = !_paused;
     }
