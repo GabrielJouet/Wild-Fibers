@@ -18,7 +18,6 @@ public class RessourceController : MonoBehaviour
     [SerializeField]
     private Text _goldText;
     //Game Over screen UI elements
-    //TO CHANGE SHOULD BE PAUSE CONTROLLER
     [SerializeField]
     private GameOverScreen _gameOverScreen;
 
@@ -97,7 +96,6 @@ public class RessourceController : MonoBehaviour
 
 
     //Method used to stop the game and display it
-    //TO CHANGE SHOULD BE PAUSECONTROLLER
     private void GameOver()
     {
         _lifeCount = 0;
