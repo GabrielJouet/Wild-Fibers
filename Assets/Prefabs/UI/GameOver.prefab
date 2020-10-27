@@ -260,10 +260,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _mainText: {fileID: 2761639452799420142}
-  _gameScreen: {fileID: 5096663332242089553}
+  _gameScreen: {fileID: 6647801214800744462}
   _winScreen: {fileID: 21300000, guid: 4a8f0530769bd3b4ca05e9ac802c7146, type: 3}
   _loseScreen: {fileID: 21300000, guid: 2b12cda0278be1f4d98d482bd15ea86e, type: 3}
   _pauseController: {fileID: 0}
+  _levelController: {fileID: 0}
+  _ressourceController: {fileID: 0}
 --- !u!1 &5096663332242089553
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,13 +7,14 @@ using UnityEngine.UI;
  */
 public class GameOverScreen : MonoBehaviour
 {
+    [Header("UI elements")]
     //Text component that handles lose / win text
     [SerializeField]
     private Text _mainText;
 
     //Game screen object
     [SerializeField]
-    private GameObject _gameScreen;
+    private Image _gameScreen;
 
     [SerializeField]
     private Sprite _winScreen;
@@ -22,9 +23,14 @@ public class GameOverScreen : MonoBehaviour
     private Sprite _loseScreen;
 
 
+    [Header("Components")]
     //Pause controller used to stop everything
     [SerializeField]
     private PauseController _pauseController;
+    [SerializeField]
+    private LevelController _levelController;
+    [SerializeField]
+    private RessourceController _ressourceController;
 
 
 
@@ -41,22 +47,21 @@ public class GameOverScreen : MonoBehaviour
     private IEnumerator DelayShow(bool win)
     {
         yield return new WaitForSeconds(1f);
-        _gameScreen.SetActive(true);
+        _gameScreen.gameObject.SetActive(true);
 
         if (win)
         {
-            _gameScreen.GetComponent<Image>().sprite = _winScreen;
-            FindObjectOfType<SaveController>().SaveLevelData(FindObjectOfType<LevelController>().GetLevelIndex(),
-                                                             FindObjectOfType<RessourceController>().GetLivesLost(),
-                                                             LevelState.COMPLETED);
+            _gameScreen.sprite = _winScreen;
+            FindObjectOfType<SaveController>().SaveLevelData(_levelController.GetLevelIndex(), _ressourceController.GetLivesLost(), LevelState.COMPLETED);
             _mainText.text = "Win";
         }
         else
         {
-            _gameScreen.GetComponent<Image>().sprite = _loseScreen;
+            _gameScreen.sprite = _loseScreen;
             _mainText.text = "Lose";
         }
 
-        _pauseController.PauseGame(_gameScreen);
+        _gameScreen.SetNativeSize();
+        _pauseController.PauseGame(_gameScreen.gameObject);
     }
 }
