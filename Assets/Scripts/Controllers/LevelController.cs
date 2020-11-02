@@ -9,6 +9,12 @@ using UnityEngine.UI;
  */
 public class LevelController : MonoBehaviour
 {
+    [Header("Constant")]
+    [Range(3, 10)]
+    //Time between an end of wave and next wave display
+    [SerializeField]
+    private float _timeBetweenNextWaveButtonDisplay = 5f;
+
     [Header("Level Parameters")]
     //Loaded level with parameters
     [SerializeField]
@@ -30,16 +36,13 @@ public class LevelController : MonoBehaviour
     private Spawner _spawnerPrefab;
     //List of available spawners to use
     private readonly List<Spawner> _spawners = new List<Spawner>();
-
-    //Every available enemies in this level 
-    //TO CHANGE CAN BE MORE DYNAMIC
-    [SerializeField]
-    private List<Enemy> _enemiesAvailables;
     //An enemy pool prefab, each enemy pool contains enemies references
     [SerializeField]
     private EnemyPool _enemyPoolPrefab;
     //List of available enemy pools to use
     private readonly List<EnemyPool> _enemyPools = new List<EnemyPool>();
+    //Every available enemies in this level 
+    private List<Enemy> _enemiesAvailables;
 
 
     [Header("Components")]
@@ -49,9 +52,7 @@ public class LevelController : MonoBehaviour
     //Next Wave Button used in wave generation
     [SerializeField]
     private NextWaveButton _nextWaveButton;
-    //Pause controller used to handle pause and stuff
-    [SerializeField]
-    private PauseController _pauseController;
+    //Available Paths in level
     [SerializeField]
     private List<RandomPath> _availablePath;
 
@@ -84,6 +85,7 @@ public class LevelController : MonoBehaviour
     //Each enemy type will need its own pool
     private void SpawnEnemyPools()
     {
+        _enemiesAvailables = new List<Enemy>(_level.GetEnemiesAvailable());
         for (int i = 0; i < _enemiesAvailables.Count; i++)
         {
             EnemyPool newEnemyPool = Instantiate(_enemyPoolPrefab, transform);
@@ -174,13 +176,10 @@ public class LevelController : MonoBehaviour
         //If there is another wave after that one
         if (_waveIndex + 1 < _level.GetWaveCount())
         {
-            _waveIndex++;
-
             _coroutineStartTime = DateTime.Now;
-            _coroutineTimeNeeded = 3;
-            yield return new WaitForSeconds(3);
-
-            _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
+            _coroutineTimeNeeded = _timeBetweenNextWaveButtonDisplay;
+            yield return new WaitForSeconds(_timeBetweenNextWaveButtonDisplay);
+            DelayBehavior();
         }
         else
             foreach (Spawner current in _spawners)
@@ -188,7 +187,15 @@ public class LevelController : MonoBehaviour
     }
 
 
-    //Method used by pause controller to pause level controller behavior
+    //Method used for pause handling 
+    private void DelayBehavior()
+    {
+        _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
+        _waveIndex++;
+    }
+
+
+    //Method used by pause controller to pause behavior
     public void PauseBehavior()
     {
         if (!_paused)
@@ -206,8 +213,9 @@ public class LevelController : MonoBehaviour
     //Coroutine used to delay unpause after being paused
     private IEnumerator DelayUnPause()
     {
+        _coroutineStartTime = DateTime.Now;
         yield return new WaitForSeconds(_coroutineTimeNeeded);
-        _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
+        DelayBehavior();
     }
 
 
@@ -215,4 +223,6 @@ public class LevelController : MonoBehaviour
     public int GetLevelIndex() { return _level.GetNumber(); }
 
     public Level GetLoadedLevel() { return _level; }
+
+    public List<Spawner> GetSpawners() { return _spawners; }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEditor;
 using UnityEngine;
 
 /*
@@ -9,9 +10,7 @@ using UnityEngine;
 public class SaveController : MonoBehaviour
 {
 	//Number of level in game (can be dynamic)
-	[SerializeField]
 	private int _numberOfLevel;
-
 
 	//The current save state
 	private SaveFile _saveFile;
@@ -27,6 +26,7 @@ public class SaveController : MonoBehaviour
 	//Start method, called after Awake
 	private void Start()
     {
+		_numberOfLevel = EditorBuildSettings.scenes.Length - 2;
 		_gameSavePath = Application.persistentDataPath + "/player.dat";
 		_binaryFormatter = new BinaryFormatter();
 

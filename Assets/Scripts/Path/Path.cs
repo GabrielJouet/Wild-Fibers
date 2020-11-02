@@ -11,6 +11,7 @@ public class Path
 
     //Getters
     public List<Vector3> GetPath() { return _path; }
+
     public int GetPathLength() { return _path.Count; }
 
     public void SetPath(List<Vector3> newPath) { _path = newPath; }

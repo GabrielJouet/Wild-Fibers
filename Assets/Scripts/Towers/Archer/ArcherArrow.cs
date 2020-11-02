@@ -24,10 +24,6 @@ public class ArcherArrow : MonoBehaviour
     private Vector3 _goalPosition;
 
 
-    //Does the projectile is paused?
-    private bool _paused = false;
-
-
 
     //Method used to initialize class (like a constructor)
     //
@@ -48,13 +44,10 @@ public class ArcherArrow : MonoBehaviour
     //Update method, called every frame
     private void Update()
     {
-        if (!_paused)
-        {
-            if (_enemyToTrack != null)
-                TrackEnemy();
-            else if(FollowPoint(_goalPosition))
-                    StopArrow();
-        }
+        if (_enemyToTrack != null)
+            TrackEnemy();
+        else if(FollowPoint(_goalPosition))
+                StopArrow();
     }
 
 
@@ -100,12 +93,5 @@ public class ArcherArrow : MonoBehaviour
         _parentTower.RecoverArrow(this);
 
         _goalPosition = Vector3.zero;
-    }
-
-
-    //Method used to stop projectile behavior
-    public void StopBehavior()
-    {
-        _paused = !_paused;
     }
 }

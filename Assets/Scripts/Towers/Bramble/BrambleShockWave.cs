@@ -26,10 +26,6 @@ public class BrambleShockWave : MonoBehaviour
     private Vector3 _previousScale;
 
 
-    //Does the projectile is paused?
-    private bool _paused = false;
-
-
 
     //Method used to initialize class (like a constructor)
     //
@@ -57,18 +53,15 @@ public class BrambleShockWave : MonoBehaviour
     //Update method, called every frame
     private void Update()
     {
-        if(!_paused)
+        if (transform.localScale.x < _maxRange)
         {
-            if (transform.localScale.x < _maxRange)
-            {
-                _previousScale.x += _expansionRate * Time.deltaTime;
-                _previousScale.y += _expansionRate * Time.deltaTime;
+            _previousScale.x += _expansionRate * Time.deltaTime;
+            _previousScale.y += _expansionRate * Time.deltaTime;
 
-                transform.localScale = _previousScale;
-            }
-            else
-                StopWave();
+            transform.localScale = _previousScale;
         }
+        else
+            StopWave();
     }
 
 
@@ -87,12 +80,5 @@ public class BrambleShockWave : MonoBehaviour
     {
         gameObject.SetActive(false);
         _parentTower.RecoverWave(this);
-    }
-
-
-    //Method used to stop projectile behavior
-    public void StopBehavior()
-    {
-        _paused = !_paused;
     }
 }

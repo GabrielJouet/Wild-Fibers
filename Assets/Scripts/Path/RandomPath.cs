@@ -40,6 +40,10 @@ public class RandomPath : MonoBehaviour
     }
 
 
+    //Method used to calculate a random path, if the number of already generated paths is too high
+    //We pick one of these instead
+    //
+    //Returns the random path
     public Path CalculateRandomPath()
     {
         if(_alreadyGeneratedPaths.Count < _numberOfAlreadyGeneratedPaths)

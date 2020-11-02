@@ -99,20 +99,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb2efbe7f663494a95445f6e17d8360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: {fileID: 11400000, guid: 7b1bc5ec89c95a846b583f549b2629a6, type: 2}
+  _timeBetweenNextWaveButtonDisplay: 5
+  _level: {fileID: 0}
   _waveText: {fileID: 0}
   _gameOverScreen: {fileID: 0}
   _spawnerPrefab: {fileID: 3737898244477904241, guid: 0e99a190fc65e1641be113fee59fcec3,
     type: 3}
-  _enemiesAvailables:
-  - {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4, type: 3}
-  - {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1, type: 3}
-  - {fileID: 5682064432001086994, guid: 3a10d5fb2f081234aba26b426ea831c4, type: 3}
   _enemyPoolPrefab: {fileID: 126690080380749959, guid: 5290313942fd44c47a415e04a43f7199,
     type: 3}
   _ressourceController: {fileID: 571994285330439440}
   _nextWaveButton: {fileID: 0}
-  _pauseController: {fileID: 571994285330439443}
   _availablePath: []
 --- !u!114 &571994285330439440
 MonoBehaviour:
@@ -145,6 +141,7 @@ MonoBehaviour:
   _menuObject: {fileID: 0}
   _hider: {fileID: 0}
   _backgroundSelecter: {fileID: 0}
+  _levelController: {fileID: 571994285330439660}
 --- !u!114 &571994285330439441
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -47,7 +47,7 @@ public class BrambleTower : Tower
         _coroutineStartTime = DateTime.Now;
         _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
-        _coroutineStarted = false;
+        UnPauseMethod();
     }
 
 
@@ -73,12 +73,10 @@ public class BrambleTower : Tower
         else
             StartCoroutine(UnPauseDelay());
 
-        _paused = !_paused;
-
         foreach (BrambleShockWave current in _allWaves)
-        {
             if (current.gameObject.activeSelf)
-                current.StopBehavior();
-        }
+                current.enabled = _paused;
+
+        _paused = !_paused;
     }
 }

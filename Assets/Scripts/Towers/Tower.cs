@@ -205,8 +205,13 @@ public class Tower : MonoBehaviour
     {
         _coroutineStartTime = DateTime.Now;
         yield return new WaitForSeconds(_coroutineTimeNeeded);
+        UnPauseMethod();
+    }
+
+
+    protected void UnPauseMethod()
+    {
         _coroutineStarted = false;
-        _coroutineTimeNeeded = 0f;
     }
     #endregion
 

@@ -3919,6 +3919,7 @@ MonoBehaviour:
   _chooseButton: {fileID: 408832404}
   _sellButton: {fileID: 1642564924}
   _canvas: {fileID: 76563471}
+  _pauseController: {fileID: 519420033}
 --- !u!1001 &571994284821652882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4011,6 +4012,21 @@ PrefabInstance:
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 2125523296}
+    - target: {fileID: 571994285330439443, guid: 3a3887dcbdbd89b499727d31651bc979,
+        type: 3}
+      propertyPath: _gameOverScreen
+      value: 
+      objectReference: {fileID: 4541158167840557064}
+    - target: {fileID: 571994285330439443, guid: 3a3887dcbdbd89b499727d31651bc979,
+        type: 3}
+      propertyPath: _nextWaveButton
+      value: 
+      objectReference: {fileID: 4541158167840557063}
+    - target: {fileID: 571994285330439443, guid: 3a3887dcbdbd89b499727d31651bc979,
+        type: 3}
+      propertyPath: _inGame
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 571994285330439660, guid: 3a3887dcbdbd89b499727d31651bc979,
         type: 3}
       propertyPath: _availablePath.Array.size
@@ -4046,6 +4062,12 @@ PrefabInstance:
       propertyPath: _availablePath.Array.data[0]
       value: 
       objectReference: {fileID: 1996686435}
+    - target: {fileID: 571994285330439660, guid: 3a3887dcbdbd89b499727d31651bc979,
+        type: 3}
+      propertyPath: _level
+      value: 
+      objectReference: {fileID: 11400000, guid: b0b6b55dcb0a19e4288fe2b941a54ed4,
+        type: 2}
     - target: {fileID: 571994285330439662, guid: 3a3887dcbdbd89b499727d31651bc979,
         type: 3}
       propertyPath: m_Name
@@ -4198,6 +4220,16 @@ PrefabInstance:
       propertyPath: _pauseController
       value: 
       objectReference: {fileID: 519420033}
+    - target: {fileID: 173176981539081000, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: _levelController
+      value: 
+      objectReference: {fileID: 519420030}
+    - target: {fileID: 173176981539081000, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: _ressourceController
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 279588477377741191, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4208,10 +4240,20 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 2886570652521276066, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3308631760864531642, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308631760864531642, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3451936902988104724, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
@@ -4344,6 +4386,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 4541158167663177530, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541158167663177531, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4541158167691674308, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_Sprite
@@ -4463,18 +4515,18 @@ PrefabInstance:
     - target: {fileID: 4541158168452975449, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4541158168452975449, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4541158168452975449, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1291715236}
+      objectReference: {fileID: 0}
     - target: {fileID: 4541158168452975453, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4723,18 +4775,18 @@ PrefabInstance:
     - target: {fileID: 4541158169286639291, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4541158169286639291, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4541158169286639291, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1291715236}
+      objectReference: {fileID: 0}
     - target: {fileID: 4541158169286639293, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -4785,6 +4837,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 6736208184060233371, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957026000734882962, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: _pauseController
+      value: 
+      objectReference: {fileID: 519420033}
     - target: {fileID: 7316781347235863435, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -4814,6 +4876,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7648997679070335025, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -33.899994
       objectReference: {fileID: 0}
     - target: {fileID: 7721110096061734885, guid: ab062a4349966594386bc59557a6906a,
         type: 3}

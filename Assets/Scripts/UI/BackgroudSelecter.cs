@@ -90,11 +90,11 @@ public class BackgroudSelecter : MonoBehaviour
             {
                 if (hit.collider.TryGetComponent(out Enemy selectedEnemy))
                     TouchEnemy(selectedEnemy);
-                else if(hit.collider.TryGetComponent(out Tower selectedTower))
+                else if (hit.collider.TryGetComponent(out Tower selectedTower))
                     TouchTower(selectedTower);
                 else if (hit.collider.TryGetComponent(out TowerSlot selectedTowerSlot))
                     TouchSlot(selectedTowerSlot);
-                else if(!hit.collider.GetComponent<Button>())
+                else if (!hit.collider.GetComponent<Button>())
                     BackgroundClick();
             }
         }

@@ -54,7 +54,7 @@ public class ChocTower : Tower
         _coroutineStartTime = DateTime.Now;
         _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
-        _coroutineStarted = false;
+        UnPauseMethod();
     }
 
 
@@ -82,9 +82,7 @@ public class ChocTower : Tower
         _paused = !_paused;
 
         foreach (ChocSpikes current in _allSpikes)
-        {
             if(current.gameObject.activeSelf)
                 current.StopBehavior();
-        }
     }
 }

@@ -55,7 +55,7 @@ public class ArcherTower : Tower
         _coroutineStartTime = DateTime.Now;
         _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
-        _coroutineStarted = false;
+        UnPauseMethod();
     }
 
 
@@ -80,10 +80,10 @@ public class ArcherTower : Tower
         else
             StartCoroutine(UnPauseDelay());
 
-        _paused = !_paused;
-
         foreach (ArcherArrow current in _allArrows)
             if (current.gameObject.activeSelf)
-                current.StopBehavior();
+                current.enabled = _paused;
+
+        _paused = !_paused;
     }
 }
