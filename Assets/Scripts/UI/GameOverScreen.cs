@@ -23,11 +23,17 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField]
     private Sprite _loseScreen;
 
+    [SerializeField]
+    private BoxCollider2D _boxCollider;
+
+    [SerializeField]
+    private RectTransform _transform;
+
 
     [Header("Components")]
     //Pause controller used to stop everything
     [SerializeField]
-    private PauseController _pauseController;
+    private GamePauseController _pauseController;
     [SerializeField]
     private LevelController _levelController;
     [SerializeField]
@@ -50,8 +56,9 @@ public class GameOverScreen : MonoBehaviour
     //Method used to activate game over screen
     //
     //Parameter => win, does the player win this level?
-    public void Activate(bool win) 
+    public void Activate(bool win)
     {
+        _boxCollider.size = new Vector2(Screen.width + _transform.sizeDelta.x, Screen.height + _transform.sizeDelta.y);
         StartCoroutine(DelayShow(win)); 
     }
 
@@ -83,7 +90,7 @@ public class GameOverScreen : MonoBehaviour
         }
 
         _gameScreen.SetNativeSize();
-        _pauseController.PauseGame(_gameScreen.gameObject);
+        _pauseController.PauseGame();
     }
 
 
