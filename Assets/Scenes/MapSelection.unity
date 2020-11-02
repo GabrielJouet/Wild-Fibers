@@ -470,7 +470,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1409857563}
     - target: {fileID: 6834637540494987681, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -1868,7 +1868,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _menuObject: {fileID: 280245913}
   _hider: {fileID: 1282270587}
-  _alternativeMenu: {fileID: 1409857561}
+  _alternativeMenuScript: {fileID: 1409857561}
+  _alternativeMenu: {fileID: 2072596171}
 --- !u!81 &1409857564
 AudioListener:
   m_ObjectHideFlags: 0
