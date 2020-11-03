@@ -1,46 +1,28 @@
 fileFormatVersion: 2
-guid: b4b4d6a1a9b49974594b5a65827a7394
+guid: e553abba001964a4ab4f292eded24a17
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2568752327562714329
-    second: Blusam Maggot SpriteSheet_0
+      213: 2916443953406136256
+    second: Scout Maggot Cocoon SpriteSheet_0
   - first:
-      213: -7163986881489309470
-    second: Blusam Maggot SpriteSheet_1
+      213: 9053651699608751336
+    second: Scout Maggot Cocoon SpriteSheet_1
   - first:
-      213: 956936253234346663
-    second: Scout Maggot SpriteSheet_0
+      213: -493354152543958435
+    second: Scout Maggot Cocoon SpriteSheet_2
   - first:
-      213: 2606507432749049928
-    second: Scout Maggot SpriteSheet_1
+      213: -9093011054149423279
+    second: Scout Maggot Cocoon SpriteSheet_3
   - first:
-      213: -7279857875854669723
-    second: Scout Maggot SpriteSheet_0
+      213: 7440810407764358108
+    second: Scout Maggot Cocoon SpriteSheet_4
   - first:
-      213: -4310126573504837533
-    second: Scout Maggot SpriteSheet_1
+      213: -8530183796615102919
+    second: Scout Maggot Cocoon SpriteSheet_5
   - first:
-      213: -2810387338972676494
-    second: Scout Maggot SpriteSheet_2
-  - first:
-      213: 6399860878504892633
-    second: Scout Maggot SpriteSheet_3
-  - first:
-      213: 8280391395440306465
-    second: Scout Maggot SpriteSheet_4
-  - first:
-      213: -4888570019653752193
-    second: Scout Maggot SpriteSheet_5
-  - first:
-      213: -1346419922625287363
-    second: Scout Maggot SpriteSheet_6
-  - first:
-      213: -5977040466543617060
-    second: Scout Maggot SpriteSheet_7
-  - first:
-      213: -7552096340062230510
-    second: Scout Maggot SpriteSheet_8
+      213: -3571172373487348317
+    second: Scout Maggot Cocoon SpriteSheet_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -126,7 +108,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_0
+      name: Scout Maggot Cocoon SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -140,14 +122,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5684a5e05dfb8fa90800000000000000
-      internalID: -7279857875854669723
+      spriteID: 0cfcb1ad25a497820800000000000000
+      internalID: 2916443953406136256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_1
+      name: Scout Maggot Cocoon SpriteSheet_1
       rect:
         serializedVersion: 2
         x: 24
@@ -161,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 368c549a7ba5f24c0800000000000000
-      internalID: -4310126573504837533
+      spriteID: 8ec8a43a04805ad70800000000000000
+      internalID: 9053651699608751336
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_2
+      name: Scout Maggot Cocoon SpriteSheet_2
       rect:
         serializedVersion: 2
         x: 48
@@ -182,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27e3743fa9f7ff8d0800000000000000
-      internalID: -2810387338972676494
+      spriteID: d5a472d13014729f0800000000000000
+      internalID: -493354152543958435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_3
+      name: Scout Maggot Cocoon SpriteSheet_3
       rect:
         serializedVersion: 2
         x: 72
@@ -203,35 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d81433af8fd0d850800000000000000
-      internalID: 6399860878504892633
+      spriteID: 15f29b28f922fc180800000000000000
+      internalID: -9093011054149423279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_4
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 16
-        width: 24
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 129ab6e4a1cd9e270800000000000000
-      internalID: 8280391395440306465
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_5
+      name: Scout Maggot Cocoon SpriteSheet_4
       rect:
         serializedVersion: 2
         x: 0
@@ -245,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7ae9e6c77f482cb0800000000000000
-      internalID: -4888570019653752193
+      spriteID: cd3f2db84a1134760800000000000000
+      internalID: 7440810407764358108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_6
+      name: Scout Maggot Cocoon SpriteSheet_5
       rect:
         serializedVersion: 2
         x: 24
@@ -266,14 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3b2969c63e805de0800000000000000
-      internalID: -1346419922625287363
+      spriteID: 93eb6f52803be9980800000000000000
+      internalID: -8530183796615102919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_7
+      name: Scout Maggot Cocoon SpriteSheet_6
       rect:
         serializedVersion: 2
         x: 48
@@ -287,29 +248,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdb58870d594d0da0800000000000000
-      internalID: -5977040466543617060
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_8
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 24
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21820153460913790800000000000000
-      internalID: -7552096340062230510
+      spriteID: 3a5199ea5a5a07ec0800000000000000
+      internalID: -3571172373487348317
       vertices: []
       indices: 
       edges: []

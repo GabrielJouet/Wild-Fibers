@@ -40,7 +40,14 @@ public class Maggot : Enemy
     {
         yield return new WaitForSeconds(_hatchingTime);
         _moving = false;
+        _animator.SetTrigger("cocoon");
 
+        if (_dotApplied)
+            _armor = _armor * 3 - (_armorMax - _armor);
+        else
+            _armor *= 3;
+
+        _armorMax *= 3;
         yield return new WaitForSeconds(_cocoonTime);
         Enemy hatchling = _levelController.RecoverPool(_hatchling).GetOneEnemy();
         hatchling.Initialize(_path, _enemyPool, _pathIndex);
