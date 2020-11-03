@@ -109,14 +109,13 @@ MonoBehaviour:
   - {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1, type: 3}
   - {fileID: 5682064432001086994, guid: 3a10d5fb2f081234aba26b426ea831c4, type: 3}
   - {fileID: 5682064432001086994, guid: c9cb137af20226a418d05813b1c46a21, type: 3}
-  - {fileID: 5682064432001086994, guid: d9daef3f950273945b1eb5cea886939b, type: 3}
+  - {fileID: 1001176562105206731, guid: d9daef3f950273945b1eb5cea886939b, type: 3}
   _enemyPoolPrefab: {fileID: 126690080380749959, guid: 5290313942fd44c47a415e04a43f7199,
     type: 3}
-  _availablePaths:
-  - {fileID: 0}
   _ressourceController: {fileID: 571994285330439440}
   _nextWaveButton: {fileID: 0}
   _pauseController: {fileID: 571994285330439443}
+  _availablePath: []
 --- !u!114 &571994285330439440
 MonoBehaviour:
   m_ObjectHideFlags: 0

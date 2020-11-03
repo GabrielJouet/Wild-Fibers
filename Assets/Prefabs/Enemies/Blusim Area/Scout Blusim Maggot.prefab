@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7388368827716972525}
   - component: {fileID: 5524535823760821382}
-  - component: {fileID: 5682064432001086994}
+  - component: {fileID: 1001176562105206731}
   - component: {fileID: 2416215748048360603}
   m_Layer: 0
   m_Name: Scout Blusim Maggot
@@ -155,7 +155,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.045}
   m_Size: {x: 0.18, y: 0.09}
   m_Direction: 1
---- !u!114 &5682064432001086994
+--- !u!114 &1001176562105206731
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -164,10 +164,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6914183812568595844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
+  m_Script: {fileID: 11500000, guid: 5951dce96024a644493e8fcd5665b3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Scout Blusim
+  _displayName: Scout Maggot
   _healthMax: 10
   _armorMax: 15
   _speedMax: 0.1
@@ -180,6 +180,10 @@ MonoBehaviour:
   _dotDisplay: {fileID: 3511199004427678630}
   _spriteRenderer: {fileID: 2394709574171677322}
   _animator: {fileID: 3597370224652989133}
+  _hatchingTime: 15
+  _cocoonTime: 2
+  _hatchling: {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4,
+    type: 3}
 --- !u!114 &2416215748048360603
 MonoBehaviour:
   m_ObjectHideFlags: 0

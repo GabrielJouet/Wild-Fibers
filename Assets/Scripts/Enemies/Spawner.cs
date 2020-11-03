@@ -85,7 +85,7 @@ public class Spawner : MonoBehaviour
             if (_enemyIndex < _enemyGroup.GetEnemyPattern(_patternIndex).GetNumberOfEnemies())
             {
                 _enemyIndex++;
-                _enemyPool.GetOneEnemy().GetComponent<Enemy>().Initialize(_randomPath.CalculateRandomPath(), _enemyPool);
+                _enemyPool.GetOneEnemy().Initialize(_randomPath.CalculateRandomPath(), _enemyPool, 0);
 
                 _coroutineStartTime = DateTime.Now;
                 _coroutineTimeNeeded = _enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies();

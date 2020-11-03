@@ -87,7 +87,7 @@ public class LevelController : MonoBehaviour
         for (int i = 0; i < _enemiesAvailables.Count; i++)
         {
             EnemyPool newEnemyPool = Instantiate(_enemyPoolPrefab, transform);
-            newEnemyPool.Initialize(_enemiesAvailables[i].gameObject, _ressourceController);
+            newEnemyPool.Initialize(_enemiesAvailables[i], _ressourceController);
 
             _enemyPools.Add(newEnemyPool);
         }
@@ -123,10 +123,9 @@ public class LevelController : MonoBehaviour
         for (int i = 0; i < _level.GetWave(_waveIndex).GetNumberOfEnemyGroup(); i++)
         {
             foreach(EnemyPool current in _enemyPools)
-            {
-                if (current.GetPrefab() == _level.GetWave(_waveIndex).GetEnemyGroup(i).GetEnemyUsed().gameObject)
+                if (current.GetPrefab() == _level.GetWave(_waveIndex).GetEnemyGroup(i).GetEnemyUsed())
                     bufferPool = current;
-            }
+
             _spawners[i].SetNewGroup(_availablePath[_level.GetWave(_waveIndex).GetEnemyGroup(i).GetPathIndex()], _level.GetWave(_waveIndex).GetEnemyGroup(i), this, bufferPool);
         }
     }
@@ -213,4 +212,13 @@ public class LevelController : MonoBehaviour
 
     //Getter
     public int GetLevelIndex() { return _level.GetNumber(); }
+
+    public EnemyPool RecoverPool(Enemy wantedEnemy)
+    {
+        foreach (EnemyPool current in _enemyPools)
+            if (current.GetPrefab().GetType() == wantedEnemy.GetType())
+                return current;
+
+        return null;
+    }
 }

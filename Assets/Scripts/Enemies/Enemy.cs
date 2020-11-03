@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
     //
     //Parameters => newPath, the new path the enemy will used
     //              newPool, the pool enemy came from
-    public void Initialize(Path newPath, EnemyPool newPool)
+    public virtual void Initialize(Path newPath, EnemyPool newPool, int pathIndex)
     {
         //We reset pretty every variables
         _informationUI = null;
@@ -133,9 +133,9 @@ public class Enemy : MonoBehaviour
 
         _healthBar.ResetSize();
 
-        _pathIndex = 0;
+        _pathIndex = pathIndex;
 
-        transform.position = newPath.GetPathPosition(0);
+        transform.position = newPath.GetPathPosition(pathIndex);
         _path = newPath;
         _enemyPool = newPool;
 
@@ -144,7 +144,7 @@ public class Enemy : MonoBehaviour
 
 
     //Update method, called each frame
-    private void Update()
+    protected void Update()
     {
         if(_moving)
         {
@@ -161,7 +161,7 @@ public class Enemy : MonoBehaviour
 
 
     //Fixed Update method, called 50 times per second
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (_informationUI != null)
             _informationUI.UpdateEnemyInformation(this);
@@ -298,14 +298,14 @@ public class Enemy : MonoBehaviour
 
         StopAllCoroutines();
 
-        _enemyPool.AddOneEnemy(gameObject, false, _goldGained);
+        _enemyPool.AddOneEnemy(this, false, _goldGained);
     }
 
 
     //Method called when an enemy reaches the end of the path
     protected void ReachEnd()
     {
-        _enemyPool.AddOneEnemy(gameObject, true, _numberOfLivesTaken);
+        _enemyPool.AddOneEnemy(this, true, _numberOfLivesTaken);
 
         if (_informationUI) 
             DesactivateUI();
