@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -99,23 +98,12 @@ public class Enemy : MonoBehaviour
     protected BackgroudSelecter _informationUI;
 
 
-    private DateTime _dotCoroutineStartTime;
-
-    private float _dotCoroutineTimeNeeded = 0f;
-
-    private bool _enemyPaused = false;
-
-    private DateTime _slowDownCoroutineStartTime;
-
-    private float _slowDownCoroutineTimeNeeded = 0f;
-
-
 
     //Method used instead of using start (kinda a constructor)
     //
     //Parameters => newPath, the new path the enemy will used
     //              newPool, the pool enemy came from
-    public void Initialize(Path newPath, EnemyPool newPool)
+    public virtual void Initialize(Path newPath, EnemyPool newPool)
     {
         //We reset pretty every variables
         _informationUI = null;
@@ -144,7 +132,7 @@ public class Enemy : MonoBehaviour
 
 
     //Update method, called each frame
-    private void Update()
+    protected void Update()
     {
         if(_moving)
         {
@@ -161,7 +149,7 @@ public class Enemy : MonoBehaviour
 
 
     //Fixed Update method, called 50 times per second
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
         if (_informationUI != null)
             _informationUI.UpdateEnemyInformation(this);
@@ -234,16 +222,7 @@ public class Enemy : MonoBehaviour
     //Coroutine used to reset slow down once it started
     protected IEnumerator ResetSlowDown(float slowDownTime)
     {
-        _slowDownCoroutineStartTime = DateTime.Now;
-        _slowDownCoroutineTimeNeeded = 0;
         yield return new WaitForSeconds(slowDownTime);
-        SlowDownBehavior();
-    }
-
-
-    //Method used for pause handling 
-    protected void SlowDownBehavior()
-    {
         _isSlowDown = false;
         _speed = _speedMax;
     }
@@ -277,8 +256,6 @@ public class Enemy : MonoBehaviour
         {
             _dotDuration -= 0.5f;
             TakeDamage(_healthMalus);
-            _dotCoroutineStartTime = DateTime.Now;
-            _dotCoroutineTimeNeeded = 0.5f;
             yield return new WaitForSeconds(0.5f);
         }
 
@@ -328,46 +305,6 @@ public class Enemy : MonoBehaviour
         _selector.SetActive(false);
 
         _informationUI = null;
-    }
-
-
-    //Method used by pause controller to pause current behavior
-    public void Pause(bool paused)
-    {
-        _animator.enabled = paused;
-
-        if (!_enemyPaused)
-        {
-            StopAllCoroutines();
-            _dotCoroutineTimeNeeded -= (float)(DateTime.Now - _dotCoroutineStartTime).TotalSeconds;
-            _slowDownCoroutineTimeNeeded -= (float)(DateTime.Now - _slowDownCoroutineStartTime).TotalSeconds;
-        }
-        else
-        {
-            if (_dotApplied)
-                StartCoroutine(UnPauseDot());
-            if (_isSlowDown)
-                StartCoroutine(UnPauseSlowDelay());
-        }
-        _enemyPaused = !_enemyPaused;
-    }
-
-
-    //Method to delay action when pause is unpaused
-    protected IEnumerator UnPauseDot()
-    {
-        _slowDownCoroutineStartTime = DateTime.Now;
-        yield return new WaitForSeconds(_dotCoroutineTimeNeeded);
-        StartCoroutine(TakePersistentDamage());
-    }
-
-
-    //Method to delay action when pause is unpaused
-    protected IEnumerator UnPauseSlowDelay()
-    {
-        _slowDownCoroutineStartTime = DateTime.Now;
-        yield return new WaitForSeconds(_slowDownCoroutineTimeNeeded);
-        SlowDownBehavior();
     }
 
 

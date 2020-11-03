@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 /*
@@ -32,13 +31,6 @@ public class Spawner : MonoBehaviour
 
     //Does every enemy is dead?
     private bool _enemiesKilled = false;
-
-
-    private DateTime _coroutineStartTime;
-
-    private float _coroutineTimeNeeded = 0f;
-
-    private bool _spawnPaused = false;
 
 
 
@@ -74,8 +66,6 @@ public class Spawner : MonoBehaviour
                 _enemyIndex++;
                 _enemyPool.GetOneEnemy().GetComponent<Enemy>().Initialize(_randomPath.CalculateRandomPath(), _enemyPool);
 
-                _coroutineStartTime = DateTime.Now;
-                _coroutineTimeNeeded = _enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies();
                 yield return new WaitForSeconds(_enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies());
             }
             //Else if the pattern is finished
@@ -86,9 +76,6 @@ public class Spawner : MonoBehaviour
                 {
                     _patternIndex++;
                     _enemyIndex = 0;
-
-                    _coroutineStartTime = DateTime.Now;
-                    _coroutineTimeNeeded = _enemyGroup.GetTimeBetweenPattern();
                     yield return new WaitForSeconds(_enemyGroup.GetTimeBetweenPattern());
                 }
                 //If the wave is finished
@@ -96,30 +83,6 @@ public class Spawner : MonoBehaviour
                     EndSpawn();
             }
         }
-    }
-
-
-    //Method used to pause spawn enemy when Pause Controller is called
-    public void PauseSpawn()
-    {
-        if (!_spawnPaused)
-        {
-            StopAllCoroutines();
-            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
-        }
-        else if(_coroutineTimeNeeded != 0)
-            StartCoroutine(DelayUnPause());
-
-        _spawnPaused = !_spawnPaused;
-    }
-
-
-    //Coroutine used to delay unpause after being paused
-    private IEnumerator DelayUnPause()
-    {
-        _coroutineStartTime = DateTime.Now;
-        yield return new WaitForSeconds(_coroutineTimeNeeded);
-        StartCoroutine(SpawnEnemies());
     }
 
 

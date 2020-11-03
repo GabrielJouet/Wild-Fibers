@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -34,7 +33,7 @@ public class MarkTower : Tower
     private void FixedUpdate()
     {
         //If enemies are in range and we can start shooting, we shoot
-        if (_availableEnemies.Count > 0 && !_coroutineStarted && !_paused)
+        if (_availableEnemies.Count > 0 && !_coroutineStarted)
             StartCoroutine(SummonMarks());
     }
 
@@ -65,10 +64,8 @@ public class MarkTower : Tower
             }
         }
 
-        _coroutineStartTime = DateTime.Now;
-        _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
-        UnPauseMethod();
+        _coroutineStarted = false;
     }
 
 
@@ -79,23 +76,5 @@ public class MarkTower : Tower
     {
         if (!_availableMarks.Contains(dot))
             _availableMarks.Add(dot);
-    }
-
-
-    //Method used to pause tower behavior when pause button is hit
-    public override void PauseBehavior()
-    {
-        if (!_paused)
-        {
-            StopAllCoroutines();
-            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
-        }
-        else
-            StartCoroutine(UnPauseDelay());
-
-        foreach (MarkDot current in _allMarks)
-            current.enabled = _paused;
-
-        _paused = !_paused;
     }
 }

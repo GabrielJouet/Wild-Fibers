@@ -82,17 +82,6 @@ public class Tower : MonoBehaviour
     //List of in-range enemies
     protected List<Enemy> _availableEnemies = new List<Enemy>();
 
-
-    //Does the tower is currently paused? (by Pause Controller)
-    protected bool _paused = false;
-
-    //Coroutine Start Time (used if the tower is paused)
-    protected DateTime _coroutineStartTime;
-
-    //Coroutine time needed to reset
-    protected float _coroutineTimeNeeded = 0f;
-
-    //Does the attack already started?
     protected bool _coroutineStarted = false;
 
 
@@ -194,25 +183,6 @@ public class Tower : MonoBehaviour
 
     //Method used to revert seller UI state
     public void RevertSellerActive() { _sellerActive = !_sellerActive; }
-
-
-    //Method used to pause behavior of tower children
-    public virtual void PauseBehavior() { }
-
-
-    //Method to delay action when pause is unpaused
-    protected IEnumerator UnPauseDelay()
-    {
-        _coroutineStartTime = DateTime.Now;
-        yield return new WaitForSeconds(_coroutineTimeNeeded);
-        UnPauseMethod();
-    }
-
-
-    protected void UnPauseMethod()
-    {
-        _coroutineStarted = false;
-    }
     #endregion
 
 

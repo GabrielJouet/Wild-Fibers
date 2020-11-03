@@ -61,16 +61,6 @@ public class LevelController : MonoBehaviour
     private int _waveIndex = 0;
 
 
-    //Does the tower is currently paused? (by Pause Controller)
-    protected bool _paused = false;
-
-    //Coroutine Start Time (used if the tower is paused)
-    protected DateTime _coroutineStartTime;
-
-    //Coroutine time needed to reset
-    protected float _coroutineTimeNeeded = 0f;
-
-
 
     //Start Method
     //Called when the game object is initialized
@@ -176,46 +166,14 @@ public class LevelController : MonoBehaviour
         //If there is another wave after that one
         if (_waveIndex + 1 < _level.GetWaveCount())
         {
-            _coroutineStartTime = DateTime.Now;
-            _coroutineTimeNeeded = _timeBetweenNextWaveButtonDisplay;
-            yield return new WaitForSeconds(_timeBetweenNextWaveButtonDisplay);
-            DelayBehavior();
+            _waveIndex++;
+            yield return new WaitForSeconds(3);
+
+            _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
         }
         else
             foreach (Spawner current in _spawners)
                 current.NotifyPool();
-    }
-
-
-    //Method used for pause handling 
-    private void DelayBehavior()
-    {
-        _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
-        _waveIndex++;
-    }
-
-
-    //Method used by pause controller to pause behavior
-    public void PauseBehavior()
-    {
-        if (!_paused)
-        {
-            StopAllCoroutines();
-            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
-        }
-        else if (_coroutineTimeNeeded > 0f)
-            StartCoroutine(DelayUnPause());
-
-        _paused = !_paused;
-    }
-
-
-    //Coroutine used to delay unpause after being paused
-    private IEnumerator DelayUnPause()
-    {
-        _coroutineStartTime = DateTime.Now;
-        yield return new WaitForSeconds(_coroutineTimeNeeded);
-        DelayBehavior();
     }
 
 

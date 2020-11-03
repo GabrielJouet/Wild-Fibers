@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +18,7 @@ public class ChocTower : Tower
     //Fixed Update method, called times a second
     private void FixedUpdate()
     {
-        if (_availableEnemies.Count > 0 && !_coroutineStarted && !_paused)
+        if (_availableEnemies.Count > 0 && !_coroutineStarted)
             StartCoroutine(SummonSpikes());
     }
 
@@ -51,10 +50,8 @@ public class ChocTower : Tower
 
         }
 
-        _coroutineStartTime = DateTime.Now;
-        _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
-        UnPauseMethod();
+        _coroutineStarted = false;
     }
 
 
@@ -65,24 +62,5 @@ public class ChocTower : Tower
     {
         if (!_availableSpikes.Contains(spikes))
             _availableSpikes.Add(spikes);
-    }
-
-
-    //Method used to pause tower behavior when pause button is hit
-    public override void PauseBehavior()
-    {
-        if (!_paused)
-        {
-            StopAllCoroutines();
-            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
-        }
-        else
-            StartCoroutine(UnPauseDelay());
-
-        _paused = !_paused;
-
-        foreach (ChocSpikes current in _allSpikes)
-            if(current.gameObject.activeSelf)
-                current.StopBehavior();
     }
 }

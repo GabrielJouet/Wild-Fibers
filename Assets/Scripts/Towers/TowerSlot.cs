@@ -40,16 +40,6 @@ public class TowerSlot : MonoBehaviour
     private bool _chooserActive = false;
 
 
-    //Does the tower is currently paused? (by Pause Controller)
-    private bool _paused = false;
-
-    //Coroutine Start Time (used if the tower is paused)
-    private DateTime _coroutineStartTime;
-
-    //Coroutine time needed to reset
-    private float _coroutineTimeNeeded = 0f;
-
-
     private Tower _chosenTower;
 
 
@@ -87,15 +77,7 @@ public class TowerSlot : MonoBehaviour
         _animator.enabled = true;
         _animator.SetTrigger(_chosenTower.GetName());
 
-        _coroutineStartTime = DateTime.Now;
-        _coroutineTimeNeeded = 1f;
         yield return new WaitForSeconds(1f);
-        ConstructTower();
-    }
-
-
-    private void ConstructTower()
-    {
         _animator.enabled = false;
         _spriteRenderer.sprite = _defaultSprite;
 
@@ -122,31 +104,6 @@ public class TowerSlot : MonoBehaviour
 
     //Method used to reset chooser state
     public void ResetChooserActive() { _chooserActive = false; }
-
-
-    //Method used by PauseController to pause behavior of tower slot
-    public void PauseBehavior()
-    {
-        if (!_paused)
-        {
-            StopAllCoroutines();
-            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
-        }
-        else if (_coroutineTimeNeeded > 0)
-            StartCoroutine(UnPauseDelay());
-
-        _animator.enabled = _paused;
-        _paused = !_paused;
-    }
-
-
-    //Method used to unpause pause effect
-    private IEnumerator UnPauseDelay()
-    {
-        _coroutineStartTime = DateTime.Now;
-        yield return new WaitForSeconds(_coroutineTimeNeeded);
-        ConstructTower();
-    }
     #endregion
 
 

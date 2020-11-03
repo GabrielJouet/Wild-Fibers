@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,10 +51,8 @@ public class ArcherTower : Tower
 
         }
 
-        _coroutineStartTime = DateTime.Now;
-        _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
-        UnPauseMethod();
+        _coroutineStarted = false;
     }
 
 
@@ -66,24 +63,5 @@ public class ArcherTower : Tower
     {
         if (!_availableProjectiles.Contains(arrow))
             _availableProjectiles.Add(arrow);
-    }
-
-
-    //Method used to pause tower behavior when pause button is hit
-    public override void PauseBehavior()
-    {
-        if (!_paused)
-        {
-            StopAllCoroutines();
-            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
-        }
-        else
-            StartCoroutine(UnPauseDelay());
-
-        foreach (ArcherArrow current in _allArrows)
-            if (current.gameObject.activeSelf)
-                current.enabled = _paused;
-
-        _paused = !_paused;
     }
 }

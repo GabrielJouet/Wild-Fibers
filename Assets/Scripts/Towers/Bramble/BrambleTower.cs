@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,7 +18,7 @@ public class BrambleTower : Tower
     //Fixed Update method, called 50 times a second
     private void FixedUpdate()
     {
-        if (_availableEnemies.Count > 0 && !_coroutineStarted && !_paused)
+        if (_availableEnemies.Count > 0 && !_coroutineStarted)
             StartCoroutine(SummonWave());
     }
 
@@ -44,10 +43,8 @@ public class BrambleTower : Tower
             _allWaves.Add(bufferWave);
         }
 
-        _coroutineStartTime = DateTime.Now;
-        _coroutineTimeNeeded = _timeBetweenShots;
         yield return new WaitForSeconds(_timeBetweenShots);
-        UnPauseMethod();
+        _coroutineStarted = false;
     }
 
 
@@ -59,24 +56,5 @@ public class BrambleTower : Tower
     {
         if (!_availableWaves.Contains(wave))
             _availableWaves.Add(wave);
-    }
-
-    
-    //Method used to pause tower behavior when pause button is hit
-    public override void PauseBehavior()
-    {
-        if (!_paused)
-        {
-            StopAllCoroutines();
-            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
-        }
-        else
-            StartCoroutine(UnPauseDelay());
-
-        foreach (BrambleShockWave current in _allWaves)
-            if (current.gameObject.activeSelf)
-                current.enabled = _paused;
-
-        _paused = !_paused;
     }
 }
