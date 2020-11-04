@@ -85,6 +85,8 @@ public class Tower : MonoBehaviour
 
     protected ProjectilePool _projectilePool;
 
+    protected TowerPool _towerPool;
+
 
 
     //Method used to initialize class (like a constructor)
@@ -93,15 +95,20 @@ public class Tower : MonoBehaviour
     //              newRessourceController, ressource controller used in this game
     //              newBackgroundSelecter, used to display UI information
     //              newPool, used to recover projectiles
-    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool)
+    //              newTowerPool, used when destroyed
+    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool)
     {
+        StopAllCoroutines();
+
         //We set variables
         _backgroundSelecter = newBackgroundSelecter;
         _ressourceController = newRessourceController;
         _projectilePool = newPool;
         _currentSlot = newSlot;
+        _towerPool = newTowerPool;
 
         //And we change tower range 
+        transform.position = newSlot.transform.position;
         _transformRange.localScale *= _range;
         _collider.transform.localScale *= _range;
     }
@@ -117,7 +124,7 @@ public class Tower : MonoBehaviour
 
         _backgroundSelecter.DisableTowerSellButton();
         _currentSlot.ResetSlot();
-        Destroy(gameObject);
+        _towerPool.AddOneTower(this);
     }
 
 

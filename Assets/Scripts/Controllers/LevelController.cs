@@ -43,6 +43,9 @@ public class LevelController : MonoBehaviour
     [SerializeField]
     private ProjectilePool _projectilePoolPrefab;
     private readonly List<ProjectilePool> _projectilePools = new List<ProjectilePool>();
+    [SerializeField]
+    private TowerPool _towerPoolPrefab;
+    private readonly List<TowerPool> _towerPools = new List<TowerPool>();
 
 
     [Header("Components")]
@@ -118,7 +121,8 @@ public class LevelController : MonoBehaviour
     {
         foreach (Tower current in _playerController.GetTowers())
         {
-            if(_projectilePools != null)
+            SpawnOneTowerPool(current);
+            if (_projectilePools != null)
             {
                 bool result = false;
                 foreach (ProjectilePool currentPool in _projectilePools)
@@ -146,6 +150,16 @@ public class LevelController : MonoBehaviour
         newPool.Initialize(currentPrefab.GetProjectileUsed());
 
         _projectilePools.Add(newPool);
+    }
+
+
+    //Method used to spawn one tower pool
+    private void SpawnOneTowerPool(Tower currentPrefab)
+    {
+        TowerPool newPool = Instantiate(_towerPoolPrefab, transform);
+        newPool.Initialize(currentPrefab);
+
+        _towerPools.Add(newPool);
     }
 
 
@@ -259,6 +273,15 @@ public class LevelController : MonoBehaviour
     {
         foreach (ProjectilePool current in _projectilePools)
             if (current.GetPrefab().GetType() == wantedProjectile.GetType())
+                return current;
+
+        return null;
+    }
+
+    public TowerPool RecoverTowerPool(Tower wantedTower)
+    {
+        foreach (TowerPool current in _towerPools)
+            if (current.GetPrefab().GetType() == wantedTower.GetType())
                 return current;
 
         return null;

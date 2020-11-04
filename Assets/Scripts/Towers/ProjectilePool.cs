@@ -20,9 +20,9 @@ public class ProjectilePool : MonoBehaviour
     }
 
 
-    //Method used to recover one enemy
+    //Method used to recover one projectile
     //
-    //Return a new enemy either already instanciated or newly created
+    //Return a new projectile either already instanciated or newly created
     public Projectile GetOneProjectile()
     {
         Projectile newProjectile = _projectilePool.Count > 0 ? _projectilePool.Pop() : Instantiate(_projectilePrefab, transform);
@@ -33,7 +33,7 @@ public class ProjectilePool : MonoBehaviour
 
 
 
-    //Method used to add one enemy to the pool
+    //Method used to add one projectile to the pool
     //
     //Parameters => newProjectile, game object of the projectile
     public void AddOneProjectile(Projectile newProjectile)
