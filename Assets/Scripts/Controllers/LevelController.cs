@@ -78,13 +78,37 @@ public class LevelController : MonoBehaviour
     //Each enemy type will need its own pool
     private void SpawnEnemyPools()
     {
-        for (int i = 0; i < _level.GetEnemiesAvailable().Count; i++)
+        foreach (Enemy current in _level.GetEnemiesAvailable())
         {
-            EnemyPool newEnemyPool = Instantiate(_enemyPoolPrefab, transform);
-            newEnemyPool.Initialize(_level.GetEnemiesAvailable()[i], _ressourceController);
+            //TO CHANGE SHOULD BE AN INTERFACE INSTEAD
+            if (current.TryGetComponent(out Boss currentBoos))
+            {
+                bool result = false;
+                foreach (EnemyPool currentPool in _enemyPools)
+                {
+                    if (currentPool.GetPrefab().GetType() == currentBoos.GetSpawnedEnemy().GetType())
+                    {
+                        result = true;
+                        break;
+                    }
+                }
 
-            _enemyPools.Add(newEnemyPool);
+                if (!result)
+                    SpawnOneEnemyPool(currentBoos.GetSpawnedEnemy());
+            }
+            else
+                SpawnOneEnemyPool(current);
         }
+    }
+
+
+    //Method used to spawn one enemy pool
+    private void SpawnOneEnemyPool(Enemy currentPrefab)
+    {
+        EnemyPool newEnemyPool = Instantiate(_enemyPoolPrefab, transform);
+        newEnemyPool.Initialize(currentPrefab, _ressourceController);
+
+        _enemyPools.Add(newEnemyPool);
     }
 
 
@@ -116,10 +140,10 @@ public class LevelController : MonoBehaviour
 
 
     //Method used to spawn one projectile pool
-    private void SpawnOneProjectilePool(Tower current)
+    private void SpawnOneProjectilePool(Tower currentPrefab)
     {
         ProjectilePool newPool = Instantiate(_projectilePoolPrefab, transform);
-        newPool.Initialize(current.GetProjectileUsed());
+        newPool.Initialize(currentPrefab.GetProjectileUsed());
 
         _projectilePools.Add(newPool);
     }
