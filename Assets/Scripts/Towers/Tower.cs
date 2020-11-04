@@ -87,6 +87,8 @@ public class Tower : MonoBehaviour
 
     protected TowerPool _towerPool;
 
+    protected Vector2 _colliderSize = Vector2.zero;
+
 
 
     //Method used to initialize class (like a constructor)
@@ -99,6 +101,7 @@ public class Tower : MonoBehaviour
     public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool)
     {
         StopAllCoroutines();
+        _availableEnemies.Clear();
 
         //We set variables
         _backgroundSelecter = newBackgroundSelecter;
@@ -109,8 +112,12 @@ public class Tower : MonoBehaviour
 
         //And we change tower range 
         transform.position = newSlot.transform.position;
-        _transformRange.localScale *= _range;
-        _collider.transform.localScale *= _range;
+
+        if (_colliderSize == Vector2.zero)
+            _colliderSize = _collider.transform.localScale * _range;
+
+        _transformRange.localScale = _colliderSize;
+        _collider.transform.localScale = _colliderSize;
     }
 
 
