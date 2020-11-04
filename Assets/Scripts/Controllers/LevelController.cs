@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -41,8 +40,9 @@ public class LevelController : MonoBehaviour
     private EnemyPool _enemyPoolPrefab;
     //List of available enemy pools to use
     private readonly List<EnemyPool> _enemyPools = new List<EnemyPool>();
-    //Every available enemies in this level 
-    private List<Enemy> _enemiesAvailables;
+    [SerializeField]
+    private ProjectilePool _projectilePoolPrefab;
+    private readonly List<ProjectilePool> _projectilePools = new List<ProjectilePool>();
 
 
     [Header("Components")]
@@ -55,6 +55,8 @@ public class LevelController : MonoBehaviour
     //Available Paths in level
     [SerializeField]
     private List<RandomPath> _availablePath;
+    [SerializeField]
+    private PlayerController _playerController;
 
 
     //Index for saving wave progress
@@ -68,6 +70,7 @@ public class LevelController : MonoBehaviour
     {
         _waveText.text = 0 + " / " + _level.GetWaveCount();
         SpawnEnemyPools();
+        SpawnProjectilePools();
     }
 
 
@@ -75,14 +78,50 @@ public class LevelController : MonoBehaviour
     //Each enemy type will need its own pool
     private void SpawnEnemyPools()
     {
-        _enemiesAvailables = new List<Enemy>(_level.GetEnemiesAvailable());
-        for (int i = 0; i < _enemiesAvailables.Count; i++)
+        for (int i = 0; i < _level.GetEnemiesAvailable().Count; i++)
         {
             EnemyPool newEnemyPool = Instantiate(_enemyPoolPrefab, transform);
-            newEnemyPool.Initialize(_enemiesAvailables[i], _ressourceController);
+            newEnemyPool.Initialize(_level.GetEnemiesAvailable()[i], _ressourceController);
 
             _enemyPools.Add(newEnemyPool);
         }
+    }
+
+
+    //Method used to spawn every needed projectile pool
+    //Each projectile type will need its own pool
+    private void SpawnProjectilePools()
+    {
+        foreach (Tower current in _playerController.GetTowers())
+        {
+            if(_projectilePools != null)
+            {
+                bool result = false;
+                foreach (ProjectilePool currentPool in _projectilePools)
+                {
+                    if(current.GetProjectileUsed().GetComponent<Projectile>().GetType() == currentPool.GetPrefab().GetType())
+                    {
+                        result = true;
+                        break;
+                    }
+                }
+
+                if(!result)
+                    SpawnOneProjectilePool(current);
+            }
+            else
+                SpawnOneProjectilePool(current);
+        }
+    }
+
+
+    //Method used to spawn one projectile pool
+    private void SpawnOneProjectilePool(Tower current)
+    {
+        ProjectilePool newPool = Instantiate(_projectilePoolPrefab, transform);
+        newPool.Initialize(current.GetProjectileUsed());
+
+        _projectilePools.Add(newPool);
     }
 
 
@@ -166,7 +205,7 @@ public class LevelController : MonoBehaviour
         if (_waveIndex + 1 < _level.GetWaveCount())
         {
             _waveIndex++;
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(_timeBetweenNextWaveButtonDisplay);
 
             _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
         }
@@ -187,6 +226,15 @@ public class LevelController : MonoBehaviour
     {
         foreach (EnemyPool current in _enemyPools)
             if (current.GetPrefab().GetType() == wantedEnemy.GetType())
+                return current;
+
+        return null;
+    }
+
+    public ProjectilePool RecoverProjectilePool(Projectile wantedProjectile)
+    {
+        foreach (ProjectilePool current in _projectilePools)
+            if (current.GetPrefab().GetType() == wantedProjectile.GetType())
                 return current;
 
         return null;

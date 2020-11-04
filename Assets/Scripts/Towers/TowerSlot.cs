@@ -12,6 +12,9 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private RessourceController _ressourceController;
 
+    [SerializeField]
+    private LevelController _levelController;
+
     //Information UI
     [SerializeField]
     private BackgroudSelecter _backgroundSelecter;
@@ -82,7 +85,7 @@ public class TowerSlot : MonoBehaviour
         _spriteRenderer.sprite = _defaultSprite;
 
         _currentTower = Instantiate(_chosenTower, transform.position, Quaternion.identity, transform);
-        _currentTower.Initialize(this, _ressourceController, _backgroundSelecter);
+        _currentTower.Initialize(this, _ressourceController, _backgroundSelecter, _levelController.RecoverProjectilePool(_chosenTower.GetProjectileUsed().GetComponent<Projectile>()));
     }
     #endregion
 

@@ -1203,6 +1203,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 519420035}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _levelController
+      value: 
+      objectReference: {fileID: 519420030}
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_SortingLayer
@@ -1422,6 +1427,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 519420035}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _levelController
+      value: 
+      objectReference: {fileID: 519420030}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2234,6 +2244,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 519420035}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _levelController
+      value: 
+      objectReference: {fileID: 519420030}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2529,6 +2544,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 519420035}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _levelController
+      value: 
+      objectReference: {fileID: 519420030}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2674,6 +2694,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 519420035}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _levelController
+      value: 
+      objectReference: {fileID: 519420030}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4034,6 +4059,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 519420035}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _levelController
+      value: 
+      objectReference: {fileID: 519420030}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x

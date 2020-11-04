@@ -3,7 +3,7 @@
 /*
  * Shock Wave is the projectile of Shock tower
  */
-public class BrambleShockWave : MonoBehaviour
+public class BrambleShockWave : Projectile
 {
     //Time between start and end wave in second
     [SerializeField]
@@ -16,9 +16,6 @@ public class BrambleShockWave : MonoBehaviour
     //Attack variables
     private float _damage;
     private float _armorThrough;
-
-    //Parent tower that creates wave
-    private BrambleTower _parentTower;
     
     //How much size expansion per frame?
     private float _expansionRate;
@@ -33,16 +30,17 @@ public class BrambleShockWave : MonoBehaviour
     //              newArmorThrough, armor malus done on attack
     //              newEnemy, new enemy to track
     //              newParent, new parent tower
+    //              newPool, new projectile pool
     //              newRange, new wave range
-    public void Initialize(float newDamage, float newArmorThrough, BrambleTower newParent, float newRange)
+    public void Initialize(float newDamage, float newArmorThrough, Transform newParent, ProjectilePool newPool, float newRange)
     {
         _previousScale = new Vector3(0, 0, 1);
 
         transform.localScale = _previousScale;
-        transform.position = newParent.transform.position;
+        transform.position = newParent.position;
 
         _damage = newDamage;
-        _parentTower = newParent;
+        _projectilePool = newPool;
         _armorThrough = newArmorThrough;
         _maxRange = newRange;
 
@@ -61,7 +59,7 @@ public class BrambleShockWave : MonoBehaviour
             transform.localScale = _previousScale;
         }
         else
-            StopWave();
+            StopProjectile();
     }
 
 
@@ -72,13 +70,5 @@ public class BrambleShockWave : MonoBehaviour
     {
         if (collision.TryGetComponent(out Enemy newEnemy))
             newEnemy.TakeDamage(_damage, _armorThrough);
-    }
-
-
-    //Method used to stop wave and brings it back to parent tower
-    private void StopWave()
-    {
-        gameObject.SetActive(false);
-        _parentTower.RecoverWave(this);
     }
 }

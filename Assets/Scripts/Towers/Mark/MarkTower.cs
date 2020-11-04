@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -19,13 +18,6 @@ public class MarkTower : Tower
     //Duration of the dot in seconds
     [SerializeField]
     private float _dotDuration;
-
-
-    //List of available marks (pool)
-    private readonly List<MarkDot> _availableMarks = new List<MarkDot>();
-
-    //All dots without restriction
-    private readonly List<MarkDot> _allMarks = new List<MarkDot>();
 
 
 
@@ -48,33 +40,9 @@ public class MarkTower : Tower
         _availableEnemies.Shuffle();
 
         for (int i = 0; i < numberOfStrikes; i++)
-        {
-            if (_availableMarks.Count > 0)
-            {
-                _availableMarks[0].gameObject.SetActive(true);
-                _availableMarks[0].Initialize(_damage, _armorThrough, _availableEnemies[i], this, _armorThroughMalus, _damageOverTime, _dotDuration);
-
-                _availableMarks.Remove(_availableMarks[0]);
-            }
-            else
-            {
-                MarkDot bufferDot = Instantiate(_projectileUsed, transform).GetComponent<MarkDot>();
-                bufferDot.Initialize(_damage, _armorThrough, _availableEnemies[i], this, _armorThroughMalus, _damageOverTime, _dotDuration);
-                _allMarks.Add(bufferDot);
-            }
-        }
+            _projectilePool.GetOneProjectile().GetComponent<MarkDot>().Initialize(_damage, _armorThrough, _availableEnemies[i], transform, _armorThroughMalus, _damageOverTime, _dotDuration, _projectilePool);
 
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;
-    }
-
-
-    //Method used to recover dot and add it to the pool
-    //
-    //Parameter => dot, the new projectile to add to the pool
-    public void RecoverDot(MarkDot dot)
-    {
-        if (!_availableMarks.Contains(dot))
-            _availableMarks.Add(dot);
     }
 }
