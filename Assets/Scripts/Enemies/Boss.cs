@@ -58,4 +58,11 @@ public class Boss : Enemy
             _moving = true;
         }
     }
+
+
+
+    public Enemy GetSpawnedEnemy()
+    {
+        return _enemySpawnedPrefab;
+    }
 }

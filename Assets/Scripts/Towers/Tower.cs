@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -84,6 +83,12 @@ public class Tower : MonoBehaviour
 
     protected bool _coroutineStarted = false;
 
+    protected ProjectilePool _projectilePool;
+
+    protected TowerPool _towerPool;
+
+    protected Vector2 _colliderSize = Vector2.zero;
+
 
 
     //Method used to initialize class (like a constructor)
@@ -91,22 +96,33 @@ public class Tower : MonoBehaviour
     //Parameters => newSlot, the tower slot related to this tower
     //              newRessourceController, ressource controller used in this game
     //              newBackgroundSelecter, used to display UI information
-    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter)
+    //              newPool, used to recover projectiles
+    //              newTowerPool, used when destroyed
+    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool)
     {
+        StopAllCoroutines();
+        _availableEnemies.Clear();
+
         //We set variables
         _backgroundSelecter = newBackgroundSelecter;
         _ressourceController = newRessourceController;
+        _projectilePool = newPool;
         _currentSlot = newSlot;
+        _towerPool = newTowerPool;
 
         //And we change tower range 
-        _transformRange.localScale *= _range;
-        _collider.transform.localScale *= _range;
+        transform.position = newSlot.transform.position;
+
+        if (_colliderSize == Vector2.zero)
+            _colliderSize = _collider.transform.localScale * _range;
+
+        _transformRange.localScale = _colliderSize;
+        _collider.transform.localScale = _colliderSize;
     }
 
 
 
-    /*Upgrades and Money related*/
-    #region
+    #region Upgrades and Money related
     //Method used to resell a tower and destroy it
     public void ResellTower()
     {
@@ -115,7 +131,7 @@ public class Tower : MonoBehaviour
 
         _backgroundSelecter.DisableTowerSellButton();
         _currentSlot.ResetSlot();
-        Destroy(gameObject);
+        _towerPool.AddOneTower(this);
     }
 
 
@@ -124,12 +140,11 @@ public class Tower : MonoBehaviour
     {
         //TO DO
     }
-    #endregion
+    #endregion 
 
 
 
-    /*Enemies interaction*/
-    #region
+    #region Enemies interaction
     //Method used to add one enemy from its list
     public void AddEnemy(Enemy enemy)
     {
@@ -155,8 +170,7 @@ public class Tower : MonoBehaviour
 
 
 
-    /*Reset related*/
-    #region
+    #region Reset related
     //Method used to activate range display (when selected)
     public void ActivateRangeDisplay()
     {
@@ -187,8 +201,7 @@ public class Tower : MonoBehaviour
 
 
 
-    /*Getters*/
-    #region
+    #region Getters
     public string GetName() { return _displayName; }
 
     public int GetPrice() { return _price; }

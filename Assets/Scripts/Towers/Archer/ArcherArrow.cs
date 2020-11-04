@@ -3,7 +3,7 @@
 /*
  * Projectile of the archer tower
  */
-public class ArcherArrow : MonoBehaviour
+public class ArcherArrow : Projectile
 {
     //Speed of movement
     [SerializeField]
@@ -18,9 +18,6 @@ public class ArcherArrow : MonoBehaviour
     //Enemy to attack
     private Enemy _enemyToTrack;
 
-    //Parent tower that creates this projectile
-    private ArcherTower _parentTower;
-
     private Vector3 _goalPosition;
 
 
@@ -31,12 +28,13 @@ public class ArcherArrow : MonoBehaviour
     //              newArmorThrough, armor malus done on attack
     //              newEnemy, new enemy to track
     //              newParent, new parent tower
-    public void Initialize(float newDamage, float newArmorThrough, Enemy newEnemy, ArcherTower newParent)
+    //              newPool, new projectile Pool
+    public void Initialize(float newDamage, float newArmorThrough, Enemy newEnemy, Transform newParent, ProjectilePool newPool)
     {
-        transform.position = newParent.transform.position;
+        transform.position = newParent.position;
         _enemyToTrack = newEnemy;
         _damage = newDamage;
-        _parentTower = newParent;
+        _projectilePool = newPool;
         _armorThrough = newArmorThrough;
     }
 
@@ -46,8 +44,8 @@ public class ArcherArrow : MonoBehaviour
     {
         if (_enemyToTrack != null)
             TrackEnemy();
-        else if(FollowPoint(_goalPosition))
-                StopArrow();
+        else if (FollowPoint(_goalPosition))
+            StopProjectile();
     }
 
 
@@ -59,7 +57,7 @@ public class ArcherArrow : MonoBehaviour
             if (FollowPoint(_enemyToTrack.GetDamagePosition()))
             {
                 _enemyToTrack.TakeDamage(_damage, _armorThrough);
-                StopArrow();
+                StopProjectile();
             }
         }
         else
@@ -83,15 +81,5 @@ public class ArcherArrow : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         return (transform.position - position).magnitude < 0.025f;
-    }
-
-
-    //Method used to get back to parent tower
-    private void StopArrow()
-    {
-        gameObject.SetActive(false);
-        _parentTower.RecoverArrow(this);
-
-        _goalPosition = Vector3.zero;
     }
 }

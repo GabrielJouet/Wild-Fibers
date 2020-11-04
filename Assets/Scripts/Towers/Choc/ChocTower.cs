@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -7,14 +6,6 @@ using UnityEngine;
  */
 public class ChocTower : Tower
 {
-    //List of available spikes (pool)
-    private readonly List<ChocSpikes> _availableSpikes = new List<ChocSpikes>();
-
-    //All spikes without restriction
-    private readonly List<ChocSpikes> _allSpikes = new List<ChocSpikes>();
-
-
-
     //Fixed Update method, called times a second
     private void FixedUpdate()
     {
@@ -33,34 +24,9 @@ public class ChocTower : Tower
         int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
 
         for(int i = 0; i < numberOfStrikes; i ++)
-        {
-            if(_availableSpikes.Count > 0)
-            {
-                _availableSpikes[0].gameObject.SetActive(true);
-                _availableSpikes[0].Initialize(_damage, _armorThrough, _availableEnemies[i], this);
-
-                _availableSpikes.Remove(_availableSpikes[0]);
-            }
-            else
-            {
-                ChocSpikes bufferSpike = Instantiate(_projectileUsed, transform).GetComponent<ChocSpikes>();
-                bufferSpike.Initialize(_damage, _armorThrough, _availableEnemies[i], this);
-                _allSpikes.Add(bufferSpike);
-            }
-
-        }
+            _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>().Initialize(_damage, _armorThrough, _availableEnemies[i], _projectilePool);
 
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;
-    }
-
-
-    //Method used to recover spike and place it into the pool
-    //
-    //Parameter => spikes, the new desactivated spike
-    public void RecoverSpike(ChocSpikes spikes)
-    {
-        if (!_availableSpikes.Contains(spikes))
-            _availableSpikes.Add(spikes);
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -7,14 +6,6 @@ using UnityEngine;
  */
 public class ArcherTower : Tower
 {
-    //List of availables projectiles (pool)
-    private readonly List<ArcherArrow> _availableProjectiles = new List<ArcherArrow>();
-
-    //All arrows without restriction
-    private readonly List<ArcherArrow> _allArrows = new List<ArcherArrow>();
-
-
-
     //Fixed Update method, called 50 times per second
     private void FixedUpdate()
     {
@@ -32,36 +23,11 @@ public class ArcherTower : Tower
         int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
 
         SortEnemies();
-
+        Debug.Log("attack");
         for (int i = 0; i < numberOfStrikes; i++)
-        {
-            if (_availableProjectiles.Count > 0)
-            {
-                _availableProjectiles[0].gameObject.SetActive(true);
-                _availableProjectiles[0].Initialize(_damage, _armorThrough, _availableEnemies[i], this);
-
-                _availableProjectiles.Remove(_availableProjectiles[0]);
-            }
-            else
-            {
-                ArcherArrow bufferArrow = Instantiate(_projectileUsed, transform).GetComponent<ArcherArrow>();
-                bufferArrow.Initialize(_damage, _armorThrough, _availableEnemies[i], this);
-                _allArrows.Add(bufferArrow);
-            }
-
-        }
+            _projectilePool.GetOneProjectile().GetComponent<ArcherArrow>().Initialize(_damage, _armorThrough, _availableEnemies[i], transform, _projectilePool);
 
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;
-    }
-
-
-    //Method used to recover one projectile
-    //
-    //Parameter => arrow, the new desactivated projectile to recover
-    public void RecoverArrow(ArcherArrow arrow)
-    {
-        if (!_availableProjectiles.Contains(arrow))
-            _availableProjectiles.Add(arrow);
     }
 }

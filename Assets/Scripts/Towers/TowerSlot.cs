@@ -12,6 +12,9 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private RessourceController _ressourceController;
 
+    [SerializeField]
+    private LevelController _levelController;
+
     //Information UI
     [SerializeField]
     private BackgroudSelecter _backgroundSelecter;
@@ -31,6 +34,8 @@ public class TowerSlot : MonoBehaviour
     //Sprite Renderer component
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
+
+    
 
 
     //Current tower associated with this slot
@@ -81,8 +86,9 @@ public class TowerSlot : MonoBehaviour
         _animator.enabled = false;
         _spriteRenderer.sprite = _defaultSprite;
 
-        _currentTower = Instantiate(_chosenTower, transform.position, Quaternion.identity, transform);
-        _currentTower.Initialize(this, _ressourceController, _backgroundSelecter);
+        TowerPool currentPool = _levelController.RecoverTowerPool(_chosenTower);
+        _currentTower = currentPool.GetOneTower();
+        _currentTower.Initialize(this, _ressourceController, _backgroundSelecter, _levelController.RecoverProjectilePool(_chosenTower.GetProjectileUsed().GetComponent<Projectile>()), currentPool);
     }
     #endregion
 
