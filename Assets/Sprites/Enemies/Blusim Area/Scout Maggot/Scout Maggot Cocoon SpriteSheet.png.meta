@@ -1,31 +1,28 @@
 fileFormatVersion: 2
-guid: 64fd6e4aee80cd84e874546c0fb15f87
+guid: e553abba001964a4ab4f292eded24a17
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4203976145210863153
-    second: Blusam SpriteSheet_0
+      213: 2916443953406136256
+    second: Scout Maggot Cocoon SpriteSheet_0
   - first:
-      213: -7439188765412205486
-    second: Blusam SpriteSheet_1
+      213: 9053651699608751336
+    second: Scout Maggot Cocoon SpriteSheet_1
   - first:
-      213: -8984558065209393550
-    second: Blusam SpriteSheet_2
+      213: -493354152543958435
+    second: Scout Maggot Cocoon SpriteSheet_2
   - first:
-      213: -2180489796028484692
-    second: Blusam SpriteSheet_3
+      213: -9093011054149423279
+    second: Scout Maggot Cocoon SpriteSheet_3
   - first:
-      213: -8395695895490040173
-    second: Blusam SpriteSheet_4
+      213: 7440810407764358108
+    second: Scout Maggot Cocoon SpriteSheet_4
   - first:
-      213: 2604103604148948475
-    second: Blusam SpriteSheet_5
+      213: -8530183796615102919
+    second: Scout Maggot Cocoon SpriteSheet_5
   - first:
-      213: -855683663775972319
-    second: Blusam SpriteSheet_6
-  - first:
-      213: -3233833641719234815
-    second: Blusam SpriteSheet_7
+      213: -3571172373487348317
+    second: Scout Maggot Cocoon SpriteSheet_6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -111,13 +108,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blusam SpriteSheet_0
+      name: Scout Maggot Cocoon SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 24
-        width: 48
-        height: 24
+        y: 16
+        width: 24
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,20 +122,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fc19d7438f978a5c0800000000000000
-      internalID: -4203976145210863153
+      spriteID: 0cfcb1ad25a497820800000000000000
+      internalID: 2916443953406136256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusam SpriteSheet_1
+      name: Scout Maggot Cocoon SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 16
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ec8a43a04805ad70800000000000000
+      internalID: 9053651699608751336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scout Maggot Cocoon SpriteSheet_2
       rect:
         serializedVersion: 2
         x: 48
-        y: 24
-        width: 48
-        height: 24
+        y: 16
+        width: 24
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,20 +164,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25c578c7b31b2c890800000000000000
-      internalID: -7439188765412205486
+      spriteID: d5a472d13014729f0800000000000000
+      internalID: -493354152543958435
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusam SpriteSheet_2
+      name: Scout Maggot Cocoon SpriteSheet_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 24
-        width: 48
-        height: 24
+        x: 72
+        y: 16
+        width: 24
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,41 +185,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27eb25bba00705380800000000000000
-      internalID: -8984558065209393550
+      spriteID: 15f29b28f922fc180800000000000000
+      internalID: -9093011054149423279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusam SpriteSheet_3
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 24
-        width: 48
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ca3bb5f45185db1e0800000000000000
-      internalID: -2180489796028484692
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Blusam SpriteSheet_4
+      name: Scout Maggot Cocoon SpriteSheet_4
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 48
-        height: 24
+        width: 24
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,20 +206,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39e6c1bb01f7c7b80800000000000000
-      internalID: -8395695895490040173
+      spriteID: cd3f2db84a1134760800000000000000
+      internalID: 7440810407764358108
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusam SpriteSheet_5
+      name: Scout Maggot Cocoon SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 0
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93eb6f52803be9980800000000000000
+      internalID: -8530183796615102919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scout Maggot Cocoon SpriteSheet_6
       rect:
         serializedVersion: 2
         x: 48
         y: 0
-        width: 48
-        height: 24
+        width: 24
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,50 +248,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bfdcc9b4e62a32420800000000000000
-      internalID: 2604103604148948475
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Blusam SpriteSheet_6
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 124478ccd300024f0800000000000000
-      internalID: -855683663775972319
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Blusam SpriteSheet_7
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 0
-        width: 48
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 10ffd9abf6d1f13d0800000000000000
-      internalID: -3233833641719234815
+      spriteID: 3a5199ea5a5a07ec0800000000000000
+      internalID: -3571172373487348317
       vertices: []
       indices: 
       edges: []
