@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7388368827716972525}
   - component: {fileID: 5524535823760821382}
-  - component: {fileID: 5682064432001086994}
+  - component: {fileID: 4674631295996963510}
   - component: {fileID: 2416215748048360603}
   m_Layer: 0
   m_Name: Shielded Blusim
@@ -156,7 +156,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.09}
   m_Size: {x: 0.34, y: 0.18}
   m_Direction: 1
---- !u!114 &5682064432001086994
+--- !u!114 &4674631295996963510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -165,10 +165,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6914183812568595844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
+  m_Script: {fileID: 11500000, guid: eea02469733532443b1a9d43853c05e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Shileded Blusim
+  _displayName: Shielded Blusim
   _healthMax: 125
   _armorMax: 55
   _speedMax: 0.15
@@ -181,6 +181,9 @@ MonoBehaviour:
   _dotDisplay: {fileID: 3511199004427678630}
   _spriteRenderer: {fileID: 2394709574171677322}
   _animator: {fileID: 3597370224652989133}
+  _timeBetweenShield: 10.5
+  _shieldTime: 3
+  _newShieldValue: 85
 --- !u!114 &2416215748048360603
 MonoBehaviour:
   m_ObjectHideFlags: 0

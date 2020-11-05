@@ -33,14 +33,6 @@ public class Boss : Enemy
     }
 
 
-    //Update method, called each frame
-    protected new void Update()
-    {
-        if (_moving)
-            FollowPath();
-    }
-
-
 
     protected IEnumerator DelaySpawn()
     {
