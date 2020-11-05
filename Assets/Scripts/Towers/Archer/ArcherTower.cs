@@ -23,7 +23,7 @@ public class ArcherTower : Tower
         int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
 
         SortEnemies();
-        Debug.Log("attack");
+
         for (int i = 0; i < numberOfStrikes; i++)
             _projectilePool.GetOneProjectile().GetComponent<ArcherArrow>().Initialize(_damage, _armorThrough, _availableEnemies[i], transform, _projectilePool);
 
