@@ -52,7 +52,4 @@ public class ShieldedBlusim : Enemy
 
         _armorMax = shieldValue;
     }
-
-    public float GetPathPercentage() { Debug.Log(_path); return _pathIndex / _path.GetPath().Count; }
-
 }
