@@ -4364,6 +4364,12 @@ PrefabInstance:
       propertyPath: _levelController
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 3609808189315981155, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 26b5e5cf802f89541a99c50783651647,
+        type: 3}
     - target: {fileID: 3674419208524276292, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -4584,6 +4590,11 @@ PrefabInstance:
     - target: {fileID: 4541158168325739217, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541158168375821626, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4541158168376624177, guid: ab062a4349966594386bc59557a6906a,
@@ -4955,6 +4966,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 684.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688104961552498967, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 38.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8688104961552498967, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab062a4349966594386bc59557a6906a, type: 3}
