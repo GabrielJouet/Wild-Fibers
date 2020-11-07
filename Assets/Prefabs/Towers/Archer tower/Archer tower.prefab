@@ -116,7 +116,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _displayName: Archer
   _price: 90
-  _icon: {fileID: 21300000, guid: 5ed3a4f20aaaeac44ae8fdc3c9d41487, type: 3}
+  _icon: {fileID: 21300000, guid: 8898088e8c5280447bb4bb6d11c1ca60, type: 3}
   _timeBetweenShots: 1.2
   _damage: 12
   _armorThrough: 5
