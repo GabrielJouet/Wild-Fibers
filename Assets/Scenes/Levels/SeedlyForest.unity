@@ -4328,7 +4328,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _pauseController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 571994284821652884}
     - target: {fileID: 173176981539081000, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: _levelController
@@ -4353,6 +4353,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308631760864531642, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3451936902988104724, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
@@ -4855,7 +4860,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 571994284821652884}
     - target: {fileID: 4541158169286639291, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -4888,33 +4893,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6149924887037693013, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6149924887037693013, guid: ab062a4349966594386bc59557a6906a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6149924887037693013, guid: ab062a4349966594386bc59557a6906a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6149924887037693013, guid: ab062a4349966594386bc59557a6906a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 4541158167840557063}
-    - target: {fileID: 6149924887037693013, guid: ab062a4349966594386bc59557a6906a,
-        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PressNewWaveButton
-      objectReference: {fileID: 0}
-    - target: {fileID: 6149924887037693013, guid: ab062a4349966594386bc59557a6906a,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6232754528500115966, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
