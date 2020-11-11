@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class ShieldedBlusim : Enemy
+public class Shielded : Enemy
 {
     [Header("Special Behavior related")]
     [SerializeField]
