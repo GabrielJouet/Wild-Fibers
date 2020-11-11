@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -64,7 +65,17 @@ public class Spawner : MonoBehaviour
             if (_enemyIndex < _enemyGroup.GetEnemyPattern(_patternIndex).GetNumberOfEnemies())
             {
                 _enemyIndex++;
-                _enemyPool.GetOneEnemy().Initialize(_randomPath.CalculateRandomPath(), _enemyPool, 0);
+                Enemy buffer = _enemyPool.GetOneEnemy();
+                buffer.Initialize(_randomPath.CalculateRandomPath(), _enemyPool, 0);
+
+                //If the enemy is a boss we add it more paths to spawn enemies
+                if (buffer.TryGetComponent(out Boss bossComponent))
+                {
+                    List<Path> newPaths = new List<Path>();
+                    for (int i = 0; i < bossComponent.GetRandomPathLength(); i++)
+                        newPaths.Add(_randomPath.CalculateRandomPath());
+                    bossComponent.SetRandomPaths(newPaths);
+                }
 
                 yield return new WaitForSeconds(_enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies());
             }

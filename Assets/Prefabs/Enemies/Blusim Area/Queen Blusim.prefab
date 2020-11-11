@@ -186,6 +186,7 @@ MonoBehaviour:
   _spawnTime: 0.5
   _stopWhileSpawning: 1
   _numberOfEnemiesPerSpawn: 3
+  _numberOfPathsWanted: 3
 --- !u!114 &2416215748048360603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,12 +585,12 @@ PrefabInstance:
     - target: {fileID: 7090599122710879685, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.24
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 7090599122710879685, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.16
+      value: 0.32
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d79214be3f0e64babfd78791ecb9fd, type: 3}
