@@ -27,6 +27,8 @@ public class Wave : ScriptableObject
 
     public EnemyGroup GetEnemyGroup(int index) { return _availableEnemyGroups[index]; }
 
+    public List<EnemyGroup> GetEnemyGroups() { return _availableEnemyGroups; }
+
     public int GetNumberOfEnemyGroup() { return _availableEnemyGroups.Count; }
 
     public int GetGoldBonus() { return _goldBonus; }
