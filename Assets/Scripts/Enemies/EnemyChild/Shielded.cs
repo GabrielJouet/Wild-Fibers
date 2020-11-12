@@ -34,6 +34,7 @@ public class Shielded : Enemy
             yield return new WaitForSeconds(_timeBetweenShield);
             _moving = false;
             ChangeShieldValue(_newShieldValue);
+            _animator.SetTrigger("shield");
 
             yield return new WaitForSeconds(_shieldTime);
 
