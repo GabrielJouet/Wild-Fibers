@@ -198,6 +198,7 @@ public class LevelController : MonoBehaviour
                     bufferPool = buffer;
 
             _spawners[i].SetNewGroup(_availablePath[current.GetPathIndex()], current, this, bufferPool);
+            i++;
         }
     }
 
