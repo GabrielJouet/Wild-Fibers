@@ -99,8 +99,8 @@ public class LevelController : MonoBehaviour
                 if (!result)
                     SpawnOneEnemyPool(currentBoos.GetSpawnedEnemy());
             }
-            else
-                SpawnOneEnemyPool(current);
+
+            SpawnOneEnemyPool(current);
         }
     }
 
@@ -183,19 +183,21 @@ public class LevelController : MonoBehaviour
 
         int spawnerLeft = _level.GetWave(_waveIndex).GetNumberOfEnemyGroup() - _spawners.Count;
 
+        int i;
         //We instantiate enough spawner for each enemy group
-        for(int i = 0; i < spawnerLeft; i ++)
+        for(i = 0; i < spawnerLeft; i ++)
             _spawners.Add(Instantiate(_spawnerPrefab, transform));
 
         //And we give them instructions
         EnemyPool bufferPool = null;
-        for (int i = 0; i < _level.GetWave(_waveIndex).GetNumberOfEnemyGroup(); i++)
+        i = 0;
+        foreach(EnemyGroup current in _level.GetWave(_waveIndex).GetEnemyGroups())
         {
-            foreach(EnemyPool current in _enemyPools)
-                if (current.GetPrefab() == _level.GetWave(_waveIndex).GetEnemyGroup(i).GetEnemyUsed())
-                    bufferPool = current;
+            foreach (EnemyPool buffer in _enemyPools)
+                if (buffer.GetPrefab() == current.GetEnemyUsed())
+                    bufferPool = buffer;
 
-            _spawners[i].SetNewGroup(_availablePath[_level.GetWave(_waveIndex).GetEnemyGroup(i).GetPathIndex()], _level.GetWave(_waveIndex).GetEnemyGroup(i), this, bufferPool);
+            _spawners[i].SetNewGroup(_availablePath[current.GetPathIndex()], current, this, bufferPool);
         }
     }
 

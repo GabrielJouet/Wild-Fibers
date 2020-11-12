@@ -58,6 +58,8 @@ public class Level : ScriptableObject
     #region
     public Wave GetWave(int index) { return _availableWaves[index]; }
 
+    public List<Wave> GetWaves() { return _availableWaves; }
+
     public int GetWaveCount() { return _availableWaves.Count; }
 
     public string GetName() { return _name; }

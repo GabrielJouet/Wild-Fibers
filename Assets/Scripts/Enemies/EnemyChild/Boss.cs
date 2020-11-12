@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Boss : Enemy
@@ -19,8 +20,13 @@ public class Boss : Enemy
     [SerializeField]
     protected int _numberOfEnemiesPerSpawn;
 
+    [SerializeField]
+    protected int _numberOfPathsWanted;
+
 
     protected LevelController _levelController;
+
+    protected List<Path> _availablePaths = new List<Path>();
 
 
 
@@ -44,7 +50,7 @@ public class Boss : Enemy
             for(int i = 0; i < _numberOfEnemiesPerSpawn; i ++)
             {
                 Enemy hatchling = _levelController.RecoverPool(_enemySpawnedPrefab).GetOneEnemy();
-                hatchling.Initialize(_path, _enemyPool, _pathIndex);
+                hatchling.Initialize(_availablePaths[Random.Range(0, _availablePaths.Count)], _enemyPool, _pathIndex);
                 yield return new WaitForSeconds(_spawnTime);
             }
             _moving = true;
@@ -56,5 +62,15 @@ public class Boss : Enemy
     public Enemy GetSpawnedEnemy()
     {
         return _enemySpawnedPrefab;
+    }
+
+    public void SetRandomPaths(List<Path> newPaths)
+    {
+        _availablePaths = newPaths;
+    }
+
+    public int GetRandomPathLength()
+    {
+        return _numberOfPathsWanted;
     }
 }

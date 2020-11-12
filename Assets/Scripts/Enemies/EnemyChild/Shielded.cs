@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class ShieldedBlusim : Enemy
+public class Shielded : Enemy
 {
     [Header("Special Behavior related")]
     [SerializeField]
@@ -34,6 +34,7 @@ public class ShieldedBlusim : Enemy
             yield return new WaitForSeconds(_timeBetweenShield);
             _moving = false;
             ChangeShieldValue(_newShieldValue);
+            _animator.SetTrigger("shield");
 
             yield return new WaitForSeconds(_shieldTime);
 
