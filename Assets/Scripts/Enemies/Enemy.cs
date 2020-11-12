@@ -135,16 +135,7 @@ public class Enemy : MonoBehaviour
     protected void Update()
     {
         if(_moving)
-        {
             FollowPath();
-
-            //TO ADD WHEN FACE AND BACK ANIMATIONS ARE DONE
-            /*if(_animator)
-            {
-                _animator.SetBool("horizontal", transform.position.x - _path.GetPath()[_pathIndex].x >= transform.position.y - _path.GetPath()[_pathIndex].y);
-                _animator.SetBool("flipped", transform.position.y - _path.GetPath()[_pathIndex].y < 0);
-            }*/
-        }
     }
 
 
