@@ -315,7 +315,7 @@ public class Enemy : MonoBehaviour
 
     public int GetNumberOfLivesTaken() { return _numberOfLivesTaken; }
 
-    public float GetPathPercentage() { return _pathIndex / _path.GetPath().Count;  }
+    public float GetPathPercentage() { return (float)_pathIndex / (float)_path.GetPath().Count;  }
 
     public bool GetFlying() { return _flying; }
 

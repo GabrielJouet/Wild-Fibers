@@ -164,7 +164,7 @@ public class Tower : MonoBehaviour
     //Method used to sort enemies by their position toward the end of the path
     protected void SortEnemies()
     {
-        Array.Sort(_availableEnemies.ToArray(), (a, b) => a.GetPathPercentage().CompareTo(b.GetPathPercentage()));
+        _availableEnemies.Sort((a, b) => b.GetPathPercentage().CompareTo(a.GetPathPercentage()));
     }
     #endregion
 
