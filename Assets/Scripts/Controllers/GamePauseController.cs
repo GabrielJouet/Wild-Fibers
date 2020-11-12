@@ -6,9 +6,13 @@ using UnityEngine;
 public class GamePauseController : PauseController
 {
     //Method used to pause the game and freeze time
-    public override void PauseGame()
+    //
+    //Parameter => showMenu, if the menu needs to be displayed or not?
+    public override void PauseGame(bool showMenu)
     {
-        _menuObject.SetActive(!_paused);
+        if(showMenu)
+            _menuObject.SetActive(!_paused);
+        
         _hider.SetActive(!_paused);
 
         Time.timeScale = !_paused? 0f : 1f;

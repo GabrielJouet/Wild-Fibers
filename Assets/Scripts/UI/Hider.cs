@@ -29,7 +29,7 @@ public class Hider : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward, 90);
 
             if (hit.collider != null && hit.collider.GetComponent<Hider>())
-                _pauseController.PauseGame();
+                _pauseController.PauseGame(true);
         }
     }
 }

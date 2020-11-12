@@ -14,7 +14,7 @@ public class MenuPauseController : PauseController
 
 
     //Method used to pause the game and freeze time
-    public override void PauseGame()
+    public override void PauseGame(bool showMenu)
     {
         _hider.SetActive(!_hider.activeSelf);
 

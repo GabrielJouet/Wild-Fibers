@@ -39,8 +39,6 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField]
     private RessourceController _ressourceController;
 
-    private bool _win;
-
 
     //Does the tower is currently paused? (by Pause Controller)
     protected bool _paused = false;
@@ -58,7 +56,6 @@ public class GameOverScreen : MonoBehaviour
     //Parameter => win, does the player win this level?
     public void Activate(bool win)
     {
-        _boxCollider.size = new Vector2(Screen.width + _transform.sizeDelta.x, Screen.height + _transform.sizeDelta.y);
         StartCoroutine(DelayShow(win)); 
     }
 
@@ -66,18 +63,11 @@ public class GameOverScreen : MonoBehaviour
     //Coroutine used to delay a bit game over screen popup
     private IEnumerator DelayShow(bool win)
     {
-        _win = win;
         yield return new WaitForSeconds(1f);
-        ShowBehavior();
-    }
-
-
-    //Method used to show game over screen (used for pause handling)
-    private void ShowBehavior()
-    {
+        _boxCollider.size = new Vector2(Screen.width + _transform.sizeDelta.x, Screen.height + _transform.sizeDelta.y);
         _gameScreen.gameObject.SetActive(true);
 
-        if (_win)
+        if (win)
         {
             _gameScreen.sprite = _winScreen;
             FindObjectOfType<SaveController>().SaveLevelData(_levelController.GetLevelIndex(), _ressourceController.GetLivesLost(), LevelState.COMPLETED);
@@ -89,30 +79,8 @@ public class GameOverScreen : MonoBehaviour
             _mainText.text = "Lose";
         }
 
-        _gameScreen.SetNativeSize();
-        _pauseController.PauseGame();
-    }
-
-
-    //Method used by pause controller to pause behavior
-    public void PauseBehavior()
-    {
-        if (!_paused)
-        {
-            StopAllCoroutines();
-            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
-        }
-        else if (_coroutineTimeNeeded > 0f)
-            StartCoroutine(DelayUnPause());
-
-        _paused = !_paused;
-    }
-
-
-    //Coroutine used to delay unpause after being paused
-    private IEnumerator DelayUnPause()
-    {
-        yield return new WaitForSeconds(_coroutineTimeNeeded);
-        ShowBehavior();
+        _pauseController.PauseGame(false);
+        /*_gameScreen.SetNativeSize();
+        _gameScreen.rectTransform.localPosition *= 2.41f;*/
     }
 }

@@ -21,10 +21,10 @@ public class PauseController : MonoBehaviour
     protected void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-            PauseGame();
+            PauseGame(true);
     }
 
 
     //Method used to pause the game and freeze time
-    public virtual void PauseGame() { }
+    public virtual void PauseGame(bool showMenu) { }
 }
