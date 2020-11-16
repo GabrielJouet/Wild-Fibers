@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,12 @@ public class GameOverScreen : MonoBehaviour
 
     [SerializeField]
     private RectTransform _transform;
+
+    [SerializeField]
+    private List<Image> _seedScores;
+
+    [SerializeField]
+    private Sprite _activatedSprite;
 
 
     [Header("Components")]
@@ -60,7 +67,23 @@ public class GameOverScreen : MonoBehaviour
         _mainText.text = win ? "Win" : "Lose";
 
         if (win)
+        {
             FindObjectOfType<SaveController>().SaveLevelData(_levelController.GetLevelIndex(), _ressourceController.GetLivesLost(), LevelState.COMPLETED);
+            int livesLost = _ressourceController.GetLivesLost();
+
+            if (livesLost <= 15)
+            {
+                _seedScores[2].sprite = _activatedSprite;
+
+                if (livesLost <= 10)
+                {
+                    _seedScores[1].sprite = _activatedSprite;
+
+                    if (livesLost <= 3)
+                        _seedScores[0].sprite = _activatedSprite;
+                }
+            }
+        }
 
         _pauseController.PauseGame(false);
     }
