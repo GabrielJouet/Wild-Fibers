@@ -18,6 +18,7 @@ public class LevelController : MonoBehaviour
     //Loaded level with parameters
     [SerializeField]
     private Level _level;
+    public bool Ended { get; set; }
 
 
     [Header("UI related")]
@@ -232,10 +233,9 @@ public class LevelController : MonoBehaviour
 
         //If the wave is finished and every enemy is dead 
         if (result)
-        {
-            _gameOverScreen.gameObject.SetActive(true);
             _gameOverScreen.Activate(true);
-        }
+
+        Ended = result;
     }
 
 
@@ -260,8 +260,6 @@ public class LevelController : MonoBehaviour
     public int GetLevelIndex() { return _level.GetNumber(); }
 
     public Level GetLoadedLevel() { return _level; }
-
-    public List<Spawner> GetSpawners() { return _spawners; }
 
     public EnemyPool RecoverPool(Enemy wantedEnemy)
     {

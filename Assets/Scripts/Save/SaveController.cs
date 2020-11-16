@@ -46,9 +46,9 @@ public class SaveController : MonoBehaviour
 		{
 			//First level always unlocked
 			if (i == 0)
-				allSaves.Add(new LevelSave(0, LevelState.UNLOCKED));
+				allSaves.Add(new LevelSave(20, LevelState.UNLOCKED));
 			else
-				allSaves.Add(new LevelSave(0, LevelState.LOCKED));
+				allSaves.Add(new LevelSave(20, LevelState.LOCKED));
 		}
 
 		_saveFile = new SaveFile(allSaves, 1, 1);

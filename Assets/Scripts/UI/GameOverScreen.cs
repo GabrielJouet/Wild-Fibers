@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,6 +29,12 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField]
     private RectTransform _transform;
 
+    [SerializeField]
+    private List<Image> _seedScores;
+
+    [SerializeField]
+    private Sprite _activatedSprite;
+
 
     [Header("Components")]
     //Pause controller used to stop everything
@@ -38,16 +44,6 @@ public class GameOverScreen : MonoBehaviour
     private LevelController _levelController;
     [SerializeField]
     private RessourceController _ressourceController;
-
-
-    //Does the tower is currently paused? (by Pause Controller)
-    protected bool _paused = false;
-
-    //Coroutine Start Time (used if the tower is paused)
-    protected DateTime _coroutineStartTime;
-
-    //Coroutine time needed to reset
-    protected float _coroutineTimeNeeded = 0f;
 
 
 
@@ -64,23 +60,31 @@ public class GameOverScreen : MonoBehaviour
     private IEnumerator DelayShow(bool win)
     {
         yield return new WaitForSeconds(1f);
+        _boxCollider.enabled = true;
         _boxCollider.size = new Vector2(Screen.width + _transform.sizeDelta.x, Screen.height + _transform.sizeDelta.y);
         _gameScreen.gameObject.SetActive(true);
+        _gameScreen.sprite = win ? _winScreen : _loseScreen;
+        _mainText.text = win ? "Win" : "Lose";
 
         if (win)
         {
-            _gameScreen.sprite = _winScreen;
             FindObjectOfType<SaveController>().SaveLevelData(_levelController.GetLevelIndex(), _ressourceController.GetLivesLost(), LevelState.COMPLETED);
-            _mainText.text = "Win";
-        }
-        else
-        {
-            _gameScreen.sprite = _loseScreen;
-            _mainText.text = "Lose";
+            int livesLost = _ressourceController.GetLivesLost();
+
+            if (livesLost <= 15)
+            {
+                _seedScores[2].sprite = _activatedSprite;
+
+                if (livesLost <= 10)
+                {
+                    _seedScores[1].sprite = _activatedSprite;
+
+                    if (livesLost <= 3)
+                        _seedScores[0].sprite = _activatedSprite;
+                }
+            }
         }
 
         _pauseController.PauseGame(false);
-        /*_gameScreen.SetNativeSize();
-        _gameScreen.rectTransform.localPosition *= 2.41f;*/
     }
 }

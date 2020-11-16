@@ -14,7 +14,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/SeedlyForest.unity
     guid: 54190f3d086f50f4fbb316b236702170
-  - enabled: 1
-    path: Assets/Scenes/Levels/VinySwamp.unity
-    guid: 03aa4afc4d480fa4590342d9c450f843
   m_configObjects: {}
