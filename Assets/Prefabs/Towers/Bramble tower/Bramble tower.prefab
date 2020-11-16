@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 481758128716525914}
   - component: {fileID: 8122643514199073911}
   - component: {fileID: 8854172079906978944}
+  - component: {fileID: 2265952883563768582}
   m_Layer: 0
   m_Name: Bramble tower
   m_TagString: Untagged
@@ -128,6 +129,19 @@ MonoBehaviour:
   _canHitFlying: 1
   _transformRange: {fileID: 1026581157735740721}
   _selector: {fileID: 3965696945235996696}
+--- !u!114 &2265952883563768582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481758128716525915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc75972f143f3db49a0cc653c38280f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 481758128716525914}
 --- !u!1001 &4787936218271721102
 PrefabInstance:
   m_ObjectHideFlags: 0

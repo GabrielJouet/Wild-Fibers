@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4165984789505894527}
   - component: {fileID: 7696450085170177915}
   - component: {fileID: -8003392099937102339}
+  - component: {fileID: 3583090611877386060}
   m_Layer: 0
   m_Name: Choc Tower
   m_TagString: Untagged
@@ -128,6 +129,19 @@ MonoBehaviour:
   _canHitFlying: 0
   _transformRange: {fileID: 4488155929224265266}
   _selector: {fileID: 8267501991302241355}
+--- !u!114 &3583090611877386060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4165984789505894524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc75972f143f3db49a0cc653c38280f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spriteRenderer: {fileID: 4165984789505894527}
 --- !u!1001 &370731157280591759
 PrefabInstance:
   m_ObjectHideFlags: 0
