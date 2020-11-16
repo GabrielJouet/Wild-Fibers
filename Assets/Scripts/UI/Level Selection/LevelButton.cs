@@ -47,9 +47,6 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private Image _hoverDisplayer;
 
     [SerializeField]
-    private Sprite _lockedHover;
-
-    [SerializeField]
     private Sprite _unlockedHover;
 
     [SerializeField]
