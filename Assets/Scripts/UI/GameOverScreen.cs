@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -40,16 +39,6 @@ public class GameOverScreen : MonoBehaviour
     private RessourceController _ressourceController;
 
 
-    //Does the tower is currently paused? (by Pause Controller)
-    protected bool _paused = false;
-
-    //Coroutine Start Time (used if the tower is paused)
-    protected DateTime _coroutineStartTime;
-
-    //Coroutine time needed to reset
-    protected float _coroutineTimeNeeded = 0f;
-
-
 
     //Method used to activate game over screen
     //
@@ -64,23 +53,15 @@ public class GameOverScreen : MonoBehaviour
     private IEnumerator DelayShow(bool win)
     {
         yield return new WaitForSeconds(1f);
+        _boxCollider.enabled = true;
         _boxCollider.size = new Vector2(Screen.width + _transform.sizeDelta.x, Screen.height + _transform.sizeDelta.y);
         _gameScreen.gameObject.SetActive(true);
+        _gameScreen.sprite = win ? _winScreen : _loseScreen;
+        _mainText.text = win ? "Win" : "Lose";
 
         if (win)
-        {
-            _gameScreen.sprite = _winScreen;
             FindObjectOfType<SaveController>().SaveLevelData(_levelController.GetLevelIndex(), _ressourceController.GetLivesLost(), LevelState.COMPLETED);
-            _mainText.text = "Win";
-        }
-        else
-        {
-            _gameScreen.sprite = _loseScreen;
-            _mainText.text = "Lose";
-        }
 
         _pauseController.PauseGame(false);
-        /*_gameScreen.SetNativeSize();
-        _gameScreen.rectTransform.localPosition *= 2.41f;*/
     }
 }
