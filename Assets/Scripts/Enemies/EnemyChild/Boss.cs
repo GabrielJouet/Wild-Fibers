@@ -23,6 +23,9 @@ public class Boss : Enemy
     [SerializeField]
     protected int _numberOfPathsWanted;
 
+    [SerializeField]
+    protected Particle _walkDirtParticle;
+
 
     protected LevelController _levelController;
 
@@ -51,6 +54,10 @@ public class Boss : Enemy
             {
                 Enemy hatchling = _levelController.RecoverPool(_enemySpawnedPrefab).GetOneEnemy();
                 hatchling.Initialize(_availablePaths[Random.Range(0, _availablePaths.Count)], _enemyPool, _pathIndex);
+
+                foreach (Particle current in _particleController.GetParticle(_walkDirtParticle, 3))
+                    current.Initialize(transform.position);
+
                 yield return new WaitForSeconds(_spawnTime);
             }
             _moving = true;

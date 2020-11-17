@@ -98,6 +98,9 @@ public class Enemy : MonoBehaviour
     protected BackgroudSelecter _informationUI;
 
 
+    protected ParticleController _particleController;
+
+
 
     //Method used instead of using start (kinda a constructor)
     //
@@ -105,6 +108,9 @@ public class Enemy : MonoBehaviour
     //              newPool, the pool enemy came from
     public virtual void Initialize(Path newPath, EnemyPool newPool, int pathIndex)
     {
+        if (_particleController == null)
+            _particleController = FindObjectOfType<ParticleController>();
+        
         //We reset pretty every variables
         _informationUI = null;
 

@@ -187,6 +187,8 @@ MonoBehaviour:
   _stopWhileSpawning: 1
   _numberOfEnemiesPerSpawn: 3
   _numberOfPathsWanted: 3
+  _walkDirtParticle: {fileID: 4405452952222755525, guid: a4f95f77d8adb1245b064ec92efa76c3,
+    type: 3}
 --- !u!114 &2416215748048360603
 MonoBehaviour:
   m_ObjectHideFlags: 0
