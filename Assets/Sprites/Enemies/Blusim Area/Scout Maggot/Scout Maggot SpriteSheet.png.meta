@@ -41,6 +41,45 @@ TextureImporter:
   - first:
       213: -7552096340062230510
     second: Scout Maggot SpriteSheet_8
+  - first:
+      213: 1135703223653178175
+    second: Scout Maggot SpriteSheet_2
+  - first:
+      213: -3842485408433555897
+    second: Scout Maggot SpriteSheet_3
+  - first:
+      213: -6243571838403291077
+    second: Scout Maggot SpriteSheet_4
+  - first:
+      213: -7858789878232783601
+    second: Scout Maggot SpriteSheet_5
+  - first:
+      213: 9199826601085993937
+    second: Scout Maggot SpriteSheet_6
+  - first:
+      213: -2578976659861350638
+    second: Scout Maggot SpriteSheet_7
+  - first:
+      213: -8126029179942231049
+    second: Scout Maggot SpriteSheet_8
+  - first:
+      213: -1559604942833274382
+    second: Scout Maggot SpriteSheet_9
+  - first:
+      213: 8823972203230990063
+    second: Scout Maggot SpriteSheet_10
+  - first:
+      213: 532622098329097980
+    second: Scout Maggot SpriteSheet_11
+  - first:
+      213: 8510360492524687318
+    second: Scout Maggot SpriteSheet_12
+  - first:
+      213: 1199947074543869845
+    second: Scout Maggot SpriteSheet_13
+  - first:
+      213: -5741569577593345974
+    second: Scout Maggot SpriteSheet_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -130,7 +169,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
+        y: 48
         width: 24
         height: 16
       alignment: 0
@@ -151,7 +190,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 24
-        y: 16
+        y: 48
         width: 24
         height: 16
       alignment: 0
@@ -172,6 +211,153 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 48
+        y: 48
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3b1d109014d2cf00800000000000000
+      internalID: 1135703223653178175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scout Maggot SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 48
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74632bf11efbcaac0800000000000000
+      internalID: -3842485408433555897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scout Maggot SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b38d65a2e706a59a0800000000000000
+      internalID: -6243571838403291077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scout Maggot SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f05ef7f4e38ffe290800000000000000
+      internalID: -7858789878232783601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scout Maggot SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 32
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d38be80d895caf70800000000000000
+      internalID: 9199826601085993937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scout Maggot SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 32
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 217d0f05462a53cd0800000000000000
+      internalID: -2578976659861350638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scout Maggot SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f3a51fa38b8a3f80800000000000000
+      internalID: -8126029179942231049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scout Maggot SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 16
         width: 24
         height: 16
@@ -182,14 +368,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27e3743fa9f7ff8d0800000000000000
-      internalID: -2810387338972676494
+      spriteID: 2f1ba70519b2b5ae0800000000000000
+      internalID: -1559604942833274382
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_3
+      name: Scout Maggot SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 16
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fee0189a7fb057a70800000000000000
+      internalID: 8823972203230990063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scout Maggot SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 16
+        width: 24
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf6dd6af9f0446700800000000000000
+      internalID: 532622098329097980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scout Maggot SpriteSheet_12
       rect:
         serializedVersion: 2
         x: 72
@@ -203,14 +431,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d81433af8fd0d850800000000000000
-      internalID: 6399860878504892633
+      spriteID: 6dfc37337cfda1670800000000000000
+      internalID: 8510360492524687318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_4
+      name: Scout Maggot SpriteSheet_13
       rect:
         serializedVersion: 2
         x: 96
@@ -224,14 +452,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 129ab6e4a1cd9e270800000000000000
-      internalID: 8280391395440306465
+      spriteID: 59fd477b18117a010800000000000000
+      internalID: 1199947074543869845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_5
+      name: Scout Maggot SpriteSheet_14
       rect:
         serializedVersion: 2
         x: 0
@@ -245,71 +473,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f7ae9e6c77f482cb0800000000000000
-      internalID: -4888570019653752193
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_6
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 24
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d3b2969c63e805de0800000000000000
-      internalID: -1346419922625287363
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_7
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 24
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cdb58870d594d0da0800000000000000
-      internalID: -5977040466543617060
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_8
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 24
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21820153460913790800000000000000
-      internalID: -7552096340062230510
+      spriteID: a48eb5aa3e8d150b0800000000000000
+      internalID: -5741569577593345974
       vertices: []
       indices: 
       edges: []
