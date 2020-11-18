@@ -166,6 +166,29 @@ public class Tower : MonoBehaviour
     {
         _availableEnemies.Sort((a, b) => b.GetPathPercentage().CompareTo(a.GetPathPercentage()));
     }
+
+     
+    protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound)
+    {
+        List<Enemy> availableEnemies = new List<Enemy>();
+        int j;
+
+        for(int i = 0; i < numberOfEnemiesToFound; i ++)
+        {
+            j = -1;
+
+            do
+                j++;
+            while (_availableEnemies[j].GetAlreadyAimed() || availableEnemies.Contains(_availableEnemies[j]));
+
+            availableEnemies.Add(_availableEnemies[j]);
+
+            if (!_availableEnemies[j].CanSurvive(_damage, _armorThrough))
+                _availableEnemies[j].SetAlreadyAimed();
+        }
+
+        return availableEnemies;
+    }
     #endregion
 
 

@@ -97,6 +97,8 @@ public class Enemy : MonoBehaviour
     //All information UI
     protected BackgroudSelecter _informationUI;
 
+    protected bool _alreadyAimed = false;
+
 
 
     //Method used instead of using start (kinda a constructor)
@@ -128,6 +130,7 @@ public class Enemy : MonoBehaviour
         _enemyPool = newPool;
 
         _moving = true;
+        _alreadyAimed = false;
     }
 
 
@@ -321,11 +324,17 @@ public class Enemy : MonoBehaviour
 
     public Vector2 GetDamagePosition() { return _damagePosition.position; }
 
+    public bool GetAlreadyAimed() { return _alreadyAimed; }
+
+    public bool CanSurvive(float damage, float armorThrough) { return _health - Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor) / 100) / 2 : damage - ((_armor - armorThrough) / 100 * damage)) > 0; }
+
 
     //Setters
     public void SetSelector() { _selector.SetActive(true); }
 
     public void ResetSelector() { _selector.SetActive(false); }
+
+    public void SetAlreadyAimed() { _alreadyAimed = true; }
 
 
     public void SetInformationUI(BackgroudSelecter newUI) { _informationUI = newUI; }

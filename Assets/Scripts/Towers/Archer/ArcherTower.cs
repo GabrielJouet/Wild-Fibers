@@ -23,9 +23,8 @@ public class ArcherTower : Tower
         int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
 
         SortEnemies();
-
-        for (int i = 0; i < numberOfStrikes; i++)
-            _projectilePool.GetOneProjectile().GetComponent<ArcherArrow>().Initialize(_damage, _armorThrough, _availableEnemies[i], transform, _projectilePool);
+        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
+            _projectilePool.GetOneProjectile().GetComponent<ArcherArrow>().Initialize(_damage, _armorThrough, current, transform, _projectilePool);
 
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;

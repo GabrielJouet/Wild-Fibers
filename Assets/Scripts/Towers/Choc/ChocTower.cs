@@ -19,12 +19,12 @@ public class ChocTower : Tower
     private IEnumerator SummonSpikes()
     {
         _coroutineStarted = true;
-        SortEnemies();
 
         int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
 
-        for(int i = 0; i < numberOfStrikes; i ++)
-            _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>().Initialize(_damage, _armorThrough, _availableEnemies[i], _projectilePool);
+        SortEnemies();
+        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
+            _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>().Initialize(_damage, _armorThrough, current, _projectilePool);
 
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;
