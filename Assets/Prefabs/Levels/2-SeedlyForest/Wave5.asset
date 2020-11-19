@@ -12,6 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c38062d58063c489c1f62c7a95a8ce, type: 3}
   m_Name: Wave5
   m_EditorClassIdentifier: 
-  _availableEnemyGroups: []
-  _timeBeforeNextWave: 0.1
-  _goldBonus: 0
+  _availableEnemyGroups:
+  - _enemyPatterns:
+    - _numberOfEnemies: 10
+      _timeBetweenEnemies: 6
+    _enemyUsed: {fileID: 4674631295996963510, guid: 75053fef349185741a6dd180b501757c,
+      type: 3}
+    _timeBetweenPattern: 2
+    _pathIndex: 0
+  - _enemyPatterns:
+    - _numberOfEnemies: 10
+      _timeBetweenEnemies: 0.45
+    - _numberOfEnemies: 5
+      _timeBetweenEnemies: 0.3
+    - _numberOfEnemies: 15
+      _timeBetweenEnemies: 0.4
+    _enemyUsed: {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4,
+      type: 3}
+    _timeBetweenPattern: 3
+    _pathIndex: 0
+  - _enemyPatterns:
+    - _numberOfEnemies: 12
+      _timeBetweenEnemies: 5
+    _enemyUsed: {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1,
+      type: 3}
+    _timeBetweenPattern: 2
+    _pathIndex: 0
+  _timeBeforeNextWave: 25
+  _goldBonus: 35
