@@ -23,6 +23,7 @@ public class Particle : MonoBehaviour
     protected float _verticalMove;
 
 
+    protected float _timeLeft;
     protected ParticlePool _pool;
 
     protected float _horizontalSpeed;
@@ -34,24 +35,23 @@ public class Particle : MonoBehaviour
     {
         _spriteRenderer.sprite = _particleSprites[Random.Range(0, _particleSprites.Count)];
         transform.position = newPosition;
-
+        _timeLeft = _liveTime;
         _horizontalSpeed = Random.Range(-_horizontalMove, _horizontalMove) * Time.deltaTime;
         _verticalSpeed = Random.Range(-_verticalMove, _verticalMove) * Time.deltaTime;
 
-        StartCoroutine(Fade());
     }
 
 
     protected void Update()
     {
         transform.position = new Vector2(transform.position.x + _horizontalSpeed, transform.position.y + _verticalSpeed);
-    }
 
+        if (_timeLeft > 0)
+            _timeLeft -= Time.deltaTime;
+        else
+            _pool.RecoverParticle(this);
 
-    protected IEnumerator Fade()
-    {
-        yield return new WaitForSeconds(_liveTime);
-        _pool.RecoverParticle(this);
+        _spriteRenderer.color = new Color(1, 1, 1, (_timeLeft / _liveTime));
     }
 
 

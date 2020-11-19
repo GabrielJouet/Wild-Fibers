@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -81,6 +82,19 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected Animator _animator;
 
+
+    [Header("Particle")]
+    [SerializeField]
+    protected Particle _damageParticle;
+
+    [SerializeField]
+    protected List<Transform> _particleEmissionsPoints;
+
+    [SerializeField]
+    protected int _numberOfParticles;
+    protected ParticleController _particleController;
+
+
     //Does the enemy currently has a dot effect?
     protected bool _dotApplied = false;
 
@@ -96,9 +110,6 @@ public class Enemy : MonoBehaviour
 
     //All information UI
     protected BackgroudSelecter _informationUI;
-
-
-    protected ParticleController _particleController;
 
 
 
@@ -184,6 +195,12 @@ public class Enemy : MonoBehaviour
             Die();
         else 
             _health -= damageLeft;
+
+        foreach (Transform current in _particleEmissionsPoints)
+        {
+            foreach (Particle particle in _particleController.GetParticle(_damageParticle, _numberOfParticles))
+                particle.Initialize(current.position);
+        }
 
         //And we change health bar size
         _healthBar.ChangeSize(_health / _healthMax);

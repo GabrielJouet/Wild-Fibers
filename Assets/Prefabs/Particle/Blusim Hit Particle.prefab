@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4405452952222755524}
   - component: {fileID: 4405452952222755525}
   m_Layer: 0
-  m_Name: DirtParticle
+  m_Name: Blusim Hit Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: -1311827853
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8046330144232831934, guid: 02c242a53fcd1284599e4ef36c4b4c63,
+  m_Sprite: {fileID: 8926834710905573718, guid: d46ab50a23eeb69468a7a6a5c81acd02,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,11 +96,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _particleSprites:
-  - {fileID: -8046330144232831934, guid: 02c242a53fcd1284599e4ef36c4b4c63, type: 3}
-  - {fileID: -6689076224228985855, guid: 02c242a53fcd1284599e4ef36c4b4c63, type: 3}
-  - {fileID: 3828434210983020688, guid: 02c242a53fcd1284599e4ef36c4b4c63, type: 3}
-  - {fileID: 6140916213551525382, guid: 02c242a53fcd1284599e4ef36c4b4c63, type: 3}
+  - {fileID: 8926834710905573718, guid: d46ab50a23eeb69468a7a6a5c81acd02, type: 3}
+  - {fileID: -7797489673257432820, guid: d46ab50a23eeb69468a7a6a5c81acd02, type: 3}
+  - {fileID: 2711688447400804578, guid: d46ab50a23eeb69468a7a6a5c81acd02, type: 3}
+  - {fileID: 172229616868531448, guid: d46ab50a23eeb69468a7a6a5c81acd02, type: 3}
   _spriteRenderer: {fileID: 4405452952222755524}
-  _liveTime: 0.3
-  _horizontalMove: 1
-  _verticalMove: 0.5
+  _liveTime: 0.25
+  _horizontalMove: 0.5
+  _verticalMove: 0.1
