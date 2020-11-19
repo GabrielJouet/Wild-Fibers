@@ -4224,6 +4224,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Background
       objectReference: {fileID: 0}
+    - target: {fileID: 3728384711104203478, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728384711104203478, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 4.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728384711104203478, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 8.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728384711104203478, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 4.64
+      objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203479, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: m_Sprite

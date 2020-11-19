@@ -181,6 +181,11 @@ MonoBehaviour:
   _dotDisplay: {fileID: 5416901568167784886}
   _spriteRenderer: {fileID: 6617693188845866255}
   _animator: {fileID: 5545853804847231419}
+  _damageParticle: {fileID: 4405452952222755525, guid: 5d5493e82985e114dab5f2a1b97dde63,
+    type: 3}
+  _particleEmissionsPoints:
+  - {fileID: 5906076658267085393}
+  _numberOfParticles: 4
 --- !u!114 &3095814878159754224
 MonoBehaviour:
   m_ObjectHideFlags: 0

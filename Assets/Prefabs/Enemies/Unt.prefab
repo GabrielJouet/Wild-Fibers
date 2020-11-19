@@ -180,6 +180,11 @@ MonoBehaviour:
   _dotDisplay: {fileID: 3842665942187024139}
   _spriteRenderer: {fileID: 8203056244331385572}
   _animator: {fileID: 4810297222311416622}
+  _damageParticle: {fileID: 4405452952222755525, guid: 5d5493e82985e114dab5f2a1b97dde63,
+    type: 3}
+  _particleEmissionsPoints:
+  - {fileID: 3623001225806360375}
+  _numberOfParticles: 2
 --- !u!114 &2416215748048360603
 MonoBehaviour:
   m_ObjectHideFlags: 0
