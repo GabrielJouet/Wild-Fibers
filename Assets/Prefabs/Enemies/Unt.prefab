@@ -168,9 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Unt
-  _healthMax: 110
+  _healthMax: 75
   _armorMax: 5
-  _speedMax: 0.45
+  _speedMax: 0.4
   _numberOfLivesTaken: 1
   _goldGained: 10
   _flying: 0

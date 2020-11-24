@@ -169,8 +169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Blusim
-  _healthMax: 200
-  _armorMax: 35
+  _healthMax: 150
+  _armorMax: 30
   _speedMax: 0.2
   _numberOfLivesTaken: 3
   _goldGained: 30
