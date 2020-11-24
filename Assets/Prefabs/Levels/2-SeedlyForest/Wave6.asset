@@ -16,7 +16,8 @@ MonoBehaviour:
   - _enemyPatterns:
     - _numberOfEnemies: 55
       _timeBetweenEnemies: 0.8
-    _enemyUsed: {fileID: 0}
+    _enemyUsed: {fileID: 1001176562105206731, guid: d9daef3f950273945b1eb5cea886939b,
+      type: 3}
     _timeBetweenPattern: 3
     _pathIndex: 0
   - _enemyPatterns:
@@ -26,7 +27,8 @@ MonoBehaviour:
       _timeBetweenEnemies: 4
     - _numberOfEnemies: 7
       _timeBetweenEnemies: 3
-    _enemyUsed: {fileID: 0}
+    _enemyUsed: {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1,
+      type: 3}
     _timeBetweenPattern: 3
     _pathIndex: 0
   - _enemyPatterns:
@@ -34,7 +36,8 @@ MonoBehaviour:
       _timeBetweenEnemies: 2.5
     - _numberOfEnemies: 15
       _timeBetweenEnemies: 2
-    _enemyUsed: {fileID: 0}
+    _enemyUsed: {fileID: 5682064432001086994, guid: 3a10d5fb2f081234aba26b426ea831c4,
+      type: 3}
     _timeBetweenPattern: 3
     _pathIndex: 0
   - _enemyPatterns:
@@ -44,7 +47,8 @@ MonoBehaviour:
       _timeBetweenEnemies: 0
     - _numberOfEnemies: 5
       _timeBetweenEnemies: 4
-    _enemyUsed: {fileID: 0}
+    _enemyUsed: {fileID: 4674631295996963510, guid: 75053fef349185741a6dd180b501757c,
+      type: 3}
     _timeBetweenPattern: 3
     _pathIndex: 0
   _timeBeforeNextWave: 0.1
