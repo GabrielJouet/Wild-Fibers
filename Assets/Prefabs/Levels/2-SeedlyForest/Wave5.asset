@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _availableEnemyGroups:
   - _enemyPatterns:
-    - _numberOfEnemies: 10
-      _timeBetweenEnemies: 6
+    - _numberOfEnemies: 8
+      _timeBetweenEnemies: 5
     _enemyUsed: {fileID: 4674631295996963510, guid: 75053fef349185741a6dd180b501757c,
       type: 3}
     _timeBetweenPattern: 2
@@ -32,7 +32,7 @@ MonoBehaviour:
     _timeBetweenPattern: 3
     _pathIndex: 0
   - _enemyPatterns:
-    - _numberOfEnemies: 12
+    - _numberOfEnemies: 10
       _timeBetweenEnemies: 5
     _enemyUsed: {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1,
       type: 3}
