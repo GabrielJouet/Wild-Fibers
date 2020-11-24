@@ -178,12 +178,17 @@ public class Tower : MonoBehaviour
 
             do
                 j++;
-            while (_availableEnemies[j].GetAlreadyAimed() || availableEnemies.Contains(_availableEnemies[j]));
+            while (j < _availableEnemies.Count && (_availableEnemies[j].GetAlreadyAimed() || availableEnemies.Contains(_availableEnemies[j])));
 
-            availableEnemies.Add(_availableEnemies[j]);
+            if(j < _availableEnemies.Count)
+            {
+                availableEnemies.Add(_availableEnemies[j]);
 
-            if (!_availableEnemies[j].CanSurvive(_damage, _armorThrough))
-                _availableEnemies[j].SetAlreadyAimed();
+                if (!_availableEnemies[j].CanSurvive(_damage, _armorThrough))
+                    _availableEnemies[j].SetAlreadyAimed();
+            }
+            else
+                availableEnemies.Add(_availableEnemies[Random.Range(0, _availableEnemies.Count)]);
         }
 
         return availableEnemies;
