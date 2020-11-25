@@ -188,7 +188,7 @@ public class Tower : MonoBehaviour
                     _availableEnemies[j].SetAlreadyAimed();
             }
             else
-                availableEnemies.Add(_availableEnemies[Random.Range(0, _availableEnemies.Count)]);
+                availableEnemies.Add(_availableEnemies[i]);
         }
 
         return availableEnemies;
