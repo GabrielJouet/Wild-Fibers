@@ -26,6 +26,9 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private Animator _animator;
 
+    [SerializeField]
+    private Animator _shadowAnimator;
+
     //Default sprite for tower slot
     [SerializeField]
     private Sprite _defaultSprite;
@@ -78,12 +81,12 @@ public class TowerSlot : MonoBehaviour
     private IEnumerator DelayConstruct(Tower tower)
     {
         _chosenTower = tower;
-        _animator.enabled = true;
+        _shadowAnimator.SetTrigger(_chosenTower.GetName());
         _animator.SetTrigger(_chosenTower.GetName());
 
-        yield return new WaitForSeconds(1f);
-        _animator.enabled = false;
-        _spriteRenderer.sprite = _defaultSprite;
+        yield return new WaitForSeconds(0.92f);
+        _shadowAnimator.SetTrigger("Base");
+        _animator.SetTrigger("Base");
 
         TowerPool currentPool = _levelController.RecoverTowerPool(_chosenTower);
         _currentTower = currentPool.GetOneTower();
