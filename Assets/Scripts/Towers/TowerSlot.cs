@@ -84,7 +84,7 @@ public class TowerSlot : MonoBehaviour
         _shadowAnimator.SetTrigger(_chosenTower.GetName());
         _animator.SetTrigger(_chosenTower.GetName());
 
-        yield return new WaitForSeconds(0.92f);
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
         _shadowAnimator.SetTrigger("Base");
         _animator.SetTrigger("Base");
 
