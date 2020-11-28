@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 /*
@@ -26,6 +25,9 @@ public class TowerSlot : MonoBehaviour
     //Animator used in tower construction animation
     [SerializeField]
     private Animator _animator;
+
+    [SerializeField]
+    private Animator _shadowAnimator;
 
     //Default sprite for tower slot
     [SerializeField]
@@ -79,12 +81,12 @@ public class TowerSlot : MonoBehaviour
     private IEnumerator DelayConstruct(Tower tower)
     {
         _chosenTower = tower;
-        _animator.enabled = true;
+        _shadowAnimator.SetTrigger(_chosenTower.GetName());
         _animator.SetTrigger(_chosenTower.GetName());
 
-        yield return new WaitForSeconds(1f);
-        _animator.enabled = false;
-        _spriteRenderer.sprite = _defaultSprite;
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+        _shadowAnimator.SetTrigger("Base");
+        _animator.SetTrigger("Base");
 
         TowerPool currentPool = _levelController.RecoverTowerPool(_chosenTower);
         _currentTower = currentPool.GetOneTower();
