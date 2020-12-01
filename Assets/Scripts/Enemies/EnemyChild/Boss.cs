@@ -7,7 +7,7 @@ public class Boss : Enemy
     [Header("Boss related")]
     [SerializeField]
     protected Enemy _enemySpawnedPrefab;
-    public Enemy Spawnling { get; }
+    public Enemy Spawnling { get => _enemySpawnedPrefab; }
 
     [SerializeField]
     protected float _timeBetweenSpawn;
@@ -23,7 +23,7 @@ public class Boss : Enemy
 
     [SerializeField]
     protected int _numberOfPathsWanted;
-    public int PathsWanted { get; }
+    public int PathsWanted { get => _numberOfPathsWanted; }
 
 
     [SerializeField]
