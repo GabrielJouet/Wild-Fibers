@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
     //Number of lives removed if the enemy reaches the end
     [SerializeField]
     protected int _numberOfLivesTaken;
-    public int LivesTaken { get; }
+    public int LivesTaken { get => _numberOfLivesTaken; }
 
     //Money gained when the enemy is killed
     [SerializeField]
@@ -49,7 +49,7 @@ public class Enemy : MonoBehaviour
     //Does the enemy flies?
     [SerializeField]
     protected bool _flying;
-    public bool Flying { get; }
+    public bool Flying { get => _flying; }
 
     [SerializeField]
     protected Transform _damagePosition;
@@ -113,7 +113,7 @@ public class Enemy : MonoBehaviour
     //Index on the path used
     protected int _pathIndex;
 
-    public float PathRatio { get => (float)(_pathIndex / _path.Count); }
+    public float PathRatio { get => (float)_pathIndex / (float)_path.Count; }
 
     //Enemy pool where the enemy came from
     protected EnemyPool _enemyPool;

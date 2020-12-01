@@ -33,27 +33,27 @@ public class Tower : MonoBehaviour
     //How much damage an attack does?
     [SerializeField]
     protected int _damage;
-    public int Damage { get; }
+    public int Damage { get => _damage; }
 
     //How much armor an attack breaks?
     [SerializeField]
     protected float _armorThrough;
-    public float ArmorThrough { get; }
+    public float ArmorThrough { get => _armorThrough; }
 
     //Number of projectiles in one attack
     [SerializeField]
     protected int _numberOfShots;
-    public int Shots { get; }
+    public int Shots { get => _numberOfShots; }
 
     //Projectile used in attack
     [SerializeField]
     protected GameObject _projectileUsed;
-    public GameObject Projectile { get; }
+    public GameObject Projectile { get => _projectileUsed; }
 
     //Tower range
     [SerializeField]
     protected float _range;
-    public float Range { get; }
+    public float Range { get => _range; }
 
     //Tower Collider used to recover enemies
     [SerializeField]
