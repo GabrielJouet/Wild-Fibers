@@ -8,6 +8,42 @@ TextureImporter:
   - first:
       213: 3896022012865483234
     second: Queen Blusim SpriteSheet_1
+  - first:
+      213: 6260254095997980249
+    second: Queen Blusim SpriteSheet_0
+  - first:
+      213: 3032650391720668548
+    second: Queen Blusim SpriteSheet_1
+  - first:
+      213: -3453380373256166935
+    second: Queen Blusim SpriteSheet_2
+  - first:
+      213: 456197481753907788
+    second: Queen Blusim SpriteSheet_3
+  - first:
+      213: -4556378214677241384
+    second: Queen Blusim SpriteSheet_4
+  - first:
+      213: -2210100903190654835
+    second: Queen Blusim SpriteSheet_5
+  - first:
+      213: 3948200842901380584
+    second: Queen Blusim SpriteSheet_6
+  - first:
+      213: 1662592279291701886
+    second: Queen Blusim SpriteSheet_7
+  - first:
+      213: 3534293310740236802
+    second: Queen Blusim SpriteSheet_8
+  - first:
+      213: -5481266113516440203
+    second: Queen Blusim SpriteSheet_9
+  - first:
+      213: -2257670323080422126
+    second: Queen Blusim SpriteSheet_10
+  - first:
+      213: 3357953316438243261
+    second: Queen Blusim SpriteSheet_11
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,6 +133,174 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 160
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95ec4ab9ee3e0e650800000000000000
+      internalID: 6260254095997980249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Queen Blusim SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 160
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48da57ea673261a20800000000000000
+      internalID: 3032650391720668548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Queen Blusim SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 160
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e1a2c9e8d02310d0800000000000000
+      internalID: -3453380373256166935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Queen Blusim SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 160
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c429e5f413db45600800000000000000
+      internalID: 456197481753907788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Queen Blusim SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d1a5db872e74c0c0800000000000000
+      internalID: -4556378214677241384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Queen Blusim SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 128
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d801d8b20f42451e0800000000000000
+      internalID: -2210100903190654835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Queen Blusim SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 128
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8edd8078fb3dac630800000000000000
+      internalID: 3948200842901380584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Queen Blusim SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 128
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a2d758ed6b21710800000000000000
+      internalID: 1662592279291701886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Queen Blusim SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 96
         width: 80
         height: 32
@@ -107,18 +311,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aee1c79f9887de000800000000000000
-      internalID: 66842103471939306
+      spriteID: 20a06b66a055c0130800000000000000
+      internalID: 3534293310740236802
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_1
+      name: Queen Blusim SpriteSheet_9
       rect:
         serializedVersion: 2
-        x: 240
-        y: 0
+        x: 80
+        y: 96
         width: 80
         height: 32
       alignment: 0
@@ -128,8 +332,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e113f1f063711630800000000000000
-      internalID: 3896022012865483234
+      spriteID: 5757770c281aee3b0800000000000000
+      internalID: -5481266113516440203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Queen Blusim SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 96
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21d99d48dc42ba0e0800000000000000
+      internalID: -2257670323080422126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Queen Blusim SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 96
+        width: 80
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db775a600c8d99e20800000000000000
+      internalID: 3357953316438243261
       vertices: []
       indices: 
       edges: []
