@@ -8,7 +8,7 @@ using UnityEngine;
 public class EnemyPool : MonoBehaviour
 {
     //Base enemy prefab
-    private Enemy _enemyPrefab;
+    public Enemy Enemy { get; private set; }
 
     //List of non used enemies but yet instanciated and desactivated
     private readonly Stack<Enemy> _enemyPool = new Stack<Enemy>();
@@ -34,7 +34,7 @@ public class EnemyPool : MonoBehaviour
     public void Initialize(Enemy newPrefab, RessourceController newRessourceController)
     {
         _ressourceController = newRessourceController;
-        _enemyPrefab = newPrefab;
+        Enemy = newPrefab;
     }
 
 
@@ -57,7 +57,7 @@ public class EnemyPool : MonoBehaviour
         else
         {
             //We spawn a brand new one
-            enemyBuffered = Instantiate(_enemyPrefab, transform);
+            enemyBuffered = Instantiate(Enemy, transform);
             _livingEnemies.Add(enemyBuffered);
             return enemyBuffered;
         }
@@ -79,7 +79,7 @@ public class EnemyPool : MonoBehaviour
 
             //If we wait for the end of the level and the living enemies list is empty we consider every enemy is dead
             if (_waitForEnd && _livingEnemies.Count == 0)
-                _spawner.EnemiesKilled();
+                _spawner.AllEnemiesKilled();
         }
 
         //We desactivate it
@@ -104,10 +104,6 @@ public class EnemyPool : MonoBehaviour
         _spawner = newSpawner;
 
         if (_livingEnemies.Count == 0)
-            _spawner.EnemiesKilled();
+            _spawner.AllEnemiesKilled();
     }
-
-
-    //Getter
-    public Enemy GetPrefab() { return _enemyPrefab; }
 }

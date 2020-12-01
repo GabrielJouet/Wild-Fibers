@@ -10,14 +10,17 @@ public class Tower : MonoBehaviour
     //Name display on UI
     [SerializeField]
     protected string _displayName;
+    public string Name { get => _displayName; }
 
     //Price of the tower to build it
     [SerializeField]
     protected int _price;
+    public int Price { get => _price; }
 
     //Icon used in buttons and UI
     [SerializeField]
     protected Sprite _icon;
+    public Sprite Icon { get => _icon; }
 
 
 
@@ -25,26 +28,32 @@ public class Tower : MonoBehaviour
     //How many seconds between each attacks?
     [SerializeField]
     protected float _timeBetweenShots;
+    public float TimeShots { get => _timeBetweenShots; }
 
     //How much damage an attack does?
     [SerializeField]
     protected int _damage;
+    public int Damage { get; }
 
     //How much armor an attack breaks?
     [SerializeField]
     protected float _armorThrough;
+    public float ArmorThrough { get; }
 
     //Number of projectiles in one attack
     [SerializeField]
     protected int _numberOfShots;
+    public int Shots { get; }
 
     //Projectile used in attack
     [SerializeField]
     protected GameObject _projectileUsed;
+    public GameObject Projectile { get; }
 
     //Tower range
     [SerializeField]
     protected float _range;
+    public float Range { get; }
 
     //Tower Collider used to recover enemies
     [SerializeField]
@@ -75,7 +84,7 @@ public class Tower : MonoBehaviour
     protected RessourceController _ressourceController;
 
     //Does the seller UI is active?
-    protected bool _sellerActive = false; 
+    public bool SellerActive { get; protected set; } = false; 
 
     //List of in-range enemies
     protected List<Enemy> _availableEnemies = new List<Enemy>();
@@ -147,7 +156,7 @@ public class Tower : MonoBehaviour
     //Method used to add one enemy from its list
     public void AddEnemy(Enemy enemy)
     {
-        if(!(!_canHitFlying && enemy.GetFlying()))
+        if(!(!_canHitFlying && enemy.Flying))
             _availableEnemies.Add(enemy);
     }
 
@@ -163,7 +172,7 @@ public class Tower : MonoBehaviour
     //Method used to sort enemies by their position toward the end of the path
     protected void SortEnemies()
     {
-        _availableEnemies.Sort((a, b) => b.GetPathPercentage().CompareTo(a.GetPathPercentage()));
+        _availableEnemies.Sort((a, b) => b.PathRatio.CompareTo(a.PathRatio));
     }
 
      
@@ -178,14 +187,14 @@ public class Tower : MonoBehaviour
 
             do
                 j++;
-            while (j < _availableEnemies.Count && (_availableEnemies[j].GetAlreadyAimed() || availableEnemies.Contains(_availableEnemies[j])));
+            while (j < _availableEnemies.Count && (_availableEnemies[j].AlreadyAimed || availableEnemies.Contains(_availableEnemies[j])));
 
             if(j < _availableEnemies.Count)
             {
                 availableEnemies.Add(_availableEnemies[j]);
 
                 if (!_availableEnemies[j].CanSurvive(_damage, _armorThrough))
-                    _availableEnemies[j].SetAlreadyAimed();
+                    _availableEnemies[j].AlreadyAimed = true;
             }
             else
                 availableEnemies.Add(_availableEnemies[i]);
@@ -218,35 +227,11 @@ public class Tower : MonoBehaviour
     public void ResetTowerDisplay()
     {
         DesactivateRangeDisplay();
-        _sellerActive = false;
+        SellerActive = false;
     }
 
 
     //Method used to revert seller UI state
-    public void RevertSellerActive() { _sellerActive = !_sellerActive; }
-    #endregion
-
-
-
-    #region Getters
-    public string GetName() { return _displayName; }
-
-    public int GetPrice() { return _price; }
-
-    public float GetTimeBetweenShots() { return _timeBetweenShots; }
-
-    public int GetDamage() { return _damage; }
-
-    public float GetArmorThrough() { return _armorThrough; }
-
-    public int GetNumberOfShots() { return _numberOfShots; }
-
-    public GameObject GetProjectileUsed() { return _projectileUsed; }
-
-    public float GetRange() { return _range; }
-
-    public Sprite GetIcon() { return _icon; }
-
-    public bool GetSellerActive() { return _sellerActive; }
+    public void RevertSellerActive() { SellerActive = !SellerActive; }
     #endregion
 }

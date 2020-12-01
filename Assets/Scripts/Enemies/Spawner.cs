@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
 
 
     //Does the wave finished?
-    private bool _waveFinished = false;
+    public bool WaveFinished { get; private set; } = false;
 
 
     //Enemy group used in spawn
@@ -31,7 +31,7 @@ public class Spawner : MonoBehaviour
 
 
     //Does every enemy is dead?
-    private bool _enemiesKilled = false;
+    public bool EnemiesKilled { get; private set; } = false;
 
 
 
@@ -49,7 +49,7 @@ public class Spawner : MonoBehaviour
         _enemyGroup = newGroup;
         _randomPath = newRandomPath;
 
-        _waveFinished = false;
+        WaveFinished = false;
 
         //And we launch enemies spawn
         StartCoroutine(SpawnEnemies());
@@ -59,10 +59,10 @@ public class Spawner : MonoBehaviour
     //Coroutine used to spawn enemies in group
     private IEnumerator SpawnEnemies()
     {
-        while (!_waveFinished)
+        while (!WaveFinished)
         {
             //If we are not at the end of the pattern
-            if (_enemyIndex < _enemyGroup.GetEnemyPattern(_patternIndex).GetNumberOfEnemies())
+            if (_enemyIndex < _enemyGroup.Patterns[_patternIndex].EnemiesCount)
             {
                 _enemyIndex++;
                 Enemy buffer = _enemyPool.GetOneEnemy();
@@ -71,23 +71,23 @@ public class Spawner : MonoBehaviour
                 //If the enemy is a boss we add it more paths to spawn enemies
                 if (buffer.TryGetComponent(out Boss bossComponent))
                 {
-                    List<Path> newPaths = new List<Path>();
-                    for (int i = 0; i < bossComponent.GetRandomPathLength(); i++)
+                    List<List<Vector2>> newPaths = new List<List<Vector2>>();
+                    for (int i = 0; i < bossComponent.PathsWanted; i++)
                         newPaths.Add(_randomPath.CalculateRandomPath());
-                    bossComponent.SetRandomPaths(newPaths);
+                    bossComponent.AvailablePaths = newPaths;
                 }
 
-                yield return new WaitForSeconds(_enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies());
+                yield return new WaitForSeconds(_enemyGroup.Patterns[_patternIndex].EnemiesTime);
             }
             //Else if the pattern is finished
             else
             {
                 //If the wave is not finished
-                if (_patternIndex + 1 < _enemyGroup.GetEnemyPatternCount())
+                if (_patternIndex + 1 < _enemyGroup.Patterns.Count)
                 {
                     _patternIndex++;
                     _enemyIndex = 0;
-                    yield return new WaitForSeconds(_enemyGroup.GetTimeBetweenPattern());
+                    yield return new WaitForSeconds(_enemyGroup.TimeBetweenPattern);
                 }
                 //If the wave is finished
                 else
@@ -103,7 +103,7 @@ public class Spawner : MonoBehaviour
         _patternIndex = 0;
         _enemyIndex = 0;
         _enemyGroup = null;
-        _waveFinished = true;
+        WaveFinished = true;
 
         _levelController.EndWave();
     }
@@ -117,16 +117,9 @@ public class Spawner : MonoBehaviour
 
 
     //Method used when every enemy of the group is killed
-    public void EnemiesKilled()
+    public void AllEnemiesKilled()
     {
-        _enemiesKilled = true;
+        EnemiesKilled = true;
         _levelController.EndLevel();
     }
-
-
-
-    //Getters
-    public bool GetEnemiesKilled() { return _enemiesKilled; }
-
-    public bool GetWaveFinished() { return _waveFinished; }
 }

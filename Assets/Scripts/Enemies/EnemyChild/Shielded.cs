@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Shielded : Enemy
@@ -17,7 +18,7 @@ public class Shielded : Enemy
 
 
 
-    public override void Initialize(Path newPath, EnemyPool newPool, int pathIndex)
+    public override void Initialize(List<Vector2> newPath, EnemyPool newPool, int pathIndex)
     {
         base.Initialize(newPath, newPool, pathIndex);
 

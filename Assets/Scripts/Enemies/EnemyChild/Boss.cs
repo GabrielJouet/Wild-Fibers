@@ -7,6 +7,7 @@ public class Boss : Enemy
     [Header("Boss related")]
     [SerializeField]
     protected Enemy _enemySpawnedPrefab;
+    public Enemy Spawnling { get; }
 
     [SerializeField]
     protected float _timeBetweenSpawn;
@@ -22,6 +23,8 @@ public class Boss : Enemy
 
     [SerializeField]
     protected int _numberOfPathsWanted;
+    public int PathsWanted { get; }
+
 
     [SerializeField]
     protected Particle _walkDirtParticle;
@@ -29,11 +32,11 @@ public class Boss : Enemy
 
     protected LevelController _levelController;
 
-    protected List<Path> _availablePaths = new List<Path>();
+    public List<List<Vector2>> AvailablePaths { get; set; } = new List<List<Vector2>>();
 
 
 
-    public override void Initialize(Path newPath, EnemyPool newPool, int pathIndex)
+    public override void Initialize(List<Vector2> newPath, EnemyPool newPool, int pathIndex)
     {
         base.Initialize(newPath, newPool, pathIndex);
         _levelController = FindObjectOfType<LevelController>();
@@ -53,7 +56,7 @@ public class Boss : Enemy
             for(int i = 0; i < _numberOfEnemiesPerSpawn; i ++)
             {
                 Enemy hatchling = _levelController.RecoverPool(_enemySpawnedPrefab).GetOneEnemy();
-                hatchling.Initialize(_availablePaths[Random.Range(0, _availablePaths.Count)], _enemyPool, _pathIndex);
+                hatchling.Initialize(AvailablePaths[Random.Range(0, AvailablePaths.Count)], _enemyPool, _pathIndex);
 
                 foreach (Particle current in _particleController.GetParticle(_walkDirtParticle, 3))
                     current.Initialize(transform.position);
@@ -62,22 +65,5 @@ public class Boss : Enemy
             }
             _moving = true;
         }
-    }
-
-
-
-    public Enemy GetSpawnedEnemy()
-    {
-        return _enemySpawnedPrefab;
-    }
-
-    public void SetRandomPaths(List<Path> newPaths)
-    {
-        _availablePaths = newPaths;
-    }
-
-    public int GetRandomPathLength()
-    {
-        return _numberOfPathsWanted;
     }
 }

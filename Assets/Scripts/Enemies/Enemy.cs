@@ -11,20 +11,25 @@ public class Enemy : MonoBehaviour
     //Name display in the UI
     [SerializeField]
     protected string _displayName;
+    public string Name { get => _displayName; }
 
 
     [Header("Behaviour Variables")]
     //Health max
     [SerializeField]
     protected float _healthMax;
+    public float HealthMax { get => _healthMax; }
+    
     //Current health
     protected float _health;
+    public float Health { get => _health; }
 
     //Armor max
     [SerializeField]
     protected float _armorMax;
     //Current armor
     protected float _armor;
+    public float Armor { get => _armor; }
 
     //Speed max
     [SerializeField]
@@ -35,6 +40,7 @@ public class Enemy : MonoBehaviour
     //Number of lives removed if the enemy reaches the end
     [SerializeField]
     protected int _numberOfLivesTaken;
+    public int LivesTaken { get; }
 
     //Money gained when the enemy is killed
     [SerializeField]
@@ -43,9 +49,11 @@ public class Enemy : MonoBehaviour
     //Does the enemy flies?
     [SerializeField]
     protected bool _flying;
+    public bool Flying { get; }
 
     [SerializeField]
     protected Transform _damagePosition;
+    public Vector2 DamagePosition { get => _damagePosition.position; }
 
 
     //Dot duration in seconds
@@ -100,18 +108,20 @@ public class Enemy : MonoBehaviour
 
 
     //Current path used in enemy movement
-    protected Path _path;
+    protected List<Vector2> _path;
 
     //Index on the path used
     protected int _pathIndex;
+
+    public float PathRatio { get => (float)(_pathIndex / _path.Count); }
 
     //Enemy pool where the enemy came from
     protected EnemyPool _enemyPool;
 
     //All information UI
-    protected BackgroudSelecter _informationUI;
+    public BackgroudSelecter InformationUI { get; set; }
 
-    protected bool _alreadyAimed = false;
+    public bool AlreadyAimed { get; set; } = false;
 
 
 
@@ -119,13 +129,13 @@ public class Enemy : MonoBehaviour
     //
     //Parameters => newPath, the new path the enemy will used
     //              newPool, the pool enemy came from
-    public virtual void Initialize(Path newPath, EnemyPool newPool, int pathIndex)
+    public virtual void Initialize(List<Vector2> newPath, EnemyPool newPool, int pathIndex)
     {
         if (_particleController == null)
             _particleController = FindObjectOfType<ParticleController>();
-        
-        //We reset pretty every variables
-        _informationUI = null;
+
+        //We reset every variable
+        InformationUI = null;
 
         _dotApplied = false;
         _dotDisplay.sprite = null;
@@ -142,12 +152,12 @@ public class Enemy : MonoBehaviour
 
         _pathIndex = pathIndex;
 
-        transform.position = newPath.GetPathPosition(pathIndex);
+        transform.position = newPath[pathIndex];
         _path = newPath;
         _enemyPool = newPool;
 
         _moving = true;
-        _alreadyAimed = false;
+        AlreadyAimed = false;
     }
 
 
@@ -162,8 +172,8 @@ public class Enemy : MonoBehaviour
     //Fixed Update method, called 50 times per second
     protected void FixedUpdate()
     {
-        if (_informationUI != null)
-            _informationUI.UpdateEnemyInformation(this);
+        if (InformationUI != null)
+            InformationUI.UpdateEnemyInformation(this);
     }
 
 
@@ -171,16 +181,16 @@ public class Enemy : MonoBehaviour
     //Method used to follow cezier path 
     protected void FollowPath()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _path.GetPath()[_pathIndex], Time.deltaTime * _speed);
+        transform.position = Vector3.MoveTowards(transform.position, _path[_pathIndex], Time.deltaTime * _speed);
 
         //If the enemy position is reaching the end of the path part we increase the path index
-        if (transform.position == _path.GetPath()[_pathIndex] && _pathIndex + 1 < _path.GetPath().Count)
+        if ((Vector2)transform.position == _path[_pathIndex] && _pathIndex + 1 < _path.Count)
             _pathIndex++;
         //Else if the enemy reaches the end of the path
-        else if (_pathIndex + 1 == _path.GetPath().Count)
+        else if (_pathIndex + 1 == _path.Count)
             ReachEnd();
 
-        _spriteRenderer.flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
+        _spriteRenderer.flipX = transform.position.x - _path[_pathIndex].x > 0;
     }
 
 
@@ -292,7 +302,7 @@ public class Enemy : MonoBehaviour
     //Method called when the enemy health drops below 0
     protected void Die()
     {
-        if (_informationUI)
+        if (InformationUI)
             DesactivateUI();
 
         StopAllCoroutines();
@@ -306,7 +316,7 @@ public class Enemy : MonoBehaviour
     {
         _enemyPool.AddOneEnemy(this, true, _numberOfLivesTaken);
 
-        if (_informationUI) 
+        if (InformationUI) 
             DesactivateUI();
 
         StopAllCoroutines();
@@ -316,51 +326,21 @@ public class Enemy : MonoBehaviour
     //Method used to desactivate tracked UI
     protected void DesactivateUI()
     {
-        _informationUI.ErasePreviousEnemy();
-        _informationUI.DisableEnemyInformation();
+        InformationUI.ErasePreviousEnemy();
+        InformationUI.DisableEnemyInformation();
         _selector.SetActive(false);
 
-        _informationUI = null;
+        InformationUI = null;
     }
 
-
-    //Getters
-    public string GetName() { return _displayName; }
-
-    public float GetHealth() { return _health; }
-
-    public float GetMaxHealth() { return _healthMax; }
-
-    public float GetArmor() { return _armor; }
-
-    public float GetMaxArmor() { return _armorMax; }
-
-    public float GetSpeed() { return _speed; }
-
-    public float GetMaxSpeed() { return _speedMax; }
-
-    public int GetNumberOfLivesTaken() { return _numberOfLivesTaken; }
-
-    public float GetPathPercentage() { return (float)_pathIndex / (float)_path.GetPath().Count;  }
-
-    public bool GetFlying() { return _flying; }
-
-    public Vector2 GetDamagePosition() { return _damagePosition.position; }
-
-    public bool GetAlreadyAimed() { return _alreadyAimed; }
 
     public bool CanSurvive(float damage, float armorThrough) { return _health - Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor) / 100) / 2 : damage - ((_armor - armorThrough) / 100 * damage)) > 0; }
 
 
-    //Setters
-    public void SetSelector() { _selector.SetActive(true); }
-
-    public void ResetSelector() { _selector.SetActive(false); }
-
-    public void SetAlreadyAimed() { _alreadyAimed = true; }
-
-
-    public void SetInformationUI(BackgroudSelecter newUI) { _informationUI = newUI; }
+    public void SetSelector(bool state) 
+    { 
+        _selector.SetActive(state);
+    }
 
 
 

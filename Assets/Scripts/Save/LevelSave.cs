@@ -7,23 +7,16 @@
 public class LevelSave
 {
     //Number of lives lost on this level
-    private readonly int _livesLostCount;
+    public int LivesLost { get; private set; }
 
-    private readonly LevelState _levelState;
+    public LevelState State { get; private set; }
 
 
 
     //Constructor
     public LevelSave(int newLivesLost, LevelState newLevelState)
     {
-        _livesLostCount = newLivesLost;
-        _levelState = newLevelState;
+        LivesLost = newLivesLost;
+        State = newLevelState;
     }
-
-
-
-    //Getters
-    public int GetLivesLostCount() { return _livesLostCount; }
-
-    public LevelState GetState() { return _levelState; }
 }

@@ -70,7 +70,7 @@ public class MarkDot : Projectile
     {
         if (_enemyToTrack.gameObject.activeSelf)
         {
-            if (FollowPoint(_enemyToTrack.GetDamagePosition()))
+            if (FollowPoint(_enemyToTrack.DamagePosition))
             {
                 _enemyToTrack.TakeDamage(_damage, _armorThrough);
 
@@ -82,7 +82,7 @@ public class MarkDot : Projectile
         }
         else
         {
-            _goalPosition = _enemyToTrack.GetDamagePosition();
+            _goalPosition = _enemyToTrack.DamagePosition;
             _enemyToTrack = null;
         }
     }

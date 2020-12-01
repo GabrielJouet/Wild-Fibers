@@ -34,7 +34,7 @@ public class ChocSpikes : Projectile
     public void Initialize(float newDamage, float newArmorThrough, Enemy newEnemy, ProjectilePool newPool)
     {
         _stopped = false;
-        transform.position = newEnemy.GetDamagePosition();
+        transform.position = newEnemy.DamagePosition;
         _enemyToTrack = newEnemy;
         _damage = newDamage;
         _projectilePool = newPool;
@@ -52,7 +52,7 @@ public class ChocSpikes : Projectile
             if (_enemyToTrack.gameObject.activeSelf)
             {
                 if (!_stopped)
-                    transform.position = _enemyToTrack.GetDamagePosition();
+                    transform.position = _enemyToTrack.DamagePosition;
             }
             else
             {

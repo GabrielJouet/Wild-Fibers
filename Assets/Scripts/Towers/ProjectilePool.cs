@@ -4,7 +4,7 @@ using UnityEngine;
 public class ProjectilePool : MonoBehaviour
 {
     //Base enemy prefab
-    private Projectile _projectilePrefab;
+    public Projectile Projectile { get; private set; }
 
     //List of non used enemies but yet instanciated and desactivated
     private readonly Stack<Projectile> _projectilePool = new Stack<Projectile>();
@@ -16,7 +16,7 @@ public class ProjectilePool : MonoBehaviour
     //Parameters => newPrefab, the new projectile prefab used in spawn
     public void Initialize(GameObject newPrefab)
     {
-        _projectilePrefab = newPrefab.GetComponent<Projectile>();
+        Projectile = newPrefab.GetComponent<Projectile>();
     }
 
 
@@ -25,7 +25,7 @@ public class ProjectilePool : MonoBehaviour
     //Return a new projectile either already instanciated or newly created
     public Projectile GetOneProjectile()
     {
-        Projectile newProjectile = _projectilePool.Count > 0 ? _projectilePool.Pop() : Instantiate(_projectilePrefab, transform);
+        Projectile newProjectile = _projectilePool.Count > 0 ? _projectilePool.Pop() : Instantiate(Projectile, transform);
         newProjectile.gameObject.SetActive(true);
 
         return newProjectile;
@@ -42,8 +42,4 @@ public class ProjectilePool : MonoBehaviour
         newProjectile.gameObject.SetActive(false);
         _projectilePool.Push(newProjectile);
     }
-
-
-    //Getter
-    public Projectile GetPrefab() { return _projectilePrefab; }
 }

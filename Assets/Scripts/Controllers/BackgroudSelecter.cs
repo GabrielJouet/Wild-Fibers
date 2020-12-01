@@ -135,39 +135,22 @@ public class BackgroudSelecter : MonoBehaviour
     //Parameter => enemy, the enemy to activate visual feedback
     private void ActivateEnemy(Enemy enemy)
     {
-        SetEnemyInformation(enemy);
-        enemy.SetSelector();
+        UpdateEnemyInformation(enemy);
+        enemy.SetSelector(true);
 
         _previousEnemy = enemy;
-        _previousEnemy.SetInformationUI(this);
+        _previousEnemy.InformationUI = this;
     }
 
 
     //Method used to desactivate feedback on previous selected enemy
     private void DesactivateEnemy()
     {
-        _previousEnemy.SetInformationUI(null);
-        _previousEnemy.ResetSelector();
+        _previousEnemy.InformationUI = null;
+        _previousEnemy.SetSelector(false);
 
         DisableEnemyInformation();
         ResetPrevious();
-    }
-
-
-    //Method used to set UI information with selected enemy
-    //
-    //Parameter => enemy, the enemy to display
-    public void SetEnemyInformation(Enemy enemyToDisplay)
-    {
-        if (_towerInformationPanel.activeSelf)
-            DisableTowerInformation();
-
-        _enemyInformationPanel.SetActive(true);
-
-        _enemyName.text = enemyToDisplay.GetName();
-        _lifeValue.text = enemyToDisplay.GetHealth() + " / " + enemyToDisplay.GetMaxHealth();
-        _armorValue.text = enemyToDisplay.GetArmor() + " %";
-        _livesLostValue.text = enemyToDisplay.GetNumberOfLivesTaken().ToString();
     }
 
 
@@ -176,10 +159,17 @@ public class BackgroudSelecter : MonoBehaviour
     //Parameter => enemy, the enemy to display
     public void UpdateEnemyInformation(Enemy enemyToDisplay)
     {
-        _enemyName.text = enemyToDisplay.GetName();
-        _lifeValue.text = enemyToDisplay.GetHealth() + " / " + enemyToDisplay.GetMaxHealth();
-        _armorValue.text = enemyToDisplay.GetArmor() + " %";
-        _livesLostValue.text = enemyToDisplay.GetNumberOfLivesTaken().ToString();
+        if (!_enemyInformationPanel.activeSelf)
+        {
+            if (_towerInformationPanel.activeSelf)
+                DisableTowerInformation();
+
+            _enemyInformationPanel.SetActive(true);
+        }
+
+        _enemyName.text = enemyToDisplay.Health + " / " + enemyToDisplay.HealthMax;
+        _armorValue.text = enemyToDisplay.Armor + " %";
+        _livesLostValue.text = enemyToDisplay.LivesTaken.ToString();
     }
 
 
@@ -235,10 +225,10 @@ public class BackgroudSelecter : MonoBehaviour
         Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedTower.transform.position);
         Vector2 finalPosition = new Vector2(cameraScreen.x - _canvas.rect.width / 2, cameraScreen.y - _canvas.rect.height / 2);
 
-        if (!selectedTower.GetSellerActive())
+        if (!selectedTower.SellerActive)
         {
-            ActivateTowerSellButton(finalPosition, selectedTower, Mathf.FloorToInt(selectedTower.GetPrice() / 4));
-            SetTowerInformation(selectedTower.GetIcon(), selectedTower.GetName(), selectedTower.GetDamage(), selectedTower.GetArmorThrough(), selectedTower.GetTimeBetweenShots());
+            ActivateTowerSellButton(finalPosition, selectedTower, Mathf.FloorToInt(selectedTower.Price / 4));
+            SetTowerInformation(selectedTower.Icon, selectedTower.Name, selectedTower.Damage, selectedTower.ArmorThrough, selectedTower.TimeShots / 1f);
 
             selectedTower.ActivateRangeDisplay();
         }
@@ -334,12 +324,12 @@ public class BackgroudSelecter : MonoBehaviour
     //Parameter => selectedSlot, the tower slot to activate visual feedback
     private void ActivateTowerSlot(TowerSlot selectedSlot)
     {
-        if (selectedSlot.GetCurrentTower() == null)
+        if (selectedSlot.Tower == null)
         {
             Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedSlot.transform.position);
             Vector2 finalPosition = new Vector2(cameraScreen.x - _canvas.rect.width / 2, cameraScreen.y - _canvas.rect.height / 2);
 
-            if (!selectedSlot.GetChooserActive())
+            if (!selectedSlot.ChooserActive)
                 ActivateTowerChooseButton(finalPosition, selectedSlot);
             else
                 DisableTowerChooseButton();

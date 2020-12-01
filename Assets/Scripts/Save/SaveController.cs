@@ -13,7 +13,7 @@ public class SaveController : MonoBehaviour
 	private int _numberOfLevel;
 
 	//The current save state
-	private SaveFile _saveFile;
+	public SaveFile SaveFile { get; private set; }
 
 	//A Binary Formatter for data handling
 	private BinaryFormatter _binaryFormatter;
@@ -51,7 +51,7 @@ public class SaveController : MonoBehaviour
 				allSaves.Add(new LevelSave(20, LevelState.LOCKED));
 		}
 
-		_saveFile = new SaveFile(allSaves, 1, 1);
+		SaveFile = new SaveFile(allSaves, 1, 1);
 
 		SaveData();
 	}
@@ -60,7 +60,8 @@ public class SaveController : MonoBehaviour
 	//Method used to save music and sound level when changed
 	public void SaveMusicLevel(float newMusicLevel, float newSoundLevel)
 	{
-		_saveFile.UpdateSoundAndMusicSave(newMusicLevel, newSoundLevel);
+		SaveFile.Music = newMusicLevel;
+		SaveFile.Sound = newSoundLevel;
 
 		SaveData();
 	}
@@ -69,10 +70,10 @@ public class SaveController : MonoBehaviour
 	//Method used to save level data when changed
 	public void SaveLevelData(int levelIndex, int newLivesLost, LevelState newState)
 	{
-		_saveFile.UpdateLevelSave(levelIndex, new LevelSave(newLivesLost, newState));
+		SaveFile.Saves[levelIndex] = new LevelSave(newLivesLost, newState);
 
 		if(levelIndex + 1 < _numberOfLevel)
-			_saveFile.UpdateLevelSave(levelIndex + 1, new LevelSave(0, LevelState.UNLOCKED));
+			SaveFile.Saves[levelIndex+1] = new LevelSave(0, LevelState.UNLOCKED);
 
 		SaveData();
 	}
@@ -83,7 +84,7 @@ public class SaveController : MonoBehaviour
 	{
 		FileStream file = File.Create(_gameSavePath);
 
-		_binaryFormatter.Serialize(file, _saveFile);
+		_binaryFormatter.Serialize(file, SaveFile);
 		file.Close();
 	}
 
@@ -94,7 +95,7 @@ public class SaveController : MonoBehaviour
 		if (File.Exists(_gameSavePath))
 		{
 			FileStream file = File.Open(_gameSavePath, FileMode.Open);
-			_saveFile = (SaveFile)_binaryFormatter.Deserialize(file);
+			SaveFile = (SaveFile)_binaryFormatter.Deserialize(file);
 			file.Close();
 		}
 		else
@@ -113,9 +114,4 @@ public class SaveController : MonoBehaviour
 		else
 			CreateSave();
 	}
-
-
-
-	//Getter
-	public SaveFile GetSaveFile() { return _saveFile; }
 }

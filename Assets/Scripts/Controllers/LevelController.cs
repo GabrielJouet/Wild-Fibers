@@ -18,7 +18,12 @@ public class LevelController : MonoBehaviour
     //Loaded level with parameters
     [SerializeField]
     private Level _level;
+
     public bool Ended { get; set; }
+
+    public int LevelIndex { get => _level.Number; }
+
+    public Level LoadedLevel { get => _level; }
 
 
     [Header("UI related")]
@@ -72,7 +77,7 @@ public class LevelController : MonoBehaviour
     //Called when the game object is initialized
     private void Start()
     {
-        _waveText.text = 0 + " / " + _level.GetWaveCount();
+        _waveText.text = 0 + " / " + _level.Waves.Count;
         SpawnEnemyPools();
         SpawnProjectilePools();
     }
@@ -82,7 +87,7 @@ public class LevelController : MonoBehaviour
     //Each enemy type will need its own pool
     private void SpawnEnemyPools()
     {
-        foreach (Enemy current in _level.GetEnemiesAvailable())
+        foreach (Enemy current in _level.Enemies)
         {
             //TO CHANGE SHOULD BE AN INTERFACE INSTEAD
             if (current.TryGetComponent(out Boss currentBoos))
@@ -90,7 +95,7 @@ public class LevelController : MonoBehaviour
                 bool result = false;
                 foreach (EnemyPool currentPool in _enemyPools)
                 {
-                    if (currentPool.GetPrefab().GetType() == currentBoos.GetSpawnedEnemy().GetType())
+                    if (currentPool.Enemy.GetType() == currentBoos.Spawnling.GetType())
                     {
                         result = true;
                         break;
@@ -98,7 +103,7 @@ public class LevelController : MonoBehaviour
                 }
 
                 if (!result)
-                    SpawnOneEnemyPool(currentBoos.GetSpawnedEnemy());
+                    SpawnOneEnemyPool(currentBoos.Spawnling);
             }
 
             SpawnOneEnemyPool(current);
@@ -128,7 +133,7 @@ public class LevelController : MonoBehaviour
                 bool result = false;
                 foreach (ProjectilePool currentPool in _projectilePools)
                 {
-                    if(current.GetProjectileUsed().GetComponent<Projectile>().GetType() == currentPool.GetPrefab().GetType())
+                    if(current.Projectile.GetComponent<Projectile>().GetType() == currentPool.Projectile.GetType())
                     {
                         result = true;
                         break;
@@ -148,7 +153,7 @@ public class LevelController : MonoBehaviour
     private void SpawnOneProjectilePool(Tower currentPrefab)
     {
         ProjectilePool newPool = Instantiate(_projectilePoolPrefab, transform);
-        newPool.Initialize(currentPrefab.GetProjectileUsed());
+        newPool.Initialize(currentPrefab.Projectile);
 
         _projectilePools.Add(newPool);
     }
@@ -173,16 +178,16 @@ public class LevelController : MonoBehaviour
 
         //If there is time left, we gie money to player based on time left
         if (timeLeft > 0)
-            _ressourceController.AddGold(Mathf.FloorToInt(_level.GetWave(_waveIndex).GetGoldBonus() * (timeLeft / _level.GetWave(_waveIndex).GetTimeBeforeNextWave())));
+            _ressourceController.AddGold(Mathf.FloorToInt(_level.Waves[_waveIndex].BonusGold * (timeLeft / _level.Waves[_waveIndex].TimeWave)));
     }
 
 
     //Method used to start a brand new wave with level parameters
     private void StartWave()
     {
-        _waveText.text = (_waveIndex + 1) + " / " + _level.GetWaveCount();
+        _waveText.text = (_waveIndex + 1) + " / " + _level.Waves.Count;
 
-        int spawnerLeft = _level.GetWave(_waveIndex).GetNumberOfEnemyGroup() - _spawners.Count;
+        int spawnerLeft = _level.Waves[_waveIndex].EnemyGroups.Count - _spawners.Count;
 
         int i;
         //We instantiate enough spawner for each enemy group
@@ -192,13 +197,13 @@ public class LevelController : MonoBehaviour
         //And we give them instructions
         EnemyPool bufferPool = null;
         i = 0;
-        foreach(EnemyGroup current in _level.GetWave(_waveIndex).GetEnemyGroups())
+        foreach(EnemyGroup current in _level.Waves[_waveIndex].EnemyGroups)
         {
             foreach (EnemyPool buffer in _enemyPools)
-                if (buffer.GetPrefab() == current.GetEnemyUsed())
+                if (buffer.Enemy == current.Enemy)
                     bufferPool = buffer;
 
-            _spawners[i].SetNewGroup(_availablePath[current.GetPathIndex()], current, this, bufferPool);
+            _spawners[i].SetNewGroup(_availablePath[current.Path], current, this, bufferPool);
             i++;
         }
     }
@@ -211,7 +216,7 @@ public class LevelController : MonoBehaviour
 
         //If one of the spawner has not done its wave yet
         foreach (Spawner current in _spawners)
-            if (!current.GetWaveFinished())
+            if (!current.WaveFinished)
                 result = false;
 
         //If every spawner has called the level controller
@@ -228,7 +233,7 @@ public class LevelController : MonoBehaviour
 
         //If one of the spawner has not done its wave yet
         foreach (Spawner current in _spawners)
-            if (!current.GetEnemiesKilled())
+            if (!current.WaveFinished)
                 result = false;
 
         //If the wave is finished and every enemy is dead 
@@ -243,12 +248,12 @@ public class LevelController : MonoBehaviour
     private IEnumerator DelayWave()
     {
         //If there is another wave after that one
-        if (_waveIndex + 1 < _level.GetWaveCount())
+        if (_waveIndex + 1 < _level.Waves.Count)
         {
             _waveIndex++;
             yield return new WaitForSeconds(_timeBetweenNextWaveButtonDisplay);
 
-            _nextWaveButton.ActivateNewWaveButton(_level.GetWave(_waveIndex).GetTimeBeforeNextWave());
+            _nextWaveButton.ActivateNewWaveButton(_level.Waves[_waveIndex].TimeWave);
         }
         else
             foreach (Spawner current in _spawners)
@@ -257,14 +262,10 @@ public class LevelController : MonoBehaviour
 
 
     //Getter
-    public int GetLevelIndex() { return _level.GetNumber(); }
-
-    public Level GetLoadedLevel() { return _level; }
-
     public EnemyPool RecoverPool(Enemy wantedEnemy)
     {
         foreach (EnemyPool current in _enemyPools)
-            if (current.GetPrefab().GetType() == wantedEnemy.GetType())
+            if (current.Enemy.GetType() == wantedEnemy.GetType())
                 return current;
 
         return null;
@@ -273,7 +274,7 @@ public class LevelController : MonoBehaviour
     public ProjectilePool RecoverProjectilePool(Projectile wantedProjectile)
     {
         foreach (ProjectilePool current in _projectilePools)
-            if (current.GetPrefab().GetType() == wantedProjectile.GetType())
+            if (current.Projectile.GetType() == wantedProjectile.GetType())
                 return current;
 
         return null;
@@ -282,7 +283,7 @@ public class LevelController : MonoBehaviour
     public TowerPool RecoverTowerPool(Tower wantedTower)
     {
         foreach (TowerPool current in _towerPools)
-            if (current.GetPrefab().GetType() == wantedTower.GetType())
+            if (current.Tower.GetType() == wantedTower.GetType())
                 return current;
 
         return null;

@@ -26,7 +26,12 @@ public class RessourceController : MonoBehaviour
     private bool _stopped = false;
 
     //Player money count, used in purchases
-    private int _goldCount;
+    public int GoldCount { get; private set; }
+
+    //Lives lost for this level
+    public int LivesLost { get => _lifeCountMax - _lifeCount; }
+
+
     //Player life count, when dropping to 0 the game is finished
     private int _lifeCountMax;
     private int _lifeCount;
@@ -36,10 +41,10 @@ public class RessourceController : MonoBehaviour
     //Called when the game object is initialized
     private void Start()
     {
-        _lifeCountMax = _levelController.GetLoadedLevel().GetLifeCount();
+        _lifeCountMax = _levelController.LoadedLevel.Lives;
         _lifeCount = _lifeCountMax;
-        _goldCount = _levelController.GetLoadedLevel().GetGoldCount();
-        _goldText.text = _goldCount.ToString();
+        GoldCount = _levelController.LoadedLevel.Gold;
+        _goldText.text = GoldCount.ToString();
         _lifeText.text = _lifeCount.ToString();
     }
 
@@ -52,8 +57,8 @@ public class RessourceController : MonoBehaviour
     //Parameter => Amount of gold added
     public void AddGold(int count)
     {
-        _goldCount += count;
-        _goldText.text = _goldCount.ToString();
+        GoldCount += count;
+        _goldText.text = GoldCount.ToString();
     }
 
 
@@ -62,15 +67,9 @@ public class RessourceController : MonoBehaviour
     //Parameter => Amount of gold removed
     public void RemoveGold(int count)
     {
-        _goldCount -= count;
-        _goldText.text = _goldCount.ToString();
+        GoldCount -= count;
+        _goldText.text = GoldCount.ToString();
     }
-
-
-    //Getter
-    //
-    //Return => Current gold count
-    public int GetGoldCount() { return _goldCount; }
     #endregion
 
 
@@ -104,8 +103,4 @@ public class RessourceController : MonoBehaviour
         _gameOverScreen.Activate(false);
     }
     #endregion
-
-
-    //Getter
-    public int GetLivesLost() { return _lifeCountMax - _lifeCount; }
 }

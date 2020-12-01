@@ -68,8 +68,8 @@ public class GameOverScreen : MonoBehaviour
 
         if (win)
         {
-            FindObjectOfType<SaveController>().SaveLevelData(_levelController.GetLevelIndex(), _ressourceController.GetLivesLost(), LevelState.COMPLETED);
-            int livesLost = _ressourceController.GetLivesLost();
+            FindObjectOfType<SaveController>().SaveLevelData(_levelController.LevelIndex, _ressourceController.LivesLost, LevelState.COMPLETED);
+            int livesLost = _ressourceController.LivesLost;
 
             if (livesLost <= 15)
             {

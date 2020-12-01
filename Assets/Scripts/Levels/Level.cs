@@ -11,28 +11,34 @@ public class Level : ScriptableObject
     //Name of the level
     [SerializeField]
     private string _name;
+    public string Name { get => _name; }
 
     //Level number
     [SerializeField]
     private int _number;
+    public int Number { get => _number; }
 
     //Little thumbnail used in level selection
     [SerializeField]
     private Sprite _picture;
+    public Sprite Picture { get => _picture; }
 
     //Little description used in level selection
     [SerializeField]
     private string _description;
+    public string Description { get => _description; }
 
     //Name of the Scene in Assets directory
     [SerializeField]
     private string _playSceneName;
+    public string Scene { get => _playSceneName; }
 
 
     [Header("In play")]
     //List of available waves in a level
     [SerializeField]
     private List<Wave> _availableWaves;
+    public List<Wave> Waves { get => _availableWaves; }
 
     [Space(10)]
 
@@ -40,42 +46,18 @@ public class Level : ScriptableObject
     [SerializeField]
     [Range(1,50)]
     private int _lifeCount;
+    public int Lives { get => _lifeCount; }
 
     //Gold amount allowed at the start of the level
     [SerializeField]
     [Min(150)]
     private int _goldCount;
+    public int Gold { get => _goldCount; }
 
     [Space(10)]
 
     //Enemies available in this level
     [SerializeField]
     private List<Enemy> _enemyAvailables;
-
-
-
-    /*Getters*/
-    #region
-    public Wave GetWave(int index) { return _availableWaves[index]; }
-
-    public List<Wave> GetWaves() { return _availableWaves; }
-
-    public int GetWaveCount() { return _availableWaves.Count; }
-
-    public string GetName() { return _name; }
-
-    public int GetNumber() { return _number; }
-
-    public Sprite GetPicture() { return _picture; }
-
-    public string GetDescription() { return _description; }
-
-    public string GetPlaySceneName() { return _playSceneName; }
-
-    public int GetLifeCount() { return _lifeCount; }
-
-    public int GetGoldCount() { return _goldCount; }
-
-    public List<Enemy> GetEnemiesAvailable() { return _enemyAvailables; }
-    #endregion
+    public List<Enemy> Enemies { get => _enemyAvailables; }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 public class TowerPool : MonoBehaviour
 {
     //Base enemy prefab
-    private Tower _towerPrefab;
+    public Tower Tower { get; private set; }
 
     //List of non used enemies but yet instanciated and desactivated
     private readonly Stack<Tower> _towerPool = new Stack<Tower>();
@@ -16,7 +16,7 @@ public class TowerPool : MonoBehaviour
     //Parameters => newPrefab, the new projectile prefab used in spawn
     public void Initialize(Tower newPrefab)
     {
-        _towerPrefab = newPrefab;
+        Tower = newPrefab;
     }
 
 
@@ -25,7 +25,7 @@ public class TowerPool : MonoBehaviour
     //Return a new enemy either already instanciated or newly created
     public Tower GetOneTower()
     {
-        Tower newTower = _towerPool.Count > 0 ? _towerPool.Pop() : Instantiate(_towerPrefab, transform);
+        Tower newTower = _towerPool.Count > 0 ? _towerPool.Pop() : Instantiate(Tower, transform);
         newTower.gameObject.SetActive(true);
 
         return newTower;
@@ -42,8 +42,4 @@ public class TowerPool : MonoBehaviour
         newTower.gameObject.SetActive(false);
         _towerPool.Push(newTower);
     }
-
-
-    //Getter
-    public Tower GetPrefab() { return _towerPrefab; }
 }

@@ -29,22 +29,14 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private Animator _shadowAnimator;
 
-    //Default sprite for tower slot
-    [SerializeField]
-    private Sprite _defaultSprite;
-
-    //Sprite Renderer component
-    [SerializeField]
-    private SpriteRenderer _spriteRenderer;
-
     
 
 
     //Current tower associated with this slot
-    private Tower _currentTower = null;
+    public Tower Tower { get; private set; } = null;
 
     //Does the chooser is active?
-    private bool _chooserActive = false;
+    public bool ChooserActive { get; private set; } = false;
 
 
     private Tower _chosenTower;
@@ -58,14 +50,14 @@ public class TowerSlot : MonoBehaviour
     public void ChooseTower(Tower tower)
     {
         //If we do not have enough money we display a bad choice
-        if(_ressourceController.GetGoldCount() < tower.GetPrice())
+        if(_ressourceController.GoldCount < tower.Price)
         {
             //TO DO DISPLAY BAD CHOICE
         }
         //If we have enough money we construct the tower
         else
         {
-            _ressourceController.RemoveGold(tower.GetPrice());
+            _ressourceController.RemoveGold(tower.Price);
 
             _collider.enabled = false;
             _backgroundSelecter.DisableTowerChooseButton();
@@ -81,16 +73,16 @@ public class TowerSlot : MonoBehaviour
     private IEnumerator DelayConstruct(Tower tower)
     {
         _chosenTower = tower;
-        _shadowAnimator.SetTrigger(_chosenTower.GetName());
-        _animator.SetTrigger(_chosenTower.GetName());
+        _shadowAnimator.SetTrigger(_chosenTower.Name);
+        _animator.SetTrigger(_chosenTower.Name);
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
         _shadowAnimator.SetTrigger("Base");
         _animator.SetTrigger("Base");
 
         TowerPool currentPool = _levelController.RecoverTowerPool(_chosenTower);
-        _currentTower = currentPool.GetOneTower();
-        _currentTower.Initialize(this, _ressourceController, _backgroundSelecter, _levelController.RecoverProjectilePool(_chosenTower.GetProjectileUsed().GetComponent<Projectile>()), currentPool);
+        Tower = currentPool.GetOneTower();
+        Tower.Initialize(this, _ressourceController, _backgroundSelecter, _levelController.RecoverProjectilePool(_chosenTower.Projectile.GetComponent<Projectile>()), currentPool);
     }
     #endregion
 
@@ -101,25 +93,16 @@ public class TowerSlot : MonoBehaviour
     //Method used to reset the tower slot
     public void ResetSlot()
     {
-        _currentTower = null;
+        Tower = null;
         _collider.enabled = true;
     }
 
 
     //Method used to revert chooser state
-    public void RevertChooserActive() { _chooserActive = !_chooserActive; }
+    public void RevertChooserActive() { ChooserActive = !ChooserActive; }
 
 
     //Method used to reset chooser state
-    public void ResetChooserActive() { _chooserActive = false; }
-    #endregion
-
-
-
-    /*Getters*/
-    #region
-    public Tower GetCurrentTower() { return _currentTower; }
-
-    public bool GetChooserActive() { return _chooserActive; }
+    public void ResetChooserActive() { ChooserActive = false; }
     #endregion
 }

@@ -68,11 +68,11 @@ public class LevelSelection : MonoBehaviour
     private void SetButtonStates()
     {
         //For each level we check the save to see if level are unlocked, finished and completed
-        List<LevelSave> levelSaves = _saveController.GetSaveFile().GetLevelsData();
+        List<LevelSave> levelSaves = _saveController.SaveFile.Saves;
 
         for (int i = 0; i < levelSaves.Count; i++)
         {
-            switch (levelSaves[i].GetState())
+            switch (levelSaves[i].State)
             {
                 case LevelState.LOCKED:
                     _levelButtons[i].LockLevel();
@@ -102,14 +102,14 @@ public class LevelSelection : MonoBehaviour
     {
         RevertState();
 
-        _levelName.text = newParameters.GetName();
-        _levelPicture.sprite = newParameters.GetPicture();
-        _levelDescription.text = newParameters.GetDescription();
+        _levelName.text = newParameters.Name;
+        _levelPicture.sprite = newParameters.Picture;
+        _levelDescription.text = newParameters.Description;
 
-        DisplayRanking(_saveController.GetSaveFile().GetLevelData(newParameters.GetNumber()).GetLivesLostCount());
+        DisplayRanking(_saveController.SaveFile.Saves[newParameters.Number].LivesLost);
 
         _launchBattleMenu.onClick.RemoveAllListeners();
-        _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(newParameters.GetPlaySceneName()));
+        _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(newParameters.Scene));
     }
 
 

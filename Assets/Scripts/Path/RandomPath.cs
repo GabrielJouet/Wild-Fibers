@@ -15,10 +15,10 @@ public class RandomPath : MonoBehaviour
     private int _numberOfAlreadyGeneratedPaths;
 
 
-    private readonly Path _firstPath = new Path();
-    private readonly Path _secondPath = new Path();
+    private readonly List<Vector2> _firstPath = new List<Vector2>();
+    private readonly List<Vector2> _secondPath = new List<Vector2>();
 
-    private readonly List<Path> _alreadyGeneratedPaths = new List<Path>();
+    private readonly List<List<Vector2>> _alreadyGeneratedPaths = new List<List<Vector2>>();
 
 
     //Start method called when the object is started
@@ -30,12 +30,12 @@ public class RandomPath : MonoBehaviour
 
 
     //Method used to sum each Bezier curve in order to create the final path
-    private void CalculatePath(in Path path, List<BezierCurve> newCurves)
+    private void CalculatePath(in List<Vector2> path, List<BezierCurve> newCurves)
     {
         foreach (BezierCurve current in newCurves)
         {
-            foreach (Vector3 currentVector in current.GetCurve())
-                path.AddPoint(currentVector);
+            foreach (Vector3 currentVector in current.Curve)
+                path.Add(currentVector);
         }
     }
 
@@ -44,17 +44,15 @@ public class RandomPath : MonoBehaviour
     //We pick one of these instead
     //
     //Returns the random path
-    public Path CalculateRandomPath()
+    public List<Vector2> CalculateRandomPath()
     {
         if(_alreadyGeneratedPaths.Count < _numberOfAlreadyGeneratedPaths)
         {
             float ratio = Random.Range(0, 100f);
-            Path newPath = new Path();
-            List<Vector3> firstPathBuffer = _firstPath.GetPath();
-            List<Vector3> secondPathBuffer = _secondPath.GetPath();
+            List<Vector2> newPath = new List<Vector2>();
 
-            for (int i = 0; i < _firstPath.GetPathLength(); i++)
-                newPath.AddPoint((ratio * firstPathBuffer[i] + (100f - ratio) * secondPathBuffer[i]) / 100f);
+            for (int i = 0; i < _firstPath.Count; i++)
+                newPath.Add((ratio * _firstPath[i] + (100f - ratio) * _secondPath[i]) / 100f);
 
             _alreadyGeneratedPaths.Add(newPath);
             return newPath;
