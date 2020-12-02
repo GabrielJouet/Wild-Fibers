@@ -61,6 +61,7 @@ public class Boss : Enemy
                 foreach (Particle current in _particleController.GetParticle(_walkDirtParticle, 3))
                     current.Initialize(transform.position);
 
+                _animator.SetTrigger("lay");
                 yield return new WaitForSeconds(_spawnTime);
             }
             _moving = true;

@@ -188,7 +188,7 @@ MonoBehaviour:
   _enemySpawnedPrefab: {fileID: 1001176562105206731, guid: d9daef3f950273945b1eb5cea886939b,
     type: 3}
   _timeBetweenSpawn: 4.5
-  _spawnTime: 0.5
+  _spawnTime: 0.8
   _stopWhileSpawning: 1
   _numberOfEnemiesPerSpawn: 3
   _numberOfPathsWanted: 3
