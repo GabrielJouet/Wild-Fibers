@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEditor;
 using UnityEngine;
@@ -95,8 +96,20 @@ public class SaveController : MonoBehaviour
 		if (File.Exists(_gameSavePath))
 		{
 			FileStream file = File.Open(_gameSavePath, FileMode.Open);
-			SaveFile = (SaveFile)_binaryFormatter.Deserialize(file);
-			file.Close();
+
+			try
+			{
+				SaveFile = (SaveFile)_binaryFormatter.Deserialize(file);
+				file.Close();
+			}
+			catch (SerializationException)
+			{
+				file.Close();
+				CreateSave();
+			}
+
+			if (SaveFile == null)
+				CreateSave();
 		}
 		else
 			CreateSave();
