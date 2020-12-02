@@ -89,7 +89,7 @@ public class Tower : MonoBehaviour
     //List of in-range enemies
     protected List<Enemy> _availableEnemies = new List<Enemy>();
 
-    protected bool _coroutineStarted = false;
+    protected bool _coroutineStarted;
 
     protected ProjectilePool _projectilePool;
 
@@ -110,6 +110,7 @@ public class Tower : MonoBehaviour
     {
         StopAllCoroutines();
         _availableEnemies.Clear();
+        _coroutineStarted = false;
 
         //We set variables
         _backgroundSelecter = newBackgroundSelecter;
