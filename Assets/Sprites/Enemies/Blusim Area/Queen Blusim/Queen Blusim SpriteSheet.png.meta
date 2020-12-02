@@ -4,67 +4,67 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 66842103471939306
-    second: Queen Blusim SpriteSheet_0
+    second: Queen Blusim Walk0
   - first:
       213: 3896022012865483234
-    second: Queen Blusim SpriteSheet_1
+    second: Queen Blusim Walk1
   - first:
       213: 6260254095997980249
-    second: Queen Blusim SpriteSheet_0
+    second: Queen Blusim Walk0
   - first:
       213: 3032650391720668548
-    second: Queen Blusim SpriteSheet_1
+    second: Queen Blusim Walk1
   - first:
       213: -3453380373256166935
-    second: Queen Blusim SpriteSheet_2
+    second: Queen Blusim Walk2
   - first:
       213: 456197481753907788
-    second: Queen Blusim SpriteSheet_3
+    second: Queen Blusim Walk3
   - first:
       213: -4556378214677241384
-    second: Queen Blusim SpriteSheet_4
+    second: Queen Blusim Walk4
   - first:
       213: -2210100903190654835
-    second: Queen Blusim SpriteSheet_5
+    second: Queen Blusim Walk5
   - first:
       213: 3948200842901380584
-    second: Queen Blusim SpriteSheet_6
+    second: Queen Blusim Walk6
   - first:
       213: 1662592279291701886
-    second: Queen Blusim SpriteSheet_7
+    second: Queen Blusim Walk7
   - first:
       213: 3534293310740236802
-    second: Queen Blusim SpriteSheet_8
+    second: Queen Blusim Walk8
   - first:
       213: -5481266113516440203
-    second: Queen Blusim SpriteSheet_9
+    second: Queen Blusim Walk9
   - first:
       213: -2257670323080422126
-    second: Queen Blusim SpriteSheet_10
+    second: Queen Blusim Walk10
   - first:
       213: 3357953316438243261
-    second: Queen Blusim SpriteSheet_11
+    second: Queen Blusim Shadow
   - first:
       213: 3488591466379645431
-    second: Queen Blusim SpriteSheet_12
+    second: Queen Blusim Lay0
   - first:
       213: 8656758162212415552
-    second: Queen Blusim SpriteSheet_13
+    second: Queen Blusim Lay1
   - first:
       213: 116486036660577307
-    second: Queen Blusim SpriteSheet_14
+    second: Queen Blusim Lay2
   - first:
       213: -7684021475896397791
-    second: Queen Blusim SpriteSheet_15
+    second: Queen Blusim Lay3
   - first:
       213: -8997716435735561262
-    second: Queen Blusim SpriteSheet_16
+    second: Queen Blusim Lay4
   - first:
       213: -1168877265387842849
-    second: Queen Blusim SpriteSheet_17
+    second: Queen Blusim Lay5
   - first:
       213: -5026787805793173994
-    second: Queen Blusim SpriteSheet_18
+    second: Queen Blusim Lay6
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -150,7 +150,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_0
+      name: Queen Blusim Walk0
       rect:
         serializedVersion: 2
         x: 0
@@ -171,7 +171,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_1
+      name: Queen Blusim Walk1
       rect:
         serializedVersion: 2
         x: 80
@@ -192,7 +192,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_2
+      name: Queen Blusim Walk2
       rect:
         serializedVersion: 2
         x: 160
@@ -213,7 +213,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_3
+      name: Queen Blusim Walk3
       rect:
         serializedVersion: 2
         x: 240
@@ -234,7 +234,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_4
+      name: Queen Blusim Walk4
       rect:
         serializedVersion: 2
         x: 0
@@ -255,7 +255,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_5
+      name: Queen Blusim Walk5
       rect:
         serializedVersion: 2
         x: 80
@@ -276,7 +276,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_6
+      name: Queen Blusim Walk6
       rect:
         serializedVersion: 2
         x: 160
@@ -297,7 +297,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_7
+      name: Queen Blusim Walk7
       rect:
         serializedVersion: 2
         x: 240
@@ -318,7 +318,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_8
+      name: Queen Blusim Walk8
       rect:
         serializedVersion: 2
         x: 0
@@ -339,7 +339,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_9
+      name: Queen Blusim Walk9
       rect:
         serializedVersion: 2
         x: 80
@@ -360,7 +360,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_10
+      name: Queen Blusim Walk10
       rect:
         serializedVersion: 2
         x: 160
@@ -381,7 +381,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_11
+      name: Queen Blusim Shadow
       rect:
         serializedVersion: 2
         x: 240
@@ -402,7 +402,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_12
+      name: Queen Blusim Lay0
       rect:
         serializedVersion: 2
         x: 0
@@ -410,7 +410,7 @@ TextureImporter:
         width: 80
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -423,7 +423,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_13
+      name: Queen Blusim Lay1
       rect:
         serializedVersion: 2
         x: 80
@@ -431,7 +431,7 @@ TextureImporter:
         width: 80
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -444,7 +444,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_14
+      name: Queen Blusim Lay2
       rect:
         serializedVersion: 2
         x: 160
@@ -452,7 +452,7 @@ TextureImporter:
         width: 80
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -465,7 +465,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_15
+      name: Queen Blusim Lay3
       rect:
         serializedVersion: 2
         x: 240
@@ -473,7 +473,7 @@ TextureImporter:
         width: 80
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -486,7 +486,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_16
+      name: Queen Blusim Lay4
       rect:
         serializedVersion: 2
         x: 0
@@ -494,7 +494,7 @@ TextureImporter:
         width: 80
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -507,7 +507,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_17
+      name: Queen Blusim Lay5
       rect:
         serializedVersion: 2
         x: 80
@@ -515,7 +515,7 @@ TextureImporter:
         width: 80
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -528,7 +528,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Queen Blusim SpriteSheet_18
+      name: Queen Blusim Lay6
       rect:
         serializedVersion: 2
         x: 160
@@ -536,7 +536,7 @@ TextureImporter:
         width: 80
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

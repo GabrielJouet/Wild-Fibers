@@ -7,61 +7,61 @@ TextureImporter:
     second: Shielded Blusim Walk0
   - first:
       213: 4997716768292252831
-    second: Shielded Blusim SpriteSheet_1
+    second: Shielded Blusim Shadow
   - first:
       213: -8912222367399245187
     second: Shielded Blusim Walk0
   - first:
       213: 3690328776161340050
-    second: Shielded Blusim SpriteSheet_1
+    second: Shielded Blusim Shadow
   - first:
       213: -4736773687947733992
-    second: Shielded Blusim SpriteSheet_2
+    second: Shielded Blusim Shield0
   - first:
       213: -2705055885213452014
-    second: Shielded Blusim SpriteSheet_3
+    second: Shielded Blusim Shield1
   - first:
       213: 5287653593731259850
-    second: Shielded Blusim SpriteSheet_4
+    second: Shielded Blusim Shield2
   - first:
       213: 535002446490190885
-    second: Shielded Blusim SpriteSheet_5
+    second: Shielded Blusim Shield3
   - first:
       213: 1866232852364472514
-    second: Shielded Blusim SpriteSheet_6
+    second: Shielded Blusim Shield4
   - first:
       213: 7367230405498730886
-    second: Shielded Blusim SpriteSheet_7
+    second: Shielded Blusim Shield5
   - first:
       213: -9174466824684139240
-    second: Shielded Blusim SpriteSheet_8
+    second: Shielded Blusim Shield6
   - first:
       213: 8614033941262897909
-    second: Shielded Blusim SpriteSheet_9
+    second: Shielded Blusim Shield7
   - first:
       213: -2569566931520456820
-    second: Shielded Blusim SpriteSheet_10
+    second: Shielded Blusim Shield8
   - first:
       213: 4464235227656976660
-    second: Shielded Blusim SpriteSheet_11
+    second: Shielded Blusim Shield9
   - first:
       213: 738255083171122308
-    second: Shielded Blusim SpriteSheet_12
+    second: Shielded Blusim Shield10
   - first:
       213: -4623952819294130499
-    second: Shielded Blusim SpriteSheet_13
+    second: Shielded Blusim Shield11
   - first:
       213: -7630030577231369727
-    second: Shielded Blusim SpriteSheet_14
+    second: Shielded Blusim Shield12
   - first:
       213: -2628194091721191425
-    second: Shielded Blusim SpriteSheet_15
+    second: Shielded Blusim Shield13
   - first:
       213: -3902688960119500431
-    second: Shielded Blusim SpriteSheet_16
+    second: Shielded Blusim Shield14
   - first:
       213: 6185945776564450512
-    second: Shielded Blusim SpriteSheet_17
+    second: Shielded Blusim Shield15
   - first:
       213: -7755615782821423880
     second: Shielded Blusim Walk1
@@ -204,7 +204,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_1
+      name: Shielded Blusim Shadow
       rect:
         serializedVersion: 2
         x: 144
@@ -225,7 +225,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_2
+      name: Shielded Blusim Shield0
       rect:
         serializedVersion: 2
         x: 0
@@ -246,7 +246,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_3
+      name: Shielded Blusim Shield1
       rect:
         serializedVersion: 2
         x: 48
@@ -267,7 +267,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_4
+      name: Shielded Blusim Shield2
       rect:
         serializedVersion: 2
         x: 96
@@ -288,7 +288,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_5
+      name: Shielded Blusim Shield3
       rect:
         serializedVersion: 2
         x: 144
@@ -309,7 +309,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_6
+      name: Shielded Blusim Shield4
       rect:
         serializedVersion: 2
         x: 0
@@ -330,7 +330,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_7
+      name: Shielded Blusim Shield5
       rect:
         serializedVersion: 2
         x: 48
@@ -351,7 +351,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_8
+      name: Shielded Blusim Shield6
       rect:
         serializedVersion: 2
         x: 96
@@ -372,7 +372,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_9
+      name: Shielded Blusim Shield7
       rect:
         serializedVersion: 2
         x: 144
@@ -393,7 +393,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_10
+      name: Shielded Blusim Shield8
       rect:
         serializedVersion: 2
         x: 0
@@ -414,7 +414,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_11
+      name: Shielded Blusim Shield9
       rect:
         serializedVersion: 2
         x: 48
@@ -435,7 +435,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_12
+      name: Shielded Blusim Shield10
       rect:
         serializedVersion: 2
         x: 96
@@ -456,7 +456,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_13
+      name: Shielded Blusim Shield11
       rect:
         serializedVersion: 2
         x: 144
@@ -477,7 +477,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_14
+      name: Shielded Blusim Shield12
       rect:
         serializedVersion: 2
         x: 0
@@ -498,7 +498,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_15
+      name: Shielded Blusim Shield13
       rect:
         serializedVersion: 2
         x: 48
@@ -519,7 +519,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_16
+      name: Shielded Blusim Shield14
       rect:
         serializedVersion: 2
         x: 96
@@ -540,7 +540,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Shielded Blusim SpriteSheet_17
+      name: Shielded Blusim Shield15
       rect:
         serializedVersion: 2
         x: 144

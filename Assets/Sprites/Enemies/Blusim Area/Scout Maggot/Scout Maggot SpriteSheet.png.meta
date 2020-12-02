@@ -10,76 +10,76 @@ TextureImporter:
     second: Blusam Maggot SpriteSheet_1
   - first:
       213: 956936253234346663
-    second: Scout Maggot SpriteSheet_0
+    second: Scout Maggot Walk0
   - first:
       213: 2606507432749049928
-    second: Scout Maggot SpriteSheet_1
+    second: Scout Maggot Walk1
   - first:
       213: -7279857875854669723
-    second: Scout Maggot SpriteSheet_0
+    second: Scout Maggot Walk0
   - first:
       213: -4310126573504837533
-    second: Scout Maggot SpriteSheet_1
+    second: Scout Maggot Walk1
   - first:
       213: -2810387338972676494
-    second: Scout Maggot SpriteSheet_2
+    second: Scout Maggot Walk2
   - first:
       213: 6399860878504892633
-    second: Scout Maggot SpriteSheet_3
+    second: Scout Maggot Walk3
   - first:
       213: 8280391395440306465
-    second: Scout Maggot SpriteSheet_4
+    second: Scout Maggot Walk4
   - first:
       213: -4888570019653752193
-    second: Scout Maggot SpriteSheet_5
+    second: Scout Maggot Walk5
   - first:
       213: -1346419922625287363
-    second: Scout Maggot SpriteSheet_6
+    second: Scout Maggot Walk6
   - first:
       213: -5977040466543617060
-    second: Scout Maggot SpriteSheet_7
+    second: Scout Maggot Walk7
   - first:
       213: -7552096340062230510
-    second: Scout Maggot SpriteSheet_8
+    second: Scout Maggot Shadow
   - first:
       213: 1135703223653178175
-    second: Scout Maggot SpriteSheet_2
+    second: Scout Maggot Walk2
   - first:
       213: -3842485408433555897
-    second: Scout Maggot SpriteSheet_3
+    second: Scout Maggot Walk3
   - first:
       213: -6243571838403291077
-    second: Scout Maggot SpriteSheet_4
+    second: Scout Maggot Walk4
   - first:
       213: -7858789878232783601
-    second: Scout Maggot SpriteSheet_5
+    second: Scout Maggot Walk5
   - first:
       213: 9199826601085993937
-    second: Scout Maggot SpriteSheet_6
+    second: Scout Maggot Walk6
   - first:
       213: -2578976659861350638
-    second: Scout Maggot SpriteSheet_7
+    second: Scout Maggot Walk7
   - first:
       213: -8126029179942231049
-    second: Scout Maggot SpriteSheet_8
+    second: Scout Maggot Shadow
   - first:
       213: -1559604942833274382
-    second: Scout Maggot SpriteSheet_9
+    second: Scout Maggot Cocoon0
   - first:
       213: 8823972203230990063
-    second: Scout Maggot SpriteSheet_10
+    second: Scout Maggot Cocoon1
   - first:
       213: 532622098329097980
-    second: Scout Maggot SpriteSheet_11
+    second: Scout Maggot Cocoon2
   - first:
       213: 8510360492524687318
-    second: Scout Maggot SpriteSheet_12
+    second: Scout Maggot Cocoon3
   - first:
       213: 1199947074543869845
-    second: Scout Maggot SpriteSheet_13
+    second: Scout Maggot Cocoon4
   - first:
       213: -5741569577593345974
-    second: Scout Maggot SpriteSheet_14
+    second: Scout Maggot Cocoon5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -165,7 +165,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_0
+      name: Scout Maggot Walk0
       rect:
         serializedVersion: 2
         x: 0
@@ -173,7 +173,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -186,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_1
+      name: Scout Maggot Walk1
       rect:
         serializedVersion: 2
         x: 24
@@ -194,7 +194,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -207,7 +207,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_2
+      name: Scout Maggot Walk2
       rect:
         serializedVersion: 2
         x: 48
@@ -215,7 +215,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -228,7 +228,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_3
+      name: Scout Maggot Walk3
       rect:
         serializedVersion: 2
         x: 72
@@ -236,7 +236,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,7 +249,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_4
+      name: Scout Maggot Walk4
       rect:
         serializedVersion: 2
         x: 96
@@ -257,7 +257,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -270,7 +270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_5
+      name: Scout Maggot Walk5
       rect:
         serializedVersion: 2
         x: 0
@@ -278,7 +278,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -291,7 +291,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_6
+      name: Scout Maggot Walk6
       rect:
         serializedVersion: 2
         x: 24
@@ -299,7 +299,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -312,7 +312,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_7
+      name: Scout Maggot Walk7
       rect:
         serializedVersion: 2
         x: 48
@@ -320,7 +320,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -333,7 +333,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_8
+      name: Scout Maggot Shadow
       rect:
         serializedVersion: 2
         x: 96
@@ -341,7 +341,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -354,7 +354,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_9
+      name: Scout Maggot Cocoon0
       rect:
         serializedVersion: 2
         x: 0
@@ -362,7 +362,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -375,7 +375,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_10
+      name: Scout Maggot Cocoon1
       rect:
         serializedVersion: 2
         x: 24
@@ -383,7 +383,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -396,7 +396,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_11
+      name: Scout Maggot Cocoon2
       rect:
         serializedVersion: 2
         x: 48
@@ -404,7 +404,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -417,7 +417,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_12
+      name: Scout Maggot Cocoon3
       rect:
         serializedVersion: 2
         x: 72
@@ -425,7 +425,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -438,7 +438,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_13
+      name: Scout Maggot Cocoon4
       rect:
         serializedVersion: 2
         x: 96
@@ -446,7 +446,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -459,7 +459,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot SpriteSheet_14
+      name: Scout Maggot Cocoon5
       rect:
         serializedVersion: 2
         x: 0
@@ -467,7 +467,7 @@ TextureImporter:
         width: 24
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

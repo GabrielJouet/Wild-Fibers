@@ -28,28 +28,28 @@ TextureImporter:
     second: Blusam SpriteSheet_7
   - first:
       213: 6106091521053623392
-    second: Scout Blusim SpriteSheet_0
+    second: Scout Blusim Fly0
   - first:
       213: -8482718535239177821
-    second: Scout Blusim SpriteSheet_1
+    second: Scout Blusim Fly1
   - first:
       213: 8807882923970149107
-    second: Scout Blusim SpriteSheet_2
+    second: Scout Blusim Fly2
   - first:
       213: 540219911480685128
-    second: Scout Blusim SpriteSheet_3
+    second: Scout Blusim Fly3
   - first:
       213: 4665209622220288978
-    second: Scout Blusim SpriteSheet_4
+    second: Scout Blusim Fly4
   - first:
       213: -8253930121347833817
-    second: Scout Blusim SpriteSheet_5
+    second: Scout Blusim Fly5
   - first:
       213: -5131448517636972785
-    second: Scout Blusim SpriteSheet_6
+    second: Scout Blusim Fly6
   - first:
       213: 9212283791406915769
-    second: Scout Blusim SpriteSheet_7
+    second: Scout Blusim Shadow
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -135,7 +135,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scout Blusim SpriteSheet_0
+      name: Scout Blusim Fly0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,7 +143,7 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -156,7 +156,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Blusim SpriteSheet_1
+      name: Scout Blusim Fly1
       rect:
         serializedVersion: 2
         x: 48
@@ -164,7 +164,7 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,7 +177,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Blusim SpriteSheet_2
+      name: Scout Blusim Fly2
       rect:
         serializedVersion: 2
         x: 96
@@ -185,7 +185,7 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,7 +198,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Blusim SpriteSheet_3
+      name: Scout Blusim Fly3
       rect:
         serializedVersion: 2
         x: 144
@@ -206,7 +206,7 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,7 +219,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Blusim SpriteSheet_4
+      name: Scout Blusim Fly4
       rect:
         serializedVersion: 2
         x: 0
@@ -227,7 +227,7 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -240,7 +240,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Blusim SpriteSheet_5
+      name: Scout Blusim Fly5
       rect:
         serializedVersion: 2
         x: 48
@@ -248,7 +248,7 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -261,7 +261,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Blusim SpriteSheet_6
+      name: Scout Blusim Fly6
       rect:
         serializedVersion: 2
         x: 96
@@ -269,7 +269,7 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -282,7 +282,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Blusim SpriteSheet_7
+      name: Scout Blusim Shadow
       rect:
         serializedVersion: 2
         x: 144
@@ -290,7 +290,7 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
