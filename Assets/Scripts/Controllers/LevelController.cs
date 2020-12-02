@@ -233,7 +233,7 @@ public class LevelController : MonoBehaviour
 
         //If one of the spawner has not done its wave yet
         foreach (Spawner current in _spawners)
-            if (!current.WaveFinished)
+            if (!current.EnemiesKilled)
                 result = false;
 
         //If the wave is finished and every enemy is dead 
