@@ -78,6 +78,7 @@ public class TowerSlot : MonoBehaviour
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
         _shadowAnimator.SetTrigger("Base");
+        yield return new WaitForEndOfFrame();
         _animator.SetTrigger("Base");
 
         TowerPool currentPool = _levelController.RecoverTowerPool(_chosenTower);
