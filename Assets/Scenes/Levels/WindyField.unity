@@ -3653,18 +3653,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2119968702 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4541158168685457336, guid: ab062a4349966594386bc59557a6906a,
-    type: 3}
-  m_PrefabInstance: {fileID: 4541158167840557062}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2125523293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3728384711104203476, guid: 798cc569aff95aa409324f9473b898e3,
@@ -4274,7 +4262,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _towerIcon
       value: 
-      objectReference: {fileID: 2119968702}
+      objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: _towerName

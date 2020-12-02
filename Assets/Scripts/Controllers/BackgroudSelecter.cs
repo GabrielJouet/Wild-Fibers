@@ -11,10 +11,6 @@ public class BackgroudSelecter : MonoBehaviour
     [SerializeField]
     private GameObject _towerInformationPanel;
 
-    //Image component handling tower icon
-    [SerializeField]
-    private Image _towerIcon;
-
     //Text component handling tower name
     [SerializeField]
     private Text _towerName;
@@ -169,7 +165,7 @@ public class BackgroudSelecter : MonoBehaviour
         
         _lifeValue.text = enemyToDisplay.Health + " / " + enemyToDisplay.HealthMax;
         _enemyName.text = enemyToDisplay.Name;
-        _armorValue.text = enemyToDisplay.Armor + " %";
+        _armorValue.text = ArmorType.TransformArmor(enemyToDisplay.Armor);
         _livesLostValue.text = enemyToDisplay.LivesTaken.ToString();
     }
 
@@ -273,13 +269,10 @@ public class BackgroudSelecter : MonoBehaviour
 
         _towerInformationPanel.SetActive(true);
 
-        _towerIcon.sprite = newTowerIcon;
-        _towerIcon.SetNativeSize();
-        _towerIcon.rectTransform.sizeDelta *= 2.4f;
         _towerName.text = newTowerName;
         _damageText.text = newDamageValue.ToString();
-        _breakArmorText.text = newBreakArmorValue + " % ";
-        _fireRateText.text = 1 / newFireRateValue + " / sec";
+        _breakArmorText.text = BreakArmor.TransformArmorThrough(newBreakArmorValue / 100);
+        _fireRateText.text = FireRate.TransformFireRate(1 / newFireRateValue);
     }
 
 
