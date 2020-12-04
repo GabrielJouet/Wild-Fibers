@@ -9,8 +9,6 @@ public class Shielded : Enemy
     protected float _timeBetweenShield;
 
     [SerializeField]
-    protected float _shieldTime;
-    [SerializeField]
     protected float _newShieldValue;
 
 
@@ -36,8 +34,7 @@ public class Shielded : Enemy
             _moving = false;
             ChangeShieldValue(_newShieldValue);
             _animator.SetTrigger("shield");
-
-            yield return new WaitForSeconds(_shieldTime);
+            yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[1].length / 0.5f);
 
             _moving = true;
             ChangeShieldValue(_baseShieldValue);
