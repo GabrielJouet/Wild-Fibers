@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Seedly Forest
   _number: 1
-  _picture: {fileID: 21300000, guid: 72f1b96acf7551e4cba2a61bc7fe864c, type: 3}
+  _picture: {fileID: 21300000, guid: cad09f24362b5de4ab3a0ec81b82dafc, type: 3}
   _description: Some plants were found ripped in this forest, could it be the first
     sign of expansion?
   _playSceneName: SeedlyForest
