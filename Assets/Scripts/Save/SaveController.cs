@@ -27,7 +27,7 @@ public class SaveController : MonoBehaviour
 	//Start method, called after Awake
 	private void Start()
     {
-		_numberOfLevel = EditorBuildSettings.scenes.Length - 2;
+		_numberOfLevel = 4 - 2;
 		_gameSavePath = Application.persistentDataPath + "/player.dat";
 		_binaryFormatter = new BinaryFormatter();
 
