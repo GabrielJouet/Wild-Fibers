@@ -31,7 +31,7 @@ public class BezierCurve : MonoBehaviour
 
 
     //List of position in each curve
-    private readonly List<Vector3> _curve = new List<Vector3>();
+    public List<Vector3> Curve { get; private set; } = new List<Vector3>();
 
 
 
@@ -42,8 +42,8 @@ public class BezierCurve : MonoBehaviour
     }
 
 
-    //OnDrawGizmos method used to draw in Editor
     /*
+    //OnDrawGizmos method used to draw in Editor
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -93,11 +93,7 @@ public class BezierCurve : MonoBehaviour
             Vector3 P = oneMinusT * Q + t * R;
             Vector3 T = oneMinusT * R + t * S;
 
-            _curve.Add(oneMinusT * P + t * T);
+            Curve.Add(oneMinusT * P + t * T);
         }
     }
-
-
-    //Getter
-    public List<Vector3> GetCurve() { return _curve; }
 }

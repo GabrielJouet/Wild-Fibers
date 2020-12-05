@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,13 +8,14 @@ using UnityEngine.UI;
  */
 public class GameOverScreen : MonoBehaviour
 {
+    [Header("UI elements")]
     //Text component that handles lose / win text
     [SerializeField]
     private Text _mainText;
 
     //Game screen object
     [SerializeField]
-    private GameObject _gameScreen;
+    private Image _gameScreen;
 
     [SerializeField]
     private Sprite _winScreen;
@@ -21,17 +23,34 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField]
     private Sprite _loseScreen;
 
+    [SerializeField]
+    private BoxCollider2D _boxCollider;
 
+    [SerializeField]
+    private RectTransform _transform;
+
+    [SerializeField]
+    private List<Image> _seedScores;
+
+    [SerializeField]
+    private Sprite _activatedSprite;
+
+
+    [Header("Components")]
     //Pause controller used to stop everything
     [SerializeField]
-    private PauseController _pauseController;
+    private GamePauseController _pauseController;
+    [SerializeField]
+    private LevelController _levelController;
+    [SerializeField]
+    private RessourceController _ressourceController;
 
 
 
     //Method used to activate game over screen
     //
     //Parameter => win, does the player win this level?
-    public void Activate(bool win) 
+    public void Activate(bool win)
     {
         StartCoroutine(DelayShow(win)); 
     }
@@ -41,22 +60,29 @@ public class GameOverScreen : MonoBehaviour
     private IEnumerator DelayShow(bool win)
     {
         yield return new WaitForSeconds(1f);
-        _gameScreen.SetActive(true);
+        _boxCollider.enabled = true;
+        _boxCollider.size = new Vector2(Screen.width + _transform.sizeDelta.x, Screen.height + _transform.sizeDelta.y);
+        _gameScreen.gameObject.SetActive(true);
+        _gameScreen.sprite = win ? _winScreen : _loseScreen;
+        _mainText.text = win ? "Win" : "Lose";
 
         if (win)
         {
-            _gameScreen.GetComponent<Image>().sprite = _winScreen;
-            FindObjectOfType<SaveController>().SaveLevelData(FindObjectOfType<LevelController>().GetLevelIndex(),
-                                                             FindObjectOfType<RessourceController>().GetLivesLost(),
-                                                             LevelState.COMPLETED);
-            _mainText.text = "Win";
-        }
-        else
-        {
-            _gameScreen.GetComponent<Image>().sprite = _loseScreen;
-            _mainText.text = "Lose";
-        }
+            FindObjectOfType<SaveController>().SaveLevelData(_levelController.LevelIndex, _ressourceController.LivesLost, LevelState.COMPLETED);
+            int livesLost = _ressourceController.LivesLost;
 
-        _pauseController.PauseGame(_gameScreen);
+            if (livesLost <= 15)
+            {
+                _seedScores[2].sprite = _activatedSprite;
+
+                if (livesLost <= 10)
+                {
+                    _seedScores[1].sprite = _activatedSprite;
+
+                    if (livesLost <= 3)
+                        _seedScores[0].sprite = _activatedSprite;
+                }
+            }
+        }
     }
 }

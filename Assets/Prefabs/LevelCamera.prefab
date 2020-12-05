@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 571994285330439663}
   - component: {fileID: 571994285330439660}
   - component: {fileID: 571994285330439440}
-  - component: {fileID: 571994285330439443}
   - component: {fileID: 571994285330439441}
+  - component: {fileID: 1879505416876800381}
+  - component: {fileID: 5328857676684429541}
   m_Layer: 0
   m_Name: LevelCamera
   m_TagString: MainCamera
@@ -99,22 +100,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb2efbe7f663494a95445f6e17d8360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: {fileID: 11400000, guid: 7b1bc5ec89c95a846b583f549b2629a6, type: 2}
+  _timeBetweenNextWaveButtonDisplay: 5
+  _level: {fileID: 0}
   _waveText: {fileID: 0}
   _gameOverScreen: {fileID: 0}
   _spawnerPrefab: {fileID: 3737898244477904241, guid: 0e99a190fc65e1641be113fee59fcec3,
     type: 3}
-  _enemiesAvailables:
-  - {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4, type: 3}
-  - {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1, type: 3}
-  - {fileID: 5682064432001086994, guid: 3a10d5fb2f081234aba26b426ea831c4, type: 3}
   _enemyPoolPrefab: {fileID: 126690080380749959, guid: 5290313942fd44c47a415e04a43f7199,
     type: 3}
-  _availablePaths:
-  - {fileID: 0}
+  _projectilePoolPrefab: {fileID: 84294416418586699, guid: 8ede7dec034367348ad1ca8db8a6aca5,
+    type: 3}
+  _towerPoolPrefab: {fileID: 0}
   _ressourceController: {fileID: 571994285330439440}
   _nextWaveButton: {fileID: 0}
-  _pauseController: {fileID: 571994285330439443}
+  _availablePath: []
+  _playerController: {fileID: 571994285330439441}
 --- !u!114 &571994285330439440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,26 +127,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260fd861c1ec51047a97ac81619d8349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goldCount: 500
-  _lifeCountMax: 20
+  _levelController: {fileID: 571994285330439660}
   _lifeText: {fileID: 0}
   _goldText: {fileID: 0}
   _gameOverScreen: {fileID: 0}
---- !u!114 &571994285330439443
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571994285330439662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c34a5a1718b1b004c8c5298c29e86d5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menuObject: {fileID: 0}
-  _hider: {fileID: 0}
-  _backgroundSelecter: {fileID: 0}
 --- !u!114 &571994285330439441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,3 +148,31 @@ MonoBehaviour:
   - {fileID: 8854172079906978944, guid: 7e5fc179ffd633e4a950e34a2229c96c, type: 3}
   - {fileID: -8003392099937102339, guid: 37e81790ef7ed3343951f47742770ac0, type: 3}
   - {fileID: 95656636279286502, guid: 260e56dedf64a1e4db4b79d96e4a2d01, type: 3}
+--- !u!114 &1879505416876800381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571994285330439662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91681bd5cd456294c9fd97447e0afad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _menuObject: {fileID: 0}
+  _hider: {fileID: 0}
+--- !u!114 &5328857676684429541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571994285330439662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ab689c91ebd627409b8c7d892be1d82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _poolPrefab: {fileID: 7733916024386685136, guid: e485fd1a5f14ecd4a844d974b196ef4f,
+    type: 3}

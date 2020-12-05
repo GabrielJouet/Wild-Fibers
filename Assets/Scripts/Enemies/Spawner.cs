@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,7 +15,7 @@ public class Spawner : MonoBehaviour
 
 
     //Does the wave finished?
-    private bool _waveFinished = false;
+    public bool WaveFinished { get; private set; } = false;
 
 
     //Enemy group used in spawn
@@ -28,20 +27,11 @@ public class Spawner : MonoBehaviour
     //Enemy pool of the current wave
     private EnemyPool _enemyPool;
 
-
-    //Available paths for enemies
-    private List<Path> _paths = new List<Path>();
+    private RandomPath _randomPath;
 
 
     //Does every enemy is dead?
-    private bool _enemiesKilled = false;
-
-
-    private DateTime _coroutineStartTime;
-
-    private float _coroutineTimeNeeded = 0f;
-
-    private bool _spawnPaused = false;
+    public bool EnemiesKilled { get; private set; } = false;
 
 
 
@@ -49,18 +39,17 @@ public class Spawner : MonoBehaviour
     //
     //Parameters => newGroup, the new group of enemy for this wave
     //              newLevelController, the level controller of the current level
-    //              newPaths, available paths on this level
     //              newEnemyPool, enemy pool to retrieve already instantiated enemies
-    public void SetNewGroup(EnemyGroup newGroup, LevelController newLevelController, List<Path> newPaths, EnemyPool newEnemyPool)
+    public void SetNewGroup(RandomPath newRandomPath, EnemyGroup newGroup, LevelController newLevelController, EnemyPool newEnemyPool)
     {
         //We reset and set variables
         _levelController = newLevelController;
         _enemyPool = newEnemyPool;
 
         _enemyGroup = newGroup;
-        _paths = newPaths;
+        _randomPath = newRandomPath;
 
-        _waveFinished = false;
+        WaveFinished = false;
 
         //And we launch enemies spawn
         StartCoroutine(SpawnEnemies());
@@ -70,43 +59,35 @@ public class Spawner : MonoBehaviour
     //Coroutine used to spawn enemies in group
     private IEnumerator SpawnEnemies()
     {
-        //If the coroutine was previously stopped
-        if(_coroutineTimeNeeded != 0)
-        {
-            _coroutineStartTime = DateTime.Now;
-            yield return new WaitForSeconds(_coroutineTimeNeeded);
-        }
-        else
-        {
-            _coroutineStartTime = DateTime.Now;
-            _coroutineTimeNeeded = 2f;
-            yield return new WaitForSeconds(2f);
-        }
-
-        while (!_waveFinished)
+        while (!WaveFinished)
         {
             //If we are not at the end of the pattern
-            if (_enemyIndex < _enemyGroup.GetEnemyPattern(_patternIndex).GetNumberOfEnemies())
+            if (_enemyIndex < _enemyGroup.Patterns[_patternIndex].EnemiesCount)
             {
                 _enemyIndex++;
-                _enemyPool.GetOneEnemy().GetComponent<Enemy>().Initialize(_paths[_enemyGroup.GetPathIndex()], _enemyPool);
+                Enemy buffer = _enemyPool.GetOneEnemy();
+                buffer.Initialize(_randomPath.CalculateRandomPath(), _enemyPool, 0);
 
-                _coroutineStartTime = DateTime.Now;
-                _coroutineTimeNeeded = _enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies();
-                yield return new WaitForSeconds(_enemyGroup.GetEnemyPattern(_patternIndex).GetTimeBetweenEnemies());
+                //If the enemy is a boss we add it more paths to spawn enemies
+                if (buffer.TryGetComponent(out Boss bossComponent))
+                {
+                    List<List<Vector2>> newPaths = new List<List<Vector2>>();
+                    for (int i = 0; i < bossComponent.PathsWanted; i++)
+                        newPaths.Add(_randomPath.CalculateRandomPath());
+                    bossComponent.AvailablePaths = newPaths;
+                }
+
+                yield return new WaitForSeconds(_enemyGroup.Patterns[_patternIndex].EnemiesTime);
             }
             //Else if the pattern is finished
             else
             {
                 //If the wave is not finished
-                if (_patternIndex + 1 < _enemyGroup.GetEnemyPatternCount())
+                if (_patternIndex + 1 < _enemyGroup.Patterns.Count)
                 {
                     _patternIndex++;
                     _enemyIndex = 0;
-
-                    _coroutineStartTime = DateTime.Now;
-                    _coroutineTimeNeeded = _enemyGroup.GetTimeBetweenPattern();
-                    yield return new WaitForSeconds(_enemyGroup.GetTimeBetweenPattern());
+                    yield return new WaitForSeconds(_enemyGroup.TimeBetweenPattern);
                 }
                 //If the wave is finished
                 else
@@ -116,28 +97,13 @@ public class Spawner : MonoBehaviour
     }
 
 
-    //Method used to pause spawn enemy when Pause Controller is called
-    public void PauseSpawn()
-    {
-        if (!_spawnPaused)
-        {
-            StopAllCoroutines();
-            _coroutineTimeNeeded -= (float)(DateTime.Now - _coroutineStartTime).TotalSeconds;
-        }
-        else
-            StartCoroutine(SpawnEnemies());
-
-        _spawnPaused = !_spawnPaused;
-    }
-
-
     //Method used when the wave is finished to contact LevelController
     private void EndSpawn()
     {
         _patternIndex = 0;
         _enemyIndex = 0;
         _enemyGroup = null;
-        _waveFinished = true;
+        WaveFinished = true;
 
         _levelController.EndWave();
     }
@@ -151,16 +117,9 @@ public class Spawner : MonoBehaviour
 
 
     //Method used when every enemy of the group is killed
-    public void EnemiesKilled()
+    public void AllEnemiesKilled()
     {
-        _enemiesKilled = true;
+        EnemiesKilled = true;
         _levelController.EndLevel();
     }
-
-
-
-    //Getters
-    public bool GetEnemiesKilled() { return _enemiesKilled; }
-
-    public bool GetWaveFinished() { return _waveFinished; }
 }

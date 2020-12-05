@@ -4,52 +4,94 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 131634076245483475
-    second: Unt SpriteSheet_0
+    second: Unt Walk0
   - first:
       213: 5848920741251526110
-    second: Unt SpriteSheet_1
+    second: Unt Walk1
   - first:
       213: -8745419254885036773
-    second: Unt SpriteSheet_2
+    second: Unt Walk2
   - first:
       213: 7994117113656453624
-    second: Unt SpriteSheet_3
+    second: Unt Walk3
   - first:
       213: 7489433487162407958
-    second: Unt SpriteSheet_4
+    second: Unt Walk4
   - first:
       213: 953788042681397306
-    second: Unt SpriteSheet_5
+    second: Unt Walk5
   - first:
       213: 5975957657236031639
-    second: Unt SpriteSheet_6
+    second: Unt Walk6
   - first:
       213: 1767055440869031701
-    second: Unt SpriteSheet_7
+    second: Unt Walk7
   - first:
       213: -8584794457003382677
-    second: Unt SpriteSheet_8
+    second: Unt Walk8
   - first:
       213: -1184352290869299803
-    second: Unt SpriteSheet_9
+    second: Unt Walk9
   - first:
       213: -462840662395747696
-    second: Unt SpriteSheet_10
+    second: Unt Walk10
   - first:
       213: 6000238864268334548
-    second: Unt SpriteSheet_11
+    second: Unt Walk11
   - first:
       213: -799671130447320827
-    second: Unt SpriteSheet_12
+    second: Unt Walk12
   - first:
       213: -2523245253485179475
-    second: Unt SpriteSheet_13
+    second: Unt Shadow
   - first:
       213: 3463106408443846414
     second: Unt SpriteSheet_14
   - first:
       213: 410739070189978288
     second: Unt SpriteSheet_15
+  - first:
+      213: -3481429518350552438
+    second: Unt Walk0
+  - first:
+      213: -5807968691077902827
+    second: Unt Walk1
+  - first:
+      213: 7875304723550126334
+    second: Unt Walk2
+  - first:
+      213: -3525181226522883446
+    second: Unt Walk3
+  - first:
+      213: -1163830843859209724
+    second: Unt Walk4
+  - first:
+      213: -7407000819322129084
+    second: Unt Walk5
+  - first:
+      213: -4540015282830411928
+    second: Unt Walk6
+  - first:
+      213: -997010896141737808
+    second: Unt Walk7
+  - first:
+      213: -4303153839763506195
+    second: Unt Walk8
+  - first:
+      213: -3499852955102878162
+    second: Unt Walk9
+  - first:
+      213: -1142640301775451570
+    second: Unt Walk10
+  - first:
+      213: -9023558480336951813
+    second: Unt Walk11
+  - first:
+      213: 6202058834719897939
+    second: Unt Walk12
+  - first:
+      213: 921994859340514564
+    second: Unt Shadow
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -135,7 +177,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Unt SpriteSheet_0
+      name: Unt Walk0
       rect:
         serializedVersion: 2
         x: 0
@@ -143,20 +185,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3dfd2f2be78a3d100800000000000000
-      internalID: 131634076245483475
+      spriteID: a82f7286c4a7fafc0800000000000000
+      internalID: -3481429518350552438
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_1
+      name: Unt Walk1
       rect:
         serializedVersion: 2
         x: 48
@@ -164,20 +206,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edd26bddc6a8b2150800000000000000
-      internalID: 5848920741251526110
+      spriteID: 51e06b55f33f56fa0800000000000000
+      internalID: -5807968691077902827
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_2
+      name: Unt Walk2
       rect:
         serializedVersion: 2
         x: 96
@@ -185,20 +227,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b1d47bcd58702a680800000000000000
-      internalID: -8745419254885036773
+      spriteID: ef04921cbe3ba4d60800000000000000
+      internalID: 7875304723550126334
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_3
+      name: Unt Walk3
       rect:
         serializedVersion: 2
         x: 144
@@ -206,20 +248,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f92d54092fc0fe60800000000000000
-      internalID: 7994117113656453624
+      spriteID: a8a4a380a5a041fc0800000000000000
+      internalID: -3525181226522883446
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_4
+      name: Unt Walk4
       rect:
         serializedVersion: 2
         x: 0
@@ -227,20 +269,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61cfa3b6310dfe760800000000000000
-      internalID: 7489433487162407958
+      spriteID: 402f025830e39dfe0800000000000000
+      internalID: -1163830843859209724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_5
+      name: Unt Walk5
       rect:
         serializedVersion: 2
         x: 48
@@ -248,20 +290,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a303a03eb298c3d00800000000000000
-      internalID: 953788042681397306
+      spriteID: 445f641bffb053990800000000000000
+      internalID: -7407000819322129084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_6
+      name: Unt Walk6
       rect:
         serializedVersion: 2
         x: 96
@@ -269,20 +311,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7984458c3dddee250800000000000000
-      internalID: 5975957657236031639
+      spriteID: 8677c008720aef0c0800000000000000
+      internalID: -4540015282830411928
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_7
+      name: Unt Walk7
       rect:
         serializedVersion: 2
         x: 144
@@ -290,20 +332,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51f7b6baf87d58810800000000000000
-      internalID: 1767055440869031701
+      spriteID: 0b027425fd7e922f0800000000000000
+      internalID: -997010896141737808
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_8
+      name: Unt Walk8
       rect:
         serializedVersion: 2
         x: 0
@@ -311,20 +353,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b682290fceeacd880800000000000000
-      internalID: -8584794457003382677
+      spriteID: debb90fb1602844c0800000000000000
+      internalID: -4303153839763506195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_9
+      name: Unt Walk9
       rect:
         serializedVersion: 2
         x: 48
@@ -332,20 +374,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a5b0ddcdd5509fe0800000000000000
-      internalID: -1184352290869299803
+      spriteID: e26edf4c7460e6fc0800000000000000
+      internalID: -3499852955102878162
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_10
+      name: Unt Walk10
       rect:
         serializedVersion: 2
         x: 96
@@ -353,20 +395,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0928b4aaed8a399f0800000000000000
-      internalID: -462840662395747696
+      spriteID: e4a01a213b68420f0800000000000000
+      internalID: -1142640301775451570
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_11
+      name: Unt Walk11
       rect:
         serializedVersion: 2
         x: 144
@@ -374,20 +416,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d51538d471254350800000000000000
-      internalID: 6000238864268334548
+      spriteID: bf56d89fe51e5c280800000000000000
+      internalID: -9023558480336951813
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_12
+      name: Unt Walk12
       rect:
         serializedVersion: 2
         x: 0
@@ -395,62 +437,20 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5096d8cf75ff6e4f0800000000000000
-      internalID: -799671130447320827
+      spriteID: 3597d8776a3221650800000000000000
+      internalID: 6202058834719897939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt SpriteSheet_13
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 48
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dad43d88fc1abfcd0800000000000000
-      internalID: -2523245253485179475
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Unt SpriteSheet_14
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 0
-        width: 48
-        height: 24
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0f9cae1eec6f0030800000000000000
-      internalID: 3463106408443846414
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Unt SpriteSheet_15
+      name: Unt Shadow
       rect:
         serializedVersion: 2
         x: 144
@@ -458,14 +458,14 @@ TextureImporter:
         width: 48
         height: 24
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b24c06120d33b500800000000000000
-      internalID: 410739070189978288
+      spriteID: 4054abb80759bcc00800000000000000
+      internalID: 921994859340514564
       vertices: []
       indices: 
       edges: []

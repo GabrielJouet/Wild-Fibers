@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -12,14 +10,17 @@ public class Tower : MonoBehaviour
     //Name display on UI
     [SerializeField]
     protected string _displayName;
+    public string Name { get => _displayName; }
 
     //Price of the tower to build it
     [SerializeField]
     protected int _price;
+    public int Price { get => _price; }
 
     //Icon used in buttons and UI
     [SerializeField]
     protected Sprite _icon;
+    public Sprite Icon { get => _icon; }
 
 
 
@@ -27,26 +28,32 @@ public class Tower : MonoBehaviour
     //How many seconds between each attacks?
     [SerializeField]
     protected float _timeBetweenShots;
+    public float TimeShots { get => _timeBetweenShots; }
 
     //How much damage an attack does?
     [SerializeField]
     protected int _damage;
+    public int Damage { get => _damage; }
 
     //How much armor an attack breaks?
     [SerializeField]
     protected float _armorThrough;
+    public float ArmorThrough { get => _armorThrough; }
 
     //Number of projectiles in one attack
     [SerializeField]
     protected int _numberOfShots;
+    public int Shots { get => _numberOfShots; }
 
     //Projectile used in attack
     [SerializeField]
     protected GameObject _projectileUsed;
+    public GameObject Projectile { get => _projectileUsed; }
 
     //Tower range
     [SerializeField]
     protected float _range;
+    public float Range { get => _range; }
 
     //Tower Collider used to recover enemies
     [SerializeField]
@@ -77,23 +84,18 @@ public class Tower : MonoBehaviour
     protected RessourceController _ressourceController;
 
     //Does the seller UI is active?
-    protected bool _sellerActive = false; 
+    public bool SellerActive { get; protected set; } = false; 
 
     //List of in-range enemies
     protected List<Enemy> _availableEnemies = new List<Enemy>();
 
+    protected bool _coroutineStarted;
 
-    //Does the tower is currently paused? (by Pause Controller)
-    protected bool _paused = false;
+    protected ProjectilePool _projectilePool;
 
-    //Coroutine Start Time (used if the tower is paused)
-    protected DateTime _coroutineStartTime;
+    protected TowerPool _towerPool;
 
-    //Coroutine time needed to reset
-    protected float _coroutineTimeNeeded = 0f;
-
-    //Does the attack already started?
-    protected bool _coroutineStarted = false;
+    protected Vector2 _colliderSize = Vector2.zero;
 
 
 
@@ -102,22 +104,34 @@ public class Tower : MonoBehaviour
     //Parameters => newSlot, the tower slot related to this tower
     //              newRessourceController, ressource controller used in this game
     //              newBackgroundSelecter, used to display UI information
-    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter)
+    //              newPool, used to recover projectiles
+    //              newTowerPool, used when destroyed
+    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool)
     {
+        StopAllCoroutines();
+        _availableEnemies.Clear();
+        _coroutineStarted = false;
+
         //We set variables
         _backgroundSelecter = newBackgroundSelecter;
         _ressourceController = newRessourceController;
+        _projectilePool = newPool;
         _currentSlot = newSlot;
+        _towerPool = newTowerPool;
 
         //And we change tower range 
-        _transformRange.localScale *= _range;
-        _collider.transform.localScale *= _range;
+        transform.position = newSlot.transform.position;
+
+        if (_colliderSize == Vector2.zero)
+            _colliderSize = _collider.transform.localScale * _range;
+
+        _transformRange.localScale = _colliderSize;
+        _collider.transform.localScale = _colliderSize;
     }
 
 
 
-    /*Upgrades and Money related*/
-    #region
+    #region Upgrades and Money related
     //Method used to resell a tower and destroy it
     public void ResellTower()
     {
@@ -126,7 +140,7 @@ public class Tower : MonoBehaviour
 
         _backgroundSelecter.DisableTowerSellButton();
         _currentSlot.ResetSlot();
-        Destroy(gameObject);
+        _towerPool.AddOneTower(this);
     }
 
 
@@ -135,16 +149,15 @@ public class Tower : MonoBehaviour
     {
         //TO DO
     }
-    #endregion
+    #endregion 
 
 
 
-    /*Enemies interaction*/
-    #region
+    #region Enemies interaction
     //Method used to add one enemy from its list
     public void AddEnemy(Enemy enemy)
     {
-        if(!(!_canHitFlying && enemy.GetFlying()))
+        if(!(!_canHitFlying && enemy.Flying))
             _availableEnemies.Add(enemy);
     }
 
@@ -160,14 +173,41 @@ public class Tower : MonoBehaviour
     //Method used to sort enemies by their position toward the end of the path
     protected void SortEnemies()
     {
-        Array.Sort(_availableEnemies.ToArray(), (a, b) => a.GetPathPercentage().CompareTo(b.GetPathPercentage()));
+        _availableEnemies.Sort((a, b) => b.PathRatio.CompareTo(a.PathRatio));
+    }
+
+     
+    protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound)
+    {
+        List<Enemy> availableEnemies = new List<Enemy>();
+        int j;
+
+        for(int i = 0; i < numberOfEnemiesToFound; i ++)
+        {
+            j = -1;
+
+            do
+                j++;
+            while (j < _availableEnemies.Count && (_availableEnemies[j].AlreadyAimed || availableEnemies.Contains(_availableEnemies[j])));
+
+            if(j < _availableEnemies.Count)
+            {
+                availableEnemies.Add(_availableEnemies[j]);
+
+                if (!_availableEnemies[j].CanSurvive(_damage, _armorThrough))
+                    _availableEnemies[j].AlreadyAimed = true;
+            }
+            else
+                availableEnemies.Add(_availableEnemies[i]);
+        }
+
+        return availableEnemies;
     }
     #endregion
 
 
 
-    /*Reset related*/
-    #region
+    #region Reset related
     //Method used to activate range display (when selected)
     public void ActivateRangeDisplay()
     {
@@ -188,50 +228,11 @@ public class Tower : MonoBehaviour
     public void ResetTowerDisplay()
     {
         DesactivateRangeDisplay();
-        _sellerActive = false;
+        SellerActive = false;
     }
 
 
     //Method used to revert seller UI state
-    public void RevertSellerActive() { _sellerActive = !_sellerActive; }
-
-
-    //Method used to pause behavior of tower children
-    public virtual void PauseBehavior() { }
-
-
-    //Method to delay action when pause is unpaused
-    protected IEnumerator UnPauseDelay()
-    {
-        _coroutineStartTime = DateTime.Now;
-        yield return new WaitForSeconds(_coroutineTimeNeeded);
-        _coroutineStarted = false;
-        _coroutineTimeNeeded = 0f;
-    }
-    #endregion
-
-
-
-    /*Getters*/
-    #region
-    public string GetName() { return _displayName; }
-
-    public int GetPrice() { return _price; }
-
-    public float GetTimeBetweenShots() { return _timeBetweenShots; }
-
-    public int GetDamage() { return _damage; }
-
-    public float GetArmorThrough() { return _armorThrough; }
-
-    public int GetNumberOfShots() { return _numberOfShots; }
-
-    public GameObject GetProjectileUsed() { return _projectileUsed; }
-
-    public float GetRange() { return _range; }
-
-    public Sprite GetIcon() { return _icon; }
-
-    public bool GetSellerActive() { return _sellerActive; }
+    public void RevertSellerActive() { SellerActive = !SellerActive; }
     #endregion
 }

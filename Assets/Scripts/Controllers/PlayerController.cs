@@ -13,6 +13,13 @@ public class PlayerController : MonoBehaviour
 
 
 
+    private void Start()
+    {
+        Application.targetFrameRate = 60;
+    }
+
+
+
     //Getter
     //
     //Return => Every tower the player is currently using

@@ -4,7 +4,7 @@
  * Class used alongside Mark Tower, it is the mark tower dot projectile
  * TO CHANGE, SHOULD BE DOT INSTEAD
  */
-public class MarkDot : MonoBehaviour
+public class MarkDot : Projectile
 {
     //Speed of movement of projectile
     [SerializeField]
@@ -27,14 +27,7 @@ public class MarkDot : MonoBehaviour
     //Enemy tracked
     private Enemy _enemyToTrack;
 
-    //Tower that created this projectile
-    private MarkTower _parentTower;
-
     private Vector3 _goalPosition;
-
-
-    //Does the projectile is paused? (by PauseController)
-    private bool _paused = false;
 
 
 
@@ -47,12 +40,13 @@ public class MarkDot : MonoBehaviour
     //              newMalus, new amor malus done on dot
     //              newOverTimeDamage, new damage done on dot
     //              newDuration, new dot duration
-    public void Initialize(float newDamage, float newArmorThrough, Enemy newEnemy, MarkTower newParent, float newMalus, float newOverTimeDamage, float newDuration)
+    //              newPool, new Projectile pool
+    public void Initialize(float newDamage, float newArmorThrough, Enemy newEnemy, Transform newParent, float newMalus, float newOverTimeDamage, float newDuration, ProjectilePool newPool)
     {
-        transform.position = newParent.transform.position;
+        transform.position = newParent.position;
         _enemyToTrack = newEnemy;
         _damage = newDamage;
-        _parentTower = newParent;
+        _projectilePool = newPool;
         _armorThrough = newArmorThrough;
 
         _armorThroughMalus = newMalus;
@@ -64,13 +58,10 @@ public class MarkDot : MonoBehaviour
     //Update method, called every frame
     private void Update()
     {
-        if(!_paused)
-        {
-            if (_enemyToTrack != null)
-                TrackEnemy();
-            else if(FollowPoint(_goalPosition))
-                    StopDot();
-        }
+        if (_enemyToTrack != null)
+            TrackEnemy();
+        else if(FollowPoint(_goalPosition))
+            StopProjectile();
     }
 
 
@@ -79,19 +70,19 @@ public class MarkDot : MonoBehaviour
     {
         if (_enemyToTrack.gameObject.activeSelf)
         {
-            if (FollowPoint(_enemyToTrack.GetDamagePosition()))
+            if (FollowPoint(_enemyToTrack.DamagePosition))
             {
                 _enemyToTrack.TakeDamage(_damage, _armorThrough);
 
                 if (_enemyToTrack.gameObject.activeSelf)
                     _enemyToTrack.ApplyDot(_armorThroughMalus, _damageOverTime, _dotDuration, _dotIcon);
 
-                StopDot();
+                StopProjectile();
             }
         }
         else
         {
-            _goalPosition = _enemyToTrack.GetDamagePosition();
+            _goalPosition = _enemyToTrack.DamagePosition;
             _enemyToTrack = null;
         }
     }
@@ -110,20 +101,5 @@ public class MarkDot : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
 
         return (transform.position - position).magnitude < 0.025f;
-    }
-
-
-    //Method used to recover dot to parent tower
-    private void StopDot()
-    {
-        gameObject.SetActive(false);
-        _parentTower.RecoverDot(this);
-    }
-
-
-    //Method used to stop projectile behavior
-    public void StopBehavior()
-    {
-        _paused = !_paused;
     }
 }

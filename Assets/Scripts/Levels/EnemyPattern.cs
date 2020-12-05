@@ -12,17 +12,11 @@ public class EnemyPattern
     //Number of enemies in a pattern
     [SerializeField]
     private int _numberOfEnemies;
+    public int EnemiesCount { get => _numberOfEnemies; }
 
     [Min(0.05f)]
     //Time between each enemy in the pattern
     [SerializeField]
     private float _timeBetweenEnemies;
-
-
-    /*Getters*/
-    #region
-    public int GetNumberOfEnemies() { return _numberOfEnemies; }
-
-    public float GetTimeBetweenEnemies() { return _timeBetweenEnemies; }
-    #endregion
+    public float EnemiesTime { get => _timeBetweenEnemies; }
 }

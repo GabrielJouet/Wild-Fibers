@@ -6,14 +6,8 @@ using UnityEngine.UI;
  */
 public class RessourceController : MonoBehaviour
 {
-    [Header("Start conditions")]
-    //Player money count, used in purchases
     [SerializeField]
-    private int _goldCount;
-    //Player life count, when dropping to 0 the game is finished
-    [SerializeField]
-    private int _lifeCountMax;
-    private int _lifeCount;
+    private LevelController _levelController;
 
 
     [Header("UI Elements")]
@@ -24,7 +18,6 @@ public class RessourceController : MonoBehaviour
     [SerializeField]
     private Text _goldText;
     //Game Over screen UI elements
-    //TO CHANGE SHOULD BE PAUSE CONTROLLER
     [SerializeField]
     private GameOverScreen _gameOverScreen;
 
@@ -32,13 +25,26 @@ public class RessourceController : MonoBehaviour
     //Did the game actually stopped or not?
     private bool _stopped = false;
 
+    //Player money count, used in purchases
+    public int GoldCount { get; private set; }
+
+    //Lives lost for this level
+    public int LivesLost { get => _lifeCountMax - _lifeCount; }
+
+
+    //Player life count, when dropping to 0 the game is finished
+    private int _lifeCountMax;
+    private int _lifeCount;
+
 
     //Start Method
     //Called when the game object is initialized
     private void Start()
     {
+        _lifeCountMax = _levelController.LoadedLevel.Lives;
         _lifeCount = _lifeCountMax;
-        _goldText.text = _goldCount.ToString();
+        GoldCount = _levelController.LoadedLevel.Gold;
+        _goldText.text = GoldCount.ToString();
         _lifeText.text = _lifeCount.ToString();
     }
 
@@ -51,8 +57,8 @@ public class RessourceController : MonoBehaviour
     //Parameter => Amount of gold added
     public void AddGold(int count)
     {
-        _goldCount += count;
-        _goldText.text = _goldCount.ToString();
+        GoldCount += count;
+        _goldText.text = GoldCount.ToString();
     }
 
 
@@ -61,15 +67,9 @@ public class RessourceController : MonoBehaviour
     //Parameter => Amount of gold removed
     public void RemoveGold(int count)
     {
-        _goldCount -= count;
-        _goldText.text = _goldCount.ToString();
+        GoldCount -= count;
+        _goldText.text = GoldCount.ToString();
     }
-
-
-    //Getter
-    //
-    //Return => Current gold count
-    public int GetGoldCount() { return _goldCount; }
     #endregion
 
 
@@ -95,18 +95,12 @@ public class RessourceController : MonoBehaviour
 
 
     //Method used to stop the game and display it
-    //TO CHANGE SHOULD BE PAUSECONTROLLER
     private void GameOver()
     {
         _lifeCount = 0;
         _stopped = true;
-
-        _gameOverScreen.gameObject.SetActive(true);
+        _levelController.Ended = true;
         _gameOverScreen.Activate(false);
     }
     #endregion
-
-
-    //Getter
-    public int GetLivesLost() { return _lifeCountMax - _lifeCount; }
 }

@@ -8,16 +8,16 @@ using UnityEngine;
 public class EnemyPool : MonoBehaviour
 {
     //Base enemy prefab
-    private GameObject _enemyPrefab;
+    public Enemy Enemy { get; private set; }
 
     //List of non used enemies but yet instanciated and desactivated
-    private readonly Stack<GameObject> _enemyPool = new Stack<GameObject>();
+    private readonly Stack<Enemy> _enemyPool = new Stack<Enemy>();
 
     //Ressources controller used when an enemy dies or reaches the end
     private RessourceController _ressourceController;
 
     //List of living enemies, used to know when a wave is done
-    private readonly List<GameObject> _livingEnemies = new List<GameObject>();
+    private readonly List<Enemy> _livingEnemies = new List<Enemy>();
 
     //Does the pool wait for the end of the wave?
     private bool _waitForEnd = false;
@@ -31,19 +31,19 @@ public class EnemyPool : MonoBehaviour
     //
     //Parameters => newPrefab, the new enemy prefab used in spawn
     //              newRessourceController, the ressource controller used to records and save life and gold
-    public void Initialize(GameObject newPrefab, RessourceController newRessourceController)
+    public void Initialize(Enemy newPrefab, RessourceController newRessourceController)
     {
         _ressourceController = newRessourceController;
-        _enemyPrefab = newPrefab;
+        Enemy = newPrefab;
     }
 
 
     //Method used to recover one enemy
     //
     //Return a new enemy either already instanciated or newly created
-    public GameObject GetOneEnemy()
+    public Enemy GetOneEnemy()
     {
-        GameObject enemyBuffered;
+        Enemy enemyBuffered;
 
         //If enemies are available in the pool
         if (_enemyPool.Count > 0)
@@ -57,7 +57,7 @@ public class EnemyPool : MonoBehaviour
         else
         {
             //We spawn a brand new one
-            enemyBuffered = Instantiate(_enemyPrefab, transform);
+            enemyBuffered = Instantiate(Enemy, transform);
             _livingEnemies.Add(enemyBuffered);
             return enemyBuffered;
         }
@@ -70,7 +70,7 @@ public class EnemyPool : MonoBehaviour
     //Parameters => newEnemy, game object of the enemy dead or desactivated
     //              stillAlive, does the enemy was still alive when retrieved?
     //              livesLostOrGoldGained, either a lives count lost or a money gained
-    public void AddOneEnemy(GameObject newEnemy, bool stillAlive, int livesLostOrGoldGained) 
+    public void AddOneEnemy(Enemy newEnemy, bool stillAlive, int livesLostOrGoldGained) 
     {
         //If the enemy is in the living enemies list we remove it
         if (_livingEnemies.Contains(newEnemy))
@@ -79,11 +79,11 @@ public class EnemyPool : MonoBehaviour
 
             //If we wait for the end of the level and the living enemies list is empty we consider every enemy is dead
             if (_waitForEnd && _livingEnemies.Count == 0)
-                _spawner.EnemiesKilled();
+                _spawner.AllEnemiesKilled();
         }
 
         //We desactivate it
-        newEnemy.SetActive(false);
+        newEnemy.gameObject.SetActive(false);
         _enemyPool.Push(newEnemy);
 
         //If the enemy was still alive it means it reaches the end of the level
@@ -104,10 +104,6 @@ public class EnemyPool : MonoBehaviour
         _spawner = newSpawner;
 
         if (_livingEnemies.Count == 0)
-            _spawner.EnemiesKilled();
+            _spawner.AllEnemiesKilled();
     }
-
-
-    //Getter
-    public GameObject GetPrefab() { return _enemyPrefab; }
 }

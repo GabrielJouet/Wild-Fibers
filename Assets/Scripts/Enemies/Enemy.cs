@@ -1,5 +1,5 @@
-using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /*
@@ -11,33 +11,36 @@ public class Enemy : MonoBehaviour
     //Name display in the UI
     [SerializeField]
     protected string _displayName;
+    public string Name { get => _displayName; }
 
 
     [Header("Behaviour Variables")]
     //Health max
     [SerializeField]
     protected float _healthMax;
-
+    public float HealthMax { get => _healthMax; }
+    
     //Current health
     protected float _health;
+    public float Health { get => _health; }
 
     //Armor max
     [SerializeField]
     protected float _armorMax;
-
     //Current armor
     protected float _armor;
+    public float Armor { get => _armor; }
 
     //Speed max
     [SerializeField]
     protected float _speedMax;
-
     //Current speed
     protected float _speed;
 
     //Number of lives removed if the enemy reaches the end
     [SerializeField]
     protected int _numberOfLivesTaken;
+    public int LivesTaken { get => _numberOfLivesTaken; }
 
     //Money gained when the enemy is killed
     [SerializeField]
@@ -46,9 +49,11 @@ public class Enemy : MonoBehaviour
     //Does the enemy flies?
     [SerializeField]
     protected bool _flying;
+    public bool Flying { get => _flying; }
 
     [SerializeField]
     protected Transform _damagePosition;
+    public Vector2 DamagePosition { get => _damagePosition.position; }
 
 
     //Dot duration in seconds
@@ -56,6 +61,11 @@ public class Enemy : MonoBehaviour
 
     //Dot damage per half second
     protected float _healthMalus = 0;
+
+    //Does the enemy is moving?
+    protected bool _moving = false;
+
+    protected bool _isSlowDown = false;
 
 
     [Header("Display")]
@@ -80,32 +90,38 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected Animator _animator;
 
+
+    [Header("Particle")]
+    [SerializeField]
+    protected Particle _damageParticle;
+
+    [SerializeField]
+    protected List<Transform> _particleEmissionsPoints;
+
+    [SerializeField]
+    protected int _numberOfParticles;
+    protected ParticleController _particleController;
+
+
     //Does the enemy currently has a dot effect?
     protected bool _dotApplied = false;
 
 
     //Current path used in enemy movement
-    protected Path _path;
+    protected List<Vector2> _path;
 
     //Index on the path used
     protected int _pathIndex;
+
+    public float PathRatio { get => (float)_pathIndex / (float)_path.Count; }
 
     //Enemy pool where the enemy came from
     protected EnemyPool _enemyPool;
 
     //All information UI
-    protected BackgroudSelecter _informationUI;
+    public BackgroudSelecter InformationUI { get; set; }
 
-
-    //Does the enemy is moving?
-    protected bool _moving = false;
-
-
-    private DateTime _dotCoroutineStartTime;
-
-    private float _dotCoroutineTimeNeeded = 0f;
-
-    private bool _enemyPaused = false;
+    public bool AlreadyAimed { get; set; } = false;
 
 
 
@@ -113,13 +129,18 @@ public class Enemy : MonoBehaviour
     //
     //Parameters => newPath, the new path the enemy will used
     //              newPool, the pool enemy came from
-    public void Initialize(Path newPath, EnemyPool newPool)
+    public virtual void Initialize(List<Vector2> newPath, EnemyPool newPool, int pathIndex)
     {
-        //We reset pretty every variables
-        _informationUI = null;
+        if (_particleController == null)
+            _particleController = FindObjectOfType<ParticleController>();
+
+        //We reset every variable
+        InformationUI = null;
 
         _dotApplied = false;
         _dotDisplay.sprite = null;
+        _isSlowDown = false;
+
         _healthMalus = 0;
         gameObject.SetActive(true);
 
@@ -129,38 +150,30 @@ public class Enemy : MonoBehaviour
 
         _healthBar.ResetSize();
 
-        _pathIndex = 0;
+        _pathIndex = pathIndex;
 
-        transform.position = newPath.GetPathPosition(0);
+        transform.position = newPath[pathIndex];
         _path = newPath;
         _enemyPool = newPool;
 
         _moving = true;
+        AlreadyAimed = false;
     }
 
 
     //Update method, called each frame
-    private void Update()
+    protected void Update()
     {
         if(_moving)
-        {
             FollowPath();
-
-            //TO ADD WHEN FACE AND BACK ANIMATIONS ARE DONE
-            /*if(_animator)
-            {
-                _animator.SetBool("horizontal", transform.position.x - _path.GetPath()[_pathIndex].x >= transform.position.y - _path.GetPath()[_pathIndex].y);
-                _animator.SetBool("flipped", transform.position.y - _path.GetPath()[_pathIndex].y < 0);
-            }*/
-        }
     }
 
 
     //Fixed Update method, called 50 times per second
-    private void FixedUpdate()
+    protected void FixedUpdate()
     {
-        if (_informationUI != null)
-            _informationUI.UpdateEnemyInformation(this);
+        if (InformationUI != null)
+            InformationUI.UpdateEnemyInformation(this);
     }
 
 
@@ -168,19 +181,16 @@ public class Enemy : MonoBehaviour
     //Method used to follow cezier path 
     protected void FollowPath()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _path.GetPath()[_pathIndex], Time.deltaTime * _speed);
+        transform.position = Vector3.MoveTowards(transform.position, _path[_pathIndex], Time.deltaTime * _speed);
 
         //If the enemy position is reaching the end of the path part we increase the path index
-        if (transform.position == _path.GetPath()[_pathIndex] && _pathIndex + 1 < _path.GetPath().Count)
+        if ((Vector2)transform.position == _path[_pathIndex] && _pathIndex + 1 < _path.Count)
             _pathIndex++;
         //Else if the enemy reaches the end of the path
-        else if (_pathIndex + 1 == _path.GetPath().Count)
-        {
-            _moving = false;
+        else if (_pathIndex + 1 == _path.Count)
             ReachEnd();
-        }
 
-        _spriteRenderer.flipX = transform.position.x - _path.GetPath()[_pathIndex].x > 0;
+        _spriteRenderer.flipX = transform.position.x - _path[_pathIndex].x > 0;
     }
 
 
@@ -198,6 +208,12 @@ public class Enemy : MonoBehaviour
             Die();
         else 
             _health -= damageLeft;
+
+        foreach (Transform current in _particleEmissionsPoints)
+        {
+            foreach (Particle particle in _particleController.GetParticle(_damageParticle, _numberOfParticles))
+                particle.Initialize(current.position);
+        }
 
         //And we change health bar size
         _healthBar.ChangeSize(_health / _healthMax);
@@ -219,9 +235,23 @@ public class Enemy : MonoBehaviour
 
 
     //Method used to apply a slow down on enemies
-    public void ApplySlowDown(/*TO DO*/)
+    public void ApplySlowDown(float slowDownRatio, float slowDownTime)
     {
-        //TO DO
+        if(!_isSlowDown)
+        {
+            _isSlowDown = true;
+            StartCoroutine(ResetSlowDown(slowDownTime));
+            _speed = _speedMax * (100 - slowDownRatio) / 100f;
+        }
+    }
+
+
+    //Coroutine used to reset slow down once it started
+    protected IEnumerator ResetSlowDown(float slowDownTime)
+    {
+        yield return new WaitForSeconds(slowDownTime);
+        _isSlowDown = false;
+        _speed = _speedMax;
     }
 
 
@@ -249,32 +279,16 @@ public class Enemy : MonoBehaviour
     protected IEnumerator TakePersistentDamage()
     {
         _dotApplied = true;
-        if (_dotCoroutineTimeNeeded != 0)
-        {
-            _dotCoroutineStartTime = DateTime.Now;
-            yield return new WaitForSeconds(_dotCoroutineTimeNeeded);
-            _dotCoroutineTimeNeeded = 0;
-        }
-
         while(_dotDuration >= 0)
         {
             _dotDuration -= 0.5f;
             TakeDamage(_healthMalus);
-            _dotCoroutineStartTime = DateTime.Now;
-            _dotCoroutineTimeNeeded = 0.5f;
             yield return new WaitForSeconds(0.5f);
         }
 
         _dotDisplay.sprite = null;
         _dotApplied = false;
         _armor = _armorMax;
-    }
-
-
-    //Method used to apply a mark on enemy
-    public void ApplyMark(/*TO DO*/)
-    {
-        //TO DO
     }
 
 
@@ -288,21 +302,21 @@ public class Enemy : MonoBehaviour
     //Method called when the enemy health drops below 0
     protected void Die()
     {
-        if (_informationUI)
+        if (InformationUI)
             DesactivateUI();
 
         StopAllCoroutines();
 
-        _enemyPool.AddOneEnemy(gameObject, false, _goldGained);
+        _enemyPool.AddOneEnemy(this, false, _goldGained);
     }
 
 
     //Method called when an enemy reaches the end of the path
     protected void ReachEnd()
     {
-        _enemyPool.AddOneEnemy(gameObject, true, _numberOfLivesTaken);
+        _enemyPool.AddOneEnemy(this, true, _numberOfLivesTaken);
 
-        if (_informationUI) 
+        if (InformationUI) 
             DesactivateUI();
 
         StopAllCoroutines();
@@ -312,61 +326,21 @@ public class Enemy : MonoBehaviour
     //Method used to desactivate tracked UI
     protected void DesactivateUI()
     {
-        _informationUI.ErasePreviousEnemy();
-        _informationUI.DisableEnemyInformation();
+        InformationUI.ErasePreviousEnemy();
+        InformationUI.DisableEnemyInformation();
         _selector.SetActive(false);
 
-        _informationUI = null;
+        InformationUI = null;
     }
 
 
-    public void Pause(bool paused)
-    {
-        _animator.enabled = paused;
+    public bool CanSurvive(float damage, float armorThrough) { return _health - Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor) / 100) / 2 : damage - ((_armor - armorThrough) / 100 * damage)) > 0; }
 
-        if (!_enemyPaused)
-        {
-            StopAllCoroutines();
-            _dotCoroutineTimeNeeded -= (float)(DateTime.Now - _dotCoroutineStartTime).TotalSeconds;
-        }
-        else
-            StartCoroutine(TakePersistentDamage());
 
-        _enemyPaused = !_enemyPaused;
+    public void SetSelector(bool state) 
+    { 
+        _selector.SetActive(state);
     }
-    
-    
-    //Getters
-    public string GetName() { return _displayName; }
-
-    public float GetHealth() { return _health; }
-
-    public float GetMaxHealth() { return _healthMax; }
-
-    public float GetArmor() { return _armor; }
-
-    public float GetMaxArmor() { return _armorMax; }
-
-    public float GetSpeed() { return _speed; }
-
-    public float GetMaxSpeed() { return _speedMax; }
-
-    public int GetNumberOfLivesTaken() { return _numberOfLivesTaken; }
-
-    public float GetPathPercentage() { return _pathIndex / _path.GetPath().Count; }
-
-    public bool GetFlying() { return _flying; }
-
-    public Vector2 GetDamagePosition() { return _damagePosition.position; }
-
-
-    //Setters
-    public void SetSelector() { _selector.SetActive(true); }
-
-    public void ResetSelector() { _selector.SetActive(false); }
-
-
-    public void SetInformationUI(BackgroudSelecter newUI) { _informationUI = newUI; }
 
 
 

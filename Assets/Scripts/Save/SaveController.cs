@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEditor;
 using UnityEngine;
 
 /*
@@ -9,12 +11,10 @@ using UnityEngine;
 public class SaveController : MonoBehaviour
 {
 	//Number of level in game (can be dynamic)
-	[SerializeField]
 	private int _numberOfLevel;
 
-
 	//The current save state
-	private SaveFile _saveFile;
+	public SaveFile SaveFile { get; private set; }
 
 	//A Binary Formatter for data handling
 	private BinaryFormatter _binaryFormatter;
@@ -27,6 +27,7 @@ public class SaveController : MonoBehaviour
 	//Start method, called after Awake
 	private void Start()
     {
+		_numberOfLevel = 4 - 2;
 		_gameSavePath = Application.persistentDataPath + "/player.dat";
 		_binaryFormatter = new BinaryFormatter();
 
@@ -46,12 +47,12 @@ public class SaveController : MonoBehaviour
 		{
 			//First level always unlocked
 			if (i == 0)
-				allSaves.Add(new LevelSave(0, LevelState.UNLOCKED));
+				allSaves.Add(new LevelSave(20, LevelState.UNLOCKED));
 			else
-				allSaves.Add(new LevelSave(0, LevelState.LOCKED));
+				allSaves.Add(new LevelSave(20, LevelState.LOCKED));
 		}
 
-		_saveFile = new SaveFile(allSaves, 1, 1);
+		SaveFile = new SaveFile(allSaves, 1, 1);
 
 		SaveData();
 	}
@@ -60,7 +61,8 @@ public class SaveController : MonoBehaviour
 	//Method used to save music and sound level when changed
 	public void SaveMusicLevel(float newMusicLevel, float newSoundLevel)
 	{
-		_saveFile.UpdateSoundAndMusicSave(newMusicLevel, newSoundLevel);
+		SaveFile.Music = newMusicLevel;
+		SaveFile.Sound = newSoundLevel;
 
 		SaveData();
 	}
@@ -69,10 +71,10 @@ public class SaveController : MonoBehaviour
 	//Method used to save level data when changed
 	public void SaveLevelData(int levelIndex, int newLivesLost, LevelState newState)
 	{
-		_saveFile.UpdateLevelSave(levelIndex, new LevelSave(newLivesLost, newState));
+		SaveFile.Saves[levelIndex] = new LevelSave(newLivesLost, newState);
 
 		if(levelIndex + 1 < _numberOfLevel)
-			_saveFile.UpdateLevelSave(levelIndex + 1, new LevelSave(0, LevelState.UNLOCKED));
+			SaveFile.Saves[levelIndex+1] = new LevelSave(0, LevelState.UNLOCKED);
 
 		SaveData();
 	}
@@ -83,7 +85,7 @@ public class SaveController : MonoBehaviour
 	{
 		FileStream file = File.Create(_gameSavePath);
 
-		_binaryFormatter.Serialize(file, _saveFile);
+		_binaryFormatter.Serialize(file, SaveFile);
 		file.Close();
 	}
 
@@ -94,8 +96,20 @@ public class SaveController : MonoBehaviour
 		if (File.Exists(_gameSavePath))
 		{
 			FileStream file = File.Open(_gameSavePath, FileMode.Open);
-			_saveFile = (SaveFile)_binaryFormatter.Deserialize(file);
-			file.Close();
+
+			try
+			{
+				SaveFile = (SaveFile)_binaryFormatter.Deserialize(file);
+				file.Close();
+			}
+			catch (SerializationException)
+			{
+				file.Close();
+				CreateSave();
+			}
+
+			if (SaveFile == null)
+				CreateSave();
 		}
 		else
 			CreateSave();
@@ -113,9 +127,4 @@ public class SaveController : MonoBehaviour
 		else
 			CreateSave();
 	}
-
-
-
-	//Getter
-	public SaveFile GetSaveFile() { return _saveFile; }
 }
