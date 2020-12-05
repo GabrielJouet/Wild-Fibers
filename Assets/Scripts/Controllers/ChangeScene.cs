@@ -16,6 +16,7 @@ public class ChangeScene : MonoBehaviour
     public void LoadScene()
     {
         SceneManager.LoadScene(_destinationScene);
+        FindObjectOfType<PauseController>()?.PauseGame(false);
     }
 
 
@@ -25,5 +26,6 @@ public class ChangeScene : MonoBehaviour
     public void LoadScene(string destinationName)
     {
         SceneManager.LoadScene(destinationName);
+        FindObjectOfType<PauseController>()?.PauseGame(false);
     }
 }

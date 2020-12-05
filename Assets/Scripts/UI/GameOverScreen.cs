@@ -84,7 +84,5 @@ public class GameOverScreen : MonoBehaviour
                 }
             }
         }
-
-        _pauseController.PauseGame(false);
     }
 }
