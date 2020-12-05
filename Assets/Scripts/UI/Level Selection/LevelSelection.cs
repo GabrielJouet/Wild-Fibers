@@ -50,7 +50,7 @@ public class LevelSelection : MonoBehaviour
 
 
     //Does the level selection screen already opened?
-    private bool _opened = false;
+    public bool Opened { get; private set; } = false;
 
     private SaveController _saveController;
 
@@ -143,10 +143,10 @@ public class LevelSelection : MonoBehaviour
     //Method used to swap level selection menu state
     private void RevertState()
     {
-        _activer.SetActive(!_opened);
+        _activer.SetActive(!Opened);
 
-        _hider.SetActive(!_opened);
+        _hider.SetActive(!Opened);
 
-        _opened = !_opened;
+        Opened = !Opened;
     }
 }

@@ -18,7 +18,7 @@ public class MenuPauseController : PauseController
     {
         _hider.SetActive(!_hider.activeSelf);
 
-        if(_alternativeMenu.activeSelf)
+        if(_alternativeMenuScript.Opened)
             _alternativeMenuScript.DesactivateLevelSelectionMenu();
         else 
             _menuObject.SetActive(!_menuObject.activeSelf);
