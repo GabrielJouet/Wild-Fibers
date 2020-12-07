@@ -2,7 +2,6 @@
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEditor;
 using UnityEngine;
 
 /*
@@ -11,6 +10,7 @@ using UnityEngine;
 public class SaveController : MonoBehaviour
 {
 	//Number of level in game (can be dynamic)
+	[SerializeField]
 	private int _numberOfLevel;
 
 	//The current save state
@@ -25,17 +25,39 @@ public class SaveController : MonoBehaviour
 
 
 	//Start method, called after Awake
-	private void Start()
-    {
-		_numberOfLevel = 4 - 2;
+	private void Awake()
+	{
+		DontDestroyOnLoad(gameObject);
+
 		_gameSavePath = Application.persistentDataPath + "/player.dat";
 		_binaryFormatter = new BinaryFormatter();
-
-		DontDestroyOnLoad(gameObject);
 
 		RecoverSave();
 	}
 
+
+	//Method used to read save file
+	private void RecoverSave()
+	{
+		if (File.Exists(_gameSavePath))
+		{
+			try
+			{
+				FileStream file = File.OpenRead(_gameSavePath);
+				SaveFile = (SaveFile)_binaryFormatter.Deserialize(file);
+				file.Close();
+			}
+			catch
+			{
+				ResetData();
+			}
+
+			if (SaveFile == null || SaveFile.Saves == null || SaveFile.Saves.Count == 0)
+				ResetData();
+		}
+		else
+			CreateSave();
+	}
 
 
 	//Method used to create a brand new save if no other were found
@@ -83,36 +105,17 @@ public class SaveController : MonoBehaviour
 	//Method used to save current save data into a file
 	private void SaveData()
 	{
-		FileStream file = File.Create(_gameSavePath);
-
-		_binaryFormatter.Serialize(file, SaveFile);
-		file.Close();
-	}
-
-
-	//Method used to read save file
-    private void RecoverSave()
-    {
-		if (File.Exists(_gameSavePath))
+		try
 		{
-			FileStream file = File.Open(_gameSavePath, FileMode.Open);
+			FileStream file = File.OpenWrite(_gameSavePath);
 
-			try
-			{
-				SaveFile = (SaveFile)_binaryFormatter.Deserialize(file);
-				file.Close();
-			}
-			catch (SerializationException)
-			{
-				file.Close();
-				CreateSave();
-			}
-
-			if (SaveFile == null)
-				CreateSave();
+			_binaryFormatter.Serialize(file, SaveFile);
+			file.Close();
 		}
-		else
-			CreateSave();
+		catch
+		{
+			//Display error
+		}
 	}
 
 
@@ -120,11 +123,8 @@ public class SaveController : MonoBehaviour
 	public void ResetData()
 	{
 		if (File.Exists(_gameSavePath))
-		{
 			File.Delete(_gameSavePath);
-			CreateSave();
-		}
-		else
-			CreateSave();
+
+		CreateSave();
 	}
 }
