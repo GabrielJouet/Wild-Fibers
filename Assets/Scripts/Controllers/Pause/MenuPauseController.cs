@@ -8,9 +8,6 @@ public class MenuPauseController : PauseController
     [SerializeField]
     private LevelSelection _alternativeMenuScript;
 
-    [SerializeField]
-    private GameObject _alternativeMenu;
-
 
 
     //Method used to pause the game and freeze time
@@ -18,7 +15,7 @@ public class MenuPauseController : PauseController
     {
         _hider.SetActive(!_hider.activeSelf);
 
-        if(_alternativeMenuScript.Opened)
+        if(_alternativeMenuScript != null && _alternativeMenuScript.Opened)
             _alternativeMenuScript.DesactivateLevelSelectionMenu();
         else 
             _menuObject.SetActive(!_menuObject.activeSelf);
