@@ -14,16 +14,18 @@ public class RessourceController : MonoBehaviour
     //Life UI text element
     [SerializeField]
     private Text _lifeText;
+
     //Gold UI text element
     [SerializeField]
     private Text _goldText;
+
+    [SerializeField]
+    private Animator _goldIconAnimator;
+
     //Game Over screen UI elements
     [SerializeField]
     private GameOverScreen _gameOverScreen;
 
-
-    //Did the game actually stopped or not?
-    private bool _stopped = false;
 
     //Player money count, used in purchases
     public int GoldCount { get; private set; }
@@ -82,8 +84,10 @@ public class RessourceController : MonoBehaviour
     //Parameter => Amount of lives removed
     public void RemoveLives(int count)
     {
-        if (!_stopped)
+        if (_lifeCount > 0)
         {
+            _goldIconAnimator.SetTrigger("lose");
+
             if (_lifeCount - count <= 0)
                 GameOver();
             else
@@ -98,7 +102,6 @@ public class RessourceController : MonoBehaviour
     private void GameOver()
     {
         _lifeCount = 0;
-        _stopped = true;
         _levelController.Ended = true;
         _gameOverScreen.Activate(false);
     }

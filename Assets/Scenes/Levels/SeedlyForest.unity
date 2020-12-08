@@ -3875,6 +3875,11 @@ PrefabInstance:
       propertyPath: _gameOverScreen
       value: 
       objectReference: {fileID: 4541158167840557064}
+    - target: {fileID: 571994285330439440, guid: 3a3887dcbdbd89b499727d31651bc979,
+        type: 3}
+      propertyPath: _goldIconAnimator
+      value: 
+      objectReference: {fileID: 4541158167840557066}
     - target: {fileID: 571994285330439442, guid: 3a3887dcbdbd89b499727d31651bc979,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5156,3 +5161,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a12948305cd9d147a7dcf7abe9c7074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4541158167840557066 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3734836751133826424, guid: ab062a4349966594386bc59557a6906a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4541158167840557062}
+  m_PrefabAsset: {fileID: 0}
