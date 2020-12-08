@@ -53,11 +53,7 @@ public class BackgroudSelecter : MonoBehaviour
     [Header("Tower buttons related")]
     //Choose buttons object
     [SerializeField]
-    private GameObject _chooseButton;
-
-    //Sell buttons object
-    [SerializeField]
-    private GameObject _sellButton;
+    private TowerButtonController _towerButtonController;
 
     //Regular canvas
     [SerializeField]
@@ -352,15 +348,16 @@ public class BackgroudSelecter : MonoBehaviour
     //             activatedSlot, slot selected
     public void ActivateTowerChooseButton(Vector2 newPosition, TowerSlot activatedSlot)
     {
-        _chooseButton.SetActive(true);
-        _chooseButton.GetComponent<ChooseButton>().Activate(newPosition, activatedSlot);
+        _towerButtonController.gameObject.SetActive(true);
+        _towerButtonController.DesactivateSellButton();
+        _towerButtonController.ActivatePurchaseButtons(newPosition, activatedSlot);
     }
 
 
     //Method used to desactivate choose button on previous selected tower slot
     public void DisableTowerChooseButton()
     {
-        _chooseButton.SetActive(false);
+        _towerButtonController.gameObject.SetActive(false);
     }
 
 
@@ -371,15 +368,16 @@ public class BackgroudSelecter : MonoBehaviour
     //             price, price to display
     public void ActivateTowerSellButton(Vector2 newPosition, Tower activatedTower, int price)
     {
-        _sellButton.SetActive(true);
-        _sellButton.GetComponent<SellButton>().Activate(newPosition, activatedTower, price);
+        _towerButtonController.gameObject.SetActive(true);
+        _towerButtonController.DesactivatePurchaseButtons();
+        _towerButtonController.ActivateSellButton(newPosition, activatedTower, price);
     }
 
 
     //Method used to desactivate sell buttons on previous selected tower slot
     public void DisableTowerSellButton()
     {
-        _sellButton.SetActive(false);
+        _towerButtonController.gameObject.SetActive(false);
     }
     #endregion
 

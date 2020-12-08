@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4423953616752020661}
   - component: {fileID: 3215646354494704898}
   - component: {fileID: 8893923750081241374}
+  - component: {fileID: 3807734348543234493}
   m_Layer: 5
   m_Name: TowerButton
   m_TagString: Untagged
@@ -164,6 +165,21 @@ PolygonCollider2D:
       - {x: -31.08197, y: -55.53592}
       - {x: 31.279846, y: -55.44336}
       - {x: 40.492126, y: -45.7753}
+--- !u!114 &3807734348543234493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1908072688040204254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2074f9dbefc4c14c9d90664f3bb6038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _buttonComponent: {fileID: 1908072688040204252}
+  _buttonSprite: {fileID: 3129286144005314105}
+  _price: {fileID: 1908072688866357423}
 --- !u!1 &1908072688866357409
 GameObject:
   m_ObjectHideFlags: 0
