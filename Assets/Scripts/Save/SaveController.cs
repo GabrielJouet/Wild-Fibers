@@ -27,8 +27,6 @@ public class SaveController : MonoBehaviour
 	//Start method, called after Awake
 	private void Awake()
 	{
-		DontDestroyOnLoad(gameObject);
-
 		_gameSavePath = Application.persistentDataPath + "/player.dat";
 		_binaryFormatter = new BinaryFormatter();
 
