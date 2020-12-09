@@ -35,6 +35,20 @@ public class TowerButtonController : MonoBehaviour
     }
 
 
+    private void Update()
+    {
+        if (_towerButtons[0].gameObject.activeSelf)
+        {
+            for (int i = 0; i < _towerButtons.Count; i++)
+            {
+                Tower buffer = _playerController.GetTower(i);
+
+                _towerButtons[i].UpdateState(buffer.Price < _ressourceController.GoldCount);
+            }
+        }
+    }
+
+
     //Method used to activate choose buttons when the button is pressed
     //
     //Parameters => newPosition, new buttons position according to mouse
@@ -46,11 +60,10 @@ public class TowerButtonController : MonoBehaviour
         for (int i = 0; i < _towerButtons.Count; i++)
         {
             Tower buffer = _playerController.GetTower(i);
+            _towerButtons[i].gameObject.SetActive(true);
 
-            if (buffer.Price > _ressourceController.GoldCount)
-                _towerButtons[i].Desactivate();
-            else
-                _towerButtons[i].Activate(() => newUsedTowerSlot.ChooseTower(buffer));
+            _towerButtons[i].ChangeBehavior(() => newUsedTowerSlot.ChooseTower(buffer));
+            _sellButton.UpdateState(buffer.Price < _ressourceController.GoldCount);
         }
     }
 
@@ -66,9 +79,10 @@ public class TowerButtonController : MonoBehaviour
     {
         _rectTransform.localPosition = newPosition;
 
-        _sellButton.gameObject.SetActive(true);
         _sellButton.Initialize(newPrice);
-        _sellButton.Activate(() => newTower.ResellTower());
+        _sellButton.gameObject.SetActive(true);
+        _sellButton.ChangeBehavior(() => newTower.ResellTower());
+        _sellButton.UpdateState(true);
     }
 
 

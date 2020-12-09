@@ -35,24 +35,18 @@ public class TowerButton : MonoBehaviour
         _price.text = newPrice.ToString();
     }
 
-    public void Activate(UnityAction buttonCallBack)
+    public void ChangeBehavior(UnityAction buttonCallBack)
     {
-        gameObject.SetActive(true);
-
         _buttonComponent.onClick.RemoveAllListeners();
         _buttonComponent.onClick.AddListener(buttonCallBack);
-
-        _buttonImage.color = Color.white;
-        _backgroundImage.color = Color.white;
-
-        _buttonComponent.enabled = true;
     }
 
-    public void Desactivate()
+    public void UpdateState(bool activated)
     {
-        _buttonImage.color = Color.gray;
-        _backgroundImage.color = Color.gray;
+        _buttonComponent.enabled = activated;
 
-        _buttonComponent.enabled = false;
+        Color newColor = activated ? Color.white : Color.gray;
+        _buttonImage.color = newColor;
+        _backgroundImage.color = newColor;
     }
 }
