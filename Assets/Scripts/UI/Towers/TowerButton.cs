@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 /*
@@ -10,10 +11,11 @@ public class TowerButton : MonoBehaviour
     //The actual button component
     [SerializeField]
     private Button _buttonComponent;
-    public Button Button { get => _buttonComponent; }
 
     [SerializeField]
-    private Image _buttonSprite;
+    private Image _buttonImage;
+    [SerializeField]
+    private Image _backgroundImage;
 
     //Text component that handles price
     [SerializeField]
@@ -22,14 +24,35 @@ public class TowerButton : MonoBehaviour
 
     public void Initialize(Sprite newSprite, int newPrice)
     {
-        _buttonSprite.sprite = newSprite;
-        _buttonSprite.SetNativeSize();
-        _buttonSprite.rectTransform.sizeDelta *= 2.4f;
+        _buttonImage.sprite = newSprite;
+        _buttonImage.SetNativeSize();
+        _buttonImage.rectTransform.sizeDelta *= 2.4f;
         _price.text = newPrice.ToString();
     }
 
     public void Initialize(int newPrice)
     {
         _price.text = newPrice.ToString();
+    }
+
+    public void Activate(UnityAction buttonCallBack)
+    {
+        gameObject.SetActive(true);
+
+        _buttonComponent.onClick.RemoveAllListeners();
+        _buttonComponent.onClick.AddListener(buttonCallBack);
+
+        _buttonImage.color = Color.white;
+        _backgroundImage.color = Color.white;
+
+        _buttonComponent.enabled = true;
+    }
+
+    public void Desactivate()
+    {
+        _buttonImage.color = Color.gray;
+        _backgroundImage.color = Color.gray;
+
+        _buttonComponent.enabled = false;
     }
 }

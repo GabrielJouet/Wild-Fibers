@@ -10,6 +10,8 @@ public class TowerButtonController : MonoBehaviour
     //Player controller that handles tower list and ressources
     [SerializeField]
     private PlayerController _playerController;
+    [SerializeField]
+    private RessourceController _ressourceController;
 
 
     [Header("Button Elements")]
@@ -43,10 +45,12 @@ public class TowerButtonController : MonoBehaviour
 
         for (int i = 0; i < _towerButtons.Count; i++)
         {
-            int a = i;
-            _towerButtons[i].gameObject.SetActive(true);
-            _towerButtons[i].Button.onClick.RemoveAllListeners();
-            _towerButtons[i].Button.onClick.AddListener(() => newUsedTowerSlot.ChooseTower(_playerController.GetTower(a)));
+            Tower buffer = _playerController.GetTower(i);
+
+            if (buffer.Price > _ressourceController.GoldCount)
+                _towerButtons[i].Desactivate();
+            else
+                _towerButtons[i].Activate(() => newUsedTowerSlot.ChooseTower(buffer));
         }
     }
 
@@ -64,8 +68,7 @@ public class TowerButtonController : MonoBehaviour
 
         _sellButton.gameObject.SetActive(true);
         _sellButton.Initialize(newPrice);
-        _sellButton.Button.onClick.RemoveAllListeners();
-        _sellButton.Button.onClick.AddListener(() => newTower.ResellTower());
+        _sellButton.Activate(() => newTower.ResellTower());
     }
 
 

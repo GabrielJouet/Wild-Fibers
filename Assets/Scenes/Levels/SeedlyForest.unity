@@ -4463,6 +4463,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 519420035}
+    - target: {fileID: 3646359289911569330, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: _ressourceController
+      value: 
+      objectReference: {fileID: 519420034}
     - target: {fileID: 3674419208524276292, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_SizeDelta.x
