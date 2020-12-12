@@ -1,24 +1,30 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Class used to save wave data
- */
+/// <summary>
+/// Class used to store wave data.
+/// </summary>
 [CreateAssetMenu(menuName = "Levels/Wave")]
 public class Wave : ScriptableObject
 {
-    //List of all enemy groups in a wave
+    /// <summary>
+    /// All groups in current wave.
+    /// </summary>
     [SerializeField]
     private List<EnemyGroup> _availableEnemyGroups;
     public List<EnemyGroup> EnemyGroups { get => _availableEnemyGroups; }
 
-    //How much time between two waves
+    /// <summary>
+    /// Time between wave.
+    /// </summary>
     [Min(0.1f)]
     [SerializeField]
     private float _timeBeforeNextWave;
     public float TimeWave { get => _timeBeforeNextWave; }
 
-    //How much money do the player earns by calling an early wave
+    /// <summary>
+    /// Gold bonus by calling early wave.
+    /// </summary>
     [SerializeField]
     private int _goldBonus;
     public int BonusGold { get => _goldBonus; }
