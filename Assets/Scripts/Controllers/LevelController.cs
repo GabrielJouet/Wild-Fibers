@@ -3,78 +3,129 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-/*
- * This class controls every level related elements
- */
+/// <summary>
+/// Class used to store and manage level resources.
+/// </summary>
+[RequireComponent(typeof(PlayerController))]
+[RequireComponent(typeof(RessourceController))]
 public class LevelController : MonoBehaviour
 {
-    [Header("Constant")]
-    [Range(3, 10)]
-    //Time between an end of wave and next wave display
-    [SerializeField]
-    private float _timeBetweenNextWaveButtonDisplay = 5f;
-
     [Header("Level Parameters")]
-    //Loaded level with parameters
+
+    /// <summary>
+    /// Level loaded.
+    /// </summary>
     [SerializeField]
     private Level _level;
+    public Level LoadedLevel { get => _level; }
 
+    /// <summary>
+    /// Does the level is ended?
+    /// </summary>
     public bool Ended { get; set; }
 
+    /// <summary>
+    /// Current level index.
+    /// </summary>
     public int LevelIndex { get => _level.Number; }
-
-    public Level LoadedLevel { get => _level; }
 
 
     [Header("UI related")]
-    //Text on UI that shows the current and max numbers of waves
+
+    /// <summary>
+    /// Text component that displays wave number.
+    /// </summary>
     [SerializeField]
     private Text _waveText;
-    //Game over screen script
+
+    /// <summary>
+    /// Game over object that is used when the player finish the level.
+    /// </summary>
     [SerializeField]
     private GameOverScreen _gameOverScreen;
 
 
     [Header("Prefab")]
-    //Spawner used to spawn enemies
+
+    /// <summary>
+    /// Entity spawner prefab.
+    /// </summary>
     [SerializeField]
     private Spawner _spawnerPrefab;
-    //List of available spawners to use
     private readonly List<Spawner> _spawners = new List<Spawner>();
-    //An enemy pool prefab, each enemy pool contains enemies references
+
+    /// <summary>
+    /// Enemy pool that contains every enemies in storage.
+    /// </summary>
     [SerializeField]
     private EnemyPool _enemyPoolPrefab;
-    //List of available enemy pools to use
     private readonly List<EnemyPool> _enemyPools = new List<EnemyPool>();
+
+    /// <summary>
+    /// Projectile pool that contains every projectile.
+    /// </summary>
     [SerializeField]
     private ProjectilePool _projectilePoolPrefab;
     private readonly List<ProjectilePool> _projectilePools = new List<ProjectilePool>();
+
+    /// <summary>
+    /// Tower pool that contains every tower.
+    /// </summary>
     [SerializeField]
     private TowerPool _towerPoolPrefab;
     private readonly List<TowerPool> _towerPools = new List<TowerPool>();
 
 
     [Header("Components")]
-    //Ressource controller that controls lives and money
-    [SerializeField]
-    private RessourceController _ressourceController;
-    //Next Wave Button used in wave generation
+
+    /// <summary>
+    /// Next wave button component.
+    /// </summary>
     [SerializeField]
     private NextWaveButton _nextWaveButton;
-    //Available Paths in level
+
+    /// <summary>
+    /// Bezier curve paths.
+    /// </summary>
     [SerializeField]
     private List<RandomPath> _availablePath;
-    [SerializeField]
+
+
+    /// <summary>
+    /// Resource controller used to track lives and gold.
+    /// </summary>
+    private RessourceController _ressourceController;
+
+    /// <summary>
+    /// Time between each next wave button display
+    /// </summary>
+    private readonly float _timeBetweenNextWaveButtonDisplay = 5f;
+
+    /// <summary>
+    /// Player controller component.
+    /// </summary>
     private PlayerController _playerController;
 
-
-    //Index for saving wave progress
+    /// <summary>
+    /// Current wave index
+    /// </summary>
     private int _waveIndex = 0;
 
 
 
-    //Start Method
-    //Called when the game object is initialized
+    /// <summary>
+    /// Awake method used for initialization.
+    /// </summary>
+    private void Awake()
+    {
+        _ressourceController = GetComponent<RessourceController>();
+        _playerController = GetComponent<PlayerController>();
+    }
+
+
+    /// <summary>
+    /// Start method called after Awake.
+    /// </summary>
     private void Start()
     {
         _waveText.text = 0 + " / " + _level.Waves.Count;
@@ -83,8 +134,10 @@ public class LevelController : MonoBehaviour
     }
 
 
-    //Method used to spawn every needed enemy pool
-    //Each enemy type will need its own pool
+    #region Pools related
+    /// <summary>
+    /// Method used to spawn enemy pools.
+    /// </summary>
     private void SpawnEnemyPools()
     {
         foreach (Enemy current in _level.Enemies)
@@ -111,7 +164,10 @@ public class LevelController : MonoBehaviour
     }
 
 
-    //Method used to spawn one enemy pool
+    /// <summary>
+    /// Method used to spawn one enemy pool.
+    /// </summary>
+    /// <param name="currentPrefab">The enemy prefab that will be controlled by this pool</param>
     private void SpawnOneEnemyPool(Enemy currentPrefab)
     {
         EnemyPool newEnemyPool = Instantiate(_enemyPoolPrefab, transform);
@@ -121,11 +177,12 @@ public class LevelController : MonoBehaviour
     }
 
 
-    //Method used to spawn every needed projectile pool
-    //Each projectile type will need its own pool
+    /// <summary>
+    /// Method used to spawn projectile pools.
+    /// </summary>
     private void SpawnProjectilePools()
     {
-        foreach (Tower current in _playerController.GetTowers())
+        foreach (Tower current in _playerController.Towers)
         {
             SpawnOneTowerPool(current);
             if (_projectilePools != null)
@@ -149,7 +206,10 @@ public class LevelController : MonoBehaviour
     }
 
 
-    //Method used to spawn one projectile pool
+    /// <summary>
+    /// Method used to spawn one projectile pool.
+    /// </summary>
+    /// <param name="currentPrefab">The projectile prefab that will be controlled by this pool</param>
     private void SpawnOneProjectilePool(Tower currentPrefab)
     {
         ProjectilePool newPool = Instantiate(_projectilePoolPrefab, transform);
@@ -159,7 +219,10 @@ public class LevelController : MonoBehaviour
     }
 
 
-    //Method used to spawn one tower pool
+    /// <summary>
+    /// Method used to spawn one tower pool.
+    /// </summary>
+    /// <param name="currentPrefab">The tower prefab that will be controlled by this pool</param>
     private void SpawnOneTowerPool(Tower currentPrefab)
     {
         TowerPool newPool = Instantiate(_towerPoolPrefab, transform);
@@ -169,9 +232,56 @@ public class LevelController : MonoBehaviour
     }
 
 
-    //Method called when the next wave button is pressed
-    //
-    //Parameters => The time left before the next wave
+    /// <summary>
+    /// Recover one enemy pool.
+    /// </summary>
+    /// <param name="wantedEnemy">The enemy type we want to recover</param>
+    /// <returns>The wanted enemy pool</returns>
+    public EnemyPool RecoverPool(Enemy wantedEnemy)
+    {
+        foreach (EnemyPool current in _enemyPools)
+            if (current.Enemy.GetType() == wantedEnemy.GetType())
+                return current;
+
+        return null;
+    }
+
+
+    /// <summary>
+    /// Recover one projectile pool.
+    /// </summary>
+    /// <param name="wantedProjectile">The projectile type we want to recover</param>
+    /// <returns>The wanted projectile pool</returns>
+    public ProjectilePool RecoverProjectilePool(Projectile wantedProjectile)
+    {
+        foreach (ProjectilePool current in _projectilePools)
+            if (current.Projectile.GetType() == wantedProjectile.GetType())
+                return current;
+
+        return null;
+    }
+
+
+    /// <summary>
+    /// Recover one tower pool.
+    /// </summary>
+    /// <param name="wantedTower">The tower type we want to recover</param>
+    /// <returns>The wanted tower pool</returns>
+    public TowerPool RecoverTowerPool(Tower wantedTower)
+    {
+        foreach (TowerPool current in _towerPools)
+            if (current.Tower.GetType() == wantedTower.GetType())
+                return current;
+
+        return null;
+    }
+    #endregion
+
+
+    /// <summary>
+    /// Method called when the new wave button is used.
+    /// </summary>
+    /// <param name="timeLeft">How much time left is available?</param>
     public void StartWaveViaButton(float timeLeft)
     {
         StartWave();
@@ -182,7 +292,9 @@ public class LevelController : MonoBehaviour
     }
 
 
-    //Method used to start a brand new wave with level parameters
+    /// <summary>
+    /// Method called when we start a new wave.
+    /// </summary>
     private void StartWave()
     {
         _waveText.text = (_waveIndex + 1) + " / " + _level.Waves.Count;
@@ -190,11 +302,9 @@ public class LevelController : MonoBehaviour
         int spawnerLeft = _level.Waves[_waveIndex].EnemyGroups.Count - _spawners.Count;
 
         int i;
-        //We instantiate enough spawner for each enemy group
         for(i = 0; i < spawnerLeft; i ++)
             _spawners.Add(Instantiate(_spawnerPrefab, transform));
 
-        //And we give them instructions
         EnemyPool bufferPool = null;
         i = 0;
         foreach(EnemyGroup current in _level.Waves[_waveIndex].EnemyGroups)
@@ -209,34 +319,33 @@ public class LevelController : MonoBehaviour
     }
 
 
-    //Method called by spawner when they finish spawning enemies
+    /// <summary>
+    /// Method called when the wave is finished.
+    /// </summary>
     public void EndWave()
     {
         bool result = true;
 
-        //If one of the spawner has not done its wave yet
         foreach (Spawner current in _spawners)
             if (!current.WaveFinished)
                 result = false;
 
-        //If every spawner has called the level controller
-        //We launch the next wave
         if (result)
             StartCoroutine(DelayWave());
     }
 
 
-    //Method used when a new wave should be called but there is no other ones
+    /// <summary>
+    /// Method used when the level is finished.
+    /// </summary>
     public void EndLevel()
     {
         bool result = true;
 
-        //If one of the spawner has not done its wave yet
         foreach (Spawner current in _spawners)
             if (!current.EnemiesKilled)
                 result = false;
 
-        //If the wave is finished and every enemy is dead 
         if (result)
             _gameOverScreen.Activate(true);
 
@@ -244,7 +353,10 @@ public class LevelController : MonoBehaviour
     }
 
 
-    //Coroutine used to delay next wave by a short amount of time
+    /// <summary>
+    /// Coroutine used to delay the next wave.
+    /// </summary>
+    /// <returns>Yield the time between next wave display</returns>
     private IEnumerator DelayWave()
     {
         //If there is another wave after that one
@@ -258,34 +370,5 @@ public class LevelController : MonoBehaviour
         else
             foreach (Spawner current in _spawners)
                 current.NotifyPool();
-    }
-
-
-    //Getter
-    public EnemyPool RecoverPool(Enemy wantedEnemy)
-    {
-        foreach (EnemyPool current in _enemyPools)
-            if (current.Enemy.GetType() == wantedEnemy.GetType())
-                return current;
-
-        return null;
-    }
-
-    public ProjectilePool RecoverProjectilePool(Projectile wantedProjectile)
-    {
-        foreach (ProjectilePool current in _projectilePools)
-            if (current.Projectile.GetType() == wantedProjectile.GetType())
-                return current;
-
-        return null;
-    }
-
-    public TowerPool RecoverTowerPool(Tower wantedTower)
-    {
-        foreach (TowerPool current in _towerPools)
-            if (current.Tower.GetType() == wantedTower.GetType())
-                return current;
-
-        return null;
     }
 }

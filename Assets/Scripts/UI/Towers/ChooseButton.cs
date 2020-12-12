@@ -33,7 +33,7 @@ public class ChooseButton : MonoBehaviour
     //Start method, called when an object is started
     private void Start()
     {
-        List<Tower> buffer = _playerController.GetTowers();
+        List<Tower> buffer = _playerController.Towers;
 
         for(int i = 0; i < _interactableButtons.Count; i ++)
         {
@@ -57,7 +57,7 @@ public class ChooseButton : MonoBehaviour
         {
             int a = i;
             _interactableButtons[i].onClick.RemoveAllListeners();
-            _interactableButtons[i].onClick.AddListener(() => newUsedTowerSlot.ChooseTower(_playerController.GetTower(a)));
+            _interactableButtons[i].onClick.AddListener(() => newUsedTowerSlot.ChooseTower(_playerController.Towers[a]));
         }
     }
 }

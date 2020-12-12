@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5906076658267085393}
   - component: {fileID: 6617693188845866255}
   - component: {fileID: 5545853804847231419}
+  - component: {fileID: 1300118891692678689}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -106,6 +107,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1300118891692678689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5875892769604272345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +130,6 @@ GameObject:
   - component: {fileID: 7388368827716972525}
   - component: {fileID: 1503345609760783017}
   - component: {fileID: 5682064432001086994}
-  - component: {fileID: 3095814878159754224}
   m_Layer: 0
   m_Name: Blusim
   m_TagString: Untagged
@@ -186,19 +198,6 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 5906076658267085393}
   _numberOfParticles: 4
---- !u!114 &3095814878159754224
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6914183812568595844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 6617693188845866255}
 --- !u!1001 &4201768652579246608
 PrefabInstance:
   m_ObjectHideFlags: 0

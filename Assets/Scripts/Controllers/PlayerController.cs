@@ -1,34 +1,25 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Class used to handle player inputs and parameters 
- */
+/// <summary>
+/// Class used to store available towers.
+/// </summary>
 public class PlayerController : MonoBehaviour
 {
-    //List of every available tower 
-    //TO REWORK
+    /// <summary>
+    /// List of available Towers for this level.
+    /// </summary>
     [SerializeField]
     private List<Tower> _towerAvailables;
+    public List<Tower> Towers { get => _towerAvailables; }
 
 
 
+    /// <summary>
+    /// Start method called after Awake.
+    /// </summary>
     private void Start()
     {
         Application.targetFrameRate = 60;
     }
-
-
-
-    //Getter
-    //
-    //Return => Every tower the player is currently using
-    public List<Tower> GetTowers() { return _towerAvailables; }
-
-
-    //Getter
-    //
-    //Parameter => The chosen tower index
-    //Return => A tower the player is currently using
-    public Tower GetTower(int index) { return _towerAvailables[index]; }
 }

@@ -37,9 +37,6 @@ public class GameOverScreen : MonoBehaviour
 
 
     [Header("Components")]
-    //Pause controller used to stop everything
-    [SerializeField]
-    private GamePauseController _pauseController;
     [SerializeField]
     private LevelController _levelController;
     [SerializeField]

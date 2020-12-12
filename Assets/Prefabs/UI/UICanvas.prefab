@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0f7d9efdf08404d87db5f1056c98f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destinationScene: MapSelection
+  _pauseController: {fileID: 0}
 --- !u!1 &4541158168921798185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,11 +1649,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 4541158168501935612}
-    - target: {fileID: 3003438485008649405, guid: 33a95885d27b48b46b3dc016ffb87ee1,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: LoadScene
-      objectReference: {fileID: 0}
     - target: {fileID: 4372850595643050853, guid: 33a95885d27b48b46b3dc016ffb87ee1,
         type: 3}
       propertyPath: m_AnchoredPosition.y

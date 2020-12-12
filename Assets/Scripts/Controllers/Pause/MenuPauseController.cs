@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 
-/*
- * Class used to handle pause either when winning or pausing game
- */
+/// <summary>
+/// Class used to handle map selection pause.
+/// </summary>
 public class MenuPauseController : PauseController
 {
+    /// <summary>
+    /// Menu to pause.
+    /// </summary>
     [SerializeField]
     private LevelSelection _alternativeMenuScript;
 
-    [SerializeField]
-    private GameObject _alternativeMenu;
 
-
-
-    //Method used to pause the game and freeze time
+    /// <summary>
+    /// Method used to pause and display menu.
+    /// </summary>
+    /// <param name="showMenu">Does the pause needs to display a menu ?</param>
     public override void PauseGame(bool showMenu)
     {
         _hider.SetActive(!_hider.activeSelf);
