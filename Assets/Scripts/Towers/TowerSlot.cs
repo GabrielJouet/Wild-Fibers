@@ -49,21 +49,12 @@ public class TowerSlot : MonoBehaviour
     //Parameter => tower, tower chosen with UI
     public void ChooseTower(Tower tower)
     {
-        //If we do not have enough money we display a bad choice
-        if(_ressourceController.GoldCount < tower.Price)
-        {
-            //TO DO DISPLAY BAD CHOICE
-        }
-        //If we have enough money we construct the tower
-        else
-        {
-            _ressourceController.RemoveGold(tower.Price);
+        _ressourceController.RemoveGold(tower.Price);
 
-            _collider.enabled = false;
-            _backgroundSelecter.DisableTowerChooseButton();
+        _collider.enabled = false;
+        _backgroundSelecter.DisableTowerChooseButton();
 
-            StartCoroutine(DelayConstruct(tower));
-        }
+        StartCoroutine(DelayConstruct(tower));
     }
 
 
