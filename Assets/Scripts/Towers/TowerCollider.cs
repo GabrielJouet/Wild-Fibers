@@ -1,27 +1,32 @@
 ﻿using UnityEngine;
 
-/*
- * Tower collider is used to recover enemies
- */
+/// <summary>
+/// Tower collider, used to recover enemies in range.
+/// </summary>
 public class TowerCollider : MonoBehaviour
 {
-    //Tower related
+    /// <summary>
+    /// Parent tower to notify.
+    /// </summary>
     [SerializeField]
     private Tower _parentTower;
 
 
-    //Method used when an enemy collide with the range
-    //
-    //Parameter => enemy, the new enemy to enters tower range
+
+    /// <summary>
+    /// Method called when an enemy enters the range.
+    /// </summary>
+    /// <param name="enemy">The collided enemy</param>
     public void EnemyCollide(Enemy enemy)
     {
         _parentTower.AddEnemy(enemy);
     }
 
 
-    //Method used when an enemy exits the range
-    //
-    //Parameter => enemy, the new enemy to exits tower range
+    /// <summary>
+    /// Method called when an enemy exited the range.
+    /// </summary>
+    /// <param name="enemy">The collided enemy</param>
     public void EnemyExit(Enemy enemy)
     {
         _parentTower.RemoveEnemy(enemy);

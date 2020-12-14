@@ -1,23 +1,30 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Tower class is the main object of the game, they shoot enemies
- */
+/// <summary>
+/// Tower class, main object of the game.
+/// </summary>
 public class Tower : MonoBehaviour
 {
     [Header("Description")]
-    //Name display on UI
+
+    /// <summary>
+    /// Display name.
+    /// </summary>
     [SerializeField]
     protected string _displayName;
     public string Name { get => _displayName; }
 
-    //Price of the tower to build it
+    /// <summary>
+    /// Price of the tower.
+    /// </summary>
     [SerializeField]
     protected int _price;
     public int Price { get => _price; }
 
-    //Icon used in buttons and UI
+    /// <summary>
+    /// Icon of the tower.
+    /// </summary>
     [SerializeField]
     protected Sprite _icon;
     public Sprite Icon { get => _icon; }
@@ -25,114 +32,144 @@ public class Tower : MonoBehaviour
 
 
     [Header("Damage Related")]
-    //How many seconds between each attacks?
+
+    /// <summary>
+    /// Time between attack in second.
+    /// </summary>
     [SerializeField]
     protected float _timeBetweenShots;
     public float TimeShots { get => _timeBetweenShots; }
 
-    //How much damage an attack does?
+    /// <summary>
+    /// Damage per attack.
+    /// </summary>
     [SerializeField]
     protected int _damage;
     public int Damage { get => _damage; }
 
-    //How much armor an attack breaks?
+    /// <summary>
+    /// Armor through on each attack.
+    /// </summary>
     [SerializeField]
     protected float _armorThrough;
     public float ArmorThrough { get => _armorThrough; }
 
-    //Number of projectiles in one attack
+    /// <summary>
+    /// Number of projectile per attack.
+    /// </summary>
     [SerializeField]
     protected int _numberOfShots;
     public int Shots { get => _numberOfShots; }
 
-    //Projectile used in attack
+    /// <summary>
+    /// Projectile used in attack.
+    /// </summary>
     [SerializeField]
     protected GameObject _projectileUsed;
     public GameObject Projectile { get => _projectileUsed; }
 
-    //Tower range
+    /// <summary>
+    /// Range of the tower.
+    /// </summary>
     [SerializeField]
     protected float _range;
-    public float Range { get => _range; }
 
-    //Tower Collider used to recover enemies
+    /// <summary>
+    /// Collider used in range detection.
+    /// </summary>
     [SerializeField]
     protected GameObject _collider;
 
-    //Can the tower hit flying targets?
+    /// <summary>
+    /// Can the tower hits flying target?
+    /// </summary>
     [SerializeField]
     protected bool _canHitFlying;
 
 
     [Header("In game")]
-    //Range display object
+
+    /// <summary>
+    /// Range display.
+    /// </summary>
     [SerializeField]
     protected Transform _transformRange;
 
-    //Selector object
+    /// <summary>
+    /// Selector object used when clicked.
+    /// </summary>
     [SerializeField]
     protected GameObject _selector;
 
 
-    //Information UI
+    /// <summary>
+    /// Information UI object.
+    /// </summary>
     private BackgroudSelecter _backgroundSelecter;
 
-    //Which tower slot the tower is based on?
+    /// <summary>
+    /// The related tower slot.
+    /// </summary>
     protected TowerSlot _currentSlot;
 
-    //Ressource controller used to record money
+    /// <summary>
+    /// Resource controller used to record money.
+    /// </summary>
     protected RessourceController _ressourceController;
 
-    //Does the seller UI is active?
-    public bool SellerActive { get; protected set; } = false; 
-
-    //List of in-range enemies
+    /// <summary>
+    /// List of enemies in range.
+    /// </summary>
     protected List<Enemy> _availableEnemies = new List<Enemy>();
 
+    /// <summary>
+    /// Did the coroutine started?
+    /// </summary>
     protected bool _coroutineStarted;
 
+    /// <summary>
+    /// Pool used to recover projectiles.
+    /// </summary>
     protected ProjectilePool _projectilePool;
 
+    /// <summary>
+    /// Tower pool to recover and create towers.
+    /// </summary>
     protected TowerPool _towerPool;
 
-    protected Vector2 _colliderSize = Vector2.zero;
 
 
-
-    //Method used to initialize class (like a constructor)
-    //
-    //Parameters => newSlot, the tower slot related to this tower
-    //              newRessourceController, ressource controller used in this game
-    //              newBackgroundSelecter, used to display UI information
-    //              newPool, used to recover projectiles
-    //              newTowerPool, used when destroyed
+    /// <summary>
+    /// Method used to initialize.
+    /// </summary>
+    /// <param name="newSlot">The parent slot</param>
+    /// <param name="newRessourceController">The resource controller</param>
+    /// <param name="newBackgroundSelecter">The background selecter component</param>
+    /// <param name="newPool">The new projectile pool</param>
+    /// <param name="newTowerPool">The new tower pool</param>
     public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool)
     {
         StopAllCoroutines();
         _availableEnemies.Clear();
         _coroutineStarted = false;
 
-        //We set variables
         _backgroundSelecter = newBackgroundSelecter;
         _ressourceController = newRessourceController;
         _projectilePool = newPool;
         _currentSlot = newSlot;
         _towerPool = newTowerPool;
 
-        //And we change tower range 
         transform.position = newSlot.transform.position;
-
-        if (_colliderSize == Vector2.zero)
-            _colliderSize = _collider.transform.localScale * _range;
-
-        _transformRange.localScale = _colliderSize;
-        _collider.transform.localScale = _colliderSize;
+        _transformRange.localScale = _collider.transform.localScale * _range;
+        _collider.transform.localScale = _collider.transform.localScale * _range;
     }
 
 
 
     #region Upgrades and Money related
-    //Method used to resell a tower and destroy it
+    /// <summary>
+    /// Method used to resell the tower.
+    /// </summary>
     public void ResellTower()
     {
         _ressourceController.AddGold(Mathf.FloorToInt(_price / 4));
@@ -144,7 +181,9 @@ public class Tower : MonoBehaviour
     }
 
 
-    //Method used to upgrade a tower
+    /// <summary>
+    /// Method used to upgrade the tower.
+    /// </summary>
     public void UpgradeTower()
     {
         //TO DO
@@ -154,7 +193,10 @@ public class Tower : MonoBehaviour
 
 
     #region Enemies interaction
-    //Method used to add one enemy from its list
+    /// <summary>
+    /// Method used to add an enemy to the list.
+    /// </summary>
+    /// <param name="enemy">The enemy to add</param>
     public void AddEnemy(Enemy enemy)
     {
         if(!(!_canHitFlying && enemy.Flying))
@@ -162,7 +204,10 @@ public class Tower : MonoBehaviour
     }
 
 
-    //Method used to remove one enemy from its list
+    /// <summary>
+    /// Method used to remove an enemy to the list.
+    /// </summary>
+    /// <param name="enemy">The enemy to remove</param>
     public void RemoveEnemy(Enemy enemy)
     {
         if (_availableEnemies.Contains(enemy))
@@ -170,13 +215,20 @@ public class Tower : MonoBehaviour
     }
 
 
-    //Method used to sort enemies by their position toward the end of the path
+    /// <summary>
+    /// Method used to sort the enemy list.
+    /// </summary>
     protected void SortEnemies()
     {
         _availableEnemies.Sort((a, b) => b.PathRatio.CompareTo(a.PathRatio));
     }
 
-     
+
+    /// <summary>
+    /// Method used to recover available and prefered enemies.
+    /// </summary>
+    /// <param name="numberOfEnemiesToFound">How many enemies are needed</param>
+    /// <returns>A list of foound enemies</returns>
     protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound)
     {
         List<Enemy> availableEnemies = new List<Enemy>();
@@ -208,7 +260,9 @@ public class Tower : MonoBehaviour
 
 
     #region Reset related
-    //Method used to activate range display (when selected)
+    /// <summary>
+    /// Method used to activate the range.
+    /// </summary>
     public void ActivateRangeDisplay()
     {
         _transformRange.gameObject.SetActive(true);
@@ -216,23 +270,13 @@ public class Tower : MonoBehaviour
     }
 
 
-    //Method used to desactivate range display (when no longer selected)
+    /// <summary>
+    /// Method used to desactivate the range.
+    /// </summary>
     public void DesactivateRangeDisplay()
     {
         _transformRange.gameObject.SetActive(false);
         _selector.SetActive(false);
     }
-
-
-    //Method used to desactivate tower display (UI)
-    public void ResetTowerDisplay()
-    {
-        DesactivateRangeDisplay();
-        SellerActive = false;
-    }
-
-
-    //Method used to revert seller UI state
-    public void RevertSellerActive() { SellerActive = !SellerActive; }
     #endregion
 }

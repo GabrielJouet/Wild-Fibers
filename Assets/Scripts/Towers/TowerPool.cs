@@ -1,28 +1,27 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class used to store towers.
+/// </summary>
 public class TowerPool : MonoBehaviour
 {
-    //Base enemy prefab
-    public Tower Tower { get; private set; }
+    /// <summary>
+    /// The base prefab for this pool.
+    /// </summary>
+    public Tower Tower { get; set; }
 
-    //List of non used enemies but yet instanciated and desactivated
+    /// <summary>
+    /// Pool of towers.
+    /// </summary>
     private readonly Stack<Tower> _towerPool = new Stack<Tower>();
 
 
 
-    //Method used instead of using start (kinda a constructor)
-    //
-    //Parameters => newPrefab, the new projectile prefab used in spawn
-    public void Initialize(Tower newPrefab)
-    {
-        Tower = newPrefab;
-    }
-
-
-    //Method used to recover one tower
-    //
-    //Return a new enemy either already instanciated or newly created
+    /// <summary>
+    /// Method used to recover one tower from the pool.
+    /// </summary>
+    /// <returns>A tower from the pool</returns>
     public Tower GetOneTower()
     {
         Tower newTower = _towerPool.Count > 0 ? _towerPool.Pop() : Instantiate(Tower, transform);
@@ -32,13 +31,12 @@ public class TowerPool : MonoBehaviour
     }
 
 
-
-    //Method used to add one tower to the pool
-    //
-    //Parameters => newTower, game object of the tower
+    /// <summary>
+    /// Method used to add a tower to the pool.
+    /// </summary>
+    /// <param name="newTower">The tower to add</param>
     public void AddOneTower(Tower newTower)
     {
-        //We desactivate it
         newTower.gameObject.SetActive(false);
         _towerPool.Push(newTower);
     }

@@ -259,7 +259,7 @@ public class BackgroudSelecter : MonoBehaviour
         Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedTower.transform.position);
         Vector2 finalPosition = new Vector2(cameraScreen.x - _canvas.rect.width / 2, cameraScreen.y - _canvas.rect.height / 2);
 
-        if (!selectedTower.SellerActive)
+        if (!_sellButton.activeSelf)
         {
             ActivateTowerSellButton(finalPosition, selectedTower, Mathf.FloorToInt(selectedTower.Price / 4));
             SetTowerInformation(selectedTower);
@@ -273,7 +273,6 @@ public class BackgroudSelecter : MonoBehaviour
 
             selectedTower.DesactivateRangeDisplay();
         }
-        selectedTower.RevertSellerActive();
 
         _previousTower = selectedTower;
     }
@@ -284,7 +283,7 @@ public class BackgroudSelecter : MonoBehaviour
     /// </summary>
     private void DesactivateTower()
     {
-        _previousTower.ResetTowerDisplay();
+        _previousTower.DesactivateRangeDisplay();
 
         DisableTowerSellButton();
         DisableTowerChooseButton();
@@ -359,12 +358,10 @@ public class BackgroudSelecter : MonoBehaviour
         Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedSlot.transform.position);
         Vector2 finalPosition = new Vector2(cameraScreen.x - _canvas.rect.width / 2, cameraScreen.y - _canvas.rect.height / 2);
 
-        if (!selectedSlot.ChooserActive)
+        if (!_chooseButton.activeSelf)
             ActivateTowerChooseButton(finalPosition, selectedSlot);
         else
             DisableTowerChooseButton();
-
-        selectedSlot.RevertChooserActive();
 
         _previousSlot = selectedSlot;
     }
@@ -376,8 +373,6 @@ public class BackgroudSelecter : MonoBehaviour
     private void DesactivateTowerSlot()
     {
         DisableTowerChooseButton();
-
-        _previousSlot.ResetChooserActive();
 
         ResetPrevious();
     }

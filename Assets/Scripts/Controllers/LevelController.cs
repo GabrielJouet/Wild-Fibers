@@ -213,7 +213,7 @@ public class LevelController : MonoBehaviour
     private void SpawnOneProjectilePool(Tower currentPrefab)
     {
         ProjectilePool newPool = Instantiate(_projectilePoolPrefab, transform);
-        newPool.Initialize(currentPrefab.Projectile);
+        newPool.Projectile = currentPrefab.Projectile.GetComponent<Projectile>();
 
         _projectilePools.Add(newPool);
     }
@@ -226,7 +226,7 @@ public class LevelController : MonoBehaviour
     private void SpawnOneTowerPool(Tower currentPrefab)
     {
         TowerPool newPool = Instantiate(_towerPoolPrefab, transform);
-        newPool.Initialize(currentPrefab);
+        newPool.Tower = currentPrefab;
 
         _towerPools.Add(newPool);
     }
