@@ -50,7 +50,7 @@ public class RandomPath : MonoBehaviour
     /// <summary>
     /// Awake method, used for initialization.
     /// </summary>
-    private void Awake()
+    private void Start()
     {
         CalculatePath(_firstPath, _firstBezierCurves);
         CalculatePath(_secondPath, _secondBezierCurves);
