@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Scout Blusim
+  _displayName: Scout
   _healthMax: 25
   _armorMax: 0
   _speedMax: 0.4

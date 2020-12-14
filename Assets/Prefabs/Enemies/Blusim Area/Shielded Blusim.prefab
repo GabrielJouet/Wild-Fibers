@@ -168,7 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea02469733532443b1a9d43853c05e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Shielded Blusim
+  _displayName: Shielded
   _healthMax: 105
   _armorMax: 60
   _speedMax: 0.15
@@ -187,7 +187,6 @@ MonoBehaviour:
   - {fileID: 1049263690152909913}
   _numberOfParticles: 3
   _timeBetweenShield: 10.5
-  _shieldTime: 3
   _newShieldValue: 85
 --- !u!114 &2416215748048360603
 MonoBehaviour:
