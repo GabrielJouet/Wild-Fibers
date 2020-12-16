@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7248711420065350947}
   - component: {fileID: 2938188407293395532}
   m_Layer: 0
-  m_Name: Archer tower
+  m_Name: Arrow tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2559415124775340982, guid: 7d6556d7176d77b489d8638dcd6b642f,
+  m_Sprite: {fileID: 6408979333349359234, guid: 57baeccb8e0e34146890d817328beafd,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9aa4077e69657c049873b3b4f28735b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Archer
+  _displayName: Arrow
   _price: 90
   _icon: {fileID: 21300000, guid: 8898088e8c5280447bb4bb6d11c1ca60, type: 3}
   _timeBetweenShots: 1.2
@@ -492,7 +492,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7910471043360895327, guid: 4759e7b1f5652584c839b69f066f97c2,
+      objectReference: {fileID: -5974878852189205205, guid: 0e04fa1292b970b46a872d4eb69229d5,
         type: 3}
     - target: {fileID: 4569327442239327882, guid: 8f404ce135e6eb24ca1d175baef4607f,
         type: 3}

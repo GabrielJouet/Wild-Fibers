@@ -4,46 +4,46 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -4138263941454758077
-    second: Archer Tower Construction SpriteSheet_0
+    second: Mark Tower Construction SpriteSheet_0
   - first:
       213: -3392557811016974353
-    second: Archer Tower Construction SpriteSheet_1
+    second: Mark Tower Construction SpriteSheet_1
   - first:
       213: 1524497463804337601
-    second: Archer Tower Construction SpriteSheet_2
+    second: Mark Tower Construction SpriteSheet_2
   - first:
       213: 8904790222129647397
-    second: Archer Tower Construction SpriteSheet_3
+    second: Mark Tower Construction SpriteSheet_3
   - first:
       213: -5846089978323367862
-    second: Archer Tower Construction SpriteSheet_4
+    second: Mark Tower Construction SpriteSheet_4
   - first:
       213: 8179563984732819196
-    second: Archer Tower Construction SpriteSheet_5
+    second: Mark Tower Construction SpriteSheet_5
   - first:
       213: -5057742314050742285
-    second: Archer Tower Construction SpriteSheet_6
+    second: Mark Tower Construction SpriteSheet_6
   - first:
       213: 1483306591277232093
-    second: Archer Tower Construction SpriteSheet_7
+    second: Mark Tower Construction SpriteSheet_7
   - first:
       213: -3156164056866670690
-    second: Archer Tower Construction SpriteSheet_8
+    second: Mark Tower Construction SpriteSheet_8
   - first:
       213: -8621810705292755775
-    second: Archer Tower Construction SpriteSheet_9
+    second: Mark Tower Construction SpriteSheet_9
   - first:
       213: -7534641408466705506
-    second: Archer Tower Construction SpriteSheet_10
+    second: Mark Tower Construction SpriteSheet_10
   - first:
       213: -3070061910963789060
-    second: Archer Tower Construction SpriteSheet_11
+    second: Mark Tower Construction SpriteSheet_11
   - first:
       213: 3993134757113727518
-    second: Archer Tower Construction SpriteSheet_12
+    second: Mark Tower Construction SpriteSheet_12
   - first:
       213: -2559415124775340982
-    second: Archer Tower Construction SpriteSheet_13
+    second: Mark Tower Construction SpriteSheet_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -129,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_0
+      name: Mark Tower Construction SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,7 +137,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -150,7 +150,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_1
+      name: Mark Tower Construction SpriteSheet_1
       rect:
         serializedVersion: 2
         x: 32
@@ -158,7 +158,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -171,7 +171,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_2
+      name: Mark Tower Construction SpriteSheet_2
       rect:
         serializedVersion: 2
         x: 64
@@ -179,7 +179,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -192,7 +192,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_3
+      name: Mark Tower Construction SpriteSheet_3
       rect:
         serializedVersion: 2
         x: 96
@@ -200,7 +200,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -213,7 +213,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_4
+      name: Mark Tower Construction SpriteSheet_4
       rect:
         serializedVersion: 2
         x: 0
@@ -221,7 +221,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -234,7 +234,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_5
+      name: Mark Tower Construction SpriteSheet_5
       rect:
         serializedVersion: 2
         x: 32
@@ -242,7 +242,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -255,7 +255,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_6
+      name: Mark Tower Construction SpriteSheet_6
       rect:
         serializedVersion: 2
         x: 64
@@ -263,7 +263,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -276,7 +276,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_7
+      name: Mark Tower Construction SpriteSheet_7
       rect:
         serializedVersion: 2
         x: 96
@@ -284,7 +284,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -297,7 +297,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_8
+      name: Mark Tower Construction SpriteSheet_8
       rect:
         serializedVersion: 2
         x: 0
@@ -305,7 +305,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -318,7 +318,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_9
+      name: Mark Tower Construction SpriteSheet_9
       rect:
         serializedVersion: 2
         x: 32
@@ -326,7 +326,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -339,7 +339,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_10
+      name: Mark Tower Construction SpriteSheet_10
       rect:
         serializedVersion: 2
         x: 64
@@ -347,7 +347,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -360,7 +360,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_11
+      name: Mark Tower Construction SpriteSheet_11
       rect:
         serializedVersion: 2
         x: 96
@@ -368,7 +368,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -381,7 +381,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_12
+      name: Mark Tower Construction SpriteSheet_12
       rect:
         serializedVersion: 2
         x: 0
@@ -389,7 +389,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -402,7 +402,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Construction SpriteSheet_13
+      name: Mark Tower Construction SpriteSheet_13
       rect:
         serializedVersion: 2
         x: 32
@@ -410,7 +410,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

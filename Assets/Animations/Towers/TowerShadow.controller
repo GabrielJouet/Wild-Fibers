@@ -61,7 +61,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Archer
+    m_ConditionEvent: Mark
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7149857063360936671}
@@ -84,7 +84,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Archer Shadow
+  m_Name: Mark Shadow
   m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:
@@ -226,7 +226,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Archer
+  - m_Name: Arrow
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -322,7 +322,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: Mark
+    m_ConditionEvent: Arrow
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 9062828419660407073}
@@ -404,7 +404,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mark Shadow
+  m_Name: Arrow Shadow
   m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions:

@@ -1,49 +1,55 @@
 fileFormatVersion: 2
-guid: 4759e7b1f5652584c839b69f066f97c2
+guid: 0e04fa1292b970b46a872d4eb69229d5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1661667652045450370
-    second: Archer Tower Shadow 3
+      213: -9084594659763035779
+    second: Arrow Tower Shadow SpriteSheet_0
   - first:
-      213: 4260196703133604815
-    second: Archer Tower Shadow 4
+      213: 1647900357875196699
+    second: Arrow Tower Shadow SpriteSheet_1
   - first:
-      213: -1868671105545852146
-    second: Archer Tower Shadow 5
+      213: 8895729076805788961
+    second: Arrow Tower Shadow SpriteSheet_2
   - first:
-      213: 4126745036626143362
-    second: Archer Tower Shadow 6
+      213: -6908015861964488296
+    second: Arrow Tower Shadow SpriteSheet_3
   - first:
-      213: 2381339045777255435
-    second: Archer Tower Shadow 7
+      213: -7779999251554379887
+    second: Arrow Tower Shadow SpriteSheet_4
   - first:
-      213: 514138622227975813
-    second: Archer Tower Shadow 8
+      213: 3585031086464601961
+    second: Arrow Tower Shadow SpriteSheet_5
   - first:
-      213: -4650221462195721787
-    second: Archer Tower Shadow 9
+      213: 9120927276836327581
+    second: Arrow Tower Shadow SpriteSheet_6
   - first:
-      213: 7093407934542672078
-    second: Archer Tower Shadow 10
+      213: 163038560450174674
+    second: Arrow Tower Shadow SpriteSheet_7
   - first:
-      213: 5479050506782854666
-    second: Archer Tower Shadow 11
+      213: -51691163586151497
+    second: Arrow Tower Shadow SpriteSheet_8
   - first:
-      213: 8039836857516070638
-    second: Archer Tower Shadow 12
+      213: -3801211728529842758
+    second: Arrow Tower Shadow SpriteSheet_9
   - first:
-      213: -7910471043360895327
-    second: Archer Tower Shadow 13
+      213: -5216979548201659119
+    second: Arrow Tower Shadow SpriteSheet_10
   - first:
-      213: 7213903047784565597
-    second: Archer Tower Shadow 0
+      213: 5700799301508040362
+    second: Arrow Tower Shadow SpriteSheet_11
   - first:
-      213: 1100915375503386084
-    second: Archer Tower Shadow 1
+      213: -4549102683431555319
+    second: Arrow Tower Shadow SpriteSheet_12
   - first:
-      213: 8402301193408909108
-    second: Archer Tower Shadow 2
+      213: 447571922721612558
+    second: Arrow Tower Shadow SpriteSheet_13
+  - first:
+      213: -5974878852189205205
+    second: Arrow Tower Shadow SpriteSheet_14
+  - first:
+      213: -6799385176698607431
+    second: Mark Tower Shadow SpriteSheet_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -129,7 +135,70 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Archer Tower Shadow 3
+      name: Arrow Tower Shadow SpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d71e9680a490de180800000000000000
+      internalID: -9084594659763035779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow Tower Shadow SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b13e36005a48ed610800000000000000
+      internalID: 1647900357875196699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow Tower Shadow SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 144
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1256f19b67af37b70800000000000000
+      internalID: 8895729076805788961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Arrow Tower Shadow SpriteSheet_3
       rect:
         serializedVersion: 2
         x: 144
@@ -143,14 +212,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e73d219031290f8e0800000000000000
-      internalID: -1661667652045450370
+      spriteID: 891c7dc7c2cc120a0800000000000000
+      internalID: -6908015861964488296
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Shadow 4
+      name: Arrow Tower Shadow SpriteSheet_4
       rect:
         serializedVersion: 2
         x: 0
@@ -164,14 +233,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcb919b74524f1b30800000000000000
-      internalID: 4260196703133604815
+      spriteID: 197db42a6e3e70490800000000000000
+      internalID: -7779999251554379887
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Shadow 5
+      name: Arrow Tower Shadow SpriteSheet_5
       rect:
         serializedVersion: 2
         x: 48
@@ -185,14 +254,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0b27e7b7852116e0800000000000000
-      internalID: -1868671105545852146
+      spriteID: 96f847167c690c130800000000000000
+      internalID: 3585031086464601961
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Shadow 6
+      name: Arrow Tower Shadow SpriteSheet_6
       rect:
         serializedVersion: 2
         x: 96
@@ -206,14 +275,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28825b21fb4254930800000000000000
-      internalID: 4126745036626143362
+      spriteID: d901006980b049e70800000000000000
+      internalID: 9120927276836327581
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Shadow 7
+      name: Arrow Tower Shadow SpriteSheet_7
       rect:
         serializedVersion: 2
         x: 144
@@ -227,14 +296,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b0c2259ce373c0120800000000000000
-      internalID: 2381339045777255435
+      spriteID: 2ded258f4ba334200800000000000000
+      internalID: 163038560450174674
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Shadow 8
+      name: Arrow Tower Shadow SpriteSheet_8
       rect:
         serializedVersion: 2
         x: 0
@@ -248,14 +317,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 58e05375a56922700800000000000000
-      internalID: 514138622227975813
+      spriteID: 7bbbb6c192b584ff0800000000000000
+      internalID: -51691163586151497
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Shadow 9
+      name: Arrow Tower Shadow SpriteSheet_9
       rect:
         serializedVersion: 2
         x: 48
@@ -269,14 +338,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c92de2d738177fb0800000000000000
-      internalID: -4650221462195721787
+      spriteID: abd1ee492126f3bc0800000000000000
+      internalID: -3801211728529842758
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Shadow 10
+      name: Arrow Tower Shadow SpriteSheet_10
       rect:
         serializedVersion: 2
         x: 96
@@ -290,14 +359,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec07a591fe8d07260800000000000000
-      internalID: 7093407934542672078
+      spriteID: 11556fcddb09997b0800000000000000
+      internalID: -5216979548201659119
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Shadow 11
+      name: Arrow Tower Shadow SpriteSheet_11
       rect:
         serializedVersion: 2
         x: 144
@@ -311,14 +380,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a0e473b186f790c40800000000000000
-      internalID: 5479050506782854666
+      spriteID: aa68e26b2ce4d1f40800000000000000
+      internalID: 5700799301508040362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Shadow 12
+      name: Arrow Tower Shadow SpriteSheet_12
       rect:
         serializedVersion: 2
         x: 0
@@ -332,14 +401,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee69658660d339f60800000000000000
-      internalID: 8039836857516070638
+      spriteID: 90f294b26375ed0c0800000000000000
+      internalID: -4549102683431555319
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Shadow 13
+      name: Arrow Tower Shadow SpriteSheet_13
       rect:
         serializedVersion: 2
         x: 48
@@ -353,60 +422,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1aec57e5f7c583290800000000000000
-      internalID: -7910471043360895327
+      spriteID: e03a249da48163600800000000000000
+      internalID: 447571922721612558
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Archer Tower Shadow 0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 144
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d5b8e4fd99eec1460800000000000000
-      internalID: 7213903047784565597
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer Tower Shadow 1
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 144
-        width: 48
-        height: 48
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4e525ac73bc374f00800000000000000
-      internalID: 1100915375503386084
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Archer Tower Shadow 2
+      name: Arrow Tower Shadow SpriteSheet_14
       rect:
         serializedVersion: 2
         x: 96
-        y: 144
+        y: 0
         width: 48
         height: 48
       alignment: 0
@@ -416,8 +443,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43f8af80b68fa9470800000000000000
-      internalID: 8402301193408909108
+      spriteID: b2dc4471757f41da0800000000000000
+      internalID: -5974878852189205205
       vertices: []
       indices: 
       edges: []

@@ -3,7 +3,7 @@
 /*
  * Projectile of the archer tower
  */
-public class ArcherArrow : Projectile
+public class Arrow : Projectile
 {
     //Speed of movement
     [SerializeField]

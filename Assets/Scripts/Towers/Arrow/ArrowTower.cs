@@ -4,7 +4,7 @@ using UnityEngine;
 /*
  * Archer tower shoots little projectile to enemy faster than other towers
  */
-public class ArcherTower : Tower
+public class ArrowTower : Tower
 {
     //Fixed Update method, called 50 times per second
     private void FixedUpdate()
@@ -24,7 +24,7 @@ public class ArcherTower : Tower
 
         SortEnemies();
         foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().GetComponent<ArcherArrow>().Initialize(_damage, _armorThrough, current, transform, _projectilePool);
+            _projectilePool.GetOneProjectile().GetComponent<Arrow>().Initialize(_damage, _armorThrough, current, transform, _projectilePool);
 
         yield return new WaitForSeconds(_timeBetweenShots);
         _coroutineStarted = false;
