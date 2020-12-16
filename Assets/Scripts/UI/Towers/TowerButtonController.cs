@@ -1,33 +1,57 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Class used in tower construction UI
- */
+/// <summary>
+/// Class used to handle tower buttons.
+/// </summary>
 public class TowerButtonController : MonoBehaviour
 {
     [Header("Components")]
-    //Player controller that handles tower list and ressources
+
+    /// <summary>
+    /// Player controller handles towers.
+    /// </summary>
     [SerializeField]
     private PlayerController _playerController;
+
+    /// <summary>
+    /// Resource controller handles gold and lives.
+    /// </summary>
     [SerializeField]
     private RessourceController _ressourceController;
 
 
     [Header("Button Elements")]
-    //Transform component of choose button
+
+    /// <summary>
+    /// List of all tower buttons.
+    /// </summary>
     [SerializeField]
     private List<TowerButton> _towerButtons;
+
+    /// <summary>
+    /// Sell button.
+    /// </summary>
     [SerializeField]
     private TowerButton _sellButton;
+
+    /// <summary>
+    /// Rect transform used in movement.
+    /// </summary>
     [SerializeField]
     private RectTransform _rectTransform;
 
+
+    /// <summary>
+    /// Does the sell button is active?
+    /// </summary>
     public bool SellButtonActive { get => _sellButton.gameObject.activeSelf; }
 
 
 
-    //Start method, called when an object is started
+    /// <summary>
+    /// Start method, called at first.
+    /// </summary>
     private void Start()
     {
         List<Tower> buffer = _playerController.Towers;
@@ -37,6 +61,9 @@ public class TowerButtonController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Update method, called each frame.
+    /// </summary>
     private void Update()
     {
         if (_towerButtons[0].gameObject.activeSelf)
@@ -51,10 +78,11 @@ public class TowerButtonController : MonoBehaviour
     }
 
 
-    //Method used to activate choose buttons when the button is pressed
-    //
-    //Parameters => newPosition, new buttons position according to mouse
-    //              newUsedTowerSlot, the tower slot pressed
+    /// <summary>
+    /// Method used to activate the purchase buttons.
+    /// </summary>
+    /// <param name="newPosition">The new position of the buttons</param>
+    /// <param name="newUsedTowerSlot">The related tower slot</param>
     public void ActivatePurchaseButtons(Vector2 newPosition, TowerSlot newUsedTowerSlot)
     {
         _rectTransform.localPosition = newPosition;
@@ -70,6 +98,9 @@ public class TowerButtonController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method used to desactivate purchase buttons.
+    /// </summary>
     public void DesactivatePurchaseButtons()
     {
         for (int i = 0; i < _towerButtons.Count; i++)
@@ -77,6 +108,12 @@ public class TowerButtonController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method used to activate the sell button.
+    /// </summary>
+    /// <param name="newPosition">The new position of the buttons</param>
+    /// <param name="newTower">The related tower</param>
+    /// <param name="newPrice">The new price of the tower</param>
     public void ActivateSellButton(Vector2 newPosition, Tower newTower, int newPrice)
     {
         _rectTransform.localPosition = newPosition;
@@ -88,6 +125,9 @@ public class TowerButtonController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method used to desactivate sell button.
+    /// </summary>
     public void DesactivateSellButton()
     {
         _sellButton.gameObject.SetActive(false);

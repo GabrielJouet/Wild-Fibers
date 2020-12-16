@@ -35,6 +35,7 @@ public class DisplayController : MonoBehaviour
     public bool Paused { get; private set; } = false;
 
 
+
     /// <summary>
     /// Update is called every frame.
     /// </summary>
