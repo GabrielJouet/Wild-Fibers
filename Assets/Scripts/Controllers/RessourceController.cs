@@ -1,50 +1,78 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-/*
- * Class used in handling ressources of the game 
- */
+/// <summary>
+/// Class used to store and manage resources (gold and lives).
+/// </summary>
+/// <remarks>Needs a Level Controller component</remarks>
+[RequireComponent(typeof(LevelController))]
 public class RessourceController : MonoBehaviour
 {
-    [SerializeField]
-    private LevelController _levelController;
-
-
     [Header("UI Elements")]
-    //Life UI text element
+
+    /// <summary>
+    /// Life text component used to display lives count.
+    /// </summary>
     [SerializeField]
     private Text _lifeText;
 
-    //Gold UI text element
+    /// <summary>
+    /// Gold text component used to display gold count.
+    /// </summary>
     [SerializeField]
     private Text _goldText;
 
     [SerializeField]
     private Animator _goldIconAnimator;
 
-    //Game Over screen UI elements
+    /// <summary>
+    /// Game over component called when the player does not have any lives left.
+    /// </summary>
     [SerializeField]
     private GameOverScreen _gameOverScreen;
 
 
-    //Player money count, used in purchases
+    /// <summary>
+    /// Gold count in game.
+    /// </summary>
     public int GoldCount { get; private set; }
 
-    //Lives lost for this level
+    /// <summary>
+    /// Lives lost in game.
+    /// </summary>
     public int LivesLost { get => _lifeCountMax - _lifeCount; }
 
 
-    //Player life count, when dropping to 0 the game is finished
+    /// <summary>
+    /// Life count max and life count.
+    /// </summary>
     private int _lifeCountMax;
     private int _lifeCount;
 
+    /// <summary>
+    /// Level controller component used to retrieve lives and gold count.
+    /// </summary>
+    private LevelController _levelController;
 
-    //Start Method
-    //Called when the game object is initialized
+
+
+    /// <summary>
+    /// Awake method, called at first.
+    /// </summary>
+    private void Awake()
+    {
+        _levelController = GetComponent<LevelController>();
+    }
+
+
+    /// <summary>
+    /// Start method, called after Start.
+    /// </summary>
     private void Start()
     {
         _lifeCountMax = _levelController.LoadedLevel.Lives;
         _lifeCount = _lifeCountMax;
+
         GoldCount = _levelController.LoadedLevel.Gold;
         _goldText.text = GoldCount.ToString();
         _lifeText.text = _lifeCount.ToString();
@@ -52,11 +80,11 @@ public class RessourceController : MonoBehaviour
 
 
 
-    /*Gold Related*/
-    #region
-    //Method used to add gold from count
-    //
-    //Parameter => Amount of gold added
+    #region Gold related
+    /// <summary>
+    /// Add gold to count.
+    /// </summary>
+    /// <param name="count">Gold count added</param>
     public void AddGold(int count)
     {
         GoldCount += count;
@@ -64,9 +92,10 @@ public class RessourceController : MonoBehaviour
     }
 
 
-    //Method used to remove gold from count
-    //
-    //Parameter => Amount of gold removed
+    /// <summary>
+    /// Remove gold to count.
+    /// </summary>
+    /// <param name="count">Gold count removed</param>
     public void RemoveGold(int count)
     {
         GoldCount -= count;
@@ -76,12 +105,11 @@ public class RessourceController : MonoBehaviour
 
 
 
-    /*Lives related*/
-    #region
-    //Method used to remove lives from count
-    //When the count reaches 0 the game over is triggered
-    //
-    //Parameter => Amount of lives removed
+    #region Lives related
+    /// <summary>
+    /// Removes lives to count and display death if lives is below 0.
+    /// </summary>
+    /// <param name="count">Gold count removed</param>
     public void RemoveLives(int count)
     {
         if (_lifeCount > 0)
@@ -89,21 +117,16 @@ public class RessourceController : MonoBehaviour
             _goldIconAnimator.SetTrigger("lose");
 
             if (_lifeCount - count <= 0)
-                GameOver();
+            {
+                _lifeCount = 0;
+                _levelController.Ended = true;
+                _gameOverScreen.Activate(false);
+            }
             else
                 _lifeCount -= count;
 
             _lifeText.text = _lifeCount.ToString();
         }
-    }
-
-
-    //Method used to stop the game and display it
-    private void GameOver()
-    {
-        _lifeCount = 0;
-        _levelController.Ended = true;
-        _gameOverScreen.Activate(false);
     }
     #endregion
 }

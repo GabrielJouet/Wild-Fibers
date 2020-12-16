@@ -1,31 +1,17 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/*
- * This class is used to change Unity Scene
- */
+/// <summary>
+/// Class used when changing scene.
+/// </summary>
 public class ChangeScene : MonoBehaviour
 {
-    //The destination scene 
-    [SerializeField]
-    private string _destinationScene;
-
-
-
-    //This method will use the destination scene variable and Load the wanted scene
-    public void LoadScene()
-    {
-        SceneManager.LoadScene(_destinationScene);
-        FindObjectOfType<PauseController>()?.PauseGame(false);
-    }
-
-
-    //This method will do the same as above, but this time needs a parameters
-    //
-    //Parameter => The destination scene
+    /// <summary>
+    /// Load an Unity scene.
+    /// </summary>
+    /// <param name="destinationName">The destination scene</param>
     public void LoadScene(string destinationName)
     {
         SceneManager.LoadScene(destinationName);
-        FindObjectOfType<PauseController>()?.PauseGame(false);
     }
 }

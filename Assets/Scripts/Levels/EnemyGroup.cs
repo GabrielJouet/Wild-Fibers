@@ -2,31 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Class used to save enemy group data
- */
+/// <summary>
+/// Class used to store enemy group data.
+/// </summary>
 [Serializable]
 public class EnemyGroup
 {
     [Header("Parameters")]
-    //List of enemy patterns in a group
+
+    /// <summary>
+    /// Enemy groups in this pattern.
+    /// </summary>
     [SerializeField]
     private List<EnemyPattern> _enemyPatterns;
     public List<EnemyPattern> Patterns { get => _enemyPatterns; }
 
     [Space(15)]
-    //Type of enemy used in the group
+
+    /// <summary>
+    /// Enemy used in this group.
+    /// </summary>
     [SerializeField]
     private Enemy _enemyUsed;
     public Enemy Enemy { get => _enemyUsed; }
 
     [Min(0.1f)]
-    //Time between each pattern
+
+    /// <summary>
+    /// Time between each pattern.
+    /// </summary>
     [SerializeField]
     private float _timeBetweenPattern;
     public float TimeBetweenPattern { get => _timeBetweenPattern; }
 
-    //What path does the enemy will take?
+    /// <summary>
+    /// Path used by the enemy.
+    /// </summary>
     [SerializeField]
     private int _pathIndex;
     public int Path { get => _pathIndex; }

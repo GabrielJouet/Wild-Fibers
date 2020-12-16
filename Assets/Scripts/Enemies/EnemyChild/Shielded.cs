@@ -2,20 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Shielded enemy, from time to time this enemy will stop and protects itself.
+/// </summary>
 public class Shielded : Enemy
 {
     [Header("Special Behavior related")]
+
+    /// <summary>
+    /// Time between every shield.
+    /// </summary>
     [SerializeField]
     protected float _timeBetweenShield;
 
+    /// <summary>
+    /// Shield value when protecting.
+    /// </summary>
     [SerializeField]
     protected float _newShieldValue;
 
 
+    /// <summary>
+    /// Default shield value.
+    /// </summary>
     protected float _baseShieldValue;
 
 
 
+    /// <summary>
+    /// Initialize method.
+    /// </summary>
+    /// <param name="newPath">New path used</param>
+    /// <param name="newPool">Pool used for the current enemy</param>
+    /// <param name="pathIndex">Current progression on the path</param>
     public override void Initialize(List<Vector2> newPath, EnemyPool newPool, int pathIndex)
     {
         base.Initialize(newPath, newPool, pathIndex);
@@ -25,7 +44,9 @@ public class Shielded : Enemy
     }
 
 
-
+    /// <summary>
+    /// Coroutine used to delay every shield use.
+    /// </summary>
     protected IEnumerator DelayShield()
     {
         while (true)
@@ -42,6 +63,10 @@ public class Shielded : Enemy
     }
 
 
+    /// <summary>
+    /// Method used to change shield value.
+    /// </summary>
+    /// <param name="shieldValue">New shield value</param>
     protected void ChangeShieldValue(float shieldValue)
     {
         if (_dotApplied)

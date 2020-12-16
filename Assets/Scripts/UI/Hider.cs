@@ -1,38 +1,44 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class used to improve UI interactivity.
+/// </summary>
 public class Hider : MonoBehaviour
 {
-    //Hider collider
+    /// <summary>
+    /// Pause controller component used to pause, unpause.
+    /// </summary>
     [SerializeField]
-    private BoxCollider2D _hiderCollider;
+    private DisplayController _displayController;
 
-    [SerializeField]
-    private PauseController _pauseController;
-
+    /// <summary>
+    /// Level controller component used to know if the game is finished.
+    /// </summary>
     [SerializeField]
     private LevelController _levelController;
 
 
 
-    //Initialize the component
-    private void Start()
+    /// <summary>
+    /// Method used as initialization.
+    /// </summary>
+    private void Awake()
     {
-        _hiderCollider.size = new Vector2(Screen.width, Screen.height);
+        GetComponent<BoxCollider2D>().size = new Vector2(Screen.width, Screen.height);
     }
 
 
-
-    //Update method, called each frame
+    /// <summary>
+    /// Update method, called each frame.
+    /// </summary>
     private void Update()
     {
-        //If we press mouse button
-        //We will check what type of object we pressed
         if (Input.GetMouseButtonUp(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward, 90);
 
             if (hit.collider != null && hit.collider.GetComponent<Hider>() && (_levelController == null || !_levelController.Ended))
-                _pauseController.PauseGame(true);
+                _displayController.ResetDisplay();
         }
     }
 }

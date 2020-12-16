@@ -1,79 +1,113 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-/*
- * Class that handles all informational UI
- */
+/// <summary>
+/// Class that handles every interactional UI.
+/// </summary>
 public class BackgroudSelecter : MonoBehaviour
 {
     [Header("Tower related objects")]
-    //Tower information UI object
+
+    /// <summary>
+    /// Tower information panel object.
+    /// </summary>
     [SerializeField]
     private GameObject _towerInformationPanel;
 
-    //Text component handling tower name
+    /// <summary>
+    /// Text component containing the tower name.
+    /// </summary>
     [SerializeField]
     private Text _towerName;
 
-    //Text component handling tower damage
+    /// <summary>
+    /// Text component containing the tower damage.
+    /// </summary>
     [SerializeField]
     private Text _damageText;
 
-    //Text component handling tower armor through
+    /// <summary>
+    /// Text component containing the break armor value.
+    /// </summary>
     [SerializeField]
     private Text _breakArmorText;
 
-    //Text component handling tower fire rate
+    /// <summary>
+    /// Text component containing the fire rate value.
+    /// </summary>
     [SerializeField]
     private Text _fireRateText;
 
 
     [Header("Enemy related objects")]
-    //Enemy UI panel object
+
+    /// <summary>
+    /// Enemy information panel object.
+    /// </summary>
     [SerializeField]
     private GameObject _enemyInformationPanel;
 
-    //Text component handling enemy name
+    /// <summary>
+    /// Text component containing the enemy name.
+    /// </summary>
     [SerializeField]
     private Text _enemyName;
 
-    //Text component handling enemy health
+    /// <summary>
+    /// Text component containing the enemy life value.
+    /// </summary>
     [SerializeField]
     private Text _lifeValue;
 
-    //Text component handling enemy armor
+    /// <summary>
+    /// Text component containing the armor value.
+    /// </summary>
     [SerializeField]
     private Text _armorValue;
 
-    //Text component handling enemy lives taken
+
+    /// <summary>
+    /// Text component containing the number of lives lost.
+    /// </summary>
     [SerializeField]
     private Text _livesLostValue;
 
 
     [Header("Tower buttons related")]
-    //Choose buttons object
+
+    /// <summary>
+    /// Tower choose button controller.
+    /// </summary>
     [SerializeField]
     private TowerButtonController _towerButtonController;
 
-    //Regular canvas
+    /// <summary>
+    /// Tower sell button object.
+    /// </summary>
+    [SerializeField]
+    private GameObject _sellButton;
+
+    /// <summary>
+    /// UI canvas.
+    /// </summary>
     [SerializeField]
     private RectTransform _canvas;
 
 
-    //Buffer variables used to record previous objects
+    /// <summary>
+    /// Previous object clicked.
+    /// </summary>
     private Enemy _previousEnemy;
-
     private Tower _previousTower;
-
     private TowerSlot _previousSlot;
 
 
 
-    //Update method, called each frame
+    /// <summary>
+    /// Update method called each frame.
+    /// </summary>
     private void Update()
     {
-        //If we press mouse button
-        //We will check what type of object we pressed
         if(Input.GetMouseButtonDown(0))
         {
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector3.forward, 90);
@@ -94,11 +128,11 @@ public class BackgroudSelecter : MonoBehaviour
 
 
 
-    /*Enemy related*/
-    #region
-    //Method used to display enemy information after touching it
-    //
-    //Parameter => selected enemy
+    #region Enemy related
+    /// <summary>
+    /// Method used when clicking on an enemy.
+    /// </summary>
+    /// <param name="selectedEnemy">The clicked enemy</param>
     private void TouchEnemy(Enemy selectedEnemy)
     {
         if(_previousTower)
@@ -107,8 +141,7 @@ public class BackgroudSelecter : MonoBehaviour
         if(_previousSlot)
             DesactivateTowerSlot();
 
-
-        if(_previousEnemy != null)
+        if(_previousEnemy)
         {
             Enemy enemyBuffer = _previousEnemy;
 
@@ -122,9 +155,10 @@ public class BackgroudSelecter : MonoBehaviour
     }
 
 
-    //Method used to activate feedback on selected enemy
-    //
-    //Parameter => enemy, the enemy to activate visual feedback
+    /// <summary>
+    /// Method used to activate enemy display.
+    /// </summary>
+    /// <param name="enemy">Enemy displayed</param>
     private void ActivateEnemy(Enemy enemy)
     {
         UpdateEnemyInformation(enemy);
@@ -135,7 +169,9 @@ public class BackgroudSelecter : MonoBehaviour
     }
 
 
-    //Method used to desactivate feedback on previous selected enemy
+    /// <summary>
+    /// Method used to desactivate previous enemy display.
+    /// </summary>
     private void DesactivateEnemy()
     {
         _previousEnemy.InformationUI = null;
@@ -146,9 +182,10 @@ public class BackgroudSelecter : MonoBehaviour
     }
 
 
-    //Method used to update UI information with selected enemy
-    //
-    //Parameter => enemy, the enemy to display
+    /// <summary>
+    /// Method used to update enemy information on UI.
+    /// </summary>
+    /// <param name="enemyToDisplay">The enemy updated</param>
     public void UpdateEnemyInformation(Enemy enemyToDisplay)
     {
         if (!_enemyInformationPanel.activeSelf)
@@ -161,19 +198,23 @@ public class BackgroudSelecter : MonoBehaviour
         
         _lifeValue.text = enemyToDisplay.Health + " / " + enemyToDisplay.HealthMax;
         _enemyName.text = enemyToDisplay.Name;
-        _armorValue.text = ArmorType.TransformArmor(enemyToDisplay.Armor / 100);
+        _armorValue.text = ArmorTypeConverter.TransformArmor(enemyToDisplay.Armor / 100);
         _livesLostValue.text = enemyToDisplay.LivesTaken.ToString();
     }
 
 
-    //Method used to disable enemy UI information panel
+    /// <summary>
+    /// Method used to disable enemy information display.
+    /// </summary>
     public void DisableEnemyInformation()
     {
         _enemyInformationPanel.SetActive(false);
     }
 
 
-    //Method used to erase previous enemy, if it dies 
+    /// <summary>
+    /// Method used by Enemy to erase its value.
+    /// </summary>
     public void ErasePreviousEnemy()
     {
         _previousEnemy = null;
@@ -182,11 +223,11 @@ public class BackgroudSelecter : MonoBehaviour
 
 
 
-    /*Tower related*/
-    #region
-    //Method used to display tower information after touching it
-    //
-    //Parameter => selected tower
+    #region Tower related
+    /// <summary>
+    /// Method used when we click on a tower.
+    /// </summary>
+    /// <param name="selectedTower">The clicked tower</param>
     private void TouchTower(Tower selectedTower)
     {
         if (_previousSlot)
@@ -195,8 +236,7 @@ public class BackgroudSelecter : MonoBehaviour
         if (_previousEnemy)
             DesactivateEnemy();
 
-
-        if (_previousTower != null)
+        if (_previousTower)
         {
             Tower towerBuffer = _previousTower;
 
@@ -210,18 +250,19 @@ public class BackgroudSelecter : MonoBehaviour
     }
 
 
-    //Method used to activate feedback on selected tower
-    //
-    //Parameter => selectedTower, the tower to activate visual feedback
+    /// <summary>
+    /// Method called when we activate the tower informational UI.
+    /// </summary>
+    /// <param name="selectedTower">The tower to display</param>
     private void ActivateTower(Tower selectedTower)
     {
         Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedTower.transform.position);
         Vector2 finalPosition = new Vector2(cameraScreen.x - _canvas.rect.width / 2, cameraScreen.y - _canvas.rect.height / 2);
 
-        if (!selectedTower.SellerActive)
+        if (!_sellButton.activeSelf)
         {
             ActivateTowerSellButton(finalPosition, selectedTower, Mathf.FloorToInt(selectedTower.Price / 4));
-            SetTowerInformation(selectedTower.Icon, selectedTower.Name, selectedTower.Damage, selectedTower.ArmorThrough, selectedTower.TimeShots / 1f);
+            SetTowerInformation(selectedTower);
 
             selectedTower.ActivateRangeDisplay();
         }
@@ -232,16 +273,17 @@ public class BackgroudSelecter : MonoBehaviour
 
             selectedTower.DesactivateRangeDisplay();
         }
-        selectedTower.RevertSellerActive();
 
         _previousTower = selectedTower;
     }
 
 
-    //Method used to desactivate feedback on previous selected tower
+    /// <summary>
+    /// Method called when we want to desactivate previous tower UI.
+    /// </summary>
     private void DesactivateTower()
     {
-        _previousTower.ResetTowerDisplay();
+        _previousTower.DesactivateRangeDisplay();
 
         DisableTowerSellButton();
         DisableTowerChooseButton();
@@ -251,28 +293,27 @@ public class BackgroudSelecter : MonoBehaviour
     }
 
 
-    //Method used to set UI information with selected enemy
-    //
-    //Parameter => newTowerIcon, the icon to display
-    //             newTowerName, name to display
-    //             newDamageValue, damage to display
-    //             newBreakArmorValue, armor through to display
-    //             newFireRateValue, fire rate to display
-    public void SetTowerInformation(Sprite newTowerIcon, string newTowerName, int newDamageValue, float newBreakArmorValue, float newFireRateValue)
+    /// <summary>
+    /// Method used to set or update tower information.
+    /// </summary>
+    /// <param name="newTower">The tower to display</param>
+    public void SetTowerInformation(Tower newTower)
     {
         if (_enemyInformationPanel.activeSelf)
             DisableEnemyInformation();
 
         _towerInformationPanel.SetActive(true);
 
-        _towerName.text = newTowerName;
-        _damageText.text = newDamageValue.ToString();
-        _breakArmorText.text = BreakArmor.TransformArmorThrough(newBreakArmorValue / 100);
-        _fireRateText.text = FireRate.TransformFireRate(1 / newFireRateValue);
+        _towerName.text = newTower.Name;
+        _damageText.text = newTower.Damage.ToString();
+        _breakArmorText.text = BreakArmorConverter.TransformArmorThrough(newTower.ArmorThrough / 100);
+        _fireRateText.text = FireRateConverter.TransformFireRate(1 / newTower.TimeShots);
     }
 
 
-    //Method used to disable tower UI information panel
+    /// <summary>
+    /// Method used to disable tower information UI.
+    /// </summary>
     public void DisableTowerInformation()
     {
         _towerInformationPanel.SetActive(false);
@@ -281,11 +322,11 @@ public class BackgroudSelecter : MonoBehaviour
 
 
 
-    /*Tower slot and buttons related*/
-    #region
-    //Method used to display tower slot information after touching it
-    //
-    //Parameter => selected tower
+    #region Tower slot related
+    /// <summary>
+    /// Method called when we click on a tower slot.
+    /// </summary>
+    /// <param name="selectedSlot">The clicked slot</param>
     private void TouchSlot(TowerSlot selectedSlot)
     {
         if (_previousTower)
@@ -294,8 +335,7 @@ public class BackgroudSelecter : MonoBehaviour
         if (_previousEnemy)
             DesactivateEnemy();
 
-
-        if (_previousSlot != null)
+        if (_previousSlot)
         {
             TowerSlot slotBuffer = _previousSlot;
 
@@ -309,43 +349,40 @@ public class BackgroudSelecter : MonoBehaviour
     }
 
 
-    //Method used to activate feedback on selected tower slot
-    //
-    //Parameter => selectedSlot, the tower slot to activate visual feedback
+    /// <summary>
+    /// Method called when we want to activate a tower slot.
+    /// </summary>
+    /// <param name="selectedSlot">The tower slot to activate</param>
     private void ActivateTowerSlot(TowerSlot selectedSlot)
     {
-        if (selectedSlot.Tower == null)
-        {
-            Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedSlot.transform.position);
-            Vector2 finalPosition = new Vector2(cameraScreen.x - _canvas.rect.width / 2, cameraScreen.y - _canvas.rect.height / 2);
+        Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedSlot.transform.position);
+        Vector2 finalPosition = new Vector2(cameraScreen.x - _canvas.rect.width / 2, cameraScreen.y - _canvas.rect.height / 2);
 
-            if (!selectedSlot.ChooserActive)
-                ActivateTowerChooseButton(finalPosition, selectedSlot);
-            else
-                DisableTowerChooseButton();
+        if (!_chooseButton.activeSelf)
+            ActivateTowerChooseButton(finalPosition, selectedSlot);
+        else
+            DisableTowerChooseButton();
 
-            selectedSlot.RevertChooserActive();
-
-            _previousSlot = selectedSlot;
-        }
+        _previousSlot = selectedSlot;
     }
 
 
-    //Method used to desactivate feedback on previous selected tower slot
+    /// <summary>
+    /// Method used when we want to desactivate the tower slot UI.
+    /// </summary>
     private void DesactivateTowerSlot()
     {
         DisableTowerChooseButton();
-
-        _previousSlot.ResetChooserActive();
 
         ResetPrevious();
     }
 
 
-    //Method used to activate choose button on selected tower slot
-    //
-    //Parameter => newPosition, position of buttons
-    //             activatedSlot, slot selected
+    /// <summary>
+    /// Method called when we activate the tower choose button.
+    /// </summary>
+    /// <param name="newPosition">The new position of the UI</param>
+    /// <param name="activatedSlot">The tower slot to activate</param>
     public void ActivateTowerChooseButton(Vector2 newPosition, TowerSlot activatedSlot)
     {
         _towerButtonController.gameObject.SetActive(true);
@@ -354,18 +391,21 @@ public class BackgroudSelecter : MonoBehaviour
     }
 
 
-    //Method used to desactivate choose button on previous selected tower slot
+    /// <summary>
+    /// Method used to desactivate tower choose buttons.
+    /// </summary>
     public void DisableTowerChooseButton()
     {
         _towerButtonController.gameObject.SetActive(false);
     }
 
 
-    //Method used to activate sell button on selected tower slot    
-    //
-    //Parameter => newPosition, position of buttons
-    //             activatedSlot, slot selected
-    //             price, price to display
+    /// <summary>
+    /// Method used to activate the tower sell button.
+    /// </summary>
+    /// <param name="newPosition">The new position of the button</param>
+    /// <param name="activatedTower">The tower to activate</param>
+    /// <param name="price">The price to display</param>
     public void ActivateTowerSellButton(Vector2 newPosition, Tower activatedTower, int price)
     {
         _towerButtonController.gameObject.SetActive(true);
@@ -374,7 +414,9 @@ public class BackgroudSelecter : MonoBehaviour
     }
 
 
-    //Method used to desactivate sell buttons on previous selected tower slot
+    /// <summary>
+    /// Method used to disable tower sell button.
+    /// </summary>
     public void DisableTowerSellButton()
     {
         _towerButtonController.gameObject.SetActive(false);
@@ -383,9 +425,10 @@ public class BackgroudSelecter : MonoBehaviour
 
 
 
-    /*Desactivate all*/
-    #region
-    //Method used to desactivate previous selected objects
+    #region Desactivate all
+    /// <summary>
+    /// Method used to desactivate previous objects.
+    /// </summary>
     private void DesactivatePreviousOnes()
     {
         if (_previousEnemy)
@@ -399,7 +442,9 @@ public class BackgroudSelecter : MonoBehaviour
     }
 
 
-    //Method used when user clicks on the background and not on any object
+    /// <summary>
+    /// Method called when the player clicks on the background.
+    /// </summary>
     private void BackgroundClick()
     {
         DesactivatePreviousOnes();
@@ -413,13 +458,13 @@ public class BackgroudSelecter : MonoBehaviour
     }
 
 
-    //Method used to reset previous selected objects
+    /// <summary>
+    /// Method used to reset previous objects.
+    /// </summary>
     private void ResetPrevious()
     {
         _previousEnemy = null;
-
         _previousSlot = null;
-
         _previousTower = null;
     }
     #endregion

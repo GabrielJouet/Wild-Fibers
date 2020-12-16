@@ -1,47 +1,43 @@
 ﻿using UnityEngine;
 
-/*
- * This class is used to handle health display over enemies
- */
+/// <summary>
+/// Class used to display and update a health bar.
+/// </summary>
 public class HealthBar : MonoBehaviour
 {
     [Header("Components")]
-    //Transform component of health bar
+
+    /// <summary>
+    /// Transform component of the health bar.
+    /// </summary>
     [SerializeField]
     private Transform _healthBar;
-    //Sprite renderer component of health bar
+
+    /// <summary>
+    /// Sprite renderer component of the health bar.
+    /// </summary>
     [SerializeField]
     private SpriteRenderer _spriteRenderer;
 
 
-    //Initial y scale of health bar
-    private float _initialYScale = 0.0f;
 
-
-    //Start method, called when the object is started
-    private void Start()
-    {
-        _initialYScale = _healthBar.localScale.y;
-    }
-
-
-    /*Size related*/
-    #region
-    //Method used to change the health bar size
-    //
-    //Parameter => percentage, the percentage size based on initial size
+    /// <summary>
+    /// Method used to change the health bar size
+    /// </summary>
+    /// <param name="percentage">The new percentage scale to apply</param>
     public void ChangeSize(float percentage)
     {
-        _healthBar.localScale = new Vector3(percentage, _initialYScale, 1);
+        _healthBar.localScale = new Vector3(percentage, 1, 1);
         _healthBar.localPosition = new Vector3(-(1 - _healthBar.localScale.x) * _spriteRenderer.size.x / 2 + 0.005f, 0.005f, 0);
     }
 
 
-    //Method used to reset health bar size after an enemy die or is replaced
+    /// <summary>
+    /// Reset healthbar size
+    /// </summary>
     public void ResetSize()
     {
         _healthBar.localScale = new Vector3(1,1,1);
         _healthBar.localPosition = new Vector3(0.005f, 0.005f, 0);
     }
-    #endregion
 }

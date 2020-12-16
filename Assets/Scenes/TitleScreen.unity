@@ -480,13 +480,13 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1409857562}
         m_MethodName: LoadScene
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: MapSelection
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &412531532
@@ -1167,7 +1167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f0f7d9efdf08404d87db5f1056c98f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destinationScene: MapSelection
+  _pauseController: {fileID: 0}
 --- !u!114 &1409857563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1180,9 +1180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7f177196caedf41b2d8a1162b0556b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _menuObject: {fileID: 39616645}
-  _hider: {fileID: 1282037621}
-  _alternativeMenuScript: {fileID: 0}
+  _hider: {fileID: 0}
 --- !u!81 &1409857564
 AudioListener:
   m_ObjectHideFlags: 0

@@ -1,25 +1,39 @@
 ﻿using UnityEngine;
 
-/*
- * This class is used to render perspective in a 2D game
- */
+/// <summary>
+/// Class used to control depth in 2D environnement but for static objects (instead of doing this in a update, we do this in awake).
+/// </summary>
+/// <remarks>Needs a SpriteRenderer component</remarks>
+[RequireComponent(typeof(SpriteRenderer))]
 public class StaticDepthManager : MonoBehaviour
 {
-    //Sprite renderer of the game object
-    [Header("Component")]
-    [SerializeField]
+    /// <summary>
+    /// The sprite renderer component that will be update.
+    /// </summary>
     private SpriteRenderer _spriteRenderer;
 
-    //Main Camera of the Scene
+    /// <summary>
+    /// The main camera of the scene.
+    /// </summary>
     private Camera _mainCamera;
 
 
 
-    //Start Method
-    //Called when the game object is initialized
+    /// <summary>
+    /// Awake method, used at first to initialize.
+    /// </summary>
+    private void Awake()
+    {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _mainCamera = Camera.main;
+    }
+
+
+    /// <summary>
+    /// Start method, called after Awake.
+    /// </summary>
     private void Start()
     {
-        _mainCamera = Camera.main;
         _spriteRenderer.sortingOrder = (int)_mainCamera.WorldToScreenPoint(transform.position).y * -1;
     }
 }

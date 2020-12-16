@@ -1,54 +1,72 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Class used to save level data
- */
+/// <summary>
+/// Class used to store level related data.
+/// </summary>
 [CreateAssetMenu(menuName = "Levels/Level", fileName = "NewLevel")]
 public class Level : ScriptableObject
 {
     [Header("Description")]
-    //Name of the level
+
+    /// <summary>
+    /// Level name.
+    /// </summary>
     [SerializeField]
     private string _name;
     public string Name { get => _name; }
 
-    //Level number
+    /// <summary>
+    /// Level number.
+    /// </summary>
     [SerializeField]
     private int _number;
     public int Number { get => _number; }
 
-    //Little thumbnail used in level selection
+    /// <summary>
+    /// Level thumbnail.
+    /// </summary>
     [SerializeField]
     private Sprite _picture;
     public Sprite Picture { get => _picture; }
 
-    //Little description used in level selection
+    /// <summary>
+    /// Level description.
+    /// </summary>
     [SerializeField]
     private string _description;
     public string Description { get => _description; }
 
-    //Name of the Scene in Assets directory
+    /// <summary>
+    /// Scene related.
+    /// </summary>
     [SerializeField]
     private string _playSceneName;
     public string Scene { get => _playSceneName; }
 
 
     [Header("In play")]
-    //List of available waves in a level
+
+    /// <summary>
+    /// Number of waves.
+    /// </summary>
     [SerializeField]
     private List<Wave> _availableWaves;
     public List<Wave> Waves { get => _availableWaves; }
 
     [Space(10)]
 
-    //Lives allowed at the start of the level
+    /// <summary>
+    /// How many lives in this level?
+    /// </summary>
     [SerializeField]
     [Range(1,50)]
     private int _lifeCount;
     public int Lives { get => _lifeCount; }
 
-    //Gold amount allowed at the start of the level
+    /// <summary>
+    /// Gold count at the start of the level.
+    /// </summary>
     [SerializeField]
     [Min(150)]
     private int _goldCount;
@@ -56,7 +74,9 @@ public class Level : ScriptableObject
 
     [Space(10)]
 
-    //Enemies available in this level
+    /// <summary>
+    /// Enemies type in the level.
+    /// </summary>
     [SerializeField]
     private List<Enemy> _enemyAvailables;
     public List<Enemy> Enemies { get => _enemyAvailables; }

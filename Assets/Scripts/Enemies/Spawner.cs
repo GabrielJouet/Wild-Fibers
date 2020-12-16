@@ -2,61 +2,79 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * This class is used to control one enemy pool and enemy spawn
- */
+/// <summary>
+/// A class that will handles enemy spawning.
+/// </summary>
 public class Spawner : MonoBehaviour
 {
-    //Index of the enemy pattern inside a wave
+    /// <summary>
+    /// Index of the current pattern.
+    /// </summary>
     private int _patternIndex = 0;
 
-    //Index of enemy inside a pattern
+    /// <summary>
+    /// Index of the current enemy group.
+    /// </summary>
     private int _enemyIndex = 0;
 
+    /// <summary>
+    /// Current enemy group loaded.
+    /// </summary>
+    private EnemyGroup _enemyGroup;
 
-    //Does the wave finished?
+    /// <summary>
+    /// Level controller component used to handles end of wave.
+    /// </summary>
+    private LevelController _levelController;
+    
+    /// <summary>
+    /// Enemy pool that handles enemies and resources.
+    /// </summary>
+    private EnemyPool _enemyPool;
+
+    /// <summary>
+    /// Random Path component.
+    /// </summary>
+    private RandomPath _randomPath;
+
+    /// <summary>
+    /// Does every enemy is dead?
+    /// </summary>
+    public bool EnemiesKilled { get; private set; } = false;
+
+    /// <summary>
+    /// Does this wave is finished?
+    /// </summary>
     public bool WaveFinished { get; private set; } = false;
 
 
-    //Enemy group used in spawn
-    private EnemyGroup _enemyGroup;
 
-    //Level controller used when no enemies are left or wave is finished
-    private LevelController _levelController;
-
-    //Enemy pool of the current wave
-    private EnemyPool _enemyPool;
-
-    private RandomPath _randomPath;
-
-
-    //Does every enemy is dead?
-    public bool EnemiesKilled { get; private set; } = false;
-
-
-
-    //Method used by LevelController to set a new enemy group and start spawning entities
-    //
-    //Parameters => newGroup, the new group of enemy for this wave
-    //              newLevelController, the level controller of the current level
-    //              newEnemyPool, enemy pool to retrieve already instantiated enemies
+    /// <summary>
+    /// Method used to populate Spawner and start spawning
+    /// </summary>
+    /// <param name="newRandomPath">The component that handles pathfinding</param>
+    /// <param name="newGroup">The new loaded group</param>
+    /// <param name="newLevelController">The level controller component</param>
+    /// <param name="newEnemyPool">The new enemy pool component</param>
     public void SetNewGroup(RandomPath newRandomPath, EnemyGroup newGroup, LevelController newLevelController, EnemyPool newEnemyPool)
     {
-        //We reset and set variables
         _levelController = newLevelController;
         _enemyPool = newEnemyPool;
-
         _enemyGroup = newGroup;
         _randomPath = newRandomPath;
 
+        _patternIndex = 0;
+        _enemyIndex = 0;
         WaveFinished = false;
 
-        //And we launch enemies spawn
         StartCoroutine(SpawnEnemies());
     }
 
 
-    //Coroutine used to spawn enemies in group
+    /// <summary>
+    /// Coroutine used to spawn enemies of the current loaded group
+    /// </summary>
+    /// <returns>Yield the time between enemies or groups</returns>
     private IEnumerator SpawnEnemies()
     {
         while (!WaveFinished)
@@ -97,11 +115,11 @@ public class Spawner : MonoBehaviour
     }
 
 
-    //Method used when the wave is finished to contact LevelController
+    /// <summary>
+    /// Method called when the wave is finished for this group.
+    /// </summary>
     private void EndSpawn()
     {
-        _patternIndex = 0;
-        _enemyIndex = 0;
         _enemyGroup = null;
         WaveFinished = true;
 
@@ -109,14 +127,18 @@ public class Spawner : MonoBehaviour
     }
 
 
-    //Method used when all waves are spawned and level is finished
+    /// <summary>
+    /// Method used to flag enemy pool to start tracking.
+    /// </summary>
     public void NotifyPool()
     {
         _enemyPool.RecordLevelEnd(this);
     }
 
 
-    //Method used when every enemy of the group is killed
+    /// <summary>
+    /// Method called by pools to track when all enemies are dead.
+    /// </summary>
     public void AllEnemiesKilled()
     {
         EnemiesKilled = true;
