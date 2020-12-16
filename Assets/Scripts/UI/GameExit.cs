@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 
-/*
- * Class used as a button to exit game
- */
+/// <summary>
+/// Class used to handles exit game.
+/// </summary>
 public class GameExit : MonoBehaviour
 {
-    //Method used to exit game
+    /// <summary>
+    /// Method used to exit the game.
+    /// </summary>
     public void ExitGame()
     {
         Application.Quit();

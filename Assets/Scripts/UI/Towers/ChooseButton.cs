@@ -2,35 +2,52 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/*
- * Class used in tower construction UI
- */
+/// <summary>
+/// Class used in tower construction UI.
+/// </summary>
 public class ChooseButton : MonoBehaviour
 {
     [Header("Components")]
-    //Player controller that handles tower list and ressources
+
+    /// <summary>
+    /// Player controller component.
+    /// </summary>
     [SerializeField]
     private PlayerController _playerController;
 
 
     [Header("Button Elements")]
-    //List of interactable buttons
+
+    /// <summary>
+    /// All interactables buttons.
+    /// </summary>
     [SerializeField]
     private List<Button> _interactableButtons;
 
-    //Transform component of choose button
+    /// <summary>
+    /// Sprites of interactables buttons.
+    /// </summary>
     [SerializeField]
     private List<Image> _buttonSprites;
-    [SerializeField]
-    private RectTransform _rectTransform;
 
-    //List of texts components handling prices
+    /// <summary>
+    /// List of prices.
+    /// </summary>
     [SerializeField]
     private List<Text> _prices;
 
 
+    /// <summary>
+    /// Rect transform component.
+    /// </summary>
+    [SerializeField]
+    private RectTransform _rectTransform;
 
-    //Start method, called when an object is started
+
+
+    /// <summary>
+    /// Start method.
+    /// </summary>
     private void Start()
     {
         List<Tower> buffer = _playerController.Towers;
@@ -45,10 +62,11 @@ public class ChooseButton : MonoBehaviour
     }
 
 
-    //Method used to activate choose buttons when the button is pressed
-    //
-    //Parameters => newPosition, new buttons position according to mouse
-    //              newUsedTowerSlot, the tower slot pressed
+    /// <summary>
+    /// Method used to activate the buttons.
+    /// </summary>
+    /// <param name="newPosition">The new position of buttons</param>
+    /// <param name="newUsedTowerSlot">Tower slot used</param>
     public void Activate(Vector2 newPosition, TowerSlot newUsedTowerSlot)
     {
         _rectTransform.localPosition = newPosition;

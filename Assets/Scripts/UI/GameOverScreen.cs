@@ -1,62 +1,103 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-/*
- * Object used in game over behavior, show a game over screen
- */
+/// <summary>
+/// Class used for game over screen and handling end of level.
+/// </summary>
 public class GameOverScreen : MonoBehaviour
 {
     [Header("UI elements")]
-    //Text component that handles lose / win text
+
+    /// <summary>
+    /// Main text component.
+    /// </summary>
     [SerializeField]
     private Text _mainText;
 
-    //Game screen object
+    /// <summary>
+    /// Game screen image component.
+    /// </summary>
     [SerializeField]
     private Image _gameScreen;
 
+    /// <summary>
+    /// Sprite for win.
+    /// </summary>
     [SerializeField]
     private Sprite _winScreen;
 
+    /// <summary>
+    /// Sprite for loose.
+    /// </summary>
     [SerializeField]
     private Sprite _loseScreen;
 
-    [SerializeField]
-    private BoxCollider2D _boxCollider;
-
-    [SerializeField]
-    private RectTransform _transform;
-
+    /// <summary>
+    /// List of all seeds at the end of the level.
+    /// </summary>
     [SerializeField]
     private List<Image> _seedScores;
 
+    /// <summary>
+    /// Activated seed sprite.
+    /// </summary>
     [SerializeField]
     private Sprite _activatedSprite;
 
 
     [Header("Components")]
+
+    /// <summary>
+    /// Level controller component.
+    /// </summary>
     [SerializeField]
     private LevelController _levelController;
+
+    /// <summary>
+    /// Resource controller component.
+    /// </summary>
     [SerializeField]
     private RessourceController _ressourceController;
 
 
+    /// <summary>
+    /// Box collider component.
+    /// </summary>
+    [SerializeField]
+    private BoxCollider2D _boxCollider;
 
-    //Method used to activate game over screen
-    //
-    //Parameter => win, does the player win this level?
+    /// <summary>
+    /// Rect transform component.
+    /// </summary>
+    [SerializeField]
+    private RectTransform _transform;
+
+    /// <summary>
+    /// Display controller object.
+    /// </summary>
+    [SerializeField]
+    private DisplayController _displayController;
+
+
+
+    /// <summary>
+    /// Method used to activate and display the screen.
+    /// </summary>
+    /// <param name="win">Does the player wins this level?</param>
     public void Activate(bool win)
     {
-        StartCoroutine(DelayShow(win)); 
+        _displayController.PauseGame(gameObject);
+        DelayShow(win); 
     }
 
 
-    //Coroutine used to delay a bit game over screen popup
-    private IEnumerator DelayShow(bool win)
+    /// <summary>
+    /// Coroutine used to delay the display.
+    /// </summary>
+    /// <param name="win">Does the player wins this level?</param>
+    private void DelayShow(bool win)
     {
-        yield return new WaitForSeconds(1f);
         _boxCollider.enabled = true;
         _boxCollider.size = new Vector2(Screen.width + _transform.sizeDelta.x, Screen.height + _transform.sizeDelta.y);
         _gameScreen.gameObject.SetActive(true);

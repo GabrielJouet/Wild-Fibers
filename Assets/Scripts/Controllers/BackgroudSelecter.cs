@@ -198,7 +198,7 @@ public class BackgroudSelecter : MonoBehaviour
         
         _lifeValue.text = enemyToDisplay.Health + " / " + enemyToDisplay.HealthMax;
         _enemyName.text = enemyToDisplay.Name;
-        _armorValue.text = ArmorType.TransformArmor(enemyToDisplay.Armor / 100);
+        _armorValue.text = ArmorTypeConverter.TransformArmor(enemyToDisplay.Armor / 100);
         _livesLostValue.text = enemyToDisplay.LivesTaken.ToString();
     }
 
@@ -306,8 +306,8 @@ public class BackgroudSelecter : MonoBehaviour
 
         _towerName.text = newTower.Name;
         _damageText.text = newTower.Damage.ToString();
-        _breakArmorText.text = BreakArmor.TransformArmorThrough(newTower.ArmorThrough / 100);
-        _fireRateText.text = FireRate.TransformFireRate(1 / newTower.TimeShots);
+        _breakArmorText.text = BreakArmorConverter.TransformArmorThrough(newTower.ArmorThrough / 100);
+        _fireRateText.text = FireRateConverter.TransformFireRate(1 / newTower.TimeShots);
     }
 
 

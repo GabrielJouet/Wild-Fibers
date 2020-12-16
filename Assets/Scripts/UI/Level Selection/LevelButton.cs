@@ -2,87 +2,123 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-/*
- * Level Button is used in level selection scene where you can interact with them to select a level
- */
+/// <summary>
+/// Level button used to select a level.
+/// </summary>
 public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("Components")]
-    //Loaded level parameters
+
+    /// <summary>
+    /// Loaded level.
+    /// </summary>
     [SerializeField]
     private Level _levelParameters;
 
-    //Level selection object used to show level selection screen
+    /// <summary>
+    /// Level selection screen.
+    /// </summary>
     [SerializeField]
     private LevelSelection _levelSelection;
 
-    
-    [Header("Display")]
-    //Sprite of the button
+    /// <summary>
+    /// Button display object.
+    /// </summary>
     [SerializeField]
     private Image _buttonDisplay;
 
-    //Desactivated sprite if not unlocked
+    /// <summary>
+    /// Hover displayer object.
+    /// </summary>
     [SerializeField]
-    private Sprite _desactivatedSprite;
+    private Image _hoverDisplayer;
 
-    //Activated sprite if unlocked
+
+
+    [Header("Display")]
+
+    /// <summary>
+    /// Activated sprite.
+    /// </summary>
     [SerializeField]
     private Sprite _activatedSprite;
 
-    //Completed sprite
+    /// <summary>
+    /// Completed sprite.
+    /// </summary>
     [SerializeField]
     private Sprite _completedSprite;
 
+    /// <summary>
+    /// Sided sprite.
+    /// </summary>
     [SerializeField]
     private Sprite _sidedSprite;
 
-    //Challenged sprite if level is completed
+    /// <summary>
+    /// Challenged sprite.
+    /// </summary>
     [SerializeField]
     private Sprite _challengedSprite;
 
 
     [Header("Selection")]
-    [SerializeField]
-    private Image _hoverDisplayer;
 
+    /// <summary>
+    /// Unlocked hover sprite.
+    /// </summary>
     [SerializeField]
     private Sprite _unlockedHover;
 
+    /// <summary>
+    /// Finished hover sprite.
+    /// </summary>
     [SerializeField]
     private Sprite _finishedHover;
 
+    /// <summary>
+    /// Asided hover sprite.
+    /// </summary>
     [SerializeField]
     private Sprite _asideHover;
 
+    /// <summary>
+    /// Challenged hover sprite.
+    /// </summary>
     [SerializeField]
     private Sprite _challengedHover;
-    
-
-    private bool _isLocked;
 
 
-    private Sprite _loadedHover;
+    /// <summary>
+    /// Does the button is locked?
+    /// </summary>
+    private bool _isLocked = false;
 
 
+
+    /// <summary>
+    /// Method used to highlight the level button if not locked.
+    /// </summary>
+    /// <param name="eventData">The pointer event</param>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if(!_isLocked)
-        {
-            _hoverDisplayer.gameObject.SetActive(true);
-            _hoverDisplayer.sprite = _loadedHover;
-            _hoverDisplayer.SetNativeSize();
-        }
+        _hoverDisplayer.gameObject.SetActive(!_isLocked);
     }
 
 
+    /// <summary>
+    /// Method used to desactivate the highlight for the level button if not locked.
+    /// </summary>
+    /// <param name="eventData">The pointer event</param>
     public void OnPointerExit(PointerEventData eventData)
     {
         _hoverDisplayer.gameObject.SetActive(false);
     }
 
 
-    //Method used to activate level selection screen
+    /// <summary>
+    /// Method used to activate the level selection menu.
+    /// </summary>
     public void Activate()
     {
         if(!_isLocked)
@@ -90,42 +126,54 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     }
 
 
-    //Method used when the level is not yet unlocked
+    /// <summary>
+    /// Method used to unlock the level.
+    /// </summary>
     public void UnlockLevel()
     {
-        _loadedHover = _unlockedHover;
+        _hoverDisplayer.sprite = _unlockedHover;
         _buttonDisplay.sprite = _activatedSprite;
     }
-    
-    
+
+
+    /// <summary>
+    /// Method used to lock the level.
+    /// </summary>
     public void LockLevel()
     {
         _isLocked = true;
-        _buttonDisplay.sprite = _desactivatedSprite;
-        _loadedHover = null;
     }
 
 
-    //Method used when the level is completed
+    /// <summary>
+    /// Method used to set the level as complete.
+    /// </summary>
     public void SetCompleted()
     {
         _buttonDisplay.sprite = _completedSprite;
-        _loadedHover = _finishedHover;
+        _hoverDisplayer.sprite = _finishedHover;
+        _hoverDisplayer.SetNativeSize();
     }
 
 
-    //Method used when the side level is completed
+    /// <summary>
+    /// Method used to set the level as sided.
+    /// </summary>
     public void SetSided()
     {
         _buttonDisplay.sprite = _sidedSprite;
-        _loadedHover = _asideHover;
+        _hoverDisplayer.sprite = _asideHover;
+        _hoverDisplayer.SetNativeSize();
     }
 
 
-    //Method used when the level is challenged
+    /// <summary>
+    /// Method used to set the level as challenged.
+    /// </summary>
     public void SetChallenged()
     {
         _buttonDisplay.sprite = _challengedSprite;
-        _loadedHover = _challengedHover;
+        _hoverDisplayer.sprite = _challengedHover;
+        _hoverDisplayer.SetNativeSize();
     }
 }
