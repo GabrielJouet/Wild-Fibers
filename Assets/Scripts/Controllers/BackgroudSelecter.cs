@@ -82,12 +82,6 @@ public class BackgroudSelecter : MonoBehaviour
     private TowerButtonController _towerButtonController;
 
     /// <summary>
-    /// Tower sell button object.
-    /// </summary>
-    [SerializeField]
-    private GameObject _sellButton;
-
-    /// <summary>
     /// UI canvas.
     /// </summary>
     [SerializeField]
@@ -259,7 +253,7 @@ public class BackgroudSelecter : MonoBehaviour
         Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedTower.transform.position);
         Vector2 finalPosition = new Vector2(cameraScreen.x - _canvas.rect.width / 2, cameraScreen.y - _canvas.rect.height / 2);
 
-        if (!_sellButton.activeSelf)
+        if (!_towerButtonController.SellButtonActive)
         {
             ActivateTowerSellButton(finalPosition, selectedTower, Mathf.FloorToInt(selectedTower.Price / 4));
             SetTowerInformation(selectedTower);
@@ -268,6 +262,7 @@ public class BackgroudSelecter : MonoBehaviour
         }
         else
         {
+            _towerButtonController.DesactivateSellButton();
             DisableTowerInformation();
             DisableTowerSellButton();
 
@@ -316,6 +311,7 @@ public class BackgroudSelecter : MonoBehaviour
     /// </summary>
     public void DisableTowerInformation()
     {
+        _towerButtonController.DesactivateSellButton();
         _towerInformationPanel.SetActive(false);
     }
     #endregion
@@ -358,10 +354,7 @@ public class BackgroudSelecter : MonoBehaviour
         Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedSlot.transform.position);
         Vector2 finalPosition = new Vector2(cameraScreen.x - _canvas.rect.width / 2, cameraScreen.y - _canvas.rect.height / 2);
 
-        if (!_chooseButton.activeSelf)
-            ActivateTowerChooseButton(finalPosition, selectedSlot);
-        else
-            DisableTowerChooseButton();
+        ActivateTowerChooseButton(finalPosition, selectedSlot);
 
         _previousSlot = selectedSlot;
     }

@@ -23,12 +23,14 @@ public class TowerButtonController : MonoBehaviour
     [SerializeField]
     private RectTransform _rectTransform;
 
+    public bool SellButtonActive { get => _sellButton.gameObject.activeSelf; }
+
 
 
     //Start method, called when an object is started
     private void Start()
     {
-        List<Tower> buffer = _playerController.GetTowers();
+        List<Tower> buffer = _playerController.Towers;
 
         for (int i = 0; i < _towerButtons.Count; i ++)
             _towerButtons[i].Initialize(buffer[i].Icon, buffer[i].Price);
@@ -41,7 +43,7 @@ public class TowerButtonController : MonoBehaviour
         {
             for (int i = 0; i < _towerButtons.Count; i++)
             {
-                Tower buffer = _playerController.GetTower(i);
+                Tower buffer = _playerController.Towers[i];
 
                 _towerButtons[i].UpdateState(buffer.Price < _ressourceController.GoldCount);
             }
@@ -59,7 +61,7 @@ public class TowerButtonController : MonoBehaviour
 
         for (int i = 0; i < _towerButtons.Count; i++)
         {
-            Tower buffer = _playerController.GetTower(i);
+            Tower buffer = _playerController.Towers[i];
             _towerButtons[i].gameObject.SetActive(true);
 
             _towerButtons[i].ChangeBehavior(() => newUsedTowerSlot.ChooseTower(buffer));

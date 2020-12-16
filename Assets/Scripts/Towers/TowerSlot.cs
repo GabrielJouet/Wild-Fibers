@@ -73,10 +73,9 @@ public class TowerSlot : MonoBehaviour
     {
         _ressourceController.RemoveGold(tower.Price);
 
-            _collider.enabled = false;
-            _backgroundSelecter.DisableTowerChooseButton();
-            StartCoroutine(DelayConstruct(tower));
-        }
+        _collider.enabled = false;
+        _backgroundSelecter.DisableTowerChooseButton();
+        StartCoroutine(DelayConstruct(tower));
     }
 
 
