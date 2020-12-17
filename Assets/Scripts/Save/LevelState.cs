@@ -1,4 +1,7 @@
-﻿public enum LevelState 
+﻿/// <summary>
+/// Enum used to set level state.
+/// </summary>
+public enum LevelState 
 {
     LOCKED,
     UNLOCKED,

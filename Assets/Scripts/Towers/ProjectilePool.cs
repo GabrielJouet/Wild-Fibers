@@ -1,28 +1,27 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class used to store and reactivate old projectiles.
+/// </summary>
 public class ProjectilePool : MonoBehaviour
 {
-    //Base enemy prefab
-    public Projectile Projectile { get; private set; }
+    /// <summary>
+    /// Prefab used in this pool.
+    /// </summary>
+    public Projectile Projectile { get; set; }
 
-    //List of non used enemies but yet instanciated and desactivated
+    /// <summary>
+    /// Pool of projectiles.
+    /// </summary>
     private readonly Stack<Projectile> _projectilePool = new Stack<Projectile>();
 
 
 
-    //Method used instead of using start (kinda a constructor)
-    //
-    //Parameters => newPrefab, the new projectile prefab used in spawn
-    public void Initialize(GameObject newPrefab)
-    {
-        Projectile = newPrefab.GetComponent<Projectile>();
-    }
-
-
-    //Method used to recover one projectile
-    //
-    //Return a new projectile either already instanciated or newly created
+    /// <summary>
+    /// Method used to get a new projectile.
+    /// </summary>
+    /// <returns>A projectile from the pool</returns>
     public Projectile GetOneProjectile()
     {
         Projectile newProjectile = _projectilePool.Count > 0 ? _projectilePool.Pop() : Instantiate(Projectile, transform);
@@ -32,13 +31,12 @@ public class ProjectilePool : MonoBehaviour
     }
 
 
-
-    //Method used to add one projectile to the pool
-    //
-    //Parameters => newProjectile, game object of the projectile
+    /// <summary>
+    /// Method used to add a desactivated projectile to the pool.
+    /// </summary>
+    /// <param name="newProjectile">The desactivated projectile</param>
     public void AddOneProjectile(Projectile newProjectile)
     {
-        //We desactivate it
         newProjectile.gameObject.SetActive(false);
         _projectilePool.Push(newProjectile);
     }

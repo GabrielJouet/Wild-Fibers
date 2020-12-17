@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1049263690152909913}
   - component: {fileID: 2394709574171677322}
   - component: {fileID: 3597370224652989133}
+  - component: {fileID: 6443900726030665387}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -105,6 +106,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6443900726030665387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755112626027321121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +129,6 @@ GameObject:
   - component: {fileID: 7388368827716972525}
   - component: {fileID: 5524535823760821382}
   - component: {fileID: 2832435586917530963}
-  - component: {fileID: 2416215748048360603}
   m_Layer: 0
   m_Name: Queen Blusim
   m_TagString: Untagged
@@ -194,19 +206,6 @@ MonoBehaviour:
   _numberOfPathsWanted: 3
   _walkDirtParticle: {fileID: 4405452952222755525, guid: a4f95f77d8adb1245b064ec92efa76c3,
     type: 3}
---- !u!114 &2416215748048360603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6914183812568595844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 2394709574171677322}
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -464,7 +463,7 @@ PrefabInstance:
     - target: {fileID: 2009948410974079920, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2009948410974079920, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}
@@ -484,7 +483,7 @@ PrefabInstance:
     - target: {fileID: 4714962810088372888, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 9210405577189694847, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}

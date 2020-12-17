@@ -1,26 +1,29 @@
 ﻿using UnityEngine;
 
-/*
- * Pause menu UI
- */
+/// <summary>
+/// Class used to add a parameter and pause button.
+/// </summary>
 public class ParametersButton : MonoBehaviour
 {
     [Header("UI Elements")]
-    //Related menu object
+
+    /// <summary>
+    /// Related menu object.
+    /// </summary>
     [SerializeField]
     private GameObject _menuObject;
 
-    //Hider object used to shade around
+    /// <summary>
+    /// Hider object related.
+    /// </summary>
     [SerializeField]
     private GameObject _hider;
 
 
-    //Does the menu is already opened?
-    private bool _opened = false;
 
-
-
-    //Update method, called every frame
+    /// <summary>
+    /// Update method called each frame.
+    /// </summary>
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -28,12 +31,12 @@ public class ParametersButton : MonoBehaviour
     }
 
 
-    //Method used to open / close menu UI
+    /// <summary>
+    /// Method used to open menu.
+    /// </summary>
     public void OpenMenu()
     {
-        _menuObject.SetActive(!_opened);
-        _hider.SetActive(!_opened);
-
-        _opened = !_opened;
+        _menuObject.SetActive(!_menuObject.activeSelf);
+        _hider.SetActive(!_hider.activeSelf);
     }
 }

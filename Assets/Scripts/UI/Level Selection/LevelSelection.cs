@@ -2,72 +2,94 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-/*
- * Class used in level selection scene where every level is available
- */
+/// <summary>
+/// Class used to handles level selection menu.
+/// </summary>
 public class LevelSelection : MonoBehaviour
 {
     [Header("Menu Elements")]
-    //Text component handling level name
+
+    /// <summary>
+    /// Level name text component.
+    /// </summary>
     [SerializeField]
     private Text _levelName;
 
-    //Image component handling level thumbnail
+    /// <summary>
+    /// Level Thumbnail.
+    /// </summary>
     [SerializeField]
     private Image _levelPicture;
 
-    //Text component handling level description
+    /// <summary>
+    /// Level description text component.
+    /// </summary>
     [SerializeField]
     private Text _levelDescription;
 
-    //Button component handling level start
+    /// <summary>
+    /// Launch battle menu button.
+    /// </summary>
     [SerializeField]
     private Button _launchBattleMenu;
 
-    //Level buttons on level button selection screen
+    /// <summary>
+    /// List of level buttons to handle.
+    /// </summary>
     [SerializeField]
     private List<LevelButton> _levelButtons;
 
-
-    [Header("Component")]
-    //Scene Loader used to change level
-    [SerializeField]
-    private ChangeScene _sceneChanger;
-
+    /// <summary>
+    /// Scores objects displayed.
+    /// </summary>
     [SerializeField]
     private List<Image> _scores;
 
+    /// <summary>
+    /// Activated sprite of score items.
+    /// </summary>
     [SerializeField]
     private Sprite _activatedSprite;
 
 
-    [Header("UI Elements")]
-    //Hider used to shade everything
+    [Header("Component")]
+
+    /// <summary>
+    /// Scene changer component.
+    /// </summary>
     [SerializeField]
-    private GameObject _hider;
+    private ChangeScene _sceneChanger;
+
+    /// <summary>
+    /// Display controller component.
+    /// </summary>
     [SerializeField]
-    private GameObject _activer;
+    private DisplayController _displayController;
 
 
-    //Does the level selection screen already opened?
-    public bool Opened { get; private set; } = false;
-
+    /// <summary>
+    /// Save controller component.
+    /// </summary>
     private SaveController _saveController;
 
 
-    //Start method
+
+    /// <summary>
+    /// Start method used to initialize.
+    /// </summary>
     private void Start()
     {
         _saveController = FindObjectOfType<SaveController>();
         SetButtonStates();
+        gameObject.SetActive(false);
     }
 
 
-
-    //Method used to retrieve saved data and apply it to level button
+    /// <summary>
+    /// Method used to set button states at startup.
+    /// </summary>
     private void SetButtonStates()
     {
-        //For each level we check the save to see if level are unlocked, finished and completed
         List<LevelSave> levelSaves = _saveController.SaveFile.Saves;
 
         for (int i = 0; i < levelSaves.Count; i++)
@@ -94,59 +116,25 @@ public class LevelSelection : MonoBehaviour
     }
 
 
-
-    //Method used to activate level selection menu
-    //
-    //Parameter => newParameters, loaded level parameters
+    /// <summary>
+    /// Method used to open level selection menu.
+    /// </summary>
+    /// <param name="newParameters">The new level parameters to use</param>
     public void ActivateLevelSelectionMenu(Level newParameters)
     {
-        RevertState();
+        _displayController.DisplayObject(gameObject);
 
         _levelName.text = newParameters.Name;
         _levelPicture.sprite = newParameters.Picture;
         _levelDescription.text = newParameters.Description;
 
-        DisplayRanking(_saveController.SaveFile.Saves[newParameters.Number].LivesLost);
+        int livesLost = _saveController.SaveFile.Saves[newParameters.Number].LivesLost;
+
+        _scores[2].sprite = livesLost <= 15 ? _activatedSprite : _scores[2].sprite;
+        _scores[1].sprite = livesLost <= 10 ? _activatedSprite : _scores[2].sprite;
+        _scores[0].sprite = livesLost <= 3 ? _activatedSprite : _scores[2].sprite;
 
         _launchBattleMenu.onClick.RemoveAllListeners();
         _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(newParameters.Scene));
-    }
-
-
-    //Method used to desactivate level selection menu
-    public void DesactivateLevelSelectionMenu()
-    {
-        RevertState();
-    }
-
-
-    //Method used to display ranking for each stage
-    //
-    //Parameter => livesLost, the amount of lives lost in this stage
-    private void DisplayRanking(int livesLost)
-    {
-        if (livesLost <= 15)
-        {
-            _scores[2].sprite = _activatedSprite;
-
-            if (livesLost <= 10)
-            {
-                _scores[1].sprite = _activatedSprite;
-
-                if (livesLost <= 3)
-                    _scores[0].sprite = _activatedSprite;
-            }
-        }
-    }
-
-
-    //Method used to swap level selection menu state
-    private void RevertState()
-    {
-        _activer.SetActive(!Opened);
-
-        _hider.SetActive(!Opened);
-
-        Opened = !Opened;
     }
 }

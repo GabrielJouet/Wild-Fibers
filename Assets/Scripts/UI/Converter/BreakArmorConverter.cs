@@ -1,4 +1,7 @@
-﻿public static class BreakArmor 
+﻿/// <summary>
+/// Class used to convert armor through value into text.
+/// </summary>
+public static class BreakArmorConverter
 {
     private static readonly string destroyer = "Destroyer";
 
@@ -11,6 +14,12 @@
     private static readonly string stillPolish = "Still Polish";
 
 
+
+    /// <summary>
+    /// Method used to convert value.
+    /// </summary>
+    /// <param name="armorThrough">Float value to convert</param>
+    /// <returns>Converted value</returns>
     public static string TransformArmorThrough(float armorThrough)
     {
         if (armorThrough <= 0.05f)

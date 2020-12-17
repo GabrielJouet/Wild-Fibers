@@ -1,41 +1,57 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Class used to create a curved line
- */
+/// <summary>
+/// Class used to create a bezier curve.
+/// </summary>
 public class BezierCurve : MonoBehaviour
 {
     [Header("Points")]
-    //Start point for bezier curve
+
+    /// <summary>
+    /// Start point of the curve.
+    /// </summary>
     [SerializeField]
     private Transform _startPoint;
 
-    //Parameter start point for curve
+    /// <summary>
+    /// Parameter point of the start point.
+    /// </summary>
     [SerializeField]
     private Transform _parameterStartPoint;
 
-    //End point for bezier curve
+    /// <summary>
+    /// End point of the curve.
+    /// </summary>
     [SerializeField]
     private Transform _endPoint;
 
-    //Parameter end point for curve
+    /// <summary>
+    /// Parameter point of the end point.
+    /// </summary>
     [SerializeField]
     private Transform _parameterEndPoint;
 
 
     [Header("Precision")]
-    //Precision of the curve
+
+    /// <summary>
+    /// Number of iterations for each curve.
+    /// </summary>
     [SerializeField]
     private int _numberOfIterations;
 
 
-    //List of position in each curve
+    /// <summary>
+    /// List of point creating the curve.
+    /// </summary>
     public List<Vector3> Curve { get; private set; } = new List<Vector3>();
 
 
 
-    //Awake method called when the object is awaked (before Start)
+    /// <summary>
+    /// Awake method in order to initialize.
+    /// </summary>
     private void Awake()
     {
         ComputePath();
@@ -43,7 +59,9 @@ public class BezierCurve : MonoBehaviour
 
 
     /*
-    //OnDrawGizmos method used to draw in Editor
+    /// <summary>
+    /// On draw Gizmos is used to display curve in editor.
+    /// </summary>
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -73,7 +91,9 @@ public class BezierCurve : MonoBehaviour
     */
 
 
-    //Method used to create a bezier curve with parameters points
+    /// <summary>
+    /// Method used to compute the bezier curve.
+    /// </summary>
     private void ComputePath()
     {
         Vector3 A = _startPoint.position;

@@ -1,21 +1,27 @@
 ﻿using System;
 using UnityEngine;
 
-/*
- * Class used to save enemy pattern data
- */
+/// <summary>
+/// Class used to store enemy information.
+/// </summary>
 [Serializable]
 public class EnemyPattern
 {
     [Space(10)]
+
+    /// <summary>
+    /// Number of enemies in this group.
+    /// </summary>
     [Min(1)]
-    //Number of enemies in a pattern
     [SerializeField]
     private int _numberOfEnemies;
     public int EnemiesCount { get => _numberOfEnemies; }
 
+
+    /// <summary>
+    /// Time between each enemy.
+    /// </summary>
     [Min(0.05f)]
-    //Time between each enemy in the pattern
     [SerializeField]
     private float _timeBetweenEnemies;
     public float EnemiesTime { get => _timeBetweenEnemies; }

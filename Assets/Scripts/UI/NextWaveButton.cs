@@ -1,41 +1,60 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
-/*
- * Next wave button is used to call a next wave before time
- */
+/// <summary>
+/// Class used to handle new waves.
+/// </summary>
+[RequireComponent(typeof(Animator))]
 public class NextWaveButton : MonoBehaviour
 {
-    //Actual button object
-    [SerializeField]
-    private GameObject _newWaveButton;
-
-    //Filler is used to show time left amount
-    [SerializeField]
-    private Transform _newWaveFiller;
-
-    //Level controller of this level
+    /// <summary>
+    /// Level controller of the level.
+    /// </summary>
     [SerializeField]
     private LevelController _levelController;
 
+    /// <summary>
+    /// Animator component.
+    /// </summary>
     [SerializeField]
     private Animator _animator;
 
 
-    //Time left before next wave
+    /// <summary>
+    /// Time before next wave.
+    /// </summary>
     private float _timeLeft = 0;
 
-    //Does the time actually decrease?
+    /// <summary>
+    /// Does the time is decreasing?
+    /// </summary>
     private bool _timeDecrease = false;
 
-    //Does the tower is currently paused? (by Pause Controller)
-    protected bool _paused = false;
+
+    /// <summary>
+    /// Last sprite of the countdown animation.
+    /// </summary>
+    [SerializeField]
+    private Sprite _lastFrameCountDownSprite;
 
 
 
-    //Fixed Update, called 50 times a second
+    /// <summary>
+    /// First method called after Awake.
+    /// </summary>
+    private void Start()
+    {
+        _animator.GetComponent<Image>().sprite = _lastFrameCountDownSprite;
+        _animator.enabled = false;
+    }
+
+
+    /// <summary>
+    /// Fixed Update called 50 times a second.
+    /// </summary>
     private void FixedUpdate()
     {
-        if(_timeDecrease && !_paused)
+        if(_timeDecrease)
         {
             if (_timeLeft - Time.fixedDeltaTime < 0)
                 PressNewWaveButton();
@@ -45,33 +64,31 @@ public class NextWaveButton : MonoBehaviour
     }
 
 
-    //Method used to activate the new wave button
-    //
-    //Parameter => newTimeLeft, the amount of time before the wave starts
+    /// <summary>
+    /// Method called when we want to activate the button.
+    /// </summary>
+    /// <param name="newTimeLeft">New time left</param>
     public void ActivateNewWaveButton(float newTimeLeft)
     {
         _timeLeft = newTimeLeft;
         _timeDecrease = true;
 
-        _newWaveButton.SetActive(true);
+        gameObject.SetActive(true);
+
+        _animator.enabled = true;
+        _animator.SetFloat("animSpeed", _animator.runtimeAnimatorController.animationClips[0].length / newTimeLeft);
     }
 
 
-    //Method used when we press the next wave button
+    /// <summary>
+    /// Method used when the time is either depleted or the button is pressed.
+    /// </summary>
     public void PressNewWaveButton()
     {
         _levelController.StartWaveViaButton(_timeLeft);
         _timeDecrease = false;
 
-        _newWaveButton.SetActive(false);
-    }
-
-
-    //Method used to pause tower behavior when pause button is hit
-    public void PauseBehavior()
-    {
-        _animator.enabled = _paused;
-
-        _paused = !_paused;
+        _animator.enabled = false;
+        gameObject.SetActive(false);
     }
 }

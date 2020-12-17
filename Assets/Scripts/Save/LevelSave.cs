@@ -1,19 +1,28 @@
 ﻿using System;
 
-/*
- * Class used to save data of one level
- */
+/// <summary>
+/// Class used to save one level progression.
+/// </summary>
 [Serializable]
 public class LevelSave
 {
-    //Number of lives lost on this level
+    /// <summary>
+    /// Number of lives lost on this level.
+    /// </summary>
     public int LivesLost { get; private set; }
 
+    /// <summary>
+    /// Actual state of the level.
+    /// </summary>
     public LevelState State { get; private set; }
 
 
 
-    //Constructor
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="newLivesLost">Number of lives lost</param>
+    /// <param name="newLevelState">New state</param>
     public LevelSave(int newLivesLost, LevelState newLevelState)
     {
         LivesLost = newLivesLost;
