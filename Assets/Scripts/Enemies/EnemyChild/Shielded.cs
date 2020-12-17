@@ -29,7 +29,7 @@ public class Shielded : Enemy, IShieldable
     /// Default shield value.
     /// </summary>
     protected float _baseShieldValue;
-    public float BaseShieldValue { get => _baseShieldValue; }
+    public float BaseShieldValue { get => _baseShieldValue; set => _baseShieldValue = value; }
 
 
 
@@ -45,7 +45,7 @@ public class Shielded : Enemy, IShieldable
     {
         base.Initialize(newPath, newPool, pathIndex);
 
-        _baseShieldValue = _armorMax;
+        BaseShieldValue = _armorMax;
         StartCoroutine(DelayShield());
     }
 
@@ -57,14 +57,14 @@ public class Shielded : Enemy, IShieldable
     {
         while (true)
         {
-            yield return new WaitForSeconds(_timeBetweenShield);
+            yield return new WaitForSeconds(TimeBetweenShield + Random.Range(-TimeBetweenShield / 20, TimeBetweenShield / 20));
             _moving = false;
-            ChangeShieldValue(_newShieldValue);
+            ChangeShieldValue(NewShieldValue);
             _animator.SetTrigger("shield");
             yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[1].length / 0.5f);
 
             _moving = true;
-            ChangeShieldValue(_baseShieldValue);
+            ChangeShieldValue(BaseShieldValue);
         }
     }
 

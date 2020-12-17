@@ -99,7 +99,6 @@ public class Enemy : MonoBehaviour
     protected float _armor;
     public float Armor { get => _armor; }
 
-
     /// <summary>
     /// Speed max.
     /// </summary>

@@ -16,7 +16,7 @@ public interface IShieldable
     /// <summary>
     /// Default shield value.
     /// </summary>
-    float BaseShieldValue { get; }
+    float BaseShieldValue { get; set; }
 
 
     /// <summary>

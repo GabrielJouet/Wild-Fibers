@@ -59,7 +59,7 @@ public class Maggot : Enemy
     /// <returns>Yield the hatchling time and cocooning time</returns>
     protected IEnumerator DelayHatch()
     {
-        yield return new WaitForSeconds(_hatchingTime);
+        yield return new WaitForSeconds(_hatchingTime + Random.Range(-_hatchingTime / 20, _hatchingTime / 20));
         _moving = false;
         _animator.SetTrigger("cocoon");
 

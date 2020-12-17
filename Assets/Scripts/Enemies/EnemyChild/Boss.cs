@@ -94,7 +94,7 @@ public class Boss : Enemy, ISpawnable
     {
         while(true)
         {
-            yield return new WaitForSeconds(TimeBetweenSpawn);
+            yield return new WaitForSeconds(TimeBetweenSpawn + Random.Range(-TimeBetweenSpawn / 20, TimeBetweenSpawn / 20));
 
             _moving = false;
             for(int i = 0; i < NumberOfEnemiesPerSpawn; i ++)
@@ -106,7 +106,7 @@ public class Boss : Enemy, ISpawnable
                     current.Initialize(transform.position);
 
                 _animator.SetTrigger("lay");
-                yield return new WaitForSeconds(SpawnTime);
+                yield return new WaitForSeconds(SpawnTime + Random.Range(-SpawnTime / 20, SpawnTime / 20));
             }
             _moving = true;
         }
