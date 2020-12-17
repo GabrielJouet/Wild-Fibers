@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Shielded enemy, from time to time this enemy will stop and protects itself.
 /// </summary>
-public class Shielded : Enemy
+public class Shielded : Enemy, IShieldable
 {
     [Header("Special Behavior related")]
 
@@ -15,17 +15,23 @@ public class Shielded : Enemy
     [SerializeField]
     protected float _timeBetweenShield;
 
+    public float TimeBetweenShield { get => _timeBetweenShield; }
+
     /// <summary>
     /// Shield value when protecting.
     /// </summary>
     [SerializeField]
     protected float _newShieldValue;
+    public float NewShieldValue { get => _newShieldValue; }
 
 
     /// <summary>
     /// Default shield value.
     /// </summary>
     protected float _baseShieldValue;
+    public float BaseShieldValue { get => _baseShieldValue; }
+
+
 
 
 
@@ -47,7 +53,7 @@ public class Shielded : Enemy
     /// <summary>
     /// Coroutine used to delay every shield use.
     /// </summary>
-    protected IEnumerator DelayShield()
+    public IEnumerator DelayShield()
     {
         while (true)
         {
@@ -67,7 +73,7 @@ public class Shielded : Enemy
     /// Method used to change shield value.
     /// </summary>
     /// <param name="shieldValue">New shield value</param>
-    protected void ChangeShieldValue(float shieldValue)
+    public void ChangeShieldValue(float shieldValue)
     {
         if (_dotApplied)
             _armor = shieldValue - (_armorMax - _armor);

@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Class that handles boss like behavior, like spawning other enemies.
 /// </summary>
-public class Boss : Enemy
+public class Boss : Enemy, ISpawnable
 {
     [Header("Boss related")]
 
@@ -22,11 +22,15 @@ public class Boss : Enemy
     [SerializeField]
     protected float _timeBetweenSpawn;
 
+    public float TimeBetweenSpawn { get => _timeBetweenSpawn; }
+
     /// <summary>
     /// Time between start and end of spawn.
     /// </summary>
     [SerializeField]
     protected float _spawnTime;
+
+    public float SpawnTime { get => _spawnTime; }
 
     /// <summary>
     /// Does the boss stop while spawning other enemies?
@@ -34,11 +38,15 @@ public class Boss : Enemy
     [SerializeField]
     protected bool _stopWhileSpawning;
 
+    public bool StopWhileSpawning { get => _stopWhileSpawning; }
+
     /// <summary>
     /// How many enemies are spawned during each spawn.
     /// </summary>
     [SerializeField]
     protected int _numberOfEnemiesPerSpawn;
+
+    public int NumberOfEnemiesPerSpawn { get => _numberOfEnemiesPerSpawn; }
 
     /// <summary>
     /// The walk dirt particle used by the boss.
@@ -82,23 +90,23 @@ public class Boss : Enemy
     /// Coroutine used to delay each spawn wave.
     /// </summary>
     /// <returns>Yield time between spawn and spawn times</returns>
-    protected IEnumerator DelaySpawn()
+    public IEnumerator DelaySpawn()
     {
         while(true)
         {
-            yield return new WaitForSeconds(_timeBetweenSpawn);
+            yield return new WaitForSeconds(TimeBetweenSpawn);
 
             _moving = false;
-            for(int i = 0; i < _numberOfEnemiesPerSpawn; i ++)
+            for(int i = 0; i < NumberOfEnemiesPerSpawn; i ++)
             {
-                Enemy hatchling = _levelController.RecoverPool(_enemySpawnedPrefab).GetOneEnemy();
+                Enemy hatchling = _levelController.RecoverPool(Spawnling).GetOneEnemy();
                 hatchling.Initialize(AvailablePaths[Random.Range(0, AvailablePaths.Count)], _enemyPool, _pathIndex);
 
                 foreach (Particle current in _particleController.GetParticle(_walkDirtParticle, 3))
                     current.Initialize(transform.position);
 
                 _animator.SetTrigger("lay");
-                yield return new WaitForSeconds(_spawnTime);
+                yield return new WaitForSeconds(SpawnTime);
             }
             _moving = true;
         }

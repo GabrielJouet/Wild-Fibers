@@ -142,13 +142,12 @@ public class LevelController : MonoBehaviour
     {
         foreach (Enemy current in _level.Enemies)
         {
-            //TO CHANGE SHOULD BE AN INTERFACE INSTEAD
-            if (current.TryGetComponent(out Boss currentBoos))
+            if (current.TryGetComponent(out ISpawnable spawnable))
             {
                 bool result = false;
                 foreach (EnemyPool currentPool in _enemyPools)
                 {
-                    if (currentPool.Enemy.GetType() == currentBoos.Spawnling.GetType())
+                    if (currentPool.Enemy.GetType() == spawnable.Spawnling.GetType())
                     {
                         result = true;
                         break;
@@ -156,7 +155,7 @@ public class LevelController : MonoBehaviour
                 }
 
                 if (!result)
-                    SpawnOneEnemyPool(currentBoos.Spawnling);
+                    SpawnOneEnemyPool(spawnable.Spawnling);
             }
 
             SpawnOneEnemyPool(current);
