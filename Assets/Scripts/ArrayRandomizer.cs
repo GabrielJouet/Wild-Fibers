@@ -1,19 +1,21 @@
 ﻿using System.Collections.Generic;
 using System;
 
-/*
- * Class used as a extansion of arrays
- * Used to shuffle array
- */
+/// <summary>
+/// Class used to randomize array.
+/// </summary>
 public static class ArrayRandomizer
 {
-    //Random variable
+    /// <summary>
+    /// Rng variable.
+    /// </summary>
     private static readonly Random rng = new Random();
 
 
-    //Method used to shuffle any array
-    //
-    //Parameter => list, current array to shuffle
+    /// <summary>
+    /// Method used to shuffle an array.
+    /// </summary>
+    /// <param name="list">The list to shuffle</param>
     public static void Shuffle<T>(this IList<T> list)
     {
         int n = list.Count;

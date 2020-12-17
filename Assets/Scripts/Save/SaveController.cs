@@ -1,34 +1,41 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
-/*
- * Class used to controls every save related object
- */
+/// <summary>
+/// Class used to handles saves.
+/// </summary>
 public class SaveController : MonoBehaviour
 {
-	//Number of level in game (can be dynamic)
+	/// <summary>
+	/// Number of levels in the game.
+	/// </summary>
 	[SerializeField]
 	private int _numberOfLevel;
 
-	//The current save state
+	/// <summary>
+	/// Loaded save file.
+	/// </summary>
 	public SaveFile SaveFile { get; private set; }
 
-	//A Binary Formatter for data handling
+	/// <summary>
+	/// Binary formatter used.
+	/// </summary>
 	private BinaryFormatter _binaryFormatter;
 
-	//Path of save file
+	/// <summary>
+	/// Game save path.
+	/// </summary>
 	private string _gameSavePath;
 
 
 
-	//Start method, called after Awake
+	/// <summary>
+	/// Awake method, used for initialization.
+	/// </summary>
 	private void Awake()
 	{
-		DontDestroyOnLoad(gameObject);
-
 		_gameSavePath = Application.persistentDataPath + "/player.dat";
 		_binaryFormatter = new BinaryFormatter();
 
@@ -36,7 +43,9 @@ public class SaveController : MonoBehaviour
 	}
 
 
-	//Method used to read save file
+	/// <summary>
+	/// Method used to recover save.
+	/// </summary>
 	private void RecoverSave()
 	{
 		if (File.Exists(_gameSavePath))
@@ -60,7 +69,9 @@ public class SaveController : MonoBehaviour
 	}
 
 
-	//Method used to create a brand new save if no other were found
+	/// <summary>
+	/// Method used to create a new save if inexistant.
+	/// </summary>
 	private void CreateSave()
 	{
 		List<LevelSave> allSaves = new List<LevelSave>();
@@ -80,7 +91,11 @@ public class SaveController : MonoBehaviour
 	}
 
 
-	//Method used to save music and sound level when changed
+	/// <summary>
+	/// Method used to save music and sound level.
+	/// </summary>
+	/// <param name="newMusicLevel">The new music level</param>
+	/// <param name="newSoundLevel">The new sound level</param>
 	public void SaveMusicLevel(float newMusicLevel, float newSoundLevel)
 	{
 		SaveFile.Music = newMusicLevel;
@@ -90,10 +105,16 @@ public class SaveController : MonoBehaviour
 	}
 
 
-	//Method used to save level data when changed
+	/// <summary>
+	/// Method used to save a level data.
+	/// </summary>
+	/// <param name="levelIndex">The level index related</param>
+	/// <param name="newLivesLost">The number of lives lost</param>
+	/// <param name="newState">The new level state</param>
 	public void SaveLevelData(int levelIndex, int newLivesLost, LevelState newState)
 	{
-		SaveFile.Saves[levelIndex] = new LevelSave(newLivesLost, newState);
+		if(SaveFile.Saves[levelIndex].LivesLost > newLivesLost)
+			SaveFile.Saves[levelIndex] = new LevelSave(newLivesLost, newState);
 
 		if(levelIndex + 1 < _numberOfLevel)
 			SaveFile.Saves[levelIndex+1] = new LevelSave(0, LevelState.UNLOCKED);
@@ -102,7 +123,9 @@ public class SaveController : MonoBehaviour
 	}
 
 
-	//Method used to save current save data into a file
+	/// <summary>
+	/// Method used to save data in a file.
+	/// </summary>
 	private void SaveData()
 	{
 		try
@@ -119,7 +142,9 @@ public class SaveController : MonoBehaviour
 	}
 
 
-	//Method used to reset data when reset data button is pressed
+	/// <summary>
+	/// Method used to reset data if needed.
+	/// </summary>
 	public void ResetData()
 	{
 		if (File.Exists(_gameSavePath))

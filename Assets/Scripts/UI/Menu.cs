@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class used as parent for all menu objects.
+/// </summary>
+[RequireComponent(typeof(Transform), typeof(BoxCollider2D))]
 public class Menu : MonoBehaviour
 {
-    //Box collider of menu
-    [SerializeField]
-    private BoxCollider2D _boxCollider;
-
-    //Transform of menu
-    [SerializeField]
-    private RectTransform _transform;
-
-
-
-    //We initialize the component
-    void Start()
+    /// <summary>
+    /// Method used for initialization.
+    /// </summary>
+    private void Awake()
     {
-        _boxCollider.size = new Vector2(Screen.width + _transform.sizeDelta.x, Screen.height + _transform.sizeDelta.y);
+        RectTransform rectTransform = GetComponent<RectTransform>();
+
+        GetComponent<BoxCollider2D>().size = new Vector2(Screen.width + rectTransform.sizeDelta.x, Screen.height + rectTransform.sizeDelta.y);
     }
 }

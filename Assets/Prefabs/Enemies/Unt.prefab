@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3623001225806360375}
   - component: {fileID: 8203056244331385572}
   - component: {fileID: 4810297222311416622}
+  - component: {fileID: 8791561858969286234}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -105,6 +106,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8791561858969286234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2711471150789980654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +129,6 @@ GameObject:
   - component: {fileID: 7388368827716972525}
   - component: {fileID: 5813397970056962337}
   - component: {fileID: 5682064432001086994}
-  - component: {fileID: 2416215748048360603}
   m_Layer: 0
   m_Name: Unt
   m_TagString: Untagged
@@ -185,19 +197,6 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 3623001225806360375}
   _numberOfParticles: 2
---- !u!114 &2416215748048360603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6914183812568595844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 8203056244331385572}
 --- !u!1001 &3162793518331619717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -556,7 +555,7 @@ PrefabInstance:
     - target: {fileID: 4714962810088372888, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 9210405577189694847, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}

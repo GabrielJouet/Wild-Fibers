@@ -1,109 +1,114 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-/*
- * Tower slot is the base of every tower
- */
+/// <summary>
+/// Class used to create towers.
+/// </summary>
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(CapsuleCollider2D))]
 public class TowerSlot : MonoBehaviour
 {
     [Header("Components")]
-    //Ressource Controller used to pay towers
+
+    /// <summary>
+    /// Resource controller is used to handled gold count.
+    /// </summary>
     [SerializeField]
     private RessourceController _ressourceController;
 
+    /// <summary>
+    /// Level controller is used to recover pools.
+    /// </summary>
     [SerializeField]
     private LevelController _levelController;
 
-    //Information UI
+    /// <summary>
+    /// Information UI.
+    /// </summary>
     [SerializeField]
     private BackgroudSelecter _backgroundSelecter;
 
-    //Collider component used as a button
-    [SerializeField]
-    private CapsuleCollider2D _collider;
-
-    //Animator used in tower construction animation
-    [SerializeField]
-    private Animator _animator;
-
+    /// <summary>
+    /// Animator component for shadows.
+    /// </summary>
     [SerializeField]
     private Animator _shadowAnimator;
 
-    
+
+    /// <summary>
+    /// Collider component.
+    /// </summary>
+    private CapsuleCollider2D _collider;
+
+    /// <summary>
+    /// Animator component.
+    /// </summary>
+    private Animator _animator;
 
 
-    //Current tower associated with this slot
+
+    /// <summary>
+    /// Tower associated with tower slot.
+    /// </summary>
     public Tower Tower { get; private set; } = null;
 
-    //Does the chooser is active?
-    public bool ChooserActive { get; private set; } = false;
 
 
-    private Tower _chosenTower;
-
-
-    /*Construction related*/
-    #region
-    //Method used to construct a new tower from scratch
-    //
-    //Parameter => tower, tower chosen with UI
-    public void ChooseTower(Tower tower)
+    /// <summary>
+    /// Awake method used for initialization.
+    /// </summary>
+    private void Awake()
     {
-        //If we do not have enough money we display a bad choice
-        if(_ressourceController.GoldCount < tower.Price)
-        {
-            //TO DO DISPLAY BAD CHOICE
-        }
-        //If we have enough money we construct the tower
-        else
-        {
-            _ressourceController.RemoveGold(tower.Price);
-
-            _collider.enabled = false;
-            _backgroundSelecter.DisableTowerChooseButton();
-
-            StartCoroutine(DelayConstruct(tower));
-        }
+        _animator = GetComponent<Animator>();
+        _collider = GetComponent<CapsuleCollider2D>();
     }
 
 
-    //Method used to delay the construction of a new tower
-    //
-    //Parameter => tower, the new tower done
+    #region Construction related
+    /// <summary>
+    /// Method used to create a new tower.
+    /// </summary>
+    /// <param name="tower">The chosen tower</param>
+    public void ChooseTower(Tower tower)
+    {
+        _ressourceController.RemoveGold(tower.Price);
+
+        _collider.enabled = false;
+        _backgroundSelecter.DisableTowerChooseButton();
+        StartCoroutine(DelayConstruct(tower));
+    }
+
+
+    /// <summary>
+    /// Delay the tower construction.
+    /// </summary>
+    /// <param name="tower">The chosen tower</param>
+    /// <returns>Yield the construction time</returns>
     private IEnumerator DelayConstruct(Tower tower)
     {
-        _chosenTower = tower;
-        _shadowAnimator.SetTrigger(_chosenTower.Name);
-        _animator.SetTrigger(_chosenTower.Name);
+        Tower = tower;
+        _shadowAnimator.SetTrigger(Tower.Name);
+        _animator.SetTrigger(Tower.Name);
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
         _shadowAnimator.SetTrigger("Base");
+
         yield return new WaitForEndOfFrame();
         _animator.SetTrigger("Base");
 
-        TowerPool currentPool = _levelController.RecoverTowerPool(_chosenTower);
+        TowerPool currentPool = _levelController.RecoverTowerPool(Tower);
         Tower = currentPool.GetOneTower();
-        Tower.Initialize(this, _ressourceController, _backgroundSelecter, _levelController.RecoverProjectilePool(_chosenTower.Projectile.GetComponent<Projectile>()), currentPool);
+        Tower.Initialize(this, _ressourceController, _backgroundSelecter, _levelController.RecoverProjectilePool(Tower.Projectile.GetComponent<Projectile>()), currentPool);
     }
     #endregion
 
 
-
-    /*Reset related*/
-    #region
-    //Method used to reset the tower slot
+    /// <summary>
+    /// Method used to reset slot.
+    /// </summary>
     public void ResetSlot()
     {
         Tower = null;
         _collider.enabled = true;
     }
-
-
-    //Method used to revert chooser state
-    public void RevertChooserActive() { ChooserActive = !ChooserActive; }
-
-
-    //Method used to reset chooser state
-    public void ResetChooserActive() { ChooserActive = false; }
-    #endregion
 }

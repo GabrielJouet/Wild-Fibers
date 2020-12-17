@@ -2,141 +2,224 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/*
- * Class that handles every enemy beahvior
- */
+/// <summary>
+/// Enemy base class.
+/// </summary>
 public class Enemy : MonoBehaviour
 {
     [Header("Description")]
-    //Name display in the UI
+
+    /// <summary>
+    /// Display name.
+    /// </summary>
     [SerializeField]
     protected string _displayName;
     public string Name { get => _displayName; }
 
 
-    [Header("Behaviour Variables")]
-    //Health max
-    [SerializeField]
-    protected float _healthMax;
-    public float HealthMax { get => _healthMax; }
-    
-    //Current health
-    protected float _health;
-    public float Health { get => _health; }
-
-    //Armor max
-    [SerializeField]
-    protected float _armorMax;
-    //Current armor
-    protected float _armor;
-    public float Armor { get => _armor; }
-
-    //Speed max
-    [SerializeField]
-    protected float _speedMax;
-    //Current speed
-    protected float _speed;
-
-    //Number of lives removed if the enemy reaches the end
-    [SerializeField]
-    protected int _numberOfLivesTaken;
-    public int LivesTaken { get => _numberOfLivesTaken; }
-
-    //Money gained when the enemy is killed
-    [SerializeField]
-    protected int _goldGained;
-
-    //Does the enemy flies?
-    [SerializeField]
-    protected bool _flying;
-    public bool Flying { get => _flying; }
-
-    [SerializeField]
-    protected Transform _damagePosition;
-    public Vector2 DamagePosition { get => _damagePosition.position; }
-
-
-    //Dot duration in seconds
-    protected float _dotDuration;
-
-    //Dot damage per half second
-    protected float _healthMalus = 0;
-
-    //Does the enemy is moving?
-    protected bool _moving = false;
-
-    protected bool _isSlowDown = false;
-
-
     [Header("Display")]
-    //Selector object
+
+    /// <summary>
+    /// Selector object.
+    /// </summary>
     [SerializeField]
     protected GameObject _selector;
 
-    //Health bar script
+    /// <summary>
+    /// Health bar component.
+    /// </summary>
     [SerializeField]
     protected HealthBar _healthBar;
 
-    //Dot display sprite renderer
+    /// <summary>
+    /// Dot display object.
+    /// </summary>
     [SerializeField]
     protected SpriteRenderer _dotDisplay;
 
-    //Sprite renderer component
+    /// <summary>
+    /// Sprite renderer component.
+    /// </summary>
     [SerializeField]
     protected SpriteRenderer _spriteRenderer;
 
-    //Sprite used in dot effect
-    protected Sprite _dotEffect;
+    /// <summary>
+    /// Animator component.
+    /// </summary>
     [SerializeField]
     protected Animator _animator;
 
 
     [Header("Particle")]
+
+    /// <summary>
+    /// Damage particle used.
+    /// </summary>
     [SerializeField]
     protected Particle _damageParticle;
 
+    /// <summary>
+    /// Emission points particle.
+    /// </summary>
     [SerializeField]
     protected List<Transform> _particleEmissionsPoints;
 
+    /// <summary>
+    /// Number of particle per points.
+    /// </summary>
     [SerializeField]
     protected int _numberOfParticles;
+
+
+    [Header("Behaviour Variables")]
+
+    /// <summary>
+    /// Health max.
+    /// </summary>
+    [SerializeField]
+    protected float _healthMax;
+    public float HealthMax { get => _healthMax; }
+
+    /// <summary>
+    /// Current health.
+    /// </summary>
+    protected float _health;
+    public float Health { get => _health; }
+
+
+    /// <summary>
+    /// Armor max value.
+    /// </summary>
+    [SerializeField]
+    protected float _armorMax;
+
+    /// <summary>
+    /// Current armor.
+    /// </summary>
+    protected float _armor;
+    public float Armor { get => _armor; }
+
+
+    /// <summary>
+    /// Speed max.
+    /// </summary>
+    [SerializeField]
+    protected float _speedMax;
+
+    /// <summary>
+    /// Current speed.
+    /// </summary>
+    protected float _speed;
+
+
+    /// <summary>
+    /// Number of lives removed if the enemy reaches the end of the path.
+    /// </summary>
+    [SerializeField]
+    protected int _numberOfLivesTaken;
+    public int LivesTaken { get => _numberOfLivesTaken; }
+
+
+    /// <summary>
+    /// Gold value gained if the enemy is killed.
+    /// </summary>
+    [SerializeField]
+    protected int _goldGained;
+
+
+    /// <summary>
+    /// Does the enemy actually flies?
+    /// </summary>
+    [SerializeField]
+    protected bool _flying;
+    public bool Flying { get => _flying; }
+
+
+    /// <summary>
+    /// Damage position transform component.
+    /// </summary>
+    [SerializeField]
+    protected Transform _damagePosition;
+    public Vector2 DamagePosition { get => _damagePosition.position; }
+
+
+    /// <summary>
+    /// Dot duration in second.
+    /// </summary>
+    protected float _dotDuration;
+
+    /// <summary>
+    /// Dot health malus / ticks (0.5 sec).
+    /// </summary>
+    protected float _healthMalus = 0;
+
+
+    /// <summary>
+    /// Does the enemy is moving?
+    /// </summary>
+    protected bool _moving = false;
+
+    /// <summary>
+    /// Does the enemy is slow down?
+    /// </summary>
+    protected bool _isSlowDown = false;
+
+    /// <summary>
+    /// Particle controller component.
+    /// </summary>
     protected ParticleController _particleController;
 
 
-    //Does the enemy currently has a dot effect?
+    /// <summary>
+    /// Does a dot is applied?
+    /// </summary>
     protected bool _dotApplied = false;
 
 
-    //Current path used in enemy movement
+    /// <summary>
+    /// Loaded path.
+    /// </summary>
     protected List<Vector2> _path;
 
-    //Index on the path used
+    /// <summary>
+    /// Progression on path.
+    /// </summary>
     protected int _pathIndex;
 
+    /// <summary>
+    /// Path ratio.
+    /// </summary>
     public float PathRatio { get => (float)_pathIndex / (float)_path.Count; }
 
-    //Enemy pool where the enemy came from
+    /// <summary>
+    /// Enemy pool used to retrieve enemy.
+    /// </summary>
     protected EnemyPool _enemyPool;
 
-    //All information UI
+    /// <summary>
+    /// Information UI component.
+    /// </summary>
     public BackgroudSelecter InformationUI { get; set; }
 
+    /// <summary>
+    /// Does the enemy is already aimed?
+    /// </summary>
     public bool AlreadyAimed { get; set; } = false;
 
 
 
-    //Method used instead of using start (kinda a constructor)
-    //
-    //Parameters => newPath, the new path the enemy will used
-    //              newPool, the pool enemy came from
+    /// <summary>
+    /// Initialize method.
+    /// </summary>
+    /// <param name="newPath">New path used</param>
+    /// <param name="newPool">Pool used for the current enemy</param>
+    /// <param name="pathIndex">Current progression on the path</param>
     public virtual void Initialize(List<Vector2> newPath, EnemyPool newPool, int pathIndex)
     {
         if (_particleController == null)
             _particleController = FindObjectOfType<ParticleController>();
 
-        //We reset every variable
         InformationUI = null;
-
         _dotApplied = false;
         _dotDisplay.sprite = null;
         _isSlowDown = false;
@@ -161,7 +244,9 @@ public class Enemy : MonoBehaviour
     }
 
 
-    //Update method, called each frame
+    /// <summary>
+    /// Update method, called each frame.
+    /// </summary>
     protected void Update()
     {
         if(_moving)
@@ -169,7 +254,9 @@ public class Enemy : MonoBehaviour
     }
 
 
-    //Fixed Update method, called 50 times per second
+    /// <summary>
+    /// Fixed Update method, called 50 times a second.
+    /// </summary>
     protected void FixedUpdate()
     {
         if (InformationUI != null)
@@ -177,37 +264,32 @@ public class Enemy : MonoBehaviour
     }
 
 
-
-    //Method used to follow cezier path 
+    /// <summary>
+    /// Method used to follow bezier path.
+    /// </summary>
     protected void FollowPath()
     {
         transform.position = Vector3.MoveTowards(transform.position, _path[_pathIndex], Time.deltaTime * _speed);
 
-        //If the enemy position is reaching the end of the path part we increase the path index
         if ((Vector2)transform.position == _path[_pathIndex] && _pathIndex + 1 < _path.Count)
             _pathIndex++;
-        //Else if the enemy reaches the end of the path
         else if (_pathIndex + 1 == _path.Count)
-            ReachEnd();
+            Die(true);
 
         _spriteRenderer.flipX = transform.position.x - _path[_pathIndex].x > 0;
     }
 
 
-    //Method used to remove life on enemy
-    //
-    //Parameters => damage, amount of damage into the enemy
-    //              armorThrough, percentage of destroyed armor 
+    /// <summary>
+    /// Method to remove health to enemy.
+    /// </summary>
+    /// <param name="damage">How many damage the enemy is taking</param>
+    /// <param name="armorThrough">The quantity of armor through the hit has</param>
     public void TakeDamage(float damage, float armorThrough)
     {
-        //If armor through is higher than armor the damage is higher, else it is lower
         int damageLeft = Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor)/100)/2 : damage - ((_armor - armorThrough)/100 * damage));
 
-        //If the health is dropping below 0 the enemy die
-        if (_health - damageLeft <= 0)
-            Die();
-        else 
-            _health -= damageLeft;
+        TakeDamage(damageLeft);
 
         foreach (Transform current in _particleEmissionsPoints)
         {
@@ -215,18 +297,18 @@ public class Enemy : MonoBehaviour
                 particle.Initialize(current.position);
         }
 
-        //And we change health bar size
         _healthBar.ChangeSize(_health / _healthMax);
     }
 
 
-    //Method used to remove life on enemy without armor related
-    //
-    //Parameter => damage, amount of damage taken
+    /// <summary>
+    /// Method used to remove health to an enemy without using shield.
+    /// </summary>
+    /// <param name="damage">The amount of damage the enemy is taking</param>
     public void TakeDamage(float damage)
     {
         if (_health - damage <= 0)
-            Die();
+            Die(false);
         else
             _health -= damage;
 
@@ -234,7 +316,11 @@ public class Enemy : MonoBehaviour
     }
 
 
-    //Method used to apply a slow down on enemies
+    /// <summary>
+    /// Method used to apply a slowdown on the enemy.
+    /// </summary>
+    /// <param name="slowDownRatio">The percentage of speed loss</param>
+    /// <param name="slowDownTime">Time before slowdown is reset</param>
     public void ApplySlowDown(float slowDownRatio, float slowDownTime)
     {
         if(!_isSlowDown)
@@ -245,8 +331,10 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-    //Coroutine used to reset slow down once it started
+    /// <summary>
+    /// Coroutine used to delay the slow down reset.
+    /// </summary>
+    /// <returns>Yield the slow down reset time</returns>
     protected IEnumerator ResetSlowDown(float slowDownTime)
     {
         yield return new WaitForSeconds(slowDownTime);
@@ -255,12 +343,13 @@ public class Enemy : MonoBehaviour
     }
 
 
-    //Method used to apply a dot (damage over time) on enemies
-    //
-    //Parameters => armorThroughMalus, amount of armor reduced
-    //              healthMalus, amount of health lost every half second
-    //              duration, duration of the dot
-    //              newIcon, dot icon on enemy
+    /// <summary>
+    /// Method used to apply a dot on the enemy.
+    /// </summary>
+    /// <param name="armorThroughMalus">The armor through malus applied</param>
+    /// <param name="healthMalus">How much damage the enemy will take every 0.5 sec?</param>
+    /// <param name="duration">Duration of the dot</param>
+    /// <param name="newIcon">The new dot icon</param>
     public void ApplyDot(float armorThroughMalus, float healthMalus, float duration, Sprite newIcon)
     {
         _healthMalus = healthMalus;
@@ -275,7 +364,10 @@ public class Enemy : MonoBehaviour
     }
 
 
-    //Coroutine used to take damage from dot at a half second rate
+    /// <summary>
+    /// Coroutine used take damage from dot.
+    /// </summary>
+    /// <returns>Yield 0.5 sec</returns>
     protected IEnumerator TakePersistentDamage()
     {
         _dotApplied = true;
@@ -292,38 +384,33 @@ public class Enemy : MonoBehaviour
     }
 
 
-    //Method used to teleport back enemies 
+    /// <summary>
+    /// Method used to teleport back enemy.
+    /// </summary>
     public void TeleportBack(/*TO DO*/)
     {
         //TO DO
     }
 
 
-    //Method called when the enemy health drops below 0
-    protected void Die()
+    /// <summary>
+    /// Method used when the life of an enemy drops below zero or other specific behavior.
+    /// </summary>
+    /// <param name="reachEnd">Does the enemy reaches the end?</param>
+    protected void Die(bool reachEnd)
     {
         if (InformationUI)
             DesactivateUI();
 
         StopAllCoroutines();
 
-        _enemyPool.AddOneEnemy(this, false, _goldGained);
+        _enemyPool.AddOneEnemy(this, reachEnd, reachEnd ? _numberOfLivesTaken : _goldGained);
     }
 
 
-    //Method called when an enemy reaches the end of the path
-    protected void ReachEnd()
-    {
-        _enemyPool.AddOneEnemy(this, true, _numberOfLivesTaken);
-
-        if (InformationUI) 
-            DesactivateUI();
-
-        StopAllCoroutines();
-    }
-
-
-    //Method used to desactivate tracked UI
+    /// <summary>
+    /// Method used to desactivate enemy information UI.
+    /// </summary>
     protected void DesactivateUI()
     {
         InformationUI.ErasePreviousEnemy();
@@ -334,9 +421,17 @@ public class Enemy : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Can the enemy survive the damage?
+    /// </summary>
+    /// <param name="damage">How much damage the enemy is taking?</param>
+    /// <param name="armorThrough">The percentage of armor through the hit has</param>
     public bool CanSurvive(float damage, float armorThrough) { return _health - Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor) / 100) / 2 : damage - ((_armor - armorThrough) / 100 * damage)) > 0; }
 
 
+    /// <summary>
+    /// Activate or desactivate selector state.
+    /// </summary>
     public void SetSelector(bool state) 
     { 
         _selector.SetActive(state);
@@ -344,7 +439,10 @@ public class Enemy : MonoBehaviour
 
 
 
-    //Collision method called when the enemy enters a trigger
+    /// <summary>
+    /// Collision enter on 2D objects.
+    /// </summary>
+    /// <param name="collision">Collision object</param>
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out TowerCollider towerCollider))
@@ -352,7 +450,10 @@ public class Enemy : MonoBehaviour
     }
 
 
-    //Collision method called when the enemy exits a trigger
+    /// <summary>
+    /// Collision exit on 2D objects.
+    /// </summary>
+    /// <param name="collision">Collision object</param>
     protected void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out TowerCollider towerCollider))

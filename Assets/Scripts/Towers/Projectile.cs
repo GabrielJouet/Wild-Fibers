@@ -1,11 +1,19 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class used by projectile like object.
+/// </summary>
 public class Projectile : MonoBehaviour
 {
+    /// <summary>
+    /// The related pool.
+    /// </summary>
     protected ProjectilePool _projectilePool;
 
 
-    //Method used to stop wave and brings it back to parent tower
+    /// <summary>
+    /// Method called when a projectile hurt an enemy.
+    /// </summary>
     protected void StopProjectile()
     {
         gameObject.SetActive(false);
