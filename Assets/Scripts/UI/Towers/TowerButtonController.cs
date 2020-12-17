@@ -72,7 +72,7 @@ public class TowerButtonController : MonoBehaviour
             {
                 Tower buffer = _playerController.Towers[i];
 
-                _towerButtons[i].UpdateState(buffer.Price < _ressourceController.GoldCount);
+                _towerButtons[i].UpdateState(buffer.Price <= _ressourceController.GoldCount);
             }
         }
     }
