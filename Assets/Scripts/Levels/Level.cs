@@ -72,12 +72,20 @@ public class Level : ScriptableObject
     private int _goldCount;
     public int Gold { get => _goldCount; }
 
-    [Space(10)]
-
     /// <summary>
     /// Enemies type in the level.
     /// </summary>
-    [SerializeField]
-    private List<Enemy> _enemyAvailables;
-    public List<Enemy> Enemies { get => _enemyAvailables; }
+    public List<Enemy> Enemies 
+    { 
+        get
+        {
+            List<Enemy> availableEnemies = new List<Enemy>();
+            foreach (Wave current in _availableWaves)
+                foreach (EnemyGroup buffer in current.EnemyGroups)
+                    if (!availableEnemies.Contains(buffer.Enemy))
+                        availableEnemies.Add(buffer.Enemy);
+
+            return availableEnemies;
+        } 
+    }
 }
