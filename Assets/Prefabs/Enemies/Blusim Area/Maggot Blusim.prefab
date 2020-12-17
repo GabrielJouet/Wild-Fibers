@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 5524535823760821382}
   - component: {fileID: 1001176562105206731}
   m_Layer: 0
-  m_Name: Scout Blusim Maggot
+  m_Name: Maggot Blusim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,14 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5951dce96024a644493e8fcd5665b3df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Scout Maggot
-  _healthMax: 10
-  _armorMax: 15
-  _speedMax: 0.1
-  _numberOfLivesTaken: 1
-  _goldGained: 1
-  _flying: 0
-  _damagePosition: {fileID: 1049263690152909913}
+  _displayName: Maggot
   _selector: {fileID: 7325471192700415939}
   _healthBar: {fileID: 3144667757886646281}
   _dotDisplay: {fileID: 3511199004427678630}
@@ -197,9 +190,15 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 1049263690152909913}
   _numberOfParticles: 3
+  _healthMax: 10
+  _armorMax: 10
+  _speedMax: 0.1
+  _numberOfLivesTaken: 1
+  _goldGained: 1
+  _flying: 0
+  _damagePosition: {fileID: 1049263690152909913}
   _hatchingTime: 15
-  _cocoonTime: 2
-  _hatchling: {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4,
+  _hatchling: {fileID: 5682064432001086994, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb,
     type: 3}
 --- !u!1001 &1741317206090716099
 PrefabInstance:
