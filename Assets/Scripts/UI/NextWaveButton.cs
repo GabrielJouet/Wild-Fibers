@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
 /// Class used to handle new waves.
@@ -28,6 +29,24 @@ public class NextWaveButton : MonoBehaviour
     /// Does the time is decreasing?
     /// </summary>
     private bool _timeDecrease = false;
+
+
+    /// <summary>
+    /// Last sprite of the countdown animation.
+    /// </summary>
+    [SerializeField]
+    private Sprite _lastFrameCountDownSprite;
+
+
+
+    /// <summary>
+    /// First method called after Awake.
+    /// </summary>
+    private void Start()
+    {
+        _animator.GetComponent<Image>().sprite = _lastFrameCountDownSprite;
+        _animator.enabled = false;
+    }
 
 
     /// <summary>
