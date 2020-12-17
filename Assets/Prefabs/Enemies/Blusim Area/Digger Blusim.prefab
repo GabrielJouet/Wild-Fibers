@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1049263690152909913}
   - component: {fileID: 2394709574171677322}
   - component: {fileID: 3597370224652989133}
+  - component: {fileID: 4829851927036904151}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -94,7 +95,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5755112626027321121}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8202cb4426be575489324186cae0f7d5, type: 2}
   m_CullingMode: 0
@@ -105,6 +106,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4829851927036904151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5755112626027321121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +129,6 @@ GameObject:
   - component: {fileID: 7388368827716972525}
   - component: {fileID: 5524535823760821382}
   - component: {fileID: 5682064432001086994}
-  - component: {fileID: 2416215748048360603}
   m_Layer: 0
   m_Name: Digger Blusim
   m_TagString: Untagged
@@ -152,8 +164,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01, y: 0.225}
-  m_Size: {x: 0.22, y: 0.17}
+  m_Offset: {x: 0, y: 0.05}
+  m_Size: {x: 0.22, y: 0.12}
   m_Direction: 1
 --- !u!114 &5682064432001086994
 MonoBehaviour:
@@ -168,13 +180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Digger
-  _healthMax: 20
-  _armorMax: 15
-  _speedMax: 0.3
-  _numberOfLivesTaken: 1
-  _goldGained: 2
-  _flying: 0
-  _damagePosition: {fileID: 7388368827716972525}
   _selector: {fileID: 7325471192700415939}
   _healthBar: {fileID: 3144667757886646281}
   _dotDisplay: {fileID: 3511199004427678630}
@@ -185,19 +190,13 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 1049263690152909913}
   _numberOfParticles: 4
---- !u!114 &2416215748048360603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6914183812568595844}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 2394709574171677322}
+  _healthMax: 35
+  _armorMax: 15
+  _speedMax: 0.3
+  _numberOfLivesTaken: 1
+  _goldGained: 4
+  _flying: 0
+  _damagePosition: {fileID: 1049263690152909913}
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -263,12 +262,12 @@ PrefabInstance:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.08
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.08
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 8704684330253609992, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}

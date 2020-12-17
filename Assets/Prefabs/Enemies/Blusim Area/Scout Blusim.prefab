@@ -181,13 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Scout
-  _healthMax: 25
-  _armorMax: 0
-  _speedMax: 0.4
-  _numberOfLivesTaken: 1
-  _goldGained: 3
-  _flying: 1
-  _damagePosition: {fileID: 1049263690152909913}
   _selector: {fileID: 7325471192700415939}
   _healthBar: {fileID: 3144667757886646281}
   _dotDisplay: {fileID: 3511199004427678630}
@@ -198,6 +191,13 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 1049263690152909913}
   _numberOfParticles: 4
+  _healthMax: 25
+  _armorMax: 0
+  _speedMax: 0.4
+  _numberOfLivesTaken: 1
+  _goldGained: 5
+  _flying: 1
+  _damagePosition: {fileID: 1049263690152909913}
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0
