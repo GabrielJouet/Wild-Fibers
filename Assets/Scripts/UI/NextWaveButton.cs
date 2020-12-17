@@ -15,6 +15,7 @@ public class NextWaveButton : MonoBehaviour
     /// <summary>
     /// Animator component.
     /// </summary>
+    [SerializeField]
     private Animator _animator;
 
 
@@ -27,16 +28,6 @@ public class NextWaveButton : MonoBehaviour
     /// Does the time is decreasing?
     /// </summary>
     private bool _timeDecrease = false;
-
-
-
-    /// <summary>
-    /// Awake method.
-    /// </summary>
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
-    }
 
 
     /// <summary>
@@ -64,6 +55,9 @@ public class NextWaveButton : MonoBehaviour
         _timeDecrease = true;
 
         gameObject.SetActive(true);
+
+        _animator.enabled = true;
+        _animator.SetFloat("animSpeed", _animator.runtimeAnimatorController.animationClips[0].length / newTimeLeft);
     }
 
 
@@ -75,6 +69,7 @@ public class NextWaveButton : MonoBehaviour
         _levelController.StartWaveViaButton(_timeLeft);
         _timeDecrease = false;
 
+        _animator.enabled = false;
         gameObject.SetActive(false);
     }
 }
