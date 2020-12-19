@@ -76,12 +76,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4fda286bfa5978644afb560c8e734c67, type: 3}
+  m_Sprite: {fileID: -3057520092514895828, guid: 4fda286bfa5978644afb560c8e734c67,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.48, y: 0.24}
+  m_Size: {x: 0.24, y: 0.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -95,9 +96,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5755112626027321121}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8202cb4426be575489324186cae0f7d5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1bb6fe17e33af7d42a97de7239b8f2c0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -506,7 +507,7 @@ PrefabInstance:
     - target: {fileID: 357924142462272881, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.04
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 357924142462272881, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
