@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 571994285330439440}
   - component: {fileID: 571994285330439441}
   - component: {fileID: 5328857676684429541}
-  - component: {fileID: 5992218026404021553}
   - component: {fileID: 5844063550827791730}
   m_Layer: 0
   m_Name: LevelCamera
@@ -127,6 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lifeText: {fileID: 0}
   _goldText: {fileID: 0}
+  _goldIconAnimator: {fileID: 0}
   _gameOverScreen: {fileID: 0}
 --- !u!114 &571994285330439441
 MonoBehaviour:
@@ -159,20 +159,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _poolPrefab: {fileID: 7733916024386685136, guid: e485fd1a5f14ecd4a844d974b196ef4f,
     type: 3}
---- !u!114 &5992218026404021553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571994285330439662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57299bd070edbf84198a2665707b6b9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _menuObject: {fileID: 0}
-  _hider: {fileID: 0}
 --- !u!114 &5844063550827791730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,3 +172,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hider: {fileID: 0}
+  _canPause: 0
+  _defaultMenu: {fileID: 0}

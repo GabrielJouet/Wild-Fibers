@@ -92,12 +92,13 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected float _armorMax;
+    public float ArmorMax { get => _armorMax; set => _armorMax = value; }
 
     /// <summary>
     /// Current armor.
     /// </summary>
     protected float _armor;
-    public float Armor { get => _armor; }
+    public float Armor { get => _armor; set => _armor = value; }
 
     /// <summary>
     /// Speed max.
@@ -156,7 +157,7 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Does the enemy is moving?
     /// </summary>
-    protected bool _moving = false;
+    public bool Moving { get; set; } = false;
 
     /// <summary>
     /// Does the enemy is slow down?
@@ -238,7 +239,7 @@ public class Enemy : MonoBehaviour
         _path = newPath;
         _enemyPool = newPool;
 
-        _moving = true;
+        Moving = true;
         AlreadyAimed = false;
     }
 
@@ -248,7 +249,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     protected void Update()
     {
-        if(_moving)
+        if(Moving)
             FollowPath();
     }
 

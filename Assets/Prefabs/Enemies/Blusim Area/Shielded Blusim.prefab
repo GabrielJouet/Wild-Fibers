@@ -180,14 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea02469733532443b1a9d43853c05e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Shielded Blusim
-  _healthMax: 105
-  _armorMax: 60
-  _speedMax: 0.15
-  _numberOfLivesTaken: 2
-  _goldGained: 20
-  _flying: 0
-  _damagePosition: {fileID: 1049263690152909913}
+  _displayName: Shielded
   _selector: {fileID: 7325471192700415939}
   _healthBar: {fileID: 3144667757886646281}
   _dotDisplay: {fileID: 3511199004427678630}
@@ -198,8 +191,16 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 1049263690152909913}
   _numberOfParticles: 3
-  _timeBetweenShield: 10.5
-  _newShieldValue: 85
+  _healthMax: 130
+  _armorMax: 65
+  _speedMax: 0.15
+  _numberOfLivesTaken: 2
+  _goldGained: 22
+  _flying: 0
+  _damagePosition: {fileID: 1049263690152909913}
+  _timeBetweenShield: 10
+  _newShieldValue: 90
+  _stopWhileShielding: 1
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0

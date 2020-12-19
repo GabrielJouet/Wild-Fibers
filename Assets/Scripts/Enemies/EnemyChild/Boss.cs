@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Class that handles boss like behavior, like spawning other enemies.
 /// </summary>
-public class Boss : Enemy, ISpawnable
+public class Boss : Enemy
 {
     [Header("Boss related")]
 
@@ -22,15 +22,11 @@ public class Boss : Enemy, ISpawnable
     [SerializeField]
     protected float _timeBetweenSpawn;
 
-    public float TimeBetweenSpawn { get => _timeBetweenSpawn; }
-
     /// <summary>
     /// Time between start and end of spawn.
     /// </summary>
     [SerializeField]
     protected float _spawnTime;
-
-    public float SpawnTime { get => _spawnTime; }
 
     /// <summary>
     /// Does the boss stop while spawning other enemies?
@@ -38,15 +34,11 @@ public class Boss : Enemy, ISpawnable
     [SerializeField]
     protected bool _stopWhileSpawning;
 
-    public bool StopWhileSpawning { get => _stopWhileSpawning; }
-
     /// <summary>
     /// How many enemies are spawned during each spawn.
     /// </summary>
     [SerializeField]
     protected int _numberOfEnemiesPerSpawn;
-
-    public int NumberOfEnemiesPerSpawn { get => _numberOfEnemiesPerSpawn; }
 
     /// <summary>
     /// The walk dirt particle used by the boss.
@@ -57,7 +49,7 @@ public class Boss : Enemy, ISpawnable
     /// <summary>
     /// The number of paths used by new enemies.
     /// </summary>
-    public int PathsWanted { get => 3; }
+    public int PathWanted { get; } = 3;
 
 
     /// <summary>
@@ -71,6 +63,10 @@ public class Boss : Enemy, ISpawnable
     public List<List<Vector2>> AvailablePaths { get; set; } = new List<List<Vector2>>();
 
 
+    protected Spawn _spawn;
+
+
+
     /// <summary>
     /// Initialize method.
     /// </summary>
@@ -80,8 +76,13 @@ public class Boss : Enemy, ISpawnable
     public override void Initialize(List<Vector2> newPath, EnemyPool newPool, int pathIndex)
     {
         base.Initialize(newPath, newPool, pathIndex);
-        _levelController = FindObjectOfType<LevelController>();
 
+        if(!_levelController)
+            _levelController = FindObjectOfType<LevelController>();
+
+        if(_spawn == null)
+            _spawn = new Spawn(_levelController, AvailablePaths, _animator, Spawnling, _enemyPool);
+        
         StartCoroutine(DelaySpawn());
     }
 
@@ -94,21 +95,11 @@ public class Boss : Enemy, ISpawnable
     {
         while(true)
         {
-            yield return new WaitForSeconds(TimeBetweenSpawn + Random.Range(-TimeBetweenSpawn / 20, TimeBetweenSpawn / 20));
+            yield return new WaitForSeconds(_timeBetweenSpawn + Random.Range(-_timeBetweenSpawn / 20, _timeBetweenSpawn / 20));
 
-            _moving = false;
-            for(int i = 0; i < NumberOfEnemiesPerSpawn; i ++)
-            {
-                Enemy hatchling = _levelController.RecoverPool(Spawnling).GetOneEnemy();
-                hatchling.Initialize(AvailablePaths[Random.Range(0, AvailablePaths.Count)], _enemyPool, _pathIndex);
-
-                foreach (Particle current in _particleController.GetParticle(_walkDirtParticle, 3))
-                    current.Initialize(transform.position);
-
-                _animator.SetTrigger("lay");
-                yield return new WaitForSeconds(SpawnTime + Random.Range(-SpawnTime / 20, SpawnTime / 20));
-            }
-            _moving = true;
+            Moving = false;
+            _spawn.SpawnSpawnling(_numberOfEnemiesPerSpawn, _pathIndex, _spawnTime);
+            Moving = true;
         }
     }
 }

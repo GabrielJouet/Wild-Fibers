@@ -90,7 +90,8 @@ public class Spawner : MonoBehaviour
                 if (buffer.TryGetComponent(out Boss bossComponent))
                 {
                     List<List<Vector2>> newPaths = new List<List<Vector2>>();
-                    for (int i = 0; i < bossComponent.PathsWanted; i++)
+
+                    for (int i = 0; i < bossComponent.PathWanted; i++)
                         newPaths.Add(_randomPath.CalculateRandomPath());
                     bossComponent.AvailablePaths = newPaths;
                 }

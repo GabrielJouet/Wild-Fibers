@@ -5,9 +5,9 @@ using UnityEngine;
 /// <summary>
 /// Shielded enemy, from time to time this enemy will stop and protects itself.
 /// </summary>
-public class Shielded : Enemy, IShieldable
+public class Shielded : Enemy
 {
-    [Header("Special Behavior related")]
+    [Header("Shield related")]
 
     /// <summary>
     /// Time between every shield.
@@ -15,24 +15,17 @@ public class Shielded : Enemy, IShieldable
     [SerializeField]
     protected float _timeBetweenShield;
 
-    public float TimeBetweenShield { get => _timeBetweenShield; }
-
     /// <summary>
     /// Shield value when protecting.
     /// </summary>
     [SerializeField]
     protected float _newShieldValue;
-    public float NewShieldValue { get => _newShieldValue; }
+
+    [SerializeField]
+    protected bool _stopWhileShielding;
 
 
-    /// <summary>
-    /// Default shield value.
-    /// </summary>
-    protected float _baseShieldValue;
-    public float BaseShieldValue { get => _baseShieldValue; set => _baseShieldValue = value; }
-
-
-
+    protected Shield _shield;
 
 
     /// <summary>
@@ -45,7 +38,9 @@ public class Shielded : Enemy, IShieldable
     {
         base.Initialize(newPath, newPool, pathIndex);
 
-        BaseShieldValue = _armorMax;
+        if(_shield == null)
+            _shield = new Shield(_armorMax, _stopWhileShielding, this);
+
         StartCoroutine(DelayShield());
     }
 
@@ -57,29 +52,13 @@ public class Shielded : Enemy, IShieldable
     {
         while (true)
         {
-            yield return new WaitForSeconds(TimeBetweenShield + Random.Range(-TimeBetweenShield / 20, TimeBetweenShield / 20));
-            _moving = false;
-            ChangeShieldValue(NewShieldValue);
+            yield return new WaitForSeconds(_timeBetweenShield + Random.Range(-_timeBetweenShield / 20, _timeBetweenShield / 20));
+
+            _shield.ActivateShield(_newShieldValue, _dotApplied);
             _animator.SetTrigger("shield");
             yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[1].length / 0.5f);
 
-            _moving = true;
-            ChangeShieldValue(BaseShieldValue);
+            _shield.ResetShield(_dotApplied);
         }
-    }
-
-
-    /// <summary>
-    /// Method used to change shield value.
-    /// </summary>
-    /// <param name="shieldValue">New shield value</param>
-    public void ChangeShieldValue(float shieldValue)
-    {
-        if (_dotApplied)
-            _armor = shieldValue - (_armorMax - _armor);
-        else
-            _armor = shieldValue;
-
-        _armorMax = shieldValue;
     }
 }

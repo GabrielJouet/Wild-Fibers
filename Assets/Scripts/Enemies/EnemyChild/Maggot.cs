@@ -10,16 +10,25 @@ public class Maggot : Enemy
     [Header("Hatchling related")]
 
     /// <summary>
+    /// The newborn enemy.
+    /// </summary>
+    [SerializeField]
+    protected Enemy _hatchling;
+
+    /// <summary>
     /// Time before the maggot cocoon itself.
     /// </summary>
     [SerializeField]
     protected float _hatchingTime;
 
     /// <summary>
-    /// The newborn enemy.
+    /// Shield value when protecting.
     /// </summary>
     [SerializeField]
-    protected Enemy _hatchling;
+    protected float _newShieldValue;
+
+
+    protected Shield _shield;
 
 
     /// <summary>
@@ -40,18 +49,12 @@ public class Maggot : Enemy
         base.Initialize(newPath, newPool, pathIndex);
         _levelController = FindObjectOfType<LevelController>();
 
+        if (_shield == null)
+            _shield = new Shield(_armorMax, true, this);
+
         StartCoroutine(DelayHatch());
     }
 
-
-    /// <summary>
-    /// Update method, called each frame.
-    /// </summary>
-    protected new void Update()
-    {
-        if (_moving)
-            FollowPath();
-    }
 
     /// <summary>
     /// Coroutine used to delay the hatch of the maggot.
@@ -60,18 +63,13 @@ public class Maggot : Enemy
     protected IEnumerator DelayHatch()
     {
         yield return new WaitForSeconds(_hatchingTime + Random.Range(-_hatchingTime / 20, _hatchingTime / 20));
-        _moving = false;
         _animator.SetTrigger("cocoon");
+        _shield.ActivateShield(_newShieldValue, _dotApplied);
 
-        if (_dotApplied)
-            _armor = _armor * 3 - (_armorMax - _armor);
-        else
-            _armor *= 3;
-
-        _armorMax *= 3;
-        yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[1].length / 0.5f);
+        yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[1].length / 0.3f);
         Enemy hatchling = _levelController.RecoverPool(_hatchling).GetOneEnemy();
         hatchling.Initialize(_path, _enemyPool, _pathIndex);
+
         _goldGained = 0;
         Die(false);
     }

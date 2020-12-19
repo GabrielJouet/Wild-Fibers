@@ -142,7 +142,7 @@ public class LevelController : MonoBehaviour
     {
         foreach (Enemy current in _level.Enemies)
         {
-            if (current.TryGetComponent(out ISpawnable spawnable))
+            if (current.TryGetComponent(out Boss spawnable))
             {
                 bool result = false;
                 foreach (EnemyPool currentPool in _enemyPools)
