@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae428879fc19e054fa942bf41085a343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Queen Blusim
+  _displayName: Queen
   _healthMax: 2000
   _armorMax: 45
   _speedMax: 0.075

@@ -10,76 +10,76 @@ TextureImporter:
     second: Blusam Maggot SpriteSheet_1
   - first:
       213: 956936253234346663
-    second: Scout Maggot Walk0
+    second: Maggot Blusim Walk0
   - first:
       213: 2606507432749049928
-    second: Scout Maggot Walk1
+    second: Maggot Blusim Walk1
   - first:
       213: -7279857875854669723
-    second: Scout Maggot Walk0
+    second: Maggot Blusim Walk0
   - first:
       213: -4310126573504837533
-    second: Scout Maggot Walk1
+    second: Maggot Blusim Walk1
   - first:
       213: -2810387338972676494
-    second: Scout Maggot Walk2
+    second: Maggot Blusim Walk2
   - first:
       213: 6399860878504892633
-    second: Scout Maggot Walk3
+    second: Maggot Blusim Walk3
   - first:
       213: 8280391395440306465
-    second: Scout Maggot Walk4
+    second: Maggot Blusim Walk4
   - first:
       213: -4888570019653752193
-    second: Scout Maggot Walk5
+    second: Maggot Blusim Walk5
   - first:
       213: -1346419922625287363
-    second: Scout Maggot Walk6
+    second: Maggot Blusim Walk6
   - first:
       213: -5977040466543617060
-    second: Scout Maggot Walk7
+    second: Maggot Blusim Walk7
   - first:
       213: -7552096340062230510
-    second: Scout Maggot Shadow
+    second: Maggot Blusim Shadow
   - first:
       213: 1135703223653178175
-    second: Scout Maggot Walk2
+    second: Maggot Blusim Walk2
   - first:
       213: -3842485408433555897
-    second: Scout Maggot Walk3
+    second: Maggot Blusim Walk3
   - first:
       213: -6243571838403291077
-    second: Scout Maggot Walk4
+    second: Maggot Blusim Walk4
   - first:
       213: -7858789878232783601
-    second: Scout Maggot Walk5
+    second: Maggot Blusim Walk5
   - first:
       213: 9199826601085993937
-    second: Scout Maggot Walk6
+    second: Maggot Blusim Walk6
   - first:
       213: -2578976659861350638
-    second: Scout Maggot Walk7
+    second: Maggot Blusim Walk7
   - first:
       213: -8126029179942231049
-    second: Scout Maggot Shadow
+    second: Maggot Blusim Shadow
   - first:
       213: -1559604942833274382
-    second: Scout Maggot Cocoon0
+    second: Maggot Blusim Cocoon0
   - first:
       213: 8823972203230990063
-    second: Scout Maggot Cocoon1
+    second: Maggot Blusim Cocoon1
   - first:
       213: 532622098329097980
-    second: Scout Maggot Cocoon2
+    second: Maggot Blusim Cocoon2
   - first:
       213: 8510360492524687318
-    second: Scout Maggot Cocoon3
+    second: Maggot Blusim Cocoon3
   - first:
       213: 1199947074543869845
-    second: Scout Maggot Cocoon4
+    second: Maggot Blusim Cocoon4
   - first:
       213: -5741569577593345974
-    second: Scout Maggot Cocoon5
+    second: Maggot Blusim Cocoon5
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -165,7 +165,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Scout Maggot Walk0
+      name: Maggot Blusim Walk0
       rect:
         serializedVersion: 2
         x: 0
@@ -186,7 +186,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Walk1
+      name: Maggot Blusim Walk1
       rect:
         serializedVersion: 2
         x: 24
@@ -207,7 +207,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Walk2
+      name: Maggot Blusim Walk2
       rect:
         serializedVersion: 2
         x: 48
@@ -228,7 +228,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Walk3
+      name: Maggot Blusim Walk3
       rect:
         serializedVersion: 2
         x: 72
@@ -249,7 +249,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Walk4
+      name: Maggot Blusim Walk4
       rect:
         serializedVersion: 2
         x: 96
@@ -270,7 +270,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Walk5
+      name: Maggot Blusim Walk5
       rect:
         serializedVersion: 2
         x: 0
@@ -291,7 +291,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Walk6
+      name: Maggot Blusim Walk6
       rect:
         serializedVersion: 2
         x: 24
@@ -312,7 +312,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Walk7
+      name: Maggot Blusim Walk7
       rect:
         serializedVersion: 2
         x: 48
@@ -333,7 +333,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Shadow
+      name: Maggot Blusim Shadow
       rect:
         serializedVersion: 2
         x: 96
@@ -354,7 +354,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Cocoon0
+      name: Maggot Blusim Cocoon0
       rect:
         serializedVersion: 2
         x: 0
@@ -375,7 +375,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Cocoon1
+      name: Maggot Blusim Cocoon1
       rect:
         serializedVersion: 2
         x: 24
@@ -396,7 +396,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Cocoon2
+      name: Maggot Blusim Cocoon2
       rect:
         serializedVersion: 2
         x: 48
@@ -417,7 +417,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Cocoon3
+      name: Maggot Blusim Cocoon3
       rect:
         serializedVersion: 2
         x: 72
@@ -438,7 +438,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Cocoon4
+      name: Maggot Blusim Cocoon4
       rect:
         serializedVersion: 2
         x: 96
@@ -459,7 +459,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scout Maggot Cocoon5
+      name: Maggot Blusim Cocoon5
       rect:
         serializedVersion: 2
         x: 0

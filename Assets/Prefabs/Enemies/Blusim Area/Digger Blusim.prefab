@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1049263690152909913}
   - component: {fileID: 2394709574171677322}
   - component: {fileID: 3597370224652989133}
-  - component: {fileID: 7012067181134921}
+  - component: {fileID: 4829851927036904151}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5755112626027321121}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0.06, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4632149534653362293}
@@ -76,8 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 6106091521053623392, guid: 64fd6e4aee80cd84e874546c0fb15f87,
-    type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4fda286bfa5978644afb560c8e734c67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,7 +95,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5755112626027321121}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 8202cb4426be575489324186cae0f7d5, type: 2}
   m_CullingMode: 0
@@ -107,7 +106,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &7012067181134921
+--- !u!114 &4829851927036904151
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,11 +115,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 5755112626027321121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 376f1868ae61e554d8e6399ef4e7a63b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 2394709574171677322}
-  _transform: {fileID: 9222029069338443843}
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +130,7 @@ GameObject:
   - component: {fileID: 5524535823760821382}
   - component: {fileID: 5682064432001086994}
   m_Layer: 0
-  m_Name: Scout Blusim
+  m_Name: Digger Blusim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -167,8 +164,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01, y: 0.225}
-  m_Size: {x: 0.22, y: 0.17}
+  m_Offset: {x: 0, y: 0.05}
+  m_Size: {x: 0.22, y: 0.12}
   m_Direction: 1
 --- !u!114 &5682064432001086994
 MonoBehaviour:
@@ -182,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Scout
+  _displayName: Digger
   _selector: {fileID: 7325471192700415939}
   _healthBar: {fileID: 3144667757886646281}
   _dotDisplay: {fileID: 3511199004427678630}
@@ -193,12 +190,12 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 1049263690152909913}
   _numberOfParticles: 4
-  _healthMax: 25
-  _armorMax: 0
-  _speedMax: 0.4
+  _healthMax: 28
+  _armorMax: 15
+  _speedMax: 0.3
   _numberOfLivesTaken: 1
-  _goldGained: 5
-  _flying: 1
+  _goldGained: 4
+  _flying: 0
   _damagePosition: {fileID: 1049263690152909913}
 --- !u!1001 &1741317206090716099
 PrefabInstance:
@@ -215,7 +212,7 @@ PrefabInstance:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.24
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
@@ -265,12 +262,12 @@ PrefabInstance:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.08
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.08
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 8704684330253609992, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
@@ -509,7 +506,7 @@ PrefabInstance:
     - target: {fileID: 357924142462272881, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.155
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 357924142462272881, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
