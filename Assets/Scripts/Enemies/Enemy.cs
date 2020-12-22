@@ -192,9 +192,9 @@ public class Enemy : MonoBehaviour
     public float PathRatio { get => (float)_pathIndex / (float)_path.Count; }
 
     /// <summary>
-    /// Enemy pool used to retrieve enemy.
+    /// Pool Controller used to retrieve enemy.
     /// </summary>
-    protected EnemyPool _enemyPool;
+    protected PoolController _poolController;
 
     /// <summary>
     /// Information UI component.
@@ -214,7 +214,7 @@ public class Enemy : MonoBehaviour
     /// <param name="newPath">New path used</param>
     /// <param name="newPool">Pool used for the current enemy</param>
     /// <param name="pathIndex">Current progression on the path</param>
-    public virtual void Initialize(List<Vector2> newPath, EnemyPool newPool, int pathIndex)
+    public virtual void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
         if (_particleController == null)
             _particleController = FindObjectOfType<ParticleController>();
@@ -237,7 +237,7 @@ public class Enemy : MonoBehaviour
 
         transform.position = newPath[pathIndex];
         _path = newPath;
-        _enemyPool = newPool;
+        _poolController = newPool;
 
         Moving = true;
         AlreadyAimed = false;
@@ -404,7 +404,7 @@ public class Enemy : MonoBehaviour
 
         StopAllCoroutines();
 
-        _enemyPool.AddOneEnemy(this, reachEnd, reachEnd ? _numberOfLivesTaken : _goldGained);
+        _poolController.RecoverEnemyPool(this).AddOneEnemy(this, reachEnd, reachEnd ? _numberOfLivesTaken : _goldGained);
     }
 
 

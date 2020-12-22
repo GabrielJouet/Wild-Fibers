@@ -34,7 +34,7 @@ public class Shielded : Enemy
     /// <param name="newPath">New path used</param>
     /// <param name="newPool">Pool used for the current enemy</param>
     /// <param name="pathIndex">Current progression on the path</param>
-    public override void Initialize(List<Vector2> newPath, EnemyPool newPool, int pathIndex)
+    public override void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
         base.Initialize(newPath, newPool, pathIndex);
 

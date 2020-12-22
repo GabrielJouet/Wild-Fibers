@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 571994285330439441}
   - component: {fileID: 5328857676684429541}
   - component: {fileID: 5844063550827791730}
+  - component: {fileID: 7986863445577414007}
   m_Layer: 0
   m_Name: LevelCamera
   m_TagString: MainCamera
@@ -105,11 +106,6 @@ MonoBehaviour:
   _gameOverScreen: {fileID: 0}
   _spawnerPrefab: {fileID: 3737898244477904241, guid: 0e99a190fc65e1641be113fee59fcec3,
     type: 3}
-  _enemyPoolPrefab: {fileID: 126690080380749959, guid: 5290313942fd44c47a415e04a43f7199,
-    type: 3}
-  _projectilePoolPrefab: {fileID: 84294416418586699, guid: 8ede7dec034367348ad1ca8db8a6aca5,
-    type: 3}
-  _towerPoolPrefab: {fileID: 0}
   _nextWaveButton: {fileID: 0}
   _availablePath: []
 --- !u!114 &571994285330439440
@@ -174,3 +170,21 @@ MonoBehaviour:
   _hider: {fileID: 0}
   _canPause: 0
   _defaultMenu: {fileID: 0}
+--- !u!114 &7986863445577414007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571994285330439662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5119875402b31374e8b52d8410981f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyPoolPrefab: {fileID: 126690080380749959, guid: 5290313942fd44c47a415e04a43f7199,
+    type: 3}
+  _projectilePoolPrefab: {fileID: 84294416418586699, guid: 8ede7dec034367348ad1ca8db8a6aca5,
+    type: 3}
+  _towerPoolPrefab: {fileID: 1453506259218874649, guid: 54cdacbb96ebd5f4c8b6a5fe13a6a498,
+    type: 3}

@@ -28,8 +28,10 @@ public class Spawner : MonoBehaviour
     private LevelController _levelController;
     
     /// <summary>
-    /// Enemy pool that handles enemies and resources.
+    /// Pool controller that handles enemies and resources.
     /// </summary>
+    private PoolController _poolController;
+
     private EnemyPool _enemyPool;
 
     /// <summary>
@@ -56,12 +58,14 @@ public class Spawner : MonoBehaviour
     /// <param name="newGroup">The new loaded group</param>
     /// <param name="newLevelController">The level controller component</param>
     /// <param name="newEnemyPool">The new enemy pool component</param>
-    public void SetNewGroup(RandomPath newRandomPath, EnemyGroup newGroup, LevelController newLevelController, EnemyPool newEnemyPool)
+    public void SetNewGroup(RandomPath newRandomPath, EnemyGroup newGroup, LevelController newLevelController, PoolController newPoolController)
     {
         _levelController = newLevelController;
-        _enemyPool = newEnemyPool;
+        _poolController = newPoolController;
         _enemyGroup = newGroup;
         _randomPath = newRandomPath;
+
+        _enemyPool = _poolController.RecoverEnemyPool(_enemyGroup.Enemy);
 
         _patternIndex = 0;
         _enemyIndex = 0;
@@ -84,7 +88,7 @@ public class Spawner : MonoBehaviour
             {
                 _enemyIndex++;
                 Enemy buffer = _enemyPool.GetOneEnemy();
-                buffer.Initialize(_randomPath.CalculateRandomPath(), _enemyPool, 0);
+                buffer.Initialize(_randomPath.CalculateRandomPath(), _poolController, 0);
 
                 //If the enemy is a boss we add it more paths to spawn enemies
                 if (buffer.TryGetComponent(out Boss bossComponent))
@@ -133,7 +137,7 @@ public class Spawner : MonoBehaviour
     /// </summary>
     public void NotifyPool()
     {
-        _enemyPool.RecordLevelEnd(this);
+        _poolController.RecoverEnemyPool(_enemyGroup.Enemy).RecordLevelEnd(this);
     }
 
 

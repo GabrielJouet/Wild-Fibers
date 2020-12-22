@@ -59,12 +59,14 @@ public class EnemyPool : MonoBehaviour
         {
             Enemy enemyBuffered = _enemyPool.Pop();
             _livingEnemies.Add(enemyBuffered);
+
             return enemyBuffered;
         }
         else
         {
             Enemy enemyBuffered = Instantiate(Enemy, transform);
             _livingEnemies.Add(enemyBuffered);
+
             return enemyBuffered;
         }
     }

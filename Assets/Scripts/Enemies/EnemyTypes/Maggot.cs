@@ -30,11 +30,7 @@ public class Maggot : Enemy
 
     protected Shield _shield;
 
-
-    /// <summary>
-    /// Level controller component called when needing new hatchling.
-    /// </summary>
-    protected LevelController _levelController;
+    protected Spawn _spawn;
 
 
 
@@ -44,13 +40,15 @@ public class Maggot : Enemy
     /// <param name="newPath">The new path used</param>
     /// <param name="newPool">The pool used when dying or finishing path</param>
     /// <param name="pathIndex">Current progression on the path</param>
-    public override void Initialize(List<Vector2> newPath, EnemyPool newPool, int pathIndex)
+    public override void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
         base.Initialize(newPath, newPool, pathIndex);
-        _levelController = FindObjectOfType<LevelController>();
 
         if (_shield == null)
             _shield = new Shield(_armorMax, true, this);
+
+        if (_spawn == null)
+            _spawn = new Spawn(_poolController, _path, _hatchling);
 
         StartCoroutine(DelayHatch());
     }
@@ -66,9 +64,9 @@ public class Maggot : Enemy
         _animator.SetTrigger("cocoon");
         _shield.ActivateShield(_newShieldValue, _dotApplied);
 
-        yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[1].length / 0.3f);
-        Enemy hatchling = _levelController.RecoverPool(_hatchling).GetOneEnemy();
-        hatchling.Initialize(_path, _enemyPool, _pathIndex);
+        yield return new WaitForSeconds((_animator.runtimeAnimatorController.animationClips[1].length / 0.3f) + 0.05f);
+
+        _spawn.SpawnSpawnling(_pathIndex);
 
         _goldGained = 0;
         Die(false);

@@ -53,11 +53,6 @@ public class Boss : Enemy
 
 
     /// <summary>
-    /// Level controller component used to retrieve new enemies.
-    /// </summary>
-    protected LevelController _levelController;
-
-    /// <summary>
     /// Available paths generated.
     /// </summary>
     public List<List<Vector2>> AvailablePaths { get; set; } = new List<List<Vector2>>();
@@ -73,15 +68,12 @@ public class Boss : Enemy
     /// <param name="newPath">New path used</param>
     /// <param name="newPool">Pool used for the current enemy</param>
     /// <param name="pathIndex">Current progression on the path</param>
-    public override void Initialize(List<Vector2> newPath, EnemyPool newPool, int pathIndex)
+    public override void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
         base.Initialize(newPath, newPool, pathIndex);
 
-        if(!_levelController)
-            _levelController = FindObjectOfType<LevelController>();
-
         if(_spawn == null)
-            _spawn = new Spawn(_levelController, AvailablePaths, _animator, Spawnling, _enemyPool);
+            _spawn = new Spawn(_poolController, AvailablePaths, Spawnling);
         
         StartCoroutine(DelaySpawn());
     }
@@ -98,6 +90,7 @@ public class Boss : Enemy
             yield return new WaitForSeconds(_timeBetweenSpawn + Random.Range(-_timeBetweenSpawn / 20, _timeBetweenSpawn / 20));
 
             Moving = false;
+            _animator.SetTrigger("lay");
             _spawn.SpawnSpawnling(_numberOfEnemiesPerSpawn, _pathIndex, _spawnTime);
             Moving = true;
         }

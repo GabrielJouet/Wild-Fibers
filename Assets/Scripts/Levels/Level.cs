@@ -80,6 +80,7 @@ public class Level : ScriptableObject
         get
         {
             List<Enemy> availableEnemies = new List<Enemy>();
+
             foreach (Wave current in _availableWaves)
                 foreach (EnemyGroup buffer in current.EnemyGroups)
                     if (!availableEnemies.Contains(buffer.Enemy))

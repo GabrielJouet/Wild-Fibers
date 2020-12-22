@@ -20,7 +20,7 @@ public class TowerSlot : MonoBehaviour
     /// Level controller is used to recover pools.
     /// </summary>
     [SerializeField]
-    private LevelController _levelController;
+    private PoolController _poolController;
 
     /// <summary>
     /// Information UI.
@@ -96,9 +96,9 @@ public class TowerSlot : MonoBehaviour
         yield return new WaitForEndOfFrame();
         _animator.SetTrigger("Base");
 
-        TowerPool currentPool = _levelController.RecoverTowerPool(Tower);
+        TowerPool currentPool = _poolController.RecoverTowerPool(Tower);
         Tower = currentPool.GetOneTower();
-        Tower.Initialize(this, _ressourceController, _backgroundSelecter, _levelController.RecoverProjectilePool(Tower.Projectile.GetComponent<Projectile>()), currentPool);
+        Tower.Initialize(this, _ressourceController, _backgroundSelecter, _poolController.RecoverProjectilePool(Tower.Projectile.GetComponent<Projectile>()), currentPool);
     }
     #endregion
 

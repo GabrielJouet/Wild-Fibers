@@ -1208,6 +1208,11 @@ PrefabInstance:
       propertyPath: _levelController
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _poolController
+      value: 
+      objectReference: {fileID: 571994284821652885}
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_SortingLayer
@@ -1432,6 +1437,11 @@ PrefabInstance:
       propertyPath: _levelController
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _poolController
+      value: 
+      objectReference: {fileID: 571994284821652885}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2249,6 +2259,11 @@ PrefabInstance:
       propertyPath: _levelController
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _poolController
+      value: 
+      objectReference: {fileID: 571994284821652885}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2549,6 +2564,11 @@ PrefabInstance:
       propertyPath: _levelController
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _poolController
+      value: 
+      objectReference: {fileID: 571994284821652885}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2699,6 +2719,11 @@ PrefabInstance:
       propertyPath: _levelController
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _poolController
+      value: 
+      objectReference: {fileID: 571994284821652885}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4018,6 +4043,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7f177196caedf41b2d8a1162b0556b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &571994284821652885 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7986863445577414007, guid: 3a3887dcbdbd89b499727d31651bc979,
+    type: 3}
+  m_PrefabInstance: {fileID: 571994284821652882}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5119875402b31374e8b52d8410981f38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1656969507094830070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4089,6 +4126,11 @@ PrefabInstance:
       propertyPath: _levelController
       value: 
       objectReference: {fileID: 519420030}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _poolController
+      value: 
+      objectReference: {fileID: 571994284821652885}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
