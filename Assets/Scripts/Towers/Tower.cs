@@ -6,99 +6,30 @@ using UnityEngine;
 /// </summary>
 public class Tower : MonoBehaviour
 {
-    [Header("Description")]
-
-    /// <summary>
-    /// Display name.
-    /// </summary>
     [SerializeField]
-    protected string _displayName;
-    public string Name { get => _displayName; }
+    protected TowerData _towerData;
+    public TowerData Data { get => _towerData; }
 
-    /// <summary>
-    /// Price of the tower.
-    /// </summary>
-    [SerializeField]
-    protected int _price;
-    public int Price { get => _price; }
-
-    /// <summary>
-    /// Icon of the tower.
-    /// </summary>
-    [SerializeField]
-    protected Sprite _icon;
-    public Sprite Icon { get => _icon; }
-
-
-
-    [Header("Damage Related")]
-
-    /// <summary>
-    /// Time between attack in second.
-    /// </summary>
-    [SerializeField]
-    protected float _timeBetweenShots;
-    public float TimeShots { get => _timeBetweenShots; }
-
-    /// <summary>
-    /// Damage per attack.
-    /// </summary>
-    [SerializeField]
-    protected int _damage;
-    public int Damage { get => _damage; }
-
-    /// <summary>
-    /// Armor through on each attack.
-    /// </summary>
-    [SerializeField]
-    protected float _armorThrough;
-    public float ArmorThrough { get => _armorThrough; }
-
-    /// <summary>
-    /// Number of projectile per attack.
-    /// </summary>
-    [SerializeField]
-    protected int _numberOfShots;
-    public int Shots { get => _numberOfShots; }
-
-    /// <summary>
-    /// Projectile used in attack.
-    /// </summary>
-    [SerializeField]
-    protected GameObject _projectileUsed;
-    public GameObject Projectile { get => _projectileUsed; }
-
-    /// <summary>
-    /// Range of the tower.
-    /// </summary>
-    [SerializeField]
-    protected float _range;
-
-    /// <summary>
-    /// Collider used in range detection.
-    /// </summary>
-    [SerializeField]
-    protected GameObject _collider;
-
-    /// <summary>
-    /// Can the tower hits flying target?
-    /// </summary>
-    [SerializeField]
-    protected bool _canHitFlying;
-
-
-    [Header("In game")]
 
     /// <summary>
     /// Range display.
     /// </summary>
-    [SerializeField]
     protected Transform _transformRange;
+    protected Vector3 _initialRangeScale;
+
+    /// <summary>
+    /// Collider used in range detection.
+    /// </summary>
+    protected Transform _collider;
+    protected Vector3 _initialColliderScale;
+
+    protected SpriteRenderer _spriteRenderer;
+
+    protected SpriteRenderer _shadowSpriteRenderer;
 
     /// <summary>
     /// Selector object used when clicked.
     /// </summary>
-    [SerializeField]
     protected GameObject _selector;
 
 
@@ -139,6 +70,19 @@ public class Tower : MonoBehaviour
 
 
 
+    protected void Awake()
+    {
+        _transformRange = transform.Find("Range");
+        _collider = transform.Find("Collider");
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _shadowSpriteRenderer = transform.Find("Shadow").GetComponent<SpriteRenderer>();
+
+        _selector = transform.Find("Selecter").gameObject;
+    }
+
+
+
     /// <summary>
     /// Method used to initialize.
     /// </summary>
@@ -147,9 +91,14 @@ public class Tower : MonoBehaviour
     /// <param name="newBackgroundSelecter">The background selecter component</param>
     /// <param name="newPool">The new projectile pool</param>
     /// <param name="newTowerPool">The new tower pool</param>
-    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool)
+    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool, TowerData newData)
     {
         StopAllCoroutines();
+        _towerData = newData;
+
+        _spriteRenderer.sprite = _towerData.Sprite;
+        _shadowSpriteRenderer.sprite = _towerData.Shadow;
+
         _availableEnemies.Clear();
         _coroutineStarted = false;
 
@@ -160,8 +109,12 @@ public class Tower : MonoBehaviour
         _towerPool = newTowerPool;
 
         transform.position = newSlot.transform.position;
-        _transformRange.localScale = _collider.transform.localScale * _range;
-        _collider.transform.localScale = _collider.transform.localScale * _range;
+
+        _initialColliderScale = _collider.localScale;
+        _initialRangeScale = _transformRange.localScale;
+
+        _transformRange.localScale = _collider.localScale * _towerData.Range;
+        _collider.localScale = _collider.localScale * _towerData.Range;
     }
 
 
@@ -172,21 +125,29 @@ public class Tower : MonoBehaviour
     /// </summary>
     public void ResellTower()
     {
-        _ressourceController.AddGold(Mathf.FloorToInt(_price / 4));
+        _ressourceController.AddGold(Mathf.FloorToInt(_towerData.Price / 4));
+
         _backgroundSelecter.DisableTowerInformation();
-
         _backgroundSelecter.DisableTowerSellButton();
-        _currentSlot.ResetSlot();
-        _towerPool.AddOneTower(this);
-    }
 
+        _currentSlot.ResetSlot();
+        _towerPool.AddOneTower(gameObject);
+    }
 
     /// <summary>
     /// Method used to upgrade the tower.
     /// </summary>
-    public void UpgradeTower()
+    public void UpgradeTower(TowerData newData)
     {
-        //TO DO
+        _towerData = newData;
+    }
+
+    /// <summary>
+    /// Method used to add a spec to the tower.
+    /// </summary>
+    public void AddSpec(TowerSpec newSpec)
+    {
+
     }
     #endregion 
 
@@ -199,7 +160,7 @@ public class Tower : MonoBehaviour
     /// <param name="enemy">The enemy to add</param>
     public void AddEnemy(Enemy enemy)
     {
-        if(!(!_canHitFlying && enemy.Flying))
+        if(!(!_towerData.HitFlying && enemy.Flying))
             _availableEnemies.Add(enemy);
     }
 
@@ -246,7 +207,7 @@ public class Tower : MonoBehaviour
             {
                 availableEnemies.Add(_availableEnemies[j]);
 
-                if (!_availableEnemies[j].CanSurvive(_damage, _armorThrough))
+                if (!_availableEnemies[j].CanSurvive(_towerData.Damage, _towerData.ArmorThrough))
                     _availableEnemies[j].AlreadyAimed = true;
             }
             else

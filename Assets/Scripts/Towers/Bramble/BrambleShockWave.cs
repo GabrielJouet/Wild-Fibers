@@ -32,17 +32,17 @@ public class BrambleShockWave : Projectile
     //              newParent, new parent tower
     //              newPool, new projectile pool
     //              newRange, new wave range
-    public void Initialize(float newDamage, float newArmorThrough, Transform newParent, ProjectilePool newPool, float newRange)
+    public void Initialize(TowerData towerData, Transform newParent, ProjectilePool newPool)
     {
         _previousScale = new Vector3(0, 0, 1);
 
         transform.localScale = _previousScale;
         transform.position = newParent.position;
 
-        _damage = newDamage;
+        _damage = towerData.Damage;
         _projectilePool = newPool;
-        _armorThrough = newArmorThrough;
-        _maxRange = newRange;
+        _armorThrough = towerData.ArmorThrough;
+        _maxRange = towerData.Range;
 
         _expansionRate = _maxRange / _expandTime;
     }

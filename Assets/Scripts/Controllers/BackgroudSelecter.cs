@@ -255,14 +255,14 @@ public class BackgroudSelecter : MonoBehaviour
 
         if (!_towerButtonController.SellButtonActive)
         {
-            ActivateTowerSellButton(finalPosition, selectedTower, Mathf.FloorToInt(selectedTower.Price / 4));
-            SetTowerInformation(selectedTower);
+            ActivateTowerSellButton(finalPosition, selectedTower, Mathf.FloorToInt(selectedTower.Data.Price / 4));
+            SetTowerInformation(selectedTower.Data);
 
             selectedTower.ActivateRangeDisplay();
         }
         else
         {
-            _towerButtonController.DesactivateSellButton();
+            _towerButtonController.DesactivateTowerUpgradeButtons();
             DisableTowerInformation();
             DisableTowerSellButton();
 
@@ -276,7 +276,7 @@ public class BackgroudSelecter : MonoBehaviour
     /// <summary>
     /// Method called when we want to desactivate previous tower UI.
     /// </summary>
-    private void DesactivateTower()
+    public void DesactivateTower()
     {
         _previousTower.DesactivateRangeDisplay();
 
@@ -292,7 +292,7 @@ public class BackgroudSelecter : MonoBehaviour
     /// Method used to set or update tower information.
     /// </summary>
     /// <param name="newTower">The tower to display</param>
-    public void SetTowerInformation(Tower newTower)
+    public void SetTowerInformation(TowerData newTower)
     {
         if (_enemyInformationPanel.activeSelf)
             DisableEnemyInformation();
@@ -311,7 +311,7 @@ public class BackgroudSelecter : MonoBehaviour
     /// </summary>
     public void DisableTowerInformation()
     {
-        _towerButtonController.DesactivateSellButton();
+        _towerButtonController.DesactivateTowerUpgradeButtons();
         _towerInformationPanel.SetActive(false);
     }
     #endregion
@@ -379,7 +379,7 @@ public class BackgroudSelecter : MonoBehaviour
     public void ActivateTowerChooseButton(Vector2 newPosition, TowerSlot activatedSlot)
     {
         _towerButtonController.gameObject.SetActive(true);
-        _towerButtonController.DesactivateSellButton();
+        _towerButtonController.DesactivateTowerUpgradeButtons();
         _towerButtonController.ActivatePurchaseButtons(newPosition, activatedSlot);
     }
 
@@ -403,7 +403,7 @@ public class BackgroudSelecter : MonoBehaviour
     {
         _towerButtonController.gameObject.SetActive(true);
         _towerButtonController.DesactivatePurchaseButtons();
-        _towerButtonController.ActivateSellButton(newPosition, activatedTower, price);
+        _towerButtonController.ActivateTowerUpgradeButtons(newPosition, activatedTower, price);
     }
 
 

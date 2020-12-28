@@ -81,9 +81,9 @@ public class PoolController : MonoBehaviour
     /// <summary>
     /// Method used to spawn projectile pools.
     /// </summary>
-    public void SpawnProjectilePools(List<Tower> allTowers)
+    public void SpawnProjectilePools(List<TowerData> allTowers)
     {
-        foreach (Tower current in allTowers)
+        foreach (TowerData current in allTowers)
         {
             SpawnOneTowerPool(current);
             if (_projectilePools != null)
@@ -111,7 +111,7 @@ public class PoolController : MonoBehaviour
     /// Method used to spawn one projectile pool.
     /// </summary>
     /// <param name="currentPrefab">The projectile prefab that will be controlled by this pool</param>
-    private void SpawnOneProjectilePool(Tower currentPrefab)
+    private void SpawnOneProjectilePool(TowerData currentPrefab)
     {
         ProjectilePool newPool = Instantiate(_projectilePoolPrefab, transform);
         newPool.Projectile = currentPrefab.Projectile.GetComponent<Projectile>();
@@ -124,7 +124,7 @@ public class PoolController : MonoBehaviour
     /// Method used to spawn one tower pool.
     /// </summary>
     /// <param name="currentPrefab">The tower prefab that will be controlled by this pool</param>
-    private void SpawnOneTowerPool(Tower currentPrefab)
+    private void SpawnOneTowerPool(TowerData currentPrefab)
     {
         TowerPool newPool = Instantiate(_towerPoolPrefab, transform);
         newPool.Tower = currentPrefab;
@@ -168,10 +168,10 @@ public class PoolController : MonoBehaviour
     /// </summary>
     /// <param name="wantedTower">The tower type we want to recover</param>
     /// <returns>The wanted tower pool</returns>
-    public TowerPool RecoverTowerPool(Tower wantedTower)
+    public TowerPool RecoverTowerPool(TowerData wantedTower)
     {
         foreach (TowerPool current in _towerPools)
-            if (current.Tower.GetType() == wantedTower.GetType())
+            if (current.Tower.Name == wantedTower.Name)
                 return current;
 
         return null;

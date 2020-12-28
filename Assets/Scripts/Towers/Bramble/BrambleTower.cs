@@ -20,9 +20,9 @@ public class BrambleTower : Tower
     {
         _coroutineStarted = true;
 
-        _projectilePool.GetOneProjectile().GetComponent<BrambleShockWave>().Initialize(_damage, _armorThrough, transform, _projectilePool, _range);
+        _projectilePool.GetOneProjectile().GetComponent<BrambleShockWave>().Initialize(_towerData, transform, _projectilePool);
 
-        yield return new WaitForSeconds(_timeBetweenShots);
+        yield return new WaitForSeconds(_towerData.TimeShots);
         _coroutineStarted = false;
     }
 }

@@ -24,18 +24,16 @@ public class Arrow : Projectile
 
     //Method used to initialize class (like a constructor)
     //
-    //Parameters => newDamage, Amount of damage done on attack
-    //              newArmorThrough, armor malus done on attack
-    //              newEnemy, new enemy to track
+    //Parameters => newEnemy, new enemy to track
     //              newParent, new parent tower
     //              newPool, new projectile Pool
-    public void Initialize(float newDamage, float newArmorThrough, Enemy newEnemy, Transform newParent, ProjectilePool newPool)
+    public void Initialize(TowerData towerData, Enemy newEnemy, Transform newParent, ProjectilePool newPool)
     {
         transform.position = newParent.position;
         _enemyToTrack = newEnemy;
-        _damage = newDamage;
+        _damage = towerData.Damage;
         _projectilePool = newPool;
-        _armorThrough = newArmorThrough;
+        _armorThrough = towerData.ArmorThrough;
     }
 
 

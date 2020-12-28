@@ -31,14 +31,14 @@ public class ChocSpikes : Projectile
     //              newEnemy, new enemy to track
     //              newParent, new parent tower
     //              newPool, new projectile pool
-    public void Initialize(float newDamage, float newArmorThrough, Enemy newEnemy, ProjectilePool newPool)
+    public void Initialize(TowerData towerData, Enemy newEnemy, ProjectilePool newPool)
     {
         _stopped = false;
         transform.position = newEnemy.DamagePosition;
         _enemyToTrack = newEnemy;
-        _damage = newDamage;
+        _damage = towerData.Damage;
         _projectilePool = newPool;
-        _armorThrough = newArmorThrough;
+        _armorThrough = towerData.ArmorThrough;
 
         StartCoroutine(Strike());
     }

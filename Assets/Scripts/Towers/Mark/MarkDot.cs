@@ -33,25 +33,20 @@ public class MarkDot : Projectile
 
     //Method used to initialize class (like a constructor)
     //
-    //Parameters => newDamage, Amount of damage done on attack
-    //              newArmorThrough, armor malus done on attack
-    //              newEnemy, new enemy to track
+    //Parameters => newEnemy, new enemy to track
     //              newParent, new parent tower
-    //              newMalus, new amor malus done on dot
-    //              newOverTimeDamage, new damage done on dot
-    //              newDuration, new dot duration
     //              newPool, new Projectile pool
-    public void Initialize(float newDamage, float newArmorThrough, Enemy newEnemy, Transform newParent, float newMalus, float newOverTimeDamage, float newDuration, ProjectilePool newPool)
+    public void Initialize(TowerData newData, Enemy newEnemy, Transform newParent, ProjectilePool newPool)
     {
         transform.position = newParent.position;
         _enemyToTrack = newEnemy;
-        _damage = newDamage;
+        _damage = newData.Damage;
         _projectilePool = newPool;
-        _armorThrough = newArmorThrough;
+        _armorThrough = newData.ArmorThrough;
 
-        _armorThroughMalus = newMalus;
-        _damageOverTime = newOverTimeDamage;
-        _dotDuration = newDuration;
+        _armorThroughMalus = newData.ArmorThroughMalus;
+        _damageOverTime = newData.Dot;
+        _dotDuration = newData.DotDuration;
     }
 
 
