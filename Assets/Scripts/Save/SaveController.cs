@@ -36,6 +36,9 @@ public class SaveController : MonoBehaviour
 	/// </summary>
 	private void Awake()
 	{
+		if (FindObjectsOfType<SaveController>().Length > 1)
+			Destroy(gameObject);
+
 		_gameSavePath = Application.persistentDataPath + "/player.dat";
 		_binaryFormatter = new BinaryFormatter();
 
