@@ -30,5 +30,7 @@ MonoBehaviour:
   _armorThroughMalus: 0
   _damageOverTime: 0
   _dotDuration: 0
-  _towerUpgrades: []
+  _towerUpgrades:
+  - {fileID: 11400000, guid: cf5a40fb61c090548acbdfa6f1e51d55, type: 2}
+  - {fileID: 11400000, guid: a804dc7183a7af3459a33030f65d6238, type: 2}
   _towerSpecs: []

@@ -113,8 +113,8 @@ public class Tower : MonoBehaviour
         _initialColliderScale = _collider.localScale;
         _initialRangeScale = _transformRange.localScale;
 
-        _transformRange.localScale = _collider.localScale * _towerData.Range;
-        _collider.localScale = _collider.localScale * _towerData.Range;
+        _transformRange.localScale *= _towerData.Range;
+        _collider.localScale *= _towerData.Range;
     }
 
 
@@ -139,7 +139,10 @@ public class Tower : MonoBehaviour
     /// </summary>
     public void UpgradeTower(TowerData newData)
     {
+        _ressourceController.RemoveGold(newData.Price);
         _towerData = newData;
+
+        _backgroundSelecter.DesactivateTower();
     }
 
     /// <summary>

@@ -19,21 +19,35 @@ public class TowerButton : MonoBehaviour
 
     //Text component that handles price
     [SerializeField]
-    private Text _price;
+    private Text _priceText;
+    private int _price;
+
+    private RessourceController _resourceController;
 
 
-    public void Initialize(Sprite newSprite, int newPrice)
+
+    public void Initialize(Sprite newSprite, int newPrice, RessourceController newController)
     {
+        _resourceController = newController;
         _buttonImage.sprite = newSprite;
         _buttonImage.SetNativeSize();
         _buttonImage.rectTransform.sizeDelta *= 2.4f;
-        _price.text = newPrice.ToString();
+        _price = newPrice;
+        _priceText.text = _price.ToString();
     }
 
     public void Initialize(int newPrice)
     {
-        _price.text = newPrice.ToString();
+        _priceText.text = newPrice.ToString();
     }
+
+
+    private void Update()
+    {
+        if(_resourceController != null)
+            UpdateState(_price <= _resourceController.GoldCount);
+    }
+
 
     public void ChangeBehavior(UnityAction buttonCallBack)
     {

@@ -180,7 +180,7 @@ MonoBehaviour:
   _buttonComponent: {fileID: 1908072688040204252}
   _buttonImage: {fileID: 3129286144005314105}
   _backgroundImage: {fileID: 3215646354494704898}
-  _price: {fileID: 1908072688866357423}
+  _priceText: {fileID: 1908072688866357423}
 --- !u!1 &1908072688866357409
 GameObject:
   m_ObjectHideFlags: 0

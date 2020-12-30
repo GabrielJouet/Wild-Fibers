@@ -109,8 +109,7 @@ public class LevelController : MonoBehaviour
     private void Start()
     {
         _waveText.text = 0 + " / " + _level.Waves.Count;
-        _poolController.SpawnEnemyPools(_level.Enemies);
-        _poolController.SpawnProjectilePools(_playerController.Towers);
+        _poolController.Initialize(_level.Enemies, _playerController.Towers);
     }
 
 

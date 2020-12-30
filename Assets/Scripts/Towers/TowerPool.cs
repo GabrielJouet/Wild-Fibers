@@ -10,11 +10,6 @@ public class TowerPool : MonoBehaviour
     private GameObject _towerPrefab;
 
     /// <summary>
-    /// The base prefab for this pool.
-    /// </summary>
-    public TowerData Tower { get; set; }
-
-    /// <summary>
     /// Pool of towers.
     /// </summary>
     private readonly Stack<GameObject> _towerPool = new Stack<GameObject>();

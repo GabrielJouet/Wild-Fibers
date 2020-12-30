@@ -23,7 +23,7 @@ public class PoolController : MonoBehaviour
     /// </summary>
     [SerializeField]
     private TowerPool _towerPoolPrefab;
-    private readonly List<TowerPool> _towerPools = new List<TowerPool>();
+    public TowerPool TowerPool { get; private set; }
 
 
     private RessourceController _ressourceController;
@@ -36,11 +36,19 @@ public class PoolController : MonoBehaviour
     }
 
 
+    public void Initialize(List<Enemy> newEnemies, List<TowerData> newTowers)
+    {
+        SpawnEnemyPools(newEnemies);
+        SpawnProjectilePools(newTowers);
+        SpawnTowerPool();
+    }
+
+
     #region Pools related
     /// <summary>
     /// Method used to spawn enemy pools.
     /// </summary>
-    public void SpawnEnemyPools(List<Enemy> allEnemies)
+    private void SpawnEnemyPools(List<Enemy> allEnemies)
     {
         foreach (Enemy current in allEnemies)
         {
@@ -81,11 +89,10 @@ public class PoolController : MonoBehaviour
     /// <summary>
     /// Method used to spawn projectile pools.
     /// </summary>
-    public void SpawnProjectilePools(List<TowerData> allTowers)
+    private void SpawnProjectilePools(List<TowerData> allTowers)
     {
         foreach (TowerData current in allTowers)
         {
-            SpawnOneTowerPool(current);
             if (_projectilePools != null)
             {
                 bool result = false;
@@ -123,13 +130,10 @@ public class PoolController : MonoBehaviour
     /// <summary>
     /// Method used to spawn one tower pool.
     /// </summary>
-    /// <param name="currentPrefab">The tower prefab that will be controlled by this pool</param>
-    private void SpawnOneTowerPool(TowerData currentPrefab)
+    private void SpawnTowerPool()
     {
         TowerPool newPool = Instantiate(_towerPoolPrefab, transform);
-        newPool.Tower = currentPrefab;
-
-        _towerPools.Add(newPool);
+        TowerPool = newPool;
     }
 
 
@@ -157,21 +161,6 @@ public class PoolController : MonoBehaviour
     {
         foreach (ProjectilePool current in _projectilePools)
             if (current.Projectile.GetType() == wantedProjectile.GetType())
-                return current;
-
-        return null;
-    }
-
-
-    /// <summary>
-    /// Recover one tower pool.
-    /// </summary>
-    /// <param name="wantedTower">The tower type we want to recover</param>
-    /// <returns>The wanted tower pool</returns>
-    public TowerPool RecoverTowerPool(TowerData wantedTower)
-    {
-        foreach (TowerPool current in _towerPools)
-            if (current.Tower.Name == wantedTower.Name)
                 return current;
 
         return null;

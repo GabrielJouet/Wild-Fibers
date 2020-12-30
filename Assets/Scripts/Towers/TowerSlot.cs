@@ -96,7 +96,7 @@ public class TowerSlot : MonoBehaviour
         yield return new WaitForEndOfFrame();
         _animator.SetTrigger("Base");
 
-        TowerPool currentPool = _poolController.RecoverTowerPool(tower);
+        TowerPool currentPool = _poolController.TowerPool;
 
         Tower = currentPool.GetOneTower().AddComponent(Type.GetType(tower.Script)).GetComponent<Tower>();
         Tower.Initialize(this, _ressourceController, _backgroundSelecter, _poolController.RecoverProjectilePool(tower.Projectile.GetComponent<Projectile>()), currentPool, tower);
