@@ -25,7 +25,7 @@ MonoBehaviour:
   _numberOfShots: 1
   _projectileUsed: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
     type: 3}
-  _range: 1.2
+  _range: 1.1
   _canHitFlying: 1
   _armorThroughMalus: 0
   _damageOverTime: 0
