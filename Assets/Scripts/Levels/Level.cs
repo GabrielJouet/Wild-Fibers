@@ -73,6 +73,14 @@ public class Level : ScriptableObject
     public int Gold { get => _goldCount; }
 
     /// <summary>
+    /// Max tower level available.
+    /// </summary>
+    [SerializeField]
+    [Range(0, 3)]
+    private int _towerLevel;
+    public int TowerLevel { get => _towerLevel; }
+
+    /// <summary>
     /// Enemies type in the level.
     /// </summary>
     public List<Enemy> Enemies 

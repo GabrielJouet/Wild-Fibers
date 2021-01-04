@@ -22,6 +22,9 @@ public class TowerButton : MonoBehaviour
     private Text _priceText;
     private int _price;
 
+    [SerializeField]
+    private Sprite _lockedSprite;
+
     private RessourceController _resourceController;
 
 
@@ -29,12 +32,15 @@ public class TowerButton : MonoBehaviour
     public void Initialize(Sprite newSprite, int newPrice, RessourceController newController)
     {
         _resourceController = newController;
+
         _buttonImage.sprite = newSprite;
         _buttonImage.SetNativeSize();
         _buttonImage.rectTransform.sizeDelta *= 2.4f;
+
         _price = newPrice;
         _priceText.text = _price.ToString();
     }
+
 
     public void Initialize(int newPrice)
     {
@@ -54,6 +60,15 @@ public class TowerButton : MonoBehaviour
         _buttonComponent.onClick.RemoveAllListeners();
         _buttonComponent.onClick.AddListener(buttonCallBack);
     }
+
+
+    public void Lock()
+    {
+        _buttonComponent.enabled = false;
+        _buttonImage.sprite = _lockedSprite;
+        _priceText.enabled = false;
+    }
+
 
     public void UpdateState(bool activated)
     {
