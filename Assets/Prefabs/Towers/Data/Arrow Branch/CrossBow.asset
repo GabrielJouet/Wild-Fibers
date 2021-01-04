@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f93a738c01d9b44483aba2f0a4f91fa, type: 3}
   m_Name: CrossBow
   m_EditorClassIdentifier: 
-  _relatedScript: ArcherTower
+  _relatedScript: ArrowTower
   _displayName: CrossBow
   _price: 160
   _icon: {fileID: 21300000, guid: 8898088e8c5280447bb4bb6d11c1ca60, type: 3}
