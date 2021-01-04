@@ -108,8 +108,7 @@ public class TowerButtonController : MonoBehaviour
     /// </summary>
     /// <param name="newPosition">The new position of the buttons</param>
     /// <param name="newTower">The related tower</param>
-    /// <param name="newPrice">The new price of the tower</param>
-    public void ActivateTowerUpgradeButtons(Vector2 newPosition, Tower newTower, int newPrice)
+    public void ActivateTowerUpgradeButtons(Vector2 newPosition, Tower newTower)
     {
         _currentTower = newTower;
         _rectTransform.localPosition = newPosition;
@@ -125,7 +124,7 @@ public class TowerButtonController : MonoBehaviour
         else if (_currentTower.Data.Specs.Count > 0)
             UpdateTowerSpecButtons();
 
-        _sellButton.Initialize(newPrice);
+        _sellButton.Initialize(Mathf.FloorToInt(newTower.CumulativeGold / 4f));
         _sellButton.gameObject.SetActive(true);
         _sellButton.ChangeBehavior(() => _currentTower.ResellTower());
         _sellButton.UpdateState(true);

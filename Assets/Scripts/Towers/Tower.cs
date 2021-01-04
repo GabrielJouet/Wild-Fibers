@@ -68,6 +68,8 @@ public class Tower : MonoBehaviour
     /// </summary>
     protected TowerPool _towerPool;
 
+    public int CumulativeGold { get; private set; } = 0;
+
 
 
     protected void Awake()
@@ -96,14 +98,11 @@ public class Tower : MonoBehaviour
     /// <param name="newTowerPool">The new tower pool</param>
     public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool, TowerData newData)
     {
-        StopAllCoroutines();
         _towerData = newData;
+        CumulativeGold += _towerData.Price;
 
         _spriteRenderer.sprite = _towerData.Sprite;
         _shadowSpriteRenderer.sprite = _towerData.Shadow;
-
-        _availableEnemies.Clear();
-        _coroutineStarted = false;
 
         _backgroundSelecter = newBackgroundSelecter;
         _ressourceController = newRessourceController;
@@ -125,7 +124,7 @@ public class Tower : MonoBehaviour
     /// </summary>
     public void ResellTower()
     {
-        _ressourceController.AddGold(Mathf.FloorToInt(_towerData.Price / 4));
+        _ressourceController.AddGold(Mathf.FloorToInt(CumulativeGold / 4));
 
         _backgroundSelecter.DisableTowerInformation();
         _backgroundSelecter.DisableTowerSellButton();
@@ -141,6 +140,7 @@ public class Tower : MonoBehaviour
     {
         _ressourceController.RemoveGold(newData.Price);
         _towerData = newData;
+        CumulativeGold += _towerData.Price;
 
         _transformRange.localScale = _initialRangeScale * _towerData.Range;
         _collider.localScale = _initialColliderScale * (0.9f * _towerData.Range);

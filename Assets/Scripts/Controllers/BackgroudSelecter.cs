@@ -255,7 +255,7 @@ public class BackgroudSelecter : MonoBehaviour
 
         if (!_towerButtonController.SellButtonActive)
         {
-            ActivateTowerSellButton(finalPosition, selectedTower, Mathf.FloorToInt(selectedTower.Data.Price / 4));
+            ActivateTowerSellButton(finalPosition, selectedTower);
             SetTowerInformation(selectedTower.Data);
 
             selectedTower.ActivateRangeDisplay();
@@ -398,12 +398,11 @@ public class BackgroudSelecter : MonoBehaviour
     /// </summary>
     /// <param name="newPosition">The new position of the button</param>
     /// <param name="activatedTower">The tower to activate</param>
-    /// <param name="price">The price to display</param>
-    public void ActivateTowerSellButton(Vector2 newPosition, Tower activatedTower, int price)
+    public void ActivateTowerSellButton(Vector2 newPosition, Tower activatedTower)
     {
         _towerButtonController.gameObject.SetActive(true);
         _towerButtonController.DesactivatePurchaseButtons();
-        _towerButtonController.ActivateTowerUpgradeButtons(newPosition, activatedTower, price);
+        _towerButtonController.ActivateTowerUpgradeButtons(newPosition, activatedTower);
     }
 
 
