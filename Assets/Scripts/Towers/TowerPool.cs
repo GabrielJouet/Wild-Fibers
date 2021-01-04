@@ -35,6 +35,7 @@ public class TowerPool : MonoBehaviour
     /// <param name="newTower">The tower to add</param>
     public void AddOneTower(GameObject newTower)
     {
+        Destroy(newTower.GetComponent<Tower>());
         newTower.gameObject.SetActive(false);
         _towerPool.Push(newTower);
     }

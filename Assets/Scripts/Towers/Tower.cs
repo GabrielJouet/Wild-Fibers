@@ -79,6 +79,9 @@ public class Tower : MonoBehaviour
         _shadowSpriteRenderer = transform.Find("Shadow").GetComponent<SpriteRenderer>();
 
         _selector = transform.Find("Selecter").gameObject;
+
+        _initialColliderScale = _collider.localScale;
+        _initialRangeScale = _transformRange.localScale;
     }
 
 
@@ -110,11 +113,8 @@ public class Tower : MonoBehaviour
 
         transform.position = newSlot.transform.position;
 
-        _initialColliderScale = _collider.localScale;
-        _initialRangeScale = _transformRange.localScale;
-
         _transformRange.localScale *= _towerData.Range;
-        _collider.localScale *= _towerData.Range;
+        _collider.localScale *= (0.9f * _towerData.Range);
     }
 
 
@@ -142,6 +142,9 @@ public class Tower : MonoBehaviour
         _ressourceController.RemoveGold(newData.Price);
         _towerData = newData;
 
+        _transformRange.localScale = _initialRangeScale * _towerData.Range;
+        _collider.localScale = _initialColliderScale * (0.9f * _towerData.Range);
+
         _backgroundSelecter.DesactivateTower();
     }
 
@@ -163,7 +166,7 @@ public class Tower : MonoBehaviour
     /// <param name="enemy">The enemy to add</param>
     public void AddEnemy(Enemy enemy)
     {
-        if(!(!_towerData.HitFlying && enemy.Flying))
+        if (!(!_towerData.HitFlying && enemy.Flying))
             _availableEnemies.Add(enemy);
     }
 
