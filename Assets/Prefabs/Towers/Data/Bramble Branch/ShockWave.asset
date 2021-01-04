@@ -20,7 +20,7 @@ MonoBehaviour:
   _shadowSprite: {fileID: 4684895350081689219, guid: c7e168489f1f2224f8cada98fed0f4a7,
     type: 3}
   _timeBetweenShots: 5
-  _damage: 15
+  _damage: 18
   _armorThrough: 0
   _numberOfShots: 1
   _projectileUsed: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,
