@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _relatedScript: ArrowTower
   _displayName: Arrow
+  _description: A fast shooting tower that deals little damage
   _price: 90
   _icon: {fileID: 21300000, guid: 8898088e8c5280447bb4bb6d11c1ca60, type: 3}
   _sprite: {fileID: 6408979333349359234, guid: 57baeccb8e0e34146890d817328beafd, type: 3}

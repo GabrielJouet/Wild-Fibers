@@ -69,7 +69,7 @@ public class TowerButtonController : MonoBehaviour
         List<TowerData> buffer = _playerController.Towers;
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i ++)
-            _towerPurchaseButtons[i].Initialize(buffer[i].Icon, buffer[i].Price, _ressourceController);
+            _towerPurchaseButtons[i].Initialize(buffer[i].Icon, buffer[i].Price, _ressourceController, buffer[i].Description);
     }
 
 
@@ -134,36 +134,38 @@ public class TowerButtonController : MonoBehaviour
 
     private void UpdateTowerUpgradeButtons(int buttonIndex, int index)
     {
+        TowerData buffer = _currentTower.Data.Upgrades[index];
         _towerUpgradesButtons[buttonIndex].gameObject.SetActive(true);
-        _towerUpgradesButtons[buttonIndex].Initialize(_currentTower.Data.Upgrades[index].Icon, _currentTower.Data.Upgrades[index].Price, _ressourceController);
+        _towerUpgradesButtons[buttonIndex].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description);
 
         if(_levelController.LoadedLevel.TowerLevel > 0)
         {
-            _towerUpgradesButtons[buttonIndex].ChangeBehavior(() => _currentTower.UpgradeTower(_currentTower.Data.Upgrades[index]));
-            _towerUpgradesButtons[buttonIndex].UpdateState(_currentTower.Data.Upgrades[index].Price < _ressourceController.GoldCount);
+            _towerUpgradesButtons[buttonIndex].ChangeBehavior(() => _currentTower.UpgradeTower(buffer));
+            _towerUpgradesButtons[buttonIndex].UpdateState(buffer.Price < _ressourceController.GoldCount);
         }
         else
         {
-            _towerUpgradesButtons[buttonIndex].Lock();
             _towerUpgradesButtons[buttonIndex].UpdateState(true);
+            _towerUpgradesButtons[buttonIndex].Lock();
         }
     }
 
 
     private void UpdateTowerUpgradeButton()
     {
+        TowerData buffer = _currentTower.Data.Upgrades[0];
         _towerUpgradesButtons[1].gameObject.SetActive(true);
-        _towerUpgradesButtons[1].Initialize(_currentTower.Data.Upgrades[0].Icon, _currentTower.Data.Upgrades[0].Price, _ressourceController);
+        _towerUpgradesButtons[1].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description);
 
         if (_levelController.LoadedLevel.TowerLevel > 1)
         {
-            _towerUpgradesButtons[1].ChangeBehavior(() => _currentTower.UpgradeTower(_currentTower.Data.Upgrades[0]));
-            _towerUpgradesButtons[1].UpdateState(_currentTower.Data.Upgrades[0].Price < _ressourceController.GoldCount);
+            _towerUpgradesButtons[1].ChangeBehavior(() => _currentTower.UpgradeTower(buffer));
+            _towerUpgradesButtons[1].UpdateState(buffer.Price < _ressourceController.GoldCount);
         }
         else
         {
-            _towerUpgradesButtons[1].Lock();
             _towerUpgradesButtons[1].UpdateState(true);
+            _towerUpgradesButtons[1].Lock();
         }
     }
 
@@ -172,8 +174,10 @@ public class TowerButtonController : MonoBehaviour
     {
         for (int i = 0; i < _towerUpgradesButtons.Count; i++)
         {
-            _towerUpgradesButtons[i].gameObject.SetActive(true);
+            TowerSpec buffer = _currentTower.Data.Specs[i];
 
+            _towerUpgradesButtons[i].gameObject.SetActive(true);
+            _towerUpgradesButtons[1].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description);
 
             if (_levelController.LoadedLevel.TowerLevel > 1)
             {
@@ -182,8 +186,8 @@ public class TowerButtonController : MonoBehaviour
             }
             else
             {
-                _towerUpgradesButtons[i].Lock();
                 _towerUpgradesButtons[i].UpdateState(true);
+                _towerUpgradesButtons[i].Lock();
             }
         }
     }

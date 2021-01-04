@@ -18,6 +18,10 @@ public class TowerData : ScriptableObject
     protected string _displayName;
     public string Name { get => _displayName; }
 
+    [SerializeField]
+    protected string _description;
+    public string Description { get => _description; }
+
     /// <summary>
     /// Price of the tower.
     /// </summary>

@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /*
  * Class used in sell tower buttons
  */
-public class TowerButton : MonoBehaviour
+public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("UI Elements")]
     //The actual button component
@@ -25,14 +26,19 @@ public class TowerButton : MonoBehaviour
     [SerializeField]
     private Sprite _lockedSprite;
 
+    [SerializeField]
+    private Text _descriptionText;
+
     private RessourceController _resourceController;
 
+    private bool _locked = false;
 
 
-    public void Initialize(Sprite newSprite, int newPrice, RessourceController newController)
+    public void Initialize(Sprite newSprite, int newPrice, RessourceController newController, string newDescription)
     {
         _resourceController = newController;
 
+        _descriptionText.text = newDescription;
         _buttonImage.sprite = newSprite;
         _buttonImage.SetNativeSize();
         _buttonImage.rectTransform.sizeDelta *= 2.4f;
@@ -50,7 +56,7 @@ public class TowerButton : MonoBehaviour
 
     private void Update()
     {
-        if(_resourceController != null)
+        if(_resourceController != null && !_locked)
             UpdateState(_price <= _resourceController.GoldCount);
     }
 
@@ -59,11 +65,13 @@ public class TowerButton : MonoBehaviour
     {
         _buttonComponent.onClick.RemoveAllListeners();
         _buttonComponent.onClick.AddListener(buttonCallBack);
+        _buttonComponent.onClick.AddListener(() => _descriptionText?.rectTransform.parent.gameObject.SetActive(false));
     }
 
 
     public void Lock()
     {
+        _locked = true;
         _buttonComponent.enabled = false;
         _buttonImage.sprite = _lockedSprite;
         _priceText.enabled = false;
@@ -77,5 +85,28 @@ public class TowerButton : MonoBehaviour
         Color newColor = activated ? Color.white : Color.gray;
         _buttonImage.color = newColor;
         _backgroundImage.color = newColor;
+    }
+
+
+
+    /// <summary>
+    /// Method used to highlight the level button if not locked.
+    /// </summary>
+    /// <param name="eventData">The pointer event</param>
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!_locked && _descriptionText != null)
+            _descriptionText.rectTransform.parent.gameObject.SetActive(true);
+    }
+
+
+    /// <summary>
+    /// Method used to desactivate the highlight for the level button if not locked.
+    /// </summary>
+    /// <param name="eventData">The pointer event</param>
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (!_locked && _descriptionText != null)
+            _descriptionText.rectTransform.parent.gameObject.SetActive(false);
     }
 }
