@@ -33,110 +33,11 @@ public class PoolController : MonoBehaviour
     private void Awake()
     {
         _ressourceController = GetComponent<RessourceController>();
-    }
-
-
-    public void Initialize(List<Enemy> newEnemies, List<TowerData> newTowers)
-    {
-        SpawnEnemyPools(newEnemies);
-        SpawnProjectilePools(newTowers);
-        SpawnTowerPool();
+        TowerPool = Instantiate(_towerPoolPrefab, transform);
     }
 
 
     #region Pools related
-    /// <summary>
-    /// Method used to spawn enemy pools.
-    /// </summary>
-    private void SpawnEnemyPools(List<Enemy> allEnemies)
-    {
-        foreach (Enemy current in allEnemies)
-        {
-            if (current.TryGetComponent(out Boss spawnable))
-            {
-                bool result = false;
-                foreach (EnemyPool currentPool in EnemyPools)
-                {
-                    if (currentPool.Enemy.GetType() == spawnable.Spawnling.GetType())
-                    {
-                        result = true;
-                        break;
-                    }
-                }
-
-                if (!result)
-                    SpawnOneEnemyPool(spawnable.Spawnling);
-            }
-
-            SpawnOneEnemyPool(current);
-        }
-    }
-
-
-    /// <summary>
-    /// Method used to spawn one enemy pool.
-    /// </summary>
-    /// <param name="currentPrefab">The enemy prefab that will be controlled by this pool</param>
-    private void SpawnOneEnemyPool(Enemy currentPrefab)
-    {
-        EnemyPool newEnemyPool = Instantiate(_enemyPoolPrefab, transform);
-        newEnemyPool.Initialize(currentPrefab, _ressourceController);
-
-        EnemyPools.Add(newEnemyPool);
-    }
-
-
-    /// <summary>
-    /// Method used to spawn projectile pools.
-    /// </summary>
-    private void SpawnProjectilePools(List<TowerData> allTowers)
-    {
-        foreach (TowerData current in allTowers)
-        {
-            if (_projectilePools != null)
-            {
-                bool result = false;
-                foreach (ProjectilePool currentPool in _projectilePools)
-                {
-                    if (current.Projectile.GetComponent<Projectile>().GetType() == currentPool.Projectile.GetType())
-                    {
-                        result = true;
-                        break;
-                    }
-                }
-
-                if (!result)
-                    SpawnOneProjectilePool(current);
-            }
-            else
-                SpawnOneProjectilePool(current);
-        }
-    }
-
-
-    /// <summary>
-    /// Method used to spawn one projectile pool.
-    /// </summary>
-    /// <param name="currentPrefab">The projectile prefab that will be controlled by this pool</param>
-    private void SpawnOneProjectilePool(TowerData currentPrefab)
-    {
-        ProjectilePool newPool = Instantiate(_projectilePoolPrefab, transform);
-        newPool.Projectile = currentPrefab.Projectile.GetComponent<Projectile>();
-
-        _projectilePools.Add(newPool);
-    }
-
-
-    /// <summary>
-    /// Method used to spawn one tower pool.
-    /// </summary>
-    private void SpawnTowerPool()
-    {
-        TowerPool newPool = Instantiate(_towerPoolPrefab, transform);
-        TowerPool = newPool;
-    }
-
-
     /// <summary>
     /// Recover one enemy pool.
     /// </summary>
@@ -148,7 +49,11 @@ public class PoolController : MonoBehaviour
             if (current.Enemy.Name == wantedEnemy.Name)
                 return current;
 
-        return null;
+        EnemyPool buffer = Instantiate(_enemyPoolPrefab);
+        buffer.Initialize(wantedEnemy, _ressourceController);
+        EnemyPools.Add(buffer);
+
+        return buffer;
     }
 
 
@@ -163,7 +68,11 @@ public class PoolController : MonoBehaviour
             if (current.Projectile.GetType() == wantedProjectile.GetType())
                 return current;
 
-        return null;
+        ProjectilePool newPool = Instantiate(_projectilePoolPrefab, transform);
+        newPool.Projectile = wantedProjectile;
+
+        _projectilePools.Add(newPool);
+        return newPool;
     }
     #endregion
 }
