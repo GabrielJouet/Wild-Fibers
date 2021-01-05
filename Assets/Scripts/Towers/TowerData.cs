@@ -49,6 +49,13 @@ public class TowerData : ScriptableObject
     [Header("Damage Related")]
 
     /// <summary>
+    /// Projectile used in attack.
+    /// </summary>
+    [SerializeField]
+    protected GameObject _projectileUsed;
+    public GameObject Projectile { get => _projectileUsed; }
+
+    /// <summary>
     /// Time between attack in second.
     /// </summary>
     [SerializeField]
@@ -70,18 +77,18 @@ public class TowerData : ScriptableObject
     public float ArmorThrough { get => _armorThrough; }
 
     /// <summary>
+    /// Armor through on each attack.
+    /// </summary>
+    [SerializeField]
+    protected float _speed;
+    public float ProjectileSpeed { get => _speed; }
+
+    /// <summary>
     /// Number of projectile per attack.
     /// </summary>
     [SerializeField]
     protected int _numberOfShots;
     public int Shots { get => _numberOfShots; }
-
-    /// <summary>
-    /// Projectile used in attack.
-    /// </summary>
-    [SerializeField]
-    protected GameObject _projectileUsed;
-    public GameObject Projectile { get => _projectileUsed; }
 
     /// <summary>
     /// Range of the tower.
@@ -113,6 +120,10 @@ public class TowerData : ScriptableObject
     [SerializeField]
     private float _dotDuration;
     public float DotDuration { get => _dotDuration; }
+
+    [SerializeField]
+    private Sprite _dotIcon;
+    public Sprite DotIcon { get => _dotIcon; }
 
 
     [Header("Upgrades")]

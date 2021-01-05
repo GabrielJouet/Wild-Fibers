@@ -25,7 +25,11 @@ public class MarkTower : Tower
 
         _availableEnemies.Shuffle();
         foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().GetComponent<MarkDot>().Initialize(_towerData, current, transform, _projectilePool);
+        {
+            Projectile buffer = _projectilePool.GetOneProjectile();
+            buffer.transform.position = transform.position;
+            buffer.Initialize(_towerData, current, _projectilePool);
+        }
 
         yield return new WaitForSeconds(_towerData.TimeShots);
         _coroutineStarted = false;

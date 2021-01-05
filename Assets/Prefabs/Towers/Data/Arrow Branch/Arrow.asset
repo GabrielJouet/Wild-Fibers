@@ -20,17 +20,19 @@ MonoBehaviour:
   _sprite: {fileID: 6408979333349359234, guid: 57baeccb8e0e34146890d817328beafd, type: 3}
   _shadowSprite: {fileID: -5974878852189205205, guid: 0e04fa1292b970b46a872d4eb69229d5,
     type: 3}
+  _projectileUsed: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
+    type: 3}
   _timeBetweenShots: 1.2
   _damage: 12
   _armorThrough: 5
+  _speed: 3.5
   _numberOfShots: 1
-  _projectileUsed: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
-    type: 3}
   _range: 1.1
   _canHitFlying: 1
   _armorThroughMalus: 0
   _damageOverTime: 0
   _dotDuration: 0
+  _dotIcon: {fileID: 0}
   _towerUpgrades:
   - {fileID: 11400000, guid: cf5a40fb61c090548acbdfa6f1e51d55, type: 2}
   - {fileID: 11400000, guid: a804dc7183a7af3459a33030f65d6238, type: 2}

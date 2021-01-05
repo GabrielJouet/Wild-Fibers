@@ -23,8 +23,13 @@ public class ArrowTower : Tower
         int numberOfStrikes = _availableEnemies.Count < _towerData.Shots ? _availableEnemies.Count : _towerData.Shots;
 
         SortEnemies();
+
         foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().GetComponent<Arrow>().Initialize(_towerData, current, transform, _projectilePool);
+        {
+            Projectile buffer = _projectilePool.GetOneProjectile();
+            buffer.transform.position = transform.position;
+            buffer.Initialize(_towerData, current, _projectilePool);
+        }
 
         yield return new WaitForSeconds(_towerData.TimeShots);
         _coroutineStarted = false;

@@ -65,7 +65,7 @@ public class PoolController : MonoBehaviour
     public ProjectilePool RecoverProjectilePool(Projectile wantedProjectile)
     {
         foreach (ProjectilePool current in _projectilePools)
-            if (current.Projectile.GetType() == wantedProjectile.GetType())
+            if (current.Projectile.name == wantedProjectile.name)
                 return current;
 
         ProjectilePool newPool = Instantiate(_projectilePoolPrefab, transform);
