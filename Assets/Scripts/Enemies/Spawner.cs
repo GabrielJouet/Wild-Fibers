@@ -137,7 +137,7 @@ public class Spawner : MonoBehaviour
     /// </summary>
     public void NotifyPool()
     {
-        _poolController.RecoverEnemyPool(_enemyGroup.Enemy).RecordLevelEnd(this);
+        _enemyPool.RecordLevelEnd(this);
     }
 
 

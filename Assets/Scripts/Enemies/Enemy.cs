@@ -356,7 +356,7 @@ public class Enemy : MonoBehaviour
         _dotDuration = duration;
         _dotDisplay.sprite = newIcon;
 
-        if(!_dotApplied)
+        if(!_dotApplied && isActiveAndEnabled)
         {
             StartCoroutine(TakePersistentDamage());
             _armor -= armorThroughMalus;

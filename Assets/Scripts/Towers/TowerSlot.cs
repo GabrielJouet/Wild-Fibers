@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -69,7 +70,7 @@ public class TowerSlot : MonoBehaviour
     /// Method used to create a new tower.
     /// </summary>
     /// <param name="tower">The chosen tower</param>
-    public void ChooseTower(Tower tower)
+    public void ChooseTower(TowerData tower)
     {
         _ressourceController.RemoveGold(tower.Price);
 
@@ -84,11 +85,10 @@ public class TowerSlot : MonoBehaviour
     /// </summary>
     /// <param name="tower">The chosen tower</param>
     /// <returns>Yield the construction time</returns>
-    private IEnumerator DelayConstruct(Tower tower)
+    private IEnumerator DelayConstruct(TowerData tower)
     {
-        Tower = tower;
-        _shadowAnimator.SetTrigger(Tower.Name);
-        _animator.SetTrigger(Tower.Name);
+        _shadowAnimator.SetTrigger(tower.Name);
+        _animator.SetTrigger(tower.Name);
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
         _shadowAnimator.SetTrigger("Base");
@@ -96,9 +96,9 @@ public class TowerSlot : MonoBehaviour
         yield return new WaitForEndOfFrame();
         _animator.SetTrigger("Base");
 
-        TowerPool currentPool = _poolController.RecoverTowerPool(Tower);
-        Tower = currentPool.GetOneTower();
-        Tower.Initialize(this, _ressourceController, _backgroundSelecter, _poolController.RecoverProjectilePool(Tower.Projectile.GetComponent<Projectile>()), currentPool);
+        TowerPool currentPool = _poolController.TowerPool;
+        Tower = currentPool.GetOneTower().AddComponent(Type.GetType(tower.Script)).GetComponent<Tower>();
+        Tower.Initialize(this, _ressourceController, _backgroundSelecter, _poolController.RecoverProjectilePool(tower.Projectile.GetComponent<Projectile>()), currentPool, tower);
     }
     #endregion
 

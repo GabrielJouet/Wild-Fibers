@@ -6,58 +6,40 @@ using UnityEngine;
  */
 public class ChocSpikes : Projectile
 {
-    //How much time the root take to dug out?
-    [SerializeField]
-    private float _timeToStrike;
-
-
-    //Attack variables
-    private float _damage;
-    private float _armorThrough;
-
-    //Enemy to attack
-    private Enemy _enemyToTrack;
-
-
     //Does the choc spike stopped moving and attacking?
     private bool _stopped = false;
 
 
 
     //Method used to initialize class (like a constructor)
-    //
-    //Parameters => newDamage, Amount of damage done on attack
-    //              newArmorThrough, armor malus done on attack
-    //              newEnemy, new enemy to track
-    //              newParent, new parent tower
-    //              newPool, new projectile pool
-    public void Initialize(float newDamage, float newArmorThrough, Enemy newEnemy, ProjectilePool newPool)
+    public override void Initialize(TowerData newData, Enemy newEnemy, ProjectilePool newPool)
     {
+        _data = newData;
+        _projectilePool = newPool;
+
+        _enemyTracked = newEnemy;
+
         _stopped = false;
         transform.position = newEnemy.DamagePosition;
-        _enemyToTrack = newEnemy;
-        _damage = newDamage;
-        _projectilePool = newPool;
-        _armorThrough = newArmorThrough;
 
         StartCoroutine(Strike());
     }
 
 
     //Update method, called every frame
-    private void Update()
+    protected override void Update()
     {
-        if(_enemyToTrack)
+        if(_enemyTracked)
         {
-            if (_enemyToTrack.gameObject.activeSelf)
+            if (_enemyTracked.gameObject.activeSelf)
             {
                 if (!_stopped)
-                    transform.position = _enemyToTrack.DamagePosition;
+                    transform.position = _enemyTracked.DamagePosition;
             }
             else
             {
                 _stopped = true;
-                _enemyToTrack = null;
+                _enemyTracked = null;
             }
         }
     }
@@ -69,14 +51,13 @@ public class ChocSpikes : Projectile
         if (!_stopped)
         {
             //Time to attack
-            yield return new WaitForSeconds(_timeToStrike);
-            if (_enemyToTrack)
-                _enemyToTrack.TakeDamage(_damage, _armorThrough);
+            yield return new WaitForSeconds(1);
+            AttackEnemy(_enemyTracked);
             _stopped = true;
         }
 
         //Time to stay a little longer, visibility purpose
-        yield return new WaitForSeconds(_timeToStrike / 2f);
+        yield return new WaitForSeconds(0.5f);
         StopProjectile();
     }
 }

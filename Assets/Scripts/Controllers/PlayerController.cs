@@ -10,15 +10,15 @@ public class PlayerController : MonoBehaviour
     /// List of available Towers for this level.
     /// </summary>
     [SerializeField]
-    private List<Tower> _towerAvailables;
-    public List<Tower> Towers { get => _towerAvailables; }
+    private List<TowerData> _towerAvailables;
+    public List<TowerData> Towers { get => _towerAvailables; }
 
 
 
     /// <summary>
     /// Start method called after Awake.
     /// </summary>
-    private void Start()
+    private void Awake()
     {
         Application.targetFrameRate = 60;
     }

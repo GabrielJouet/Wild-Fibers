@@ -6,21 +6,6 @@ using UnityEngine;
  */
 public class MarkTower : Tower
 {
-    [Header("Dot related")]
-    //Armor through negative effect on enemy
-    [SerializeField]
-    private float _armorThroughMalus;
-
-    //How much damage the dot will do?
-    [SerializeField]
-    private float _damageOverTime;
-
-    //Duration of the dot in seconds
-    [SerializeField]
-    private float _dotDuration;
-
-
-
     //Fixed Update method, called  times a second
     private void FixedUpdate()
     {
@@ -36,13 +21,17 @@ public class MarkTower : Tower
     {
         _coroutineStarted = true;
 
-        int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
+        int numberOfStrikes = _availableEnemies.Count < _towerData.Shots ? _availableEnemies.Count : _towerData.Shots;
 
         _availableEnemies.Shuffle();
         foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().GetComponent<MarkDot>().Initialize(_damage, _armorThrough, current, transform, _armorThroughMalus, _damageOverTime, _dotDuration, _projectilePool);
+        {
+            Projectile buffer = _projectilePool.GetOneProjectile();
+            buffer.transform.position = transform.position;
+            buffer.Initialize(_towerData, current, _projectilePool);
+        }
 
-        yield return new WaitForSeconds(_timeBetweenShots);
+        yield return new WaitForSeconds(_towerData.TimeShots);
         _coroutineStarted = false;
     }
 }

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 /// <summary>
 /// Class used to store and manage level resources.
 /// </summary>
-[RequireComponent(typeof(PlayerController))]
 [RequireComponent(typeof(RessourceController))]
 [RequireComponent(typeof(PoolController))]
 public class LevelController : MonoBehaviour
@@ -78,11 +77,6 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private readonly float _timeBetweenNextWaveButtonDisplay = 5f;
 
-    /// <summary>
-    /// Player controller component.
-    /// </summary>
-    private PlayerController _playerController;
-
     private PoolController _poolController;
 
     /// <summary>
@@ -98,7 +92,6 @@ public class LevelController : MonoBehaviour
     private void Awake()
     {
         _ressourceController = GetComponent<RessourceController>();
-        _playerController = GetComponent<PlayerController>();
         _poolController = GetComponent<PoolController>();
     }
 
@@ -109,8 +102,6 @@ public class LevelController : MonoBehaviour
     private void Start()
     {
         _waveText.text = 0 + " / " + _level.Waves.Count;
-        _poolController.SpawnEnemyPools(_level.Enemies);
-        _poolController.SpawnProjectilePools(_playerController.Towers);
     }
 
 

@@ -137,10 +137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _towerAvailables:
-  - {fileID: 7248711420065350947, guid: b0c8be174e4aa4a4aa4fcf05b6b62cfa, type: 3}
-  - {fileID: 8854172079906978944, guid: 7e5fc179ffd633e4a950e34a2229c96c, type: 3}
-  - {fileID: -8003392099937102339, guid: 37e81790ef7ed3343951f47742770ac0, type: 3}
-  - {fileID: 95656636279286502, guid: 260e56dedf64a1e4db4b79d96e4a2d01, type: 3}
+  - {fileID: 11400000, guid: 1b17f8e2722ed3f479f233f3e5793f9f, type: 2}
+  - {fileID: 11400000, guid: 02d8d222f1904bc44a62ac9958c07937, type: 2}
+  - {fileID: 11400000, guid: 1a83753d8802f364e8dea7ebcc13df4b, type: 2}
+  - {fileID: 11400000, guid: eef686483be9f3a4cb3aa40c8a6b7bd9, type: 2}
 --- !u!114 &5328857676684429541
 MonoBehaviour:
   m_ObjectHideFlags: 0

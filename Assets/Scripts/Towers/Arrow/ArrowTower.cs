@@ -20,13 +20,18 @@ public class ArrowTower : Tower
     {
         _coroutineStarted = true;
 
-        int numberOfStrikes = _availableEnemies.Count < _numberOfShots ? _availableEnemies.Count : _numberOfShots;
+        int numberOfStrikes = _availableEnemies.Count < _towerData.Shots ? _availableEnemies.Count : _towerData.Shots;
 
         SortEnemies();
-        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().GetComponent<Arrow>().Initialize(_damage, _armorThrough, current, transform, _projectilePool);
 
-        yield return new WaitForSeconds(_timeBetweenShots);
+        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
+        {
+            Projectile buffer = _projectilePool.GetOneProjectile();
+            buffer.transform.position = transform.position;
+            buffer.Initialize(_towerData, current, _projectilePool);
+        }
+
+        yield return new WaitForSeconds(_towerData.TimeShots);
         _coroutineStarted = false;
     }
 }
