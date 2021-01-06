@@ -83,9 +83,9 @@ public class SaveController : MonoBehaviour
 		{
 			//First level always unlocked
 			if (i == 0)
-				allSaves.Add(new LevelSave(20, LevelState.UNLOCKED));
+				allSaves.Add(new LevelSave(0, LevelState.UNLOCKED));
 			else
-				allSaves.Add(new LevelSave(20, LevelState.LOCKED));
+				allSaves.Add(new LevelSave(0, LevelState.LOCKED));
 		}
 
 		SaveFile = new SaveFile(allSaves, 1, 1);
@@ -116,8 +116,17 @@ public class SaveController : MonoBehaviour
 	/// <param name="newState">The new level state</param>
 	public void SaveLevelData(int levelIndex, int newLivesLost, LevelState newState)
 	{
-		if(SaveFile.Saves[levelIndex].LivesLost > newLivesLost)
-			SaveFile.Saves[levelIndex] = new LevelSave(newLivesLost, newState);
+		int gainedSeeds = 0;
+
+		if (newLivesLost <= 3)
+			gainedSeeds = 3;
+		else if (newLivesLost <= 10)
+			gainedSeeds = 2;
+		else if (newLivesLost <= 15)
+			gainedSeeds = 1;
+
+		if (SaveFile.Saves[levelIndex].SeedsGained < gainedSeeds)
+			SaveFile.Saves[levelIndex] = new LevelSave(gainedSeeds, newState);
 
 		if(levelIndex + 1 < _numberOfLevel)
 			SaveFile.Saves[levelIndex+1] = new LevelSave(0, LevelState.UNLOCKED);

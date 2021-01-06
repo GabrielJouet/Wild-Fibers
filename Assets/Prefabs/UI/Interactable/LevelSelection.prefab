@@ -417,17 +417,17 @@ MonoBehaviour:
   _levelPicture: {fileID: 1779483766663269109}
   _levelDescription: {fileID: 1779483766690473598}
   _launchBattleMenu: {fileID: 1779483766941519014}
-  _levelButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  _sceneChanger: {fileID: 0}
   _scores:
   - {fileID: 1779483766058507803}
   - {fileID: 6999921877012236376}
   - {fileID: 3899856864217018837}
   _activatedSprite: {fileID: 5996035586896539829, guid: 3e625946b2ae3f04cb8691e7d858376b,
     type: 3}
-  _hider: {fileID: 0}
+  _desactivatedSprite: {fileID: 3527561400993541355, guid: 3e625946b2ae3f04cb8691e7d858376b,
+    type: 3}
+  _sceneChanger: {fileID: 0}
+  _displayController: {fileID: 0}
+  _controller: {fileID: 0}
 --- !u!1 &1779483766230658013
 GameObject:
   m_ObjectHideFlags: 0

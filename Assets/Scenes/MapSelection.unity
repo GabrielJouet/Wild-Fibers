@@ -1374,6 +1374,7 @@ GameObject:
   - component: {fileID: 1409857564}
   - component: {fileID: 1409857562}
   - component: {fileID: 1409857563}
+  - component: {fileID: 1409857561}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -1381,6 +1382,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
+--- !u!114 &1409857561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409857560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d093d27b429430d4cb27b9ba9add2713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelButtons:
+  - {fileID: 5623099589631518518}
+  - {fileID: 817338104}
 --- !u!114 &1409857562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1635,7 +1651,7 @@ PrefabInstance:
     - target: {fileID: 1779483766071282663, guid: 399c899800563a943b833edd6938ee04,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1779483766071282685, guid: 399c899800563a943b833edd6938ee04,
         type: 3}
@@ -1692,6 +1708,11 @@ PrefabInstance:
       propertyPath: _displayController
       value: 
       objectReference: {fileID: 1409857563}
+    - target: {fileID: 7261920287199942913, guid: 399c899800563a943b833edd6938ee04,
+        type: 3}
+      propertyPath: _controller
+      value: 
+      objectReference: {fileID: 1409857561}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 399c899800563a943b833edd6938ee04, type: 3}
 --- !u!114 &1779483767070098733 stripped

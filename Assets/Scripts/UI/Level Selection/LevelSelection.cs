@@ -34,12 +34,6 @@ public class LevelSelection : MonoBehaviour
     private Button _launchBattleMenu;
 
     /// <summary>
-    /// List of level buttons to handle.
-    /// </summary>
-    [SerializeField]
-    private List<LevelButton> _levelButtons;
-
-    /// <summary>
     /// Scores objects displayed.
     /// </summary>
     [SerializeField]
@@ -50,6 +44,12 @@ public class LevelSelection : MonoBehaviour
     /// </summary>
     [SerializeField]
     private Sprite _activatedSprite;
+
+    /// <summary>
+    /// Desactivated sprite of score items.
+    /// </summary>
+    [SerializeField]
+    private Sprite _desactivatedSprite;
 
 
     [Header("Component")]
@@ -66,54 +66,8 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private DisplayController _displayController;
 
-
-    /// <summary>
-    /// Save controller component.
-    /// </summary>
-    private SaveController _saveController;
-
-
-
-    /// <summary>
-    /// Start method used to initialize.
-    /// </summary>
-    private void Start()
-    {
-        _saveController = FindObjectOfType<SaveController>();
-        SetButtonStates();
-        gameObject.SetActive(false);
-    }
-
-
-    /// <summary>
-    /// Method used to set button states at startup.
-    /// </summary>
-    private void SetButtonStates()
-    {
-        List<LevelSave> levelSaves = _saveController.SaveFile.Saves;
-
-        for (int i = 0; i < levelSaves.Count; i++)
-        {
-            switch (levelSaves[i].State)
-            {
-                case LevelState.LOCKED:
-                    _levelButtons[i].LockLevel();
-                    break;
-                case LevelState.UNLOCKED:
-                    _levelButtons[i].UnlockLevel();
-                    break;
-                case LevelState.COMPLETED:
-                    _levelButtons[i].SetCompleted();
-                    break;
-                case LevelState.SIDED:
-                    _levelButtons[i].SetSided();
-                    break;
-                case LevelState.CHALLENGED:
-                    _levelButtons[i].SetChallenged();
-                    break;
-            }
-        }
-    }
+    [SerializeField]
+    private LevelButtonController _controller;
 
 
     /// <summary>
@@ -128,11 +82,11 @@ public class LevelSelection : MonoBehaviour
         _levelPicture.sprite = newParameters.Picture;
         _levelDescription.text = newParameters.Description;
 
-        int livesLost = _saveController.SaveFile.Saves[newParameters.Number].LivesLost;
+        foreach (Image current in _scores)
+            current.sprite = _desactivatedSprite;
 
-        _scores[2].sprite = livesLost <= 15 ? _activatedSprite : _scores[2].sprite;
-        _scores[1].sprite = livesLost <= 10 ? _activatedSprite : _scores[2].sprite;
-        _scores[0].sprite = livesLost <= 3 ? _activatedSprite : _scores[2].sprite;
+        for (int i = 0; i < _controller.SaveController.SaveFile.Saves[newParameters.Number].SeedsGained; i ++)
+            _scores[i].sprite = _activatedSprite;
 
         _launchBattleMenu.onClick.RemoveAllListeners();
         _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(newParameters.Scene));
