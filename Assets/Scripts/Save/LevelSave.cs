@@ -16,6 +16,7 @@ public class LevelSave
     /// </summary>
     public LevelState State { get; private set; }
 
+    public string Name { get; private set; }
 
 
     /// <summary>
@@ -23,9 +24,10 @@ public class LevelSave
     /// </summary>
     /// <param name="newSeedsGained">Number of seeds gained (related to lives lost)</param>
     /// <param name="newLevelState">New state</param>
-    public LevelSave(int newSeedsGained, LevelState newLevelState)
+    public LevelSave(int newSeedsGained, LevelState newLevelState, string newName)
     {
         SeedsGained = newSeedsGained;
         State = newLevelState;
+        Name = newName;
     }
 }

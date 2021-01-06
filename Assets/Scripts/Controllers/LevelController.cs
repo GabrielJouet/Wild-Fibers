@@ -24,11 +24,6 @@ public class LevelController : MonoBehaviour
     /// </summary>
     public bool Ended { get; set; }
 
-    /// <summary>
-    /// Current level index.
-    /// </summary>
-    public int LevelIndex { get => _level.Number; }
-
 
     [Header("UI related")]
 

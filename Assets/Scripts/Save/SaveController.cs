@@ -12,7 +12,7 @@ public class SaveController : MonoBehaviour
 	/// Number of levels in the game.
 	/// </summary>
 	[SerializeField]
-	private int _numberOfLevel;
+	private List<Level> _levels;
 
 	/// <summary>
 	/// Loaded save file.
@@ -79,13 +79,13 @@ public class SaveController : MonoBehaviour
 	{
 		List<LevelSave> allSaves = new List<LevelSave>();
 
-		for (int i = 0; i < _numberOfLevel; i ++)
+		for (int i = 0; i < _levels.Count; i ++)
 		{
 			//First level always unlocked
 			if (i == 0)
-				allSaves.Add(new LevelSave(0, LevelState.UNLOCKED));
+				allSaves.Add(new LevelSave(0, LevelState.UNLOCKED, _levels[i].Name));
 			else
-				allSaves.Add(new LevelSave(0, LevelState.LOCKED));
+				allSaves.Add(new LevelSave(0, LevelState.LOCKED, _levels[i].Name));
 		}
 
 		SaveFile = new SaveFile(allSaves, 1, 1);
@@ -126,10 +126,10 @@ public class SaveController : MonoBehaviour
 			gainedSeeds = 1;
 
 		if (SaveFile.Saves[levelIndex].SeedsGained < gainedSeeds)
-			SaveFile.Saves[levelIndex] = new LevelSave(gainedSeeds, newState);
+			SaveFile.Saves[levelIndex] = new LevelSave(gainedSeeds, newState, _levels[levelIndex].Name);
 
-		if(levelIndex + 1 < _numberOfLevel)
-			SaveFile.Saves[levelIndex+1] = new LevelSave(0, LevelState.UNLOCKED);
+		if(levelIndex + 1 < _levels.Count)
+			SaveFile.Saves[levelIndex + 1] = new LevelSave(0, LevelState.UNLOCKED, _levels[levelIndex + 1].Name);
 
 		SaveData();
 	}
@@ -163,5 +163,22 @@ public class SaveController : MonoBehaviour
 			File.Delete(_gameSavePath);
 
 		CreateSave();
+	}
+
+
+	public int FindLevelSaveWithName(string levelName)
+	{
+		int result = 0;
+
+		for (int i = 0; i < SaveFile.Saves.Count; i ++)
+		{
+			if (SaveFile.Saves[i].Name == levelName)
+			{
+				result = i;
+				break;
+			}
+		}
+
+		return result;
 	}
 }
