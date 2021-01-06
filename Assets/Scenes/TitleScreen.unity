@@ -359,6 +359,8 @@ MonoBehaviour:
   _levels:
   - {fileID: 11400000, guid: 7b1bc5ec89c95a846b583f549b2629a6, type: 2}
   - {fileID: 11400000, guid: b0b6b55dcb0a19e4288fe2b941a54ed4, type: 2}
+  - {fileID: 11400000, guid: 26d9002954a5adc418f4153f04a40ae7, type: 2}
+  - {fileID: 11400000, guid: 548591ebfbf785a40b76a911fff0dfb0, type: 2}
 --- !u!114 &184121281
 MonoBehaviour:
   m_ObjectHideFlags: 0

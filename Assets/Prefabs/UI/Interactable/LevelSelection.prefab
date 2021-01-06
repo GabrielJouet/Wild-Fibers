@@ -427,6 +427,8 @@ MonoBehaviour:
   _sideScore: {fileID: 2541733329772931572}
   _sideButton: {fileID: 3375044744606165739}
   _challengeButton: {fileID: 2673923328532387217}
+  _classicLayout: {fileID: 7235413785287575608}
+  _sideLayout: {fileID: 4062761191188066329}
   _activatedSprite: {fileID: 5996035586896539829, guid: 3e625946b2ae3f04cb8691e7d858376b,
     type: 3}
   _desactivatedSprite: {fileID: 3527561400993541355, guid: 3e625946b2ae3f04cb8691e7d858376b,

@@ -52,6 +52,12 @@ public class LevelSelection : MonoBehaviour
     private Button _challengeButton;
 
 
+    [SerializeField]
+    private GameObject _classicLayout;
+
+    [SerializeField]
+    private GameObject _sideLayout;
+
     /// <summary>
     /// Activated sprite of score items.
     /// </summary>
@@ -91,6 +97,9 @@ public class LevelSelection : MonoBehaviour
     /// <param name="newParameters">The new level parameters to use</param>
     public void ActivateLevelSelectionMenu(LevelButton button, bool sideUnlocked, bool challengeUnlocked)
     {
+        _classicLayout.SetActive(true);
+        _sideLayout.SetActive(false);
+
         _sideButton.enabled = sideUnlocked;
         _challengeButton.enabled = challengeUnlocked;
 
@@ -115,12 +124,15 @@ public class LevelSelection : MonoBehaviour
 
     public void ActivateSideMenu()
     {
+        _classicLayout.SetActive(false);
+        _sideLayout.SetActive(true);
+
         _levelName.text = _loadedButton.Side.Name;
         _levelPicture.sprite = _loadedButton.Side.Picture;
         _sideDescription.text = _loadedButton.Side.Description;
 
         _sideScore.sprite = _desactivatedSprite;
-        _sideScore.sprite = _controller.SaveController.SaveFile.Saves[_controller.SaveController.FindLevelSaveWithName(_loadedButton.Side.Name)].SeedsGained == 1 ? _activatedSprite : _scores[4].sprite;
+        _sideScore.sprite = _controller.SaveController.SaveFile.Saves[_controller.SaveController.FindLevelSaveWithName(_loadedButton.Side.Name)].SeedsGained == 1 ? _activatedSprite : _sideScore.sprite;
 
         _launchBattleMenu.onClick.RemoveAllListeners();
         _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(_loadedButton.Side.Scene));
@@ -129,12 +141,15 @@ public class LevelSelection : MonoBehaviour
 
     public void ActivateChallengeMenu()
     {
+        _classicLayout.SetActive(false);
+        _sideLayout.SetActive(true);
+
         _levelName.text = _loadedButton.Challenge.Name;
         _levelPicture.sprite = _loadedButton.Challenge.Picture;
         _sideDescription.text = _loadedButton.Challenge.Description;
 
         _sideScore.sprite = _desactivatedSprite;
-        _sideScore.sprite = _controller.SaveController.SaveFile.Saves[_controller.SaveController.FindLevelSaveWithName(_loadedButton.Challenge.Name)].SeedsGained == 1 ? _activatedSprite : _scores[4].sprite;
+        _sideScore.sprite = _controller.SaveController.SaveFile.Saves[_controller.SaveController.FindLevelSaveWithName(_loadedButton.Challenge.Name)].SeedsGained == 1 ? _activatedSprite : _sideScore.sprite;
 
         _launchBattleMenu.onClick.RemoveAllListeners();
         _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(_loadedButton.Challenge.Scene));

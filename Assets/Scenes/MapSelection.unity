@@ -1755,6 +1755,18 @@ PrefabInstance:
       propertyPath: _levelSelection
       value: 
       objectReference: {fileID: 1779483767070098733}
+    - target: {fileID: 5623099589317693378, guid: 20ef5d9497745fa4d8ac9f8cd91dc13a,
+        type: 3}
+      propertyPath: _challengeLevel
+      value: 
+      objectReference: {fileID: 11400000, guid: 26d9002954a5adc418f4153f04a40ae7,
+        type: 2}
+    - target: {fileID: 5623099589317693378, guid: 20ef5d9497745fa4d8ac9f8cd91dc13a,
+        type: 3}
+      propertyPath: _sideLevel
+      value: 
+      objectReference: {fileID: 11400000, guid: 548591ebfbf785a40b76a911fff0dfb0,
+        type: 2}
     - target: {fileID: 5623099589317693382, guid: 20ef5d9497745fa4d8ac9f8cd91dc13a,
         type: 3}
       propertyPath: m_LocalPosition.x
