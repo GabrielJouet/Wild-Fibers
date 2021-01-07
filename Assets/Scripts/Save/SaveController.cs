@@ -8,11 +8,13 @@ using UnityEngine;
 /// </summary>
 public class SaveController : MonoBehaviour
 {
-	/// <summary>
-	/// Number of levels in the game.
-	/// </summary>
 	[SerializeField]
-	private int _numberOfLevel;
+	private List<LevelData> _levels;
+	public List<LevelData> Levels { get => _levels; }
+
+
+	public int LoadedLevel { get; set; }
+
 
 	/// <summary>
 	/// Loaded save file.
@@ -30,12 +32,13 @@ public class SaveController : MonoBehaviour
 	private string _gameSavePath;
 
 
-
 	/// <summary>
 	/// Awake method, used for initialization.
 	/// </summary>
 	private void Awake()
 	{
+		Application.targetFrameRate = 60;
+
 		if (FindObjectsOfType<SaveController>().Length > 1)
 			Destroy(gameObject);
 
@@ -79,14 +82,8 @@ public class SaveController : MonoBehaviour
 	{
 		List<LevelSave> allSaves = new List<LevelSave>();
 
-		for (int i = 0; i < _numberOfLevel; i ++)
-		{
-			//First level always unlocked
-			if (i == 0)
-				allSaves.Add(new LevelSave(20, LevelState.UNLOCKED));
-			else
-				allSaves.Add(new LevelSave(20, LevelState.LOCKED));
-		}
+		for (int i = 0; i < Levels.Count; i ++)
+			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED, false, false));
 
 		SaveFile = new SaveFile(allSaves, 1, 1);
 
@@ -111,16 +108,24 @@ public class SaveController : MonoBehaviour
 	/// <summary>
 	/// Method used to save a level data.
 	/// </summary>
-	/// <param name="levelIndex">The level index related</param>
 	/// <param name="newLivesLost">The number of lives lost</param>
 	/// <param name="newState">The new level state</param>
-	public void SaveLevelData(int levelIndex, int newLivesLost, LevelState newState)
+	public void SaveLevelData(int newLivesLost, LevelState newState, bool sided, bool challenged)
 	{
-		if(SaveFile.Saves[levelIndex].LivesLost > newLivesLost)
-			SaveFile.Saves[levelIndex] = new LevelSave(newLivesLost, newState);
+		int gainedSeeds = 0;
 
-		if(levelIndex + 1 < _numberOfLevel)
-			SaveFile.Saves[levelIndex+1] = new LevelSave(0, LevelState.UNLOCKED);
+		if (newLivesLost <= 3)
+			gainedSeeds = 3;
+		else if (newLivesLost <= 10)
+			gainedSeeds = 2;
+		else if (newLivesLost <= 15)
+			gainedSeeds = 1;
+
+		if (SaveFile.Saves[LoadedLevel].SeedsGained < gainedSeeds)
+			SaveFile.Saves[LoadedLevel] = new LevelSave(gainedSeeds, newState, sided, challenged);
+
+		if(LoadedLevel + 1 < Levels.Count)
+			SaveFile.Saves[LoadedLevel + 1] = new LevelSave(0, LevelState.UNLOCKED, false, false);
 
 		SaveData();
 	}

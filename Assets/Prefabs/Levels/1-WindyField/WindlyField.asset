@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: WindlyField
   m_EditorClassIdentifier: 
   _name: Windly Field
-  _number: 0
   _picture: {fileID: 21300000, guid: 3aeb669f1a183bd4298cc870046f5cb9, type: 3}
   _description: A sunny field filled with flowers and nice grass.
   _playSceneName: WindyField
@@ -25,6 +24,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fb170f421942f624490021ca8a457988, type: 2}
   _lifeCount: 20
   _goldCount: 400
-  _enemyAvailables:
-  - {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4, type: 3}
-  - {fileID: 5682064432001086994, guid: 3a10d5fb2f081234aba26b426ea831c4, type: 3}
+  _towerLevel: 0

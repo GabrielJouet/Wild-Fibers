@@ -9,12 +9,6 @@ public class TowerButtonController : MonoBehaviour
     [Header("Components")]
 
     /// <summary>
-    /// Player controller handles towers.
-    /// </summary>
-    [SerializeField]
-    private PlayerController _playerController;
-
-    /// <summary>
     /// Resource controller handles gold and lives.
     /// </summary>
     [SerializeField]
@@ -60,13 +54,22 @@ public class TowerButtonController : MonoBehaviour
     private Tower _currentTower;
 
 
+    private SquadController _squadController;
+
+
+
+    private void Awake()
+    {
+        _squadController = FindObjectOfType<SquadController>();
+    }
+
 
     /// <summary>
     /// Start method, called at first.
     /// </summary>
     private void Start()
     {
-        List<TowerData> buffer = _playerController.Towers;
+        List<TowerData> buffer = _squadController.Towers;
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i ++)
             _towerPurchaseButtons[i].Initialize(buffer[i].Icon, buffer[i].Price, _ressourceController, buffer[i].Description);
@@ -84,7 +87,7 @@ public class TowerButtonController : MonoBehaviour
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i++)
         {
-            TowerData buffer = _playerController.Towers[i];
+            TowerData buffer = _squadController.Towers[i];
             _towerPurchaseButtons[i].gameObject.SetActive(true);
 
             _towerPurchaseButtons[i].ChangeBehavior(() => newUsedTowerSlot.ChooseTower(buffer));

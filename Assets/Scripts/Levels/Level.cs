@@ -17,13 +17,6 @@ public class Level : ScriptableObject
     public string Name { get => _name; }
 
     /// <summary>
-    /// Level number.
-    /// </summary>
-    [SerializeField]
-    private int _number;
-    public int Number { get => _number; }
-
-    /// <summary>
     /// Level thumbnail.
     /// </summary>
     [SerializeField]

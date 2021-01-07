@@ -9,7 +9,12 @@ public class LevelSave
     /// <summary>
     /// Number of lives lost on this level.
     /// </summary>
-    public int LivesLost { get; private set; }
+    public int SeedsGained { get; private set; }
+
+    public bool Sided { get; private set; }
+
+    public bool Challenged { get; private set; }
+
 
     /// <summary>
     /// Actual state of the level.
@@ -17,15 +22,19 @@ public class LevelSave
     public LevelState State { get; private set; }
 
 
-
     /// <summary>
     /// Constructor.
     /// </summary>
-    /// <param name="newLivesLost">Number of lives lost</param>
+    /// <param name="newSeedsGained">Number of seeds gained (related to lives lost)</param>
     /// <param name="newLevelState">New state</param>
-    public LevelSave(int newLivesLost, LevelState newLevelState)
+    /// <param name="sided">Side level finished?</param>
+    /// <param name="challenged">Challenge level finished?</param>
+    public LevelSave(int newSeedsGained, LevelState newLevelState, bool sided, bool challenged)
     {
-        LivesLost = newLivesLost;
+        SeedsGained = newSeedsGained;
         State = newLevelState;
+
+        Sided = sided;
+        Challenged = challenged;
     }
 }
