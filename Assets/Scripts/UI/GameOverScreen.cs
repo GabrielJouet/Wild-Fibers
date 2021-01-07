@@ -107,7 +107,7 @@ public class GameOverScreen : MonoBehaviour
         if (win)
         {
             SaveController buffer = FindObjectOfType<SaveController>();
-            buffer.SaveLevelData(buffer.FindLevelSaveWithName(_levelController.LoadedLevel.Name), _ressourceController.LivesLost, LevelState.COMPLETED);
+            buffer.SaveLevelData(_ressourceController.LivesLost, LevelState.COMPLETED, false, false);
 
             int livesLost = _ressourceController.LivesLost;
 

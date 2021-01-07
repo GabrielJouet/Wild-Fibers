@@ -86,39 +86,63 @@ public class LevelSelection : MonoBehaviour
     private DisplayController _displayController;
 
     [SerializeField]
-    private LevelButtonController _controller;
+    private List<LevelButton> _levelButtons;
+
+    private SaveController _saveController;
 
 
-    private LevelButton _loadedButton;
+    private int _levelIndex;
+
+    private LevelData _level;
+
+
+
+    private void Awake()
+    {
+    }
+
 
     /// <summary>
     /// Method used to open level selection menu.
     /// </summary>
-    /// <param name="newParameters">The new level parameters to use</param>
-    public void ActivateLevelSelectionMenu(LevelButton button, bool sideUnlocked, bool challengeUnlocked)
+    public void ActivateLevelSelectionMenu(LevelButton buttonUsed)
     {
+        if (_saveController == null)
+            _saveController = FindObjectOfType<SaveController>();
+
+        for (int i = 0; i < _levelButtons.Count; i ++)
+        {
+            if (_levelButtons[i] == buttonUsed)
+            {
+                _levelIndex = i;
+                _level = _saveController.Levels[i];
+                break;
+            }
+        }
+
+        _saveController.LoadedLevel = _levelIndex;
+
+        LevelState buffer = _saveController.SaveFile.Saves[_levelIndex].State;
+        _sideButton.enabled = buffer == LevelState.COMPLETED || buffer == LevelState.SIDED || buffer == LevelState.CHALLENGED;
+        _challengeButton.enabled = buffer == LevelState.SIDED || buffer == LevelState.CHALLENGED;
+
         _classicLayout.SetActive(true);
         _sideLayout.SetActive(false);
 
-        _sideButton.enabled = sideUnlocked;
-        _challengeButton.enabled = challengeUnlocked;
-
-        _loadedButton = button;
-
-        _displayController.DisplayObject(gameObject);
-
-        _levelName.text = _loadedButton.Level.Name;
-        _levelPicture.sprite = _loadedButton.Level.Picture;
-        _levelDescription.text = _loadedButton.Level.Description;
+        _levelName.text = _level.Classic.Name;
+        _levelPicture.sprite = _level.Classic.Picture;
+        _levelDescription.text = _level.Classic.Description;
 
         foreach (Image current in _scores)
             current.sprite = _desactivatedSprite;
 
-        for (int i = 0; i < _controller.SaveController.SaveFile.Saves[_controller.SaveController.FindLevelSaveWithName(_loadedButton.Level.Name)].SeedsGained; i ++)
+        for (int i = 0; i < _saveController.SaveFile.Saves[_levelIndex].SeedsGained; i ++)
             _scores[i].sprite = _activatedSprite;
 
+        _displayController.DisplayObject(gameObject);
+
         _launchBattleMenu.onClick.RemoveAllListeners();
-        _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(_loadedButton.Level.Scene));
+        _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(_level.Classic.Scene));
     }
 
 
@@ -127,15 +151,15 @@ public class LevelSelection : MonoBehaviour
         _classicLayout.SetActive(false);
         _sideLayout.SetActive(true);
 
-        _levelName.text = _loadedButton.Side.Name;
-        _levelPicture.sprite = _loadedButton.Side.Picture;
-        _sideDescription.text = _loadedButton.Side.Description;
+        _levelName.text = _level.Side.Name;
+        _levelPicture.sprite = _level.Side.Picture;
+        _sideDescription.text = _level.Side.Description;
 
         _sideScore.sprite = _desactivatedSprite;
-        _sideScore.sprite = _controller.SaveController.SaveFile.Saves[_controller.SaveController.FindLevelSaveWithName(_loadedButton.Side.Name)].SeedsGained == 1 ? _activatedSprite : _sideScore.sprite;
+        _sideScore.sprite = _saveController.SaveFile.Saves[_levelIndex].Sided ? _activatedSprite : _sideScore.sprite;
 
         _launchBattleMenu.onClick.RemoveAllListeners();
-        _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(_loadedButton.Side.Scene));
+        _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(_level.Side.Scene));
     }
 
 
@@ -144,14 +168,14 @@ public class LevelSelection : MonoBehaviour
         _classicLayout.SetActive(false);
         _sideLayout.SetActive(true);
 
-        _levelName.text = _loadedButton.Challenge.Name;
-        _levelPicture.sprite = _loadedButton.Challenge.Picture;
-        _sideDescription.text = _loadedButton.Challenge.Description;
+        _levelName.text = _level.Challenge.Name;
+        _levelPicture.sprite = _level.Challenge.Picture;
+        _sideDescription.text = _level.Challenge.Description;
 
         _sideScore.sprite = _desactivatedSprite;
-        _sideScore.sprite = _controller.SaveController.SaveFile.Saves[_controller.SaveController.FindLevelSaveWithName(_loadedButton.Challenge.Name)].SeedsGained == 1 ? _activatedSprite : _sideScore.sprite;
+        _sideScore.sprite = _saveController.SaveFile.Saves[_levelIndex].Challenged ? _activatedSprite : _sideScore.sprite;
 
         _launchBattleMenu.onClick.RemoveAllListeners();
-        _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(_loadedButton.Challenge.Scene));
+        _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(_level.Challenge.Scene));
     }
 }

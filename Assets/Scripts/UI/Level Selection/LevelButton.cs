@@ -7,26 +7,6 @@ using UnityEngine.UI;
 /// </summary>
 public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    [Header("Components")]
-
-    /// <summary>
-    /// Loaded level.
-    /// </summary>
-    [SerializeField]
-    private Level _levelParameters;
-    public Level Level { get => _levelParameters; }
-
-
-    [SerializeField]
-    private Level _sideLevel;
-    public Level Side { get => _sideLevel; }
-
-
-    [SerializeField]
-    private Level _challengeLevel;
-    public Level Challenge { get => _challengeLevel; }
-
-
     [Header("Display")]
 
     /// <summary>
@@ -107,8 +87,6 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// </summary>
     private bool _isLocked = false;
 
-    private LevelState _state;
-
 
 
     /// <summary>
@@ -137,12 +115,7 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void Activate()
     {
         if(!_isLocked)
-        {
-            bool sideUnlocked = _state == LevelState.COMPLETED || _state == LevelState.SIDED || _state == LevelState.CHALLENGED;
-            bool challengeUnlocked = _state == LevelState.SIDED || _state == LevelState.CHALLENGED;
-
-            _levelSelection.ActivateLevelSelectionMenu(this, sideUnlocked, challengeUnlocked);
-        }
+            _levelSelection.ActivateLevelSelectionMenu(this);
     }
 
 
@@ -151,7 +124,6 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// </summary>
     public void LockLevel()
     {
-        _state = LevelState.LOCKED;
         _isLocked = true;
     }
 
@@ -161,7 +133,6 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// </summary>
     public void UnlockLevel()
     {
-        _state = LevelState.UNLOCKED;
         _hoverDisplayer.sprite = _unlockedHover;
         _buttonDisplay.sprite = _activatedSprite;
     }
@@ -172,7 +143,6 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// </summary>
     public void SetCompleted()
     {
-        _state = LevelState.COMPLETED;
         _buttonDisplay.sprite = _completedSprite;
         _hoverDisplayer.sprite = _finishedHover;
         _hoverDisplayer.SetNativeSize();
@@ -184,7 +154,6 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// </summary>
     public void SetSided()
     {
-        _state = LevelState.SIDED;
         _buttonDisplay.sprite = _sidedSprite;
         _hoverDisplayer.sprite = _asideHover;
         _hoverDisplayer.SetNativeSize();
@@ -196,7 +165,6 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// </summary>
     public void SetChallenged()
     {
-        _state = LevelState.CHALLENGED;
         _buttonDisplay.sprite = _challengedSprite;
         _hoverDisplayer.sprite = _challengedHover;
         _hoverDisplayer.SetNativeSize();

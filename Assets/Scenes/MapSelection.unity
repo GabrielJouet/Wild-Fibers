@@ -1685,6 +1685,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7261920287199942913, guid: 399c899800563a943b833edd6938ee04,
         type: 3}
+      propertyPath: _levelButtons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7261920287199942913, guid: 399c899800563a943b833edd6938ee04,
+        type: 3}
       propertyPath: _levelButtons.Array.data[0]
       value: 
       objectReference: {fileID: 5623099589631518518}

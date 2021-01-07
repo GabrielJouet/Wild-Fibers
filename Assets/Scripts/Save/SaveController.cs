@@ -8,11 +8,13 @@ using UnityEngine;
 /// </summary>
 public class SaveController : MonoBehaviour
 {
-	/// <summary>
-	/// Number of levels in the game.
-	/// </summary>
 	[SerializeField]
-	private List<Level> _levels;
+	private List<LevelData> _levels;
+	public List<LevelData> Levels { get => _levels; }
+
+
+	public int LoadedLevel { get; set; }
+
 
 	/// <summary>
 	/// Loaded save file.
@@ -30,12 +32,13 @@ public class SaveController : MonoBehaviour
 	private string _gameSavePath;
 
 
-
 	/// <summary>
 	/// Awake method, used for initialization.
 	/// </summary>
 	private void Awake()
 	{
+		Application.targetFrameRate = 60;
+
 		if (FindObjectsOfType<SaveController>().Length > 1)
 			Destroy(gameObject);
 
@@ -79,14 +82,8 @@ public class SaveController : MonoBehaviour
 	{
 		List<LevelSave> allSaves = new List<LevelSave>();
 
-		for (int i = 0; i < _levels.Count; i ++)
-		{
-			//First level always unlocked
-			if (i == 0)
-				allSaves.Add(new LevelSave(0, LevelState.UNLOCKED, _levels[i].Name));
-			else
-				allSaves.Add(new LevelSave(0, LevelState.LOCKED, _levels[i].Name));
-		}
+		for (int i = 0; i < Levels.Count; i ++)
+			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED, false, false));
 
 		SaveFile = new SaveFile(allSaves, 1, 1);
 
@@ -111,10 +108,9 @@ public class SaveController : MonoBehaviour
 	/// <summary>
 	/// Method used to save a level data.
 	/// </summary>
-	/// <param name="levelIndex">The level index related</param>
 	/// <param name="newLivesLost">The number of lives lost</param>
 	/// <param name="newState">The new level state</param>
-	public void SaveLevelData(int levelIndex, int newLivesLost, LevelState newState)
+	public void SaveLevelData(int newLivesLost, LevelState newState, bool sided, bool challenged)
 	{
 		int gainedSeeds = 0;
 
@@ -125,11 +121,11 @@ public class SaveController : MonoBehaviour
 		else if (newLivesLost <= 15)
 			gainedSeeds = 1;
 
-		if (SaveFile.Saves[levelIndex].SeedsGained < gainedSeeds)
-			SaveFile.Saves[levelIndex] = new LevelSave(gainedSeeds, newState, _levels[levelIndex].Name);
+		if (SaveFile.Saves[LoadedLevel].SeedsGained < gainedSeeds)
+			SaveFile.Saves[LoadedLevel] = new LevelSave(gainedSeeds, newState, sided, challenged);
 
-		if(levelIndex + 1 < _levels.Count)
-			SaveFile.Saves[levelIndex + 1] = new LevelSave(0, LevelState.UNLOCKED, _levels[levelIndex + 1].Name);
+		if(LoadedLevel + 1 < Levels.Count)
+			SaveFile.Saves[LoadedLevel + 1] = new LevelSave(0, LevelState.UNLOCKED, false, false);
 
 		SaveData();
 	}
@@ -163,22 +159,5 @@ public class SaveController : MonoBehaviour
 			File.Delete(_gameSavePath);
 
 		CreateSave();
-	}
-
-
-	public int FindLevelSaveWithName(string levelName)
-	{
-		int result = 0;
-
-		for (int i = 0; i < SaveFile.Saves.Count; i ++)
-		{
-			if (SaveFile.Saves[i].Name == levelName)
-			{
-				result = i;
-				break;
-			}
-		}
-
-		return result;
 	}
 }
