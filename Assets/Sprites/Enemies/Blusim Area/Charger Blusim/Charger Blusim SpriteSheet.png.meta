@@ -4,43 +4,43 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 1229087058977180590
-    second: Blusim Walk0
+    second: Charger Blusim Walk0
   - first:
       213: 5434929426288245211
-    second: Blusim Walk1
+    second: Charger Blusim Walk1
   - first:
       213: -5555732772921786182
-    second: Blusim Walk2
+    second: Charger Blusim Walk2
   - first:
       213: -3003319777913887172
-    second: Blusim Walk3
+    second: Charger Blusim Walk3
   - first:
       213: -8274635405728852405
-    second: Blusim Walk4
+    second: Charger Blusim Walk4
   - first:
       213: 433642988479333223
-    second: Blusim Walk5
+    second: Charger Blusim Walk5
   - first:
       213: 4122544103823977450
-    second: Blusim Walk6
+    second: Charger Blusim Walk6
   - first:
       213: 1775873315875672191
-    second: Blusim Walk7
+    second: Charger Blusim Walk7
   - first:
       213: 5625262064487677974
-    second: Blusim Walk8
+    second: Charger Blusim Walk8
   - first:
       213: 5137300529902436641
-    second: Blusim Walk9
+    second: Charger Blusim Walk9
   - first:
       213: -1903296424217965726
-    second: Blusim Walk10
+    second: Charger Blusim Walk10
   - first:
       213: -1651005350007223384
-    second: Blusim Walk11
+    second: Charger Blusim Walk11
   - first:
       213: -1331780560651042014
-    second: Blusim Shadow
+    second: Charger Blusim Shadow
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -126,7 +126,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Blusim Walk0
+      name: Charger Blusim Walk0
       rect:
         serializedVersion: 2
         x: 0
@@ -147,7 +147,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Walk1
+      name: Charger Blusim Walk1
       rect:
         serializedVersion: 2
         x: 48
@@ -168,7 +168,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Walk2
+      name: Charger Blusim Walk2
       rect:
         serializedVersion: 2
         x: 96
@@ -189,7 +189,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Walk3
+      name: Charger Blusim Walk3
       rect:
         serializedVersion: 2
         x: 144
@@ -210,7 +210,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Walk4
+      name: Charger Blusim Walk4
       rect:
         serializedVersion: 2
         x: 0
@@ -231,7 +231,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Walk5
+      name: Charger Blusim Walk5
       rect:
         serializedVersion: 2
         x: 48
@@ -252,7 +252,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Walk6
+      name: Charger Blusim Walk6
       rect:
         serializedVersion: 2
         x: 96
@@ -273,7 +273,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Walk7
+      name: Charger Blusim Walk7
       rect:
         serializedVersion: 2
         x: 144
@@ -294,7 +294,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Walk8
+      name: Charger Blusim Walk8
       rect:
         serializedVersion: 2
         x: 0
@@ -315,7 +315,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Walk9
+      name: Charger Blusim Walk9
       rect:
         serializedVersion: 2
         x: 48
@@ -336,7 +336,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Walk10
+      name: Charger Blusim Walk10
       rect:
         serializedVersion: 2
         x: 96
@@ -357,7 +357,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Walk11
+      name: Charger Blusim Walk11
       rect:
         serializedVersion: 2
         x: 144
@@ -378,7 +378,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Blusim Shadow
+      name: Charger Blusim Shadow
       rect:
         serializedVersion: 2
         x: 144
