@@ -164,9 +164,16 @@ public class LevelController : MonoBehaviour
                 result = false;
 
         if (result)
-            _gameOverScreen.Activate(true);
+            StartCoroutine(DelayGameScreen());
 
         Ended = result;
+    }
+
+
+    private IEnumerator DelayGameScreen()
+    {
+        yield return new WaitForSeconds(1f);
+        _gameOverScreen.Activate(true);
     }
 
 
