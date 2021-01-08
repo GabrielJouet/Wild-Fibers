@@ -5,6 +5,12 @@ TextureImporter:
   - first:
       213: -1219450226919108179
     second: Scyther Unt SpriteSheet_0
+  - first:
+      213: -4768262474990855724
+    second: Scyther Unt SpriteSheet_0
+  - first:
+      213: 4969594697402952153
+    second: Scyther Unt Shadow
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -94,18 +100,39 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 36
         width: 48
         height: 36
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da19733ca74a31fe0800000000000000
-      internalID: -1219450226919108179
+      spriteID: 4d95856da8ab3ddb0800000000000000
+      internalID: -4768262474990855724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt Shadow
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d92e581c0c87f440800000000000000
+      internalID: 4969594697402952153
       vertices: []
       indices: 
       edges: []
