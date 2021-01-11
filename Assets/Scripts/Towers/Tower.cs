@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -117,6 +118,36 @@ public class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// FixedUpdate, called 50 times a second.
+    /// </summary>
+    private void FixedUpdate()
+    {
+        if (_availableEnemies.Count > 0 && !_coroutineStarted)
+            StartCoroutine(SummonProjectile());
+    }
+
+
+    /// <summary>
+    /// Coroutine used to delay attacks.
+    /// </summary>
+    private IEnumerator SummonProjectile()
+    {
+        _coroutineStarted = true;
+
+        int numberOfStrikes = _availableEnemies.Count < _towerData.Shots ? _availableEnemies.Count : _towerData.Shots;
+
+        SortEnemies();
+        List<Enemy> enemiesAvailable = _towerData.ShotsRandomly ? RecoverRandomEnemies(numberOfStrikes) : RecoverAvailableEnemies(numberOfStrikes);
+
+        foreach (Enemy current in enemiesAvailable)
+            _projectilePool.GetOneProjectile().Initialize(_towerData, current, _projectilePool, transform);
+
+        yield return new WaitForSeconds(_towerData.TimeShots);
+        _coroutineStarted = false;
+    }
+
+
 
     #region Upgrades and Money related
     /// <summary>
@@ -219,6 +250,19 @@ public class Tower : MonoBehaviour
             else
                 availableEnemies.Add(_availableEnemies[i]);
         }
+
+        return availableEnemies;
+    }
+
+
+    protected List<Enemy> RecoverRandomEnemies(int numberOfEnemiesToFound)
+    {
+        List<Enemy> availableEnemies = new List<Enemy>();
+
+        _availableEnemies.Shuffle();
+
+        for (int i = 0; i < numberOfEnemiesToFound; i++)
+            availableEnemies.Add(_availableEnemies[i]);
 
         return availableEnemies;
     }

@@ -4,20 +4,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Towers/Data", fileName = "NewTower")]
 public class TowerData : ScriptableObject
 {
-    [SerializeField]
-    private string _relatedScript;
-    public string Script { get => _relatedScript; }
-
-
     [Header("Description")]
 
     /// <summary>
-    /// Display name.
+    /// Description.
     /// </summary>
-    [SerializeField]
-    protected string _displayName;
-    public string Name { get => _displayName; }
-
     [SerializeField]
     protected string _description;
     public string Description { get => _description; }
@@ -103,6 +94,13 @@ public class TowerData : ScriptableObject
     [SerializeField]
     protected bool _canHitFlying;
     public bool HitFlying { get => _canHitFlying; }
+
+    /// <summary>
+    /// Does the towers choose its target?
+    /// </summary>
+    [SerializeField]
+    protected bool _shotsRandomly;
+    public bool ShotsRandomly { get => _shotsRandomly; }
 
 
     [Header("Dot related")]

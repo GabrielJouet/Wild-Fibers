@@ -9,8 +9,9 @@ public class ShockWave : Projectile
 
 
     //Method used to initialize class (like a constructor)
-    public override void Initialize(TowerData newData, ProjectilePool newPool)
+    public override void Initialize(TowerData newData, Enemy newEnemy, ProjectilePool newPool, Transform newTransform)
     {
+        transform.position = newTransform.position;
         _data = newData;
         _projectilePool = newPool;
         _previousScale = new Vector3(0, 0, 1);

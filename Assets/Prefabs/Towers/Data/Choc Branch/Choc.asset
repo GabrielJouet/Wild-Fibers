@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f93a738c01d9b44483aba2f0a4f91fa, type: 3}
   m_Name: Choc
   m_EditorClassIdentifier: 
-  _relatedScript: ChocTower
-  _displayName: Choc
   _description: An old stump with ferocious sharp roots
   _price: 180
   _icon: {fileID: 21300000, guid: bff7ca8cdc8698642aef3dfdd18ee513, type: 3}
@@ -29,11 +27,12 @@ MonoBehaviour:
   _numberOfShots: 3
   _range: 1
   _canHitFlying: 0
+  _shotsRandomly: 0
   _armorThroughMalus: 0
   _damageOverTime: 0
   _dotDuration: 0
   _dotIcon: {fileID: 0}
   _towerUpgrades:
-  - {fileID: 11400000, guid: aceb2695358352a40a59841d085a4072, type: 2}
+  - {fileID: 11400000, guid: 1a83753d8802f364e8dea7ebcc13df4b, type: 2}
   - {fileID: 11400000, guid: 58c1c5ad6fa9ece47897ac8f41e577d6, type: 2}
   _towerSpecs: []

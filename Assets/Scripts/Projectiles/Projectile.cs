@@ -23,24 +23,14 @@ public class Projectile : MonoBehaviour
     /// <param name="newData">Tower Data used to populate the class</param>
     /// <param name="newEnemy">New Enemy tracked</param>
     /// <param name="newPool">The projectile pool used</param>
-    public virtual void Initialize(TowerData newData, Enemy newEnemy, ProjectilePool newPool)
+    /// <param name="newTransform">The parent tower</param>
+    public virtual void Initialize(TowerData newData, Enemy newEnemy, ProjectilePool newPool, Transform newTransform)
     {
+        transform.position = newTransform.position;
         _data = newData;
         _projectilePool = newPool;
 
         _enemyTracked = newEnemy;
-    }
-
-
-    /// <summary>
-    /// Constructor of the class.
-    /// </summary>
-    /// <param name="newData">Tower Data used to populate the class</param>
-    /// <param name="newPool">The projectile pool used</param>
-    public virtual void Initialize(TowerData newData, ProjectilePool newPool)
-    {
-        _data = newData;
-        _projectilePool = newPool;
     }
 
 

@@ -12,7 +12,7 @@ public class ChocSpikes : Projectile
 
 
     //Method used to initialize class (like a constructor)
-    public override void Initialize(TowerData newData, Enemy newEnemy, ProjectilePool newPool)
+    public override void Initialize(TowerData newData, Enemy newEnemy, ProjectilePool newPool, Transform newPosition)
     {
         _data = newData;
         _projectilePool = newPool;

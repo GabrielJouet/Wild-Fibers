@@ -1172,7 +1172,7 @@ MonoBehaviour:
   _towers:
   - {fileID: 11400000, guid: 1b17f8e2722ed3f479f233f3e5793f9f, type: 2}
   - {fileID: 11400000, guid: 02d8d222f1904bc44a62ac9958c07937, type: 2}
-  - {fileID: 11400000, guid: 1a83753d8802f364e8dea7ebcc13df4b, type: 2}
+  - {fileID: 11400000, guid: d994ecfddc139b6499dc96d3a4faae7e, type: 2}
   - {fileID: 11400000, guid: eef686483be9f3a4cb3aa40c8a6b7bd9, type: 2}
 --- !u!1 &1409857560
 GameObject:

@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f93a738c01d9b44483aba2f0a4f91fa, type: 3}
   m_Name: Craveler
   m_EditorClassIdentifier: 
-  _relatedScript: ChocTower
-  _displayName: Craveler
   _description: A multi roots larger stump with a large range
   _price: 250
   _icon: {fileID: 21300000, guid: bff7ca8cdc8698642aef3dfdd18ee513, type: 3}
@@ -29,6 +27,7 @@ MonoBehaviour:
   _numberOfShots: 4
   _range: 1.2
   _canHitFlying: 0
+  _shotsRandomly: 0
   _armorThroughMalus: 0
   _damageOverTime: 0
   _dotDuration: 0
