@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mark
   m_EditorClassIdentifier: 
   _description: A poisonous flower that dealt most of its damage over time
-  _price: 150
+  _price: 165
   _icon: {fileID: 21300000, guid: 9e800b1a3b271c04a956ee99c67b88e7, type: 3}
   _sprite: {fileID: -2559415124775340982, guid: 7d6556d7176d77b489d8638dcd6b642f,
     type: 3}
@@ -22,16 +22,16 @@ MonoBehaviour:
   _projectileUsed: {fileID: 6202831532110672975, guid: 6d1ab6e57f0408b46b61c99a97400f16,
     type: 3}
   _timeBetweenShots: 2
-  _damage: 1
+  _damage: 0
   _armorThrough: 0
   _speed: 3
   _numberOfShots: 2
-  _range: 1
+  _range: 1.1
   _canHitFlying: 1
   _shotsRandomly: 1
-  _armorThroughMalus: 5
+  _armorThroughMalus: 15
   _damageOverTime: 2
-  _dotDuration: 3
+  _dotDuration: 4
   _dotIcon: {fileID: 21300000, guid: 7cd5152f67673104f8eaee17fb065362, type: 3}
   _towerUpgrades:
   - {fileID: 11400000, guid: 6ec1c2a19db952542b7eb6d81d3feaea, type: 2}

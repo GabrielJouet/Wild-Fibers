@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Poison
   m_EditorClassIdentifier: 
   _description: A quick growing spikes flowers but range-limited
-  _price: 235
+  _price: 255
   _icon: {fileID: 21300000, guid: 937f4fdadbb0a2e4fa9504908ea8f300, type: 3}
   _sprite: {fileID: 1249832811290648610, guid: d66cd7d1ed7cd8844a044f06e18d4422, type: 3}
   _shadowSprite: {fileID: 4684895350081689219, guid: c7e168489f1f2224f8cada98fed0f4a7,

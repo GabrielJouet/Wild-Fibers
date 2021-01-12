@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: Craveler
   m_EditorClassIdentifier: 
   _description: A multi roots larger stump with a large range
-  _price: 250
+  _price: 280
   _icon: {fileID: 21300000, guid: bff7ca8cdc8698642aef3dfdd18ee513, type: 3}
   _sprite: {fileID: 5698191664513791026, guid: d85b23dd25bcdec49a6528cafd18e59c, type: 3}
   _shadowSprite: {fileID: -748965943684247502, guid: 45a27df0871ec9d4987415581c933c7e,
     type: 3}
   _projectileUsed: {fileID: 3530943198929188429, guid: 486543b54c3e008478b0aa8e5834702f,
     type: 3}
-  _timeBetweenShots: 1.8
-  _damage: 16
-  _armorThrough: 7
+  _timeBetweenShots: 1.9
+  _damage: 18
+  _armorThrough: 10
   _speed: 3
   _numberOfShots: 4
   _range: 1.2
