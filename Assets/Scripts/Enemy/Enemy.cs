@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected float _healthMax;
-    public float HealthMax { get => _healthMax; }
+    public float HealthMax { get => _healthMax; private set => _healthMax = value; }
 
     /// <summary>
     /// Current health.
@@ -105,6 +105,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected float _speedMax;
+    public float Speed { get => _speedMax; private set => _speedMax = value; }
 
     /// <summary>
     /// Current speed.
@@ -117,7 +118,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected int _numberOfLivesTaken;
-    public int LivesTaken { get => _numberOfLivesTaken; }
+    public int LivesTaken { get => _numberOfLivesTaken; private set => _numberOfLivesTaken = value; }
 
 
     /// <summary>
@@ -125,6 +126,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected int _goldGained;
+    public int GoldGained { get => _goldGained; private set => _goldGained = value; }
 
 
     /// <summary>
@@ -132,7 +134,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected bool _flying;
-    public bool Flying { get => _flying; }
+    public bool Flying { get => _flying; private set => _flying = value; }
 
 
     /// <summary>
@@ -241,6 +243,20 @@ public class Enemy : MonoBehaviour
 
         Moving = true;
         AlreadyAimed = false;
+    }
+
+
+    public void LoadData(float newHealth, float newArmor, float newSpeed, int newLives, bool newFlying, int newGoldGained)
+    {
+        HealthMax = newHealth;
+        ArmorMax = newArmor;
+
+        Speed = newSpeed;
+        LivesTaken = newLives;
+
+        Flying = newFlying;
+
+        GoldGained = newGoldGained;
     }
 
 
