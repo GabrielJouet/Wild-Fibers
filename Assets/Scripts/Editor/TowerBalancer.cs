@@ -6,7 +6,7 @@ public class TowerBalancer : EditorWindow
     private TowerData _loadedData;
     private TowerData _previousData;
 
-    private float _newPrice;
+    private int _newPrice;
 
     private float _newTimeBetweenShots;
 
@@ -31,6 +31,10 @@ public class TowerBalancer : EditorWindow
     private float _newDotDuration;
 
     private int _newPotentialEnemies;
+
+
+    private readonly int _spaceBetweenCategories = 10;
+    private readonly int _spaceBetweenLines = 5;
 
 
     [MenuItem("Wild Fibers / Tower Balancer")]
@@ -66,71 +70,75 @@ public class TowerBalancer : EditorWindow
 
         if(_loadedData != null)
         {
-            GUILayout.Space(10);
+            GUILayout.Space(_spaceBetweenCategories);
             GUILayout.Label("Price", EditorStyles.boldLabel);
 
             int numberOfShots = (_newPotentialEnemies > _newNumberOfShots ? _newPotentialEnemies : _newNumberOfShots);
             float dps = (_newDamage + _newDamage * _newArmorThrough / 100) / _newTimeBetweenShots;
-            float dotDps = _newDot * _newDotDuration / _newTimeBetweenShots + (_newDotArmor / 100 * _newDotDuration / _newTimeBetweenShots) * 4;
+            float dotDps = (_newDot * _newDotDuration / _newTimeBetweenShots + (_newDotArmor / 100 * _newDotDuration / _newTimeBetweenShots) * 4) * 2;
             float bonusMultiplier = 1 + (_newCanHitFlying ? 0.45f : 0) + (!_newShotsRandomly ? 0.125f : 0);
-            _newPrice = float.Parse(GUILayout.TextField(((dps + dotDps) * _newRange * numberOfShots * bonusMultiplier * 5).ToString()));
+            int finalPrice = Mathf.FloorToInt((dps + dotDps) * _newRange * numberOfShots * bonusMultiplier * 5);
+            _newPrice = EditorGUILayout.IntField(finalPrice - finalPrice % 5);
 
 
-            GUILayout.Space(15);
+            GUILayout.Space(_spaceBetweenCategories);
             GUILayout.Label("Behavior", EditorStyles.boldLabel);
             GUILayout.Label("Time between shots");
-            _newTimeBetweenShots = float.Parse(GUILayout.TextField(_newTimeBetweenShots.ToString()));
+            _newTimeBetweenShots = EditorGUILayout.FloatField(_newTimeBetweenShots);
 
-            GUILayout.Space(10);
+            GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Damage");
-            _newDamage = int.Parse(GUILayout.TextField(_newDamage.ToString()));
+            _newDamage = EditorGUILayout.IntField(_newDamage);
 
-            GUILayout.Space(10);
+            GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Armor Through");
-            _newArmorThrough = float.Parse(GUILayout.TextField(_newArmorThrough.ToString()));
+            _newArmorThrough = EditorGUILayout.FloatField(_newArmorThrough);
 
-            GUILayout.Space(10);
+            GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Projectile Speed");
-            _newSpeed = float.Parse(GUILayout.TextField(_newSpeed.ToString()));
+            _newSpeed = EditorGUILayout.FloatField(_newSpeed);
 
-            GUILayout.Space(10);
+            GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Number Of Shots");
-            _newNumberOfShots = int.Parse(GUILayout.TextField(_newNumberOfShots.ToString()));
+            _newNumberOfShots = EditorGUILayout.IntField(_newNumberOfShots);
 
-            GUILayout.Space(10);
+            GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Range");
-            _newRange = float.Parse(GUILayout.TextField(_newRange.ToString()));
+            _newRange = EditorGUILayout.FloatField(_newRange);
 
-            GUILayout.Space(10);
+            GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Number of potentials enemies");
-            _newPotentialEnemies = int.Parse(GUILayout.TextField(_newPotentialEnemies.ToString()));
+            _newPotentialEnemies = EditorGUILayout.IntField(_newPotentialEnemies);
 
-            GUILayout.Space(10);
+            GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Can Hit Flying");
             _newCanHitFlying = GUILayout.Toggle(_newCanHitFlying, "");
 
-            GUILayout.Space(10);
+            GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Shots Randomly");
             _newShotsRandomly = GUILayout.Toggle(_newShotsRandomly, "");
 
 
-            GUILayout.Space(15);
+            GUILayout.Space(_spaceBetweenCategories);
             GUILayout.Label("Dot", EditorStyles.boldLabel);
             GUILayout.Label("Armor Through Malus");
-            _newDotArmor = float.Parse(GUILayout.TextField(_newDotArmor.ToString()));
+            _newDotArmor = EditorGUILayout.FloatField(_newDotArmor);
 
-            GUILayout.Space(10);
+            GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Dot");
-            _newDot = float.Parse(GUILayout.TextField(_newDot.ToString()));
+            _newDot = EditorGUILayout.FloatField(_newDot);
 
-            GUILayout.Space(10);
+            GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Dot duration");
-            _newDotDuration = float.Parse(GUILayout.TextField(_newDotDuration.ToString()));
+            _newDotDuration = EditorGUILayout.FloatField(_newDotDuration);
         }
 
-        if(GUILayout.Button("Apply all changes"))
-        {
+        GUILayout.Space(_spaceBetweenLines);
 
+        if (GUILayout.Button("Apply all changes"))
+        {
+            _loadedData.LoadData(Mathf.FloorToInt(_newPrice), _newTimeBetweenShots, _newDamage, _newArmorThrough, _newSpeed, _newNumberOfShots, _newRange, _newCanHitFlying, _newShotsRandomly, _newDotArmor, _newDot, _newDotDuration);
+            EditorUtility.SetDirty(_loadedData);
         }
     }
 }
