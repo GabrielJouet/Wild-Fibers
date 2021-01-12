@@ -195,7 +195,7 @@ MonoBehaviour:
   _armorMax: 65
   _speedMax: 0.15
   _numberOfLivesTaken: 2
-  _goldGained: 22
+  _goldGained: 19
   _flying: 0
   _damagePosition: {fileID: 1049263690152909913}
   _timeBetweenShield: 10

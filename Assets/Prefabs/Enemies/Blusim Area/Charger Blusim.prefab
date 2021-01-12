@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 6617693188845866255}
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,13 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Charger
-  _healthMax: 150
-  _armorMax: 30
-  _speedMax: 0.2
-  _numberOfLivesTaken: 3
-  _goldGained: 30
-  _flying: 0
-  _damagePosition: {fileID: 5906076658267085393}
   _selector: {fileID: 3926785066840358764}
   _healthBar: {fileID: 5063341698596176217}
   _dotDisplay: {fileID: 5416901568167784886}
@@ -199,6 +191,13 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 5906076658267085393}
   _numberOfParticles: 4
+  _healthMax: 150
+  _armorMax: 30
+  _speedMax: 0.2
+  _numberOfLivesTaken: 3
+  _goldGained: 20
+  _flying: 0
+  _damagePosition: {fileID: 5906076658267085393}
 --- !u!1001 &4201768652579246608
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -194,12 +194,12 @@ MonoBehaviour:
   _armorMax: 10
   _speedMax: 0.1
   _numberOfLivesTaken: 1
-  _goldGained: 1
+  _goldGained: 0
   _flying: 0
   _damagePosition: {fileID: 1049263690152909913}
-  _hatchingTime: 15
   _hatchling: {fileID: 5682064432001086994, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb,
     type: 3}
+  _hatchingTime: 15
   _newShieldValue: 45
 --- !u!1001 &1741317206090716099
 PrefabInstance:

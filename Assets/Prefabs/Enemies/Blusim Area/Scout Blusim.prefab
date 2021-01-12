@@ -193,11 +193,11 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 1049263690152909913}
   _numberOfParticles: 4
-  _healthMax: 25
+  _healthMax: 30
   _armorMax: 0
   _speedMax: 0.4
   _numberOfLivesTaken: 1
-  _goldGained: 5
+  _goldGained: 2
   _flying: 1
   _damagePosition: {fileID: 1049263690152909913}
 --- !u!1001 &1741317206090716099

@@ -194,7 +194,7 @@ MonoBehaviour:
   _armorMax: 10
   _speedMax: 0.4
   _numberOfLivesTaken: 1
-  _goldGained: 11
+  _goldGained: 7
   _flying: 0
   _damagePosition: {fileID: 3623001225806360375}
 --- !u!1001 &3162793518331619717
