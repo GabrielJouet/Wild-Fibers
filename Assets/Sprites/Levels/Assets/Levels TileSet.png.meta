@@ -1,7 +1,49 @@
 fileFormatVersion: 2
 guid: c6d82236a9b015743b19f7316cb7b2ce
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -7230057432049639673
+    second: Levels TileSet_0
+  - first:
+      213: 8446515103428681681
+    second: Levels TileSet_1
+  - first:
+      213: 291512125383181127
+    second: Levels TileSet_2
+  - first:
+      213: -2690535738978646761
+    second: Levels TileSet_3
+  - first:
+      213: -8951150139647489398
+    second: Levels TileSet_4
+  - first:
+      213: -3443543249621402778
+    second: Levels TileSet_5
+  - first:
+      213: 490187698744810935
+    second: Levels TileSet_6
+  - first:
+      213: -1136883225596946274
+    second: Levels TileSet_7
+  - first:
+      213: -7013807797698605913
+    second: Levels TileSet_8
+  - first:
+      213: 8710062615207252749
+    second: Levels TileSet_9
+  - first:
+      213: -4909199774270899056
+    second: Levels TileSet_10
+  - first:
+      213: -3579288521943499888
+    second: Levels TileSet_11
+  - first:
+      213: 6204623413553966753
+    second: Levels TileSet_12
+  - first:
+      213: 6731315030496582526
+    second: Levels TileSet_13
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -31,7 +73,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -100
     wrapU: 1
@@ -40,7 +82,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -64,7 +106,31 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -73,7 +139,301 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Levels TileSet_0
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 185
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70f1201721da9ab90800000000000000
+      internalID: -7230057432049639673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_1
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 186
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1df96d92cbc083570800000000000000
+      internalID: 8446515103428681681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_2
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 151
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7430f29cbb8ab0400800000000000000
+      internalID: 291512125383181127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_3
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 152
+        width: 37
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7154fae100c49aad0800000000000000
+      internalID: -2690535738978646761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_4
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 175
+        width: 31
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8a8f1b8f5027c380800000000000000
+      internalID: -8951150139647489398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_5
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 169
+        width: 16
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66b3f9db8a31630d0800000000000000
+      internalID: -3443543249621402778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_6
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 152
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bd53f86d1f7dc600800000000000000
+      internalID: 490187698744810935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_7
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 152
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e989133dabaf830f0800000000000000
+      internalID: -1136883225596946274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_8
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 152
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ac4f4ff7f2f9ae90800000000000000
+      internalID: -7013807797698605913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_9
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 152
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0396d6fccb50e870800000000000000
+      internalID: 8710062615207252749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_10
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 152
+        width: 4
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09cb72bb0d40fdbb0800000000000000
+      internalID: -4909199774270899056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_11
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 152
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09bbcec9d00d35ec0800000000000000
+      internalID: -3579288521943499888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_12
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 189
+        width: 6
+        height: 3
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aea4f10f104b1650800000000000000
+      internalID: 6204623413553966753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Levels TileSet_13
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 195
+        width: 8
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7b1fff2b5f6a6d50800000000000000
+      internalID: 6731315030496582526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
