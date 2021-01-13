@@ -80,8 +80,8 @@ public class Particle : MonoBehaviour
         _spriteRenderer.sprite = _particleSprites[Random.Range(0, _particleSprites.Count)];
         transform.position = newPosition;
         _timeLeft = _liveTime;
-        _horizontalSpeed = Random.Range(-_horizontalMove, _horizontalMove) * Time.deltaTime;
-        _verticalSpeed = Random.Range(-_verticalMove, _verticalMove) * Time.deltaTime;
+        _horizontalSpeed = Random.Range(-_horizontalMove, _horizontalMove);
+        _verticalSpeed = Random.Range(-_verticalMove, _verticalMove);
 
     }
 
@@ -91,7 +91,7 @@ public class Particle : MonoBehaviour
     /// </summary>
     protected void Update()
     {
-        transform.position = new Vector2(transform.position.x + _horizontalSpeed, transform.position.y + _verticalSpeed);
+        transform.position = new Vector2(transform.position.x + _horizontalSpeed * Time.deltaTime, transform.position.y + _verticalSpeed * Time.deltaTime);
 
         if (_timeLeft > 0)
             _timeLeft -= Time.deltaTime;
