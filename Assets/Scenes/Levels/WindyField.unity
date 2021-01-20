@@ -1079,18 +1079,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 260fd861c1ec51047a97ac81619d8349, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &519420035 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 571994285330439441, guid: 3a3887dcbdbd89b499727d31651bc979,
-    type: 3}
-  m_PrefabInstance: {fileID: 571994284821652882}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fae21b070a63cf249a1d6253442ed90b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &543718221 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4541158167310529355, guid: ab062a4349966594386bc59557a6906a,
@@ -1202,7 +1190,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _playerController
       value: 
-      objectReference: {fileID: 519420035}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _levelController
@@ -1431,7 +1419,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _playerController
       value: 
-      objectReference: {fileID: 519420035}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _levelController
@@ -2253,7 +2241,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _playerController
       value: 
-      objectReference: {fileID: 519420035}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _levelController
@@ -2558,7 +2546,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _playerController
       value: 
-      objectReference: {fileID: 519420035}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _levelController
@@ -2713,7 +2701,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _playerController
       value: 
-      objectReference: {fileID: 519420035}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _levelController
@@ -4030,6 +4018,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 571994285330439443, guid: 3a3887dcbdbd89b499727d31651bc979, type: 3}
     - {fileID: 5992218026404021553, guid: 3a3887dcbdbd89b499727d31651bc979, type: 3}
+    - {fileID: 571994285330439441, guid: 3a3887dcbdbd89b499727d31651bc979, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3a3887dcbdbd89b499727d31651bc979, type: 3}
 --- !u!114 &571994284821652884 stripped
 MonoBehaviour:
@@ -4120,7 +4109,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _playerController
       value: 
-      objectReference: {fileID: 519420035}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _levelController
@@ -4444,7 +4433,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _playerController
       value: 
-      objectReference: {fileID: 519420035}
+      objectReference: {fileID: 0}
     - target: {fileID: 1200197998690057621, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: _ressourceController
@@ -4490,7 +4479,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _playerController
       value: 
-      objectReference: {fileID: 519420035}
+      objectReference: {fileID: 0}
     - target: {fileID: 3646359289911569330, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: _ressourceController

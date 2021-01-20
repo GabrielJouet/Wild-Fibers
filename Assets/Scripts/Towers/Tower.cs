@@ -37,7 +37,7 @@ public class Tower : MonoBehaviour
     /// <summary>
     /// Information UI object.
     /// </summary>
-    private BackgroudSelecter _backgroundSelecter;
+    protected BackgroudSelecter _backgroundSelecter;
 
     /// <summary>
     /// The related tower slot.
@@ -69,7 +69,7 @@ public class Tower : MonoBehaviour
     /// </summary>
     protected TowerPool _towerPool;
 
-    public int CumulativeGold { get; private set; } = 0;
+    public int CumulativeGold { get; protected set; } = 0;
 
 
 
@@ -97,7 +97,7 @@ public class Tower : MonoBehaviour
     /// <param name="newBackgroundSelecter">The background selecter component</param>
     /// <param name="newPool">The new projectile pool</param>
     /// <param name="newTowerPool">The new tower pool</param>
-    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool, TowerData newData)
+    public virtual void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool, TowerData newData)
     {
         _towerData = newData;
         CumulativeGold += _towerData.Price;
@@ -121,7 +121,7 @@ public class Tower : MonoBehaviour
     /// <summary>
     /// FixedUpdate, called 50 times a second.
     /// </summary>
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
         if (_availableEnemies.Count > 0 && !_coroutineStarted)
             StartCoroutine(SummonProjectile());
@@ -131,7 +131,7 @@ public class Tower : MonoBehaviour
     /// <summary>
     /// Coroutine used to delay attacks.
     /// </summary>
-    private IEnumerator SummonProjectile()
+    protected virtual IEnumerator SummonProjectile()
     {
         _coroutineStarted = true;
 
@@ -182,7 +182,7 @@ public class Tower : MonoBehaviour
     /// <summary>
     /// Method used to add a spec to the tower.
     /// </summary>
-    public void AddSpec(TowerSpec newSpec)
+    public virtual void AddSpec(TowerSpec newSpec)
     {
 
     }
@@ -247,8 +247,6 @@ public class Tower : MonoBehaviour
                 if (!_availableEnemies[j].CanSurvive(_towerData.Damage, _towerData.ArmorThrough))
                     _availableEnemies[j].AlreadyAimed = true;
             }
-            else
-                availableEnemies.Add(_availableEnemies[i]);
         }
 
         return availableEnemies;

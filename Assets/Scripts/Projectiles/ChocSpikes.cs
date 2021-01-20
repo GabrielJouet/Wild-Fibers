@@ -6,58 +6,84 @@ using UnityEngine;
  */
 public class ChocSpikes : Projectile
 {
-    //Does the choc spike stopped moving and attacking?
-    private bool _stopped = false;
+    protected bool _following = false;
+
+    protected bool _attacking = false;
+
+    protected Animator _animator;
 
 
 
     //Method used to initialize class (like a constructor)
-    public override void Initialize(TowerData newData, Enemy newEnemy, ProjectilePool newPool, Transform newPosition)
+    public void Initialize(TowerData newData, ProjectilePool newPool, Vector2 newPosition)
     {
+        _following = false;
+        _attacking = false;
+
+        StopAllCoroutines();
+        GetComponent<SpriteRenderer>().sprite = null;
+
         _data = newData;
         _projectilePool = newPool;
 
-        _enemyTracked = newEnemy;
+        _animator = GetComponent<Animator>();
+        _animator.enabled = false;
 
-        _stopped = false;
-        transform.position = newEnemy.DamagePosition;
-
-        StartCoroutine(Strike());
+        transform.position = newPosition;
     }
 
 
-    //Update method, called every frame
+    public void StartFollowing(Enemy newEnemy)
+    {
+        if (!_following)
+        {
+            _following = true;
+            _enemyTracked = newEnemy;
+        }
+    }
+
+
     protected override void Update()
     {
-        if(_enemyTracked)
+        if (_following)
         {
-            if (_enemyTracked.gameObject.activeSelf)
-            {
-                if (!_stopped)
-                    transform.position = _enemyTracked.DamagePosition;
-            }
-            else
-            {
-                _stopped = true;
-                _enemyTracked = null;
-            }
+            if (_enemyTracked != null)
+                TrackEnemy();
+            else if (FollowPoint(_goalPosition, false))
+                StopProjectile();
         }
     }
 
 
-    //Couroutine used to attack
+    //Method used to track an enemy moving 
+    protected override void TrackEnemy()
+    {
+        if (_enemyTracked.gameObject.activeSelf)
+        {
+            if (FollowPoint(_enemyTracked.DamagePosition, false) && ! _attacking)
+                StartCoroutine(Strike());
+        }
+        else
+        {
+            _goalPosition = _enemyTracked.DamagePosition;
+            _enemyTracked = null;
+        }
+    }
+
+
+    //Coroutine used to attack
     private IEnumerator Strike()
     {
-        if (!_stopped)
-        {
-            //Time to attack
-            yield return new WaitForSeconds(1);
-            AttackEnemy(_enemyTracked);
-            _stopped = true;
-        }
+        _attacking = true;
+
+        //Time to attack
+        _animator.enabled = true;
 
         //Time to stay a little longer, visibility purpose
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[0].length - 0.15f);
+        AttackEnemy(_enemyTracked);
+
+        yield return new WaitForSeconds(0.15f);
         StopProjectile();
     }
 }

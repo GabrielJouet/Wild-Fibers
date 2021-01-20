@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5238891444791806870}
   - component: {fileID: 4042985998442779964}
   m_Layer: 0
-  m_Name: Choc Spikes
+  m_Name: Root Spike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -74,8 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7503322379497369501, guid: b0d6cc020aaa7ce40b7f966fa1febfaf,
-    type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +82,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &7442608901713563836
@@ -117,7 +116,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff5620a51918810408deeaf6418fc04b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeToStrike: 1
 --- !u!114 &4042985998442779964
 MonoBehaviour:
   m_ObjectHideFlags: 0
