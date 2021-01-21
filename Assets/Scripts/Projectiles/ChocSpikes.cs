@@ -80,10 +80,9 @@ public class ChocSpikes : Projectile
         _animator.enabled = true;
 
         //Time to stay a little longer, visibility purpose
-        yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[0].length - 0.15f);
         AttackEnemy(_enemyTracked);
-
-        yield return new WaitForSeconds(0.15f);
+        _following = false;
+        yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[0].length);
         StopProjectile();
     }
 }
