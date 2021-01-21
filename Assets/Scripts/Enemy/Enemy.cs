@@ -328,6 +328,8 @@ public class Enemy : MonoBehaviour
     /// <param name="damage">The amount of damage the enemy is taking</param>
     public void TakeDamage(float damage)
     {
+        _preDamage -= damage;
+
         if (_health - damage <= 0)
             Die(false);
         else
