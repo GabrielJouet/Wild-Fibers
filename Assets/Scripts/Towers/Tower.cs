@@ -234,11 +234,10 @@ public class Tower : MonoBehaviour
 
         for(int i = 0; i < numberOfEnemiesToFound; i ++)
         {
-            j = -1;
+            j = 0;
 
-            do
+            while (j < _availableEnemies.Count && (_availableEnemies[j].AlreadyAimed || availableEnemies.Contains(_availableEnemies[j])))
                 j++;
-            while (j < _availableEnemies.Count && (_availableEnemies[j].AlreadyAimed || availableEnemies.Contains(_availableEnemies[j])));
 
             if(j < _availableEnemies.Count)
             {
