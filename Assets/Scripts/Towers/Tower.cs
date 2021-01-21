@@ -115,7 +115,12 @@ public class Tower : MonoBehaviour
 
         _transformRange.localScale *= _towerData.Range;
         _collider.localScale *= (0.9f * _towerData.Range);
+
+        SpecialBehavior();
     }
+
+
+    protected virtual void SpecialBehavior() { }
 
 
     /// <summary>
@@ -177,7 +182,11 @@ public class Tower : MonoBehaviour
         _collider.localScale = _initialColliderScale * (0.9f * _towerData.Range);
 
         _backgroundSelecter.DesactivateTower();
+
+        UpgradeSpecialBehavior();
     }
+
+    protected virtual void UpgradeSpecialBehavior() { }
 
     /// <summary>
     /// Method used to add a spec to the tower.
@@ -230,21 +239,22 @@ public class Tower : MonoBehaviour
     protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound)
     {
         List<Enemy> availableEnemies = new List<Enemy>();
-        int j;
 
         for(int i = 0; i < numberOfEnemiesToFound; i ++)
         {
-            j = 0;
-
-            while (j < _availableEnemies.Count && (_availableEnemies[j].AlreadyAimed || availableEnemies.Contains(_availableEnemies[j])))
-                j++;
-
-            if(j < _availableEnemies.Count)
+            foreach (Enemy buffer in _availableEnemies)
             {
-                availableEnemies.Add(_availableEnemies[j]);
+                if (buffer.AlreadyAimed || availableEnemies.Contains(buffer))
+                    continue;
+                else
+                {
+                    availableEnemies.Add(buffer);
 
-                if (!_availableEnemies[j].CanSurvive(_towerData.Damage, _towerData.ArmorThrough))
-                    _availableEnemies[j].AlreadyAimed = true;
+                    if (!buffer.CanSurvive(_towerData.Damage, _towerData.ArmorThrough))
+                        buffer.AlreadyAimed = true;
+
+                    break;
+                }
             }
         }
 
