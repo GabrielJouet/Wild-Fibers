@@ -35,3 +35,4 @@ MonoBehaviour:
   _dotIcon: {fileID: 21300000, guid: 7cd5152f67673104f8eaee17fb065362, type: 3}
   _towerUpgrades: []
   _towerSpecs: []
+  _scriptName: ToxicIvy
