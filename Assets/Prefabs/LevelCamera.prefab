@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 571994285330439663}
   - component: {fileID: 571994285330439660}
   - component: {fileID: 571994285330439440}
-  - component: {fileID: 571994285330439441}
   - component: {fileID: 5328857676684429541}
   - component: {fileID: 5844063550827791730}
   - component: {fileID: 7986863445577414007}
@@ -124,23 +123,6 @@ MonoBehaviour:
   _goldText: {fileID: 0}
   _goldIconAnimator: {fileID: 0}
   _gameOverScreen: {fileID: 0}
---- !u!114 &571994285330439441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571994285330439662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fae21b070a63cf249a1d6253442ed90b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _towerAvailables:
-  - {fileID: 11400000, guid: 1b17f8e2722ed3f479f233f3e5793f9f, type: 2}
-  - {fileID: 11400000, guid: 02d8d222f1904bc44a62ac9958c07937, type: 2}
-  - {fileID: 11400000, guid: 1a83753d8802f364e8dea7ebcc13df4b, type: 2}
-  - {fileID: 11400000, guid: eef686483be9f3a4cb3aa40c8a6b7bd9, type: 2}
 --- !u!114 &5328857676684429541
 MonoBehaviour:
   m_ObjectHideFlags: 0

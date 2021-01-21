@@ -23,7 +23,7 @@ MonoBehaviour:
   _timeBetweenShots: 1.9
   _damage: 18
   _armorThrough: 10
-  _speed: 3
+  _speed: 0.7
   _numberOfShots: 4
   _range: 1.2
   _canHitFlying: 0
@@ -34,3 +34,4 @@ MonoBehaviour:
   _dotIcon: {fileID: 0}
   _towerUpgrades: []
   _towerSpecs: []
+  _scriptName: RootsStump
