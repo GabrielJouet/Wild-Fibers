@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -61,7 +61,7 @@ public class RootsStump : Tower
             List<Enemy> enemies = RecoverAvailableEnemies(numberOfStrikes);
 
             for (int i = 0; i < enemies.Count; i++)
-                _availableSpikes.Pop().StartFollowing(enemies[i]);
+                _availableSpikes.Pop().StartFollowing(enemies[i], _towerData);
         }
     }
 

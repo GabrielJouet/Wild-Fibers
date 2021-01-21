@@ -33,10 +33,11 @@ public class ChocSpikes : Projectile
     }
 
 
-    public void StartFollowing(Enemy newEnemy)
+    public void StartFollowing(Enemy newEnemy, TowerData newData)
     {
         if (!_following)
         {
+            _data = newData;
             _following = true;
             _enemyTracked = newEnemy;
         }
