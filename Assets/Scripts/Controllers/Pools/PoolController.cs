@@ -49,7 +49,7 @@ public class PoolController : MonoBehaviour
             if (current.Enemy.Name == wantedEnemy.Name)
                 return current;
 
-        EnemyPool buffer = Instantiate(_enemyPoolPrefab);
+        EnemyPool buffer = Instantiate(_enemyPoolPrefab, transform);
         buffer.Initialize(wantedEnemy, _ressourceController);
         EnemyPools.Add(buffer);
 
