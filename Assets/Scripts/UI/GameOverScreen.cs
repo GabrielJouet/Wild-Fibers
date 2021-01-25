@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,12 +47,6 @@ public class GameOverScreen : MonoBehaviour
 
 
     [Header("Components")]
-
-    /// <summary>
-    /// Level controller component.
-    /// </summary>
-    [SerializeField]
-    private LevelController _levelController;
 
     /// <summary>
     /// Resource controller component.
