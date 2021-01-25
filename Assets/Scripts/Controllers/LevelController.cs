@@ -10,14 +10,10 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PoolController))]
 public class LevelController : MonoBehaviour
 {
-    [Header("Level Parameters")]
-
     /// <summary>
     /// Level loaded.
     /// </summary>
-    [SerializeField]
-    private Level _level;
-    public Level LoadedLevel { get => _level; }
+    public Level LoadedLevel { get; private set; }
 
     /// <summary>
     /// Does the level is ended?
@@ -86,6 +82,23 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        SaveController buffer = FindObjectOfType<SaveController>();
+
+        switch(buffer.LoadedLevel)
+        {
+            case LevelType.CLASSIC:
+                LoadedLevel = buffer.Levels[buffer.LevelIndex].Classic;
+                break;
+
+            case LevelType.SIDE:
+                LoadedLevel = buffer.Levels[buffer.LevelIndex].Side;
+                break;
+
+            case LevelType.CHALLENGE:
+                LoadedLevel = buffer.Levels[buffer.LevelIndex].Challenge;
+                break;
+        }
+
         _ressourceController = GetComponent<RessourceController>();
         _poolController = GetComponent<PoolController>();
     }
@@ -96,7 +109,7 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        _waveText.text = 0 + " / " + _level.Waves.Count;
+        _waveText.text = 0 + " / " + LoadedLevel.Waves.Count;
     }
 
 
@@ -110,7 +123,7 @@ public class LevelController : MonoBehaviour
 
         //If there is time left, we gie money to player based on time left
         if (timeLeft > 0)
-            _ressourceController.AddGold(Mathf.FloorToInt(_level.Waves[_waveIndex].BonusGold * (timeLeft / _level.Waves[_waveIndex].TimeWave)));
+            _ressourceController.AddGold(Mathf.FloorToInt(LoadedLevel.Waves[_waveIndex].BonusGold * (timeLeft / LoadedLevel.Waves[_waveIndex].TimeWave)));
     }
 
 
@@ -119,16 +132,16 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void StartWave()
     {
-        _waveText.text = (_waveIndex + 1) + " / " + _level.Waves.Count;
+        _waveText.text = (_waveIndex + 1) + " / " + LoadedLevel.Waves.Count;
 
-        int spawnerLeft = _level.Waves[_waveIndex].EnemyGroups.Count - _spawners.Count;
+        int spawnerLeft = LoadedLevel.Waves[_waveIndex].EnemyGroups.Count - _spawners.Count;
 
         int i;
         for(i = 0; i < spawnerLeft; i ++)
             _spawners.Add(Instantiate(_spawnerPrefab, transform));
 
         i = 0;
-        foreach(EnemyGroup current in _level.Waves[_waveIndex].EnemyGroups)
+        foreach(EnemyGroup current in LoadedLevel.Waves[_waveIndex].EnemyGroups)
         {
             _spawners[i].SetNewGroup(_availablePath[current.Path], current, this, _poolController);
             i++;
@@ -184,12 +197,12 @@ public class LevelController : MonoBehaviour
     private IEnumerator DelayWave()
     {
         //If there is another wave after that one
-        if (_waveIndex + 1 < _level.Waves.Count)
+        if (_waveIndex + 1 < LoadedLevel.Waves.Count)
         {
             _waveIndex++;
             yield return new WaitForSeconds(_timeBetweenNextWaveButtonDisplay);
 
-            _nextWaveButton.ActivateNewWaveButton(_level.Waves[_waveIndex].TimeWave);
+            _nextWaveButton.ActivateNewWaveButton(LoadedLevel.Waves[_waveIndex].TimeWave);
         }
         else
             foreach (Spawner current in _spawners)

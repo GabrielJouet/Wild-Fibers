@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -100,8 +100,7 @@ public class GameOverScreen : MonoBehaviour
 
         if (win)
         {
-            SaveController buffer = FindObjectOfType<SaveController>();
-            buffer.SaveLevelData(_ressourceController.LivesLost, LevelState.COMPLETED, false, false);
+            FindObjectOfType<SaveController>().SaveLevelData(_ressourceController.LivesLost);
 
             int livesLost = _ressourceController.LivesLost;
 

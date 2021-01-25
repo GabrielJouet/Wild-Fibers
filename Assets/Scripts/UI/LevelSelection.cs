@@ -96,12 +96,6 @@ public class LevelSelection : MonoBehaviour
     private LevelData _level;
 
 
-
-    private void Awake()
-    {
-    }
-
-
     /// <summary>
     /// Method used to open level selection menu.
     /// </summary>
@@ -120,7 +114,7 @@ public class LevelSelection : MonoBehaviour
             }
         }
 
-        _saveController.LoadedLevel = _levelIndex;
+        _saveController.LevelIndex = _levelIndex;
 
         LevelState buffer = _saveController.SaveFile.Saves[_levelIndex].State;
         _sideButton.enabled = buffer == LevelState.COMPLETED || buffer == LevelState.SIDED || buffer == LevelState.CHALLENGED;
@@ -142,7 +136,11 @@ public class LevelSelection : MonoBehaviour
         _displayController.DisplayObject(gameObject);
 
         _launchBattleMenu.onClick.RemoveAllListeners();
-        _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(_level.Classic.Scene));
+        _launchBattleMenu.onClick.AddListener(() =>
+        {
+            _saveController.LoadedLevel = LevelType.CLASSIC;
+            _sceneChanger.LoadScene(_level.Classic.Scene);
+        });
     }
 
 
@@ -156,10 +154,14 @@ public class LevelSelection : MonoBehaviour
         _sideDescription.text = _level.Side.Description;
 
         _sideScore.sprite = _desactivatedSprite;
-        _sideScore.sprite = _saveController.SaveFile.Saves[_levelIndex].Sided ? _activatedSprite : _sideScore.sprite;
+        _sideScore.sprite = _saveController.SaveFile.Saves[_levelIndex].State == LevelState.SIDED ? _activatedSprite : _sideScore.sprite;
 
         _launchBattleMenu.onClick.RemoveAllListeners();
-        _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(_level.Side.Scene));
+        _launchBattleMenu.onClick.AddListener(() =>
+        {
+            _saveController.LoadedLevel = LevelType.SIDE;
+            _sceneChanger.LoadScene(_level.Classic.Scene);
+        });
     }
 
 
@@ -173,9 +175,13 @@ public class LevelSelection : MonoBehaviour
         _sideDescription.text = _level.Challenge.Description;
 
         _sideScore.sprite = _desactivatedSprite;
-        _sideScore.sprite = _saveController.SaveFile.Saves[_levelIndex].Challenged ? _activatedSprite : _sideScore.sprite;
+        _sideScore.sprite = _saveController.SaveFile.Saves[_levelIndex].State == LevelState.CHALLENGED ? _activatedSprite : _sideScore.sprite;
 
         _launchBattleMenu.onClick.RemoveAllListeners();
-        _launchBattleMenu.onClick.AddListener(() => _sceneChanger.LoadScene(_level.Challenge.Scene));
+        _launchBattleMenu.onClick.AddListener(() =>
+        {
+            _saveController.LoadedLevel = LevelType.CHALLENGE;
+            _sceneChanger.LoadScene(_level.Classic.Scene);
+        });
     }
 }

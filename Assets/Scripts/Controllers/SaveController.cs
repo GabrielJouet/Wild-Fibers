@@ -13,7 +13,9 @@ public class SaveController : MonoBehaviour
 	public List<LevelData> Levels { get => _levels; }
 
 
-	public int LoadedLevel { get; set; }
+	public int LevelIndex { get; set; }
+
+	public LevelType LoadedLevel { get; set; }
 
 
 	/// <summary>
@@ -83,7 +85,7 @@ public class SaveController : MonoBehaviour
 		List<LevelSave> allSaves = new List<LevelSave>();
 
 		for (int i = 0; i < Levels.Count; i ++)
-			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED, false, false));
+			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED));
 
 		SaveFile = new SaveFile(allSaves, 1, 1);
 
@@ -109,23 +111,33 @@ public class SaveController : MonoBehaviour
 	/// Method used to save a level data.
 	/// </summary>
 	/// <param name="newLivesLost">The number of lives lost</param>
-	/// <param name="newState">The new level state</param>
-	public void SaveLevelData(int newLivesLost, LevelState newState, bool sided, bool challenged)
+	public void SaveLevelData(int newLivesLost)
 	{
-		int gainedSeeds = 0;
+		LevelSave buffer = SaveFile.Saves[LevelIndex];
 
-		if (newLivesLost <= 3)
-			gainedSeeds = 3;
-		else if (newLivesLost <= 10)
-			gainedSeeds = 2;
-		else if (newLivesLost <= 15)
-			gainedSeeds = 1;
+		if (LoadedLevel == LevelType.CLASSIC)
+		{
+			int gainedSeeds = 0;
 
-		if (SaveFile.Saves[LoadedLevel].SeedsGained < gainedSeeds)
-			SaveFile.Saves[LoadedLevel] = new LevelSave(gainedSeeds, newState, sided, challenged);
+			if (newLivesLost <= 3)
+				gainedSeeds = 3;
+			else if (newLivesLost <= 10)
+				gainedSeeds = 2;
+			else if (newLivesLost <= 15)
+				gainedSeeds = 1;
 
-		if(LoadedLevel + 1 < Levels.Count)
-			SaveFile.Saves[LoadedLevel + 1] = new LevelSave(0, LevelState.UNLOCKED, false, false);
+			buffer.State = LevelState.COMPLETED;
+
+			if (buffer.SeedsGained < gainedSeeds)
+				buffer.SeedsGained = gainedSeeds;
+		}
+		else if (LoadedLevel == LevelType.SIDE)
+			buffer.State = LevelState.SIDED;
+		else if (LoadedLevel == LevelType.CHALLENGE)
+			buffer.State = LevelState.CHALLENGED;
+
+		if(LevelIndex + 1 < Levels.Count)
+			SaveFile.Saves[LevelIndex + 1] = new LevelSave(0, LevelState.UNLOCKED);
 
 		SaveData();
 	}
