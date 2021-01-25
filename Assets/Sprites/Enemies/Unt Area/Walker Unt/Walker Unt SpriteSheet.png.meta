@@ -1,97 +1,49 @@
 fileFormatVersion: 2
-guid: 9ec8a47cade8f6041b9f0e9193bec7ef
+guid: 0d11255a39cf0f249a51429df88fe844
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 131634076245483475
-    second: Unt Walk0
+      213: 6558241030409195413
+    second: Walker Unt SpriteSheet_0
   - first:
-      213: 5848920741251526110
-    second: Unt Walk1
+      213: 4329003269332971091
+    second: Walker Unt SpriteSheet_1
   - first:
-      213: -8745419254885036773
-    second: Unt Walk2
+      213: 1174846845888677926
+    second: Walker Unt SpriteSheet_2
   - first:
-      213: 7994117113656453624
-    second: Unt Walk3
+      213: 2306578059328150583
+    second: Walker Unt SpriteSheet_3
   - first:
-      213: 7489433487162407958
-    second: Unt Walk4
+      213: 703273731056886083
+    second: Walker Unt SpriteSheet_4
   - first:
-      213: 953788042681397306
-    second: Unt Walk5
+      213: 6152565597225513964
+    second: Walker Unt SpriteSheet_5
   - first:
-      213: 5975957657236031639
-    second: Unt Walk6
+      213: -8561297948726826680
+    second: Walker Unt SpriteSheet_6
   - first:
-      213: 1767055440869031701
-    second: Unt Walk7
+      213: 4333079611290628304
+    second: Walker Unt SpriteSheet_7
   - first:
-      213: -8584794457003382677
-    second: Unt Walk8
+      213: -3407065304533272994
+    second: Walker Unt SpriteSheet_8
   - first:
-      213: -1184352290869299803
-    second: Unt Walk9
+      213: -3508648071197009914
+    second: Walker Unt SpriteSheet_9
   - first:
-      213: -462840662395747696
-    second: Unt Walk10
+      213: 2283404194640885130
+    second: Walker Unt SpriteSheet_10
   - first:
-      213: 6000238864268334548
-    second: Unt Walk11
+      213: 9073761784537061060
+    second: Walker Unt SpriteSheet_11
   - first:
-      213: -799671130447320827
-    second: Unt Walk12
+      213: -1740775749960086715
+    second: Walker Unt SpriteSheet_12
   - first:
-      213: -2523245253485179475
-    second: Unt Shadow
-  - first:
-      213: 3463106408443846414
-    second: Unt SpriteSheet_14
-  - first:
-      213: 410739070189978288
-    second: Unt SpriteSheet_15
-  - first:
-      213: -3481429518350552438
-    second: Unt Walk0
-  - first:
-      213: -5807968691077902827
-    second: Unt Walk1
-  - first:
-      213: 7875304723550126334
-    second: Unt Walk2
-  - first:
-      213: -3525181226522883446
-    second: Unt Walk3
-  - first:
-      213: -1163830843859209724
-    second: Unt Walk4
-  - first:
-      213: -7407000819322129084
-    second: Unt Walk5
-  - first:
-      213: -4540015282830411928
-    second: Unt Walk6
-  - first:
-      213: -997010896141737808
-    second: Unt Walk7
-  - first:
-      213: -4303153839763506195
-    second: Unt Walk8
-  - first:
-      213: -3499852955102878162
-    second: Unt Walk9
-  - first:
-      213: -1142640301775451570
-    second: Unt Walk10
-  - first:
-      213: -9023558480336951813
-    second: Unt Walk11
-  - first:
-      213: 6202058834719897939
-    second: Unt Walk12
-  - first:
-      213: 921994859340514564
-    second: Unt Shadow
+      213: 8316052589211875673
+    second: Walker Unt Shadow
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -177,7 +129,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Unt Walk0
+      name: Walker Unt SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
@@ -191,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a82f7286c4a7fafc0800000000000000
-      internalID: -3481429518350552438
+      spriteID: 59f8ee8587d830b50800000000000000
+      internalID: 6558241030409195413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk1
+      name: Walker Unt SpriteSheet_1
       rect:
         serializedVersion: 2
         x: 48
@@ -212,14 +164,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51e06b55f33f56fa0800000000000000
-      internalID: -5807968691077902827
+      spriteID: 35ea8149985b31c30800000000000000
+      internalID: 4329003269332971091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk2
+      name: Walker Unt SpriteSheet_2
       rect:
         serializedVersion: 2
         x: 96
@@ -233,14 +185,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ef04921cbe3ba4d60800000000000000
-      internalID: 7875304723550126334
+      spriteID: 628cea25bf4ed4010800000000000000
+      internalID: 1174846845888677926
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk3
+      name: Walker Unt SpriteSheet_3
       rect:
         serializedVersion: 2
         x: 144
@@ -254,14 +206,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a8a4a380a5a041fc0800000000000000
-      internalID: -3525181226522883446
+      spriteID: 73cd6f0368c920020800000000000000
+      internalID: 2306578059328150583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk4
+      name: Walker Unt SpriteSheet_4
       rect:
         serializedVersion: 2
         x: 0
@@ -275,14 +227,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 402f025830e39dfe0800000000000000
-      internalID: -1163830843859209724
+      spriteID: 34162877bb782c900800000000000000
+      internalID: 703273731056886083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk5
+      name: Walker Unt SpriteSheet_5
       rect:
         serializedVersion: 2
         x: 48
@@ -296,14 +248,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 445f641bffb053990800000000000000
-      internalID: -7407000819322129084
+      spriteID: ce37aef10dd426550800000000000000
+      internalID: 6152565597225513964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk6
+      name: Walker Unt SpriteSheet_6
       rect:
         serializedVersion: 2
         x: 96
@@ -317,14 +269,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8677c008720aef0c0800000000000000
-      internalID: -4540015282830411928
+      spriteID: 8496bd510e8203980800000000000000
+      internalID: -8561297948726826680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk7
+      name: Walker Unt SpriteSheet_7
       rect:
         serializedVersion: 2
         x: 144
@@ -338,14 +290,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b027425fd7e922f0800000000000000
-      internalID: -997010896141737808
+      spriteID: 0d03776e2f0322c30800000000000000
+      internalID: 4333079611290628304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk8
+      name: Walker Unt SpriteSheet_8
       rect:
         serializedVersion: 2
         x: 0
@@ -359,14 +311,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: debb90fb1602844c0800000000000000
-      internalID: -4303153839763506195
+      spriteID: e567cbc282ca7b0d0800000000000000
+      internalID: -3407065304533272994
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk9
+      name: Walker Unt SpriteSheet_9
       rect:
         serializedVersion: 2
         x: 48
@@ -380,14 +332,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e26edf4c7460e6fc0800000000000000
-      internalID: -3499852955102878162
+      spriteID: 608517a3b27ce4fc0800000000000000
+      internalID: -3508648071197009914
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk10
+      name: Walker Unt SpriteSheet_10
       rect:
         serializedVersion: 2
         x: 96
@@ -401,14 +353,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4a01a213b68420f0800000000000000
-      internalID: -1142640301775451570
+      spriteID: a85f43c540840bf10800000000000000
+      internalID: 2283404194640885130
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk11
+      name: Walker Unt SpriteSheet_11
       rect:
         serializedVersion: 2
         x: 144
@@ -422,14 +374,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bf56d89fe51e5c280800000000000000
-      internalID: -9023558480336951813
+      spriteID: 4c698d7a44a7ced70800000000000000
+      internalID: 9073761784537061060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Walk12
+      name: Walker Unt SpriteSheet_12
       rect:
         serializedVersion: 2
         x: 0
@@ -443,14 +395,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3597d8776a3221650800000000000000
-      internalID: 6202058834719897939
+      spriteID: 54bc30eada587d7e0800000000000000
+      internalID: -1740775749960086715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Unt Shadow
+      name: Walker Unt Shadow
       rect:
         serializedVersion: 2
         x: 144
@@ -464,8 +416,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4054abb80759bcc00800000000000000
-      internalID: 921994859340514564
+      spriteID: 959f07105cd886370800000000000000
+      internalID: 8316052589211875673
       vertices: []
       indices: 
       edges: []

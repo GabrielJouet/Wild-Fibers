@@ -1,46 +1,52 @@
 fileFormatVersion: 2
-guid: 0f33c11a24d6d13498965f8aa91adaf6
+guid: 8aeb7ab577687d64c9a9247872246629
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1229087058977180590
-    second: Charger Blusim Walk0
+      213: -1219450226919108179
+    second: Scyther Unt SpriteSheet_0
   - first:
-      213: 5434929426288245211
-    second: Charger Blusim Walk1
+      213: -4768262474990855724
+    second: Scyther Unt SpriteSheet_0
   - first:
-      213: -5555732772921786182
-    second: Charger Blusim Walk2
+      213: 4969594697402952153
+    second: Scyther Unt Shadow
   - first:
-      213: -3003319777913887172
-    second: Charger Blusim Walk3
+      213: -3703550325147593879
+    second: Scyther Unt SpriteSheet_1
   - first:
-      213: -8274635405728852405
-    second: Charger Blusim Walk4
+      213: 9125929170869810824
+    second: Scyther Unt SpriteSheet_2
   - first:
-      213: 433642988479333223
-    second: Charger Blusim Walk5
+      213: 7550378020794697587
+    second: Scyther Unt SpriteSheet_3
   - first:
-      213: 4122544103823977450
-    second: Charger Blusim Walk6
+      213: 4673790755349875017
+    second: Scyther Unt SpriteSheet_4
   - first:
-      213: 1775873315875672191
-    second: Charger Blusim Walk7
+      213: 8091378124375363710
+    second: Scyther Unt SpriteSheet_5
   - first:
-      213: 5625262064487677974
-    second: Charger Blusim Walk8
+      213: -5757992473112610424
+    second: Scyther Unt SpriteSheet_6
   - first:
-      213: 5137300529902436641
-    second: Charger Blusim Walk9
+      213: 1622366791293101852
+    second: Scyther Unt SpriteSheet_7
   - first:
-      213: -1903296424217965726
-    second: Charger Blusim Walk10
+      213: 1457378971256593036
+    second: Scyther Unt SpriteSheet_8
   - first:
-      213: -1651005350007223384
-    second: Charger Blusim Walk11
+      213: -6426516815311192403
+    second: Scyther Unt SpriteSheet_9
   - first:
-      213: -1331780560651042014
-    second: Charger Blusim Shadow
+      213: 3870810292957854456
+    second: Scyther Unt SpriteSheet_10
+  - first:
+      213: 4630526377472429554
+    second: Scyther Unt SpriteSheet_11
+  - first:
+      213: 3236850816366701009
+    second: Scyther Unt SpriteSheet_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -126,274 +132,274 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Charger Blusim Walk0
+      name: Scyther Unt SpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
         y: 72
         width: 48
-        height: 24
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eab4d5c0b289e0110800000000000000
-      internalID: 1229087058977180590
+      spriteID: 4d95856da8ab3ddb0800000000000000
+      internalID: -4768262474990855724
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charger Blusim Walk1
+      name: Scyther Unt SpriteSheet_1
       rect:
         serializedVersion: 2
         x: 48
         y: 72
         width: 48
-        height: 24
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bd97a39848fbc6b40800000000000000
-      internalID: 5434929426288245211
+      spriteID: 9639bcdf9985a9cc0800000000000000
+      internalID: -3703550325147593879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charger Blusim Walk2
+      name: Scyther Unt SpriteSheet_2
       rect:
         serializedVersion: 2
         x: 96
         y: 72
         width: 48
-        height: 24
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ab040038a7216e2b0800000000000000
-      internalID: -5555732772921786182
+      spriteID: 886f11bca30d5ae70800000000000000
+      internalID: 9125929170869810824
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charger Blusim Walk3
+      name: Scyther Unt SpriteSheet_3
       rect:
         serializedVersion: 2
         x: 144
         y: 72
         width: 48
-        height: 24
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c36a98203901256d0800000000000000
-      internalID: -3003319777913887172
+      spriteID: 37782696ec458c860800000000000000
+      internalID: 7550378020794697587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charger Blusim Walk4
+      name: Scyther Unt SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 72
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 949422fdde3acd040800000000000000
+      internalID: 4673790755349875017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_5
       rect:
         serializedVersion: 2
         x: 0
-        y: 48
+        y: 36
         width: 48
-        height: 24
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4659ab70f69a2d80800000000000000
-      internalID: -8274635405728852405
+      spriteID: e7092ceb8895a4070800000000000000
+      internalID: 8091378124375363710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charger Blusim Walk5
+      name: Scyther Unt SpriteSheet_6
       rect:
         serializedVersion: 2
         x: 48
-        y: 48
+        y: 36
         width: 48
-        height: 24
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76346af100c940600800000000000000
-      internalID: 433642988479333223
+      spriteID: 889ffb45a508710b0800000000000000
+      internalID: -5757992473112610424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charger Blusim Walk6
+      name: Scyther Unt SpriteSheet_7
       rect:
         serializedVersion: 2
         x: 96
-        y: 48
+        y: 36
         width: 48
-        height: 24
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aeb2f4f2508363930800000000000000
-      internalID: 4122544103823977450
+      spriteID: c176a62400ec38610800000000000000
+      internalID: 1622366791293101852
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charger Blusim Walk7
+      name: Scyther Unt SpriteSheet_8
       rect:
         serializedVersion: 2
         x: 144
-        y: 48
+        y: 36
         width: 48
-        height: 24
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f705dde2f5b25a810800000000000000
-      internalID: 1775873315875672191
+      spriteID: c8a9fdce376a93410800000000000000
+      internalID: 1457378971256593036
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Charger Blusim Walk8
+      name: Scyther Unt SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 36
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dae3d40710d60d6a0800000000000000
+      internalID: -6426516815311192403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_10
       rect:
         serializedVersion: 2
         x: 0
-        y: 24
-        width: 48
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 610c4423b02f01e40800000000000000
-      internalID: 5625262064487677974
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Charger Blusim Walk9
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 24
-        width: 48
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 121c2450d9b5b4740800000000000000
-      internalID: 5137300529902436641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Charger Blusim Walk10
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 24
-        width: 48
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 26b873c7cf12695e0800000000000000
-      internalID: -1903296424217965726
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Charger Blusim Walk11
-      rect:
-        serializedVersion: 2
-        x: 144
-        y: 24
-        width: 48
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8abcc8ea1637619e0800000000000000
-      internalID: -1651005350007223384
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Charger Blusim Shadow
-      rect:
-        serializedVersion: 2
-        x: 144
         y: 0
         width: 48
-        height: 24
+        height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 223cf9bd2a0948de0800000000000000
-      internalID: -1331780560651042014
+      spriteID: 8fabda8f371e7b530800000000000000
+      internalID: 3870810292957854456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd025ce43fe24040800000000000000
+      internalID: 4630526377472429554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d9687cfaaa9bec20800000000000000
+      internalID: 3236850816366701009
       vertices: []
       indices: 
       edges: []

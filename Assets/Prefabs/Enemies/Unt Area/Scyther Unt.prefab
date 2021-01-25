@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2711471150789980654}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.12, z: 0}
+  m_LocalPosition: {x: 0, y: 0.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8382053600298428176}
@@ -76,12 +76,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 131634076245483475, guid: 9ec8a47cade8f6041b9f0e9193bec7ef, type: 3}
+  m_Sprite: {fileID: -1219450226919108179, guid: 8aeb7ab577687d64c9a9247872246629,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.48, y: 0.24}
+  m_Size: {x: 0.48, y: 0.36}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -97,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 2711471150789980654}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 81ac41ee96ba566458ac0f08a38993cb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 669d558302bba3f4fb340e4f734e327d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -130,7 +131,7 @@ GameObject:
   - component: {fileID: 5813397970056962337}
   - component: {fileID: 5682064432001086994}
   m_Layer: 0
-  m_Name: Unt
+  m_Name: Scyther Unt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,8 +165,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.09}
-  m_Size: {x: 0.3, y: 0.18000002}
+  m_Offset: {x: 0, y: 0.13}
+  m_Size: {x: 0.45, y: 0.25}
   m_Direction: 1
 --- !u!114 &5682064432001086994
 MonoBehaviour:
@@ -179,7 +180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Unt
+  _displayName: Scyther
   _selector: {fileID: 4000618669885677062}
   _healthBar: {fileID: 8863022456078644539}
   _dotDisplay: {fileID: 3842665942187024139}
@@ -190,11 +191,11 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 3623001225806360375}
   _numberOfParticles: 2
-  _healthMax: 85
-  _armorMax: 10
-  _speedMax: 0.4
-  _numberOfLivesTaken: 1
-  _goldGained: 7
+  _healthMax: 175
+  _armorMax: 25
+  _speedMax: 0.2
+  _numberOfLivesTaken: 2
+  _goldGained: 14
   _flying: 0
   _damagePosition: {fileID: 3623001225806360375}
 --- !u!1001 &3162793518331619717
@@ -303,7 +304,7 @@ PrefabInstance:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.08
+      value: -0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
@@ -353,12 +354,12 @@ PrefabInstance:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.12
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.12
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 9044120826128104448, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
@@ -455,7 +456,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2523245253485179475, guid: 9ec8a47cade8f6041b9f0e9193bec7ef,
+      objectReference: {fileID: 3236850816366701009, guid: 8aeb7ab577687d64c9a9247872246629,
         type: 3}
     - target: {fileID: 7090599122710879685, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
@@ -470,7 +471,7 @@ PrefabInstance:
     - target: {fileID: 7090599122710879685, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.24
+      value: 0.36
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d79214be3f0e64babfd78791ecb9fd, type: 3}
@@ -495,7 +496,7 @@ PrefabInstance:
     - target: {fileID: 2009948410974079920, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 2009948410974079920, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}
