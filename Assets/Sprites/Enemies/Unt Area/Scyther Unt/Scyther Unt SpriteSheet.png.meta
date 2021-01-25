@@ -11,6 +11,42 @@ TextureImporter:
   - first:
       213: 4969594697402952153
     second: Scyther Unt Shadow
+  - first:
+      213: -3703550325147593879
+    second: Scyther Unt SpriteSheet_1
+  - first:
+      213: 9125929170869810824
+    second: Scyther Unt SpriteSheet_2
+  - first:
+      213: 7550378020794697587
+    second: Scyther Unt SpriteSheet_3
+  - first:
+      213: 4673790755349875017
+    second: Scyther Unt SpriteSheet_4
+  - first:
+      213: 8091378124375363710
+    second: Scyther Unt SpriteSheet_5
+  - first:
+      213: -5757992473112610424
+    second: Scyther Unt SpriteSheet_6
+  - first:
+      213: 1622366791293101852
+    second: Scyther Unt SpriteSheet_7
+  - first:
+      213: 1457378971256593036
+    second: Scyther Unt SpriteSheet_8
+  - first:
+      213: -6426516815311192403
+    second: Scyther Unt SpriteSheet_9
+  - first:
+      213: 3870810292957854456
+    second: Scyther Unt SpriteSheet_10
+  - first:
+      213: 4630526377472429554
+    second: Scyther Unt SpriteSheet_11
+  - first:
+      213: 3236850816366701009
+    second: Scyther Unt SpriteSheet_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,11 +136,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 36
+        y: 72
         width: 48
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -117,7 +153,217 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scyther Unt Shadow
+      name: Scyther Unt SpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 72
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9639bcdf9985a9cc0800000000000000
+      internalID: -3703550325147593879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 72
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 886f11bca30d5ae70800000000000000
+      internalID: 9125929170869810824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 72
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37782696ec458c860800000000000000
+      internalID: 7550378020794697587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 72
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 949422fdde3acd040800000000000000
+      internalID: 4673790755349875017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7092ceb8895a4070800000000000000
+      internalID: 8091378124375363710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 36
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 889ffb45a508710b0800000000000000
+      internalID: -5757992473112610424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 36
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c176a62400ec38610800000000000000
+      internalID: 1622366791293101852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 36
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8a9fdce376a93410800000000000000
+      internalID: 1457378971256593036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 36
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dae3d40710d60d6a0800000000000000
+      internalID: -6426516815311192403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fabda8f371e7b530800000000000000
+      internalID: 3870810292957854456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_11
       rect:
         serializedVersion: 2
         x: 48
@@ -125,14 +371,35 @@ TextureImporter:
         width: 48
         height: 36
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d92e581c0c87f440800000000000000
-      internalID: 4969594697402952153
+      spriteID: 2fd025ce43fe24040800000000000000
+      internalID: 4630526377472429554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Scyther Unt SpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d9687cfaaa9bec20800000000000000
+      internalID: 3236850816366701009
       vertices: []
       indices: 
       edges: []
