@@ -17,7 +17,12 @@ MonoBehaviour:
   _description: Sunlight is hardly hitting the sun, cave insects are numerous and
     ferocious
   _playSceneName: WindyField
-  _availableWaves: []
+  _availableWaves:
+  - {fileID: 11400000, guid: 74b35d79b51a2954988dc2e66efb2cae, type: 2}
+  - {fileID: 11400000, guid: 9d648a825602a2b47a7e2aa0d52918b2, type: 2}
+  - {fileID: 11400000, guid: ac948a3f324eab14aa44ecdaae51612e, type: 2}
+  - {fileID: 11400000, guid: 89fd02b3848238b409311544c5b7cd19, type: 2}
+  - {fileID: 11400000, guid: d46e475bfa2a4c74289bc89e3242dc2e, type: 2}
   _lifeCount: 1
   _goldCount: 900
   _towerLevel: 0
