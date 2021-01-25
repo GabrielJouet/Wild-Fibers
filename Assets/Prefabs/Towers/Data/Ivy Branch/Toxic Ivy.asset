@@ -37,3 +37,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ec1c2a19db952542b7eb6d81d3feaea, type: 2}
   - {fileID: 11400000, guid: b0c6dc94177b080419fe15fbf26b9a59, type: 2}
   _towerSpecs: []
+  _scriptName: ToxicIvy

@@ -203,6 +203,9 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public BackgroudSelecter InformationUI { get; set; }
 
+
+    public float _preDamage = 0f;
+
     /// <summary>
     /// Does the enemy is already aimed?
     /// </summary>
@@ -218,6 +221,8 @@ public class Enemy : MonoBehaviour
     /// <param name="pathIndex">Current progression on the path</param>
     public virtual void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
+        _preDamage = 0f;
+
         if (_particleController == null)
             _particleController = FindObjectOfType<ParticleController>();
 
@@ -323,6 +328,8 @@ public class Enemy : MonoBehaviour
     /// <param name="damage">The amount of damage the enemy is taking</param>
     public void TakeDamage(float damage)
     {
+        _preDamage -= damage;
+
         if (_health - damage <= 0)
             Die(false);
         else
@@ -442,8 +449,12 @@ public class Enemy : MonoBehaviour
     /// </summary>
     /// <param name="damage">How much damage the enemy is taking?</param>
     /// <param name="armorThrough">The percentage of armor through the hit has</param>
-    public bool CanSurvive(float damage, float armorThrough) { return _health - Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor) / 100) / 2 : damage - ((_armor - armorThrough) / 100 * damage)) > 0; }
+    public bool CanSurvive(float damage, float armorThrough)
+    {
+        _preDamage += Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor) / 100) / 2 : damage - ((_armor - armorThrough) / 100 * damage));
 
+        return _health - _preDamage > 0;
+    }
 
     /// <summary>
     /// Activate or desactivate selector state.

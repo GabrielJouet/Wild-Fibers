@@ -14,7 +14,7 @@ public class Projectile : MonoBehaviour
 
     protected Enemy _enemyTracked;
 
-    private Vector3 _goalPosition;
+    protected Vector3 _goalPosition;
 
 
     /// <summary>
@@ -38,17 +38,17 @@ public class Projectile : MonoBehaviour
     {
         if (_enemyTracked != null)
             TrackEnemy();
-        else if (FollowPoint(_goalPosition))
+        else if (FollowPoint(_goalPosition, true))
             StopProjectile();
     }
 
 
     //Method used to track an enemy moving 
-    private void TrackEnemy()
+    protected virtual void TrackEnemy()
     {
         if (_enemyTracked.gameObject.activeSelf)
         {
-            if (FollowPoint(_enemyTracked.DamagePosition))
+            if (FollowPoint(_enemyTracked.DamagePosition, true))
             {
                 AttackEnemy(_enemyTracked);
                 StopProjectile();
@@ -65,14 +65,17 @@ public class Projectile : MonoBehaviour
     //Method used to follow a point moving in space
     //
     //Parameter => the point position in a vector 3
-    private bool FollowPoint(Vector3 position)
+    protected bool FollowPoint(Vector3 position, bool rotate)
     {
         transform.position = Vector3.MoveTowards(transform.position, position, _data.ProjectileSpeed * Time.deltaTime);
 
-        Vector3 vectorToTarget = position - transform.position;
-        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        if (rotate)
+        {
+            Vector3 vectorToTarget = position - transform.position;
+            float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
 
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
 
         return (transform.position - position).magnitude < 0.025f;
     }

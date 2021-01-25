@@ -137,6 +137,10 @@ public class TowerData : ScriptableObject
     protected List<TowerSpec> _towerSpecs;
     public List<TowerSpec> Specs { get => _towerSpecs; }
 
+    [SerializeField]
+    protected string _scriptName;
+    public string Script { get => _scriptName; }
+
 
     public void LoadData(int newPrice, float newTimeShots, int newDamage, float newArmorThrough, float newSpeed, int newShots, float newRange, bool newCanHitFLying, bool newShotsRandomly, float newArmorMalus, float newDot, float newDotDuration)
     {
