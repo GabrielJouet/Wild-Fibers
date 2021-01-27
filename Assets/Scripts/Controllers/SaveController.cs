@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -130,14 +130,14 @@ public class SaveController : MonoBehaviour
 
 			if (buffer.SeedsGained < gainedSeeds)
 				buffer.SeedsGained = gainedSeeds;
+
+			if (LevelIndex + 1 < Levels.Count && SaveFile.Saves[LevelIndex + 1].State == LevelState.LOCKED)
+				SaveFile.Saves[LevelIndex + 1] = new LevelSave(0, LevelState.UNLOCKED);
 		}
 		else if (LoadedLevel == LevelType.SIDE)
 			buffer.State = LevelState.SIDED;
 		else if (LoadedLevel == LevelType.CHALLENGE)
 			buffer.State = LevelState.CHALLENGED;
-
-		if(LevelIndex + 1 < Levels.Count)
-			SaveFile.Saves[LevelIndex + 1] = new LevelSave(0, LevelState.UNLOCKED);
 
 		SaveData();
 	}
