@@ -94,14 +94,14 @@ public class GameOverScreen : MonoBehaviour
     {
         _boxCollider.enabled = true;
         _boxCollider.size = new Vector2(Screen.width + _transform.sizeDelta.x, Screen.height + _transform.sizeDelta.y);
+
         _gameScreen.gameObject.SetActive(true);
+
         _gameScreen.sprite = win ? _winScreen : _loseScreen;
         _mainText.text = win ? "Win" : "Lose";
 
         if (win)
         {
-            FindObjectOfType<SaveController>().SaveLevelData(_ressourceController.LivesLost);
-
             int livesLost = _ressourceController.LivesLost;
 
             if (livesLost <= 15)
@@ -116,6 +116,8 @@ public class GameOverScreen : MonoBehaviour
                         _seedScores[0].sprite = _activatedSprite;
                 }
             }
+
+            FindObjectOfType<SaveController>().SaveLevelData(livesLost);
         }
     }
 }

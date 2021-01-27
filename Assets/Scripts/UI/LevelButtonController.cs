@@ -9,7 +9,6 @@ public class LevelButtonController : MonoBehaviour
     [SerializeField]
     private List<LevelButton> _levelButtons;
 
-    public SaveController SaveController { get; private set; }
 
 
     /// <summary>
@@ -17,7 +16,6 @@ public class LevelButtonController : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        SaveController = FindObjectOfType<SaveController>();
         SetButtonStates();
     }
 
@@ -27,7 +25,7 @@ public class LevelButtonController : MonoBehaviour
     /// </summary>
     private void SetButtonStates()
     {
-        List<LevelSave> levelSaves = SaveController.SaveFile.Saves;
+        List<LevelSave> levelSaves = FindObjectOfType<SaveController>().SaveFile.Saves;
 
         for (int i = 0; i < levelSaves.Count; i++)
         {

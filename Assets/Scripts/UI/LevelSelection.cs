@@ -144,43 +144,31 @@ public class LevelSelection : MonoBehaviour
     }
 
 
-    public void ActivateSideMenu()
+    public void ActivateAlternateMenu(string levelType)
     {
+        LevelType enumBuffer = (LevelType)System.Enum.Parse(typeof(LevelType), levelType);
+        Level buffer = enumBuffer == LevelType.SIDE ? _level.Side : _level.Challenge;
+
         _classicLayout.SetActive(false);
         _sideLayout.SetActive(true);
 
-        _levelName.text = _level.Side.Name;
-        _levelPicture.sprite = _level.Side.Picture;
-        _sideDescription.text = _level.Side.Description;
+        _levelName.text = buffer.Name;
+        _levelPicture.sprite = buffer.Picture;
+        _sideDescription.text = buffer.Description;
 
         _sideScore.sprite = _desactivatedSprite;
-        _sideScore.sprite = _saveController.SaveFile.Saves[_levelIndex].State == LevelState.SIDED ? _activatedSprite : _sideScore.sprite;
+
+        LevelState bufferState = _saveController.SaveFile.Saves[_levelIndex].State;
+
+        if (enumBuffer == LevelType.SIDE && bufferState == LevelState.SIDED)
+            _sideScore.sprite = _activatedSprite;
+        else if (enumBuffer == LevelType.CHALLENGE && bufferState == LevelState.CHALLENGED)
+            _sideScore.sprite = _activatedSprite;
 
         _launchBattleMenu.onClick.RemoveAllListeners();
         _launchBattleMenu.onClick.AddListener(() =>
         {
-            _saveController.LoadedLevel = LevelType.SIDE;
-            _sceneChanger.LoadScene(_level.Classic.Scene);
-        });
-    }
-
-
-    public void ActivateChallengeMenu()
-    {
-        _classicLayout.SetActive(false);
-        _sideLayout.SetActive(true);
-
-        _levelName.text = _level.Challenge.Name;
-        _levelPicture.sprite = _level.Challenge.Picture;
-        _sideDescription.text = _level.Challenge.Description;
-
-        _sideScore.sprite = _desactivatedSprite;
-        _sideScore.sprite = _saveController.SaveFile.Saves[_levelIndex].State == LevelState.CHALLENGED ? _activatedSprite : _sideScore.sprite;
-
-        _launchBattleMenu.onClick.RemoveAllListeners();
-        _launchBattleMenu.onClick.AddListener(() =>
-        {
-            _saveController.LoadedLevel = LevelType.CHALLENGE;
+            _saveController.LoadedLevel = enumBuffer;
             _sceneChanger.LoadScene(_level.Classic.Scene);
         });
     }
