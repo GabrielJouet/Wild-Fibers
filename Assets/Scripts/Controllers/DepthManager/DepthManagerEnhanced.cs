@@ -3,19 +3,20 @@
 /// <summary>
 /// Class used to control depth in 2D environnement.
 /// </summary>
+/// <remarks>Needs a SpriteRenderer component</remarks>
+[RequireComponent(typeof(SpriteRenderer))]
 public class DepthManagerEnhanced : MonoBehaviour
 {
-    /// <summary>
-    /// The sprite renderer component that will be update.
-    /// </summary>
-    [SerializeField]
-    private SpriteRenderer _spriteRenderer;
-
     /// <summary>
     /// The transform component that will be used to check position.
     /// </summary>
     [SerializeField]
     private Transform _transform;
+
+    /// <summary>
+    /// The sprite renderer component that will be update.
+    /// </summary>
+    private SpriteRenderer _spriteRenderer;
 
 
     /// <summary>
@@ -30,6 +31,7 @@ public class DepthManagerEnhanced : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _mainCamera = Camera.main;
     }
 
