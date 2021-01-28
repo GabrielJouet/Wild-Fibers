@@ -8072,6 +8072,11 @@ PrefabInstance:
       propertyPath: _goldIconAnimator
       value: 
       objectReference: {fileID: 4541158167840557065}
+    - target: {fileID: 571994285330439440, guid: 3a3887dcbdbd89b499727d31651bc979,
+        type: 3}
+      propertyPath: _lifeIconAnimator
+      value: 
+      objectReference: {fileID: 4541158167840557065}
     - target: {fileID: 571994285330439442, guid: 3a3887dcbdbd89b499727d31651bc979,
         type: 3}
       propertyPath: m_LocalPosition.x

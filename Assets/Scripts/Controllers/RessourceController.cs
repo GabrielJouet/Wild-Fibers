@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -23,8 +22,11 @@ public class RessourceController : MonoBehaviour
     [SerializeField]
     private Text _goldText;
 
+    /// <summary>
+    /// Health animator component updated each time we lose health.
+    /// </summary>
     [SerializeField]
-    private Animator _goldIconAnimator;
+    private Animator _lifeIconAnimator;
 
     /// <summary>
     /// Game over component called when the player does not have any lives left.
@@ -115,27 +117,18 @@ public class RessourceController : MonoBehaviour
     {
         if (_lifeCount > 0)
         {
-            _goldIconAnimator.SetTrigger("lose");
+            _lifeIconAnimator.SetTrigger("lose");
 
             if (_lifeCount - count <= 0)
             {
                 _lifeCount = 0;
-                _levelController.Ended = true;
-
-                StartCoroutine(DelayGameScreen());
+                _levelController.EndLevel(true);
             }
             else
                 _lifeCount -= count;
 
             _lifeText.text = _lifeCount.ToString();
         }
-    }
-
-
-    private IEnumerator DelayGameScreen()
-    {
-        yield return new WaitForSeconds(1f);
-        _gameOverScreen.Activate(false);
     }
     #endregion
 }

@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -9,14 +9,22 @@ using UnityEngine;
 public class SaveController : MonoBehaviour
 {
 	[SerializeField]
+	/// <summary>
+	/// All levels.
+	/// </summary>
 	private List<LevelData> _levels;
 	public List<LevelData> Levels { get => _levels; }
 
 
+	/// <summary>
+	/// Loaded level index.
+	/// </summary>
 	public int LevelIndex { get; set; }
 
+	/// <summary>
+	/// Type of loaded level.
+	/// </summary>
 	public LevelType LoadedLevel { get; set; }
-
 
 	/// <summary>
 	/// Loaded save file.

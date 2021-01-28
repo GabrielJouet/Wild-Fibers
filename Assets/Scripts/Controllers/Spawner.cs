@@ -97,6 +97,7 @@ public class Spawner : MonoBehaviour
 
                     for (int i = 0; i < bossComponent.PathWanted; i++)
                         newPaths.Add(_randomPath.CalculateRandomPath());
+
                     bossComponent.AvailablePaths = newPaths;
                 }
 
@@ -147,6 +148,6 @@ public class Spawner : MonoBehaviour
     public void AllEnemiesKilled()
     {
         EnemiesKilled = true;
-        _levelController.EndLevel();
+        _levelController.EndLevel(false);
     }
 }

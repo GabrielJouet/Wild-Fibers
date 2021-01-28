@@ -10,17 +10,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PoolController))]
 public class LevelController : MonoBehaviour
 {
-    /// <summary>
-    /// Level loaded.
-    /// </summary>
-    public Level LoadedLevel { get; private set; }
-
-    /// <summary>
-    /// Does the level is ended?
-    /// </summary>
-    public bool Ended { get; set; }
-
-
     [Header("UI related")]
 
     /// <summary>
@@ -59,16 +48,30 @@ public class LevelController : MonoBehaviour
 
 
     /// <summary>
+    /// Level loaded.
+    /// </summary>
+    public Level LoadedLevel { get; private set; }
+
+    /// <summary>
+    /// Does the level is ended?
+    /// </summary>
+    public bool Ended { get; set; }
+
+
+    /// <summary>
     /// Resource controller used to track lives and gold.
     /// </summary>
     private RessourceController _ressourceController;
 
     /// <summary>
+    /// Pool controller component, used to store pools
+    /// </summary>
+    private PoolController _poolController;
+
+    /// <summary>
     /// Time between each next wave button display
     /// </summary>
     private readonly float _timeBetweenNextWaveButtonDisplay = 5f;
-
-    private PoolController _poolController;
 
     /// <summary>
     /// Current wave index
@@ -84,7 +87,7 @@ public class LevelController : MonoBehaviour
     {
         SaveController buffer = FindObjectOfType<SaveController>();
 
-        switch(buffer.LoadedLevel)
+        switch (buffer.LoadedLevel)
         {
             case LevelType.CLASSIC:
                 LoadedLevel = buffer.Levels[buffer.LevelIndex].Classic;
@@ -101,14 +104,7 @@ public class LevelController : MonoBehaviour
 
         _ressourceController = GetComponent<RessourceController>();
         _poolController = GetComponent<PoolController>();
-    }
 
-
-    /// <summary>
-    /// Start method called after Awake.
-    /// </summary>
-    private void Start()
-    {
         _waveText.text = 0 + " / " + LoadedLevel.Waves.Count;
     }
 
@@ -121,7 +117,7 @@ public class LevelController : MonoBehaviour
     {
         StartWave();
 
-        //If there is time left, we gie money to player based on time left
+        //If there is time left, we give money to player based on time left
         if (timeLeft > 0)
             _ressourceController.AddGold(Mathf.FloorToInt(LoadedLevel.Waves[_waveIndex].BonusGold * (timeLeft / LoadedLevel.Waves[_waveIndex].TimeWave)));
     }
@@ -166,31 +162,6 @@ public class LevelController : MonoBehaviour
 
 
     /// <summary>
-    /// Method used when the level is finished.
-    /// </summary>
-    public void EndLevel()
-    {
-        bool result = true;
-
-        foreach (Spawner current in _spawners)
-            if (!current.EnemiesKilled)
-                result = false;
-
-        if (result)
-            StartCoroutine(DelayGameScreen());
-
-        Ended = result;
-    }
-
-
-    private IEnumerator DelayGameScreen()
-    {
-        yield return new WaitForSeconds(1f);
-        _gameOverScreen.Activate(true);
-    }
-
-
-    /// <summary>
     /// Coroutine used to delay the next wave.
     /// </summary>
     /// <returns>Yield the time between next wave display</returns>
@@ -207,5 +178,34 @@ public class LevelController : MonoBehaviour
         else
             foreach (Spawner current in _spawners)
                 current.NotifyPool();
+    }
+
+
+    /// <summary>
+    /// Method used when the level is finished.
+    /// </summary>
+    public void EndLevel(bool lose)
+    {
+        bool result = true;
+
+        if(!lose)
+            foreach (Spawner current in _spawners)
+                if (!current.EnemiesKilled)
+                    result = false;
+
+        if (result)
+            StartCoroutine(DelayGameScreen());
+
+        Ended = result;
+    }
+
+
+    /// <summary>
+    /// Coroutine used to delay game over screen display.
+    /// </summary>
+    private IEnumerator DelayGameScreen()
+    {
+        yield return new WaitForSeconds(1f);
+        _gameOverScreen.Activate(true);
     }
 }
