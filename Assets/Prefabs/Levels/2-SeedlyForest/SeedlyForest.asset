@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: SeedlyForest
   m_EditorClassIdentifier: 
   _name: Seedly Forest
-  _number: 1
   _picture: {fileID: 21300000, guid: cad09f24362b5de4ab3a0ec81b82dafc, type: 3}
   _description: Some plants were found ripped in this forest, could it be the first
     sign of expansion?
   _playSceneName: SeedlyForest
+  _levelType: 0
+  _index: 1
   _availableWaves:
   - {fileID: 11400000, guid: 0f67b46556aa6ca4fa37607ab95b2d3e, type: 2}
   - {fileID: 11400000, guid: 75871b8af6b7b5e43b47949063150576, type: 2}

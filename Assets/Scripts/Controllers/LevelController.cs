@@ -85,22 +85,7 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        SaveController buffer = FindObjectOfType<SaveController>();
-
-        switch (buffer.LoadedLevel)
-        {
-            case LevelType.CLASSIC:
-                LoadedLevel = buffer.Levels[buffer.LevelIndex].Classic;
-                break;
-
-            case LevelType.SIDE:
-                LoadedLevel = buffer.Levels[buffer.LevelIndex].Side;
-                break;
-
-            case LevelType.CHALLENGE:
-                LoadedLevel = buffer.Levels[buffer.LevelIndex].Challenge;
-                break;
-        }
+        LoadedLevel = FindObjectOfType<SaveController>().LoadedLevel;
 
         _ressourceController = GetComponent<RessourceController>();
         _poolController = GetComponent<PoolController>();

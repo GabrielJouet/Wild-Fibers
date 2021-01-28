@@ -17,14 +17,9 @@ public class SaveController : MonoBehaviour
 
 
 	/// <summary>
-	/// Loaded level index.
+	/// Loaded level.
 	/// </summary>
-	public int LevelIndex { get; set; }
-
-	/// <summary>
-	/// Type of loaded level.
-	/// </summary>
-	public LevelType LoadedLevel { get; set; }
+	public Level LoadedLevel { get; set; }
 
 	/// <summary>
 	/// Loaded save file.
@@ -121,9 +116,9 @@ public class SaveController : MonoBehaviour
 	/// <param name="newLivesLost">The number of lives lost</param>
 	public void SaveLevelData(int newLivesLost)
 	{
-		LevelSave buffer = SaveFile.Saves[LevelIndex];
+		LevelSave buffer = SaveFile.Saves[LoadedLevel.Index];
 
-		if (LoadedLevel == LevelType.CLASSIC)
+		if (LoadedLevel.Type == LevelType.CLASSIC)
 		{
 			int gainedSeeds = 0;
 
@@ -139,12 +134,12 @@ public class SaveController : MonoBehaviour
 			if (buffer.SeedsGained < gainedSeeds)
 				buffer.SeedsGained = gainedSeeds;
 
-			if (LevelIndex + 1 < Levels.Count && SaveFile.Saves[LevelIndex + 1].State == LevelState.LOCKED)
-				SaveFile.Saves[LevelIndex + 1] = new LevelSave(0, LevelState.UNLOCKED);
+			if (LoadedLevel.Index + 1 < Levels.Count && SaveFile.Saves[LoadedLevel.Index + 1].State == LevelState.LOCKED)
+				SaveFile.Saves[LoadedLevel.Index + 1] = new LevelSave(0, LevelState.UNLOCKED);
 		}
-		else if (LoadedLevel == LevelType.SIDE)
+		else if (LoadedLevel.Type == LevelType.SIDE)
 			buffer.State = LevelState.SIDED;
-		else if (LoadedLevel == LevelType.CHALLENGE)
+		else if (LoadedLevel.Type == LevelType.CHALLENGE)
 			buffer.State = LevelState.CHALLENGED;
 
 		SaveData();

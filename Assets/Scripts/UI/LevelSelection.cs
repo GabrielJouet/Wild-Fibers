@@ -114,8 +114,6 @@ public class LevelSelection : MonoBehaviour
             }
         }
 
-        _saveController.LevelIndex = _levelIndex;
-
         LevelState buffer = _saveController.SaveFile.Saves[_levelIndex].State;
         _sideButton.enabled = buffer == LevelState.COMPLETED || buffer == LevelState.SIDED || buffer == LevelState.CHALLENGED;
         _challengeButton.enabled = buffer == LevelState.SIDED || buffer == LevelState.CHALLENGED;
@@ -138,7 +136,7 @@ public class LevelSelection : MonoBehaviour
         _launchBattleMenu.onClick.RemoveAllListeners();
         _launchBattleMenu.onClick.AddListener(() =>
         {
-            _saveController.LoadedLevel = LevelType.CLASSIC;
+            _saveController.LoadedLevel = _saveController.Levels[_levelIndex].Classic;
             _sceneChanger.LoadScene(_level.Classic.Scene);
         });
     }
@@ -168,7 +166,7 @@ public class LevelSelection : MonoBehaviour
         _launchBattleMenu.onClick.RemoveAllListeners();
         _launchBattleMenu.onClick.AddListener(() =>
         {
-            _saveController.LoadedLevel = enumBuffer;
+            _saveController.LoadedLevel = buffer;
             _sceneChanger.LoadScene(_level.Classic.Scene);
         });
     }

@@ -37,6 +37,20 @@ public class Level : ScriptableObject
     private string _playSceneName;
     public string Scene { get => _playSceneName; }
 
+    /// <summary>
+    /// Level type: classic, side or challenge.
+    /// </summary>
+    [SerializeField]
+    private LevelType _levelType;
+    public LevelType Type { get => _levelType; }
+
+    /// <summary>
+    /// Level type: classic, side or challenge.
+    /// </summary>
+    [SerializeField]
+    private int _index;
+    public int Index { get => _index; }
+
 
     [Header("In play")]
 
