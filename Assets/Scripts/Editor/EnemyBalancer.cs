@@ -16,8 +16,6 @@ public class EnemyBalancer : EditorWindow
 
     private bool _newFlying;
 
-    private int _newGoldGained;
-
 
     private readonly int _spaceBetweenCategories = 10;
     private readonly int _spaceBetweenLines = 5;
@@ -43,7 +41,6 @@ public class EnemyBalancer : EditorWindow
             _newSpeed = _loadedEnemy.Speed;
             _newNumberOfLives = _loadedEnemy.LivesTaken;
             _newFlying = _loadedEnemy.Flying;
-            _newGoldGained = _loadedEnemy.GoldGained;
         }
 
         if (_loadedEnemy != null)
@@ -52,7 +49,7 @@ public class EnemyBalancer : EditorWindow
             GUILayout.Label("Gold gained", EditorStyles.boldLabel);
 
             int finalGold = Mathf.FloorToInt((_newHealth + (_newHealth * (_newArmor * 2 / 100)) * _newSpeed * 3 * _newNumberOfLives * (1 + (_newFlying ? 0.5f : 0))) / 15);
-            _newGoldGained = EditorGUILayout.IntField(finalGold);
+            EditorGUILayout.IntField(finalGold);
 
 
             GUILayout.Space(_spaceBetweenCategories);
@@ -75,14 +72,6 @@ public class EnemyBalancer : EditorWindow
             GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Flying");
             _newFlying = GUILayout.Toggle(_newFlying, "");
-        }
-
-        GUILayout.Space(_spaceBetweenLines);
-
-        if (GUILayout.Button("Apply all changes"))
-        {
-            _loadedEnemy.LoadData(_newHealth, _newArmor, _newSpeed, _newNumberOfLives, _newFlying, _newGoldGained);
-            EditorUtility.SetDirty(_loadedEnemy);
         }
     }
 }

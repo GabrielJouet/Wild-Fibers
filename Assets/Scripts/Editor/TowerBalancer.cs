@@ -6,8 +6,6 @@ public class TowerBalancer : EditorWindow
     private TowerData _loadedData;
     private TowerData _previousData;
 
-    private int _newPrice;
-
     private float _newTimeBetweenShots;
 
     private int _newDamage;
@@ -52,7 +50,6 @@ public class TowerBalancer : EditorWindow
         {
             _previousData = _loadedData;
 
-            _newPrice = _loadedData.Price;
             _newTimeBetweenShots = _loadedData.TimeShots;
             _newDamage = _loadedData.Damage;
             _newArmorThrough = _loadedData.ArmorThrough;
@@ -78,7 +75,7 @@ public class TowerBalancer : EditorWindow
             float dotDps = (_newDot * _newDotDuration / _newTimeBetweenShots + (_newDotArmor / 100 * _newDotDuration / _newTimeBetweenShots) * 4) * 2;
             float bonusMultiplier = 1 + (_newCanHitFlying ? 0.45f : 0) + (!_newShotsRandomly ? 0.125f : 0);
             int finalPrice = Mathf.FloorToInt((dps + dotDps) * _newRange * numberOfShots * bonusMultiplier * 5);
-            _newPrice = EditorGUILayout.IntField(finalPrice - finalPrice % 5);
+            EditorGUILayout.IntField(finalPrice - finalPrice % 5);
 
 
             GUILayout.Space(_spaceBetweenCategories);
@@ -131,14 +128,6 @@ public class TowerBalancer : EditorWindow
             GUILayout.Space(_spaceBetweenLines);
             GUILayout.Label("Dot duration");
             _newDotDuration = EditorGUILayout.FloatField(_newDotDuration);
-        }
-
-        GUILayout.Space(_spaceBetweenLines);
-
-        if (GUILayout.Button("Apply all changes"))
-        {
-            _loadedData.LoadData(Mathf.FloorToInt(_newPrice), _newTimeBetweenShots, _newDamage, _newArmorThrough, _newSpeed, _newNumberOfShots, _newRange, _newCanHitFlying, _newShotsRandomly, _newDotArmor, _newDot, _newDotDuration);
-            EditorUtility.SetDirty(_loadedData);
         }
     }
 }
