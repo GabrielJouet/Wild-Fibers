@@ -179,7 +179,7 @@ public class LevelController : MonoBehaviour
                     result = false;
 
         if (result)
-            StartCoroutine(DelayGameScreen());
+            StartCoroutine(DelayGameScreen(lose));
 
         Ended = result;
     }
@@ -188,9 +188,9 @@ public class LevelController : MonoBehaviour
     /// <summary>
     /// Coroutine used to delay game over screen display.
     /// </summary>
-    private IEnumerator DelayGameScreen()
+    private IEnumerator DelayGameScreen(bool lose)
     {
         yield return new WaitForSeconds(1f);
-        _gameOverScreen.Activate(true);
+        _gameOverScreen.Activate(!lose);
     }
 }
