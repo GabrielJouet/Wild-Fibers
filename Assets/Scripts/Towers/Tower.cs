@@ -160,7 +160,7 @@ public class Tower : MonoBehaviour
     /// </summary>
     public void ResellTower()
     {
-        _ressourceController.AddGold(Mathf.FloorToInt(CumulativeGold / 4));
+        _ressourceController.AddGold(Mathf.FloorToInt(CumulativeGold / 4), false);
 
         _backgroundSelecter.DisableTowerInformation();
         _backgroundSelecter.DisableTowerSellButton();

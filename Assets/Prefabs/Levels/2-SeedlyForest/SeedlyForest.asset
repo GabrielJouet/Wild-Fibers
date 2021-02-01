@@ -29,3 +29,4 @@ MonoBehaviour:
   _lifeCount: 20
   _goldCount: 635
   _towerLevel: 1
+  _goldMultiplier: 1

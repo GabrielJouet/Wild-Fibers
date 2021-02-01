@@ -92,7 +92,7 @@ public class EnemyPool : MonoBehaviour
         if (stillAlive)
             _ressourceController.RemoveLives(livesLostOrGoldGained);
         else
-            _ressourceController.AddGold(livesLostOrGoldGained);
+            _ressourceController.AddGold(livesLostOrGoldGained, true);
     }
 
 

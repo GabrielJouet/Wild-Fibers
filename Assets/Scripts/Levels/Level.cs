@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -86,6 +86,14 @@ public class Level : ScriptableObject
     [Range(0, 3)]
     private int _towerLevel;
     public int TowerLevel { get => _towerLevel; }
+
+    /// <summary>
+    /// Gold multiplier for income gold.
+    /// </summary>
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float _goldMultiplier;
+    public float GoldMultiplier { get => _goldMultiplier; }
 
     /// <summary>
     /// Enemies type in the level.
