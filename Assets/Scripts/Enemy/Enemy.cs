@@ -310,6 +310,7 @@ public class Enemy : MonoBehaviour
     {
         int damageLeft = Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor)/100)/2 : damage - ((_armor - armorThrough)/100 * damage));
 
+        _preDamage -= damageLeft;
         TakeDamage(damageLeft);
 
         foreach (Transform current in _particleEmissionsPoints)
@@ -328,8 +329,6 @@ public class Enemy : MonoBehaviour
     /// <param name="damage">The amount of damage the enemy is taking</param>
     public void TakeDamage(float damage)
     {
-        _preDamage -= damage;
-
         if (_health - damage <= 0)
             Die(false);
         else
