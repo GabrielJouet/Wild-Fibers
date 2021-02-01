@@ -20,5 +20,12 @@ MonoBehaviour:
       type: 3}
     _timeBetweenPattern: 2
     _pathIndex: 0
+  - _enemyPatterns:
+    - _numberOfEnemies: 25
+      _timeBetweenEnemies: 1.5
+    _enemyUsed: {fileID: 6914183812568595844, guid: 76e6d98bff05e8948b947d2b45938fa4,
+      type: 3}
+    _timeBetweenPattern: 2
+    _pathIndex: 0
   _timeBeforeNextWave: 15
   _goldBonus: 30
