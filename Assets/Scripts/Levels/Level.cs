@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -106,8 +106,8 @@ public class Level : ScriptableObject
 
             foreach (Wave current in _availableWaves)
                 foreach (EnemyGroup buffer in current.EnemyGroups)
-                    if (!availableEnemies.Contains(buffer.Enemy))
-                        availableEnemies.Add(buffer.Enemy);
+                    if (!availableEnemies.Contains(buffer.Enemy.GetComponent<Enemy>()))
+                        availableEnemies.Add(buffer.Enemy.GetComponent<Enemy>());
 
             return availableEnemies;
         } 
