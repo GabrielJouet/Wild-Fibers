@@ -129,7 +129,8 @@ public class SaveController : MonoBehaviour
 			else if (newLivesLost <= 15)
 				gainedSeeds = 1;
 
-			buffer.State = LevelState.COMPLETED;
+			if (buffer.State == LevelState.UNLOCKED)
+				buffer.State = LevelState.COMPLETED;
 
 			if (buffer.SeedsGained < gainedSeeds)
 				buffer.SeedsGained = gainedSeeds;
@@ -137,9 +138,9 @@ public class SaveController : MonoBehaviour
 			if (LoadedLevel.Index + 1 < Levels.Count && SaveFile.Saves[LoadedLevel.Index + 1].State == LevelState.LOCKED)
 				SaveFile.Saves[LoadedLevel.Index + 1] = new LevelSave(0, LevelState.UNLOCKED);
 		}
-		else if (LoadedLevel.Type == LevelType.SIDE)
+		else if (LoadedLevel.Type == LevelType.SIDE && buffer.State == LevelState.COMPLETED)
 			buffer.State = LevelState.SIDED;
-		else if (LoadedLevel.Type == LevelType.CHALLENGE)
+		else if (LoadedLevel.Type == LevelType.CHALLENGE && buffer.State == LevelState.SIDED)
 			buffer.State = LevelState.CHALLENGED;
 
 		SaveData();
