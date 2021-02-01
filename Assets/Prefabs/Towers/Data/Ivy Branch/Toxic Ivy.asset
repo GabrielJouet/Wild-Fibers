@@ -30,8 +30,8 @@ MonoBehaviour:
   _canHitFlying: 1
   _shotsRandomly: 1
   _armorThroughMalus: 15
-  _damageOverTime: 2
-  _dotDuration: 4
+  _damageOverTime: 3
+  _dotDuration: 4.5
   _dotIcon: {fileID: 21300000, guid: 7cd5152f67673104f8eaee17fb065362, type: 3}
   _towerUpgrades:
   - {fileID: 11400000, guid: 6ec1c2a19db952542b7eb6d81d3feaea, type: 2}
