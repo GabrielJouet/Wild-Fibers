@@ -27,6 +27,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 05233978e05b313418106ecfe271f448, type: 2}
   - {fileID: 11400000, guid: 9d740f09a9ebfff4ea3e897a598ecae9, type: 2}
   _lifeCount: 5
-  _goldCount: 475
+  _goldCount: 445
   _towerLevel: 0
   _goldMultiplier: 0.75
