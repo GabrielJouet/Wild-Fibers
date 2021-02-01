@@ -14,6 +14,8 @@ public class Wave : ScriptableObject
     private List<EnemyGroup> _availableEnemyGroups;
     public List<EnemyGroup> EnemyGroups { get => _availableEnemyGroups; }
 
+    [Space(15)]
+
     /// <summary>
     /// Time between wave.
     /// </summary>
