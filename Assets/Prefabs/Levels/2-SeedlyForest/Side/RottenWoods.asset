@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9275da23ffe138249b48ceb9809eaf68, type: 3}
+  m_Name: RottenWoods
+  m_EditorClassIdentifier: 
+  _name: Rotten Woods
+  _picture: {fileID: 21300000, guid: cad09f24362b5de4ab3a0ec81b82dafc, type: 3}
+  _description: Trees stop growing in these lands, better be careful of corrupted
+    stumps.
+  _playSceneName: SeedlyForest
+  _levelType: 1
+  _index: 1
+  _availableWaves:
+  - {fileID: 11400000, guid: 0f67b46556aa6ca4fa37607ab95b2d3e, type: 2}
+  - {fileID: 11400000, guid: 75871b8af6b7b5e43b47949063150576, type: 2}
+  - {fileID: 11400000, guid: 9baf7e9109e9eaa4ab13b249480fbe5e, type: 2}
+  - {fileID: 11400000, guid: 7be3f4bdfbabd4f46bcab10a933c85df, type: 2}
+  - {fileID: 11400000, guid: 8c0c0ce2d0a82c84ea2371bcf2779097, type: 2}
+  - {fileID: 11400000, guid: 053c2f26e18464b4ca1848aed267606f, type: 2}
+  _lifeCount: 5
+  _goldCount: 755
+  _towerLevel: 1
+  _goldMultiplier: 0.75
