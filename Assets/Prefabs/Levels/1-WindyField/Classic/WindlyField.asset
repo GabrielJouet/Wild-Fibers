@@ -16,6 +16,8 @@ MonoBehaviour:
   _picture: {fileID: 21300000, guid: 3aeb669f1a183bd4298cc870046f5cb9, type: 3}
   _description: A sunny field filled with flowers and nice grass.
   _playSceneName: WindyField
+  _levelType: 0
+  _index: 0
   _availableWaves:
   - {fileID: 11400000, guid: 11b380b1c3ce3ef4aa836c31faa27eae, type: 2}
   - {fileID: 11400000, guid: c060ca80bd3bed145af15376557f1ab9, type: 2}
@@ -25,3 +27,4 @@ MonoBehaviour:
   _lifeCount: 20
   _goldCount: 400
   _towerLevel: 0
+  _goldMultiplier: 1

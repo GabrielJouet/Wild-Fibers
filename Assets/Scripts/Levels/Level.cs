@@ -88,6 +88,14 @@ public class Level : ScriptableObject
     public int TowerLevel { get => _towerLevel; }
 
     /// <summary>
+    /// Gold multiplier for income gold.
+    /// </summary>
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float _goldMultiplier;
+    public float GoldMultiplier { get => _goldMultiplier; }
+
+    /// <summary>
     /// Enemies type in the level.
     /// </summary>
     public List<Enemy> Enemies 
@@ -98,8 +106,8 @@ public class Level : ScriptableObject
 
             foreach (Wave current in _availableWaves)
                 foreach (EnemyGroup buffer in current.EnemyGroups)
-                    if (!availableEnemies.Contains(buffer.Enemy))
-                        availableEnemies.Add(buffer.Enemy);
+                    if (!availableEnemies.Contains(buffer.Enemy.GetComponent<Enemy>()))
+                        availableEnemies.Add(buffer.Enemy.GetComponent<Enemy>());
 
             return availableEnemies;
         } 

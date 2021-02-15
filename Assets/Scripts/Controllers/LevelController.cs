@@ -104,7 +104,7 @@ public class LevelController : MonoBehaviour
 
         //If there is time left, we give money to player based on time left
         if (timeLeft > 0)
-            _ressourceController.AddGold(Mathf.FloorToInt(LoadedLevel.Waves[_waveIndex].BonusGold * (timeLeft / LoadedLevel.Waves[_waveIndex].TimeWave)));
+            _ressourceController.AddGold(Mathf.FloorToInt(LoadedLevel.Waves[_waveIndex].BonusGold * (timeLeft / LoadedLevel.Waves[_waveIndex].TimeWave)), false);
     }
 
 

@@ -88,9 +88,10 @@ public class RessourceController : MonoBehaviour
     /// Add gold to count.
     /// </summary>
     /// <param name="count">Gold count added</param>
-    public void AddGold(int count)
+    /// <param name="applyMultiplier">Does the gold multiplier apply here?</param>
+    public void AddGold(int count, bool applyMultiplier)
     {
-        GoldCount += count;
+        GoldCount += Mathf.RoundToInt(count * (applyMultiplier ? _levelController.LoadedLevel.GoldMultiplier : 1));
         _goldText.text = GoldCount.ToString();
     }
 

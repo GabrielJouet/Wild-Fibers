@@ -65,7 +65,7 @@ public class Spawner : MonoBehaviour
         _enemyGroup = newGroup;
         _randomPath = newRandomPath;
 
-        _enemyPool = _poolController.RecoverEnemyPool(_enemyGroup.Enemy);
+        _enemyPool = _poolController.RecoverEnemyPool(_enemyGroup.Enemy.GetComponent<Enemy>());
 
         _patternIndex = 0;
         _enemyIndex = 0;
