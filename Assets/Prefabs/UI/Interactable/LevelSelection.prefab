@@ -429,13 +429,12 @@ MonoBehaviour:
   _challengeButton: {fileID: 2673923328532387217}
   _classicLayout: {fileID: 7235413785287575608}
   _sideLayout: {fileID: 4062761191188066329}
-  _activatedSprite: {fileID: 5996035586896539829, guid: 3e625946b2ae3f04cb8691e7d858376b,
-    type: 3}
-  _desactivatedSprite: {fileID: 3527561400993541355, guid: 3e625946b2ae3f04cb8691e7d858376b,
+  _activatedSprite: {fileID: 21300000, guid: 05d8577a4bc817749a9e1b909563ee6a, type: 3}
+  _desactivatedSprite: {fileID: 21300000, guid: dd60591a1a0003641a48795ef2d86014,
     type: 3}
   _sceneChanger: {fileID: 0}
   _displayController: {fileID: 0}
-  _controller: {fileID: 0}
+  _levelButtons: []
 --- !u!1 &1779483766230658013
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,6 +1863,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Seed
       objectReference: {fileID: 0}
+    - target: {fileID: 5645039968103603682, guid: 97cb30e3d27445f40a91f667b2b6c241,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: dd60591a1a0003641a48795ef2d86014,
+        type: 3}
     - target: {fileID: 5645039968103603683, guid: 97cb30e3d27445f40a91f667b2b6c241,
         type: 3}
       propertyPath: m_LocalPosition.x
