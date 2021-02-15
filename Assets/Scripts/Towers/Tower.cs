@@ -99,6 +99,9 @@ public class Tower : MonoBehaviour
     /// <param name="newTowerPool">The new tower pool</param>
     public virtual void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool, TowerData newData)
     {
+        _selector.SetActive(false);
+        _transformRange.gameObject.SetActive(false);
+
         _towerData = newData;
         CumulativeGold += _towerData.Price;
 
