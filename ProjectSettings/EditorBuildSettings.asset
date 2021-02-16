@@ -12,21 +12,21 @@ EditorBuildSettings:
     path: Assets/Scenes/MapSelection.unity
     guid: 3a42dbcc769db444794e0a94f315c155
   - enabled: 1
-    path: Assets/Scenes/Levels/WindyField.unity
+    path: Assets/Scenes/1-WindyField/Classic/WindyField.unity
     guid: 54190f3d086f50f4fbb316b236702170
   - enabled: 1
-    path: Assets/Scenes/Levels/DeadField.unity
+    path: Assets/Scenes/1-WindyField/Side/DeadField.unity
     guid: 81fbb65894ca35547b382c615fe030b6
   - enabled: 1
-    path: Assets/Scenes/Levels/CorruptedPlains.unity
+    path: Assets/Scenes/1-WindyField/Challenge/CorruptedPlains.unity
     guid: 09ac0b3d50b229a4382c5999056da05b
   - enabled: 1
-    path: Assets/Scenes/Levels/SeedlyForest.unity
+    path: Assets/Scenes/2-SeedlyForest/SeedlyForest.unity
     guid: 9648b83a575df3c468241e7b58f56b40
   - enabled: 1
-    path: Assets/Scenes/Levels/EatenBosquet.unity
+    path: Assets/Scenes/2-SeedlyForest/EatenBosquet.unity
     guid: 0c3d5d79ddadbab408d0b8fe4aab8412
   - enabled: 1
-    path: Assets/Scenes/Levels/RottenWoods.unity
+    path: Assets/Scenes/2-SeedlyForest/RottenWoods.unity
     guid: e4f59837676c23546917646fe1bc207a
   m_configObjects: {}
