@@ -44,13 +44,6 @@ public class Level : ScriptableObject
     private LevelType _levelType;
     public LevelType Type { get => _levelType; }
 
-    /// <summary>
-    /// Level type: classic, side or challenge.
-    /// </summary>
-    [SerializeField]
-    private int _index;
-    public int Index { get => _index; }
-
 
     [Header("In play")]
 

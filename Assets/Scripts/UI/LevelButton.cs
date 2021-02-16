@@ -27,6 +27,10 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     [SerializeField]
     private Image _hoverDisplayer;
 
+    [SerializeField]
+    private LevelData _levelData;
+    public LevelData LevelData { get => _levelData; }
+
 
     [Header("Sprites")]
 

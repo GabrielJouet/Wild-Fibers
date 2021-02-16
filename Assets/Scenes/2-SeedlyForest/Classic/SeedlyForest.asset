@@ -18,7 +18,6 @@ MonoBehaviour:
     sign of expansion?
   _playSceneName: SeedlyForest
   _levelType: 0
-  _index: 1
   _availableWaves:
   - {fileID: 11400000, guid: 0f67b46556aa6ca4fa37607ab95b2d3e, type: 2}
   - {fileID: 11400000, guid: 75871b8af6b7b5e43b47949063150576, type: 2}

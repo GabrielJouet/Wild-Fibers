@@ -26,4 +26,10 @@ public class LevelData : ScriptableObject
     [SerializeField]
     private Level _challenge;
     public Level Challenge { get => _challenge; }
+
+
+    public bool LevelExists(Level levelChecked)
+    {
+        return levelChecked == Classic || levelChecked == Side || levelChecked == Challenge;
+    }
 }

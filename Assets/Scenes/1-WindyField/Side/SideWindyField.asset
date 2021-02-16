@@ -18,7 +18,6 @@ MonoBehaviour:
     a chance ?
   _playSceneName: DeadField
   _levelType: 1
-  _index: 0
   _availableWaves:
   - {fileID: 11400000, guid: 541a420d7d13da440bcbd35c9e6c20de, type: 2}
   - {fileID: 11400000, guid: 3834adcdcb4abe54ebdea72c2de96c4c, type: 2}

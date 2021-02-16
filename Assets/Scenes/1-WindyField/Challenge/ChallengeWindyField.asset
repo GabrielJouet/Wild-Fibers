@@ -18,7 +18,6 @@ MonoBehaviour:
     ferocious
   _playSceneName: CorruptedPlains
   _levelType: 2
-  _index: 0
   _availableWaves:
   - {fileID: 11400000, guid: 74b35d79b51a2954988dc2e66efb2cae, type: 2}
   - {fileID: 11400000, guid: 9d648a825602a2b47a7e2aa0d52918b2, type: 2}

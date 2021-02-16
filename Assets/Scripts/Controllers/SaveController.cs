@@ -116,7 +116,8 @@ public class SaveController : MonoBehaviour
 	/// <param name="newLivesLost">The number of lives lost</param>
 	public void SaveLevelData(int newLivesLost)
 	{
-		LevelSave buffer = SaveFile.Saves[LoadedLevel.Index];
+		int levelIndexBuffer = RecoverLevelIndex(LoadedLevel);
+		LevelSave buffer = SaveFile.Saves[levelIndexBuffer];
 
 		if (LoadedLevel.Type == LevelType.CLASSIC)
 		{
@@ -135,8 +136,8 @@ public class SaveController : MonoBehaviour
 			if (buffer.SeedsGained < gainedSeeds)
 				buffer.SeedsGained = gainedSeeds;
 
-			if (LoadedLevel.Index + 1 < Levels.Count && SaveFile.Saves[LoadedLevel.Index + 1].State == LevelState.LOCKED)
-				SaveFile.Saves[LoadedLevel.Index + 1] = new LevelSave(0, LevelState.UNLOCKED);
+			if (levelIndexBuffer + 1 < Levels.Count && SaveFile.Saves[levelIndexBuffer + 1].State == LevelState.LOCKED)
+				SaveFile.Saves[levelIndexBuffer + 1] = new LevelSave(0, LevelState.UNLOCKED);
 		}
 		else if (LoadedLevel.Type == LevelType.SIDE && buffer.State == LevelState.COMPLETED)
 			buffer.State = LevelState.SIDED;
@@ -144,6 +145,23 @@ public class SaveController : MonoBehaviour
 			buffer.State = LevelState.CHALLENGED;
 
 		SaveData();
+	}
+
+
+	public int RecoverLevelIndex(Level levelSearched)
+	{
+		int i;
+		for (i = 0; i < _levels.Count; i ++)
+			if (_levels[i].LevelExists(levelSearched))
+				break;
+
+		return i;
+	}
+
+
+	public LevelSave RecoverLevelSave(Level levelSearched)
+	{
+		return SaveFile.Saves[RecoverLevelIndex(levelSearched)];
 	}
 
 
