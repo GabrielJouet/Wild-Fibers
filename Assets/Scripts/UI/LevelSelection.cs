@@ -85,10 +85,8 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private DisplayController _displayController;
 
+
     private SaveController _saveController;
-
-
-    private int _levelIndex;
 
     private LevelData _level;
 
@@ -143,7 +141,7 @@ public class LevelSelection : MonoBehaviour
 
         _sideScore.sprite = _desactivatedSprite;
 
-        LevelState bufferState = _saveController.SaveFile.Saves[_levelIndex].State;
+        LevelState bufferState = _saveController.RecoverLevelSave(buffer).State;
 
         if (enumBuffer == LevelType.SIDE && bufferState == LevelState.SIDED)
             _sideScore.sprite = _activatedSprite;
@@ -154,7 +152,7 @@ public class LevelSelection : MonoBehaviour
         _launchBattleMenu.onClick.AddListener(() =>
         {
             _saveController.LoadedLevel = buffer;
-            _sceneChanger.LoadScene(_level.Classic.Scene);
+            _sceneChanger.LoadScene(buffer.Scene);
         });
     }
 }
