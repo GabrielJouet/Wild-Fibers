@@ -17,22 +17,22 @@ public class RessourceController : MonoBehaviour
     private Text _lifeText;
 
     /// <summary>
-    /// Gold text component used to display gold count.
-    /// </summary>
-    [SerializeField]
-    private Text _goldText;
-
-    /// <summary>
     /// Health animator component updated each time we lose health.
     /// </summary>
     [SerializeField]
     private Animator _lifeIconAnimator;
 
     /// <summary>
-    /// Game over component called when the player does not have any lives left.
+    /// Gold text component used to display gold count.
     /// </summary>
     [SerializeField]
-    private GameOverScreen _gameOverScreen;
+    private Text _goldText;
+
+    /// <summary>
+    /// Gold animator component updated each time we gain money.
+    /// </summary>
+    [SerializeField]
+    private Animator _goldIconAnimator;
 
 
     /// <summary>
@@ -91,6 +91,7 @@ public class RessourceController : MonoBehaviour
     /// <param name="applyMultiplier">Does the gold multiplier apply here?</param>
     public void AddGold(int count, bool applyMultiplier)
     {
+        _goldIconAnimator.SetTrigger("lose");
         GoldCount += Mathf.RoundToInt(count * (applyMultiplier ? _levelController.LoadedLevel.GoldMultiplier : 1));
         _goldText.text = GoldCount.ToString();
     }

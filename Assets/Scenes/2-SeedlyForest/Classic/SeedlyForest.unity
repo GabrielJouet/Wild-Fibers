@@ -3892,7 +3892,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _goldIconAnimator
       value: 
-      objectReference: {fileID: 4541158167840557066}
+      objectReference: {fileID: 4541158167840557072}
     - target: {fileID: 571994285330439440, guid: 3a3887dcbdbd89b499727d31651bc979,
         type: 3}
       propertyPath: _lifeIconAnimator
@@ -5416,3 +5416,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2074f9dbefc4c14c9d90664f3bb6038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4541158167840557072 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6361424020639706903, guid: ab062a4349966594386bc59557a6906a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4541158167840557062}
+  m_PrefabAsset: {fileID: 0}
