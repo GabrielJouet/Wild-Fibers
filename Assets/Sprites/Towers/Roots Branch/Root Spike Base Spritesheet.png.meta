@@ -156,12 +156,12 @@ TextureImporter:
       name: Root Spike Base Spritesheet_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 64
-        width: 23
-        height: 16
+        x: 0
+        y: 0
+        width: 15
+        height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -177,12 +177,12 @@ TextureImporter:
       name: Root Spike Base Spritesheet_1
       rect:
         serializedVersion: 2
-        x: 25
-        y: 64
-        width: 23
-        height: 16
+        x: 15
+        y: 0
+        width: 15
+        height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -198,12 +198,12 @@ TextureImporter:
       name: Root Spike Base Spritesheet_2
       rect:
         serializedVersion: 2
-        x: 49
-        y: 64
-        width: 23
-        height: 16
+        x: 30
+        y: 0
+        width: 15
+        height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -219,12 +219,12 @@ TextureImporter:
       name: Root Spike Base Spritesheet_3
       rect:
         serializedVersion: 2
-        x: 73
-        y: 64
-        width: 23
-        height: 16
+        x: 45
+        y: 0
+        width: 15
+        height: 10
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -232,279 +232,6 @@ TextureImporter:
       bones: []
       spriteID: 0f7d39659b38799e0800000000000000
       internalID: -1614677109344315408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_4
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 48
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 488d9b170daa84e20800000000000000
-      internalID: 3335103336305776772
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 48
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 682593cfa206c6d90800000000000000
-      internalID: -7103196774533606778
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_6
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 48
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59162e9e124396280800000000000000
-      internalID: -9049644655961808491
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_7
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 48
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8c28df53a97dbff20800000000000000
-      internalID: 3457594196267729608
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_8
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 32
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f4759403ddcfd490800000000000000
-      internalID: -7719224930091043596
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_9
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 32
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 44054b812fcf58ca0800000000000000
-      internalID: -6015123610556673980
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_10
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 32
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 044e51272234c9230800000000000000
-      internalID: 3646863613485245504
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_11
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 32
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9cc9435ea8eff8110800000000000000
-      internalID: 1265509892818771145
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_15
-      rect:
-        serializedVersion: 2
-        x: 73
-        y: 16
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cc77900176cc977a0800000000000000
-      internalID: -6378842654170843188
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_12
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 16
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f865d090034c45540800000000000000
-      internalID: 4995833597250066063
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_13
-      rect:
-        serializedVersion: 2
-        x: 25
-        y: 16
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f02fb5ce9356581f0800000000000000
-      internalID: -1043316439213411825
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_14
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 16
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 663a64b80ef4f9580800000000000000
-      internalID: -8818241719540210842
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Root Spike Base Spritesheet_16
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 0
-        width: 23
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48783a963ea7de550800000000000000
-      internalID: 6191740179852789636
       vertices: []
       indices: 
       edges: []
