@@ -145,10 +145,10 @@ public class Tower : MonoBehaviour
 
         int numberOfStrikes = _availableEnemies.Count < _towerData.Shots ? _availableEnemies.Count : _towerData.Shots;
 
-        SortEnemies();
-        List<Enemy> enemiesAvailable = _towerData.ShotsRandomly ? RecoverRandomEnemies(numberOfStrikes) : RecoverAvailableEnemies(numberOfStrikes);
+        if (!_towerData.ShotsRandomly)
+            SortEnemies();
 
-        foreach (Enemy current in enemiesAvailable)
+        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes, _towerData.ShotsRandomly))
             _projectilePool.GetOneProjectile().Initialize(_towerData, current, _projectilePool, transform);
 
         yield return new WaitForSeconds(_towerData.TimeShots);
@@ -239,9 +239,12 @@ public class Tower : MonoBehaviour
     /// </summary>
     /// <param name="numberOfEnemiesToFound">How many enemies are needed</param>
     /// <returns>A list of foound enemies</returns>
-    protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound)
+    protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound, bool random)
     {
         List<Enemy> availableEnemies = new List<Enemy>();
+
+        if (random)
+            _availableEnemies.Shuffle();
 
         for(int i = 0; i < numberOfEnemiesToFound; i ++)
         {
@@ -260,19 +263,6 @@ public class Tower : MonoBehaviour
                 }
             }
         }
-
-        return availableEnemies;
-    }
-
-
-    protected List<Enemy> RecoverRandomEnemies(int numberOfEnemiesToFound)
-    {
-        List<Enemy> availableEnemies = new List<Enemy>();
-
-        _availableEnemies.Shuffle();
-
-        for (int i = 0; i < numberOfEnemiesToFound; i++)
-            availableEnemies.Add(_availableEnemies[i]);
 
         return availableEnemies;
     }

@@ -25,7 +25,7 @@ public class RootsStump : Tower
             StopAllCoroutines();
             SortEnemies();
 
-            List<Enemy> enemies = RecoverAvailableEnemies(_availableSpikes.Count);
+            List<Enemy> enemies = RecoverAvailableEnemies(_availableSpikes.Count, false);
 
             for (int i = 0; i < enemies.Count; i++)
                 _availableSpikes.Pop().StartFollowing(enemies[i], _towerData);

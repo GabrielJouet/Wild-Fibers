@@ -25,7 +25,7 @@ public class ToxicIvy : Tower
             StopAllCoroutines();
             SortEnemies();
 
-            List<Enemy> enemies = RecoverRandomEnemies(_availableEnemies.Count < _availableLeafs.Count ? _availableEnemies.Count : _availableLeafs.Count);
+            List<Enemy> enemies = RecoverAvailableEnemies(_availableEnemies.Count < _availableLeafs.Count ? _availableEnemies.Count : _availableLeafs.Count, false);
 
             for (int i = 0; i < enemies.Count; i++)
                 _availableLeafs.Pop().StartFollowing(enemies[i], _towerData);
