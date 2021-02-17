@@ -245,12 +245,14 @@ public class Tower : MonoBehaviour
 
         if (random)
             _availableEnemies.Shuffle();
+        else
+            SortEnemies();
 
         for(int i = 0; i < numberOfEnemiesToFound; i ++)
         {
             foreach (Enemy buffer in _availableEnemies)
             {
-                if (buffer.AlreadyAimed || availableEnemies.Contains(buffer))
+                if (buffer.AlreadyAimed)
                     continue;
                 else
                 {

@@ -23,7 +23,6 @@ public class RootsStump : Tower
         if (_availableEnemies.Count > 0 && _availableSpikes.Count > 0)
         {
             StopAllCoroutines();
-            SortEnemies();
 
             List<Enemy> enemies = RecoverAvailableEnemies(_availableSpikes.Count, false);
 

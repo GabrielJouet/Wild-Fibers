@@ -23,7 +23,6 @@ public class ToxicIvy : Tower
         if (_availableEnemies.Count > 0 && _availableLeafs.Count > 0)
         {
             StopAllCoroutines();
-            SortEnemies();
 
             List<Enemy> enemies = RecoverAvailableEnemies(_availableEnemies.Count < _availableLeafs.Count ? _availableEnemies.Count : _availableLeafs.Count, false);
 
