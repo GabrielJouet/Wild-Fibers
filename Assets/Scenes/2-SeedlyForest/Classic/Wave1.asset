@@ -24,12 +24,12 @@ MonoBehaviour:
     - _numberOfEnemies: 2
       _timeBetweenEnemies: 2.5
     - _numberOfEnemies: 4
-      _timeBetweenEnemies: 3
+      _timeBetweenEnemies: 2
     - _numberOfEnemies: 3
-      _timeBetweenEnemies: 2.7
+      _timeBetweenEnemies: 2.5
     _enemyUsed: {fileID: 6914183812568595844, guid: 76e6d98bff05e8948b947d2b45938fa4,
       type: 3}
     _timeBetweenPattern: 2.75
     _pathIndex: 0
   _timeBeforeNextWave: 15
-  _goldBonus: 25
+  _goldBonus: 20
