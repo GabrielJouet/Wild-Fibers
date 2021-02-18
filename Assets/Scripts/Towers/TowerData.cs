@@ -140,23 +140,4 @@ public class TowerData : ScriptableObject
     [SerializeField]
     protected string _scriptName;
     public string Script { get => _scriptName; }
-
-
-    public void LoadData(int newPrice, float newTimeShots, int newDamage, float newArmorThrough, float newSpeed, int newShots, float newRange, bool newCanHitFLying, bool newShotsRandomly, float newArmorMalus, float newDot, float newDotDuration)
-    {
-        Price = newPrice;
-
-        TimeShots = newTimeShots;
-        Damage = newDamage;
-        ArmorThrough = newArmorThrough;
-        ProjectileSpeed = newSpeed;
-        Shots = newShots;
-        Range = newRange;
-        HitFlying = newCanHitFLying;
-        ShotsRandomly = newShotsRandomly;
-
-        ArmorThroughMalus = newArmorMalus;
-        Dot = newDot;
-        DotDuration = newDotDuration;
-    }
 }

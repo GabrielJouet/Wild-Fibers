@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class RootsStump : Tower
 {
+    /// <summary>
+    /// All roots projectiles available.
+    /// </summary>
     protected Stack<ChocSpikes> _availableSpikes = new Stack<ChocSpikes>();
 
 
+    /// <summary>
+    /// Method used to update special behavior.
+    /// </summary>
     protected override void SpecialBehavior()
     {
         _availableSpikes.Clear();
@@ -33,6 +39,9 @@ public class RootsStump : Tower
         }
     }
 
+    /// <summary>
+    /// Method used to update upgrade special behavior.
+    /// </summary>
     protected override void UpgradeSpecialBehavior()
     {
         if(_towerData.Shots == 4 && _availableSpikes.Count > 0)
@@ -47,6 +56,9 @@ public class RootsStump : Tower
     }
 
 
+    /// <summary>
+    /// Method used to summon projectile needed.
+    /// </summary>
     protected virtual IEnumerator SummonSpike()
     {
         while (true)
@@ -66,6 +78,11 @@ public class RootsStump : Tower
     }
 
 
+    /// <summary>
+    /// Recover spike positions.
+    /// </summary>
+    /// <param name="index">The root index needed</param>
+    /// <returns>Return the position of the root needed</returns>
     protected Vector2 GetSpikePosition(int index)
     {
         switch (index)

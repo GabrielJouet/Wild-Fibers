@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class ToxicIvy : Tower
 {
+    /// <summary>
+    /// All leaf projectiles available.
+    /// </summary>
     protected Stack<ToxicLeaf> _availableLeafs = new Stack<ToxicLeaf>();
 
 
+    /// <summary>
+    /// Special behavior method used to improve tower method Initialize.
+    /// </summary>
     protected override void SpecialBehavior()
     {
         _availableLeafs.Clear();
@@ -33,13 +39,18 @@ public class ToxicIvy : Tower
         }
     }
 
+    /// <summary>
+    /// Upgrade special behavior method used to improve tower method Upgrade.
+    /// </summary>
     protected override void UpgradeSpecialBehavior()
     {
         if ( _availableLeafs.Count > 0)
             SpawnLeaf(_towerData.Shots - _availableLeafs.Count);
     }
 
-
+    /// <summary>
+    /// Method used to summon projectile.
+    /// </summary>
     protected virtual IEnumerator SummonLeaf()
     {
         while (true)
@@ -50,6 +61,10 @@ public class ToxicIvy : Tower
     }
 
 
+    /// <summary>
+    /// Method used to spawn missing leaves.
+    /// </summary>
+    /// <param name="number">The number of missing leaves to spawn</param>
     protected void SpawnLeaf(int number)
     {
         for (int i = 0; i < number; i++)
