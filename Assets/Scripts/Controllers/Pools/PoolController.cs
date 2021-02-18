@@ -9,7 +9,7 @@ public class PoolController : MonoBehaviour
     /// </summary>
     [SerializeField]
     private EnemyPool _enemyPoolPrefab;
-    public List<EnemyPool> EnemyPools { get; private set; } = new List<EnemyPool>();
+    private readonly List<EnemyPool> _enemyPools = new List<EnemyPool>();
 
     /// <summary>
     /// Projectile pool that contains every projectile.
@@ -25,11 +25,15 @@ public class PoolController : MonoBehaviour
     private TowerPool _towerPoolPrefab;
     public TowerPool TowerPool { get; private set; }
 
-
+    /// <summary>
+    /// Resource controller.
+    /// </summary>
     private RessourceController _ressourceController;
 
 
-
+    /// <summary>
+    /// Awake method used when object is initialized.
+    /// </summary>
     private void Awake()
     {
         _ressourceController = GetComponent<RessourceController>();
@@ -45,13 +49,13 @@ public class PoolController : MonoBehaviour
     /// <returns>The wanted enemy pool</returns>
     public EnemyPool RecoverEnemyPool(Enemy wantedEnemy)
     {
-        foreach (EnemyPool current in EnemyPools)
+        foreach (EnemyPool current in _enemyPools)
             if (current.Enemy.Name == wantedEnemy.Name)
                 return current;
 
-        EnemyPool buffer = Instantiate(_enemyPoolPrefab);
+        EnemyPool buffer = Instantiate(_enemyPoolPrefab, transform);
         buffer.Initialize(wantedEnemy, _ressourceController);
-        EnemyPools.Add(buffer);
+        _enemyPools.Add(buffer);
 
         return buffer;
     }
@@ -70,8 +74,8 @@ public class PoolController : MonoBehaviour
 
         ProjectilePool newPool = Instantiate(_projectilePoolPrefab, transform);
         newPool.Projectile = wantedProjectile;
-
         _projectilePools.Add(newPool);
+
         return newPool;
     }
     #endregion

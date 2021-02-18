@@ -419,6 +419,7 @@ GameObject:
   - component: {fileID: 450792248483790608}
   - component: {fileID: 450792248483790614}
   - component: {fileID: 450792248483790615}
+  - component: {fileID: 6993165613869393186}
   m_Layer: 5
   m_Name: GoldIcon
   m_TagString: Untagged
@@ -482,6 +483,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &6993165613869393186
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 450792248483790609}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1ebbd73daa178394998aa49781b85fd5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &450792248530281669
 GameObject:
   m_ObjectHideFlags: 0

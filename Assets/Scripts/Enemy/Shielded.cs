@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Shielded enemy, from time to time this enemy will stop and protects itself.
 /// </summary>
-public class Shielded : Enemy
+public class Shielded : Enemy, IShieldable
 {
     [Header("Shield related")]
 
@@ -23,9 +23,9 @@ public class Shielded : Enemy
 
     [SerializeField]
     protected bool _stopWhileShielding;
+    public bool StopWhileShielding { get => _stopWhileShielding; set => _stopWhileShielding = value; }
 
-
-    protected Shield _shield;
+    public float BaseShieldValue { get; set; }
 
 
     /// <summary>
@@ -38,9 +38,7 @@ public class Shielded : Enemy
     {
         base.Initialize(newPath, newPool, pathIndex);
 
-        if(_shield == null)
-            _shield = new Shield(_armorMax, _stopWhileShielding, this);
-
+        BaseShieldValue = _armorMax;
         StartCoroutine(DelayShield());
     }
 
@@ -54,11 +52,44 @@ public class Shielded : Enemy
         {
             yield return new WaitForSeconds(_timeBetweenShield + Random.Range(-_timeBetweenShield / 20, _timeBetweenShield / 20));
 
-            _shield.ActivateShield(_newShieldValue, _dotApplied);
+            ActivateShield(_newShieldValue, _dotApplied);
             _animator.SetTrigger("shield");
             yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[1].length / 0.5f);
 
-            _shield.ResetShield(_dotApplied);
+            ResetShield(_dotApplied);
         }
+    }
+
+
+    /// <summary>
+    /// Method used to change shield value.
+    /// </summary>
+    /// <param name="shieldValue">New shield value</param>
+    public void ActivateShield(float shieldValue, bool dotApplied)
+    {
+        Moving = !StopWhileShielding;
+
+        if (dotApplied)
+            Armor = shieldValue - (ArmorMax - Armor);
+        else
+            Armor = shieldValue;
+
+        ArmorMax = shieldValue;
+    }
+
+
+    /// <summary>
+    /// Default shield value.
+    /// </summary>
+    public void ResetShield(bool dotApplied)
+    {
+        if (dotApplied)
+            Armor = BaseShieldValue - (ArmorMax - Armor);
+        else
+            Armor = BaseShieldValue;
+
+        ArmorMax = BaseShieldValue;
+
+        Moving = true;
     }
 }

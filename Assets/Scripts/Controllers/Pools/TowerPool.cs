@@ -6,6 +6,9 @@ using UnityEngine;
 /// </summary>
 public class TowerPool : MonoBehaviour
 {
+    /// <summary>
+    /// Tower prefab.
+    /// </summary>
     [SerializeField]
     private GameObject _towerPrefab;
 

@@ -191,13 +191,14 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 1049263690152909913}
   _numberOfParticles: 4
-  _healthMax: 28
-  _armorMax: 15
+  _healthMax: 23
+  _armorMax: 12
   _speedMax: 0.3
   _numberOfLivesTaken: 1
   _goldGained: 2
   _flying: 0
   _damagePosition: {fileID: 1049263690152909913}
+  _preDamage: 0
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0

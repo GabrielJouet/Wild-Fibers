@@ -99,6 +99,9 @@ public class Tower : MonoBehaviour
     /// <param name="newTowerPool">The new tower pool</param>
     public virtual void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool, TowerData newData)
     {
+        _selector.SetActive(false);
+        _transformRange.gameObject.SetActive(false);
+
         _towerData = newData;
         CumulativeGold += _towerData.Price;
 
@@ -142,10 +145,10 @@ public class Tower : MonoBehaviour
 
         int numberOfStrikes = _availableEnemies.Count < _towerData.Shots ? _availableEnemies.Count : _towerData.Shots;
 
-        SortEnemies();
-        List<Enemy> enemiesAvailable = _towerData.ShotsRandomly ? RecoverRandomEnemies(numberOfStrikes) : RecoverAvailableEnemies(numberOfStrikes);
+        if (!_towerData.ShotsRandomly)
+            SortEnemies();
 
-        foreach (Enemy current in enemiesAvailable)
+        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes, _towerData.ShotsRandomly))
             _projectilePool.GetOneProjectile().Initialize(_towerData, current, _projectilePool, transform);
 
         yield return new WaitForSeconds(_towerData.TimeShots);
@@ -160,7 +163,7 @@ public class Tower : MonoBehaviour
     /// </summary>
     public void ResellTower()
     {
-        _ressourceController.AddGold(Mathf.FloorToInt(CumulativeGold / 4));
+        _ressourceController.AddGold(Mathf.FloorToInt(CumulativeGold / 4), false);
 
         _backgroundSelecter.DisableTowerInformation();
         _backgroundSelecter.DisableTowerSellButton();
@@ -177,6 +180,9 @@ public class Tower : MonoBehaviour
         _ressourceController.RemoveGold(newData.Price);
         _towerData = newData;
         CumulativeGold += _towerData.Price;
+
+        _spriteRenderer.sprite = _towerData.Sprite;
+        _shadowSpriteRenderer.sprite = _towerData.Shadow;
 
         _transformRange.localScale = _initialRangeScale * _towerData.Range;
         _collider.localScale = _initialColliderScale * (0.9f * _towerData.Range);
@@ -236,9 +242,14 @@ public class Tower : MonoBehaviour
     /// </summary>
     /// <param name="numberOfEnemiesToFound">How many enemies are needed</param>
     /// <returns>A list of foound enemies</returns>
-    protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound)
+    protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound, bool random)
     {
         List<Enemy> availableEnemies = new List<Enemy>();
+
+        if (random)
+            _availableEnemies.Shuffle();
+        else
+            SortEnemies();
 
         for(int i = 0; i < numberOfEnemiesToFound; i ++)
         {
@@ -257,19 +268,6 @@ public class Tower : MonoBehaviour
                 }
             }
         }
-
-        return availableEnemies;
-    }
-
-
-    protected List<Enemy> RecoverRandomEnemies(int numberOfEnemiesToFound)
-    {
-        List<Enemy> availableEnemies = new List<Enemy>();
-
-        _availableEnemies.Shuffle();
-
-        for (int i = 0; i < numberOfEnemiesToFound; i++)
-            availableEnemies.Add(_availableEnemies[i]);
 
         return availableEnemies;
     }

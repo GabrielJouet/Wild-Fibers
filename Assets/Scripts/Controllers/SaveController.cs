@@ -9,12 +9,17 @@ using UnityEngine;
 public class SaveController : MonoBehaviour
 {
 	[SerializeField]
+	/// <summary>
+	/// All levels.
+	/// </summary>
 	private List<LevelData> _levels;
 	public List<LevelData> Levels { get => _levels; }
 
 
-	public int LoadedLevel { get; set; }
-
+	/// <summary>
+	/// Loaded level.
+	/// </summary>
+	public Level LoadedLevel { get; set; }
 
 	/// <summary>
 	/// Loaded save file.
@@ -83,7 +88,7 @@ public class SaveController : MonoBehaviour
 		List<LevelSave> allSaves = new List<LevelSave>();
 
 		for (int i = 0; i < Levels.Count; i ++)
-			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED, false, false));
+			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED));
 
 		SaveFile = new SaveFile(allSaves, 1, 1);
 
@@ -109,25 +114,64 @@ public class SaveController : MonoBehaviour
 	/// Method used to save a level data.
 	/// </summary>
 	/// <param name="newLivesLost">The number of lives lost</param>
-	/// <param name="newState">The new level state</param>
-	public void SaveLevelData(int newLivesLost, LevelState newState, bool sided, bool challenged)
+	public void SaveLevelData(int newLivesLost)
 	{
-		int gainedSeeds = 0;
+		int levelIndexBuffer = RecoverLevelIndex(LoadedLevel);
+		LevelSave buffer = SaveFile.Saves[levelIndexBuffer];
 
-		if (newLivesLost <= 3)
-			gainedSeeds = 3;
-		else if (newLivesLost <= 10)
-			gainedSeeds = 2;
-		else if (newLivesLost <= 15)
-			gainedSeeds = 1;
+		if (LoadedLevel.Type == LevelType.CLASSIC)
+		{
+			int gainedSeeds = 0;
 
-		if (SaveFile.Saves[LoadedLevel].SeedsGained < gainedSeeds)
-			SaveFile.Saves[LoadedLevel] = new LevelSave(gainedSeeds, newState, sided, challenged);
+			if (newLivesLost <= 3)
+				gainedSeeds = 3;
+			else if (newLivesLost <= 10)
+				gainedSeeds = 2;
+			else if (newLivesLost <= 15)
+				gainedSeeds = 1;
 
-		if(LoadedLevel + 1 < Levels.Count)
-			SaveFile.Saves[LoadedLevel + 1] = new LevelSave(0, LevelState.UNLOCKED, false, false);
+			if (buffer.State == LevelState.UNLOCKED)
+				buffer.State = LevelState.COMPLETED;
+
+			if (buffer.SeedsGained < gainedSeeds)
+				buffer.SeedsGained = gainedSeeds;
+
+			if (levelIndexBuffer + 1 < Levels.Count && SaveFile.Saves[levelIndexBuffer + 1].State == LevelState.LOCKED)
+				SaveFile.Saves[levelIndexBuffer + 1] = new LevelSave(0, LevelState.UNLOCKED);
+		}
+		else if (LoadedLevel.Type == LevelType.SIDE && buffer.State == LevelState.COMPLETED)
+			buffer.State = LevelState.SIDED;
+		else if (LoadedLevel.Type == LevelType.CHALLENGE && buffer.State == LevelState.SIDED)
+			buffer.State = LevelState.CHALLENGED;
 
 		SaveData();
+	}
+
+
+	/// <summary>
+	/// Method used to recover level index based on level searched.
+	/// </summary>
+	/// <param name="levelSearched">The searched level</param>
+	/// <returns>The level index searched</returns>
+	public int RecoverLevelIndex(Level levelSearched)
+	{
+		int i;
+		for (i = 0; i < _levels.Count; i ++)
+			if (_levels[i].LevelExists(levelSearched))
+				break;
+
+		return i;
+	}
+
+
+	/// <summary>
+	/// Method used to recover level save based on level.
+	/// </summary>
+	/// <param name="levelSearched">The searched level</param>
+	/// <returns>The level save wanted</returns>
+	public LevelSave RecoverLevelSave(Level levelSearched)
+	{
+		return SaveFile.Saves[RecoverLevelIndex(levelSearched)];
 	}
 
 

@@ -21,7 +21,7 @@ MonoBehaviour:
   _projectileUsed: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,
     type: 3}
   _timeBetweenShots: 4.1
-  _damage: 9
+  _damage: 7
   _armorThrough: 0
   _speed: 0.5
   _numberOfShots: 1
@@ -36,3 +36,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 417876734bf6e1a4e88b47f546972662, type: 2}
   - {fileID: 11400000, guid: 82b23e9f588f63648b88e41d308729a8, type: 2}
   _towerSpecs: []
+  _scriptName: Vines

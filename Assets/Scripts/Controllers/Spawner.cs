@@ -32,6 +32,9 @@ public class Spawner : MonoBehaviour
     /// </summary>
     private PoolController _poolController;
 
+    /// <summary>
+    /// Enemy pool used to recover and spawns enemies.
+    /// </summary>
     private EnemyPool _enemyPool;
 
     /// <summary>
@@ -65,7 +68,7 @@ public class Spawner : MonoBehaviour
         _enemyGroup = newGroup;
         _randomPath = newRandomPath;
 
-        _enemyPool = _poolController.RecoverEnemyPool(_enemyGroup.Enemy);
+        _enemyPool = _poolController.RecoverEnemyPool(_enemyGroup.Enemy.GetComponent<Enemy>());
 
         _patternIndex = 0;
         _enemyIndex = 0;
@@ -97,6 +100,7 @@ public class Spawner : MonoBehaviour
 
                     for (int i = 0; i < bossComponent.PathWanted; i++)
                         newPaths.Add(_randomPath.CalculateRandomPath());
+
                     bossComponent.AvailablePaths = newPaths;
                 }
 
@@ -147,6 +151,6 @@ public class Spawner : MonoBehaviour
     public void AllEnemiesKilled()
     {
         EnemiesKilled = true;
-        _levelController.EndLevel();
+        _levelController.EndLevel(false);
     }
 }

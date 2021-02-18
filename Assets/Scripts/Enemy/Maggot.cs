@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Maggot enemy type, will cocoon itself to revive as another enemy.
 /// </summary>
-public class Maggot : Enemy
+public class Maggot : Enemy, IShieldable
 {
     [Header("Hatchling related")]
 
@@ -28,9 +28,10 @@ public class Maggot : Enemy
     protected float _newShieldValue;
 
 
-    protected Shield _shield;
-
     protected Spawn _spawn;
+
+    public float BaseShieldValue { get; set; }
+    public bool StopWhileShielding { get; set; }
 
 
 
@@ -44,8 +45,8 @@ public class Maggot : Enemy
     {
         base.Initialize(newPath, newPool, pathIndex);
 
-        if (_shield == null)
-            _shield = new Shield(_armorMax, true, this);
+        BaseShieldValue = _armorMax;
+        StopWhileShielding = true;
 
         if (_spawn == null)
             _spawn = new Spawn(_poolController, _path, _hatchling);
@@ -62,7 +63,7 @@ public class Maggot : Enemy
     {
         yield return new WaitForSeconds(_hatchingTime + Random.Range(-_hatchingTime / 20, _hatchingTime / 20));
         _animator.SetTrigger("cocoon");
-        _shield.ActivateShield(_newShieldValue, _dotApplied);
+        ActivateShield(_newShieldValue, _dotApplied);
 
         yield return new WaitForSeconds((_animator.runtimeAnimatorController.animationClips[1].length / 0.3f) + 0.05f);
 
@@ -70,5 +71,31 @@ public class Maggot : Enemy
 
         _goldGained = 0;
         Die(false);
+    }
+
+
+    public void ActivateShield(float shieldValue, bool dotApplied)
+    {
+        Moving = !StopWhileShielding;
+
+        if (dotApplied)
+            Armor = shieldValue - (ArmorMax - Armor);
+        else
+            Armor = shieldValue;
+
+        ArmorMax = shieldValue;
+    }
+
+
+    public void ResetShield(bool dotApplied)
+    {
+        if (dotApplied)
+            Armor = BaseShieldValue - (ArmorMax - Armor);
+        else
+            Armor = BaseShieldValue;
+
+        ArmorMax = BaseShieldValue;
+
+        Moving = true;
     }
 }
