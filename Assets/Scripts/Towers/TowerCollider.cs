@@ -8,13 +8,13 @@ public class TowerCollider : MonoBehaviour
     /// <summary>
     /// Parent tower to notify.
     /// </summary>
-    private Tower _parentTower;
+    public Tower ParentTower { get; set; }
 
 
 
-    private void Start()
+    public void UpdateTower(Tower newTower)
     {
-        _parentTower = transform.parent.GetComponent<Tower>();
+        ParentTower = newTower;
     }
 
 
@@ -24,7 +24,7 @@ public class TowerCollider : MonoBehaviour
     /// <param name="enemy">The collided enemy</param>
     public void EnemyCollide(Enemy enemy)
     {
-        _parentTower.AddEnemy(enemy);
+        ParentTower.AddEnemy(enemy);
     }
 
 
@@ -34,6 +34,6 @@ public class TowerCollider : MonoBehaviour
     /// <param name="enemy">The collided enemy</param>
     public void EnemyExit(Enemy enemy)
     {
-        _parentTower.RemoveEnemy(enemy);
+        ParentTower.RemoveEnemy(enemy);
     }
 }

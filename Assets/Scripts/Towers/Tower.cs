@@ -99,6 +99,20 @@ public class Tower : MonoBehaviour
     /// <param name="newTowerPool">The new tower pool</param>
     public virtual void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool, TowerData newData)
     {
+        SetDefaultValues(newData);
+
+        transform.position = newSlot.transform.position;
+        _backgroundSelecter = newBackgroundSelecter;
+        _ressourceController = newRessourceController;
+        _projectilePool = newPool;
+        _currentSlot = newSlot;
+        _towerPool = newTowerPool;
+
+        SpecialBehavior();
+    }
+
+    private void SetDefaultValues(TowerData newData)
+    {
         _selector.SetActive(false);
         _transformRange.gameObject.SetActive(false);
 
@@ -108,18 +122,10 @@ public class Tower : MonoBehaviour
         _spriteRenderer.sprite = _towerData.Sprite;
         _shadowSpriteRenderer.sprite = _towerData.Shadow;
 
-        _backgroundSelecter = newBackgroundSelecter;
-        _ressourceController = newRessourceController;
-        _projectilePool = newPool;
-        _currentSlot = newSlot;
-        _towerPool = newTowerPool;
+        _transformRange.localScale = _initialRangeScale * _towerData.Range;
+        _collider.localScale = _initialColliderScale * (0.9f * _towerData.Range);
 
-        transform.position = newSlot.transform.position;
-
-        _transformRange.localScale *= _towerData.Range;
-        _collider.localScale *= (0.9f * _towerData.Range);
-
-        SpecialBehavior();
+        _collider.GetComponent<TowerCollider>().ParentTower = this;
     }
 
 
@@ -178,15 +184,8 @@ public class Tower : MonoBehaviour
     public void UpgradeTower(TowerData newData)
     {
         _ressourceController.RemoveGold(newData.Price);
-        _towerData = newData;
-        CumulativeGold += _towerData.Price;
 
-        _spriteRenderer.sprite = _towerData.Sprite;
-        _shadowSpriteRenderer.sprite = _towerData.Shadow;
-
-        _transformRange.localScale = _initialRangeScale * _towerData.Range;
-        _collider.localScale = _initialColliderScale * (0.9f * _towerData.Range);
-
+        SetDefaultValues(newData);
         _backgroundSelecter.DesactivateTower();
 
         UpgradeSpecialBehavior();
