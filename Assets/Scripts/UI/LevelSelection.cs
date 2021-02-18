@@ -143,7 +143,7 @@ public class LevelSelection : MonoBehaviour
 
         LevelState bufferState = _saveController.RecoverLevelSave(buffer).State;
 
-        if (enumBuffer == LevelType.SIDE && bufferState == LevelState.SIDED)
+        if (enumBuffer == LevelType.SIDE && bufferState == LevelState.SIDED || bufferState == LevelState.CHALLENGED)
             _sideScore.sprite = _activatedSprite;
         else if (enumBuffer == LevelType.CHALLENGE && bufferState == LevelState.CHALLENGED)
             _sideScore.sprite = _activatedSprite;
