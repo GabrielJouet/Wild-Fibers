@@ -181,6 +181,9 @@ public class Tower : MonoBehaviour
         _towerData = newData;
         CumulativeGold += _towerData.Price;
 
+        _spriteRenderer.sprite = _towerData.Sprite;
+        _shadowSpriteRenderer.sprite = _towerData.Shadow;
+
         _transformRange.localScale = _initialRangeScale * _towerData.Range;
         _collider.localScale = _initialColliderScale * (0.9f * _towerData.Range);
 

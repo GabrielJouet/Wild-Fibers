@@ -15,7 +15,7 @@ MonoBehaviour:
   _description: Larger than before, it shoots arrows with a greater strength
   _price: 175
   _icon: {fileID: 21300000, guid: 8898088e8c5280447bb4bb6d11c1ca60, type: 3}
-  _sprite: {fileID: 6408979333349359234, guid: 57baeccb8e0e34146890d817328beafd, type: 3}
+  _sprite: {fileID: 21300000, guid: 92b852e06913b6c4a93b76bf8e9ad361, type: 3}
   _shadowSprite: {fileID: -5974878852189205205, guid: 0e04fa1292b970b46a872d4eb69229d5,
     type: 3}
   _projectileUsed: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
@@ -34,3 +34,4 @@ MonoBehaviour:
   _dotIcon: {fileID: 0}
   _towerUpgrades: []
   _towerSpecs: []
+  _scriptName: 
