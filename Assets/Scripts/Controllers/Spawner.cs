@@ -32,6 +32,9 @@ public class Spawner : MonoBehaviour
     /// </summary>
     private PoolController _poolController;
 
+    /// <summary>
+    /// Enemy pool used to recover and spawns enemies.
+    /// </summary>
     private EnemyPool _enemyPool;
 
     /// <summary>

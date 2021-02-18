@@ -148,6 +148,11 @@ public class SaveController : MonoBehaviour
 	}
 
 
+	/// <summary>
+	/// Method used to recover level index based on level searched.
+	/// </summary>
+	/// <param name="levelSearched">The searched level</param>
+	/// <returns>The level index searched</returns>
 	public int RecoverLevelIndex(Level levelSearched)
 	{
 		int i;
@@ -159,6 +164,11 @@ public class SaveController : MonoBehaviour
 	}
 
 
+	/// <summary>
+	/// Method used to recover level save based on level.
+	/// </summary>
+	/// <param name="levelSearched">The searched level</param>
+	/// <returns>The level save wanted</returns>
 	public LevelSave RecoverLevelSave(Level levelSearched)
 	{
 		return SaveFile.Saves[RecoverLevelIndex(levelSearched)];

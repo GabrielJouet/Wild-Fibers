@@ -25,11 +25,15 @@ public class PoolController : MonoBehaviour
     private TowerPool _towerPoolPrefab;
     public TowerPool TowerPool { get; private set; }
 
-
+    /// <summary>
+    /// Resource controller.
+    /// </summary>
     private RessourceController _ressourceController;
 
 
-
+    /// <summary>
+    /// Awake method used when object is initialized.
+    /// </summary>
     private void Awake()
     {
         _ressourceController = GetComponent<RessourceController>();
