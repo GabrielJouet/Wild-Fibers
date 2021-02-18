@@ -70,9 +70,15 @@ public class TowerButtonController : MonoBehaviour
     private void Start()
     {
         List<TowerData> buffer = _squadController.Towers;
+        List<TowerData> blockedTowers = FindObjectOfType<SaveController>().LoadedLevel.BlockedTowers;
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i ++)
-            _towerPurchaseButtons[i].Initialize(buffer[i].Icon, buffer[i].Price, _ressourceController, buffer[i].Description);
+        {
+            if (!blockedTowers.Contains(buffer[i]))
+                _towerPurchaseButtons[i].Initialize(buffer[i].Icon, buffer[i].Price, _ressourceController, buffer[i].Description);
+            else
+                _towerPurchaseButtons[i].Lock();
+        }
     }
 
 
