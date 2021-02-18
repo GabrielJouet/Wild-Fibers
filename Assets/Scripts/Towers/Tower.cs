@@ -252,7 +252,7 @@ public class Tower : MonoBehaviour
         {
             foreach (Enemy buffer in _availableEnemies)
             {
-                if (buffer.AlreadyAimed)
+                if (buffer.AlreadyAimed || availableEnemies.Contains(buffer))
                     continue;
                 else
                 {
