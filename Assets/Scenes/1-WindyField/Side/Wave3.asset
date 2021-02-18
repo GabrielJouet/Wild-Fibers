@@ -18,11 +18,11 @@ MonoBehaviour:
       _timeBetweenEnemies: 0.6
     - _numberOfEnemies: 5
       _timeBetweenEnemies: 0.3
-    - _numberOfEnemies: 8
+    - _numberOfEnemies: 7
       _timeBetweenEnemies: 0.5
-    - _numberOfEnemies: 8
+    - _numberOfEnemies: 6
       _timeBetweenEnemies: 0.4
-    - _numberOfEnemies: 9
+    - _numberOfEnemies: 5
       _timeBetweenEnemies: 0.55
     _enemyUsed: {fileID: 6914183812568595844, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb,
       type: 3}

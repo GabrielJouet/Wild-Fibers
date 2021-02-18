@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _availableEnemyGroups:
   - _enemyPatterns:
-    - _numberOfEnemies: 9
+    - _numberOfEnemies: 5
       _timeBetweenEnemies: 0.6
-    - _numberOfEnemies: 8
+    - _numberOfEnemies: 6
       _timeBetweenEnemies: 0.6
     - _numberOfEnemies: 5
       _timeBetweenEnemies: 0.25
