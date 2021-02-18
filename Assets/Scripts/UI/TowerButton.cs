@@ -74,6 +74,8 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         _locked = true;
         _buttonComponent.enabled = false;
         _buttonImage.sprite = _lockedSprite;
+        _buttonImage.SetNativeSize();
+        _buttonImage.rectTransform.sizeDelta *= 2.4f;
         _priceText.enabled = false;
     }
 

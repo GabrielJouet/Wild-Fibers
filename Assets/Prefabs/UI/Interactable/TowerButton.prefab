@@ -257,7 +257,7 @@ MonoBehaviour:
   _buttonImage: {fileID: 3129286144005314105}
   _backgroundImage: {fileID: 3215646354494704898}
   _priceText: {fileID: 1908072688866357423}
-  _lockedSprite: {fileID: 0}
+  _lockedSprite: {fileID: 21300000, guid: 11ef840b52f8c8b488974602b6559fc8, type: 3}
   _descriptionText: {fileID: 8138772109340452125}
 --- !u!1 &1908072688866357409
 GameObject:
@@ -401,7 +401,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 11ef840b52f8c8b488974602b6559fc8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
