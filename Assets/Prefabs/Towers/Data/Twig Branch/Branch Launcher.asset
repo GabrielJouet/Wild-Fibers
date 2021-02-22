@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Branch Launcher
   m_EditorClassIdentifier: 
   _description: Larger than before, it shoots arrows with a greater strength
-  _price: 175
+  _price: 185
   _icon: {fileID: 21300000, guid: 8898088e8c5280447bb4bb6d11c1ca60, type: 3}
   _sprite: {fileID: 21300000, guid: 92b852e06913b6c4a93b76bf8e9ad361, type: 3}
   _shadowSprite: {fileID: -5974878852189205205, guid: 0e04fa1292b970b46a872d4eb69229d5,
