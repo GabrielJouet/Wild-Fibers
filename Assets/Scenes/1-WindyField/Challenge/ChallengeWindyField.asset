@@ -28,3 +28,5 @@ MonoBehaviour:
   _goldCount: 525
   _towerLevel: 0
   _goldMultiplier: 0.65
+  _blockedTowers:
+  - {fileID: 11400000, guid: 02d8d222f1904bc44a62ac9958c07937, type: 2}
