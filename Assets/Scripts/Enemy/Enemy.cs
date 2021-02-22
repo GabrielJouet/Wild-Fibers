@@ -204,7 +204,7 @@ public class Enemy : MonoBehaviour
     public BackgroudSelecter InformationUI { get; set; }
 
 
-    public float _preDamage = 0f;
+    private float _preDamage = 0f;
 
     /// <summary>
     /// Does the enemy is already aimed?
