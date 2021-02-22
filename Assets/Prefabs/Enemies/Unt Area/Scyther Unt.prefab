@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3623001225806360375}
   - component: {fileID: 8203056244331385572}
   - component: {fileID: 4810297222311416622}
-  - component: {fileID: 8791561858969286234}
+  - component: {fileID: 1313664361830131352}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -107,7 +107,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8791561858969286234
+--- !u!114 &1313664361830131352
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,9 +116,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2711471150789980654}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 376f1868ae61e554d8e6399ef4e7a63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transform: {fileID: 1325451588954096048}
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,7 +199,6 @@ MonoBehaviour:
   _goldGained: 14
   _flying: 0
   _damagePosition: {fileID: 3623001225806360375}
-  _preDamage: 0
 --- !u!1001 &3162793518331619717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ PrefabInstance:
     - target: {fileID: 9044120826128104448, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_Name
-      value: Selecter
+      value: Selector
       objectReference: {fileID: 0}
     - target: {fileID: 9044120826128104448, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}

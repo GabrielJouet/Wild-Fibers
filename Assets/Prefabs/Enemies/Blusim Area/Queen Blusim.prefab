@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1049263690152909913}
   - component: {fileID: 2394709574171677322}
   - component: {fileID: 3597370224652989133}
-  - component: {fileID: 6443900726030665387}
+  - component: {fileID: 1175556204627251778}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -106,7 +106,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &6443900726030665387
+--- !u!114 &1175556204627251778
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,9 +115,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5755112626027321121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 376f1868ae61e554d8e6399ef4e7a63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _transform: {fileID: 4632149534653362293}
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,13 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _displayName: Queen
-  _healthMax: 2000
-  _armorMax: 45
-  _speedMax: 0.075
-  _numberOfLivesTaken: 20
-  _goldGained: 450
-  _flying: 0
-  _damagePosition: {fileID: 1049263690152909913}
   _selector: {fileID: 7325471192700415939}
   _healthBar: {fileID: 3144667757886646281}
   _dotDisplay: {fileID: 3511199004427678630}
@@ -197,13 +191,19 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 1049263690152909913}
   _numberOfParticles: 4
+  _healthMax: 2000
+  _armorMax: 45
+  _speedMax: 0.075
+  _numberOfLivesTaken: 20
+  _goldGained: 450
+  _flying: 0
+  _damagePosition: {fileID: 1049263690152909913}
   _enemySpawnedPrefab: {fileID: 1001176562105206731, guid: d9daef3f950273945b1eb5cea886939b,
     type: 3}
   _timeBetweenSpawn: 4.5
   _spawnTime: 0.8
   _stopWhileSpawning: 1
   _numberOfEnemiesPerSpawn: 3
-  _numberOfPathsWanted: 3
   _walkDirtParticle: {fileID: 4405452952222755525, guid: a4f95f77d8adb1245b064ec92efa76c3,
     type: 3}
 --- !u!1001 &1741317206090716099
