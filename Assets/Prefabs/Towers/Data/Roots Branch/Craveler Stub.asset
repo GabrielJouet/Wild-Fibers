@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Craveler Stub
   m_EditorClassIdentifier: 
   _description: A powerful and devastating roots generator
-  _price: 265
+  _price: 270
   _icon: {fileID: 21300000, guid: bff7ca8cdc8698642aef3dfdd18ee513, type: 3}
   _sprite: {fileID: 5698191664513791026, guid: d85b23dd25bcdec49a6528cafd18e59c, type: 3}
   _shadowSprite: {fileID: -748965943684247502, guid: 45a27df0871ec9d4987415581c933c7e,

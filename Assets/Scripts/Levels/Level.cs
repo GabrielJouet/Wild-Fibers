@@ -89,6 +89,14 @@ public class Level : ScriptableObject
     public float GoldMultiplier { get => _goldMultiplier; }
 
     /// <summary>
+    /// Non-allowed towers in this level.
+    /// </summary>
+    [SerializeField]
+    private List<TowerData> _blockedTowers;
+    public List<TowerData> BlockedTowers { get => _blockedTowers; }
+
+
+    /// <summary>
     /// Enemies type in the level.
     /// </summary>
     public List<Enemy> Enemies 
