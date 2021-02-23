@@ -254,18 +254,21 @@ public class Tower : MonoBehaviour
         {
             foreach (Enemy buffer in _availableEnemies)
             {
-                if (applyDot && buffer.AlreadyDotted || availableEnemies.Contains(buffer))
-                    continue;
-                else if (!applyDot && buffer.AlreadyAimed || availableEnemies.Contains(buffer))
-                    continue;
-                else
+                if (!buffer.WillDieSoon())
                 {
-                    availableEnemies.Add(buffer);
+                    if (applyDot && buffer.AlreadyDotted || availableEnemies.Contains(buffer))
+                        continue;
+                    else if (!applyDot && buffer.AlreadyAimed || availableEnemies.Contains(buffer))
+                        continue;
+                    else
+                    {
+                        availableEnemies.Add(buffer);
 
-                    if (!buffer.CanSurvive(_towerData.Damage, _towerData.ArmorThrough))
-                        buffer.AlreadyAimed = true;
+                        if (!buffer.CanSurvive(_towerData.Damage, _towerData.ArmorThrough))
+                            buffer.AlreadyAimed = true;
 
-                    break;
+                        break;
+                    }
                 }
             }
         }

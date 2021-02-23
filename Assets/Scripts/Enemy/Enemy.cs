@@ -446,6 +446,11 @@ public class Enemy : MonoBehaviour
         return _health - _preDamage > 0;
     }
 
+    public bool WillDieSoon()
+    {
+        return _health - (_dotDuration * 2 * _healthMalus) <= 0;
+    }
+
     /// <summary>
     /// Activate or desactivate selector state.
     /// </summary>
