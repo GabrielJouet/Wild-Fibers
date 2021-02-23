@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68636bbd532bf364b9d4bab07898cb81, type: 3}
   m_Name: CaveData
   m_EditorClassIdentifier: 
-  _classic: {fileID: 11400000, guid: b0b6b55dcb0a19e4288fe2b941a54ed4, type: 2}
-  _side: {fileID: 11400000, guid: 91e506889638fe6429e707883ef8ea25, type: 2}
-  _challenge: {fileID: 11400000, guid: a23d0f3a613efa3498fea74e9c306a1c, type: 2}
+  _classic: {fileID: 11400000, guid: 4e12cd066e677124c938266469046e1c, type: 2}
+  _side: {fileID: 11400000, guid: 48f3018a4ce96194db66070eb9be627e, type: 2}
+  _challenge: {fileID: 11400000, guid: 640ee1655b2fa284fa477c1af4aa9471, type: 2}

@@ -18,8 +18,16 @@ MonoBehaviour:
     to protect your land
   _playSceneName: BurriedCave
   _levelType: 0
-  _availableWaves: []
-  _lifeCount: 1
-  _goldCount: 150
-  _towerLevel: 0
-  _goldMultiplier: 0
+  _availableWaves:
+  - {fileID: 11400000, guid: c22334bdbf118df419b3ef383d29b8d4, type: 2}
+  - {fileID: 11400000, guid: 2ebcf68fe36872c4f89c6a83631edd47, type: 2}
+  - {fileID: 11400000, guid: b559cc745c5cc0041a306837d15e0d7a, type: 2}
+  - {fileID: 11400000, guid: 28713b34e5904da448ff733da58c32a9, type: 2}
+  - {fileID: 11400000, guid: 52d4dd9d56b8a9c419ecfb12664df0e2, type: 2}
+  - {fileID: 11400000, guid: 2ff14742de60aec49a236f57864a48a8, type: 2}
+  - {fileID: 11400000, guid: 9e2b7db8c8ac1ae458a512377695fb41, type: 2}
+  _lifeCount: 20
+  _goldCount: 650
+  _towerLevel: 1
+  _goldMultiplier: 1
+  _blockedTowers: []
