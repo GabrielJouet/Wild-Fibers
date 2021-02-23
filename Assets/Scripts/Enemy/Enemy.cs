@@ -212,6 +212,9 @@ public class Enemy : MonoBehaviour
     public bool AlreadyAimed { get; set; } = false;
 
 
+    public bool AlreadyDotted { get => _dotApplied; }
+
+
 
     /// <summary>
     /// Initialize method.
@@ -248,20 +251,6 @@ public class Enemy : MonoBehaviour
 
         Moving = true;
         AlreadyAimed = false;
-    }
-
-
-    public void LoadData(float newHealth, float newArmor, float newSpeed, int newLives, bool newFlying, int newGoldGained)
-    {
-        HealthMax = newHealth;
-        ArmorMax = newArmor;
-
-        Speed = newSpeed;
-        LivesTaken = newLives;
-
-        Flying = newFlying;
-
-        GoldGained = newGoldGained;
     }
 
 

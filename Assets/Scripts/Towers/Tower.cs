@@ -154,7 +154,7 @@ public class Tower : MonoBehaviour
         if (!_towerData.ShotsRandomly)
             SortEnemies();
 
-        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes, _towerData.ShotsRandomly))
+        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes, _towerData.ShotsRandomly, _towerData.Dot != 0f))
             _projectilePool.GetOneProjectile().Initialize(_towerData, current, _projectilePool, transform);
 
         yield return new WaitForSeconds(_towerData.TimeShots);
@@ -241,7 +241,7 @@ public class Tower : MonoBehaviour
     /// </summary>
     /// <param name="numberOfEnemiesToFound">How many enemies are needed</param>
     /// <returns>A list of foound enemies</returns>
-    protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound, bool random)
+    protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound, bool random, bool applyDot)
     {
         List<Enemy> availableEnemies = new List<Enemy>();
 
@@ -254,7 +254,9 @@ public class Tower : MonoBehaviour
         {
             foreach (Enemy buffer in _availableEnemies)
             {
-                if (buffer.AlreadyAimed || availableEnemies.Contains(buffer))
+                if (applyDot && buffer.AlreadyDotted || availableEnemies.Contains(buffer))
+                    continue;
+                else if (!applyDot && buffer.AlreadyAimed || availableEnemies.Contains(buffer))
                     continue;
                 else
                 {
