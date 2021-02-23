@@ -452,7 +452,7 @@ public class Enemy : MonoBehaviour
     /// <param name="armorThrough">The percentage of armor through the hit has</param>
     public bool CanSurvive(float damage, float armorThrough)
     {
-        _preDamage += Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor) / 100) / 2 : damage - ((_armor - armorThrough) / 100 * damage));
+        _preDamage += Mathf.FloorToInt(_armorMax - armorThrough < 0 ? damage + (damage * (armorThrough - _armorMax) / 100) / 2 : damage - ((_armorMax - armorThrough) / 100 * damage));
 
         return _health - _preDamage > 0;
     }
