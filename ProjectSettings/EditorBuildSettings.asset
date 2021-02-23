@@ -28,5 +28,14 @@ EditorBuildSettings:
     guid: e112212a65a475942ae70450fea77a4b
   - enabled: 1
     path: Assets/Scenes/2-SeedlyForest/Side/RottenWoods.unity
-    guid: f32e66e8c16b3f945b478cb1de20ac1c
+    guid: e4f59837676c23546917646fe1bc207a
+  - enabled: 1
+    path: Assets/Scenes/3-BurriedCave/Classic/BurriedCave.unity
+    guid: 9c4df7e09b2aef44893e27b54621ae8f
+  - enabled: 1
+    path: Assets/Scenes/3-BurriedCave/Side/HowlingCavern.unity
+    guid: c9cdb4b01b78a204d838259de0867938
+  - enabled: 1
+    path: Assets/Scenes/3-BurriedCave/Challenge/EmptyDepths.unity
+    guid: f04da53903a1c664081bad24df21490e
   m_configObjects: {}
