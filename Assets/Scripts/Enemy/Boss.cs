@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -58,9 +58,6 @@ public class Boss : Enemy
     public List<List<Vector2>> AvailablePaths { get; set; } = new List<List<Vector2>>();
 
 
-    protected Spawn _spawn;
-
-
 
     /// <summary>
     /// Initialize method.
@@ -71,9 +68,6 @@ public class Boss : Enemy
     public override void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
         base.Initialize(newPath, newPool, pathIndex);
-
-        if(_spawn == null)
-            _spawn = new Spawn(_poolController, AvailablePaths, Spawnling);
         
         StartCoroutine(DelaySpawn());
     }
@@ -91,7 +85,14 @@ public class Boss : Enemy
 
             Moving = false;
             _animator.SetTrigger("lay");
-            _spawn.SpawnSpawnling(_numberOfEnemiesPerSpawn, _pathIndex, _spawnTime);
+
+            for (int i = 0; i < _numberOfEnemiesPerSpawn; i++)
+            {
+                _poolController.RecoverEnemyPool(Spawnling).GetOneEnemy().Initialize(AvailablePaths[Random.Range(0, AvailablePaths.Count)], _poolController, _pathIndex);
+
+                yield return new WaitForSeconds(_spawnTime + Random.Range(-_spawnTime / 20, _spawnTime / 20));
+            }
+
             Moving = true;
         }
     }

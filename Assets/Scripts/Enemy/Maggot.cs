@@ -27,9 +27,6 @@ public class Maggot : Enemy, IShieldable
     [SerializeField]
     protected float _newShieldValue;
 
-
-    protected Spawn _spawn;
-
     public float BaseShieldValue { get; set; }
     public bool StopWhileShielding { get; set; }
 
@@ -48,9 +45,6 @@ public class Maggot : Enemy, IShieldable
         BaseShieldValue = _armorMax;
         StopWhileShielding = true;
 
-        if (_spawn == null)
-            _spawn = new Spawn(_poolController, _path, _hatchling);
-
         StartCoroutine(DelayHatch());
     }
 
@@ -67,7 +61,7 @@ public class Maggot : Enemy, IShieldable
 
         yield return new WaitForSeconds((_animator.runtimeAnimatorController.animationClips[1].length / 0.3f) + 0.05f);
 
-        _spawn.SpawnSpawnling(_pathIndex);
+        _poolController.RecoverEnemyPool(_hatchling).GetOneEnemy().Initialize(_path, _poolController, _pathIndex);
 
         _goldGained = 0;
         Die(false);
