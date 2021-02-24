@@ -12,6 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c38062d58063c489c1f62c7a95a8ce, type: 3}
   m_Name: Wave6
   m_EditorClassIdentifier: 
-  _availableEnemyGroups: []
-  _timeBeforeNextWave: 0
-  _goldBonus: 0
+  _availableEnemyGroups:
+  - _enemyPatterns:
+    - _numberOfEnemies: 1
+      _timeBetweenEnemies: 1
+    _enemyUsed: {fileID: 6914183812568595844, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb,
+      type: 3}
+    _timeBetweenPattern: 0
+    _pathIndex: 0
+  _timeBeforeNextWave: 15
+  _goldBonus: 20

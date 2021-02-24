@@ -27,15 +27,12 @@ EditorBuildSettings:
     path: Assets/Scenes/2-SeedlyForest/Challenge/EatenBosquet.unity
     guid: e112212a65a475942ae70450fea77a4b
   - enabled: 1
-    path: Assets/Scenes/2-SeedlyForest/Side/RottenWoods.unity
-    guid: e4f59837676c23546917646fe1bc207a
-  - enabled: 1
     path: Assets/Scenes/3-BurriedCave/Classic/BurriedCave.unity
     guid: 9c4df7e09b2aef44893e27b54621ae8f
   - enabled: 1
     path: Assets/Scenes/3-BurriedCave/Side/HowlingCavern.unity
-    guid: c9cdb4b01b78a204d838259de0867938
+    guid: ee5a68bead3b5b941a846334ef209474
   - enabled: 1
     path: Assets/Scenes/3-BurriedCave/Challenge/EmptyDepths.unity
-    guid: f04da53903a1c664081bad24df21490e
+    guid: 3864840ab748b5e458c883e4cef8a910
   m_configObjects: {}
