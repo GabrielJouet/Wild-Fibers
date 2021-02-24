@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Class that handles boss like behavior, like spawning other enemies.
 /// </summary>
-public class Boss : Enemy
+public class QueenBlusim : Enemy, ISpawnable
 {
     [Header("Boss related")]
 
@@ -21,24 +21,28 @@ public class Boss : Enemy
     /// </summary>
     [SerializeField]
     protected float _timeBetweenSpawn;
+    public float TimeBetweenSpawn { get => _timeBetweenSpawn; }
 
     /// <summary>
     /// Time between start and end of spawn.
     /// </summary>
     [SerializeField]
     protected float _spawnTime;
+    public float SpawnTime { get => _spawnTime; }
 
     /// <summary>
     /// Does the boss stop while spawning other enemies?
     /// </summary>
     [SerializeField]
     protected bool _stopWhileSpawning;
+    public bool StopWhileSpawning { get => _stopWhileSpawning; }
 
     /// <summary>
     /// How many enemies are spawned during each spawn.
     /// </summary>
     [SerializeField]
     protected int _numberOfEnemiesPerSpawn;
+    public int NumberOfEnemiesPerSpawn { get => _numberOfEnemiesPerSpawn; }
 
     /// <summary>
     /// The walk dirt particle used by the boss.
@@ -81,16 +85,16 @@ public class Boss : Enemy
     {
         while(true)
         {
-            yield return new WaitForSeconds(_timeBetweenSpawn + Random.Range(-_timeBetweenSpawn / 20, _timeBetweenSpawn / 20));
+            yield return new WaitForSeconds(TimeBetweenSpawn + Random.Range(-TimeBetweenSpawn / 20, TimeBetweenSpawn / 20));
 
-            Moving = false;
+            Moving = !StopWhileSpawning;
             _animator.SetBool("lay", true);
 
-            for (int i = 0; i < _numberOfEnemiesPerSpawn; i++)
+            for (int i = 0; i < NumberOfEnemiesPerSpawn; i++)
             {
                 _poolController.RecoverEnemyPool(Spawnling).GetOneEnemy().Initialize(AvailablePaths[Random.Range(0, AvailablePaths.Count)], _poolController, _pathIndex);
 
-                yield return new WaitForSeconds(_spawnTime + Random.Range(-_spawnTime / 20, _spawnTime / 20));
+                yield return new WaitForSeconds(SpawnTime + Random.Range(-SpawnTime / 20, SpawnTime / 20));
             }
 
             _animator.SetBool("lay", false);
