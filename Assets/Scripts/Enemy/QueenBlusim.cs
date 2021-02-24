@@ -45,12 +45,6 @@ public class QueenBlusim : Enemy, ISpawnable
     public int NumberOfEnemiesPerSpawn { get => _numberOfEnemiesPerSpawn; }
 
     /// <summary>
-    /// The walk dirt particle used by the boss.
-    /// </summary>
-    [SerializeField]
-    protected Particle _walkDirtParticle;
-
-    /// <summary>
     /// The number of paths used by new enemies.
     /// </summary>
     public int PathWanted { get; } = 3;

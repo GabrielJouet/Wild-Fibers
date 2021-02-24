@@ -22,12 +22,16 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     [SerializeField]
     protected float _hatchingTime;
 
+
+    [Header("Shield related")]
+    
     /// <summary>
     /// Shield value when protecting.
     /// </summary>
     [SerializeField]
     protected float _newShieldValue;
     public float NewShieldValue { get => _newShieldValue; }
+
 
     public float BaseShieldValue { get; set; }
     public bool StopWhileShielding { get; set; }
@@ -63,6 +67,25 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     }
 
 
+    /// <summary>
+    /// Coroutine used to delay the hatch of the maggot.
+    /// </summary>
+    /// <returns>Yield the hatchling time and cocooning time</returns>
+    public IEnumerator DelaySpawn()
+    {
+        yield return new WaitForSeconds(_hatchingTime + Random.Range(-_hatchingTime / 20, _hatchingTime / 20));
+        _animator.SetTrigger("cocoon");
+        ActivateShield(NewShieldValue, _dotApplied);
+
+        yield return new WaitForSeconds((_animator.runtimeAnimatorController.animationClips[1].length / 0.3f) + 0.05f);
+
+        _poolController.RecoverEnemyPool(_hatchling).GetOneEnemy().Initialize(_path, _poolController, _pathIndex);
+
+        _goldGained = 0;
+        Die(false);
+    }
+
+
     public void ActivateShield(float shieldValue, bool dotApplied)
     {
         Moving = !StopWhileShielding;
@@ -86,24 +109,5 @@ public class Maggot : Enemy, IShieldable, ISpawnable
         ArmorMax = BaseShieldValue;
 
         Moving = true;
-    }
-
-
-    /// <summary>
-    /// Coroutine used to delay the hatch of the maggot.
-    /// </summary>
-    /// <returns>Yield the hatchling time and cocooning time</returns>
-    public IEnumerator DelaySpawn()
-    {
-        yield return new WaitForSeconds(_hatchingTime + Random.Range(-_hatchingTime / 20, _hatchingTime / 20));
-        _animator.SetTrigger("cocoon");
-        ActivateShield(NewShieldValue, _dotApplied);
-
-        yield return new WaitForSeconds((_animator.runtimeAnimatorController.animationClips[1].length / 0.3f) + 0.05f);
-
-        _poolController.RecoverEnemyPool(_hatchling).GetOneEnemy().Initialize(_path, _poolController, _pathIndex);
-
-        _goldGained = 0;
-        Die(false);
     }
 }

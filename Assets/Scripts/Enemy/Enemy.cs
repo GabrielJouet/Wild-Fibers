@@ -64,12 +64,6 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected List<Transform> _particleEmissionsPoints;
 
-    /// <summary>
-    /// Number of particle per points.
-    /// </summary>
-    [SerializeField]
-    protected int _numberOfParticles;
-
 
     [Header("Behaviour Variables")]
 
@@ -126,7 +120,6 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected int _goldGained;
-    public int GoldGained { get => _goldGained; private set => _goldGained = value; }
 
 
     /// <summary>
@@ -225,6 +218,7 @@ public class Enemy : MonoBehaviour
     public virtual void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
         _preDamage = 0f;
+        AlreadyAimed = false;
 
         if (_particleController == null)
             _particleController = FindObjectOfType<ParticleController>();
@@ -250,7 +244,6 @@ public class Enemy : MonoBehaviour
         _poolController = newPool;
 
         Moving = true;
-        AlreadyAimed = false;
     }
 
 
@@ -306,11 +299,9 @@ public class Enemy : MonoBehaviour
 
         foreach (Transform current in _particleEmissionsPoints)
         {
-            foreach (Particle particle in _particleController.GetParticle(_damageParticle, _numberOfParticles))
+            foreach (Particle particle in _particleController.GetParticle(_damageParticle, 3))
                 particle.Initialize(current.position);
         }
-
-        _healthBar.ChangeSize(_health / _healthMax);
     }
 
 
