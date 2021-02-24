@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -84,7 +84,7 @@ public class Boss : Enemy
             yield return new WaitForSeconds(_timeBetweenSpawn + Random.Range(-_timeBetweenSpawn / 20, _timeBetweenSpawn / 20));
 
             Moving = false;
-            _animator.SetTrigger("lay");
+            _animator.SetBool("lay", true);
 
             for (int i = 0; i < _numberOfEnemiesPerSpawn; i++)
             {
@@ -93,6 +93,7 @@ public class Boss : Enemy
                 yield return new WaitForSeconds(_spawnTime + Random.Range(-_spawnTime / 20, _spawnTime / 20));
             }
 
+            _animator.SetBool("lay", false);
             Moving = true;
         }
     }
