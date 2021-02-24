@@ -91,9 +91,12 @@ public class RessourceController : MonoBehaviour
     /// <param name="applyMultiplier">Does the gold multiplier apply here?</param>
     public void AddGold(int count, bool applyMultiplier)
     {
-        _goldIconAnimator.SetTrigger("lose");
-        GoldCount += Mathf.RoundToInt(count * (applyMultiplier ? _levelController.LoadedLevel.GoldMultiplier : 1));
-        _goldText.text = GoldCount.ToString();
+        if (count > 0f)
+        {
+            _goldIconAnimator.SetTrigger("lose");
+            GoldCount += Mathf.RoundToInt(count * (applyMultiplier ? _levelController.LoadedLevel.GoldMultiplier : 1));
+            _goldText.text = GoldCount.ToString();
+        }
     }
 
 

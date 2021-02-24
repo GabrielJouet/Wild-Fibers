@@ -264,7 +264,7 @@ public class Tower : MonoBehaviour
                     {
                         availableEnemies.Add(buffer);
 
-                        if (!buffer.CanSurvive(_towerData.Damage, _towerData.ArmorThrough))
+                        if (!buffer.CanSurvive(_towerData))
                             buffer.AlreadyAimed = true;
 
                         break;

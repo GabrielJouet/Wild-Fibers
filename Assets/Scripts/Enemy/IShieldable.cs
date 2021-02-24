@@ -8,7 +8,12 @@
     /// <summary>
     /// Default shield value.
     /// </summary>
-    bool StopWhileShielding { get; set; }
+    bool StopWhileShielding { get; }
+
+    /// <summary>
+    /// New shield value.
+    /// </summary>
+    float NewShieldValue { get; }
 
 
     /// <summary>

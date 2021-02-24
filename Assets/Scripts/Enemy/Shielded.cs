@@ -20,12 +20,17 @@ public class Shielded : Enemy, IShieldable
     /// </summary>
     [SerializeField]
     protected float _newShieldValue;
+    public float NewShieldValue { get => _newShieldValue; }
 
+    /// <summary>
+    /// Stop while shielding?
+    /// </summary>
     [SerializeField]
     protected bool _stopWhileShielding;
     public bool StopWhileShielding { get => _stopWhileShielding; set => _stopWhileShielding = value; }
 
     public float BaseShieldValue { get; set; }
+
 
 
     /// <summary>

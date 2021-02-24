@@ -41,6 +41,6 @@ public class ShockWave : Projectile
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Enemy newEnemy))
-            newEnemy.TakeDamage(_data.Damage, _data.ArmorThrough);
+            newEnemy.TakeDamage(_data);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Maggot enemy type, will cocoon itself to revive as another enemy.
 /// </summary>
-public class Maggot : Enemy, IShieldable
+public class Maggot : Enemy, IShieldable, ISpawnable
 {
     [Header("Hatchling related")]
 
@@ -14,6 +14,7 @@ public class Maggot : Enemy, IShieldable
     /// </summary>
     [SerializeField]
     protected Enemy _hatchling;
+    public Enemy Spawnling { get => _hatchling; }
 
     /// <summary>
     /// Time before the maggot cocoon itself.
@@ -21,17 +22,31 @@ public class Maggot : Enemy, IShieldable
     [SerializeField]
     protected float _hatchingTime;
 
+
+    [Header("Shield related")]
+    
     /// <summary>
     /// Shield value when protecting.
     /// </summary>
     [SerializeField]
     protected float _newShieldValue;
+    public float NewShieldValue { get => _newShieldValue; }
 
-
-    protected Spawn _spawn;
 
     public float BaseShieldValue { get; set; }
     public bool StopWhileShielding { get; set; }
+
+    public float TimeBetweenSpawn { get; }
+
+    public float SpawnTime { get; }
+
+    public bool StopWhileSpawning { get; }
+
+    public int NumberOfEnemiesPerSpawn { get; }
+
+    public int PathWanted { get; } = 0;
+
+    public List<List<Vector2>> AvailablePaths { get; set; }
 
 
 
@@ -48,10 +63,7 @@ public class Maggot : Enemy, IShieldable
         BaseShieldValue = _armorMax;
         StopWhileShielding = true;
 
-        if (_spawn == null)
-            _spawn = new Spawn(_poolController, _path, _hatchling);
-
-        StartCoroutine(DelayHatch());
+        StartCoroutine(DelaySpawn());
     }
 
 
@@ -59,15 +71,15 @@ public class Maggot : Enemy, IShieldable
     /// Coroutine used to delay the hatch of the maggot.
     /// </summary>
     /// <returns>Yield the hatchling time and cocooning time</returns>
-    protected IEnumerator DelayHatch()
+    public IEnumerator DelaySpawn()
     {
         yield return new WaitForSeconds(_hatchingTime + Random.Range(-_hatchingTime / 20, _hatchingTime / 20));
         _animator.SetTrigger("cocoon");
-        ActivateShield(_newShieldValue, _dotApplied);
+        ActivateShield(NewShieldValue, _dotApplied);
 
         yield return new WaitForSeconds((_animator.runtimeAnimatorController.animationClips[1].length / 0.3f) + 0.05f);
 
-        _spawn.SpawnSpawnling(_pathIndex);
+        _poolController.RecoverEnemyPool(_hatchling).GetOneEnemy().Initialize(_path, _poolController, _pathIndex);
 
         _goldGained = 0;
         Die(false);
