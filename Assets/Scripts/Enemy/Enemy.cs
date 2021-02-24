@@ -197,7 +197,7 @@ public class Enemy : MonoBehaviour
     public BackgroudSelecter InformationUI { get; set; }
 
 
-    private float _preDamage = 0f;
+    private List<TowerData> Attacks { get; set; } = new List<TowerData>();
 
     /// <summary>
     /// Does the enemy is already aimed?
@@ -217,7 +217,7 @@ public class Enemy : MonoBehaviour
     /// <param name="pathIndex">Current progression on the path</param>
     public virtual void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
-        _preDamage = 0f;
+        Attacks.Clear();
         AlreadyAimed = false;
 
         if (_particleController == null)
@@ -288,12 +288,15 @@ public class Enemy : MonoBehaviour
     /// </summary>
     /// <param name="damage">How many damage the enemy is taking</param>
     /// <param name="armorThrough">The quantity of armor through the hit has</param>
-    public void TakeDamage(float damage, float armorThrough)
+    public void TakeDamage(TowerData data)
     {
+        float armorThrough = data.ArmorThrough;
+        float damage = data.Damage;
+
         int damageLeft = Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor)/100)/2 : damage - ((_armor - armorThrough)/100 * damage));
 
-        if (_preDamage > 0)
-            _preDamage -= damageLeft;
+        if (Attacks.Count > 0 && Attacks.Contains(data))
+            Attacks.Remove(data);
 
         TakeDamage(damageLeft);
 
@@ -430,11 +433,18 @@ public class Enemy : MonoBehaviour
     /// </summary>
     /// <param name="damage">How much damage the enemy is taking?</param>
     /// <param name="armorThrough">The percentage of armor through the hit has</param>
-    public bool CanSurvive(float damage, float armorThrough)
+    public bool CanSurvive(TowerData data)
     {
-        _preDamage += Mathf.FloorToInt(_armorMax - armorThrough < 0 ? damage + (damage * (armorThrough - _armorMax) / 100) / 2 : damage - ((_armorMax - armorThrough) / 100 * damage));
+        float armorThrough = data.ArmorThrough;
+        float damage = data.Damage;
 
-        return _health - _preDamage > 0;
+        Attacks.Add(data);
+
+        float total = 0;
+        foreach (TowerData current in Attacks)
+            total += Mathf.FloorToInt(_armorMax - armorThrough < 0 ? damage + (damage * (armorThrough - _armorMax) / 100) / 2 : damage - ((_armorMax - armorThrough) / 100 * damage));
+
+        return _health - total > 0;
     }
 
     public bool WillDieSoon()

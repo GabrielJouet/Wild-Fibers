@@ -89,7 +89,7 @@ public class Projectile : MonoBehaviour
     {
         if (enemy != null)
         {
-            enemy.TakeDamage(_data.Damage, _data.ArmorThrough);
+            enemy.TakeDamage(_data);
 
             if (_data.DotIcon != null)
                 enemy.ApplyDot(_data.ArmorThroughMalus, _data.Dot, _data.DotDuration, _data.DotIcon);
