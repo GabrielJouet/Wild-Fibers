@@ -57,7 +57,7 @@ public class RootsStump : Tower
     {
         StopAllCoroutines();
 
-        if (_towerData.Shots == 4)
+        if (_towerData.Shots == 4 && _availableSpikes.Count > 0)
         {
             _availableSpikes.Peek().transform.position = GetSpikePosition(2);
             _spawnedRoot = _towerData.Shots - 1;
