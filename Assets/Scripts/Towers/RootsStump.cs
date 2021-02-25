@@ -43,8 +43,7 @@ public class RootsStump : Tower
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                if (_availableSpikes.Count <= _towerData.Shots)
-                    StartCoroutine(SummonSpike());
+                StartCoroutine(SummonSpike());
 
                 _availableSpikes.Pop().StartFollowing(enemies[i], _towerData);
             }
@@ -56,7 +55,9 @@ public class RootsStump : Tower
     /// </summary>
     protected override void UpgradeSpecialBehavior()
     {
-        if(_towerData.Shots == 4 && _availableSpikes.Count > 0)
+        StopAllCoroutines();
+
+        if (_towerData.Shots == 4)
         {
             _availableSpikes.Peek().transform.position = GetSpikePosition(2);
             _spawnedRoot = _towerData.Shots - 1;
@@ -71,7 +72,6 @@ public class RootsStump : Tower
     protected virtual IEnumerator SummonSpike()
     {
         yield return new WaitForSeconds(_towerData.TimeShots);
-
         ChocSpikes buffer = _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>();
         buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_spawnedRoot));
         buffer.transform.parent = transform;

@@ -40,8 +40,7 @@ public class ToxicIvy : Tower
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                if (_availableLeafs.Count <= _towerData.Shots)
-                    StartCoroutine(SummonLeaf());
+                StartCoroutine(SummonLeaf());
 
                 _availableLeafs.Pop().StartFollowing(enemies[i], _towerData);
             }
@@ -53,6 +52,8 @@ public class ToxicIvy : Tower
     /// </summary>
     protected override void UpgradeSpecialBehavior()
     {
+        StopAllCoroutines();
+
         for (int i = 0; i < _towerData.Shots - _availableLeafs.Count; i ++) 
             StartCoroutine(SummonLeaf());
     }
