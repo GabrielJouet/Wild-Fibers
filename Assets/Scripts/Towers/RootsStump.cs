@@ -43,8 +43,10 @@ public class RootsStump : Tower
 
             for (int i = 0; i < enemies.Count; i++)
             {
+                if (_availableSpikes.Count <= _towerData.Shots)
+                    StartCoroutine(SummonSpike());
+
                 _availableSpikes.Pop().StartFollowing(enemies[i], _towerData);
-                StartCoroutine(SummonSpike());
             }
         }
     }
