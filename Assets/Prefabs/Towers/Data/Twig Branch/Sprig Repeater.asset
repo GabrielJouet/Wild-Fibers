@@ -20,8 +20,8 @@ MonoBehaviour:
     type: 3}
   _projectileUsed: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
     type: 3}
-  _timeBetweenShots: 0.9
-  _damage: 17
+  _timeBetweenShots: 0.65
+  _damage: 13
   _armorThrough: 10
   _speed: 3.75
   _numberOfShots: 1
