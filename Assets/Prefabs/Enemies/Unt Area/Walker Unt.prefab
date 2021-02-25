@@ -193,8 +193,8 @@ MonoBehaviour:
   - {fileID: 3623001225806360375}
   _numberOfParticles: 2
   _healthMax: 85
-  _armorMax: 10
-  _speedMax: 0.4
+  _armorMax: 15
+  _speedMax: 0.45
   _numberOfLivesTaken: 1
   _goldGained: 7
   _flying: 0

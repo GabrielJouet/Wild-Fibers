@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28c38062d58063c489c1f62c7a95a8ce, type: 3}
+  m_Name: Wave1
+  m_EditorClassIdentifier: 
+  _availableEnemyGroups:
+  - _enemyPatterns:
+    - _numberOfEnemies: 1
+      _timeBetweenEnemies: 0.15
+    _enemyUsed: {fileID: 6914183812568595844, guid: d9daef3f950273945b1eb5cea886939b,
+      type: 3}
+    _timeBetweenPattern: 5
+    _pathIndex: 1
+  _timeBeforeNextWave: 10
+  _goldBonus: 20
