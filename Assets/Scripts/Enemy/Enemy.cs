@@ -205,7 +205,7 @@ public class Enemy : MonoBehaviour
     public bool AlreadyAimed { get; set; } = false;
 
 
-    public bool AlreadyDotted { get => _dotApplied; }
+    public bool AlreadyDotted { get; set; } = false;
 
 
 
@@ -219,6 +219,7 @@ public class Enemy : MonoBehaviour
     {
         Attacks.Clear();
         AlreadyAimed = false;
+        AlreadyDotted = false;
 
         if (_particleController == null)
             _particleController = FindObjectOfType<ParticleController>();
@@ -385,6 +386,7 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
 
+        AlreadyDotted = false;
         _dotDisplay.sprite = null;
         _dotApplied = false;
         _armor = _armorMax;

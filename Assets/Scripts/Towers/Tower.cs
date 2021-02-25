@@ -154,7 +154,7 @@ public class Tower : MonoBehaviour
         if (!_towerData.ShotsRandomly)
             SortEnemies();
 
-        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes, _towerData.ShotsRandomly, _towerData.Dot != 0f))
+        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
             _projectilePool.GetOneProjectile().Initialize(_towerData, current, _projectilePool, transform);
 
         yield return new WaitForSeconds(_towerData.TimeShots);
@@ -241,11 +241,11 @@ public class Tower : MonoBehaviour
     /// </summary>
     /// <param name="numberOfEnemiesToFound">How many enemies are needed</param>
     /// <returns>A list of foound enemies</returns>
-    protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound, bool random, bool applyDot)
+    protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound)
     {
         List<Enemy> availableEnemies = new List<Enemy>();
 
-        if (random)
+        if (_towerData.ShotsRandomly)
             _availableEnemies.Shuffle();
         else
             SortEnemies();
@@ -256,9 +256,10 @@ public class Tower : MonoBehaviour
             {
                 if (!buffer.WillDieSoon())
                 {
-                    if (applyDot && buffer.AlreadyDotted || availableEnemies.Contains(buffer))
+                    bool canDot = _towerData.Dot != 0;
+                    if (canDot && buffer.AlreadyDotted || availableEnemies.Contains(buffer))
                         continue;
-                    else if (!applyDot && buffer.AlreadyAimed || availableEnemies.Contains(buffer))
+                    else if (!canDot && buffer.AlreadyAimed || availableEnemies.Contains(buffer))
                         continue;
                     else
                     {
@@ -266,6 +267,9 @@ public class Tower : MonoBehaviour
 
                         if (!buffer.CanSurvive(_towerData))
                             buffer.AlreadyAimed = true;
+
+                        if (canDot)
+                            buffer.AlreadyDotted = true;
 
                         break;
                     }
