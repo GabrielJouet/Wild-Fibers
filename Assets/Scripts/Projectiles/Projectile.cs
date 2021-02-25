@@ -100,7 +100,7 @@ public class Projectile : MonoBehaviour
     /// <summary>
     /// Method called when a projectile hurt an enemy.
     /// </summary>
-    protected void StopProjectile()
+    public void StopProjectile()
     {
         gameObject.SetActive(false);
         _projectilePool.AddOneProjectile(this);

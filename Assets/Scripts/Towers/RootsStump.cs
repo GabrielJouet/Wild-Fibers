@@ -9,6 +9,9 @@ public class RootsStump : Tower
     /// </summary>
     protected Stack<ChocSpikes> _availableSpikes = new Stack<ChocSpikes>();
 
+    private int _spawnedRoot = 0;
+
+
 
     /// <summary>
     /// Method used to update special behavior.
@@ -17,7 +20,15 @@ public class RootsStump : Tower
     {
         _availableSpikes.Clear();
 
-        StartCoroutine(SummonSpike());
+        for(int i = 0; i < _towerData.Shots; i ++)
+            StartCoroutine(SummonSpike());
+    }
+
+
+    protected override void ResellSpecialBehavior() 
+    { 
+        foreach(ChocSpikes current in _availableSpikes)
+            current.StopProjectile();
     }
 
 
@@ -28,14 +39,13 @@ public class RootsStump : Tower
     {
         if (_availableEnemies.Count > 0 && _availableSpikes.Count > 0)
         {
-            StopAllCoroutines();
-
             List<Enemy> enemies = RecoverAvailableEnemies(_availableSpikes.Count);
 
             for (int i = 0; i < enemies.Count; i++)
+            {
                 _availableSpikes.Pop().StartFollowing(enemies[i], _towerData);
-
-            StartCoroutine(SummonSpike());
+                StartCoroutine(SummonSpike());
+            }
         }
     }
 
@@ -47,11 +57,8 @@ public class RootsStump : Tower
         if(_towerData.Shots == 4 && _availableSpikes.Count > 0)
         {
             _availableSpikes.Peek().transform.position = GetSpikePosition(2);
-
-            ChocSpikes buffer = _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>();
-            buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(3));
-
-            _availableSpikes.Push(buffer);
+            _spawnedRoot = _towerData.Shots - 1;
+            StartCoroutine(SummonSpike());
         }
     }
 
@@ -61,20 +68,18 @@ public class RootsStump : Tower
     /// </summary>
     protected virtual IEnumerator SummonSpike()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(_towerData.TimeShots);
+        yield return new WaitForSeconds(_towerData.TimeShots);
 
-            int numberOfSpikesNeeded = _towerData.Shots - _availableSpikes.Count;
+        ChocSpikes buffer = _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>();
+        buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_spawnedRoot));
+        buffer.transform.parent = transform;
 
-            for (int i = 0; i < numberOfSpikesNeeded; i ++)
-            {
-                ChocSpikes buffer = _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>();
-                buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_availableSpikes.Count));
+        if (_spawnedRoot == _towerData.Shots - 1)
+            _spawnedRoot = 0;
+        else
+            _spawnedRoot++;
 
-                _availableSpikes.Push(buffer);
-            }
-        }
+        _availableSpikes.Push(buffer);
     }
 
 

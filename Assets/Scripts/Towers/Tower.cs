@@ -169,6 +169,8 @@ public class Tower : MonoBehaviour
     /// </summary>
     public void ResellTower()
     {
+        ResellSpecialBehavior();
+
         _ressourceController.AddGold(Mathf.FloorToInt(CumulativeGold / 4), false);
 
         _backgroundSelecter.DisableTowerInformation();
@@ -177,6 +179,10 @@ public class Tower : MonoBehaviour
         _currentSlot.ResetSlot();
         _towerPool.AddOneTower(gameObject);
     }
+
+
+    protected virtual void ResellSpecialBehavior() { }
+
 
     /// <summary>
     /// Method used to upgrade the tower.
