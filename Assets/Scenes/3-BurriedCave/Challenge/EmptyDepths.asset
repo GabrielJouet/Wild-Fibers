@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EmptyDepths
   m_EditorClassIdentifier: 
   _name: Empty Depths
-  _picture: {fileID: 0}
+  _picture: {fileID: 21300000, guid: c3c2dc114b081a440befd73e543716d9, type: 3}
   _description: A hollowed cave lies motionless, could life survives here?
   _playSceneName: EmptyDepths
   _levelType: 2
@@ -22,3 +22,4 @@ MonoBehaviour:
   _goldCount: 150
   _towerLevel: 0
   _goldMultiplier: 0
+  _blockedTowers: []
