@@ -111,8 +111,8 @@ public class TowerData : ScriptableObject
 
     //How much damage the dot will do?
     [SerializeField]
-    private float _damageOverTime;
-    public float Dot { get => _damageOverTime; private set => _damageOverTime = value; }
+    private int _damageOverTime;
+    public int Dot { get => _damageOverTime; private set => _damageOverTime = value; }
 
     //Duration of the dot in seconds
     [SerializeField]

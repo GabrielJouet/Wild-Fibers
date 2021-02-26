@@ -190,9 +190,9 @@ MonoBehaviour:
     type: 3}
   _particleEmissionsPoints:
   - {fileID: 1049263690152909913}
-  _numberOfParticles: 3
   _healthMax: 10
   _armorMax: 10
+  _resistanceMax: 0
   _speedMax: 0.1
   _numberOfLivesTaken: 1
   _goldGained: 0

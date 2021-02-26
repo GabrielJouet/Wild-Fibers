@@ -190,9 +190,9 @@ MonoBehaviour:
     type: 3}
   _particleEmissionsPoints:
   - {fileID: 1049263690152909913}
-  _numberOfParticles: 4
   _healthMax: 2000
   _armorMax: 45
+  _resistanceMax: 0
   _speedMax: 0.075
   _numberOfLivesTaken: 20
   _goldGained: 450
@@ -204,8 +204,6 @@ MonoBehaviour:
   _spawnTime: 0.8
   _stopWhileSpawning: 1
   _numberOfEnemiesPerSpawn: 3
-  _walkDirtParticle: {fileID: 4405452952222755525, guid: a4f95f77d8adb1245b064ec92efa76c3,
-    type: 3}
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0

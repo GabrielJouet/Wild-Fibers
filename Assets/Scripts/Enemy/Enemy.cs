@@ -94,6 +94,20 @@ public class Enemy : MonoBehaviour
     protected float _armor;
     public float Armor { get => _armor; protected set => _armor = value; }
 
+
+    /// <summary>
+    /// Resistance max value (resistance is used for dot and magic attacks).
+    /// </summary>
+    [SerializeField]
+    protected float _resistanceMax;
+    public float ResistanceMax { get => _resistanceMax; protected set => _resistanceMax = value; }
+
+    /// <summary>
+    /// Current resistance.
+    /// </summary>
+    public float Resistance { get; protected set; }
+
+
     /// <summary>
     /// Speed max.
     /// </summary>
@@ -235,6 +249,7 @@ public class Enemy : MonoBehaviour
         _speed = _speedMax;
         _health = _healthMax;
         _armor = _armorMax;
+        Resistance = ResistanceMax;
 
         _healthBar.ResetSize();
 
@@ -333,6 +348,8 @@ public class Enemy : MonoBehaviour
     {
         if(!_isSlowDown)
         {
+            slowDownRatio -= (slowDownRatio * Resistance) / 100f;
+
             _isSlowDown = true;
             StartCoroutine(ResetSlowDown(slowDownTime));
             _speed = _speedMax * (100 - slowDownRatio) / 100f;
@@ -358,16 +375,16 @@ public class Enemy : MonoBehaviour
     /// <param name="healthMalus">How much damage the enemy will take every 0.5 sec?</param>
     /// <param name="duration">Duration of the dot</param>
     /// <param name="newIcon">The new dot icon</param>
-    public void ApplyDot(float armorThroughMalus, float healthMalus, float duration, Sprite newIcon)
+    public void ApplyDot(float armorThroughMalus, int healthMalus, float duration, Sprite newIcon)
     {
-        _healthMalus = healthMalus;
+        _healthMalus = Mathf.Clamp(healthMalus - (healthMalus * Resistance) / 100f, 1, healthMalus);
         _dotDuration = duration;
         _dotDisplay.sprite = newIcon;
 
         if(!_dotApplied && isActiveAndEnabled)
         {
             StartCoroutine(TakePersistentDamage());
-            _armor -= armorThroughMalus;
+            _armor -= armorThroughMalus - (armorThroughMalus * Resistance) / 100f;
         }
     }
 
