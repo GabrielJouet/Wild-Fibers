@@ -63,6 +63,9 @@ public class RootsStump : Tower
             _spawnedRoot = _towerData.Shots - 1;
             StartCoroutine(SummonSpike());
         }
+        else
+            for (int i = 0; i < _towerData.Shots; i++)
+                StartCoroutine(SummonSpike());
     }
 
 
