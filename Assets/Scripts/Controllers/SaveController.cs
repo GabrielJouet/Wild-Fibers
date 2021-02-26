@@ -66,6 +66,8 @@ public class SaveController : MonoBehaviour
 				FileStream file = File.OpenRead(_gameSavePath);
 				SaveFile = (SaveFile)_binaryFormatter.Deserialize(file);
 				file.Close();
+
+				CheckSaveVersionNumber();
 			}
 			catch
 			{
@@ -81,6 +83,39 @@ public class SaveController : MonoBehaviour
 
 
 	/// <summary>
+	/// Method used to check the version number before loading save.
+	/// </summary>
+	private void CheckSaveVersionNumber()
+	{
+		if (string.IsNullOrEmpty(SaveFile.VersionNumber))
+			ResetData();
+		else
+		{
+			string[] savedVersionNumber = SaveFile.VersionNumber.Split('.');
+			string[] currentVersionNumber = Application.version.Split('.');
+
+			if (int.Parse(currentVersionNumber[0]) > int.Parse(savedVersionNumber[0]))
+				AddLevelData();
+			else if (int.Parse(currentVersionNumber[0]) == int.Parse(savedVersionNumber[0]) && int.Parse(currentVersionNumber[1]) > int.Parse(savedVersionNumber[1]))
+				AddLevelData();
+		}
+	}
+
+
+	/// <summary>
+	/// Method used to create a new level save.
+	/// </summary>
+	private void AddLevelData()
+	{
+		int missingLevels = Levels.Count - SaveFile.Saves.Count;
+
+		if (missingLevels > 0)
+			for (int i = 0; i < missingLevels; i++)
+				SaveFile.Saves.Add(new LevelSave(0, LevelState.UNLOCKED));
+	}
+
+
+	/// <summary>
 	/// Method used to create a new save if inexistant.
 	/// </summary>
 	private void CreateSave()
@@ -90,7 +125,7 @@ public class SaveController : MonoBehaviour
 		for (int i = 0; i < Levels.Count; i ++)
 			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED));
 
-		SaveFile = new SaveFile(allSaves, 1, 1);
+		SaveFile = new SaveFile(Application.version, allSaves, 1, 1);
 
 		SaveData();
 	}
