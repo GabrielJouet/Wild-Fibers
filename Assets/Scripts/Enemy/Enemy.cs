@@ -77,8 +77,7 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Current health.
     /// </summary>
-    protected float _health;
-    public float Health { get => _health; }
+    public float Health { get; protected set; }
 
 
     /// <summary>
@@ -91,8 +90,7 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Current armor.
     /// </summary>
-    protected float _armor;
-    public float Armor { get => _armor; protected set => _armor = value; }
+    public float Armor { get; protected set; }
 
 
     /// <summary>
@@ -113,12 +111,12 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected float _speedMax;
-    public float Speed { get => _speedMax; protected set => _speedMax = value; }
+    public float SpeedMax { get => _speedMax; protected set => _speedMax = value; }
 
     /// <summary>
     /// Current speed.
     /// </summary>
-    protected float _speed;
+    protected float Speed { get; set; }
 
 
     /// <summary>
@@ -246,9 +244,9 @@ public class Enemy : MonoBehaviour
         _healthMalus = 0;
         gameObject.SetActive(true);
 
-        _speed = _speedMax;
-        _health = _healthMax;
-        _armor = _armorMax;
+        Speed = SpeedMax;
+        Health = HealthMax;
+        Armor = ArmorMax;
         Resistance = ResistanceMax;
 
         _healthBar.ResetSize();
@@ -288,7 +286,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     protected void FollowPath()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _path[_pathIndex], Time.deltaTime * _speed);
+        transform.position = Vector3.MoveTowards(transform.position, _path[_pathIndex], Time.deltaTime * Speed);
 
         if ((Vector2)transform.position == _path[_pathIndex] && _pathIndex + 1 < _path.Count)
             _pathIndex++;
@@ -309,7 +307,7 @@ public class Enemy : MonoBehaviour
         float armorThrough = data.ArmorThrough;
         float damage = data.Damage;
 
-        int damageLeft = Mathf.FloorToInt(_armor - armorThrough < 0 ? damage + (damage * (armorThrough - _armor)/100)/2 : damage - ((_armor - armorThrough)/100 * damage));
+        int damageLeft = Mathf.FloorToInt(Armor - armorThrough < 0 ? damage + (damage * (armorThrough - Armor)/100)/2 : damage - ((Armor - armorThrough)/100 * damage));
 
         if (Attacks.Count > 0 && Attacks.Contains(data))
             Attacks.Remove(data);
@@ -330,12 +328,12 @@ public class Enemy : MonoBehaviour
     /// <param name="damage">The amount of damage the enemy is taking</param>
     public void TakeDamage(float damage)
     {
-        if (_health - damage <= 0)
+        if (Health - damage <= 0)
             Die(false);
         else
-            _health -= damage;
+            Health -= damage;
 
-        _healthBar.ChangeSize(_health / _healthMax);
+        _healthBar.ChangeSize(Health / _healthMax);
     }
 
 
@@ -352,7 +350,7 @@ public class Enemy : MonoBehaviour
 
             _isSlowDown = true;
             StartCoroutine(ResetSlowDown(slowDownTime));
-            _speed = _speedMax * (100 - slowDownRatio) / 100f;
+            Speed = _speedMax * (100 - slowDownRatio) / 100f;
         }
     }
 
@@ -364,7 +362,7 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(slowDownTime);
         _isSlowDown = false;
-        _speed = _speedMax;
+        Speed = _speedMax;
     }
 
 
@@ -384,7 +382,7 @@ public class Enemy : MonoBehaviour
         if(!_dotApplied && isActiveAndEnabled)
         {
             StartCoroutine(TakePersistentDamage());
-            _armor -= armorThroughMalus - (armorThroughMalus * Resistance) / 100f;
+            Armor -= armorThroughMalus - (armorThroughMalus * Resistance) / 100f;
         }
     }
 
@@ -406,7 +404,7 @@ public class Enemy : MonoBehaviour
         AlreadyDotted = false;
         _dotDisplay.sprite = null;
         _dotApplied = false;
-        _armor = _armorMax;
+        Armor = _armorMax;
     }
 
 
@@ -463,12 +461,12 @@ public class Enemy : MonoBehaviour
         foreach (TowerData current in Attacks)
             total += Mathf.FloorToInt(_armorMax - armorThrough < 0 ? damage + (damage * (armorThrough - _armorMax) / 100) / 2 : damage - ((_armorMax - armorThrough) / 100 * damage));
 
-        return _health - total > 0;
+        return Health - total > 0;
     }
 
     public bool WillDieSoon()
     {
-        return _health - (_dotDuration * 2 * _healthMalus) <= 0;
+        return Health - (_dotDuration * 2 * _healthMalus) <= 0;
     }
 
     /// <summary>

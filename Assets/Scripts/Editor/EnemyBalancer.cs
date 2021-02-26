@@ -38,7 +38,7 @@ public class EnemyBalancer : EditorWindow
 
             _newHealth = _loadedEnemy.HealthMax;
             _newArmor = _loadedEnemy.ArmorMax;
-            _newSpeed = _loadedEnemy.Speed;
+            _newSpeed = _loadedEnemy.SpeedMax;
             _newNumberOfLives = _loadedEnemy.LivesTaken;
             _newFlying = _loadedEnemy.Flying;
         }
