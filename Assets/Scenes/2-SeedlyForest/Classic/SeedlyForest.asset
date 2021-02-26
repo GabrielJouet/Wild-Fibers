@@ -19,13 +19,14 @@ MonoBehaviour:
   _playSceneName: SeedlyForest
   _levelType: 0
   _availableWaves:
-  - {fileID: 11400000, guid: 0f67b46556aa6ca4fa37607ab95b2d3e, type: 2}
-  - {fileID: 11400000, guid: 75871b8af6b7b5e43b47949063150576, type: 2}
-  - {fileID: 11400000, guid: 9baf7e9109e9eaa4ab13b249480fbe5e, type: 2}
-  - {fileID: 11400000, guid: 7be3f4bdfbabd4f46bcab10a933c85df, type: 2}
-  - {fileID: 11400000, guid: 8c0c0ce2d0a82c84ea2371bcf2779097, type: 2}
-  - {fileID: 11400000, guid: 053c2f26e18464b4ca1848aed267606f, type: 2}
+  - {fileID: 11400000, guid: 594615787a2c0604d91ebb49819a3d6a, type: 2}
+  - {fileID: 11400000, guid: bd06a51b28cced446a22fe6ba57aa341, type: 2}
+  - {fileID: 11400000, guid: 71af9e0a227d7ea46b52ba14b3df35cd, type: 2}
+  - {fileID: 11400000, guid: 67a66a5b6b1ca4444a9f6ddbf5875c6c, type: 2}
+  - {fileID: 11400000, guid: cf43aa27d8b045c40a1a160e61cbfba3, type: 2}
+  - {fileID: 11400000, guid: b460c7369bbb5524c89c7aea5f13ad33, type: 2}
   _lifeCount: 20
   _goldCount: 635
   _towerLevel: 1
   _goldMultiplier: 1
+  _blockedTowers: []
