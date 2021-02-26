@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -66,6 +66,7 @@ public class SaveController : MonoBehaviour
 				FileStream file = File.OpenRead(_gameSavePath);
 				SaveFile = (SaveFile)_binaryFormatter.Deserialize(file);
 				file.Close();
+				CheckSaveVersionNumber();
 			}
 			catch
 			{
@@ -80,6 +81,13 @@ public class SaveController : MonoBehaviour
 	}
 
 
+	private void CheckSaveVersionNumber()
+	{
+		if (string.IsNullOrEmpty(SaveFile.VersionNumber))
+			ResetData();
+	}
+
+
 	/// <summary>
 	/// Method used to create a new save if inexistant.
 	/// </summary>
@@ -90,7 +98,7 @@ public class SaveController : MonoBehaviour
 		for (int i = 0; i < Levels.Count; i ++)
 			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED));
 
-		SaveFile = new SaveFile(allSaves, 1, 1);
+		SaveFile = new SaveFile(Application.version, allSaves, 1, 1);
 
 		SaveData();
 	}
