@@ -30,6 +30,18 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private Text _sideDescription;
 
+    [SerializeField]
+    private Sprite _sideLevelIcon;
+
+    [SerializeField]
+    private Sprite _sideLevelLockedIcon;
+
+    [SerializeField]
+    private Sprite _challengeLevelIcon;
+
+    [SerializeField]
+    private Sprite _challengeLevelLockedIcon;
+
     /// <summary>
     /// Launch battle menu button.
     /// </summary>
@@ -105,8 +117,13 @@ public class LevelSelection : MonoBehaviour
         _sideLayout.SetActive(false);
 
         LevelSave buffer = _saveController.RecoverLevelSave(_level.Classic);
-        _sideButton.enabled = buffer.State == LevelState.COMPLETED || buffer.State == LevelState.SIDED || buffer.State == LevelState.CHALLENGED;
-        _challengeButton.enabled = buffer.State == LevelState.SIDED || buffer.State == LevelState.CHALLENGED;
+        bool sideUnlocked = buffer.State == LevelState.COMPLETED || buffer.State == LevelState.SIDED || buffer.State == LevelState.CHALLENGED;
+        _sideButton.enabled = sideUnlocked;
+        _sideButton.transform.GetChild(0).GetComponent<Image>().sprite = sideUnlocked ? _sideLevelIcon : _sideLevelLockedIcon;
+
+        bool challengeUnlocked = buffer.State == LevelState.SIDED || buffer.State == LevelState.CHALLENGED;
+        _challengeButton.enabled = challengeUnlocked;
+        _challengeButton.transform.GetChild(0).GetComponent<Image>().sprite = challengeUnlocked ? _challengeLevelIcon : _challengeLevelLockedIcon;
 
         _levelName.text = _level.Classic.Name;
         _levelPicture.sprite = _level.Classic.Picture;
