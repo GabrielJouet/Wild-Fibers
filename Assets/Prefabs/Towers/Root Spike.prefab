@@ -128,7 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 376f1868ae61e554d8e6399ef4e7a63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spriteRenderer: {fileID: 6041825930671476915}
   _transform: {fileID: 1515301567030329547}
 --- !u!1 &4021254742804779215
 GameObject:

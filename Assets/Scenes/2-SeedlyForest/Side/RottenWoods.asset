@@ -29,3 +29,4 @@ MonoBehaviour:
   _goldCount: 755
   _towerLevel: 1
   _goldMultiplier: 0.75
+  _blockedTowers: []

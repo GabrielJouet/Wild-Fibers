@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bb2efbe7f663494a95445f6e17d8360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _level: {fileID: 0}
   _waveText: {fileID: 0}
   _gameOverScreen: {fileID: 0}
   _spawnerPrefab: {fileID: 3737898244477904241, guid: 0e99a190fc65e1641be113fee59fcec3,
@@ -120,9 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lifeText: {fileID: 0}
+  _lifeIconAnimator: {fileID: 0}
   _goldText: {fileID: 0}
   _goldIconAnimator: {fileID: 0}
-  _gameOverScreen: {fileID: 0}
 --- !u!114 &5328857676684429541
 MonoBehaviour:
   m_ObjectHideFlags: 0
