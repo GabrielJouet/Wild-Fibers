@@ -179,6 +179,7 @@ MonoBehaviour:
   _endPoint: {fileID: 693515325}
   _parameterEndPoint: {fileID: 347627452}
   _numberOfIterations: 100
+  _activateGizmos: 0
 --- !u!1 &64854280
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +549,7 @@ MonoBehaviour:
   _endPoint: {fileID: 997759467}
   _parameterEndPoint: {fileID: 156550303}
   _numberOfIterations: 100
+  _activateGizmos: 0
 --- !u!1 &136733149
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +600,7 @@ MonoBehaviour:
   _endPoint: {fileID: 0}
   _parameterEndPoint: {fileID: 1639836133}
   _numberOfIterations: 100
+  _activateGizmos: 0
 --- !u!1001 &143394497
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1430,7 +1433,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _poolController
       value: 
-      objectReference: {fileID: 571994284821652883}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1640,6 +1643,7 @@ MonoBehaviour:
   _endPoint: {fileID: 64854281}
   _parameterEndPoint: {fileID: 1821485951}
   _numberOfIterations: 100
+  _activateGizmos: 0
 --- !u!1001 &299505050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1933,6 +1937,7 @@ MonoBehaviour:
   _endPoint: {fileID: 246045898}
   _parameterEndPoint: {fileID: 247093251}
   _numberOfIterations: 100
+  _activateGizmos: 0
 --- !u!1001 &369709553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2725,6 +2730,7 @@ MonoBehaviour:
   _endPoint: {fileID: 1940935361}
   _parameterEndPoint: {fileID: 1089585581}
   _numberOfIterations: 100
+  _activateGizmos: 0
 --- !u!1001 &648394238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2800,7 +2806,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _poolController
       value: 
-      objectReference: {fileID: 571994284821652883}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_Sprite
@@ -5430,7 +5436,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _poolController
       value: 
-      objectReference: {fileID: 571994284821652883}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_SortingLayer
@@ -5778,7 +5784,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _poolController
       value: 
-      objectReference: {fileID: 571994284821652883}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6186,7 +6192,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _poolController
       value: 
-      objectReference: {fileID: 571994284821652883}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8124,6 +8130,7 @@ MonoBehaviour:
   _endPoint: {fileID: 1869960494}
   _parameterEndPoint: {fileID: 865646176}
   _numberOfIterations: 100
+  _activateGizmos: 0
 --- !u!1001 &1851883539
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9199,7 +9206,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _poolController
       value: 
-      objectReference: {fileID: 571994284821652883}
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9508,6 +9515,7 @@ MonoBehaviour:
   _endPoint: {fileID: 2022270376}
   _parameterEndPoint: {fileID: 650676743}
   _numberOfIterations: 100
+  _activateGizmos: 0
 --- !u!1001 &571994284821652882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9722,18 +9730,6 @@ PrefabInstance:
     - {fileID: 1879505416876800381, guid: 3a3887dcbdbd89b499727d31651bc979, type: 3}
     - {fileID: 5992218026404021553, guid: 3a3887dcbdbd89b499727d31651bc979, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3a3887dcbdbd89b499727d31651bc979, type: 3}
---- !u!114 &571994284821652883 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7986863445577414007, guid: 3a3887dcbdbd89b499727d31651bc979,
-    type: 3}
-  m_PrefabInstance: {fileID: 571994284821652882}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5119875402b31374e8b52d8410981f38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &571994284821652885 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5844063550827791730, guid: 3a3887dcbdbd89b499727d31651bc979,

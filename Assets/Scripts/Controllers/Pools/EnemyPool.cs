@@ -96,6 +96,20 @@ public class EnemyPool : MonoBehaviour
     }
 
 
+
+    /// <summary>
+    /// Method to add one enemy to the pool
+    /// </summary>
+    /// <param name="newEnemy">The enemy to recover</param>
+    public void AddOneEnemy(Enemy newEnemy)
+    {
+        _livingEnemies.Remove(newEnemy);
+
+        newEnemy.gameObject.SetActive(false);
+        _enemyPool.Push(newEnemy);
+    }
+
+
     /// <summary>
     /// Method called by spawner when the wave is finished spawning.
     /// </summary>
@@ -107,5 +121,17 @@ public class EnemyPool : MonoBehaviour
 
         if (_livingEnemies.Count == 0)
             _spawner.AllEnemiesKilled();
+    }
+
+
+    /// <summary>
+    /// Method called by pool controller when the level is either loading or unloading.
+    /// </summary>
+    public void DesactivateEnemies()
+    {
+        List<Enemy> bufferList = new List<Enemy>(_livingEnemies);
+
+        foreach (Enemy current in bufferList)
+            AddOneEnemy(current);
     }
 }

@@ -7,7 +7,6 @@ using UnityEngine.UI;
 /// Class used to store and manage level resources.
 /// </summary>
 [RequireComponent(typeof(RessourceController))]
-[RequireComponent(typeof(PoolController))]
 public class LevelController : MonoBehaviour
 {
     [Header("UI related")]
@@ -88,7 +87,7 @@ public class LevelController : MonoBehaviour
         LoadedLevel = FindObjectOfType<SaveController>().LoadedLevel;
 
         _ressourceController = GetComponent<RessourceController>();
-        _poolController = GetComponent<PoolController>();
+        _poolController = FindObjectOfType<PoolController>();
 
         _waveText.text = 0 + " / " + LoadedLevel.Waves.Count;
     }
@@ -190,6 +189,7 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private IEnumerator DelayGameScreen(bool lose)
     {
+        _poolController.DesactivateEntities();
         yield return new WaitForSeconds(1f);
         _gameOverScreen.Activate(!lose);
     }

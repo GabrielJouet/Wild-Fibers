@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(RessourceController))]
 public class PoolController : MonoBehaviour
 {
     /// <summary>
@@ -36,7 +35,9 @@ public class PoolController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _ressourceController = GetComponent<RessourceController>();
+        if (FindObjectsOfType<PoolController>().Length > 1)
+            Destroy(gameObject);
+
         TowerPool = Instantiate(_towerPoolPrefab, transform);
     }
 
@@ -49,6 +50,9 @@ public class PoolController : MonoBehaviour
     /// <returns>The wanted enemy pool</returns>
     public EnemyPool RecoverEnemyPool(Enemy wantedEnemy)
     {
+        if (_ressourceController == null)
+            _ressourceController = FindObjectOfType<RessourceController>();
+
         foreach (EnemyPool current in _enemyPools)
             if (current.Enemy.Name == wantedEnemy.Name)
                 return current;
@@ -77,6 +81,21 @@ public class PoolController : MonoBehaviour
         _projectilePools.Add(newPool);
 
         return newPool;
+    }
+    
+
+    /// <summary>
+    /// Method called by level controller or change scene when the level is either loading or unloading.
+    /// </summary>
+    public void DesactivateEntities()
+    {
+        TowerPool.DesactivateTowers();
+
+        foreach (ProjectilePool current in _projectilePools)
+            current.DesactivateProjectiles();
+
+        foreach (EnemyPool current in _enemyPools)
+            current.DesactivateEnemies();
     }
     #endregion
 }

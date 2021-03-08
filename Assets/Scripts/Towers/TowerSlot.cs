@@ -18,12 +18,6 @@ public class TowerSlot : MonoBehaviour
     private RessourceController _ressourceController;
 
     /// <summary>
-    /// Level controller is used to recover pools.
-    /// </summary>
-    [SerializeField]
-    private PoolController _poolController;
-
-    /// <summary>
     /// Information UI.
     /// </summary>
     [SerializeField]
@@ -35,6 +29,11 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private Animator _shadowAnimator;
 
+
+    /// <summary>
+    /// Level controller is used to recover pools.
+    /// </summary>
+    private PoolController _poolController;
 
     /// <summary>
     /// Collider component.
@@ -60,6 +59,7 @@ public class TowerSlot : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        _poolController = FindObjectOfType<PoolController>();
         _animator = GetComponent<Animator>();
         _collider = GetComponent<CapsuleCollider2D>();
     }

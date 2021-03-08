@@ -17,6 +17,11 @@ public class TowerPool : MonoBehaviour
     /// </summary>
     private readonly Stack<GameObject> _towerPool = new Stack<GameObject>();
 
+    /// <summary>
+    /// Towers instantiated but activated.
+    /// </summary>
+    private readonly List<GameObject> _towerUsed = new List<GameObject>();
+
 
 
     /// <summary>
@@ -28,6 +33,8 @@ public class TowerPool : MonoBehaviour
         GameObject newTower = _towerPool.Count > 0 ? _towerPool.Pop() : Instantiate(_towerPrefab, transform);
         newTower.gameObject.SetActive(true);
 
+        _towerUsed.Add(newTower);
+
         return newTower;
     }
 
@@ -38,8 +45,22 @@ public class TowerPool : MonoBehaviour
     /// <param name="newTower">The tower to add</param>
     public void AddOneTower(GameObject newTower)
     {
+        _towerUsed.Remove(newTower);
+
         Destroy(newTower.GetComponent<Tower>());
         newTower.gameObject.SetActive(false);
         _towerPool.Push(newTower);
+    }
+
+
+    /// <summary>
+    /// Method called by pool controller when the level is either loading or unloading.
+    /// </summary>
+    public void DesactivateTowers()
+    {
+        List<GameObject> bufferList = new List<GameObject>(_towerUsed);
+
+        foreach (GameObject current in bufferList)
+            AddOneTower(current);
     }
 }
