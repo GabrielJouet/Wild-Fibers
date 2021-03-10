@@ -19,12 +19,6 @@ public class DepthManagerEnhanced : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
 
 
-    /// <summary>
-    /// The main camera of the scene.
-    /// </summary>
-    private Camera _mainCamera;
-
-
 
     /// <summary>
     /// Awake method, used at first to initialize.
@@ -32,7 +26,6 @@ public class DepthManagerEnhanced : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _mainCamera = Camera.main;
     }
 
 
@@ -41,6 +34,6 @@ public class DepthManagerEnhanced : MonoBehaviour
     /// </summary>
     private void FixedUpdate()
     {
-        _spriteRenderer.sortingOrder = (int)_mainCamera.WorldToScreenPoint(_transform.position).y * -1;
+        _spriteRenderer.sortingOrder = (int)Camera.main.WorldToScreenPoint(_transform.position).y * -1;
     }
 }

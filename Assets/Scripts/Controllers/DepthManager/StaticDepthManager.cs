@@ -12,11 +12,6 @@ public class StaticDepthManager : MonoBehaviour
     /// </summary>
     private SpriteRenderer _spriteRenderer;
 
-    /// <summary>
-    /// The main camera of the scene.
-    /// </summary>
-    private Camera _mainCamera;
-
 
 
     /// <summary>
@@ -25,7 +20,6 @@ public class StaticDepthManager : MonoBehaviour
     private void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _mainCamera = Camera.main;
     }
 
 
@@ -34,6 +28,6 @@ public class StaticDepthManager : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        _spriteRenderer.sortingOrder = (int)_mainCamera.WorldToScreenPoint(transform.position).y * -1;
+        _spriteRenderer.sortingOrder = (int)Camera.main.WorldToScreenPoint(transform.position).y * -1;
     }
 }
