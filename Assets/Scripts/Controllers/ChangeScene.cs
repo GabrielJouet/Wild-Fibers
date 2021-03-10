@@ -16,7 +16,7 @@ public class ChangeScene : MonoBehaviour
 
         PoolController buffer = FindObjectOfType<PoolController>();
 
-        if (buffer != null)
+        if (buffer != null && FindObjectsOfType<LevelController>().Length > 0)
             buffer.DesactivateEntities();
     }
 }
