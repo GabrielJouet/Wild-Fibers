@@ -394,7 +394,7 @@ public class Enemy : MonoBehaviour
     protected IEnumerator TakePersistentDamage()
     {
         _dotApplied = true;
-        while(_dotDuration >= 0)
+        while(_dotDuration > 0)
         {
             _dotDuration -= 0.5f;
             TakeDamage(_healthMalus);
