@@ -189,8 +189,8 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private IEnumerator DelayGameScreen(bool lose)
     {
-        _poolController.DesactivateEntities();
         yield return new WaitForSeconds(1f);
+        _poolController.DesactivateEntities();
         _gameOverScreen.Activate(!lose);
     }
 }
