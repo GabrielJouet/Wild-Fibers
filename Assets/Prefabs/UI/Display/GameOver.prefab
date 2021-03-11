@@ -373,8 +373,7 @@ MonoBehaviour:
   - {fileID: 1694688511078513423}
   - {fileID: 3539044188182304782}
   - {fileID: 3818703302126455013}
-  _activatedSprite: {fileID: 5996035586896539829, guid: 3e625946b2ae3f04cb8691e7d858376b,
-    type: 3}
+  _activatedSprite: {fileID: 21300000, guid: 05d8577a4bc817749a9e1b909563ee6a, type: 3}
   _levelController: {fileID: 0}
   _ressourceController: {fileID: 0}
   _boxCollider: {fileID: 8003525029727756633}

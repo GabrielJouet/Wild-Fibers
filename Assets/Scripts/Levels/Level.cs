@@ -17,13 +17,6 @@ public class Level : ScriptableObject
     public string Name { get => _name; }
 
     /// <summary>
-    /// Level number.
-    /// </summary>
-    [SerializeField]
-    private int _number;
-    public int Number { get => _number; }
-
-    /// <summary>
     /// Level thumbnail.
     /// </summary>
     [SerializeField]
@@ -43,6 +36,13 @@ public class Level : ScriptableObject
     [SerializeField]
     private string _playSceneName;
     public string Scene { get => _playSceneName; }
+
+    /// <summary>
+    /// Level type: classic, side or challenge.
+    /// </summary>
+    [SerializeField]
+    private LevelType _levelType;
+    public LevelType Type { get => _levelType; }
 
 
     [Header("In play")]
@@ -72,12 +72,45 @@ public class Level : ScriptableObject
     private int _goldCount;
     public int Gold { get => _goldCount; }
 
-    [Space(10)]
+    /// <summary>
+    /// Max tower level available.
+    /// </summary>
+    [SerializeField]
+    [Range(0, 3)]
+    private int _towerLevel;
+    public int TowerLevel { get => _towerLevel; }
+
+    /// <summary>
+    /// Gold multiplier for income gold.
+    /// </summary>
+    [SerializeField]
+    [Range(0f, 1f)]
+    private float _goldMultiplier;
+    public float GoldMultiplier { get => _goldMultiplier; }
+
+    /// <summary>
+    /// Non-allowed towers in this level.
+    /// </summary>
+    [SerializeField]
+    private List<TowerData> _blockedTowers;
+    public List<TowerData> BlockedTowers { get => _blockedTowers; }
+
 
     /// <summary>
     /// Enemies type in the level.
     /// </summary>
-    [SerializeField]
-    private List<Enemy> _enemyAvailables;
-    public List<Enemy> Enemies { get => _enemyAvailables; }
+    public List<Enemy> Enemies 
+    { 
+        get
+        {
+            List<Enemy> availableEnemies = new List<Enemy>();
+
+            foreach (Wave current in _availableWaves)
+                foreach (EnemyGroup buffer in current.EnemyGroups)
+                    if (!availableEnemies.Contains(buffer.Enemy.GetComponent<Enemy>()))
+                        availableEnemies.Add(buffer.Enemy.GetComponent<Enemy>());
+
+            return availableEnemies;
+        } 
+    }
 }

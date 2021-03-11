@@ -13,5 +13,10 @@ public class ChangeScene : MonoBehaviour
     public void LoadScene(string destinationName)
     {
         SceneManager.LoadScene(destinationName);
+
+        PoolController buffer = FindObjectOfType<PoolController>();
+
+        if (buffer != null && FindObjectsOfType<LevelController>().Length > 0)
+            buffer.DesactivateEntities();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -6,106 +7,37 @@ using UnityEngine;
 /// </summary>
 public class Tower : MonoBehaviour
 {
-    [Header("Description")]
-
-    /// <summary>
-    /// Display name.
-    /// </summary>
     [SerializeField]
-    protected string _displayName;
-    public string Name { get => _displayName; }
+    protected TowerData _towerData;
+    public TowerData Data { get => _towerData; }
 
-    /// <summary>
-    /// Price of the tower.
-    /// </summary>
-    [SerializeField]
-    protected int _price;
-    public int Price { get => _price; }
-
-    /// <summary>
-    /// Icon of the tower.
-    /// </summary>
-    [SerializeField]
-    protected Sprite _icon;
-    public Sprite Icon { get => _icon; }
-
-
-
-    [Header("Damage Related")]
-
-    /// <summary>
-    /// Time between attack in second.
-    /// </summary>
-    [SerializeField]
-    protected float _timeBetweenShots;
-    public float TimeShots { get => _timeBetweenShots; }
-
-    /// <summary>
-    /// Damage per attack.
-    /// </summary>
-    [SerializeField]
-    protected int _damage;
-    public int Damage { get => _damage; }
-
-    /// <summary>
-    /// Armor through on each attack.
-    /// </summary>
-    [SerializeField]
-    protected float _armorThrough;
-    public float ArmorThrough { get => _armorThrough; }
-
-    /// <summary>
-    /// Number of projectile per attack.
-    /// </summary>
-    [SerializeField]
-    protected int _numberOfShots;
-    public int Shots { get => _numberOfShots; }
-
-    /// <summary>
-    /// Projectile used in attack.
-    /// </summary>
-    [SerializeField]
-    protected GameObject _projectileUsed;
-    public GameObject Projectile { get => _projectileUsed; }
-
-    /// <summary>
-    /// Range of the tower.
-    /// </summary>
-    [SerializeField]
-    protected float _range;
-
-    /// <summary>
-    /// Collider used in range detection.
-    /// </summary>
-    [SerializeField]
-    protected GameObject _collider;
-
-    /// <summary>
-    /// Can the tower hits flying target?
-    /// </summary>
-    [SerializeField]
-    protected bool _canHitFlying;
-
-
-    [Header("In game")]
 
     /// <summary>
     /// Range display.
     /// </summary>
-    [SerializeField]
     protected Transform _transformRange;
+    protected Vector3 _initialRangeScale;
+
+    /// <summary>
+    /// Collider used in range detection.
+    /// </summary>
+    protected Transform _collider;
+    protected Vector3 _initialColliderScale;
+
+    protected SpriteRenderer _spriteRenderer;
+
+    protected SpriteRenderer _shadowSpriteRenderer;
 
     /// <summary>
     /// Selector object used when clicked.
     /// </summary>
-    [SerializeField]
     protected GameObject _selector;
 
 
     /// <summary>
     /// Information UI object.
     /// </summary>
-    private BackgroudSelecter _backgroundSelecter;
+    protected BackgroudSelecter _backgroundSelecter;
 
     /// <summary>
     /// The related tower slot.
@@ -137,6 +69,24 @@ public class Tower : MonoBehaviour
     /// </summary>
     protected TowerPool _towerPool;
 
+    public int CumulativeGold { get; protected set; } = 0;
+
+
+
+    protected void Awake()
+    {
+        _transformRange = transform.Find("Range");
+        _collider = transform.Find("Collider");
+
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _shadowSpriteRenderer = transform.Find("Shadow").GetComponent<SpriteRenderer>();
+
+        _selector = transform.Find("Selecter").gameObject;
+
+        _initialColliderScale = _collider.localScale;
+        _initialRangeScale = _transformRange.localScale;
+    }
+
 
 
     /// <summary>
@@ -147,21 +97,68 @@ public class Tower : MonoBehaviour
     /// <param name="newBackgroundSelecter">The background selecter component</param>
     /// <param name="newPool">The new projectile pool</param>
     /// <param name="newTowerPool">The new tower pool</param>
-    public void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool)
+    public virtual void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool, TowerData newData)
     {
-        StopAllCoroutines();
-        _availableEnemies.Clear();
-        _coroutineStarted = false;
+        SetDefaultValues(newData);
 
+        transform.position = newSlot.transform.position;
         _backgroundSelecter = newBackgroundSelecter;
         _ressourceController = newRessourceController;
         _projectilePool = newPool;
         _currentSlot = newSlot;
         _towerPool = newTowerPool;
 
-        transform.position = newSlot.transform.position;
-        _transformRange.localScale = _collider.transform.localScale * _range;
-        _collider.transform.localScale = _collider.transform.localScale * _range;
+        SpecialBehavior();
+    }
+
+    private void SetDefaultValues(TowerData newData)
+    {
+        _selector.SetActive(false);
+        _transformRange.gameObject.SetActive(false);
+
+        _towerData = newData;
+        CumulativeGold += _towerData.Price;
+
+        _spriteRenderer.sprite = _towerData.Sprite;
+        _shadowSpriteRenderer.sprite = _towerData.Shadow;
+
+        _transformRange.localScale = _initialRangeScale * _towerData.Range;
+        _collider.localScale = _initialColliderScale * (0.9f * _towerData.Range);
+
+        _collider.GetComponent<TowerCollider>().ParentTower = this;
+    }
+
+
+    protected virtual void SpecialBehavior() { }
+
+
+    /// <summary>
+    /// FixedUpdate, called 50 times a second.
+    /// </summary>
+    protected virtual void FixedUpdate()
+    {
+        if (_availableEnemies.Count > 0 && !_coroutineStarted)
+            StartCoroutine(SummonProjectile());
+    }
+
+
+    /// <summary>
+    /// Coroutine used to delay attacks.
+    /// </summary>
+    protected virtual IEnumerator SummonProjectile()
+    {
+        _coroutineStarted = true;
+
+        int numberOfStrikes = _availableEnemies.Count < _towerData.Shots ? _availableEnemies.Count : _towerData.Shots;
+
+        if (!_towerData.ShotsRandomly)
+            SortEnemies();
+
+        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
+            _projectilePool.GetOneProjectile().Initialize(_towerData, current, _projectilePool, transform);
+
+        yield return new WaitForSeconds(_towerData.TimeShots);
+        _coroutineStarted = false;
     }
 
 
@@ -172,21 +169,42 @@ public class Tower : MonoBehaviour
     /// </summary>
     public void ResellTower()
     {
-        _ressourceController.AddGold(Mathf.FloorToInt(_price / 4));
-        _backgroundSelecter.DisableTowerInformation();
+        ResellSpecialBehavior();
 
+        _ressourceController.AddGold(Mathf.FloorToInt(CumulativeGold / 4), false);
+
+        _backgroundSelecter.DisableTowerInformation();
         _backgroundSelecter.DisableTowerSellButton();
+
         _currentSlot.ResetSlot();
-        _towerPool.AddOneTower(this);
+        _towerPool.AddOneTower(gameObject);
     }
+
+
+    protected virtual void ResellSpecialBehavior() { }
 
 
     /// <summary>
     /// Method used to upgrade the tower.
     /// </summary>
-    public void UpgradeTower()
+    public void UpgradeTower(TowerData newData)
     {
-        //TO DO
+        _ressourceController.RemoveGold(newData.Price);
+
+        SetDefaultValues(newData);
+        _backgroundSelecter.DesactivateTower();
+
+        UpgradeSpecialBehavior();
+    }
+
+    protected virtual void UpgradeSpecialBehavior() { }
+
+    /// <summary>
+    /// Method used to add a spec to the tower.
+    /// </summary>
+    public virtual void AddSpec(TowerSpec newSpec)
+    {
+
     }
     #endregion 
 
@@ -199,7 +217,7 @@ public class Tower : MonoBehaviour
     /// <param name="enemy">The enemy to add</param>
     public void AddEnemy(Enemy enemy)
     {
-        if(!(!_canHitFlying && enemy.Flying))
+        if (!(!_towerData.HitFlying && enemy.Flying))
             _availableEnemies.Add(enemy);
     }
 
@@ -232,25 +250,37 @@ public class Tower : MonoBehaviour
     protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound)
     {
         List<Enemy> availableEnemies = new List<Enemy>();
-        int j;
+
+        if (_towerData.ShotsRandomly)
+            _availableEnemies.Shuffle();
+        else
+            SortEnemies();
 
         for(int i = 0; i < numberOfEnemiesToFound; i ++)
         {
-            j = -1;
-
-            do
-                j++;
-            while (j < _availableEnemies.Count && (_availableEnemies[j].AlreadyAimed || availableEnemies.Contains(_availableEnemies[j])));
-
-            if(j < _availableEnemies.Count)
+            foreach (Enemy buffer in _availableEnemies)
             {
-                availableEnemies.Add(_availableEnemies[j]);
+                if (!buffer.WillDieSoon())
+                {
+                    bool canDot = _towerData.Dot != 0;
+                    if (canDot && buffer.AlreadyDotted || availableEnemies.Contains(buffer))
+                        continue;
+                    else if (!canDot && buffer.AlreadyAimed || availableEnemies.Contains(buffer))
+                        continue;
+                    else
+                    {
+                        availableEnemies.Add(buffer);
 
-                if (!_availableEnemies[j].CanSurvive(_damage, _armorThrough))
-                    _availableEnemies[j].AlreadyAimed = true;
+                        if (!buffer.CanSurvive(_towerData))
+                            buffer.AlreadyAimed = true;
+
+                        if (canDot)
+                            buffer.AlreadyDotted = true;
+
+                        break;
+                    }
+                }
             }
-            else
-                availableEnemies.Add(_availableEnemies[i]);
         }
 
         return availableEnemies;

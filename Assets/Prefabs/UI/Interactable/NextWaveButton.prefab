@@ -221,6 +221,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelController: {fileID: 0}
   _animator: {fileID: 7284009044745296667}
+  _lastFrameCountDownSprite: {fileID: 8171800426467839558, guid: 07f23416fa91e2244813a73f9d03bdef,
+    type: 3}
 --- !u!1 &8456643784515552066
 GameObject:
   m_ObjectHideFlags: 0

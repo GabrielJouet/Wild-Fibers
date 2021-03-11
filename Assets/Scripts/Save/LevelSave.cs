@@ -9,23 +9,23 @@ public class LevelSave
     /// <summary>
     /// Number of lives lost on this level.
     /// </summary>
-    public int LivesLost { get; private set; }
+    public int SeedsGained { get; set; }
+
 
     /// <summary>
     /// Actual state of the level.
     /// </summary>
-    public LevelState State { get; private set; }
-
+    public LevelState State { get; set; }
 
 
     /// <summary>
     /// Constructor.
     /// </summary>
-    /// <param name="newLivesLost">Number of lives lost</param>
+    /// <param name="newSeedsGained">Number of seeds gained (related to lives lost)</param>
     /// <param name="newLevelState">New state</param>
-    public LevelSave(int newLivesLost, LevelState newLevelState)
+    public LevelSave(int newSeedsGained, LevelState newLevelState)
     {
-        LivesLost = newLivesLost;
+        SeedsGained = newSeedsGained;
         State = newLevelState;
     }
 }

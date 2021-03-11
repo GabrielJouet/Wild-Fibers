@@ -23,8 +23,8 @@ public class EnemyGroup
     /// Enemy used in this group.
     /// </summary>
     [SerializeField]
-    private Enemy _enemyUsed;
-    public Enemy Enemy { get => _enemyUsed; }
+    private GameObject _enemyUsed;
+    public GameObject Enemy { get => _enemyUsed; }
 
     [Min(0.1f)]
 

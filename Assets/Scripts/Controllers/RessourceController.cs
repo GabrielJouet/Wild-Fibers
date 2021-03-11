@@ -17,19 +17,22 @@ public class RessourceController : MonoBehaviour
     private Text _lifeText;
 
     /// <summary>
+    /// Health animator component updated each time we lose health.
+    /// </summary>
+    [SerializeField]
+    private Animator _lifeIconAnimator;
+
+    /// <summary>
     /// Gold text component used to display gold count.
     /// </summary>
     [SerializeField]
     private Text _goldText;
 
-    [SerializeField]
-    private Animator _goldIconAnimator;
-
     /// <summary>
-    /// Game over component called when the player does not have any lives left.
+    /// Gold animator component updated each time we gain money.
     /// </summary>
     [SerializeField]
-    private GameOverScreen _gameOverScreen;
+    private Animator _goldIconAnimator;
 
 
     /// <summary>
@@ -85,10 +88,15 @@ public class RessourceController : MonoBehaviour
     /// Add gold to count.
     /// </summary>
     /// <param name="count">Gold count added</param>
-    public void AddGold(int count)
+    /// <param name="applyMultiplier">Does the gold multiplier apply here?</param>
+    public void AddGold(int count, bool applyMultiplier)
     {
-        GoldCount += count;
-        _goldText.text = GoldCount.ToString();
+        if (count > 0f)
+        {
+            _goldIconAnimator.SetTrigger("lose");
+            GoldCount += Mathf.RoundToInt(count * (applyMultiplier ? _levelController.LoadedLevel.GoldMultiplier : 1));
+            _goldText.text = GoldCount.ToString();
+        }
     }
 
 
@@ -114,13 +122,12 @@ public class RessourceController : MonoBehaviour
     {
         if (_lifeCount > 0)
         {
-            _goldIconAnimator.SetTrigger("lose");
+            _lifeIconAnimator.SetTrigger("lose");
 
             if (_lifeCount - count <= 0)
             {
                 _lifeCount = 0;
-                _levelController.Ended = true;
-                _gameOverScreen.Activate(false);
+                _levelController.EndLevel(true);
             }
             else
                 _lifeCount -= count;

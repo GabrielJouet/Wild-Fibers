@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f93a738c01d9b44483aba2f0a4f91fa, type: 3}
+  m_Name: Roots Stump
+  m_EditorClassIdentifier: 
+  _description: An old stump with ferocious sharp roots
+  _price: 165
+  _icon: {fileID: 21300000, guid: bff7ca8cdc8698642aef3dfdd18ee513, type: 3}
+  _sprite: {fileID: 5698191664513791026, guid: d85b23dd25bcdec49a6528cafd18e59c, type: 3}
+  _shadowSprite: {fileID: -748965943684247502, guid: 45a27df0871ec9d4987415581c933c7e,
+    type: 3}
+  _projectileUsed: {fileID: 3530943198929188429, guid: 486543b54c3e008478b0aa8e5834702f,
+    type: 3}
+  _timeBetweenShots: 2.75
+  _damage: 15
+  _armorThrough: 15
+  _speed: 0.75
+  _numberOfShots: 3
+  _range: 1.2
+  _canHitFlying: 0
+  _shotsRandomly: 0
+  _armorThroughMalus: 0
+  _damageOverTime: 0
+  _dotDuration: 0
+  _dotIcon: {fileID: 0}
+  _towerUpgrades:
+  - {fileID: 11400000, guid: aceb2695358352a40a59841d085a4072, type: 2}
+  - {fileID: 11400000, guid: 58c1c5ad6fa9ece47897ac8f41e577d6, type: 2}
+  _towerSpecs: []
+  _scriptName: RootsStump

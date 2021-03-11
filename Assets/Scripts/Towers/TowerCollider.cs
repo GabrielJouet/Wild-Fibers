@@ -8,9 +8,14 @@ public class TowerCollider : MonoBehaviour
     /// <summary>
     /// Parent tower to notify.
     /// </summary>
-    [SerializeField]
-    private Tower _parentTower;
+    public Tower ParentTower { get; set; }
 
+
+
+    public void UpdateTower(Tower newTower)
+    {
+        ParentTower = newTower;
+    }
 
 
     /// <summary>
@@ -19,7 +24,7 @@ public class TowerCollider : MonoBehaviour
     /// <param name="enemy">The collided enemy</param>
     public void EnemyCollide(Enemy enemy)
     {
-        _parentTower.AddEnemy(enemy);
+        ParentTower.AddEnemy(enemy);
     }
 
 
@@ -29,6 +34,6 @@ public class TowerCollider : MonoBehaviour
     /// <param name="enemy">The collided enemy</param>
     public void EnemyExit(Enemy enemy)
     {
-        _parentTower.RemoveEnemy(enemy);
+        ParentTower.RemoveEnemy(enemy);
     }
 }

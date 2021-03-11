@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -458388408705700937, guid: 93b04c14bce50c742b1d7a2a3511e869,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6862745}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -154,7 +154,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -2168831734045163045, guid: 93b04c14bce50c742b1d7a2a3511e869,
     type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.6862745}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -288,7 +288,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _towerInformationPanel: {fileID: 0}
-  _towerIcon: {fileID: 0}
   _towerName: {fileID: 0}
   _damageText: {fileID: 0}
   _breakArmorText: {fileID: 0}
@@ -298,6 +297,5 @@ MonoBehaviour:
   _lifeValue: {fileID: 0}
   _armorValue: {fileID: 0}
   _livesLostValue: {fileID: 0}
-  _chooseButton: {fileID: 0}
-  _sellButton: {fileID: 0}
+  _towerButtonController: {fileID: 0}
   _canvas: {fileID: 0}

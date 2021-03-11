@@ -42,6 +42,10 @@ public class BezierCurve : MonoBehaviour
     private int _numberOfIterations;
 
 
+    [SerializeField]
+    private bool _activateGizmos;
+
+
     /// <summary>
     /// List of point creating the curve.
     /// </summary>
@@ -54,41 +58,47 @@ public class BezierCurve : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        /*for (int i = 0; i < transform.childCount; i ++)
+            transform.GetChild(i).GetComponent<SpriteRenderer>().enabled = false;
+        */
         ComputePath();
     }
 
 
-    /*
+    
     /// <summary>
     /// On draw Gizmos is used to display curve in editor.
     /// </summary>
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Vector3 lastPosition = _startPoint.position;
-        Vector3 A = _startPoint.position;
-        Vector3 D = _endPoint.position;
-        Vector3 B = _parameterStartPoint.position;
-        Vector3 C = _parameterEndPoint.position;
-
-        for (int i = 1; i <= _numberOfIterations; i++)
+        if (_activateGizmos)
         {
-            float t = i * 0.01f;
-            float oneMinusT = 1f - t;
+            Gizmos.color = Color.red;
+            Vector3 lastPosition = _startPoint.position;
+            Vector3 A = _startPoint.position;
+            Vector3 D = _endPoint.position;
+            Vector3 B = _parameterStartPoint.position;
+            Vector3 C = _parameterEndPoint.position;
 
-            Vector3 Q = oneMinusT * A + t * B;
-            Vector3 R = oneMinusT * B + t * C;
-            Vector3 S = oneMinusT * C + t * D;
+            for (int i = 1; i <= _numberOfIterations; i++)
+            {
+                float t = i * 0.01f;
+                float oneMinusT = 1f - t;
 
-            Vector3 P = oneMinusT * Q + t * R;
-            Vector3 T = oneMinusT * R + t * S;
+                Vector3 Q = oneMinusT * A + t * B;
+                Vector3 R = oneMinusT * B + t * C;
+                Vector3 S = oneMinusT * C + t * D;
 
-            Gizmos.DrawLine(lastPosition, oneMinusT * P + t * T);
+                Vector3 P = oneMinusT * Q + t * R;
+                Vector3 T = oneMinusT * R + t * S;
 
-            lastPosition = oneMinusT * P + t * T;
+                Gizmos.DrawLine(lastPosition, oneMinusT * P + t * T);
+
+                lastPosition = oneMinusT * P + t * T;
+            }
         }
     }
-    */
+    
 
 
     /// <summary>

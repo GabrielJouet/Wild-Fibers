@@ -100,7 +100,6 @@ MonoBehaviour:
   - {fileID: -7797489673257432820, guid: d46ab50a23eeb69468a7a6a5c81acd02, type: 3}
   - {fileID: 2711688447400804578, guid: d46ab50a23eeb69468a7a6a5c81acd02, type: 3}
   - {fileID: 172229616868531448, guid: d46ab50a23eeb69468a7a6a5c81acd02, type: 3}
-  _spriteRenderer: {fileID: 4405452952222755524}
   _liveTime: 0.25
   _horizontalMove: 0.5
   _verticalMove: 0.1

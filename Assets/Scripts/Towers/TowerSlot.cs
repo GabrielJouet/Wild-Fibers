@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -17,12 +18,6 @@ public class TowerSlot : MonoBehaviour
     private RessourceController _ressourceController;
 
     /// <summary>
-    /// Level controller is used to recover pools.
-    /// </summary>
-    [SerializeField]
-    private LevelController _levelController;
-
-    /// <summary>
     /// Information UI.
     /// </summary>
     [SerializeField]
@@ -34,6 +29,11 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private Animator _shadowAnimator;
 
+
+    /// <summary>
+    /// Level controller is used to recover pools.
+    /// </summary>
+    private PoolController _poolController;
 
     /// <summary>
     /// Collider component.
@@ -59,6 +59,7 @@ public class TowerSlot : MonoBehaviour
     /// </summary>
     private void Awake()
     {
+        _poolController = FindObjectOfType<PoolController>();
         _animator = GetComponent<Animator>();
         _collider = GetComponent<CapsuleCollider2D>();
     }
@@ -69,7 +70,7 @@ public class TowerSlot : MonoBehaviour
     /// Method used to create a new tower.
     /// </summary>
     /// <param name="tower">The chosen tower</param>
-    public void ChooseTower(Tower tower)
+    public void ChooseTower(TowerData tower)
     {
         _ressourceController.RemoveGold(tower.Price);
 
@@ -84,11 +85,10 @@ public class TowerSlot : MonoBehaviour
     /// </summary>
     /// <param name="tower">The chosen tower</param>
     /// <returns>Yield the construction time</returns>
-    private IEnumerator DelayConstruct(Tower tower)
+    private IEnumerator DelayConstruct(TowerData tower)
     {
-        Tower = tower;
-        _shadowAnimator.SetTrigger(Tower.Name);
-        _animator.SetTrigger(Tower.Name);
+        _shadowAnimator.SetTrigger(tower.name);
+        _animator.SetTrigger(tower.name);
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
         _shadowAnimator.SetTrigger("Base");
@@ -96,9 +96,12 @@ public class TowerSlot : MonoBehaviour
         yield return new WaitForEndOfFrame();
         _animator.SetTrigger("Base");
 
-        TowerPool currentPool = _levelController.RecoverTowerPool(Tower);
-        Tower = currentPool.GetOneTower();
-        Tower.Initialize(this, _ressourceController, _backgroundSelecter, _levelController.RecoverProjectilePool(Tower.Projectile.GetComponent<Projectile>()), currentPool);
+        TowerPool currentPool = _poolController.TowerPool;
+        GameObject buffer = currentPool.GetOneTower();
+        buffer.AddComponent(Type.GetType(string.IsNullOrEmpty(tower.Script) ? "Tower" : tower.Script));
+
+        Tower = buffer.GetComponent<Tower>();
+        Tower.Initialize(this, _ressourceController, _backgroundSelecter, _poolController.RecoverProjectilePool(tower.Projectile.GetComponent<Projectile>()), currentPool, tower);
     }
     #endregion
 
