@@ -45,7 +45,13 @@ public class EnemyPool : MonoBehaviour
     public void Initialize(Enemy newPrefab, RessourceController newRessourceController)
     {
         RessourceController = newRessourceController;
-        Enemy = newPrefab;
+
+        if(newPrefab != null)
+            Enemy = newPrefab;
+
+        _spawner = null;
+        _livingEnemies.Clear();
+        _waitForEnd = false;
     }
 
 

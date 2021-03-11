@@ -50,7 +50,7 @@ public class PoolController : MonoBehaviour
         _ressourceController = FindObjectOfType<RessourceController>();
 
         foreach (EnemyPool current in _enemyPools)
-            current.RessourceController = _ressourceController;
+            current.Initialize(null, _ressourceController);
     }
 
 
