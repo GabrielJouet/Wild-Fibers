@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: A lspiker and larger version of the bramble
   _price: 240
-  _icon: {fileID: 21300000, guid: 937f4fdadbb0a2e4fa9504908ea8f300, type: 3}
-  _sprite: {fileID: 1249832811290648610, guid: d66cd7d1ed7cd8844a044f06e18d4422, type: 3}
+  _icon: {fileID: 21300000, guid: ab0a42eb98b6a7e4e87f8b3679778576, type: 3}
+  _sprite: {fileID: 21300000, guid: 780864a8a6bfbbc40bfa291b810699f3, type: 3}
   _shadowSprite: {fileID: 4684895350081689219, guid: c7e168489f1f2224f8cada98fed0f4a7,
     type: 3}
   _projectileUsed: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,

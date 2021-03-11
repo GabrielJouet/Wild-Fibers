@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _description: A multi roots larger stump with a large range
   _price: 290
-  _icon: {fileID: 21300000, guid: bff7ca8cdc8698642aef3dfdd18ee513, type: 3}
-  _sprite: {fileID: 5698191664513791026, guid: d85b23dd25bcdec49a6528cafd18e59c, type: 3}
+  _icon: {fileID: 21300000, guid: 6427901d56730e8468944434a9d9bffd, type: 3}
+  _sprite: {fileID: 21300000, guid: be5a928fd9f833a47815fe52eb3f05e9, type: 3}
   _shadowSprite: {fileID: -748965943684247502, guid: 45a27df0871ec9d4987415581c933c7e,
     type: 3}
   _projectileUsed: {fileID: 3530943198929188429, guid: 486543b54c3e008478b0aa8e5834702f,
