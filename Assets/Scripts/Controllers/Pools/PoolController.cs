@@ -42,6 +42,18 @@ public class PoolController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method called everytime a level is loaded.
+    /// </summary>
+    public void ReInitialize()
+    {
+        _ressourceController = FindObjectOfType<RessourceController>();
+
+        foreach (EnemyPool current in _enemyPools)
+            current.RessourceController = _ressourceController;
+    }
+
+
     #region Pools related
     /// <summary>
     /// Recover one enemy pool.
@@ -50,9 +62,6 @@ public class PoolController : MonoBehaviour
     /// <returns>The wanted enemy pool</returns>
     public EnemyPool RecoverEnemyPool(Enemy wantedEnemy)
     {
-        if (_ressourceController == null)
-            _ressourceController = FindObjectOfType<RessourceController>();
-
         foreach (EnemyPool current in _enemyPools)
             if (current.Enemy.Name == wantedEnemy.Name)
                 return current;

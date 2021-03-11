@@ -88,6 +88,7 @@ public class LevelController : MonoBehaviour
 
         _ressourceController = GetComponent<RessourceController>();
         _poolController = FindObjectOfType<PoolController>();
+        _poolController.ReInitialize();
 
         _waveText.text = 0 + " / " + LoadedLevel.Waves.Count;
     }

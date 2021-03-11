@@ -19,7 +19,7 @@ public class EnemyPool : MonoBehaviour
     /// <summary>
     /// Ressource controller used when an enemy reaches the end.
     /// </summary>
-    private RessourceController _ressourceController;
+    public RessourceController RessourceController { get; set; }
 
     /// <summary>
     /// List of living enemies, in order to knowing when the wave is done.
@@ -44,7 +44,7 @@ public class EnemyPool : MonoBehaviour
     /// <param name="newRessourceController">The new resource controller to call</param>
     public void Initialize(Enemy newPrefab, RessourceController newRessourceController)
     {
-        _ressourceController = newRessourceController;
+        RessourceController = newRessourceController;
         Enemy = newPrefab;
     }
 
@@ -90,9 +90,9 @@ public class EnemyPool : MonoBehaviour
         _enemyPool.Push(newEnemy);
 
         if (stillAlive)
-            _ressourceController.RemoveLives(livesLostOrGoldGained);
+            RessourceController.RemoveLives(livesLostOrGoldGained);
         else
-            _ressourceController.AddGold(livesLostOrGoldGained, true);
+            RessourceController.AddGold(livesLostOrGoldGained, true);
     }
 
 
