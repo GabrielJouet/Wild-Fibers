@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -88,7 +88,6 @@ public class Tower : MonoBehaviour
     }
 
 
-
     /// <summary>
     /// Method used to initialize.
     /// </summary>
@@ -110,6 +109,7 @@ public class Tower : MonoBehaviour
 
         SpecialBehavior();
     }
+
 
     private void SetDefaultValues(TowerData newData)
     {
@@ -308,5 +308,17 @@ public class Tower : MonoBehaviour
         _transformRange.gameObject.SetActive(false);
         _selector.SetActive(false);
     }
+
+
+    public void DesactivateTower()
+    {
+        DesactivateRangeDisplay();
+
+        _collider.localScale = _initialColliderScale;
+        _transformRange.localScale = _initialRangeScale;
+
+        gameObject.SetActive(false);
+    }
+
     #endregion
 }
