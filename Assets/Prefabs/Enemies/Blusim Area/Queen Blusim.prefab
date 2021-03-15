@@ -193,7 +193,7 @@ MonoBehaviour:
   _healthMax: 2000
   _armorMax: 45
   _resistanceMax: 0
-  _speedMax: 0.075
+  _speedMax: 0.14
   _numberOfLivesTaken: 20
   _goldGained: 450
   _flying: 0
