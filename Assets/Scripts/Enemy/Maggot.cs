@@ -44,10 +44,6 @@ public class Maggot : Enemy, IShieldable, ISpawnable
 
     public int NumberOfEnemiesPerSpawn { get; }
 
-    public int PathWanted { get; } = 0;
-
-    public List<List<Vector2>> AvailablePaths { get; set; }
-
 
 
     /// <summary>

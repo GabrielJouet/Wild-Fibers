@@ -1,6 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public interface ISpawnable
 {
@@ -28,16 +26,6 @@ public interface ISpawnable
     /// How many enemies are spawned during each spawn.
     /// </summary>
     int NumberOfEnemiesPerSpawn { get; }
-
-    /// <summary>
-    /// The number of paths used by new enemies.
-    /// </summary>
-    int PathWanted { get; }
-
-    /// <summary>
-    /// Available paths generated.
-    /// </summary>
-    List<List<Vector2>> AvailablePaths { get; set; }
 
 
     /// <summary>
