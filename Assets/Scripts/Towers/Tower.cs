@@ -5,6 +5,8 @@ using UnityEngine;
 /// <summary>
 /// Tower class, main object of the game.
 /// </summary>
+/// <remarks>Needs a static depth manager</remarks>
+[RequireComponent(typeof(StaticDepthManager))]
 public class Tower : MonoBehaviour
 {
     [SerializeField]
@@ -106,6 +108,8 @@ public class Tower : MonoBehaviour
         _projectilePool = newPool;
         _currentSlot = newSlot;
         _towerPool = newTowerPool;
+
+        GetComponent<StaticDepthManager>().ResetSortingOrder();
 
         SpecialBehavior();
     }
