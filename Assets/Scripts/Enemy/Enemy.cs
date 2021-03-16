@@ -219,7 +219,7 @@ public class Enemy : MonoBehaviour
 
     protected List<TowerCollider> _towerColliders = new List<TowerCollider>();
 
-    protected bool _canBeTargeted = true;
+    public bool CanBeTargeted { get; protected set; } = true;
 
 
 
@@ -231,7 +231,7 @@ public class Enemy : MonoBehaviour
     /// <param name="pathIndex">Current progression on the path</param>
     public virtual void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
-        _canBeTargeted = true;
+        CanBeTargeted = true;
         _towerColliders.Clear();
         Attacks.Clear();
         AlreadyDotted = false;
@@ -452,17 +452,15 @@ public class Enemy : MonoBehaviour
     {
         Attacks.Add(newAttack);
 
+        if (newAttack.DotDuration != 0)
+            AlreadyDotted = true;
+
         float total = 0;
         foreach (TowerData current in Attacks)
             total += Mathf.FloorToInt(_armorMax - current.ArmorThrough < 0 ? current.Damage + (current.Damage * (current.ArmorThrough - _armorMax) / 100) / 2 : current.Damage - ((_armorMax - current.ArmorThrough) / 100 * current.Damage));
 
         if (Health - (_dotDuration * 2 * _healthMalus + total) <= 0)
-        {
-            _canBeTargeted = false;
-
-            foreach (TowerCollider current in _towerColliders)
-                current.EnemyExit(this);
-        }
+            CanBeTargeted = false;
 
     }
 
@@ -482,7 +480,7 @@ public class Enemy : MonoBehaviour
     /// <param name="collision">Collision object</param>
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out TowerCollider towerCollider) && _canBeTargeted)
+        if (collision.TryGetComponent(out TowerCollider towerCollider) && CanBeTargeted)
         {
             towerCollider.EnemyCollide(this);
             _towerColliders.Add(towerCollider);
