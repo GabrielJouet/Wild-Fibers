@@ -264,25 +264,16 @@ public class Tower : MonoBehaviour
         {
             foreach (Enemy buffer in _availableEnemies)
             {
-                if (!buffer.WillDieSoon())
+                bool canDot = _towerData.Dot != 0;
+                if (!canDot || !buffer.AlreadyDotted)
                 {
-                    bool canDot = _towerData.Dot != 0;
-                    if (canDot && buffer.AlreadyDotted || availableEnemies.Contains(buffer))
-                        continue;
-                    else if (!canDot && buffer.AlreadyAimed || availableEnemies.Contains(buffer))
-                        continue;
-                    else
-                    {
-                        availableEnemies.Add(buffer);
+                    availableEnemies.Add(buffer);
+                    buffer.AddAttack(_towerData);
 
-                        if (!buffer.CanSurvive(_towerData))
-                            buffer.AlreadyAimed = true;
+                    if (canDot)
+                        buffer.AlreadyDotted = true;
 
-                        if (canDot)
-                            buffer.AlreadyDotted = true;
-
-                        break;
-                    }
+                    break;
                 }
             }
         }
