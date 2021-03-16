@@ -3,17 +3,12 @@
     /// <summary>
     /// Default shield value.
     /// </summary>
-    float BaseShieldValue { get; set; }
+    int BaseShieldValue { get; set; }
 
     /// <summary>
     /// Default shield value.
     /// </summary>
     bool StopWhileShielding { get; }
-
-    /// <summary>
-    /// New shield value.
-    /// </summary>
-    float NewShieldValue { get; }
 
 
     /// <summary>

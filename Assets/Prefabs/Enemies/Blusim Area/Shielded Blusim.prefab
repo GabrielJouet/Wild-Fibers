@@ -192,7 +192,7 @@ MonoBehaviour:
   _particleEmissionsPoints:
   - {fileID: 1049263690152909913}
   _healthMax: 135
-  _armorMax: 65
+  _armorMax: 90
   _resistanceMax: 0
   _speedMax: 0.17
   _numberOfLivesTaken: 2
@@ -200,8 +200,8 @@ MonoBehaviour:
   _flying: 0
   _damagePosition: {fileID: 1049263690152909913}
   _timeBetweenShield: 10
-  _newShieldValue: 90
   _stopWhileShielding: 1
+  _baseShieldValue: 65
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0

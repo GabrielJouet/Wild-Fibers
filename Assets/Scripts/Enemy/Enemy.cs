@@ -480,7 +480,7 @@ public class Enemy : MonoBehaviour
     /// <param name="collision">Collision object</param>
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out TowerCollider towerCollider) && CanBeTargeted)
+        if (collision.TryGetComponent(out TowerCollider towerCollider))
         {
             towerCollider.EnemyCollide(this);
             _towerColliders.Add(towerCollider);
