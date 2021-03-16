@@ -18,17 +18,8 @@ public class RootsStump : Tower
     /// </summary>
     protected override void SpecialBehavior()
     {
-        _availableSpikes.Clear();
-
         for(int i = 0; i < _towerData.Shots; i ++)
-            StartCoroutine(SummonSpike());
-    }
-
-
-    protected override void ResellSpecialBehavior() 
-    { 
-        foreach(ChocSpikes current in _availableSpikes)
-            current.StopProjectile();
+            StartCoroutine(SummonSpike(true));
     }
 
 
@@ -43,7 +34,7 @@ public class RootsStump : Tower
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                StartCoroutine(SummonSpike());
+                StartCoroutine(SummonSpike(false));
 
                 _availableSpikes.Pop().StartFollowing(enemies[i], _towerData);
             }
@@ -57,27 +48,27 @@ public class RootsStump : Tower
     {
         StopAllCoroutines();
 
-        if (_towerData.Shots == 4 && _availableSpikes.Count > 0)
-        {
-            _availableSpikes.Peek().transform.position = GetSpikePosition(2);
-            _spawnedRoot = _towerData.Shots - 1;
-            StartCoroutine(SummonSpike());
-        }
-        else
-            for (int i = 0; i < _towerData.Shots; i++)
-                StartCoroutine(SummonSpike());
+        foreach (ChocSpikes current in _availableSpikes)
+            current.StopProjectile();
+
+        _availableSpikes.Clear();
+
+        for (int i = 0; i < _towerData.Shots; i++)
+            StartCoroutine(SummonSpike(true));
     }
 
 
     /// <summary>
     /// Method used to summon projectile needed.
     /// </summary>
-    protected virtual IEnumerator SummonSpike()
+    /// <param name="instant">Does the coroutine works intantly?</param>
+    protected virtual IEnumerator SummonSpike(bool instant)
     {
-        yield return new WaitForSeconds(_towerData.TimeShots);
+        if (!instant)
+            yield return new WaitForSeconds(_towerData.TimeShots);
+
         ChocSpikes buffer = _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>();
         buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_spawnedRoot));
-        buffer.transform.parent = transform;
 
         if (_spawnedRoot == _towerData.Shots - 1)
             _spawnedRoot = 0;
