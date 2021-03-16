@@ -19,7 +19,7 @@ public class RootsStump : Tower
     protected override void SpecialBehavior()
     {
         for(int i = 0; i < _towerData.Shots; i ++)
-            StartCoroutine(SummonSpike(true));
+            StartCoroutine(SummonSpike(0.25f));
     }
 
 
@@ -34,7 +34,7 @@ public class RootsStump : Tower
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                StartCoroutine(SummonSpike(false));
+                StartCoroutine(SummonSpike(1));
 
                 _availableSpikes.Pop().StartFollowing(enemies[i], _towerData);
             }
@@ -54,18 +54,17 @@ public class RootsStump : Tower
         _availableSpikes.Clear();
 
         for (int i = 0; i < _towerData.Shots; i++)
-            StartCoroutine(SummonSpike(true));
+            StartCoroutine(SummonSpike(0.5f));
     }
 
 
     /// <summary>
     /// Method used to summon projectile needed.
     /// </summary>
-    /// <param name="instant">Does the coroutine works intantly?</param>
-    protected virtual IEnumerator SummonSpike(bool instant)
+    /// <param name="multiplier">Coroutine execution time multiplier</param>
+    protected virtual IEnumerator SummonSpike(float multiplier)
     {
-        if (!instant)
-            yield return new WaitForSeconds(_towerData.TimeShots);
+        yield return new WaitForSeconds(_towerData.TimeShots * multiplier);
 
         ChocSpikes buffer = _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>();
         buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_spawnedRoot));

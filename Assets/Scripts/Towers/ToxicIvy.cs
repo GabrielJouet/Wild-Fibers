@@ -16,7 +16,7 @@ public class ToxicIvy : Tower
     protected override void SpecialBehavior()
     {
         for (int i = 0; i < _towerData.Shots; i++)
-            StartCoroutine(SummonLeaf(true));
+            StartCoroutine(SummonLeaf(0.25f));
     }
 
 
@@ -31,7 +31,7 @@ public class ToxicIvy : Tower
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                StartCoroutine(SummonLeaf(false));
+                StartCoroutine(SummonLeaf(1));
 
                 _availableLeaves.Pop().StartFollowing(enemies[i], _towerData);
             }
@@ -51,17 +51,16 @@ public class ToxicIvy : Tower
         _availableLeaves.Clear();
 
         for (int i = 0; i < _towerData.Shots; i ++) 
-            StartCoroutine(SummonLeaf(true));
+            StartCoroutine(SummonLeaf(0.5f));
     }
 
     /// <summary>
     /// Method used to summon projectile.
     /// </summary>
-    /// <param name="instant">Does the coroutine works intantly?</param>
-    protected virtual IEnumerator SummonLeaf(bool instant)
+    /// <param name="multiplier">Coroutine execution time multiplier</param>
+    protected virtual IEnumerator SummonLeaf(float multiplier)
     {
-        if (!instant)
-            yield return new WaitForSeconds(_towerData.TimeShots);
+        yield return new WaitForSeconds(_towerData.TimeShots * multiplier);
 
         ToxicLeaf buffer = _projectilePool.GetOneProjectile().GetComponent<ToxicLeaf>();
         buffer.Initialize(_towerData, _projectilePool, transform.localPosition);
