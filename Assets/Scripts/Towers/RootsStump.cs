@@ -7,16 +7,16 @@ public class RootsStump : Tower
     /// <summary>
     /// All roots projectiles available.
     /// </summary>
-    protected Stack<ChocSpikes> _availableSpikes = new Stack<ChocSpikes>();
+    protected List<ChocSpikes> _availableSpikes = new List<ChocSpikes>();
 
-
+    protected int _rootsIndex = 0;
 
     /// <summary>
     /// Method used to update special behavior.
     /// </summary>
     protected override void SpecialBehavior()
     {
-        for(int i = 0; i < _towerData.Shots; i ++)
+        for (int i = 0; i < _towerData.Shots; i ++)
             StartCoroutine(SummonSpike(0.25f));
     }
 
@@ -34,7 +34,8 @@ public class RootsStump : Tower
             {
                 StartCoroutine(SummonSpike(1));
 
-                _availableSpikes.Pop().StartFollowing(enemies[i], _towerData);
+                _availableSpikes[0].StartFollowing(enemies[i], _towerData);
+                _availableSpikes.RemoveAt(0);
             }
         }
     }
@@ -65,9 +66,11 @@ public class RootsStump : Tower
         yield return new WaitForSeconds(_towerData.TimeShots * multiplier);
 
         ChocSpikes buffer = _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>();
-        buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_availableSpikes.Count));
+        buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_rootsIndex));
 
-        _availableSpikes.Push(buffer);
+        _rootsIndex = _rootsIndex == _towerData.Shots - 1? 0 : _rootsIndex + 1 ;
+
+        _availableSpikes.Add(buffer);
     }
 
 
