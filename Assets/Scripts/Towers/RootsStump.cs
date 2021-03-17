@@ -7,28 +7,17 @@ public class RootsStump : Tower
     /// <summary>
     /// All roots projectiles available.
     /// </summary>
-    protected Stack<ChocSpikes> _availableSpikes = new Stack<ChocSpikes>();
+    protected List<ChocSpikes> _availableSpikes = new List<ChocSpikes>();
 
-    private int _spawnedRoot = 0;
-
-
+    protected int _rootsIndex = 0;
 
     /// <summary>
     /// Method used to update special behavior.
     /// </summary>
     protected override void SpecialBehavior()
     {
-        _availableSpikes.Clear();
-
-        for(int i = 0; i < _towerData.Shots; i ++)
-            StartCoroutine(SummonSpike());
-    }
-
-
-    protected override void ResellSpecialBehavior() 
-    { 
-        foreach(ChocSpikes current in _availableSpikes)
-            current.StopProjectile();
+        for (int i = 0; i < _towerData.Shots; i ++)
+            StartCoroutine(SummonSpike(0.25f));
     }
 
 
@@ -43,9 +32,10 @@ public class RootsStump : Tower
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                StartCoroutine(SummonSpike());
+                StartCoroutine(SummonSpike(1));
 
-                _availableSpikes.Pop().StartFollowing(enemies[i], _towerData);
+                _availableSpikes[0].StartFollowing(enemies[i], _towerData);
+                _availableSpikes.RemoveAt(0);
             }
         }
     }
@@ -57,34 +47,30 @@ public class RootsStump : Tower
     {
         StopAllCoroutines();
 
-        if (_towerData.Shots == 4 && _availableSpikes.Count > 0)
-        {
-            _availableSpikes.Peek().transform.position = GetSpikePosition(2);
-            _spawnedRoot = _towerData.Shots - 1;
-            StartCoroutine(SummonSpike());
-        }
-        else
-            for (int i = 0; i < _towerData.Shots; i++)
-                StartCoroutine(SummonSpike());
+        foreach (ChocSpikes current in _availableSpikes)
+            current.StopProjectile();
+
+        _availableSpikes.Clear();
+
+        for (int i = 0; i < _towerData.Shots; i++)
+            StartCoroutine(SummonSpike(0.5f));
     }
 
 
     /// <summary>
     /// Method used to summon projectile needed.
     /// </summary>
-    protected virtual IEnumerator SummonSpike()
+    /// <param name="multiplier">Coroutine execution time multiplier</param>
+    protected virtual IEnumerator SummonSpike(float multiplier)
     {
-        yield return new WaitForSeconds(_towerData.TimeShots);
+        yield return new WaitForSeconds(_towerData.TimeShots * multiplier);
+
         ChocSpikes buffer = _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>();
-        buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_spawnedRoot));
-        buffer.transform.parent = transform;
+        buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_rootsIndex));
 
-        if (_spawnedRoot == _towerData.Shots - 1)
-            _spawnedRoot = 0;
-        else
-            _spawnedRoot++;
+        _rootsIndex = _rootsIndex == _towerData.Shots - 1? 0 : _rootsIndex + 1 ;
 
-        _availableSpikes.Push(buffer);
+        _availableSpikes.Add(buffer);
     }
 
 

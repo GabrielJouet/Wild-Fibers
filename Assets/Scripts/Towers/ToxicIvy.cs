@@ -7,7 +7,7 @@ public class ToxicIvy : Tower
     /// <summary>
     /// All leaf projectiles available.
     /// </summary>
-    protected Stack<ToxicLeaf> _availableLeafs = new Stack<ToxicLeaf>();
+    protected Stack<ToxicLeaf> _availableLeaves = new Stack<ToxicLeaf>();
 
 
     /// <summary>
@@ -15,17 +15,8 @@ public class ToxicIvy : Tower
     /// </summary>
     protected override void SpecialBehavior()
     {
-        _availableLeafs.Clear();
-
         for (int i = 0; i < _towerData.Shots; i++)
-            StartCoroutine(SummonLeaf());
-    }
-
-
-    protected override void ResellSpecialBehavior()
-    {
-        foreach (ToxicLeaf current in _availableLeafs)
-            current.StopProjectile();
+            StartCoroutine(SummonLeaf(0.25f));
     }
 
 
@@ -34,15 +25,15 @@ public class ToxicIvy : Tower
     /// </summary>
     protected override void FixedUpdate()
     {
-        if (_availableEnemies.Count > 0 && _availableLeafs.Count > 0)
+        if (_availableEnemies.Count > 0 && _availableLeaves.Count > 0)
         {
-            List<Enemy> enemies = RecoverAvailableEnemies(_availableEnemies.Count < _availableLeafs.Count ? _availableEnemies.Count : _availableLeafs.Count);
+            List<Enemy> enemies = RecoverAvailableEnemies(_availableLeaves.Count);
 
             for (int i = 0; i < enemies.Count; i++)
             {
-                StartCoroutine(SummonLeaf());
+                StartCoroutine(SummonLeaf(1));
 
-                _availableLeafs.Pop().StartFollowing(enemies[i], _towerData);
+                _availableLeaves.Pop().StartFollowing(enemies[i], _towerData);
             }
         }
     }
@@ -54,20 +45,26 @@ public class ToxicIvy : Tower
     {
         StopAllCoroutines();
 
-        for (int i = 0; i < _towerData.Shots - _availableLeafs.Count; i ++) 
-            StartCoroutine(SummonLeaf());
+        foreach (ToxicLeaf current in _availableLeaves)
+            current.StopProjectile();
+
+        _availableLeaves.Clear();
+
+        for (int i = 0; i < _towerData.Shots; i ++) 
+            StartCoroutine(SummonLeaf(0.5f));
     }
 
     /// <summary>
     /// Method used to summon projectile.
     /// </summary>
-    protected virtual IEnumerator SummonLeaf()
+    /// <param name="multiplier">Coroutine execution time multiplier</param>
+    protected virtual IEnumerator SummonLeaf(float multiplier)
     {
-        yield return new WaitForSeconds(_towerData.TimeShots);
-        ToxicLeaf buffer = _projectilePool.GetOneProjectile().GetComponent<ToxicLeaf>();
-        buffer.Initialize(_towerData, _projectilePool, transform.position);
-        buffer.transform.parent = transform;
+        yield return new WaitForSeconds(_towerData.TimeShots * multiplier);
 
-        _availableLeafs.Push(buffer);
+        ToxicLeaf buffer = _projectilePool.GetOneProjectile().GetComponent<ToxicLeaf>();
+        buffer.Initialize(_towerData, _projectilePool, transform.localPosition);
+
+        _availableLeaves.Push(buffer);
     }
 }

@@ -6,6 +6,7 @@ public class ToxicLeaf : Projectile
 
     protected float _angle;
 
+    protected Vector2 _initialPosition;
 
 
     //Method used to initialize class (like a constructor)
@@ -19,7 +20,8 @@ public class ToxicLeaf : Projectile
         _data = newData;
         _projectilePool = newPool;
 
-        transform.position = newPosition;
+        _initialPosition = newPosition;
+        transform.position = _initialPosition;
     }
 
 
@@ -49,7 +51,7 @@ public class ToxicLeaf : Projectile
         else
         {
             _angle += Time.deltaTime;
-            transform.localPosition = new Vector3(Mathf.Sin(_angle) * 0.15f, Mathf.Cos(_angle) * 0.15f, 0);
+            transform.localPosition = _initialPosition + new Vector2(Mathf.Sin(_angle) * 0.15f, Mathf.Cos(_angle) * 0.15f);
             transform.RotateAround(transform.position, new Vector3(0, 0, 1), _data.ProjectileSpeed * 4 * Time.deltaTime);
         }
     }

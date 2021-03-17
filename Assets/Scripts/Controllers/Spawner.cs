@@ -93,17 +93,6 @@ public class Spawner : MonoBehaviour
                 Enemy buffer = _enemyPool.GetOneEnemy();
                 buffer.Initialize(_randomPath.CalculateRandomPath(), _poolController, 0);
 
-                //If the enemy is a boss we add it more paths to spawn enemies
-                if (buffer.TryGetComponent(out ISpawnable spawnComponent))
-                {
-                    List<List<Vector2>> newPaths = new List<List<Vector2>>();
-
-                    for (int i = 0; i < spawnComponent.PathWanted; i++)
-                        newPaths.Add(_randomPath.CalculateRandomPath());
-
-                    spawnComponent.AvailablePaths = newPaths;
-                }
-
                 yield return new WaitForSeconds(_enemyGroup.Patterns[_patternIndex].EnemiesTime);
             }
             //Else if the pattern is finished

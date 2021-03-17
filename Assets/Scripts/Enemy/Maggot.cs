@@ -26,14 +26,13 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     [Header("Shield related")]
     
     /// <summary>
-    /// Shield value when protecting.
+    /// Shield value when not protecting.
     /// </summary>
     [SerializeField]
-    protected float _newShieldValue;
-    public float NewShieldValue { get => _newShieldValue; }
+    protected int _baseShieldValue;
+    public int BaseShieldValue { get => _baseShieldValue; set => _baseShieldValue = value; }
 
 
-    public float BaseShieldValue { get; set; }
     public bool StopWhileShielding { get; set; }
 
     public float TimeBetweenSpawn { get; }
@@ -43,10 +42,6 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     public bool StopWhileSpawning { get; }
 
     public int NumberOfEnemiesPerSpawn { get; }
-
-    public int PathWanted { get; } = 0;
-
-    public List<List<Vector2>> AvailablePaths { get; set; }
 
 
 
@@ -60,8 +55,8 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     {
         base.Initialize(newPath, newPool, pathIndex);
 
-        BaseShieldValue = _armorMax;
         StopWhileShielding = true;
+        Armor = BaseShieldValue;
 
         StartCoroutine(DelaySpawn());
     }
@@ -75,7 +70,7 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     {
         yield return new WaitForSeconds(_hatchingTime + Random.Range(-_hatchingTime / 20, _hatchingTime / 20));
         _animator.SetTrigger("cocoon");
-        ActivateShield(NewShieldValue, _dotApplied);
+        ActivateShield(_armorMax, _dotApplied);
 
         yield return new WaitForSeconds((_animator.runtimeAnimatorController.animationClips[1].length / 0.3f) + 0.05f);
 
@@ -94,8 +89,6 @@ public class Maggot : Enemy, IShieldable, ISpawnable
             Armor = shieldValue - (ArmorMax - Armor);
         else
             Armor = shieldValue;
-
-        ArmorMax = shieldValue;
     }
 
 
@@ -105,8 +98,6 @@ public class Maggot : Enemy, IShieldable, ISpawnable
             Armor = BaseShieldValue - (ArmorMax - Armor);
         else
             Armor = BaseShieldValue;
-
-        ArmorMax = BaseShieldValue;
 
         Moving = true;
     }

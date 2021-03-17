@@ -25,7 +25,7 @@ MonoBehaviour:
       _timeBetweenEnemies: 3
     - _numberOfEnemies: 6
       _timeBetweenEnemies: 4
-    - _numberOfEnemies: 4
+    - _numberOfEnemies: 5
       _timeBetweenEnemies: 3
     _enemyUsed: {fileID: 6914183812568595844, guid: 0486239d7c64fe445b9c75626147d6e1,
       type: 3}

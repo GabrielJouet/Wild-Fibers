@@ -19,12 +19,12 @@ MonoBehaviour:
   _playSceneName: RottenWoods
   _levelType: 1
   _availableWaves:
-  - {fileID: 11400000, guid: 0f67b46556aa6ca4fa37607ab95b2d3e, type: 2}
-  - {fileID: 11400000, guid: 75871b8af6b7b5e43b47949063150576, type: 2}
-  - {fileID: 11400000, guid: 9baf7e9109e9eaa4ab13b249480fbe5e, type: 2}
-  - {fileID: 11400000, guid: 7be3f4bdfbabd4f46bcab10a933c85df, type: 2}
-  - {fileID: 11400000, guid: 8c0c0ce2d0a82c84ea2371bcf2779097, type: 2}
-  - {fileID: 11400000, guid: 053c2f26e18464b4ca1848aed267606f, type: 2}
+  - {fileID: 11400000, guid: c059e04d7088aec47a590ad40271bae9, type: 2}
+  - {fileID: 11400000, guid: 7207b875552b2a14794c3015a7440fee, type: 2}
+  - {fileID: 11400000, guid: c9731e0774ed9ea40bc14b563e189479, type: 2}
+  - {fileID: 11400000, guid: 6ebf76b1eb3f55448ae64334f7b5fdd4, type: 2}
+  - {fileID: 11400000, guid: 523476d54b4f5d04ab91f72f20f7bc9d, type: 2}
+  - {fileID: 11400000, guid: 9c1ebebe41b3b924c8f0b70deac627f0, type: 2}
   _lifeCount: 5
   _goldCount: 755
   _towerLevel: 1
