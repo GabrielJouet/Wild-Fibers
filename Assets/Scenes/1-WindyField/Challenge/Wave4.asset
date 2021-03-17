@@ -14,19 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _availableEnemyGroups:
   - _enemyPatterns:
-    - _numberOfEnemies: 5
-      _timeBetweenEnemies: 0.3
     - _numberOfEnemies: 4
-      _timeBetweenEnemies: 0.5
+      _timeBetweenEnemies: 0.7
+    - _numberOfEnemies: 4
+      _timeBetweenEnemies: 0.65
     - _numberOfEnemies: 5
-      _timeBetweenEnemies: 0.25
+      _timeBetweenEnemies: 0.5
     _enemyUsed: {fileID: 6914183812568595844, guid: 76e6d98bff05e8948b947d2b45938fa4,
       type: 3}
     _timeBetweenPattern: 1.5
     _pathIndex: 0
   - _enemyPatterns:
     - _numberOfEnemies: 4
-      _timeBetweenEnemies: 5.5
+      _timeBetweenEnemies: 3.75
     _enemyUsed: {fileID: 6914183812568595844, guid: 75053fef349185741a6dd180b501757c,
       type: 3}
     _timeBetweenPattern: 0.1

@@ -30,4 +30,13 @@ public class StaticDepthManager : MonoBehaviour
     {
         _spriteRenderer.sortingOrder = (int)Camera.main.WorldToScreenPoint(transform.position).y * -1;
     }
+
+
+    /// <summary>
+    /// Method used for re-instantiated objects.
+    /// </summary>
+    public void ResetSortingOrder()
+    {
+        _spriteRenderer.sortingOrder = (int)Camera.main.WorldToScreenPoint(transform.position).y * -1;
+    }
 }

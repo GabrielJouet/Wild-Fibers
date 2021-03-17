@@ -209,15 +209,17 @@ public class Enemy : MonoBehaviour
     public BackgroudSelecter InformationUI { get; set; }
 
 
-    private List<TowerData> Attacks { get; set; } = new List<TowerData>();
+    public List<TowerData> Attacks { get; set; } = new List<TowerData>();
 
     /// <summary>
-    /// Does the enemy is already aimed?
+    /// Does the enemy is already dotted?
     /// </summary>
-    public bool AlreadyAimed { get; set; } = false;
-
-
     public bool AlreadyDotted { get; set; } = false;
+
+
+    protected List<TowerCollider> _towerColliders = new List<TowerCollider>();
+
+    public bool CanBeTargeted { get; protected set; } = true;
 
 
 
@@ -229,8 +231,9 @@ public class Enemy : MonoBehaviour
     /// <param name="pathIndex">Current progression on the path</param>
     public virtual void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
+        CanBeTargeted = true;
+        _towerColliders.Clear();
         Attacks.Clear();
-        AlreadyAimed = false;
         AlreadyDotted = false;
 
         if (_particleController == null)
@@ -445,28 +448,20 @@ public class Enemy : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Can the enemy survive the damage?
-    /// </summary>
-    /// <param name="damage">How much damage the enemy is taking?</param>
-    /// <param name="armorThrough">The percentage of armor through the hit has</param>
-    public bool CanSurvive(TowerData data)
+    public void AddAttack(TowerData newAttack)
     {
-        float armorThrough = data.ArmorThrough;
-        float damage = data.Damage;
+        Attacks.Add(newAttack);
 
-        Attacks.Add(data);
+        if (newAttack.DotDuration != 0)
+            AlreadyDotted = true;
 
         float total = 0;
         foreach (TowerData current in Attacks)
-            total += Mathf.FloorToInt(_armorMax - armorThrough < 0 ? damage + (damage * (armorThrough - _armorMax) / 100) / 2 : damage - ((_armorMax - armorThrough) / 100 * damage));
+            total += Mathf.FloorToInt(_armorMax - current.ArmorThrough < 0 ? current.Damage + (current.Damage * (current.ArmorThrough - _armorMax) / 100) / 2 : current.Damage - ((_armorMax - current.ArmorThrough) / 100 * current.Damage));
 
-        return Health - total > 0;
-    }
+        if (Health - (_dotDuration * 2 * _healthMalus + total) <= 0)
+            CanBeTargeted = false;
 
-    public bool WillDieSoon()
-    {
-        return Health - (_dotDuration * 2 * _healthMalus) <= 0;
     }
 
     /// <summary>
@@ -486,7 +481,10 @@ public class Enemy : MonoBehaviour
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out TowerCollider towerCollider))
+        {
             towerCollider.EnemyCollide(this);
+            _towerColliders.Add(towerCollider);
+        }
     }
 
 
@@ -497,6 +495,9 @@ public class Enemy : MonoBehaviour
     protected void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out TowerCollider towerCollider))
+        {
             towerCollider.EnemyExit(this);
+            _towerColliders.Remove(towerCollider);
+        }
     }
 }

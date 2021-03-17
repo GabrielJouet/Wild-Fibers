@@ -47,8 +47,10 @@ public class TowerPool : MonoBehaviour
     {
         _towerUsed.Remove(newTower);
 
-        Destroy(newTower.GetComponent<Tower>());
-        newTower.gameObject.SetActive(false);
+        Tower buffer = newTower.GetComponent<Tower>();
+        buffer.DesactivateTower();
+        Destroy(buffer);
+
         _towerPool.Push(newTower);
     }
 

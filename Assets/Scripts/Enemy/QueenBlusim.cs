@@ -44,17 +44,6 @@ public class QueenBlusim : Enemy, ISpawnable
     protected int _numberOfEnemiesPerSpawn;
     public int NumberOfEnemiesPerSpawn { get => _numberOfEnemiesPerSpawn; }
 
-    /// <summary>
-    /// The number of paths used by new enemies.
-    /// </summary>
-    public int PathWanted { get; } = 3;
-
-
-    /// <summary>
-    /// Available paths generated.
-    /// </summary>
-    public List<List<Vector2>> AvailablePaths { get; set; } = new List<List<Vector2>>();
-
 
 
     /// <summary>
@@ -86,7 +75,7 @@ public class QueenBlusim : Enemy, ISpawnable
 
             for (int i = 0; i < NumberOfEnemiesPerSpawn; i++)
             {
-                _poolController.RecoverEnemyPool(Spawnling).GetOneEnemy().Initialize(AvailablePaths[Random.Range(0, AvailablePaths.Count)], _poolController, _pathIndex);
+                _poolController.RecoverEnemyPool(Spawnling).GetOneEnemy().Initialize(_path, _poolController, _pathIndex);
 
                 yield return new WaitForSeconds(SpawnTime + Random.Range(-SpawnTime / 20, SpawnTime / 20));
             }

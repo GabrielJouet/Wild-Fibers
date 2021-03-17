@@ -1,10 +1,12 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// Tower class, main object of the game.
 /// </summary>
+/// <remarks>Needs a static depth manager</remarks>
+[RequireComponent(typeof(StaticDepthManager))]
 public class Tower : MonoBehaviour
 {
     [SerializeField]
@@ -88,7 +90,6 @@ public class Tower : MonoBehaviour
     }
 
 
-
     /// <summary>
     /// Method used to initialize.
     /// </summary>
@@ -108,8 +109,11 @@ public class Tower : MonoBehaviour
         _currentSlot = newSlot;
         _towerPool = newTowerPool;
 
+        GetComponent<StaticDepthManager>().ResetSortingOrder();
+
         SpecialBehavior();
     }
+
 
     private void SetDefaultValues(TowerData newData)
     {
@@ -256,30 +260,29 @@ public class Tower : MonoBehaviour
         else
             SortEnemies();
 
-        for(int i = 0; i < numberOfEnemiesToFound; i ++)
+        bool cannotDot = _towerData.DotDuration == 0;
+
+        if (numberOfEnemiesToFound > _availableEnemies.Count)
         {
             foreach (Enemy buffer in _availableEnemies)
             {
-                if (!buffer.WillDieSoon())
+                if ((cannotDot || !buffer.AlreadyDotted) && buffer.CanBeTargeted)
                 {
-                    bool canDot = _towerData.Dot != 0;
-                    if (canDot && buffer.AlreadyDotted || availableEnemies.Contains(buffer))
-                        continue;
-                    else if (!canDot && buffer.AlreadyAimed || availableEnemies.Contains(buffer))
-                        continue;
-                    else
-                    {
-                        availableEnemies.Add(buffer);
-
-                        if (!buffer.CanSurvive(_towerData))
-                            buffer.AlreadyAimed = true;
-
-                        if (canDot)
-                            buffer.AlreadyDotted = true;
-
-                        break;
-                    }
+                    availableEnemies.Add(buffer);
+                    buffer.AddAttack(_towerData);
                 }
+            }
+        }
+
+        foreach (Enemy buffer in _availableEnemies)
+        {
+            if ((cannotDot || !buffer.AlreadyDotted) && buffer.CanBeTargeted)
+            {
+                availableEnemies.Add(buffer);
+                buffer.AddAttack(_towerData);
+
+                if (availableEnemies.Count >= numberOfEnemiesToFound)
+                    break;
             }
         }
 
@@ -308,5 +311,17 @@ public class Tower : MonoBehaviour
         _transformRange.gameObject.SetActive(false);
         _selector.SetActive(false);
     }
+
+
+    public void DesactivateTower()
+    {
+        DesactivateRangeDisplay();
+
+        _collider.localScale = _initialColliderScale;
+        _transformRange.localScale = _initialRangeScale;
+
+        gameObject.SetActive(false);
+    }
+
     #endregion
 }

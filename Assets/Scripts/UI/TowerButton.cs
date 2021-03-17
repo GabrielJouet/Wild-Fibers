@@ -72,7 +72,7 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     public void Lock()
     {
         _locked = true;
-        _buttonComponent.enabled = false;
+        UpdateState(false);
         _buttonImage.sprite = _lockedSprite;
         _buttonImage.SetNativeSize();
         _buttonImage.rectTransform.sizeDelta *= 2.4f;
@@ -84,7 +84,7 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         _buttonComponent.enabled = activated;
 
-        Color newColor = activated ? Color.white : Color.gray;
+        Color newColor = activated ? Color.white : new Color(0.7f, 0.7f, 0.7f, 1);
         _buttonImage.color = newColor;
         _backgroundImage.color = newColor;
     }
