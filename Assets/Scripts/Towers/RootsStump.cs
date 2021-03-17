@@ -9,8 +9,6 @@ public class RootsStump : Tower
     /// </summary>
     protected Stack<ChocSpikes> _availableSpikes = new Stack<ChocSpikes>();
 
-    private int _spawnedRoot = 0;
-
 
 
     /// <summary>
@@ -67,12 +65,7 @@ public class RootsStump : Tower
         yield return new WaitForSeconds(_towerData.TimeShots * multiplier);
 
         ChocSpikes buffer = _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>();
-        buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_spawnedRoot));
-
-        if (_spawnedRoot == _towerData.Shots - 1)
-            _spawnedRoot = 0;
-        else
-            _spawnedRoot++;
+        buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_availableSpikes.Count));
 
         _availableSpikes.Push(buffer);
     }
