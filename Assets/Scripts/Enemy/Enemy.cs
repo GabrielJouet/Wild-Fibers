@@ -405,9 +405,11 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Method used to teleport back enemy.
     /// </summary>
-    public void TeleportBack(/*TO DO*/)
+    /// <param name="indexLosts">The number of steps lost</param>
+    public void TeleportBack(int indexLosts)
     {
-        //TO DO
+        _pathIndex -= indexLosts;
+        transform.position =  _path[_pathIndex];
     }
 
 
