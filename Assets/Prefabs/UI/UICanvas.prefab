@@ -1817,28 +1817,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 6123271220255228632, guid: e50b5478ea3721b45b4004bfccfb9c18,
-        type: 3}
-      propertyPath: _towers.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6123271220255228632, guid: e50b5478ea3721b45b4004bfccfb9c18,
-        type: 3}
-      propertyPath: _enemies.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6123271220255228632, guid: e50b5478ea3721b45b4004bfccfb9c18,
-        type: 3}
-      propertyPath: _towers.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: ee070728f96f08b42b60a1da4e8e0757,
-        type: 2}
-    - target: {fileID: 6123271220255228632, guid: e50b5478ea3721b45b4004bfccfb9c18,
-        type: 3}
-      propertyPath: _enemies.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 23955bb06c4faf24ab415342f058b181,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e50b5478ea3721b45b4004bfccfb9c18, type: 3}
 --- !u!114 &1772495506262164836 stripped
