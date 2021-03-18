@@ -97,13 +97,8 @@ public class Enemy : MonoBehaviour
     /// Resistance max value (resistance is used for dot and magic attacks).
     /// </summary>
     [SerializeField]
-    protected float _resistanceMax;
-    public float ResistanceMax { get => _resistanceMax; protected set => _resistanceMax = value; }
-
-    /// <summary>
-    /// Current resistance.
-    /// </summary>
-    public float Resistance { get; protected set; }
+    protected float _resistance;
+    public float ResistancePercentage { get => (100 - _resistance) / 100;  }
 
 
     /// <summary>
@@ -250,7 +245,6 @@ public class Enemy : MonoBehaviour
         Speed = SpeedMax;
         Health = HealthMax;
         Armor = ArmorMax;
-        Resistance = ResistanceMax;
 
         _healthBar.ResetSize();
 
@@ -303,8 +297,7 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Method to remove health to enemy.
     /// </summary>
-    /// <param name="damage">How many damage the enemy is taking</param>
-    /// <param name="armorThrough">The quantity of armor through the hit has</param>
+    /// <param name="data">The tower data damaging enemy</param>
     public void TakeDamage(TowerData data)
     {
         float armorThrough = data.ArmorThrough;
@@ -349,11 +342,9 @@ public class Enemy : MonoBehaviour
     {
         if(!_isSlowDown)
         {
-            slowDownRatio -= (slowDownRatio * Resistance) / 100f;
-
             _isSlowDown = true;
             StartCoroutine(ResetSlowDown(slowDownTime));
-            Speed = _speedMax * (100 - slowDownRatio) / 100f;
+            Speed = _speedMax * (100 - slowDownRatio * ResistancePercentage) / 100f;
         }
     }
 
@@ -378,14 +369,14 @@ public class Enemy : MonoBehaviour
     /// <param name="newIcon">The new dot icon</param>
     public void ApplyDot(float armorThroughMalus, int healthMalus, float duration, Sprite newIcon)
     {
-        _healthMalus = Mathf.Clamp(healthMalus - (healthMalus * Resistance) / 100f, 1, healthMalus);
+        _healthMalus = Mathf.Clamp(healthMalus * ResistancePercentage, 1, healthMalus);
         _dotDuration = duration;
         _dotDisplay.sprite = newIcon;
 
         if(!_dotApplied && isActiveAndEnabled)
         {
             StartCoroutine(TakePersistentDamage());
-            Armor -= armorThroughMalus - (armorThroughMalus * Resistance) / 100f;
+            Armor -= armorThroughMalus * ResistancePercentage;
         }
     }
 
@@ -448,6 +439,10 @@ public class Enemy : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method used to add a new attack on enemy and check if it can survive.
+    /// </summary>
+    /// <param name="newAttack">The data of the attack</param>
     public void AddAttack(TowerData newAttack)
     {
         Attacks.Add(newAttack);

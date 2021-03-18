@@ -192,7 +192,7 @@ MonoBehaviour:
   - {fileID: 1049263690152909913}
   _healthMax: 2000
   _armorMax: 45
-  _resistanceMax: 0
+  _resistance: 25
   _speedMax: 0.14
   _numberOfLivesTaken: 20
   _goldGained: 450
