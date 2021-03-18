@@ -40,6 +40,7 @@ public class Library : MonoBehaviour
             {
                 InfoIcon newIcon = Instantiate(_infoIconPrefab, _enemyList).GetComponent<InfoIcon>();
                 newIcon.Enemy = current;
+                newIcon.GetComponent<Image>().sprite = current.Sprite;
             }
         }
     }
@@ -59,6 +60,7 @@ public class Library : MonoBehaviour
             {
                 InfoIcon newIcon = Instantiate(_infoIconPrefab, _towerList).GetComponent<InfoIcon>();
                 newIcon.Tower = current;
+                newIcon.GetComponent<Image>().sprite = current.Sprite;
             }
         }
     }
