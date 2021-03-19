@@ -1,7 +1,4 @@
-﻿/// <summary>
-/// Class used to convert fire rate value into text.
-/// </summary>
-public static class FireRateConverter
+﻿public static class SpeedConverter
 {
     private static readonly string veryFast = "V. Fast";
 
@@ -18,19 +15,19 @@ public static class FireRateConverter
     /// <summary>
     /// Method used to convert value.
     /// </summary>
-    /// <param name="fireRate">Float value to convert</param>
+    /// <param name="speed">Float value to convert</param>
     /// <returns>Converted value</returns>
-    public static string TransformFireRate(float fireRate)
+    public static string TransformSpeed(float speed)
     {
-        if (fireRate <= 0.25f)
+        if (speed <= 0.1f)
             return verySlow;
-        else if (0.25f < fireRate && fireRate <= 0.55f)
+        else if (0.1f < speed && speed <= 0.2f)
             return slow;
-        else if (0.55f < fireRate && fireRate <= 0.85f)
+        else if (0.2f < speed && speed <= 0.3f)
             return average;
-        else if (0.85f < fireRate && fireRate <= 1.15f)
+        else if (0.3f < speed && speed <= 0.4f)
             return fast;
-        else if (fireRate > 1.15f)
+        else if (speed > 0.4f)
             return veryFast;
         else
             return "Unknown";

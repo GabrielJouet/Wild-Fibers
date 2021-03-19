@@ -145,6 +145,34 @@ public class Enemy : MonoBehaviour
     public Vector2 DamagePosition { get => _damagePosition.position; }
 
 
+    [Header("Bestiary related")]
+    [SerializeField]
+    protected string _description;
+    public string Description { get => _description; }
+
+    [SerializeField]
+    protected string _zones;
+    public string Zones { get => _zones; }
+
+    [SerializeField]
+    protected Sprite _screenShot;
+    public Sprite ScreenShot { get => _screenShot; }
+
+    public string SpeedInfo { get => SpeedConverter.TransformSpeed(_speedMax); }
+
+    public string ArmorInfo { get => ArmorTypeConverter.TransformArmor(ArmorMax / 100); }
+
+    public string ResistanceInfo { get => ArmorTypeConverter.TransformResistance(_resistance / 100); }
+
+    public string LivesTakenInfo { get => _numberOfLivesTaken.ToString(); }
+
+    public string HealthInfo { get => _healthMax.ToString(); }
+
+    [SerializeField]
+    protected string _special;
+    public string Special { get => _special; }
+
+
     /// <summary>
     /// Dot duration in second.
     /// </summary>

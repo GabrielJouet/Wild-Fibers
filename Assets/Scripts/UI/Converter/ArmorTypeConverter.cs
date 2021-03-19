@@ -35,4 +35,27 @@ public static class ArmorTypeConverter
         else
             return "Unknown";
     }
+
+
+
+    /// <summary>
+    /// Method used to convert value.
+    /// </summary>
+    /// <param name="armor">Float value to convert</param>
+    /// <returns>Converted value</returns>
+    public static string TransformResistance(float armor)
+    {
+        if (armor <= 0.1f)
+            return none;
+        else if (0.1f < armor && armor <= 0.25f)
+            return low;
+        else if (0.25f < armor && armor <= 0.45f)
+            return shielded;
+        else if (0.45f < armor && armor <= 0.85f)
+            return high;
+        else if (armor > 0.85f)
+            return unbreakable;
+        else
+            return "Unknown";
+    }
 }

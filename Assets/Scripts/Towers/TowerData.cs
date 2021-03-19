@@ -140,4 +140,22 @@ public class TowerData : ScriptableObject
     [SerializeField]
     protected string _scriptName;
     public string Script { get => _scriptName; }
+
+
+    [Header("Info related")]
+    [SerializeField]
+    protected string _special;
+    public string Special { get => _special; }
+
+    public string FireRateInfo { get => FireRateConverter.TransformFireRate(1 / _timeBetweenShots); }
+
+    public string ArmorThroughInfo { get => BreakArmorConverter.TransformArmorThrough((_armorThroughMalus + _armorThrough) / 100); }
+
+    public string DotInfo { get => DotConverter.TransformDot(_dotDuration * _damageOverTime * 2); }
+
+    public string ShotsInfo { get => _numberOfShots.ToString(); }
+
+    public string PriceInfo { get => _price.ToString(); }
+
+    public string DamageInfo { get => _damage.ToString(); }
 }

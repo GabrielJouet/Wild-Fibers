@@ -1716,28 +1716,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3efb23973b8ec4a874d80aa7003192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _towers:
-  - {fileID: 11400000, guid: 70b03e51dcf142c48977bf6ccea1362c, type: 2}
-  - {fileID: 11400000, guid: 326b7d6cd83d456499ea3b01cfadf4cd, type: 2}
-  - {fileID: 11400000, guid: f2793444196fac44880c75d472390d1e, type: 2}
-  - {fileID: 11400000, guid: fbcf66f8b49e886469fd03640ac0c305, type: 2}
-  - {fileID: 11400000, guid: 9d9182536eae9534785701038dab0994, type: 2}
-  - {fileID: 11400000, guid: 0cad83c034ddf6b43b02677a02c32ff6, type: 2}
-  - {fileID: 11400000, guid: 06d5f992628269b46badd90b2dbb6576, type: 2}
-  - {fileID: 11400000, guid: d831ab212eaa3784aa2d053a4ec41a6d, type: 2}
-  - {fileID: 11400000, guid: ee070728f96f08b42b60a1da4e8e0757, type: 2}
-  - {fileID: 11400000, guid: 4627c5abf1714d94d90837881941c7a0, type: 2}
-  - {fileID: 11400000, guid: fe8d2730bdae0d8489926596e87e59ab, type: 2}
-  - {fileID: 11400000, guid: 691a69b35b8985d41ac22837cee6f60e, type: 2}
   _enemies:
-  - {fileID: 11400000, guid: 23955bb06c4faf24ab415342f058b181, type: 2}
-  - {fileID: 11400000, guid: c955653e1b06310418fbfe8023f68592, type: 2}
-  - {fileID: 11400000, guid: 9fa86ee6e5c7efc4fbdc489fc9118f6b, type: 2}
-  - {fileID: 11400000, guid: 4d64e60ed558ab448a9e9fb349554467, type: 2}
-  - {fileID: 11400000, guid: 51a712e56d3b84c4fb531984b83fd68f, type: 2}
-  - {fileID: 11400000, guid: 48d993da51e9567419da8497cdd3515a, type: 2}
-  - {fileID: 11400000, guid: 99efe1f01d474ff49a11a5660170172f, type: 2}
-  - {fileID: 11400000, guid: efdb13805bfc7b04bb395d832616cc27, type: 2}
+  - {fileID: 5682064432001086994, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb, type: 3}
+  - {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4, type: 3}
+  - {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1, type: 3}
+  - {fileID: 1001176562105206731, guid: d9daef3f950273945b1eb5cea886939b, type: 3}
+  - {fileID: 4674631295996963510, guid: 75053fef349185741a6dd180b501757c, type: 3}
+  - {fileID: 2832435586917530963, guid: c9cb137af20226a418d05813b1c46a21, type: 3}
+  - {fileID: 5682064432001086994, guid: 3a10d5fb2f081234aba26b426ea831c4, type: 3}
+  - {fileID: 5682064432001086994, guid: d0c9e8392b6347b4facfa535864b71a4, type: 3}
   _infoIconPrefab: {fileID: 7758772164408991083, guid: de20513a4ef40564fb3dabdecc12c1b3,
     type: 3}
   _towerPanel: {fileID: 5575951972707165611}

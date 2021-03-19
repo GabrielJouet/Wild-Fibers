@@ -2,9 +2,9 @@
 
 public class InfoIcon : MonoBehaviour
 {
-    public TowerInfo Tower { get; set; } = null;
+    public TowerData Tower { get; set; } = null;
 
-    public EnemyInfo Enemy { get; set; } = null;
+    public Enemy Enemy { get; set; } = null;
 
     public void Activate()
     {
