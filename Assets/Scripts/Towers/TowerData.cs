@@ -147,11 +147,11 @@ public class TowerData : ScriptableObject
     protected string _special;
     public string Special { get => _special; }
 
-    public string FireRateInfo { get => FireRateConverter.TransformFireRate(1 / _timeBetweenShots); }
+    public string FireRateInfo { get => Converter.TransformFireRate(1 / _timeBetweenShots); }
 
-    public string ArmorThroughInfo { get => BreakArmorConverter.TransformArmorThrough((_armorThroughMalus + _armorThrough) / 100); }
+    public string ArmorThroughInfo { get => Converter.TransformArmorThrough((_armorThroughMalus + _armorThrough) / 100); }
 
-    public string DotInfo { get => DotConverter.TransformDot(_dotDuration * _damageOverTime * 2); }
+    public string DotInfo { get => Converter.TransformDot(_dotDuration * _damageOverTime * 2); }
 
     public string ShotsInfo { get => _numberOfShots.ToString(); }
 

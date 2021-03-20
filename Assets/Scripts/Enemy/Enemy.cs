@@ -158,11 +158,11 @@ public class Enemy : MonoBehaviour
     protected Sprite _screenShot;
     public Sprite ScreenShot { get => _screenShot; }
 
-    public string SpeedInfo { get => SpeedConverter.TransformSpeed(_speedMax); }
+    public string SpeedInfo { get => Converter.TransformSpeed(_speedMax); }
 
-    public string ArmorInfo { get => ArmorTypeConverter.TransformArmor(ArmorMax / 100); }
+    public string ArmorInfo { get => Converter.TransformArmor(ArmorMax / 100); }
 
-    public string ResistanceInfo { get => ArmorTypeConverter.TransformResistance(_resistance / 100); }
+    public string ResistanceInfo { get => Converter.TransformResistance(_resistance / 100); }
 
     public string LivesTakenInfo { get => _numberOfLivesTaken.ToString(); }
 
