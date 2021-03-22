@@ -1,29 +1,28 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "NewData", menuName = "Info/Tower")]
-public class TowerInfo : InfoData
+public class TowerInfo : MonoBehaviour
 {
-    [SerializeField]
-    protected int _price;
-    public string Price { get => _price.ToString(); }
+    private TowerData _tower;
+    public TowerData Tower
+    {
+        get
+        {
+            return _tower;
+        }
 
-    [SerializeField]
-    protected int _damage;
-    public string Damage { get => _damage.ToString(); }
+        set
+        {
+            _tower = value;
+            GetComponent<Image>().sprite = Tower.ScreenShot;
+        }
+    }
 
-    [SerializeField]
-    protected string _fireRate;
-    public string FireRate { get => _fireRate; }
 
-    [SerializeField]
-    protected string _armorThrough;
-    public string ArmorThrough { get => _armorThrough; }
-
-    [SerializeField]
-    protected string _dot;
-    public string Dot { get => _dot; }
-
-    [SerializeField]
-    protected int _shots;
-    public string Shots { get => _shots.ToString(); }
+    public void Activate()
+    {
+        transform.parent.parent.parent.parent.GetComponent<Library>().ShowTowerInfo(this);
+    }
 }

@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class Library : MonoBehaviour
 {
-    [SerializeField]
-    private List<TowerInfo> _towers;
+    [Header("Components")]
 
     [SerializeField]
-    private List<EnemyInfo> _enemies;
+    private List<Enemy> _enemies;
 
+    [Space(10)]
     [SerializeField]
-    private GameObject _infoIconPrefab;
+    private GameObject _enemyInfoPrefab;
 
     [SerializeField]
     private GameObject _towerPanel;
@@ -20,80 +20,127 @@ public class Library : MonoBehaviour
     private GameObject _enemyPanel;
 
     [SerializeField]
-    private Transform _towerList;
+    private GameObject _towerList;
 
     [SerializeField]
-    private Transform _enemyList;
+    private GameObject _enemyList;
+
+    [SerializeField]
+    private List<TowerIcon> _towerIcons;
 
 
-    public void ShowEnemies()
+    [Header("Tower related")]
+
+    [SerializeField]
+    private Text _towerName;
+
+    [SerializeField]
+    private Text _towerDescription;
+
+    [SerializeField]
+    private Text _towerPrice;
+
+    [SerializeField]
+    private Text _towerDamage;
+
+    [SerializeField]
+    private Text _towerFireRate;
+
+    [SerializeField]
+    private Text _towerArmorThrough;
+
+    [SerializeField]
+    private Text _towerDot;
+
+    [SerializeField]
+    private Text _towerSpecial;
+
+    [SerializeField]
+    private Text _towerShots;
+
+
+    [Header("Enemy related")]
+
+    [SerializeField]
+    private Text _enemyName;
+
+    [SerializeField]
+    private Text _enemyDescription;
+
+    [SerializeField]
+    private Text _enemyGold;
+
+    [SerializeField]
+    private Text _enemyHealth;
+
+    [SerializeField]
+    private Text _enemySpeed;
+
+    [SerializeField]
+    private Text _enemyArmor;
+
+    [SerializeField]
+    private Text _enemyResistance;
+
+    [SerializeField]
+    private Text _enemyLivesLost;
+
+    [SerializeField]
+    private Text _enemySpecial;
+
+
+    private void Awake()
     {
-        _towerList.gameObject.SetActive(false);
-        _enemyList.gameObject.SetActive(true);
+        List<TowerData> towers = FindObjectOfType<SquadController>().Towers;
 
-        _towerPanel.gameObject.SetActive(false);
-        _enemyPanel.gameObject.SetActive(true);
+        foreach (Enemy current in _enemies)
+            Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>().Enemy = current;
 
-        if (_enemyList.childCount == 0)
-        {
-            foreach (EnemyInfo current in _enemies)
-            {
-                InfoIcon newIcon = Instantiate(_infoIconPrefab, _enemyList).GetComponent<InfoIcon>();
-                newIcon.Enemy = current;
-                newIcon.GetComponent<Image>().sprite = current.Sprite;
-            }
-        }
+        for (int i = 0; i < towers.Count; i++)
+            _towerIcons[i].Populate(towers[i]);
+
+        ShowPanel(false);
     }
 
 
-    public void ShowTowers()
+    public void ShowPanel(bool enemy)
     {
-        _towerList.gameObject.SetActive(true);
-        _enemyList.gameObject.SetActive(false);
+        _towerList.SetActive(!enemy);
+        _enemyList.SetActive(enemy);
 
-        _towerPanel.gameObject.SetActive(true);
-        _enemyPanel.gameObject.SetActive(false);
-
-        if (_towerList.childCount == 0)
-        {
-            foreach (TowerInfo current in _towers)
-            {
-                InfoIcon newIcon = Instantiate(_infoIconPrefab, _towerList).GetComponent<InfoIcon>();
-                newIcon.Tower = current;
-                newIcon.GetComponent<Image>().sprite = current.Sprite;
-            }
-        }
+        _towerPanel.SetActive(!enemy);
+        _enemyPanel.SetActive(enemy);
     }
 
 
-    public void ShowSpecificInfo(InfoIcon newInfo)
+    public void ShowTowerInfo(TowerInfo newInfo)
     {
-        EnemyInfo newEnemy = newInfo.Enemy;
-        TowerInfo newTower = newInfo.Tower;
+        TowerData newTower = newInfo.Tower;
 
-        if (newEnemy != null)
-        {
-            _enemyPanel.transform.Find("Name").GetComponent<Text>().text = newEnemy.name;
-            _enemyPanel.transform.Find("Description").GetComponent<Text>().text = newEnemy.Description;
-            _enemyPanel.transform.Find("Zones").GetComponent<Text>().text = newEnemy.Zones;
-            _enemyPanel.transform.Find("Health").GetComponent<Text>().text = newEnemy.Health;
-            _enemyPanel.transform.Find("Speed").GetComponent<Text>().text = newEnemy.Speed;
-            _enemyPanel.transform.Find("Armor").GetComponent<Text>().text = newEnemy.Armor;
-            _enemyPanel.transform.Find("Resistance").GetComponent<Text>().text = newEnemy.Resistance;
-            _enemyPanel.transform.Find("LivesLost").GetComponent<Text>().text = newEnemy.LivesLost;
-            _enemyPanel.transform.Find("Special").GetComponent<Text>().text = newEnemy.Special;
-        }
-        else if (newInfo.Tower != null)
-        {
-            _towerPanel.transform.Find("Name").GetComponent<Text>().text = newTower.name;
-            _towerPanel.transform.Find("Description").GetComponent<Text>().text = newTower.Description;
-            _towerPanel.transform.Find("Price").GetComponent<Text>().text = newTower.Price;
-            _towerPanel.transform.Find("Damage").GetComponent<Text>().text = newTower.Damage;
-            _towerPanel.transform.Find("FireRate").GetComponent<Text>().text = newTower.FireRate;
-            _towerPanel.transform.Find("ArmorThrough").GetComponent<Text>().text = newTower.ArmorThrough;
-            _towerPanel.transform.Find("Dot").GetComponent<Text>().text = newTower.Dot;
-            _towerPanel.transform.Find("Special").GetComponent<Text>().text = newTower.Special;
-            _towerPanel.transform.Find("Shots").GetComponent<Text>().text = newTower.Shots;
-        }
+        _towerName.text = newTower.name;
+        _towerDescription.text = newTower.Description;
+        _towerPrice.text = newTower.PriceInfo;
+        _towerDamage.text = newTower.DamageInfo;
+        _towerFireRate.text = newTower.FireRateInfo;
+        _towerArmorThrough.text = newTower.ArmorThroughInfo;
+        _towerDot.text = newTower.DotInfo;
+        _towerSpecial.text = newTower.Special;
+        _towerShots.text = newTower.ShotsInfo;
+    }
+
+
+    public void ShowEnemyInfo(EnemyInfo newInfo)
+    {
+        Enemy newEnemy = newInfo.Enemy;
+
+        _enemyName.text = newEnemy.name;
+        _enemyDescription.text = newEnemy.Description;
+        _enemyGold.text = newEnemy.GoldInfo;
+        _enemyHealth.text = newEnemy.HealthInfo;
+        _enemySpeed.text = newEnemy.SpeedInfo;
+        _enemyArmor.text = newEnemy.ArmorInfo;
+        _enemyResistance.text = newEnemy.ResistanceInfo;
+        _enemyLivesLost.text = newEnemy.LivesTakenInfo;
+        _enemySpecial.text = newEnemy.Special;
     }
 }

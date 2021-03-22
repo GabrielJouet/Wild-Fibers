@@ -9432,6 +9432,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 663.7
       objectReference: {fileID: 0}
+    - target: {fileID: 7942975099423911463, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 571994284821652884}
+    - target: {fileID: 7942975099423911463, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PauseGame
+      objectReference: {fileID: 0}
     - target: {fileID: 8112058453730587843, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9446,7 +9456,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 4541158167840557073}
+      objectReference: {fileID: 0}
     - target: {fileID: 8688104961552498967, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -9569,7 +9579,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &4541158167840557073 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 8112058453483075472, guid: ab062a4349966594386bc59557a6906a,
+  m_CorrespondingSourceObject: {fileID: 7942975099109354868, guid: ab062a4349966594386bc59557a6906a,
     type: 3}
   m_PrefabInstance: {fileID: 4541158167840557062}
   m_PrefabAsset: {fileID: 0}

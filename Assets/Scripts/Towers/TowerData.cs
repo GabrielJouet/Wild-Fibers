@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A class that will handle tower data like number of shots and more.
+/// </summary>
 [CreateAssetMenu(menuName = "Towers/Data", fileName = "NewTower")]
 public class TowerData : ScriptableObject
 {
@@ -27,10 +30,16 @@ public class TowerData : ScriptableObject
     protected Sprite _icon;
     public Sprite Icon { get => _icon; }
 
+    /// <summary>
+    /// Sprite used in game.
+    /// </summary>
     [SerializeField]
     protected Sprite _sprite;
     public Sprite Sprite { get => _sprite; }
 
+    /// <summary>
+    /// Shadow sprite used in game.
+    /// </summary>
     [SerializeField]
     protected Sprite _shadowSprite;
     public Sprite Shadow { get => _shadowSprite; }
@@ -104,21 +113,31 @@ public class TowerData : ScriptableObject
 
 
     [Header("Dot related")]
-    //Armor through negative effect on enemy
+
+    /// <summary>
+    /// Armor malus with each shot.
+    /// </summary>
     [SerializeField]
     private float _armorThroughMalus;
     public float ArmorThroughMalus { get => _armorThroughMalus; private set => _armorThroughMalus = value; }
 
-    //How much damage the dot will do?
+    /// <summary>
+    /// Dot over time damage.
+    /// </summary>
     [SerializeField]
     private int _damageOverTime;
     public int Dot { get => _damageOverTime; private set => _damageOverTime = value; }
 
-    //Duration of the dot in seconds
+    /// <summary>
+    /// Dot duration.
+    /// </summary>
     [SerializeField]
     private float _dotDuration;
     public float DotDuration { get => _dotDuration; private set => _dotDuration = value; }
 
+    /// <summary>
+    /// Dot sprite.
+    /// </summary>
     [SerializeField]
     private Sprite _dotIcon;
     public Sprite DotIcon { get => _dotIcon; }
@@ -133,11 +152,64 @@ public class TowerData : ScriptableObject
     protected List<TowerData> _towerUpgrades;
     public List<TowerData> Upgrades { get => _towerUpgrades; }
 
+    /// <summary>
+    /// Tower specs (only for last level).
+    /// </summary>
     [SerializeField]
     protected List<TowerSpec> _towerSpecs;
     public List<TowerSpec> Specs { get => _towerSpecs; }
 
+    /// <summary>
+    /// Script used for this tower.
+    /// </summary>
     [SerializeField]
     protected string _scriptName;
     public string Script { get => _scriptName; }
+
+
+    [Header("Info related")]
+
+    /// <summary>
+    /// A special info box.
+    /// </summary>
+    [SerializeField]
+    protected string _special;
+    public string Special { get => _special; }
+
+    /// <summary>
+    /// Screen shot displaying what the tower can do.
+    /// </summary>
+    [SerializeField]
+    protected Sprite _screenShot;
+    public Sprite ScreenShot { get => _screenShot; }
+
+    /// <summary>
+    /// Fire rate transformed.
+    /// </summary>
+    public string FireRateInfo { get => Converter.TransformFireRate(1 / _timeBetweenShots); }
+
+    /// <summary>
+    /// Armor through transformed.
+    /// </summary>
+    public string ArmorThroughInfo { get => Converter.TransformArmorThrough((_armorThroughMalus + _armorThrough) / 100); }
+
+    /// <summary>
+    /// Dot transformed.
+    /// </summary>
+    public string DotInfo { get => Converter.TransformDot(_dotDuration * _damageOverTime * 2); }
+
+    /// <summary>
+    /// Number of shots in string version.
+    /// </summary>
+    public string ShotsInfo { get => _numberOfShots.ToString(); }
+
+    /// <summary>
+    /// Price in string version.
+    /// </summary>
+    public string PriceInfo { get => _price.ToString(); }
+
+    /// <summary>
+    /// Damage in string version.
+    /// </summary>
+    public string DamageInfo { get => _damage.ToString(); }
 }

@@ -37,3 +37,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 82b23e9f588f63648b88e41d308729a8, type: 2}
   _towerSpecs: []
   _scriptName: Vines
+  _special: 
+  _screenShot: {fileID: 1249832811290648610, guid: d66cd7d1ed7cd8844a044f06e18d4422,
+    type: 3}

@@ -1,29 +1,28 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "NewData", menuName = "Info/Enemy")]
-public class EnemyInfo : InfoData
+public class EnemyInfo : MonoBehaviour
 {
-    [SerializeField]
-    protected string _zones;
-    public string Zones { get => _zones; }
+    private Enemy _enemy;
+    public Enemy Enemy
+    {
+        get
+        {
+            return _enemy;
+        }
 
-    [SerializeField]
-    protected int _health;
-    public string Health { get => _health.ToString(); }
+        set
+        {
+            _enemy = value;
+            GetComponent<Image>().sprite = Enemy.ScreenShot;
+        }
+    }
 
-    [SerializeField]
-    protected string _speed;
-    public string Speed { get => _speed; }
 
-    [SerializeField]
-    protected string _armor;
-    public string Armor { get => _armor; }
-
-    [SerializeField]
-    protected string _resistance;
-    public string Resistance { get => _resistance; }
-
-    [SerializeField]
-    protected int _livesLost;
-    public string LivesLost { get => _livesLost.ToString(); }
+    public void Activate()
+    {
+        transform.parent.parent.parent.GetComponent<Library>().ShowEnemyInfo(this);
+    }
 }

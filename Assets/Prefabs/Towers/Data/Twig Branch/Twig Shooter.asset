@@ -37,3 +37,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a804dc7183a7af3459a33030f65d6238, type: 2}
   _towerSpecs: []
   _scriptName: 
+  _special: 
+  _screenShot: {fileID: 6408979333349359234, guid: 57baeccb8e0e34146890d817328beafd,
+    type: 3}
