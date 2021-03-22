@@ -1,13 +1,42 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class InfoIcon : MonoBehaviour
 {
-    public TowerData Tower { get; set; } = null;
+    private TowerData _tower;
+    public TowerData Tower 
+    {
+        get
+        {
+            return _tower;
+        }
 
-    public Enemy Enemy { get; set; } = null;
+        set
+        {
+            _tower = value;
+            GetComponent<Image>().sprite = Tower.ScreenShot;
+        }
+    }
+
+
+    private Enemy _enemy;
+    public Enemy Enemy
+    {
+        get
+        {
+            return _enemy;
+        }
+
+        set
+        {
+            _enemy = value;
+            GetComponent<Image>().sprite = Enemy.ScreenShot;
+        }
+    }
+
 
     public void Activate()
     {
-        transform.parent.parent.parent.GetComponent<Library>().ShowSpecificInfo(this);
+        transform.parent.parent.parent.parent.GetComponent<Library>().ShowSpecificInfo(this);
     }
 }

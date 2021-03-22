@@ -10,6 +10,9 @@ public class Library : MonoBehaviour
     private List<Enemy> _enemies;
 
     [SerializeField]
+    private GameObject _towerIconPrefab;
+
+    [SerializeField]
     private GameObject _infoIconPrefab;
 
     [SerializeField]
@@ -65,9 +68,8 @@ public class Library : MonoBehaviour
         {
             foreach (TowerData current in _towers)
             {
-                InfoIcon newIcon = Instantiate(_infoIconPrefab, _towerList).GetComponent<InfoIcon>();
-                newIcon.Tower = current;
-                newIcon.GetComponent<Image>().sprite = current.Sprite;
+                TowerIcon newIcon = Instantiate(_towerIconPrefab, _towerList).GetComponent<TowerIcon>();
+                newIcon.Populate(current);
             }
         }
     }

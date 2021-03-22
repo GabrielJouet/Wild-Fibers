@@ -35,3 +35,5 @@ MonoBehaviour:
   _towerUpgrades: []
   _towerSpecs: []
   _scriptName: 
+  _special: 
+  _screenShot: {fileID: 21300000, guid: 493064ed8ee7c47428d290e6a28f2f62, type: 3}

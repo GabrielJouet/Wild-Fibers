@@ -147,6 +147,10 @@ public class TowerData : ScriptableObject
     protected string _special;
     public string Special { get => _special; }
 
+    [SerializeField]
+    protected Sprite _screenShot;
+    public Sprite ScreenShot { get => _screenShot; }
+
     public string FireRateInfo { get => Converter.TransformFireRate(1 / _timeBetweenShots); }
 
     public string ArmorThroughInfo { get => Converter.TransformArmorThrough((_armorThroughMalus + _armorThrough) / 100); }

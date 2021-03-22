@@ -1690,7 +1690,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 920, y: 780}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &6445939989494718104
 MonoBehaviour:
@@ -1725,6 +1725,8 @@ MonoBehaviour:
   - {fileID: 2832435586917530963, guid: c9cb137af20226a418d05813b1c46a21, type: 3}
   - {fileID: 5682064432001086994, guid: 3a10d5fb2f081234aba26b426ea831c4, type: 3}
   - {fileID: 5682064432001086994, guid: d0c9e8392b6347b4facfa535864b71a4, type: 3}
+  _towerIconPrefab: {fileID: 7758772164408991083, guid: 318aed5c1e7f5be4a86cb5cadcab8712,
+    type: 3}
   _infoIconPrefab: {fileID: 7758772164408991083, guid: de20513a4ef40564fb3dabdecc12c1b3,
     type: 3}
   _towerPanel: {fileID: 5575951972707165611}

@@ -37,3 +37,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 58c1c5ad6fa9ece47897ac8f41e577d6, type: 2}
   _towerSpecs: []
   _scriptName: RootsStump
+  _special: 
+  _screenShot: {fileID: 5698191664513791026, guid: d85b23dd25bcdec49a6528cafd18e59c,
+    type: 3}
