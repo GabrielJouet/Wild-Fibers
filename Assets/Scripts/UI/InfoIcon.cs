@@ -37,6 +37,6 @@ public class InfoIcon : MonoBehaviour
 
     public void Activate()
     {
-        transform.parent.parent.parent.parent.GetComponent<Library>().ShowSpecificInfo(this);
+        transform.parent.parent.parent.GetComponent<Library>().ShowSpecificInfo(this);
     }
 }

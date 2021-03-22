@@ -10,9 +10,6 @@ public class Library : MonoBehaviour
     private List<Enemy> _enemies;
 
     [SerializeField]
-    private GameObject _towerIconPrefab;
-
-    [SerializeField]
     private GameObject _infoIconPrefab;
 
     [SerializeField]
@@ -27,51 +24,36 @@ public class Library : MonoBehaviour
     [SerializeField]
     private Transform _enemyList;
 
+    [SerializeField]
+    private List<TowerIcon> _towerIcons;
+
 
 
     private void Awake()
     {
         _towers = FindObjectOfType<SquadController>().Towers;
+
+        foreach (Enemy current in _enemies)
+        {
+            InfoIcon newIcon = Instantiate(_infoIconPrefab, _enemyList).GetComponent<InfoIcon>();
+            newIcon.Enemy = current;
+            newIcon.GetComponent<Image>().sprite = current.ScreenShot;
+        }
+
+        for (int i = 0; i < _towers.Count; i++)
+            _towerIcons[i].Populate(_towers[i]);
+
+        ShowPanel(false);
     }
 
 
-
-    public void ShowEnemies()
+    public void ShowPanel(bool enemy)
     {
-        _towerList.gameObject.SetActive(false);
-        _enemyList.gameObject.SetActive(true);
+        _towerList.gameObject.SetActive(!enemy);
+        _enemyList.gameObject.SetActive(enemy);
 
-        _towerPanel.gameObject.SetActive(false);
-        _enemyPanel.gameObject.SetActive(true);
-
-        if (_enemyList.childCount == 0)
-        {
-            foreach (Enemy current in _enemies)
-            {
-                InfoIcon newIcon = Instantiate(_infoIconPrefab, _enemyList).GetComponent<InfoIcon>();
-                newIcon.Enemy = current;
-                newIcon.GetComponent<Image>().sprite = current.ScreenShot;
-            }
-        }
-    }
-
-
-    public void ShowTowers()
-    {
-        _towerList.gameObject.SetActive(true);
-        _enemyList.gameObject.SetActive(false);
-
-        _towerPanel.gameObject.SetActive(true);
-        _enemyPanel.gameObject.SetActive(false);
-
-        if (_towerList.childCount == 0)
-        {
-            foreach (TowerData current in _towers)
-            {
-                TowerIcon newIcon = Instantiate(_towerIconPrefab, _towerList).GetComponent<TowerIcon>();
-                newIcon.Populate(current);
-            }
-        }
+        _towerPanel.gameObject.SetActive(!enemy);
+        _enemyPanel.gameObject.SetActive(enemy);
     }
 
 
