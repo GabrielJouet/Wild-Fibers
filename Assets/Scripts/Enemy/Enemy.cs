@@ -146,31 +146,57 @@ public class Enemy : MonoBehaviour
 
 
     [Header("Bestiary related")]
+
+    /// <summary>
+    /// Description used in bestiary.
+    /// </summary>
     [SerializeField]
     protected string _description;
     public string Description { get => _description; }
 
-    [SerializeField]
-    protected string _zones;
-    public string Zones { get => _zones; }
-
+    /// <summary>
+    /// Screen shot used in bestiary.
+    /// </summary>
     [SerializeField]
     protected Sprite _screenShot;
     public Sprite ScreenShot { get => _screenShot; }
 
-    public string SpeedInfo { get => Converter.TransformSpeed(_speedMax); }
-
-    public string ArmorInfo { get => Converter.TransformArmor(ArmorMax / 100); }
-
-    public string ResistanceInfo { get => Converter.TransformResistance(_resistance / 100); }
-
-    public string LivesTakenInfo { get => _numberOfLivesTaken.ToString(); }
-
-    public string HealthInfo { get => _healthMax.ToString(); }
-
+    /// <summary>
+    /// Special info box.
+    /// </summary>
     [SerializeField]
     protected string _special;
     public string Special { get => _special; }
+
+    /// <summary>
+    /// Gold in string version.
+    /// </summary>
+    public string GoldInfo { get => _goldGained.ToString(); }
+
+    /// <summary>
+    /// Speed transformed.
+    /// </summary>
+    public string SpeedInfo { get => Converter.TransformSpeed(_speedMax); }
+
+    /// <summary>
+    /// Armor transformed.
+    /// </summary>
+    public string ArmorInfo { get => Converter.TransformArmor(ArmorMax / 100); }
+
+    /// <summary>
+    /// Resistance transformed.
+    /// </summary>
+    public string ResistanceInfo { get => Converter.TransformResistance(_resistance / 100); }
+
+    /// <summary>
+    /// Lives taken in string version.
+    /// </summary>
+    public string LivesTakenInfo { get => _numberOfLivesTaken.ToString(); }
+
+    /// <summary>
+    /// Health in string version.
+    /// </summary>
+    public string HealthInfo { get => _healthMax.ToString(); }
 
 
     /// <summary>
@@ -240,8 +266,9 @@ public class Enemy : MonoBehaviour
     public bool AlreadyDotted { get; set; } = false;
 
 
-    protected List<TowerCollider> _towerColliders = new List<TowerCollider>();
-
+    /// <summary>
+    /// Can the enemy be targeted?
+    /// </summary>
     public bool CanBeTargeted { get; protected set; } = true;
 
 
@@ -255,7 +282,6 @@ public class Enemy : MonoBehaviour
     public virtual void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
         CanBeTargeted = true;
-        _towerColliders.Clear();
         Attacks.Clear();
         AlreadyDotted = false;
 
@@ -506,10 +532,7 @@ public class Enemy : MonoBehaviour
     protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out TowerCollider towerCollider))
-        {
             towerCollider.EnemyCollide(this);
-            _towerColliders.Add(towerCollider);
-        }
     }
 
 
@@ -520,9 +543,6 @@ public class Enemy : MonoBehaviour
     protected void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out TowerCollider towerCollider))
-        {
             towerCollider.EnemyExit(this);
-            _towerColliders.Remove(towerCollider);
-        }
     }
 }
