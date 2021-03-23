@@ -41,15 +41,13 @@ public class SaveController : MonoBehaviour
 	private string _gameSavePath;
 
 
+
 	/// <summary>
 	/// Awake method, used for initialization.
 	/// </summary>
 	private void Awake()
 	{
 		Application.targetFrameRate = 60;
-
-		if (FindObjectsOfType<SaveController>().Length > 1)
-			Destroy(gameObject);
 
 		_gameSavePath = Application.persistentDataPath + "/player.dat";
 		_binaryFormatter = new BinaryFormatter();
