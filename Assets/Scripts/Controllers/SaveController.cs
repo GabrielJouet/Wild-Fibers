@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -153,7 +153,13 @@ public class SaveController : MonoBehaviour
 	}
 
 
-		SaveData();
+	public void SaveTowerLevel(int newLevel)
+	{
+		if (newLevel > SaveFile.TowerLevelMax)
+		{
+			SaveFile.TowerLevelMax = newLevel;
+			SaveData();
+		}
 	}
 
 

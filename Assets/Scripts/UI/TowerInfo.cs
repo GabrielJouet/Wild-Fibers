@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class TowerInfo : MonoBehaviour
@@ -16,7 +14,8 @@ public class TowerInfo : MonoBehaviour
         set
         {
             _tower = value;
-            GetComponent<Image>().sprite = Tower.ScreenShot;
+            GetComponent<Button>().enabled = true;
+            transform.GetChild(0).GetComponent<Image>().sprite = Tower.ScreenShot;
         }
     }
 

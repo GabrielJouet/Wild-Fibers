@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -93,8 +93,9 @@ public class Library : MonoBehaviour
         foreach (Enemy current in FindObjectOfType<EnemyController>().Enemies)
             Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>().Enemy = current;
 
+        int maxLevel = FindObjectOfType<SaveController>().SaveFile.TowerLevelMax;
         for (int i = 0; i < towers.Count; i++)
-            _towerIcons[i].Populate(towers[i]);
+            _towerIcons[i].Populate(towers[i], maxLevel);
 
         ShowPanel(false);
     }

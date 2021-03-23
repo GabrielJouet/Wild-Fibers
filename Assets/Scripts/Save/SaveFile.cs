@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 /// <summary>
@@ -10,7 +10,7 @@ public class SaveFile
     /// <summary>
     /// Current version number.
     /// </summary>
-    public string VersionNumber { get; set; }
+    public string VersionNumber { get; private set; }
 
     /// <summary>
     /// List of level save.
@@ -30,6 +30,10 @@ public class SaveFile
 
     public List<bool> EnemiesUnlocked { get; set; }
 
+    public int TowerLevelMax { get; set; }
+
+
+
     /// <summary>
     /// Constructor.
     /// </summary>
@@ -47,5 +51,6 @@ public class SaveFile
         Music = musicLevel;
 
         EnemiesUnlocked = new List<bool>(numberOfEnemies);
+        TowerLevelMax = 1;
     }
 }
