@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 /// <summary>
@@ -28,6 +28,7 @@ public class SaveFile
     public float Music { get; set; }
 
 
+    public List<bool> EnemiesUnlocked { get; set; }
 
     /// <summary>
     /// Constructor.
@@ -36,12 +37,15 @@ public class SaveFile
     /// <param name="newSaves">New list of saves</param>
     /// <param name="soundLevel">New sound level</param>
     /// <param name="musicLevel">New music level</param>
-    public SaveFile(string newVersion, List<LevelSave> newSaves, float soundLevel, float musicLevel)
+    /// <param name="numberOfEnemies">Number total of enemies</param>
+    public SaveFile(string newVersion, List<LevelSave> newSaves, float soundLevel, float musicLevel, int numberOfEnemies)
     {
         VersionNumber = newVersion;
         Saves = new List<LevelSave>(newSaves);
 
         Sound = soundLevel;
         Music = musicLevel;
+
+        EnemiesUnlocked = new List<bool>(numberOfEnemies);
     }
 }

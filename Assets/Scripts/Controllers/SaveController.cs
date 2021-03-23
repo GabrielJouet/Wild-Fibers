@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -14,6 +14,10 @@ public class SaveController : MonoBehaviour
 	/// </summary>
 	private List<LevelData> _levels;
 	public List<LevelData> Levels { get => _levels; }
+
+
+	[SerializeField]
+	private EnemyController _enemyController;
 
 
 	/// <summary>
@@ -125,7 +129,7 @@ public class SaveController : MonoBehaviour
 		for (int i = 0; i < Levels.Count; i ++)
 			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED));
 
-		SaveFile = new SaveFile(Application.version, allSaves, 1, 1);
+		SaveFile = new SaveFile(Application.version, allSaves, 1, 1, _enemyController.Enemies.Count);
 
 		SaveData();
 	}
@@ -138,8 +142,18 @@ public class SaveController : MonoBehaviour
 	/// <param name="newSoundLevel">The new sound level</param>
 	public void SaveMusicLevel(float newMusicLevel, float newSoundLevel)
 	{
-		SaveFile.Music = newMusicLevel;
 		SaveFile.Sound = newSoundLevel;
+		SaveFile.Music = newMusicLevel;
+		SaveData();
+	}
+
+
+	public void SaveNewEnemyFound(Enemy enemy)
+	{
+		SaveFile.EnemiesUnlocked[_enemyController.FindEnemyIndex(enemy)] = true;
+		SaveData();
+	}
+
 
 		SaveData();
 	}

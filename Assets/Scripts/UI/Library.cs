@@ -1,13 +1,10 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Library : MonoBehaviour
 {
     [Header("Components")]
-
-    [SerializeField]
-    private List<Enemy> _enemies;
 
     [Space(10)]
     [SerializeField]
@@ -93,7 +90,7 @@ public class Library : MonoBehaviour
     {
         List<TowerData> towers = FindObjectOfType<SquadController>().Towers;
 
-        foreach (Enemy current in _enemies)
+        foreach (Enemy current in FindObjectOfType<EnemyController>().Enemies)
             Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>().Enemy = current;
 
         for (int i = 0; i < towers.Count; i++)
