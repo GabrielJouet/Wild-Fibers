@@ -146,9 +146,9 @@ public class SaveController : MonoBehaviour
 	}
 
 
-	public void SaveNewEnemyFound(Enemy enemy)
+	public void SaveNewEnemyFound(int enemyIndex)
 	{
-		SaveFile.EnemiesUnlocked[_enemyController.FindEnemyIndex(enemy)] = true;
+		SaveFile.EnemiesUnlocked[enemyIndex] = true;
 		SaveData();
 	}
 

@@ -359,6 +359,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ff984134a7102e4d97dc1e2faf671f6, type: 2}
   - {fileID: 11400000, guid: e93e7400512c4ae468864e3a8888fd35, type: 2}
   - {fileID: 11400000, guid: f64f20542d729ec4ca1d4f48c551a656, type: 2}
+  _enemyController: {fileID: 397783277}
 --- !u!1 &397783275
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +403,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 505b32e670d41cf439871e6f06358c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _allEnemies: []
+  _allEnemies:
+  - {fileID: 5682064432001086994, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb, type: 3}
+  - {fileID: 5682064432001086994, guid: 76e6d98bff05e8948b947d2b45938fa4, type: 3}
+  - {fileID: 1001176562105206731, guid: d9daef3f950273945b1eb5cea886939b, type: 3}
+  - {fileID: 5682064432001086994, guid: 0486239d7c64fe445b9c75626147d6e1, type: 3}
+  - {fileID: 4674631295996963510, guid: 75053fef349185741a6dd180b501757c, type: 3}
+  - {fileID: 2832435586917530963, guid: c9cb137af20226a418d05813b1c46a21, type: 3}
+  - {fileID: 5682064432001086994, guid: 3a10d5fb2f081234aba26b426ea831c4, type: 3}
+  - {fileID: 5682064432001086994, guid: d0c9e8392b6347b4facfa535864b71a4, type: 3}
 --- !u!1 &404825888
 GameObject:
   m_ObjectHideFlags: 0

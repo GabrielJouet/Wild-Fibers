@@ -90,10 +90,18 @@ public class Library : MonoBehaviour
     {
         List<TowerData> towers = FindObjectOfType<SquadController>().Towers;
 
-        foreach (Enemy current in FindObjectOfType<EnemyController>().Enemies)
-            Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>().Enemy = current;
+        SaveController saveController = FindObjectOfType<SaveController>();
 
-        int maxLevel = FindObjectOfType<SaveController>().SaveFile.TowerLevelMax;
+        List<bool> enemiesFound = saveController.SaveFile.EnemiesUnlocked;
+        List<Enemy> enemies = FindObjectOfType<EnemyController>().Enemies;
+
+        for (int i = 0; i < enemiesFound.Count; i ++)
+        {
+            if (enemiesFound[i]) 
+                Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>().Enemy = enemies[i];
+        }
+
+        int maxLevel = saveController.SaveFile.TowerLevelMax;
         for (int i = 0; i < towers.Count; i++)
             _towerIcons[i].Populate(towers[i], maxLevel);
 
