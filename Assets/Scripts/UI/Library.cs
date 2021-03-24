@@ -97,8 +97,10 @@ public class Library : MonoBehaviour
 
         for (int i = 0; i < enemiesFound.Count; i ++)
         {
+            EnemyInfo newEnemy = Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>();
+
             if (enemiesFound[i]) 
-                Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>().Enemy = enemies[i];
+                newEnemy.Enemy = enemies[i];
         }
 
         int maxLevel = saveController.SaveFile.TowerLevelMax;
