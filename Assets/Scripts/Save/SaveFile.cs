@@ -17,24 +17,38 @@ public class SaveFile
     /// </summary>
     public List<LevelSave> Saves { get; private set; }
 
+
     /// <summary>
     /// Sound level saved.
     /// </summary>
     public float Sound { get; set; }
 
+    /// <summary>
+    /// Does the sound is muted?
+    /// </summary>
     public bool SoundMuted { get; set; }
+
 
     /// <summary>
     /// Music level saved.
     /// </summary>
     public float Music { get; set; }
 
+    /// <summary>
+    /// Does the music is muted?
+    /// </summary>
     public bool MusicMuted { get; set; }
 
 
+    /// <summary>
+    /// Enemies unlocked.
+    /// </summary>
     public List<bool> EnemiesUnlocked { get; set; } = new List<bool>();
 
 
+    /// <summary>
+    /// Tower level max.
+    /// </summary>
     public int TowerLevelMax { get; set; }
 
 
