@@ -139,14 +139,23 @@ public class SaveController : MonoBehaviour
 
 
 	/// <summary>
-	/// Method used to save music and sound level.
+	/// Method used to save music level.
 	/// </summary>
 	/// <param name="newMusicLevel">The new music level</param>
+	public void SaveMusicLevel(float newMusicLevel)
+	{
+		SaveFile.Music = newMusicLevel;
+		SaveData();
+	}
+
+
+	/// <summary>
+	/// Method used to save sound level.
+	/// </summary>
 	/// <param name="newSoundLevel">The new sound level</param>
-	public void SaveMusicLevel(float newMusicLevel, float newSoundLevel)
+	public void SaveSoundLevel(float newSoundLevel)
 	{
 		SaveFile.Sound = newSoundLevel;
-		SaveFile.Music = newMusicLevel;
 		SaveData();
 	}
 
