@@ -41,6 +41,9 @@ public class SaveController : MonoBehaviour
 	private string _gameSavePath;
 
 
+	public bool Initialized { get; private set; } = false;
+
+
 
 	/// <summary>
 	/// Awake method, used for initialization.
@@ -81,6 +84,8 @@ public class SaveController : MonoBehaviour
 		}
 		else
 			CreateSave();
+
+		Initialized = true;
 	}
 
 
@@ -142,6 +147,30 @@ public class SaveController : MonoBehaviour
 	{
 		SaveFile.Sound = newSoundLevel;
 		SaveFile.Music = newMusicLevel;
+		SaveData();
+	}
+
+
+	/// <summary>
+	/// Method used to save music mute.
+	/// </summary>
+	/// <param name="musicMuted">Does the music is muted?</param>
+	public void SaveMusicMute(bool musicMuted)
+	{
+		SaveFile.MusicMuted = musicMuted;
+
+		SaveData();
+	}
+
+
+	/// <summary>
+	/// Method used to save sound mute.
+	/// </summary>
+	/// <param name="soundMuted">Does the sound is muted?</param>
+	public void SaveSoundMute(bool soundMuted)
+	{
+		SaveFile.SoundMuted = soundMuted;
+
 		SaveData();
 	}
 

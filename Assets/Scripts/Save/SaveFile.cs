@@ -22,13 +22,18 @@ public class SaveFile
     /// </summary>
     public float Sound { get; set; }
 
+    public bool SoundMuted { get; set; }
+
     /// <summary>
     /// Music level saved.
     /// </summary>
     public float Music { get; set; }
 
+    public bool MusicMuted { get; set; }
+
 
     public List<bool> EnemiesUnlocked { get; set; } = new List<bool>();
+
 
     public int TowerLevelMax { get; set; }
 
@@ -48,7 +53,10 @@ public class SaveFile
         Saves = new List<LevelSave>(newSaves);
 
         Sound = soundLevel;
+        SoundMuted = false;
+
         Music = musicLevel;
+        MusicMuted = false;
 
         for (int i = 0; i < numberOfEnemies; i++)
             EnemiesUnlocked.Add(false);
