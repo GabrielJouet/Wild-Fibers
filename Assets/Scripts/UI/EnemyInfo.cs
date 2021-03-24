@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Button))]
 public class EnemyInfo : MonoBehaviour
 {
     private Enemy _enemy;
@@ -16,7 +15,8 @@ public class EnemyInfo : MonoBehaviour
         set
         {
             _enemy = value;
-            GetComponent<Image>().sprite = Enemy.ScreenShot;
+            GetComponent<Button>().enabled = true;
+            transform.GetChild(0).GetComponent<Image>().sprite = Enemy.ScreenShot;
         }
     }
 

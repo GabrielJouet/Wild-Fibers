@@ -62,6 +62,8 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private RessourceController _ressourceController;
 
+    private SaveController _saveController;
+
     /// <summary>
     /// Pool controller component, used to store pools
     /// </summary>
@@ -84,11 +86,18 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        LoadedLevel = FindObjectOfType<SaveController>().LoadedLevel;
+        _saveController = FindObjectOfType<SaveController>();
+        LoadedLevel = _saveController.LoadedLevel;
 
         _ressourceController = GetComponent<RessourceController>();
         _poolController = FindObjectOfType<PoolController>();
         _poolController.ReInitialize();
+
+        if (LoadedLevel.TowerLevel > _saveController.SaveFile.TowerLevelMax)
+        {
+            //TO DO : DISPLAY A SCREEN WITH NEW TOWERS
+            _saveController.SaveTowerLevel(LoadedLevel.TowerLevel);
+        }
 
         _waveText.text = 0 + " / " + LoadedLevel.Waves.Count;
     }
@@ -124,6 +133,13 @@ public class LevelController : MonoBehaviour
         i = 0;
         foreach(EnemyGroup current in LoadedLevel.Waves[_waveIndex].EnemyGroups)
         {
+            int index = FindObjectOfType<EnemyController>().FindEnemyIndex(current.Enemy.GetComponent<Enemy>());
+            if (!_saveController.SaveFile.EnemiesUnlocked[index])
+            {
+                //TO DO : DISPLAY ENEMY VIGNETTE
+                _saveController.SaveNewEnemyFound(index);
+            }
+
             _spawners[i].SetNewGroup(_availablePath[current.Path], current, this, _poolController);
             i++;
         }

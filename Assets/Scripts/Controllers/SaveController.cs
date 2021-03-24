@@ -16,6 +16,10 @@ public class SaveController : MonoBehaviour
 	public List<LevelData> Levels { get => _levels; }
 
 
+	[SerializeField]
+	private EnemyController _enemyController;
+
+
 	/// <summary>
 	/// Loaded level.
 	/// </summary>
@@ -37,15 +41,16 @@ public class SaveController : MonoBehaviour
 	private string _gameSavePath;
 
 
+	public bool Initialized { get; private set; } = false;
+
+
+
 	/// <summary>
 	/// Awake method, used for initialization.
 	/// </summary>
 	private void Awake()
 	{
 		Application.targetFrameRate = 60;
-
-		if (FindObjectsOfType<SaveController>().Length > 1)
-			Destroy(gameObject);
 
 		_gameSavePath = Application.persistentDataPath + "/player.dat";
 		_binaryFormatter = new BinaryFormatter();
@@ -79,6 +84,8 @@ public class SaveController : MonoBehaviour
 		}
 		else
 			CreateSave();
+
+		Initialized = true;
 	}
 
 
@@ -125,23 +132,72 @@ public class SaveController : MonoBehaviour
 		for (int i = 0; i < Levels.Count; i ++)
 			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED));
 
-		SaveFile = new SaveFile(Application.version, allSaves, 1, 1);
+		SaveFile = new SaveFile(Application.version, allSaves, 1, 1, _enemyController.Enemies.Count);
 
 		SaveData();
 	}
 
 
 	/// <summary>
-	/// Method used to save music and sound level.
+	/// Method used to save music level.
 	/// </summary>
 	/// <param name="newMusicLevel">The new music level</param>
-	/// <param name="newSoundLevel">The new sound level</param>
-	public void SaveMusicLevel(float newMusicLevel, float newSoundLevel)
+	public void SaveMusicLevel(float newMusicLevel)
 	{
 		SaveFile.Music = newMusicLevel;
+		SaveData();
+	}
+
+
+	/// <summary>
+	/// Method used to save sound level.
+	/// </summary>
+	/// <param name="newSoundLevel">The new sound level</param>
+	public void SaveSoundLevel(float newSoundLevel)
+	{
 		SaveFile.Sound = newSoundLevel;
+		SaveData();
+	}
+
+
+	/// <summary>
+	/// Method used to save music mute.
+	/// </summary>
+	/// <param name="musicMuted">Does the music is muted?</param>
+	public void SaveMusicMute(bool musicMuted)
+	{
+		SaveFile.MusicMuted = musicMuted;
 
 		SaveData();
+	}
+
+
+	/// <summary>
+	/// Method used to save sound mute.
+	/// </summary>
+	/// <param name="soundMuted">Does the sound is muted?</param>
+	public void SaveSoundMute(bool soundMuted)
+	{
+		SaveFile.SoundMuted = soundMuted;
+
+		SaveData();
+	}
+
+
+	public void SaveNewEnemyFound(int enemyIndex)
+	{
+		SaveFile.EnemiesUnlocked[enemyIndex] = true;
+		SaveData();
+	}
+
+
+	public void SaveTowerLevel(int newLevel)
+	{
+		if (newLevel > SaveFile.TowerLevelMax)
+		{
+			SaveFile.TowerLevelMax = newLevel;
+			SaveData();
+		}
 	}
 
 

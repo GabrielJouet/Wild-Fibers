@@ -6,9 +6,6 @@ public class Library : MonoBehaviour
 {
     [Header("Components")]
 
-    [SerializeField]
-    private List<Enemy> _enemies;
-
     [Space(10)]
     [SerializeField]
     private GameObject _enemyInfoPrefab;
@@ -93,11 +90,22 @@ public class Library : MonoBehaviour
     {
         List<TowerData> towers = FindObjectOfType<SquadController>().Towers;
 
-        foreach (Enemy current in _enemies)
-            Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>().Enemy = current;
+        SaveController saveController = FindObjectOfType<SaveController>();
 
+        List<bool> enemiesFound = saveController.SaveFile.EnemiesUnlocked;
+        List<Enemy> enemies = FindObjectOfType<EnemyController>().Enemies;
+
+        for (int i = 0; i < enemiesFound.Count; i ++)
+        {
+            EnemyInfo newEnemy = Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>();
+
+            if (enemiesFound[i]) 
+                newEnemy.Enemy = enemies[i];
+        }
+
+        int maxLevel = saveController.SaveFile.TowerLevelMax;
         for (int i = 0; i < towers.Count; i++)
-            _towerIcons[i].Populate(towers[i]);
+            _towerIcons[i].Populate(towers[i], maxLevel);
 
         ShowPanel(false);
     }
