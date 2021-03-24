@@ -5,6 +5,9 @@
 /// </summary>
 public class TowerIcon : MonoBehaviour
 {
+    public TowerInfo First { get => transform.GetChild(0).GetComponent<TowerInfo>(); }
+
+
     public void Populate(TowerData newData, int maxLevel)
     {
         transform.GetChild(0).GetComponent<TowerInfo>().Tower = newData;

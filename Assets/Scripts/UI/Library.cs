@@ -107,6 +107,7 @@ public class Library : MonoBehaviour
         for (int i = 0; i < towers.Count; i++)
             _towerIcons[i].Populate(towers[i], maxLevel);
 
+        ShowTowerInfo(_towerIcons[0].First);
         ShowPanel(false);
     }
 
