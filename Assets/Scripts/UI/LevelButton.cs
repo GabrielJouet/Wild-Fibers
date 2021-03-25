@@ -1,11 +1,10 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 /// <summary>
 /// Level button used to select a level.
 /// </summary>
-public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+[RequireComponent(typeof(SpriteRenderer))]
+public class LevelButton : MonoBehaviour
 {
     [Header("Display")]
 
@@ -16,16 +15,10 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private LevelSelection _levelSelection;
 
     /// <summary>
-    /// Button display object.
-    /// </summary>
-    [SerializeField]
-    private Image _buttonDisplay;
-
-    /// <summary>
     /// Hover displayer object.
     /// </summary>
     [SerializeField]
-    private Image _hoverDisplayer;
+    private SpriteRenderer _hoverDisplayer;
 
     [SerializeField]
     private LevelData _levelData;
@@ -91,34 +84,43 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// </summary>
     private bool _isLocked = false;
 
+    /// <summary>
+    /// Button display object.
+    /// </summary>
+    private SpriteRenderer _buttonDisplay;
+
+
+
+    private void Awake()
+    {
+        _buttonDisplay = GetComponent<SpriteRenderer>();
+    }
 
 
     /// <summary>
     /// Method used to highlight the level button if not locked.
     /// </summary>
-    /// <param name="eventData">The pointer event</param>
-    public void OnPointerEnter(PointerEventData eventData)
+    private void OnMouseEnter()
     {
-        _hoverDisplayer.gameObject.SetActive(!_isLocked);
+        _hoverDisplayer.enabled = !_isLocked;
     }
 
 
     /// <summary>
     /// Method used to desactivate the highlight for the level button if not locked.
     /// </summary>
-    /// <param name="eventData">The pointer event</param>
-    public void OnPointerExit(PointerEventData eventData)
+    private void OnMouseExit()
     {
-        _hoverDisplayer.gameObject.SetActive(false);
+        _hoverDisplayer.enabled = false;
     }
 
 
     /// <summary>
     /// Method used to activate the level selection menu.
     /// </summary>
-    public void Activate()
+    private void OnMouseUp()
     {
-        if(!_isLocked)
+        if (!_isLocked)
             _levelSelection.ActivateLevelSelectionMenu(this);
     }
 
@@ -149,7 +151,6 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         _buttonDisplay.sprite = _completedSprite;
         _hoverDisplayer.sprite = _finishedHover;
-        _hoverDisplayer.SetNativeSize();
     }
 
 
@@ -160,7 +161,6 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         _buttonDisplay.sprite = _sidedSprite;
         _hoverDisplayer.sprite = _asideHover;
-        _hoverDisplayer.SetNativeSize();
     }
 
 
@@ -171,6 +171,5 @@ public class LevelButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         _buttonDisplay.sprite = _challengedSprite;
         _hoverDisplayer.sprite = _challengedHover;
-        _hoverDisplayer.SetNativeSize();
     }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 /// <summary>
 /// Class used to handle map selection menus.
@@ -95,8 +96,14 @@ public class DisplayController : MonoBehaviour
             _displayedObject = displayedObject;
 
             _displayedObject.SetActive(true);
-            _hider.SetActive(true);
+            StartCoroutine(DelayHiderSpawn());
         }
+    }
+
+    private IEnumerator DelayHiderSpawn()
+    {
+        yield return new WaitForEndOfFrame();
+        _hider.SetActive(true);
     }
 
 
