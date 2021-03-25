@@ -421,12 +421,12 @@ PrefabInstance:
     - target: {fileID: 6834637540494987681, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DisplayObject
+      value: ResetDisplay
       objectReference: {fileID: 0}
     - target: {fileID: 6834637540494987681, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6834637540494987681, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
@@ -436,13 +436,13 @@ PrefabInstance:
     - target: {fileID: 6834637540494987681, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6834637540494987681, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 280245913}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 862c3cdf711a3444fa92c0b2721f26af, type: 3}
 --- !u!224 &280245912 stripped
@@ -472,7 +472,22 @@ PrefabInstance:
     - target: {fileID: 4391224942352724863, guid: e50b5478ea3721b45b4004bfccfb9c18,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: PauseGame
+      value: ResetDisplay
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391224942352724863, guid: e50b5478ea3721b45b4004bfccfb9c18,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391224942352724863, guid: e50b5478ea3721b45b4004bfccfb9c18,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4391224942352724863, guid: e50b5478ea3721b45b4004bfccfb9c18,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4391224943246061612, guid: e50b5478ea3721b45b4004bfccfb9c18,
         type: 3}
@@ -597,18 +612,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 547129830}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &547129832 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6123271220255228632, guid: e50b5478ea3721b45b4004bfccfb9c18,
-    type: 3}
-  m_PrefabInstance: {fileID: 547129830}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 547129833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef3efb23973b8ec4a874d80aa7003192, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &547129833 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4391224943246061612, guid: e50b5478ea3721b45b4004bfccfb9c18,
@@ -1461,7 +1464,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hider: {fileID: 1282270587}
-  _canPause: 0
   _defaultMenu: {fileID: 280245913}
 --- !u!81 &1409857564
 AudioListener:
@@ -1751,21 +1753,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 547129832}
+      objectReference: {fileID: 0}
     - target: {fileID: 524178628302392758, guid: 67003281f7bed5d44ad9b14e87d93dd8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ShowTowerInfo
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 524178628302392758, guid: 67003281f7bed5d44ad9b14e87d93dd8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 524178628302392758, guid: 67003281f7bed5d44ad9b14e87d93dd8,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: TowerInfo, Assembly-CSharp
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67003281f7bed5d44ad9b14e87d93dd8, type: 3}

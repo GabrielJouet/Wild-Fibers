@@ -13,12 +13,6 @@ public class DisplayController : MonoBehaviour
     private GameObject _hider;
 
     /// <summary>
-    /// Can the current scene be paused?
-    /// </summary>
-    [SerializeField]
-    private bool _canPause;
-
-    /// <summary>
     /// Previous object displayed.
     /// </summary>
     [SerializeField]
@@ -38,41 +32,28 @@ public class DisplayController : MonoBehaviour
 
 
     /// <summary>
-    /// Update is called every frame.
+    /// Method used to pause the game.
     /// </summary>
-    protected void Update()
+    public void PauseGame()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-            PauseGame(_defaultMenu);
-    }
-
-
-    /// <summary>
-    /// Method used to pause the game and display an object.
-    /// </summary>
-    /// <param name="menuObject">The menu object to display</param>
-    public void PauseGame(GameObject menuObject)
-    {
-        DisplayObject(menuObject);
-
-        if(_canPause)
-        {
-            Time.timeScale = !Paused ? 0f : 1f;
-            Paused = !Paused;
-        }
+        Time.timeScale = 0f;
+        Paused = true;
     }
 
 
     /// <summary>
     /// Method used to pause the game.
     /// </summary>
-    public void PauseGame()
+    public void UnPauseGame()
     {
-        if (_canPause)
-        {
-            Time.timeScale = !Paused ? 0f : 1f;
-            Paused = !Paused;
-        }
+        Time.timeScale = 1f;
+        Paused = false;
+    }
+
+    public void TooglePause()
+    {
+        Paused = !Paused;
+        Time.timeScale = Paused ? 0f : 1f;
     }
 
 
@@ -117,6 +98,6 @@ public class DisplayController : MonoBehaviour
 
         _hider.SetActive(false);
 
-        PauseGame();
+        UnPauseGame();
     }
 }

@@ -442,12 +442,12 @@ PrefabInstance:
     - target: {fileID: 6834637540494987681, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: DisplayObject
+      value: ResetDisplay
       objectReference: {fileID: 0}
     - target: {fileID: 6834637540494987681, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6834637540494987681, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
@@ -457,13 +457,13 @@ PrefabInstance:
     - target: {fileID: 6834637540494987681, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6834637540494987681, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 39616645}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 862c3cdf711a3444fa92c0b2721f26af, type: 3}
 --- !u!224 &39616644 stripped
@@ -1638,11 +1638,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1409857563}
-        m_MethodName: PauseGame
-        m_Mode: 2
+        m_MethodName: ResetDisplay
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 453803061}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

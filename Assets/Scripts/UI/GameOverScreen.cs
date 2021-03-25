@@ -81,7 +81,9 @@ public class GameOverScreen : MonoBehaviour
     /// <param name="win">Does the player wins this level?</param>
     public void Activate(bool win)
     {
-        _displayController.PauseGame(gameObject);
+        _displayController.PauseGame();
+        _displayController.DisplayObject(gameObject);
+
         DelayShow(win); 
     }
 
