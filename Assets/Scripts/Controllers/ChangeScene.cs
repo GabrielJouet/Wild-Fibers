@@ -14,7 +14,7 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene(destinationName);
 
-        PoolController buffer = FindObjectOfType<PoolController>();
+        PoolController buffer = Controller.Instance.PoolControl;
 
         if (buffer != null && FindObjectsOfType<LevelController>().Length > 0)
             buffer.DesactivateEntities();

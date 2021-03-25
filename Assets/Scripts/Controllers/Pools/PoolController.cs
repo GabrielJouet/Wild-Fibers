@@ -35,9 +35,6 @@ public class PoolController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        if (FindObjectsOfType<PoolController>().Length > 1)
-            Destroy(gameObject);
-
         TowerPool = Instantiate(_towerPoolPrefab, transform);
     }
 

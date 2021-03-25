@@ -59,7 +59,7 @@ public class TowerSlot : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _poolController = FindObjectOfType<PoolController>();
+        _poolController = Controller.Instance.PoolControl;
         _animator = GetComponent<Animator>();
         _collider = GetComponent<CapsuleCollider2D>();
     }

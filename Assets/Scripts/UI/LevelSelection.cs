@@ -109,7 +109,7 @@ public class LevelSelection : MonoBehaviour
     public void ActivateLevelSelectionMenu(LevelButton buttonUsed)
     {
         if (_saveController == null)
-            _saveController = FindObjectOfType<SaveController>();
+            _saveController = Controller.Instance.SaveControl;
 
         _level = buttonUsed.LevelData;
 

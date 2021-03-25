@@ -60,7 +60,7 @@ public class TowerButtonController : MonoBehaviour
 
     private void Awake()
     {
-        _squadController = FindObjectOfType<SquadController>();
+        _squadController = Controller.Instance.SquadControl;
     }
 
 
@@ -70,7 +70,7 @@ public class TowerButtonController : MonoBehaviour
     private void Start()
     {
         List<TowerData> buffer = _squadController.Towers;
-        List<TowerData> blockedTowers = FindObjectOfType<SaveController>().LoadedLevel.BlockedTowers;
+        List<TowerData> blockedTowers = Controller.Instance.SaveControl.LoadedLevel.BlockedTowers;
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i ++)
         {

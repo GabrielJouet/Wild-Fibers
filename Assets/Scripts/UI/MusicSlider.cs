@@ -25,7 +25,7 @@ public class MusicSlider : MonoBehaviour
     /// </summary>
     private IEnumerator Start()
     {
-        _saveController = FindObjectOfType<SaveController>();
+        _saveController = Controller.Instance.SaveControl;
         _slider = GetComponent<Slider>();
 
         yield return new WaitUntil(() => _saveController.Initialized);

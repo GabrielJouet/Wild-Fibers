@@ -86,11 +86,11 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _saveController = FindObjectOfType<SaveController>();
+        _saveController = Controller.Instance.SaveControl;
         LoadedLevel = _saveController.LoadedLevel;
 
         _ressourceController = GetComponent<RessourceController>();
-        _poolController = FindObjectOfType<PoolController>();
+        _poolController = Controller.Instance.PoolControl;
         _poolController.ReInitialize();
 
         if (LoadedLevel.TowerLevel > _saveController.SaveFile.TowerLevelMax)
@@ -133,7 +133,7 @@ public class LevelController : MonoBehaviour
         i = 0;
         foreach(EnemyGroup current in LoadedLevel.Waves[_waveIndex].EnemyGroups)
         {
-            int index = FindObjectOfType<EnemyController>().FindEnemyIndex(current.Enemy.GetComponent<Enemy>());
+            int index = Controller.Instance.EnemyControl.FindEnemyIndex(current.Enemy.GetComponent<Enemy>());
             if (!_saveController.SaveFile.EnemiesUnlocked[index])
             {
                 //TO DO : DISPLAY ENEMY VIGNETTE

@@ -25,7 +25,7 @@ public class LevelButtonController : MonoBehaviour
     /// </summary>
     private void SetButtonStates()
     {
-        List<LevelSave> levelSaves = FindObjectOfType<SaveController>().SaveFile.Saves;
+        List<LevelSave> levelSaves = Controller.Instance.SaveControl.SaveFile.Saves;
 
         for (int i = 0; i < levelSaves.Count && i < _levelButtons.Count; i++)
         {

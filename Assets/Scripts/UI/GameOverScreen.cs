@@ -119,7 +119,7 @@ public class GameOverScreen : MonoBehaviour
                 }
             }
 
-            FindObjectOfType<SaveController>().SaveLevelData(livesLost);
+            Controller.Instance.SaveControl.SaveLevelData(livesLost);
         }
     }
 }

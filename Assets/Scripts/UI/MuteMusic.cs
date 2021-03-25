@@ -37,7 +37,7 @@ public class MuteMusic : MonoBehaviour
     /// </summary>
     private IEnumerator Start()
     {
-        _saveController = FindObjectOfType<SaveController>();
+        _saveController = Controller.Instance.SaveControl;
 
         yield return new WaitUntil(() => _saveController.Initialized);
 
