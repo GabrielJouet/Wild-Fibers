@@ -8634,11 +8634,6 @@ PrefabInstance:
       propertyPath: _ressourceController
       value: 
       objectReference: {fileID: 519420034}
-    - target: {fileID: 173176981539081000, guid: ab062a4349966594386bc59557a6906a,
-        type: 3}
-      propertyPath: _displayController
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 279588477377741191, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_StaticEditorFlags
