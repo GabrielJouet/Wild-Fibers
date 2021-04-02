@@ -33,7 +33,7 @@ public class PoolController : MonoBehaviour
     /// <summary>
     /// Awake method used when object is initialized.
     /// </summary>
-    private void Awake()
+    private void Start()
     {
         TowerPool = Instantiate(_towerPoolPrefab, transform);
     }

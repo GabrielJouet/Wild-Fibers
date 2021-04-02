@@ -4,6 +4,10 @@
 public class Augmentation : ScriptableObject
 {
     [SerializeField]
+    private int _id;
+    public int ID { get => _id; }
+
+    [SerializeField]
     private Sprite _icon;
     public Sprite Icon { get => _icon; }
 

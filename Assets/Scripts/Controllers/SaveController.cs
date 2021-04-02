@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
@@ -44,14 +45,12 @@ public class SaveController : MonoBehaviour
 	public bool Initialized { get; private set; } = false;
 
 
-
 	/// <summary>
 	/// Awake method, used for initialization.
 	/// </summary>
-	private void Awake()
+	private IEnumerator Start()
 	{
-		Application.targetFrameRate = 60;
-
+		yield return new WaitUntil(() => Controller.Instance.SaveControl);
 		_gameSavePath = Application.persistentDataPath + "/player.dat";
 		_binaryFormatter = new BinaryFormatter();
 
@@ -66,7 +65,7 @@ public class SaveController : MonoBehaviour
 	{
 		if (File.Exists(_gameSavePath))
 		{
-			try
+			try 
 			{
 				FileStream file = File.OpenRead(_gameSavePath);
 				SaveFile = (SaveFile)_binaryFormatter.Deserialize(file);
@@ -79,7 +78,7 @@ public class SaveController : MonoBehaviour
 				ResetData();
 			}
 
-			if (SaveFile == null || SaveFile.Saves == null || SaveFile.Saves.Count == 0)
+			if (SaveFile == null || SaveFile.CurrentSave == null || SaveFile.CurrentSave.Count == 0)
 				ResetData();
 		}
 		else
@@ -114,11 +113,11 @@ public class SaveController : MonoBehaviour
 	/// </summary>
 	private void AddLevelData()
 	{
-		int missingLevels = Levels.Count - SaveFile.Saves.Count;
+		int missingLevels = Levels.Count - SaveFile.CurrentSave.Count;
 
 		if (missingLevels > 0)
 			for (int i = 0; i < missingLevels; i++)
-				SaveFile.Saves.Add(new LevelSave(0, LevelState.UNLOCKED));
+				SaveFile.CurrentSave.Add(new LevelSave(0, LevelState.UNLOCKED));
 	}
 
 
@@ -132,7 +131,7 @@ public class SaveController : MonoBehaviour
 		for (int i = 0; i < Levels.Count; i ++)
 			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED));
 
-		SaveFile = new SaveFile(Application.version, allSaves, 1, 1, _enemyController.Enemies.Count);
+		SaveFile = new SaveFile(Application.version, allSaves, 1, 1, _enemyController.Enemies.Count, 1);
 
 		SaveData();
 	}
@@ -208,7 +207,7 @@ public class SaveController : MonoBehaviour
 	public void SaveLevelData(int newLivesLost)
 	{
 		int levelIndexBuffer = RecoverLevelIndex(LoadedLevel);
-		LevelSave buffer = SaveFile.Saves[levelIndexBuffer];
+		LevelSave buffer = SaveFile.CurrentSave[levelIndexBuffer];
 
 		if (LoadedLevel.Type == LevelType.CLASSIC)
 		{
@@ -227,8 +226,8 @@ public class SaveController : MonoBehaviour
 			if (buffer.SeedsGained < gainedSeeds)
 				buffer.SeedsGained = gainedSeeds;
 
-			if (levelIndexBuffer + 1 < Levels.Count && SaveFile.Saves[levelIndexBuffer + 1].State == LevelState.LOCKED)
-				SaveFile.Saves[levelIndexBuffer + 1] = new LevelSave(0, LevelState.UNLOCKED);
+			if (levelIndexBuffer + 1 < Levels.Count && SaveFile.CurrentSave[levelIndexBuffer + 1].State == LevelState.LOCKED)
+				SaveFile.CurrentSave[levelIndexBuffer + 1] = new LevelSave(0, LevelState.UNLOCKED);
 		}
 		else if (LoadedLevel.Type == LevelType.SIDE && buffer.State == LevelState.COMPLETED)
 			buffer.State = LevelState.SIDED;
@@ -262,7 +261,7 @@ public class SaveController : MonoBehaviour
 	/// <returns>The level save wanted</returns>
 	public LevelSave RecoverLevelSave(Level levelSearched)
 	{
-		return SaveFile.Saves[RecoverLevelIndex(levelSearched)];
+		return SaveFile.CurrentSave[RecoverLevelIndex(levelSearched)];
 	}
 
 

@@ -2,7 +2,7 @@
 
 public class Controller : MonoBehaviour
 {
-    public static Controller Instance { get; private set; }
+    public static Controller Instance { get; private set; } = null;
 
     public SaveController SaveControl { get; private set; }
     public SquadController SquadControl { get; private set; }
@@ -15,6 +15,7 @@ public class Controller : MonoBehaviour
         if (FindObjectsOfType<Controller>().Length > 1)
             Destroy(gameObject);
 
+        Application.targetFrameRate = 60;
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
