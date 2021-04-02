@@ -36,6 +36,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 417876734bf6e1a4e88b47f546972662, type: 2}
   - {fileID: 11400000, guid: 82b23e9f588f63648b88e41d308729a8, type: 2}
   _towerSpecs: []
+  _towerAugmentations:
+  - {fileID: 11400000, guid: 28d716d7bae50174986a58f82ee82fb3, type: 2}
+  - {fileID: 11400000, guid: 0972f773d66d5a8429a6f76135f4338b, type: 2}
+  - {fileID: 11400000, guid: 01ea9e6c87a2073498d59e2b3b97f403, type: 2}
+  - {fileID: 11400000, guid: 17b0757aa11fd45439e35d971ea1dfc1, type: 2}
+  - {fileID: 11400000, guid: f28b3df3b9b26084490f3f73c68f25a2, type: 2}
   _scriptName: Vines
   _special: 
   _screenShot: {fileID: 1249832811290648610, guid: d66cd7d1ed7cd8844a044f06e18d4422,

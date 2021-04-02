@@ -1728,11 +1728,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf622c6c2353c7846a3daa7da8c61fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _towers:
-  - {fileID: 11400000, guid: 1b17f8e2722ed3f479f233f3e5793f9f, type: 2}
-  - {fileID: 11400000, guid: 02d8d222f1904bc44a62ac9958c07937, type: 2}
-  - {fileID: 11400000, guid: d994ecfddc139b6499dc96d3a4faae7e, type: 2}
-  - {fileID: 11400000, guid: eef686483be9f3a4cb3aa40c8a6b7bd9, type: 2}
+  _squads:
+  - {fileID: 11400000, guid: eebbba80d9dc12b4390dc955ca0e2244, type: 2}
 --- !u!1 &1409857560
 GameObject:
   m_ObjectHideFlags: 0
@@ -1791,7 +1788,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hider: {fileID: 1282037621}
-  _canPause: 0
   _defaultMenu: {fileID: 39616645}
 --- !u!81 &1409857564
 AudioListener:

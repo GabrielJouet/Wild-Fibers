@@ -159,6 +159,11 @@ public class TowerData : ScriptableObject
     protected List<TowerSpec> _towerSpecs;
     public List<TowerSpec> Specs { get => _towerSpecs; }
 
+
+    [SerializeField]
+    protected List<Augmentation> _towerAugmentations;
+    public List<Augmentation> Augmentations { get => _towerAugmentations; }
+
     /// <summary>
     /// Script used for this tower.
     /// </summary>
