@@ -787,7 +787,6 @@ RectTransform:
   m_Children:
   - {fileID: 98938205}
   - {fileID: 979147293}
-  - {fileID: 524178627694561695}
   - {fileID: 1282270588}
   - {fileID: 2072596172}
   - {fileID: 280245912}
