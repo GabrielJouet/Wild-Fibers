@@ -88,7 +88,7 @@ public class Library : MonoBehaviour
 
     private void Awake()
     {
-        List<TowerData> towers = Controller.Instance.SquadControl.Towers;
+        List<TowerData> towers = Controller.Instance.SquadControl.Squads[0].Towers;
 
         SaveController saveController = Controller.Instance.SaveControl;
 

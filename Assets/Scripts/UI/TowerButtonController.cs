@@ -69,7 +69,7 @@ public class TowerButtonController : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        List<TowerData> buffer = _squadController.Towers;
+        List<TowerData> buffer = _squadController.Squads[0].Towers;
         List<TowerData> blockedTowers = Controller.Instance.SaveControl.LoadedLevel.BlockedTowers;
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i ++)
@@ -93,7 +93,7 @@ public class TowerButtonController : MonoBehaviour
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i++)
         {
-            TowerData buffer = _squadController.Towers[i];
+            TowerData buffer = _squadController.Squads[0].Towers[i];
             _towerPurchaseButtons[i].gameObject.SetActive(true);
 
             _towerPurchaseButtons[i].ChangeBehavior(() => newUsedTowerSlot.ChooseTower(buffer));

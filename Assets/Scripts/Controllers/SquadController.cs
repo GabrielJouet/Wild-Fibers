@@ -7,9 +7,9 @@ using UnityEngine;
 public class SquadController : MonoBehaviour
 {
     /// <summary>
-    /// Towers available.
+    /// Squads available.
     /// </summary>
     [SerializeField]
-    private List<TowerData> _towers;
-    public List<TowerData> Towers { get => _towers; }
+    private List<Squad> _squads;
+    public List<Squad> Squads { get => _squads; }
 }
