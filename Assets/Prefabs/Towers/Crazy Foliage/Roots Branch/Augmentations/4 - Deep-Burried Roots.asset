@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0d963a86c7ddb4196eaed086540c4c, type: 3}
   m_Name: 4 - Deep-Burried Roots
   m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
-  _price: 0
-  _description: 
+  _icon: {fileID: -458388408705700937, guid: 93b04c14bce50c742b1d7a2a3511e869, type: 3}
+  _price: 3
+  _description: Each root has a small chance to make a critical hit.

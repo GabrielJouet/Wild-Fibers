@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0d963a86c7ddb4196eaed086540c4c, type: 3}
   m_Name: 5 - Sticky Resin
   m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
-  _price: 0
-  _description: 
+  _icon: {fileID: 21300000, guid: 669b1290032a4fd48a39ea2c4fbaa772, type: 3}
+  _price: 4
+  _description: Poison now induces a slowdown.

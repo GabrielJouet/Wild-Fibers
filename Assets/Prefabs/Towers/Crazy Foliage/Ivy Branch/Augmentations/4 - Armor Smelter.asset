@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0d963a86c7ddb4196eaed086540c4c, type: 3}
   m_Name: 4 - Armor Smelter
   m_EditorClassIdentifier: 
-  _icon: {fileID: 0}
-  _price: 0
-  _description: 
+  _icon: {fileID: 21300000, guid: be6ff14271a38d742b919f1f0b2db118, type: 3}
+  _price: 3
+  _description: Poison now dissolves better insect armor.
