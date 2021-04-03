@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -46,6 +46,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void Activate()
     {
         GetComponent<Button>().enabled = true;
+        _icon.color = new Color(1, 1, 1, 1);
     }
 
 
@@ -58,6 +59,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void Desactivate()
     {
         GetComponent<Button>().enabled = false;
+        _icon.color = new Color(0.25f, 0.25f, 0.25f, 0.4f);
     }
 
 
