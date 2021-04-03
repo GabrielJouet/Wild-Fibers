@@ -36,6 +36,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aceb2695358352a40a59841d085a4072, type: 2}
   - {fileID: 11400000, guid: 58c1c5ad6fa9ece47897ac8f41e577d6, type: 2}
   _towerSpecs: []
+  _towerAugmentations:
+  - {fileID: 11400000, guid: 2a7815a84dbd89d4991228a37adfed52, type: 2}
+  - {fileID: 11400000, guid: cc4740225c341994a848a490cd779218, type: 2}
+  - {fileID: 11400000, guid: 61e58c90aa85b6c45a9bc6a1bf0da809, type: 2}
+  - {fileID: 11400000, guid: 1183047c2476d604d96102d730cbd86b, type: 2}
+  - {fileID: 11400000, guid: df106fa72cb921c42bcbabba3856f70e, type: 2}
   _scriptName: RootsStump
   _special: 
   _screenShot: {fileID: 5698191664513791026, guid: d85b23dd25bcdec49a6528cafd18e59c,

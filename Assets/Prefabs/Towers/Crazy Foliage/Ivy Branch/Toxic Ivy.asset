@@ -37,6 +37,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6ec1c2a19db952542b7eb6d81d3feaea, type: 2}
   - {fileID: 11400000, guid: b0c6dc94177b080419fe15fbf26b9a59, type: 2}
   _towerSpecs: []
+  _towerAugmentations:
+  - {fileID: 11400000, guid: c80766dd149bdf1448286caa31ac47ac, type: 2}
+  - {fileID: 11400000, guid: d794949157eac6846b175d492630ecc5, type: 2}
+  - {fileID: 11400000, guid: 4816070e09f504345aa2f526e465e86c, type: 2}
+  - {fileID: 11400000, guid: 3d068f1566863294a808c709d102db4c, type: 2}
+  - {fileID: 11400000, guid: 5a210a43dc593974283647ae37967623, type: 2}
   _scriptName: ToxicIvy
   _special: 
   _screenShot: {fileID: -2559415124775340982, guid: 7d6556d7176d77b489d8638dcd6b642f,

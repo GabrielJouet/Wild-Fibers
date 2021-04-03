@@ -12,11 +12,6 @@ public class SaveFile
     /// </summary>
     public string VersionNumber { get; private set; }
 
-    /// <summary>
-    /// List of level save.
-    /// </summary>
-    public List<LevelSave> Saves { get; private set; }
-
 
     /// <summary>
     /// Sound level saved.
@@ -52,6 +47,10 @@ public class SaveFile
     public int TowerLevelMax { get; set; }
 
 
+    public List<SquadProgression> SquadsProgression { get; private set; }
+
+    public List<LevelSave> CurrentSave { get => SquadsProgression[0].Saves; }
+
 
     /// <summary>
     /// Constructor.
@@ -61,10 +60,15 @@ public class SaveFile
     /// <param name="soundLevel">New sound level</param>
     /// <param name="musicLevel">New music level</param>
     /// <param name="numberOfEnemies">Number total of enemies</param>
-    public SaveFile(string newVersion, List<LevelSave> newSaves, float soundLevel, float musicLevel, int numberOfEnemies)
+    /// <param name="numberOfSquads">Number total of squads</param>
+    public SaveFile(string newVersion, List<LevelSave> newSaves, float soundLevel, float musicLevel, int numberOfEnemies, int numberOfSquads)
     {
+        SquadsProgression = new List<SquadProgression>();
+
+        for (int i = 0; i < numberOfSquads; i++)
+            SquadsProgression.Add(new SquadProgression(newSaves));
+
         VersionNumber = newVersion;
-        Saves = new List<LevelSave>(newSaves);
 
         Sound = soundLevel;
         SoundMuted = false;
