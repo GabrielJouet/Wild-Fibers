@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -78,7 +78,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         SquadProgression current = Controller.Instance.SaveControl.SaveFile.SquadsProgression[0];
 
-        if (current.CurrencyAvailable > _augmentation.Price)
+        if (current.CurrencyAvailable >= _augmentation.Price)
         {
             current.AddNewAugmentation(_augmentation.name);
             SetAsBought();
