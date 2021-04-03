@@ -16,17 +16,17 @@ public class SquadController : MonoBehaviour
     public int CurrentSquad { get; set; } = 0;
 
 
-    public List<Augmentation> RecoverBoughtAugmentations(List<int> augmentationIDs)
+    public List<Augmentation> RecoverBoughtAugmentations(List<string> augmentationIDs)
     {
         List<Augmentation> result = new List<Augmentation>();
 
         foreach (Augmentation current in Squads[CurrentSquad].Augmentations)
-            if (augmentationIDs.Contains(current.ID))
+            if (augmentationIDs.Contains(current.name))
                 result.Add(current);
 
         foreach (TowerData current in Squads[CurrentSquad].Towers)
             foreach (Augmentation augmentation in current.Augmentations)
-                if (augmentationIDs.Contains(augmentation.ID))
+                if (augmentationIDs.Contains(augmentation.name))
                     result.Add(augmentation);
 
         return result;

@@ -13,15 +13,53 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField]
     private Text _description;
 
+    private Augmentation _augmentation;
 
-    public void Initialize(Augmentation relatedAugmentation)
+
+    public void Initialize(Augmentation relatedAugmentation, AugmentationState newState)
     {
         _price.text = relatedAugmentation.Price.ToString();
         _icon.sprite = relatedAugmentation.Icon;
         _description.text = relatedAugmentation.Description;
 
+        _augmentation = relatedAugmentation;
+
         _description.transform.parent.gameObject.SetActive(false);
+
+        switch (newState)
+        {
+            case AugmentationState.LOCKED:
+                Desactivate();
+                break;
+
+            case AugmentationState.AVAILABLE:
+                Activate();
+                break;
+
+            case AugmentationState.BOUGHT:
+                SetAsBought();
+                break;
+        }
     }
+
+
+    public void Activate()
+    {
+        GetComponent<Button>().enabled = true;
+    }
+
+
+    public void SetAsBought()
+    {
+        GetComponent<Button>().enabled = false;
+    }
+
+
+    public void Desactivate()
+    {
+        GetComponent<Button>().enabled = false;
+    }
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -36,6 +74,13 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Purchase()
     {
+        SquadProgression current = Controller.Instance.SaveControl.SaveFile.SquadsProgression[0];
 
+        if (current.CurrencyAvailable > _augmentation.Price)
+        {
+            current.AddNewAugmentation(_augmentation.name);
+            SetAsBought();
+            transform.parent.GetComponent<SkillUpgrades>().PurchaseAugmentation(this);
+        }
     }
 }
