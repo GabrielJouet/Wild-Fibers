@@ -192,12 +192,18 @@ MonoBehaviour:
   - {fileID: 1049263690152909913}
   _healthMax: 10
   _armorMax: 45
-  _resistanceMax: 0
+  _resistance: 0
   _speedMax: 0.1
   _numberOfLivesTaken: 1
   _goldGained: 0
   _flying: 0
   _damagePosition: {fileID: 1049263690152909913}
+  _description: A fresh-spawned maggot that cannot protects itself. Many of these
+    will hatch into Diggers but sometimes bigger ones does not hatch for days and
+    became Chargers. They create a silk cocoon after a few seconds to hide from the
+    sun or damage.
+  _screenShot: {fileID: 21300000, guid: d3eb6bc226b19aa4c9c86df35d17d30b, type: 3}
+  _special: Hatches
   _hatchling: {fileID: 5682064432001086994, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb,
     type: 3}
   _hatchingTime: 15

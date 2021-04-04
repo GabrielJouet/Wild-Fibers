@@ -199,6 +199,12 @@ MonoBehaviour:
   _goldGained: 2
   _flying: 1
   _damagePosition: {fileID: 1049263690152909913}
+  _description: A special pheromone used on a Maggot will lead to stronger and lighter
+    blusims. They often bears a pair of wings that are not shaped for underground
+    use.They are used as fast-moving reinforcement troops even if their chitin is
+    frail.
+  _screenShot: {fileID: 21300000, guid: 37bf0474b3f28314391d1d7add9e8ecc, type: 3}
+  _special: Fly
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0

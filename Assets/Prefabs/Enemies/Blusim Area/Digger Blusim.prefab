@@ -199,6 +199,10 @@ MonoBehaviour:
   _goldGained: 2
   _flying: 0
   _damagePosition: {fileID: 1049263690152909913}
+  _description: A small insect found in open areas. They are the hive dedicated miners.
+    Although they are not resistent, they move swiftly.
+  _screenShot: {fileID: 21300000, guid: ac9cce6f4203d63408fbab2420319d1b, type: 3}
+  _special: 
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0

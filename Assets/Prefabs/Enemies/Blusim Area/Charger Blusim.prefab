@@ -193,12 +193,18 @@ MonoBehaviour:
   - {fileID: 5906076658267085393}
   _healthMax: 150
   _armorMax: 30
-  _resistanceMax: 0
+  _resistance: 0
   _speedMax: 0.2
   _numberOfLivesTaken: 3
   _goldGained: 20
   _flying: 0
   _damagePosition: {fileID: 5906076658267085393}
+  _description: When the hive is endangered, Maggots became bigger and spend more
+    time inside their cocoon. When they spent more than four days they rise as a
+    Charger. A powerful beast that roams around the hive and search for a prey. They
+    are though but small-brained.
+  _screenShot: {fileID: 21300000, guid: 8788ca7ee8f9d87448e7884ec447b1aa, type: 3}
+  _special: 
 --- !u!1001 &4201768652579246608
 PrefabInstance:
   m_ObjectHideFlags: 0

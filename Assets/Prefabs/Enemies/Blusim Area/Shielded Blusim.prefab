@@ -193,12 +193,19 @@ MonoBehaviour:
   - {fileID: 1049263690152909913}
   _healthMax: 135
   _armorMax: 90
-  _resistanceMax: 0
+  _resistance: 0
   _speedMax: 0.17
   _numberOfLivesTaken: 2
   _goldGained: 13
   _flying: 0
   _damagePosition: {fileID: 1049263690152909913}
+  _description: A special Blusim that spawns by mistake. When a pheromone is used
+    on a bigger Maggot the result is a Blusim with bigger wings but with a bigger
+    body as well. They are the most shielded Blusim of the hive, but their weight
+    make them almost useless. They are used as guards, blocking the way with their
+    bodies.
+  _screenShot: {fileID: 21300000, guid: cc1eff44af9c7a64abfb4f10dab0baf2, type: 3}
+  _special: Shield
   _timeBetweenShield: 10
   _stopWhileShielding: 1
   _baseShieldValue: 65
