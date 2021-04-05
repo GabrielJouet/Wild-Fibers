@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Unt
+  _displayName: Walker
   _selector: {fileID: 4000618669885677062}
   _healthBar: {fileID: 8863022456078644539}
   _dotDisplay: {fileID: 3842665942187024139}
@@ -199,6 +199,12 @@ MonoBehaviour:
   _goldGained: 7
   _flying: 0
   _damagePosition: {fileID: 3623001225806360375}
+  _description: Walkers are the dominant cast in an Unt hive. Their speed make them
+    versatile but also good for picking objects and bringing it back to the hive.
+    But, without any weaponry its only goal in combat is to flood the enemy or as
+    bait.
+  _screenShot: {fileID: 0}
+  _special: 
 --- !u!1001 &3162793518331619717
 PrefabInstance:
   m_ObjectHideFlags: 0

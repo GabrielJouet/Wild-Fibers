@@ -199,6 +199,12 @@ MonoBehaviour:
   _goldGained: 10
   _flying: 0
   _damagePosition: {fileID: 3623001225806360375}
+  _description: Despite lacking rear legs, Scyther front legs have become stronger
+    with time. With its sharp arms it is able to destroy wood and fiber plant in
+    several minutes. They are generally roaming alone in the hive due to their high
+    agressivity.
+  _screenShot: {fileID: 0}
+  _special: 
 --- !u!1001 &3162793518331619717
 PrefabInstance:
   m_ObjectHideFlags: 0
