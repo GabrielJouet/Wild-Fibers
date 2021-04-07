@@ -41,7 +41,7 @@ public class MuteMusic : MonoBehaviour
 
         yield return new WaitUntil(() => _saveController.Initialized);
 
-        _activated = _sound ? !_saveController.SaveFile.SoundMuted : !_saveController.SaveFile.MusicMuted;
+        _activated = _sound ? _saveController.SaveFile.SoundMuted : _saveController.SaveFile.MusicMuted;
         transform.GetChild(0).GetComponent<Image>().sprite = _activated ? _activatedSprite : _desactivatedSprite;
     }
 
