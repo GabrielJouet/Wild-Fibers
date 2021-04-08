@@ -30,18 +30,6 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private Text _sideDescription;
 
-    [SerializeField]
-    private Sprite _sideLevelIcon;
-
-    [SerializeField]
-    private Sprite _sideLevelLockedIcon;
-
-    [SerializeField]
-    private Sprite _challengeLevelIcon;
-
-    [SerializeField]
-    private Sprite _challengeLevelLockedIcon;
-
     /// <summary>
     /// Launch battle menu button.
     /// </summary>
@@ -82,6 +70,26 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private Sprite _desactivatedSprite;
 
+    [SerializeField]
+    private Sprite _sideActivated;
+
+    [SerializeField]
+    private Sprite _sideDesactivated;
+
+    [SerializeField]
+    private Image _sideIcon;
+
+
+    [SerializeField]
+    private Sprite _challengeActivated;
+
+    [SerializeField]
+    private Sprite _challengeDesactivated;
+
+    [SerializeField]
+    private Image _challengeIcon;
+
+
 
     [Header("Component")]
 
@@ -97,10 +105,9 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private DisplayController _displayController;
 
-
-    private SaveController _saveController;
-
     private LevelData _level;
+
+    private LevelType _displayType;
 
 
     /// <summary>
@@ -108,37 +115,43 @@ public class LevelSelection : MonoBehaviour
     /// </summary>
     public void ActivateLevelSelectionMenu(LevelButton buttonUsed)
     {
-        if (_saveController == null)
-            _saveController = Controller.Instance.SaveControl;
-
         _level = buttonUsed.LevelData;
 
+        LevelState buffer = Controller.Instance.SaveControl.RecoverLevelSave(_level.Classic).State;
+        bool sidedOrChallenged = buffer == LevelState.SIDED || buffer == LevelState.CHALLENGED;
+        bool notLocked = buffer == LevelState.COMPLETED || sidedOrChallenged;
+
+        _sideButton.interactable = notLocked;
+        _sideIcon.sprite = notLocked ? _sideActivated : _sideDesactivated;
+
+        _challengeButton.interactable = sidedOrChallenged;
+        _challengeIcon.sprite = sidedOrChallenged ? _challengeActivated : _challengeDesactivated;
+
+        _displayController.DisplayObject(gameObject);
+
+        ActivateBaseMenu();
+    }
+
+
+    public void ActivateBaseMenu()
+    {
         _classicLayout.SetActive(true);
         _sideLayout.SetActive(false);
 
-        LevelSave buffer = _saveController.RecoverLevelSave(_level.Classic);
-        bool sideUnlocked = buffer.State == LevelState.COMPLETED || buffer.State == LevelState.SIDED || buffer.State == LevelState.CHALLENGED;
-        _sideButton.enabled = sideUnlocked;
-        _sideButton.transform.GetChild(0).GetComponent<Image>().sprite = sideUnlocked ? _sideLevelIcon : _sideLevelLockedIcon;
-
-        bool challengeUnlocked = buffer.State == LevelState.SIDED || buffer.State == LevelState.CHALLENGED;
-        _challengeButton.enabled = challengeUnlocked;
-        _challengeButton.transform.GetChild(0).GetComponent<Image>().sprite = challengeUnlocked ? _challengeLevelIcon : _challengeLevelLockedIcon;
+        _displayType = LevelType.CLASSIC;
 
         _levelName.text = _level.Classic.Name;
         _levelPicture.sprite = _level.Classic.Picture;
         _levelDescription.text = _level.Classic.Description;
 
-        int seedGainedBuffer = buffer.SeedsGained;
-        for (int i = 0; i < _scores.Count; i ++)
+        int seedGainedBuffer = Controller.Instance.SaveControl.RecoverLevelSave(_level.Classic).SeedsGained;
+        for (int i = 0; i < _scores.Count; i++)
             _scores[i].sprite = seedGainedBuffer > i ? _activatedSprite : _desactivatedSprite;
-
-        _displayController.DisplayObject(gameObject);
 
         _launchBattleMenu.onClick.RemoveAllListeners();
         _launchBattleMenu.onClick.AddListener(() =>
         {
-            _saveController.LoadedLevel = _level.Classic;
+            Controller.Instance.SaveControl.LoadedLevel = _level.Classic;
             _sceneChanger.LoadScene(_level.Classic.Scene);
         });
     }
@@ -147,29 +160,37 @@ public class LevelSelection : MonoBehaviour
     public void ActivateAlternateMenu(string levelType)
     {
         LevelType enumBuffer = (LevelType)System.Enum.Parse(typeof(LevelType), levelType);
-        Level buffer = enumBuffer == LevelType.SIDE ? _level.Side : _level.Challenge;
 
-        _classicLayout.SetActive(false);
-        _sideLayout.SetActive(true);
-
-        _levelName.text = buffer.Name;
-        _levelPicture.sprite = buffer.Picture;
-        _sideDescription.text = buffer.Description;
-
-        _sideScore.sprite = _desactivatedSprite;
-
-        LevelState bufferState = _saveController.RecoverLevelSave(buffer).State;
-
-        if (enumBuffer == LevelType.SIDE && bufferState == LevelState.SIDED || bufferState == LevelState.CHALLENGED)
-            _sideScore.sprite = _activatedSprite;
-        else if (enumBuffer == LevelType.CHALLENGE && bufferState == LevelState.CHALLENGED)
-            _sideScore.sprite = _activatedSprite;
-
-        _launchBattleMenu.onClick.RemoveAllListeners();
-        _launchBattleMenu.onClick.AddListener(() =>
+        if (enumBuffer == _displayType)
+            ActivateBaseMenu();
+        else
         {
-            _saveController.LoadedLevel = buffer;
-            _sceneChanger.LoadScene(buffer.Scene);
-        });
+            _displayType = enumBuffer;
+
+            Level buffer = enumBuffer == LevelType.SIDE ? _level.Side : _level.Challenge;
+
+            _classicLayout.SetActive(false);
+            _sideLayout.SetActive(true);
+
+            _levelName.text = buffer.Name;
+            _levelPicture.sprite = buffer.Picture;
+            _sideDescription.text = buffer.Description;
+
+            _sideScore.sprite = _desactivatedSprite;
+
+            LevelState bufferState = Controller.Instance.SaveControl.RecoverLevelSave(buffer).State;
+
+            if (enumBuffer == LevelType.SIDE && bufferState == LevelState.SIDED || bufferState == LevelState.CHALLENGED)
+                _sideScore.sprite = _activatedSprite;
+            else if (enumBuffer == LevelType.CHALLENGE && bufferState == LevelState.CHALLENGED)
+                _sideScore.sprite = _activatedSprite;
+
+            _launchBattleMenu.onClick.RemoveAllListeners();
+            _launchBattleMenu.onClick.AddListener(() =>
+            {
+                Controller.Instance.SaveControl.LoadedLevel = buffer;
+                _sceneChanger.LoadScene(buffer.Scene);
+            });
+        }
     }
 }
