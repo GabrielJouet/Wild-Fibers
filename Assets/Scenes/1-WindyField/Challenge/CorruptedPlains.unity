@@ -751,6 +751,26 @@ PrefabInstance:
       propertyPath: m_PointLightOuterRadius
       value: 1.265783
       objectReference: {fileID: 0}
+    - target: {fileID: 7121832431409991436, guid: ae2a5ec47c10af94d8e5b380d80145ac,
+        type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.475
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121832431409991436, guid: ae2a5ec47c10af94d8e5b380d80145ac,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8943129
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121832431409991436, guid: ae2a5ec47c10af94d8e5b380d80145ac,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9339623
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121832431409991436, guid: ae2a5ec47c10af94d8e5b380d80145ac,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.905404
+      objectReference: {fileID: 0}
     - target: {fileID: 7121832431409991437, guid: ae2a5ec47c10af94d8e5b380d80145ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1671,6 +1691,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InterestLight (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7121832431409991436, guid: ae2a5ec47c10af94d8e5b380d80145ac,
+        type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.486
+      objectReference: {fileID: 0}
     - target: {fileID: 7121832431409991437, guid: ae2a5ec47c10af94d8e5b380d80145ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2206,7 +2231,12 @@ PrefabInstance:
     - target: {fileID: 7121832431409991436, guid: ae2a5ec47c10af94d8e5b380d80145ac,
         type: 3}
       propertyPath: m_PointLightOuterRadius
-      value: 1.265783
+      value: 1.1599307
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121832431409991436, guid: ae2a5ec47c10af94d8e5b380d80145ac,
+        type: 3}
+      propertyPath: m_FalloffIntensity
+      value: 0.375
       objectReference: {fileID: 0}
     - target: {fileID: 7121832431409991437, guid: ae2a5ec47c10af94d8e5b380d80145ac,
         type: 3}
@@ -2236,12 +2266,12 @@ PrefabInstance:
     - target: {fileID: 7121832431409991437, guid: ae2a5ec47c10af94d8e5b380d80145ac,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.071396604
+      value: 0.3947392
       objectReference: {fileID: 0}
     - target: {fileID: 7121832431409991437, guid: ae2a5ec47c10af94d8e5b380d80145ac,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.997448
+      value: 0.91879326
       objectReference: {fileID: 0}
     - target: {fileID: 7121832431409991437, guid: ae2a5ec47c10af94d8e5b380d80145ac,
         type: 3}
@@ -10057,6 +10087,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InterestLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121832431409991436, guid: ae2a5ec47c10af94d8e5b380d80145ac,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8584906
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121832431409991436, guid: ae2a5ec47c10af94d8e5b380d80145ac,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.6991123
+      objectReference: {fileID: 0}
+    - target: {fileID: 7121832431409991436, guid: ae2a5ec47c10af94d8e5b380d80145ac,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.4818886
       objectReference: {fileID: 0}
     - target: {fileID: 7121832431409991437, guid: ae2a5ec47c10af94d8e5b380d80145ac,
         type: 3}
