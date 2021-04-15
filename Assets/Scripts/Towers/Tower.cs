@@ -110,7 +110,6 @@ public class Tower : MonoBehaviour
         _towerPool = newTowerPool;
 
         GetComponent<StaticDepthManager>().ResetSortingOrder();
-
         SpecialBehavior();
     }
 

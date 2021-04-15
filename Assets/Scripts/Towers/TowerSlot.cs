@@ -100,8 +100,7 @@ public class TowerSlot : MonoBehaviour
         GameObject buffer = currentPool.GetOneTower();
         buffer.AddComponent(Type.GetType(string.IsNullOrEmpty(tower.Script) ? "Tower" : tower.Script));
 
-        Tower = buffer.GetComponent<Tower>();
-        Tower.Initialize(this, _ressourceController, _backgroundSelecter, _poolController.RecoverProjectilePool(tower.Projectile.GetComponent<Projectile>()), currentPool, tower);
+        buffer.GetComponent<Tower>().Initialize(this, _ressourceController, _backgroundSelecter, _poolController.RecoverProjectilePool(tower.Projectile.GetComponent<Projectile>()), currentPool, tower);
     }
     #endregion
 

@@ -80,7 +80,6 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         if (current.CurrencyAvailable >= _augmentation.Price)
         {
-            current.AddNewAugmentation(_augmentation.name);
             SetAsBought();
             transform.parent.GetComponent<SkillUpgrades>().PurchaseAugmentation(this);
         }

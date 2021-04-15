@@ -41,13 +41,9 @@ public class SaveFile
     public List<bool> EnemiesUnlocked { get; set; } = new List<bool>();
 
 
-    /// <summary>
-    /// Tower level max.
-    /// </summary>
-    public int TowerLevelMax { get; set; }
-
-
     public List<SquadProgression> SquadsProgression { get; private set; }
+
+    public SquadProgression CurrentSquad { get => SquadsProgression[0]; }
 
     public List<LevelSave> CurrentSave { get => SquadsProgression[0].Saves; }
 
@@ -79,6 +75,6 @@ public class SaveFile
         for (int i = 0; i < numberOfEnemies; i++)
             EnemiesUnlocked.Add(false);
 
-        TowerLevelMax = 1;
+        CurrentSquad.TowerLevelMax = 1;
     }
 }

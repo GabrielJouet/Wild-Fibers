@@ -4,7 +4,14 @@ using System.Collections.Generic;
 [Serializable]
 public class SquadProgression
 {
-    public List<string> AugmentationID { get; private set; }
+    public List<int> AugmentationLevelMax { get; private set; }
+
+
+    /// <summary>
+    /// Tower level max.
+    /// </summary>
+    public int TowerLevelMax { get; set; }
+
 
     /// <summary>
     /// List of level save.
@@ -16,6 +23,7 @@ public class SquadProgression
     public SquadProgression(List<LevelSave> newSaves)
     {
         Saves = new List<LevelSave>(newSaves);
+        AugmentationLevelMax = new List<int> { 0, 0, 0, 0, 0 };
     }
 
 
@@ -28,20 +36,16 @@ public class SquadProgression
             foreach (LevelSave current in Saves)
                 buffer += current.SeedsGained + (current.State == LevelState.SIDED ? 1 : 0) + (current.State == LevelState.CHALLENGED ? 2 : 0);
 
-            if (AugmentationID != null)
-                foreach (Augmentation current in Controller.Instance.SquadControl.RecoverBoughtAugmentations(AugmentationID))
-                    buffer -= current.Price;
+            foreach (Augmentation current in Controller.Instance.SquadControl.RecoverBoughtAugmentations(AugmentationLevelMax))
+                buffer -= current.Price;
 
             return buffer;
         }
     }
 
 
-    public void AddNewAugmentation(string newId)
+    public void AddNewAugmentation(int index, int newLevel)
     {
-        if (AugmentationID == null)
-            AugmentationID = new List<string> { newId };
-        else if (!AugmentationID.Contains(newId))
-            AugmentationID.Add(newId);
+        AugmentationLevelMax[index] = newLevel;
     }
 }

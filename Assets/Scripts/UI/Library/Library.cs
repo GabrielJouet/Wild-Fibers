@@ -103,7 +103,7 @@ public class Library : MonoBehaviour
                 newEnemy.Enemy = enemies[i];
         }
 
-        int maxLevel = saveController.SaveFile.TowerLevelMax;
+        int maxLevel = saveController.SaveFile.CurrentSquad.TowerLevelMax;
         for (int i = 0; i < towers.Count; i++)
             _towerIcons[i].Populate(towers[i], maxLevel);
 

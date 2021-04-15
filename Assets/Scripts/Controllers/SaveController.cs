@@ -192,9 +192,9 @@ public class SaveController : MonoBehaviour
 
 	public void SaveTowerLevel(int newLevel)
 	{
-		if (newLevel > SaveFile.TowerLevelMax)
+		if (newLevel > SaveFile.CurrentSquad.TowerLevelMax)
 		{
-			SaveFile.TowerLevelMax = newLevel;
+			SaveFile.CurrentSquad.TowerLevelMax = newLevel;
 			SaveData();
 		}
 	}
