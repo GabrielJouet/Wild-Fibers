@@ -164,6 +164,9 @@ public class TowerData : ScriptableObject
     protected List<Augmentation> _towerAugmentations;
     public List<Augmentation> Augmentations { get => _towerAugmentations; }
 
+    public int AugmentationLevel { get; set; }
+
+
     /// <summary>
     /// Script used for this tower.
     /// </summary>

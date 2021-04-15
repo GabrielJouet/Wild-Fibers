@@ -24,7 +24,7 @@ public class SkillUpgrades : MonoBehaviour
 
             if (augmentationLevel > i)
                 newState = AugmentationState.BOUGHT;
-            else if (i == 0 || (i > 0 && augmentationLevel - 1 > i))
+            else if (i == 0 || augmentationLevel == i)
                 newState = AugmentationState.AVAILABLE;
             else
                 newState = AugmentationState.LOCKED;
@@ -42,7 +42,7 @@ public class SkillUpgrades : MonoBehaviour
     {
         int index = _skills.IndexOf(purchased);
 
-        Controller.Instance.SaveControl.SaveFile.SquadsProgression[0].AddNewAugmentation(_index, _augmentationLevel + 1);
+        Controller.Instance.SaveControl.SaveTowerAugmentationLevel(_index, _augmentationLevel + 1);
 
         if (index + 1 < _skills.Count)
             _skills[index + 1].Activate();

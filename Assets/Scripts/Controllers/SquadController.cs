@@ -11,7 +11,14 @@ public class SquadController : MonoBehaviour
     /// </summary>
     [SerializeField]
     private List<Squad> _squads;
-    public List<Squad> Squads { get => _squads; }
+    public List<Squad> Squads 
+    { 
+        get 
+        {
+            _squads[0].UpdateTowerDatas(Controller.Instance.SaveControl.SaveFile.CurrentSquad.AugmentationLevelMax);
+            return _squads;
+        } 
+    }
 
     public int CurrentSquad { get; set; } = 0;
 

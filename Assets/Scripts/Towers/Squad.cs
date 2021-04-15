@@ -19,4 +19,11 @@ public class Squad : ScriptableObject
     [SerializeField]
     private Sprite _spriteSquad;
     public Sprite SquadSprite { get => _spriteSquad; }
+
+
+    public void UpdateTowerDatas(List<int> newLevels)
+    {
+        for (int i = 0; i < _towers.Count; i ++)
+            _towers[i].AugmentationLevel = newLevels[i];
+    }
 }

@@ -200,6 +200,13 @@ public class SaveController : MonoBehaviour
 	}
 
 
+	public void SaveTowerAugmentationLevel(int index, int newLevel)
+	{
+		SaveFile.SquadsProgression[0].AddNewAugmentation(index, newLevel);
+		SaveData();
+	}
+
+
 	/// <summary>
 	/// Method used to save a level data.
 	/// </summary>
