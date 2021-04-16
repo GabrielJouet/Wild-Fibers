@@ -60,7 +60,7 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     protected float _timeBetweenShots;
-    public float TimeShots { get => _timeBetweenShots; private set => _timeBetweenShots = value; }
+    public float TimeShots { get => _timeBetweenShots; set => _timeBetweenShots = value; }
 
     /// <summary>
     /// Damage per attack.
@@ -74,7 +74,7 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     protected float _armorThrough;
-    public float ArmorThrough { get => _armorThrough; private set => _armorThrough = value; }
+    public float ArmorThrough { get => _armorThrough; set => _armorThrough = value; }
 
     /// <summary>
     /// Armor through on each attack.
@@ -95,7 +95,7 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     protected float _range;
-    public float Range { get => _range; private set => _range = value; }
+    public float Range { get => _range; set => _range = value; }
 
     /// <summary>
     /// Can the tower hits flying target?
@@ -119,21 +119,21 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     private float _armorThroughMalus;
-    public float ArmorThroughMalus { get => _armorThroughMalus; private set => _armorThroughMalus = value; }
+    public float ArmorThroughMalus { get => _armorThroughMalus; set => _armorThroughMalus = value; }
 
     /// <summary>
     /// Dot over time damage.
     /// </summary>
     [SerializeField]
     private int _damageOverTime;
-    public int Dot { get => _damageOverTime; private set => _damageOverTime = value; }
+    public int Dot { get => _damageOverTime; set => _damageOverTime = value; }
 
     /// <summary>
     /// Dot duration.
     /// </summary>
     [SerializeField]
     private float _dotDuration;
-    public float DotDuration { get => _dotDuration; private set => _dotDuration = value; }
+    public float DotDuration { get => _dotDuration; set => _dotDuration = value; }
 
     /// <summary>
     /// Dot sprite.

@@ -116,6 +116,7 @@ public class Tower : MonoBehaviour
 
     private void SetDefaultValues(TowerData newData)
     {
+        CheckAugmentation();
         _selector.SetActive(false);
         _transformRange.gameObject.SetActive(false);
 
@@ -209,6 +210,47 @@ public class Tower : MonoBehaviour
     {
 
     }
+
+    protected void CheckAugmentation()
+    {
+        if (_towerData.AugmentationLevel > 0)
+        {
+            LevelOneAugmentation();
+
+            if (_towerData.AugmentationLevel > 1)
+            {
+                LevelTwoAugmentation();
+
+                if (_towerData.AugmentationLevel > 2)
+                {
+                    LevelThreeAugmentation();
+
+                    if (_towerData.AugmentationLevel > 3)
+                    {
+                        LevelFourAugmentation();
+
+                        if (_towerData.AugmentationLevel > 4)
+                            LevelFiveAugmentation();
+                    }
+                }
+            }
+        }
+    }
+
+
+    protected virtual void LevelOneAugmentation() { }
+
+
+    protected virtual void LevelTwoAugmentation() { }
+
+
+    protected virtual void LevelThreeAugmentation() { }
+
+
+    protected virtual void LevelFourAugmentation() { }
+
+
+    protected virtual void LevelFiveAugmentation() { }
     #endregion 
 
 

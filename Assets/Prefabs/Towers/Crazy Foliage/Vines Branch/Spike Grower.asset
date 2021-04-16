@@ -31,9 +31,10 @@ MonoBehaviour:
   _armorThroughMalus: 0
   _damageOverTime: 0
   _dotDuration: 0
-  _dotIcon: {fileID: 0}
+  _dotIcon: {fileID: 21300000, guid: 7cd5152f67673104f8eaee17fb065362, type: 3}
   _towerUpgrades: []
   _towerSpecs: []
+  _towerAugmentations: []
   _scriptName: Vines
   _special: 
   _screenShot: {fileID: 21300000, guid: 780864a8a6bfbbc40bfa291b810699f3, type: 3}

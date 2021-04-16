@@ -31,7 +31,7 @@ MonoBehaviour:
   _armorThroughMalus: 0
   _damageOverTime: 0
   _dotDuration: 0
-  _dotIcon: {fileID: 0}
+  _dotIcon: {fileID: 21300000, guid: 7cd5152f67673104f8eaee17fb065362, type: 3}
   _towerUpgrades:
   - {fileID: 11400000, guid: cf5a40fb61c090548acbdfa6f1e51d55, type: 2}
   - {fileID: 11400000, guid: a804dc7183a7af3459a33030f65d6238, type: 2}
@@ -42,7 +42,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c46aaf1140295aa43945c1928fd3873b, type: 2}
   - {fileID: 11400000, guid: 269f3af02c1d39843b41f07f0de7dbdd, type: 2}
   - {fileID: 11400000, guid: fe6c0a1a6d5261c46b469793921138a5, type: 2}
-  _scriptName: 
+  _scriptName: Twigs
   _special: 
   _screenShot: {fileID: 6408979333349359234, guid: 57baeccb8e0e34146890d817328beafd,
     type: 3}

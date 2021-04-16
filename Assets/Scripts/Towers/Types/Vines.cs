@@ -4,14 +4,12 @@ using UnityEngine;
 public class Vines : Tower
 {
     /// <summary>
-    /// FixedUpdate, called 50 times a second.
+    /// Method used to update special behavior.
     /// </summary>
-    protected override void FixedUpdate()
+    protected override void SpecialBehavior()
     {
-        if (_availableEnemies.Count > 0 && !_coroutineStarted)
-            StartCoroutine(SummonProjectile());
-    }
 
+    }
 
     /// <summary>
     /// Coroutine used to delay attacks.
