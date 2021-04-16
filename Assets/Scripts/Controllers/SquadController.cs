@@ -29,7 +29,7 @@ public class SquadController : MonoBehaviour
 
         for (int j = 0; j < augmentationLevel.Count; j ++)
         {
-            if (j == 0)
+            if (j == 4)
                 for (int i = 0; i < augmentationLevel[j]; i++)
                     result.Add(Squads[CurrentSquad].Augmentations[i]);
             else

@@ -12,8 +12,6 @@ public class SkillUpgrades : MonoBehaviour
 
     private int _index;
 
-    private int _augmentationLevel;
-
 
 
     public void Initialize(Sprite newTower, List<Augmentation> newAugmentations, int augmentationLevel, int newIndex)
@@ -33,7 +31,6 @@ public class SkillUpgrades : MonoBehaviour
         }
 
         _index = newIndex;
-        _augmentationLevel = augmentationLevel;
         _towerIcon.sprite = newTower;
     }
 
@@ -42,7 +39,7 @@ public class SkillUpgrades : MonoBehaviour
     {
         int index = _skills.IndexOf(purchased);
 
-        Controller.Instance.SaveControl.SaveTowerAugmentationLevel(_index, _augmentationLevel + 1);
+        Controller.Instance.SaveControl.SaveTowerAugmentationLevel(_index, index + 1);
 
         if (index + 1 < _skills.Count)
             _skills[index + 1].Activate();
