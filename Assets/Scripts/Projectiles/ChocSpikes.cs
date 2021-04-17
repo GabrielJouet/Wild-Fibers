@@ -12,6 +12,7 @@ public class ChocSpikes : Projectile
 
     protected Animator _animator;
 
+    private int _augmentationLevel;
 
 
     //Method used to initialize class (like a constructor)
@@ -33,10 +34,11 @@ public class ChocSpikes : Projectile
     }
 
 
-    public void StartFollowing(Enemy newEnemy, TowerData newData)
+    public void StartFollowing(Enemy newEnemy, TowerData newData, int augmentationLevel)
     {
         if (!_following)
         {
+            _augmentationLevel = augmentationLevel;
             _data = newData;
             _following = true;
             _enemyTracked = newEnemy;
@@ -82,8 +84,29 @@ public class ChocSpikes : Projectile
 
         //Time to stay a little longer, visibility purpose
         AttackEnemy(_enemyTracked);
+
         _following = false;
         yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[0].length);
         StopProjectile();
+    }
+
+
+    /// <summary>
+    /// Method called to hurt an enemy.
+    /// </summary>
+    /// <param name="enemy">The related enemy</param>
+    protected override void AttackEnemy(Enemy enemy)
+    {
+        if (enemy != null)
+        {
+            float damage = (_data.Damage + (enemy.AlreadyDotted ? 1 : 0)) * (_augmentationLevel > 2 && Random.Range(0, 100) < 5 ? 2 : 1);
+            enemy.TakeDamage(enemy.ArmorMax < 25 ? _data.ArmorThrough * 1.25f : _data.ArmorThrough, damage);
+
+            if (_augmentationLevel > 1)
+                enemy.DestroyArmor(2);
+
+            if (_data.DotIcon != null)
+                enemy.ApplyDot(_data.ArmorThroughMalus, _data.Dot, _data.DotDuration, _data.DotIcon);
+        }
     }
 }

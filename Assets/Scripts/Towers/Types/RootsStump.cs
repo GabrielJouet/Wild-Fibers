@@ -11,6 +11,7 @@ public class RootsStump : Tower
 
     protected int _rootsIndex = 0;
 
+
     /// <summary>
     /// Method used to update special behavior.
     /// </summary>
@@ -34,7 +35,7 @@ public class RootsStump : Tower
             {
                 StartCoroutine(SummonSpike(1));
 
-                _availableSpikes[0].StartFollowing(enemies[i], _towerData);
+                _availableSpikes[0].StartFollowing(enemies[i], _towerData, Data.AugmentationLevel);
                 _availableSpikes.RemoveAt(0);
             }
         }

@@ -3,9 +3,6 @@ using UnityEngine;
 
 public class Twigs : Tower
 {
-    protected bool _canShootThrough = false;
-
-
     protected override void LevelOneAugmentation()
     {
         _towerData.Range *= 1.1f;
@@ -18,23 +15,9 @@ public class Twigs : Tower
     }
 
 
-    protected override void LevelThreeAugmentation() 
-    {
-        _towerData.Dot = 1;
-        _towerData.DotDuration = 3;
-        _towerData.ArmorThroughMalus = 0;
-    }
-
-
     protected override void LevelFourAugmentation() 
     {
         _towerData.TimeShots *= 0.95f;
-    }
-
-
-    protected override void LevelFiveAugmentation()
-    {
-        _canShootThrough = true;
     }
 
 
@@ -51,10 +34,10 @@ public class Twigs : Tower
             SortEnemies();
 
         float buffer = _towerData.ArmorThrough;
-        _towerData.ArmorThrough = (_canShootThrough && Random.Range(0, 100) < 10) ? 100 : buffer;
+        _towerData.ArmorThrough = (Data.AugmentationLevel > 3 && Random.Range(0, 100) < 10) ? 100 : buffer;
 
         foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().Initialize(_towerData, current, _projectilePool, transform);
+            _projectilePool.GetOneProjectile().GetComponent<Twig>().Initialize(_towerData, current, _projectilePool, transform, Data.AugmentationLevel > 1);
 
         _towerData.ArmorThrough = buffer;
 

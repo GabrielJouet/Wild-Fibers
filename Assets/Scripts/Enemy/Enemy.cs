@@ -352,15 +352,9 @@ public class Enemy : MonoBehaviour
     /// Method to remove health to enemy.
     /// </summary>
     /// <param name="data">The tower data damaging enemy</param>
-    public void TakeDamage(TowerData data)
+    public void TakeDamage(float armorThrough, float damage)
     {
-        float armorThrough = data.ArmorThrough;
-        float damage = data.Damage;
-
         int damageLeft = Mathf.FloorToInt(Armor - armorThrough < 0 ? damage + (damage * (armorThrough - Armor)/100)/2 : damage - ((Armor - armorThrough)/100 * damage));
-
-        if (Attacks.Count > 0 && Attacks.Contains(data))
-            Attacks.Remove(data);
 
         TakeDamage(damageLeft);
 
@@ -464,6 +458,13 @@ public class Enemy : MonoBehaviour
     {
         _pathIndex -= indexLosts;
         transform.position =  _path[_pathIndex];
+    }
+
+
+    public void DestroyArmor(int percentage)
+    {
+        ArmorMax -= percentage;
+        Armor -= percentage;
     }
 
 

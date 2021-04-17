@@ -9,16 +9,11 @@ public class Vines : Tower
     }
 
 
-    protected override void LevelFourAugmentation()
-    {
-
-    }
-
-
     protected override void LevelFiveAugmentation()
     {
         _towerData.Range *= 1.15f;
     }
+
 
     /// <summary>
     /// Coroutine used to delay attacks.
@@ -27,7 +22,7 @@ public class Vines : Tower
     {
         _coroutineStarted = true;
 
-        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_towerData, null, _projectilePool, transform);
+        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_towerData, _projectilePool, transform, Data.AugmentationLevel > 3);
         yield return new WaitForSeconds(_towerData.TimeShots);
 
         _coroutineStarted = false;

@@ -63,7 +63,7 @@ public class Squad : ScriptableObject
         if (currentTower.AugmentationLevel > 1)
         {
             foreach (TowerData current in currentTower.Upgrades)
-                current.Price = Mathf.FloorToInt(current.Price * 0.9f);
+                current.Price -= 25;
 
             if (currentTower.AugmentationLevel > 2)
                 currentTower.ResellPriceFactor *= 1.25f;

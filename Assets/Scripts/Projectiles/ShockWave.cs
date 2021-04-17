@@ -7,6 +7,8 @@ public class ShockWave : Projectile
 {
     private Vector3 _previousScale;
 
+    private bool _hitGroundHarder;
+
 
     //Method used to initialize class (like a constructor)
     public void Initialize(TowerData newData, ProjectilePool newPool, Transform newTransform, bool hitGroundHarder)
@@ -16,6 +18,7 @@ public class ShockWave : Projectile
         _projectilePool = newPool;
         _previousScale = new Vector3(0, 0, 1);
 
+        _hitGroundHarder = hitGroundHarder;
         transform.localScale = _previousScale;
     }
 
@@ -41,6 +44,6 @@ public class ShockWave : Projectile
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Enemy newEnemy))
-            newEnemy.TakeDamage(_data);
+            newEnemy.TakeDamage(_data.ArmorThrough,  _data.Damage + (!newEnemy.Flying && _hitGroundHarder ? 2 : 0));
     }
 }

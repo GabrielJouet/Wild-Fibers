@@ -85,11 +85,11 @@ public class Projectile : MonoBehaviour
     /// Method called to hurt an enemy.
     /// </summary>
     /// <param name="enemy">The related enemy</param>
-    protected void AttackEnemy(Enemy enemy)
+    protected virtual void AttackEnemy(Enemy enemy)
     {
         if (enemy != null)
         {
-            enemy.TakeDamage(_data);
+            enemy.TakeDamage(_data.ArmorThrough, _data.Damage);
 
             if (_data.DotIcon != null)
                 enemy.ApplyDot(_data.ArmorThroughMalus, _data.Dot, _data.DotDuration, _data.DotIcon);
