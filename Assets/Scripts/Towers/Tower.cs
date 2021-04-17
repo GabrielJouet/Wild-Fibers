@@ -116,18 +116,19 @@ public class Tower : MonoBehaviour
 
     private void SetDefaultValues(TowerData newData)
     {
-        CheckAugmentation();
         _selector.SetActive(false);
         _transformRange.gameObject.SetActive(false);
 
         _towerData = newData;
-        CumulativeGold += _towerData.Price;
+        CheckAugmentation();
 
-        _spriteRenderer.sprite = _towerData.Sprite;
-        _shadowSpriteRenderer.sprite = _towerData.Shadow;
+        CumulativeGold += Data.Price;
 
-        _transformRange.localScale = _initialRangeScale * _towerData.Range;
-        _collider.localScale = _initialColliderScale * (0.9f * _towerData.Range);
+        _spriteRenderer.sprite = Data.Sprite;
+        _shadowSpriteRenderer.sprite = Data.Shadow;
+
+        _transformRange.localScale = _initialRangeScale * Data.Range;
+        _collider.localScale = _initialColliderScale * (0.9f * Data.Range);
 
         _collider.GetComponent<TowerCollider>().ParentTower = this;
     }
@@ -153,15 +154,15 @@ public class Tower : MonoBehaviour
     {
         _coroutineStarted = true;
 
-        int numberOfStrikes = _availableEnemies.Count < _towerData.Shots ? _availableEnemies.Count : _towerData.Shots;
+        int numberOfStrikes = _availableEnemies.Count < Data.Shots ? _availableEnemies.Count : Data.Shots;
 
-        if (!_towerData.ShotsRandomly)
+        if (!Data.ShotsRandomly)
             SortEnemies();
 
         foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().Initialize(_towerData, current, _projectilePool, transform);
+            _projectilePool.GetOneProjectile().Initialize(Data, current, _projectilePool, transform);
 
-        yield return new WaitForSeconds(_towerData.TimeShots);
+        yield return new WaitForSeconds(Data.TimeShots);
         _coroutineStarted = false;
     }
 
@@ -175,7 +176,7 @@ public class Tower : MonoBehaviour
     {
         ResellSpecialBehavior();
 
-        _ressourceController.AddGold(Mathf.FloorToInt(CumulativeGold / 4), false);
+        _ressourceController.AddGold(Mathf.FloorToInt((CumulativeGold * Data.ResellPriceFactor) / 4), false);
 
         _backgroundSelecter.DisableTowerInformation();
         _backgroundSelecter.DisableTowerSellButton();
@@ -213,23 +214,23 @@ public class Tower : MonoBehaviour
 
     protected void CheckAugmentation()
     {
-        if (_towerData.AugmentationLevel > 0)
+        if (Data.AugmentationLevel > 0)
         {
             LevelOneAugmentation();
 
-            if (_towerData.AugmentationLevel > 1)
+            if (Data.AugmentationLevel > 1)
             {
                 LevelTwoAugmentation();
 
-                if (_towerData.AugmentationLevel > 2)
+                if (Data.AugmentationLevel > 2)
                 {
                     LevelThreeAugmentation();
 
-                    if (_towerData.AugmentationLevel > 3)
+                    if (Data.AugmentationLevel > 3)
                     {
                         LevelFourAugmentation();
 
-                        if (_towerData.AugmentationLevel > 4)
+                        if (Data.AugmentationLevel > 4)
                             LevelFiveAugmentation();
                     }
                 }
@@ -262,7 +263,7 @@ public class Tower : MonoBehaviour
     /// <param name="enemy">The enemy to add</param>
     public void AddEnemy(Enemy enemy)
     {
-        if (!(!_towerData.HitFlying && enemy.Flying))
+        if (!(!Data.HitFlying && enemy.Flying))
             _availableEnemies.Add(enemy);
     }
 
@@ -296,12 +297,12 @@ public class Tower : MonoBehaviour
     {
         List<Enemy> availableEnemies = new List<Enemy>();
 
-        if (_towerData.ShotsRandomly)
+        if (Data.ShotsRandomly)
             _availableEnemies.Shuffle();
         else
             SortEnemies();
 
-        bool cannotDot = _towerData.DotDuration == 0;
+        bool cannotDot = Data.DotDuration == 0;
 
         if (numberOfEnemiesToFound > _availableEnemies.Count)
         {
@@ -310,7 +311,7 @@ public class Tower : MonoBehaviour
                 if ((cannotDot || !buffer.AlreadyDotted) && buffer.CanBeTargeted)
                 {
                     availableEnemies.Add(buffer);
-                    buffer.AddAttack(_towerData);
+                    buffer.AddAttack(Data);
                 }
             }
         }
@@ -320,7 +321,7 @@ public class Tower : MonoBehaviour
             if ((cannotDot || !buffer.AlreadyDotted) && buffer.CanBeTargeted)
             {
                 availableEnemies.Add(buffer);
-                buffer.AddAttack(_towerData);
+                buffer.AddAttack(Data);
 
                 if (availableEnemies.Count >= numberOfEnemiesToFound)
                     break;

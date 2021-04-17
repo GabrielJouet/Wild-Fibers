@@ -9,7 +9,7 @@ public class SkillTree : MonoBehaviour
     
     private void Start()
     {
-        Squad currentSquad = Controller.Instance.SquadControl.Squads[0];
+        Squad currentSquad = Controller.Instance.SquadControl.CurrentSquad;
         List<int> augmentations = Controller.Instance.SaveControl.SaveFile.SquadsProgression[0].AugmentationLevelMax;
 
         for (int i = 0; i < _skills.Count; i ++)

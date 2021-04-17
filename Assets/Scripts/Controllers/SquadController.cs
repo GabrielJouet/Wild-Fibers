@@ -20,7 +20,7 @@ public class SquadController : MonoBehaviour
         } 
     }
 
-    public int CurrentSquad { get; set; } = 0;
+    public Squad CurrentSquad { get => Squads[0]; }
 
 
     public List<Augmentation> RecoverBoughtAugmentations(List<int> augmentationLevel)
@@ -31,10 +31,10 @@ public class SquadController : MonoBehaviour
         {
             if (j == 4)
                 for (int i = 0; i < augmentationLevel[j]; i++)
-                    result.Add(Squads[CurrentSquad].Augmentations[i]);
+                    result.Add(CurrentSquad.Augmentations[i]);
             else
                 for (int i = 0; i < augmentationLevel[j]; i++)
-                    result.Add(Squads[CurrentSquad].Towers[j].Augmentations[i]);
+                    result.Add(CurrentSquad.Towers[j].Augmentations[i]);
         }
 
         return result;

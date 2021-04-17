@@ -69,7 +69,7 @@ public class TowerButtonController : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        List<TowerData> buffer = _squadController.Squads[0].Towers;
+        List<TowerData> buffer = _squadController.CurrentSquad.Towers;
         List<TowerData> blockedTowers = Controller.Instance.SaveControl.LoadedLevel.BlockedTowers;
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i ++)
@@ -93,7 +93,7 @@ public class TowerButtonController : MonoBehaviour
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i++)
         {
-            TowerData buffer = _squadController.Squads[0].Towers[i];
+            TowerData buffer = _squadController.CurrentSquad.Towers[i];
             _towerPurchaseButtons[i].gameObject.SetActive(true);
 
             _towerPurchaseButtons[i].ChangeBehavior(() => newUsedTowerSlot.ChooseTower(buffer));
@@ -133,7 +133,7 @@ public class TowerButtonController : MonoBehaviour
         else if (_currentTower.Data.Specs.Count > 0)
             UpdateTowerSpecButtons();
 
-        _sellButton.Initialize(Mathf.FloorToInt(newTower.CumulativeGold / 4f));
+        _sellButton.Initialize(Mathf.FloorToInt((newTower.CumulativeGold * newTower.Data.ResellPriceFactor) / 4f));
         _sellButton.gameObject.SetActive(true);
         _sellButton.ChangeBehavior(() => _currentTower.ResellTower());
         _sellButton.UpdateState(true);
