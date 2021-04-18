@@ -302,13 +302,11 @@ public class Tower : MonoBehaviour
         else
             SortEnemies();
 
-        bool cannotDot = Data.DotDuration == 0;
-
         if (numberOfEnemiesToFound > _availableEnemies.Count)
         {
             foreach (Enemy buffer in _availableEnemies)
             {
-                if ((cannotDot || !buffer.AlreadyDotted) && buffer.CanBeTargeted)
+                if (buffer.CanBeTargeted)
                 {
                     availableEnemies.Add(buffer);
                     buffer.AddAttack(Data);
@@ -318,7 +316,7 @@ public class Tower : MonoBehaviour
 
         foreach (Enemy buffer in _availableEnemies)
         {
-            if ((cannotDot || !buffer.AlreadyDotted) && buffer.CanBeTargeted)
+            if (buffer.CanBeTargeted)
             {
                 availableEnemies.Add(buffer);
                 buffer.AddAttack(Data);

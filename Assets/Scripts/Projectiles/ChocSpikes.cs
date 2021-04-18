@@ -99,7 +99,7 @@ public class ChocSpikes : Projectile
     {
         if (enemy != null)
         {
-            float damage = (_data.Damage + (enemy.AlreadyDotted ? 1 : 0)) * (_augmentationLevel > 2 && Random.Range(0, 100) < 5 ? 2 : 1);
+            float damage = (_data.Damage + (enemy.IsDotted ? 1 : 0)) * (_augmentationLevel > 2 && Random.Range(0, 100) < 5 ? 2 : 1);
             enemy.TakeDamage(enemy.ArmorMax < 25 ? _data.ArmorThrough * 1.25f : _data.ArmorThrough, damage);
 
             if (_augmentationLevel > 1)
