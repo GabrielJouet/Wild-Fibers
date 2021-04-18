@@ -127,9 +127,12 @@ public class SaveController : MonoBehaviour
 	private void CreateSave()
 	{
 		List<LevelSave> allSaves = new List<LevelSave>();
-
+		/*
 		for (int i = 0; i < Levels.Count; i ++)
 			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED));
+			*/
+		for (int i = 0; i < Levels.Count; i++)
+			allSaves.Add(new LevelSave(3, LevelState.CHALLENGED));
 
 		SaveFile = new SaveFile(Application.version, allSaves, 1, 1, _enemyController.Enemies.Count, 1);
 

@@ -258,7 +258,7 @@ public class Enemy : MonoBehaviour
     public BackgroudSelecter InformationUI { get; set; }
 
 
-    public List<TowerData> Attacks { get; set; } = new List<TowerData>();
+    public List<Attack> Attacks { get; set; } = new List<Attack>();
 
     /// <summary>
     /// Does the enemy is already dotted?
@@ -357,6 +357,16 @@ public class Enemy : MonoBehaviour
         int damageLeft = Mathf.FloorToInt(Armor - armorThrough < 0 ? damage + (damage * (armorThrough - Armor)/100)/2 : damage - ((Armor - armorThrough)/100 * damage));
 
         TakeDamage(damageLeft);
+
+        for (int i = 0; i < Attacks.Count; i ++)
+        {
+            if (Attacks[i].Damage == damage && Attacks[i].ArmorThrough == armorThrough)
+            {
+                Attacks.RemoveAt(i);
+                break;
+            }
+        }
+
 
         foreach (Transform current in _particleEmissionsPoints)
         {
@@ -502,18 +512,17 @@ public class Enemy : MonoBehaviour
     /// <param name="newAttack">The data of the attack</param>
     public void AddAttack(TowerData newAttack)
     {
-        Attacks.Add(newAttack);
+        Attacks.Add(new Attack(newAttack.Damage, newAttack.ArmorThrough));
 
         if (newAttack.DotDuration != 0)
             AlreadyDotted = true;
 
         float total = 0;
-        foreach (TowerData current in Attacks)
-            total += Mathf.FloorToInt(_armorMax - current.ArmorThrough < 0 ? current.Damage + (current.Damage * (current.ArmorThrough - _armorMax) / 100) / 2 : current.Damage - ((_armorMax - current.ArmorThrough) / 100 * current.Damage));
+        foreach (Attack current in Attacks)
+            total += Mathf.FloorToInt(ArmorMax - current.ArmorThrough < 0 ? current.Damage + (current.Damage * (current.ArmorThrough - ArmorMax) / 100) / 2 : current.Damage - ((ArmorMax - current.ArmorThrough) / 100 * current.Damage));
 
         if (Health - (_dotDuration * 2 * _healthMalus + total) <= 0)
             CanBeTargeted = false;
-
     }
 
     /// <summary>
