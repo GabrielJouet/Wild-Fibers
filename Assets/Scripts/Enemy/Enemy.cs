@@ -343,14 +343,7 @@ public class Enemy : MonoBehaviour
 
         TakeDamage(damageLeft);
 
-        for (int i = 0; i < Attacks.Count; i ++)
-        {
-            if (Attacks[i].Damage == damage && Attacks[i].ArmorThrough == armorThrough)
-            {
-                Attacks.RemoveAt(i);
-                break;
-            }
-        }
+        Attacks.Remove(newAttack);
 
         foreach (Transform current in _particleEmissionsPoints)
             foreach (Particle particle in _particleController.GetParticle(_damageParticle, 3))
@@ -443,7 +436,10 @@ public class Enemy : MonoBehaviour
         Armor += newDot.ArmorThroughMalus * ResistancePercentage;
 
         if (_dots.Count == 0)
-            _dotDisplay.sprite = null;
+        {
+            _dotDisplay.gameObject.SetActive(false);
+            IsDotted = false;
+        }
     }
 
 
