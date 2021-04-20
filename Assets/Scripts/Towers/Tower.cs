@@ -122,6 +122,7 @@ public class Tower : MonoBehaviour
         _transformRange.gameObject.SetActive(false);
 
         _towerData = newData;
+        _attack = new Attack(Data.Damage, Data.ArmorThrough, Data.DotDuration, Data.ArmorThroughMalus, Data.Dot);
         CheckAugmentation();
 
         CumulativeGold += Data.Price;
@@ -133,8 +134,6 @@ public class Tower : MonoBehaviour
         _collider.localScale = _initialColliderScale * (0.9f * Data.Range);
 
         _collider.GetComponent<TowerCollider>().ParentTower = this;
-
-        _attack = new Attack(Data.Damage, Data.ArmorThrough, Data.DotDuration, Data.ArmorThroughMalus, Data.Dot);
     }
 
 
