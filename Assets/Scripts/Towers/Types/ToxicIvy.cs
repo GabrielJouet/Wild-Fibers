@@ -15,19 +15,19 @@ public class ToxicIvy : Tower
 
     protected override void LevelTwoAugmentation()
     {
-        _towerData.DotDuration += 0.5f;
+        _attack.DotDuration += 0.5f;
     }
 
 
     protected override void LevelThreeAugmentation()
     {
-        _towerData.Dot++;
+        _attack.DotDamage++;
     }
 
 
     protected override void LevelFourAugmentation()
     {
-        _towerData.ArmorThroughMalus *= 1.05f;
+        _attack.ArmorThroughMalus *= 1.05f;
     }
 
 
@@ -54,7 +54,7 @@ public class ToxicIvy : Tower
             {
                 StartCoroutine(SummonLeaf(1));
 
-                _availableLeaves.Pop().StartFollowing(enemies[i], _towerData);
+                _availableLeaves.Pop().StartFollowing(enemies[i], _attack);
             }
         }
     }
@@ -94,7 +94,7 @@ public class ToxicIvy : Tower
         }
 
         ToxicLeaf buffer = _projectilePool.GetOneProjectile().GetComponent<ToxicLeaf>();
-        buffer.Initialize(_towerData, _projectilePool, transform.localPosition, Data.AugmentationLevel > 3, biggerLeaf);
+        buffer.Initialize(_projectilePool, transform.localPosition, Data.AugmentationLevel > 3, biggerLeaf);
 
         _availableLeaves.Push(buffer);
     }

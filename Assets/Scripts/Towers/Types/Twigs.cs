@@ -37,7 +37,7 @@ public class Twigs : Tower
         _towerData.ArmorThrough = (Data.AugmentationLevel > 3 && Random.Range(0, 100) < 10) ? 100 : buffer;
 
         foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().GetComponent<Twig>().Initialize(_towerData, current, _projectilePool, transform, Data.AugmentationLevel > 1);
+            _projectilePool.GetOneProjectile().GetComponent<Twig>().Initialize(_attack, current, _projectilePool, transform, Data.AugmentationLevel > 1);
 
         _towerData.ArmorThrough = buffer;
 

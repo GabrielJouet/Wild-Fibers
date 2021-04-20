@@ -83,13 +83,6 @@ public class TowerData : ScriptableObject
     public float ArmorThrough { get; set; }
 
     /// <summary>
-    /// Armor through on each attack.
-    /// </summary>
-    [SerializeField]
-    protected float _speed;
-    public float ProjectileSpeed { get;set; }
-
-    /// <summary>
     /// Number of projectile per attack.
     /// </summary>
     [SerializeField]
@@ -140,13 +133,6 @@ public class TowerData : ScriptableObject
     [SerializeField]
     private float _dotDuration;
     public float DotDuration { get; set; }
-
-    /// <summary>
-    /// Dot sprite.
-    /// </summary>
-    [SerializeField]
-    private Sprite _dotIcon;
-    public Sprite DotIcon { get => _dotIcon; }
 
 
     [Header("Upgrades")]
@@ -237,7 +223,6 @@ public class TowerData : ScriptableObject
         TimeShots = _timeBetweenShots;
         Damage = _damage;
         ArmorThrough = _armorThrough;
-        ProjectileSpeed = _speed;
         Shots = _numberOfShots;
         Range = _range;
 

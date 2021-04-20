@@ -9,15 +9,18 @@ public class ShockWave : Projectile
 
     private bool _hitGroundHarder;
 
-
+    private float _range;
+    
+    
     //Method used to initialize class (like a constructor)
-    public void Initialize(TowerData newData, ProjectilePool newPool, Transform newTransform, bool hitGroundHarder)
+    public void Initialize(Attack newData, ProjectilePool newPool, Transform newTransform, bool hitGroundHarder, float range)
     {
         transform.position = newTransform.position;
         _data = newData;
         _projectilePool = newPool;
         _previousScale = new Vector3(0, 0, 1);
 
+        _range = range;
         _hitGroundHarder = hitGroundHarder;
         transform.localScale = _previousScale;
     }
@@ -26,10 +29,10 @@ public class ShockWave : Projectile
     //Update method, called every frame
     protected override void Update()
     {
-        if (transform.localScale.x < _data.Range)
+        if (transform.localScale.x < _range)
         {
-            _previousScale.x += _data.ProjectileSpeed * Time.deltaTime;
-            _previousScale.y += _data.ProjectileSpeed * Time.deltaTime;
+            _previousScale.x += _projectileSpeed * Time.deltaTime;
+            _previousScale.y += _projectileSpeed * Time.deltaTime;
 
             transform.localScale = _previousScale;
         }
@@ -44,6 +47,11 @@ public class ShockWave : Projectile
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Enemy newEnemy))
-            newEnemy.TakeDamage(_data.ArmorThrough,  _data.Damage + (!newEnemy.Flying && _hitGroundHarder ? 2 : 0));
+        {
+            if (_hitGroundHarder)
+                newEnemy.TakeDamage(new Attack(_data.Damage + (!newEnemy.Flying ? 2 : 1), _data.ArmorThrough, _data.DotDuration, _data.ArmorThroughMalus, _data.DotDamage));
+            else 
+                newEnemy.TakeDamage(_data);
+        }
     }
 }

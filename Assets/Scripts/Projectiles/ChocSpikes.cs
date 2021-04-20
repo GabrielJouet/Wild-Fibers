@@ -12,11 +12,18 @@ public class ChocSpikes : Projectile
 
     protected Animator _animator;
 
-    private int _augmentationLevel;
+    private bool _canDestroyArmor = false;
+
+    private bool _hitDotted = false;
+
+    private bool _hitLight = false;
+
+    private bool _canCrit = false;
+
 
 
     //Method used to initialize class (like a constructor)
-    public void Initialize(TowerData newData, ProjectilePool newPool, Vector2 newPosition)
+    public void Initialize(ProjectilePool newPool, Vector2 newPosition)
     {
         _following = false;
         _attacking = false;
@@ -24,7 +31,6 @@ public class ChocSpikes : Projectile
         StopAllCoroutines();
         GetComponent<SpriteRenderer>().sprite = null;
 
-        _data = newData;
         _projectilePool = newPool;
 
         _animator = GetComponent<Animator>();
@@ -34,11 +40,15 @@ public class ChocSpikes : Projectile
     }
 
 
-    public void StartFollowing(Enemy newEnemy, TowerData newData, int augmentationLevel)
+    public void StartFollowing(Enemy newEnemy, Attack newData, bool canDestroyArmor, bool hitDotted, bool hitLight, bool canCrit)
     {
         if (!_following)
         {
-            _augmentationLevel = augmentationLevel;
+            _canDestroyArmor = canDestroyArmor;
+            _hitDotted = hitDotted;
+            _hitLight = hitLight;
+            _canCrit = canCrit;
+
             _data = newData;
             _following = true;
             _enemyTracked = newEnemy;
@@ -99,14 +109,21 @@ public class ChocSpikes : Projectile
     {
         if (enemy != null)
         {
-            float damage = (_data.Damage + (enemy.IsDotted ? 1 : 0)) * (_augmentationLevel > 2 && Random.Range(0, 100) < 5 ? 2 : 1);
-            enemy.TakeDamage(enemy.ArmorMax < 25 ? _data.ArmorThrough * 1.25f : _data.ArmorThrough, damage);
-
-            if (_augmentationLevel > 1)
+            if (_canDestroyArmor)
                 enemy.DestroyArmor(2);
 
-            if (_data.DotIcon != null)
-                enemy.ApplyDot(_data.ArmorThroughMalus, _data.Dot, _data.DotDuration, _data.DotIcon);
+            Attack newAttack = new Attack(_data);
+
+            if (_hitLight)
+                newAttack.ArmorThrough *= (enemy.ArmorMax < 25 ? 1.5f : 1);
+
+            if (_hitDotted)
+                newAttack.Damage += enemy.IsDotted ? 1 : 0;
+
+            if (_canCrit)
+                newAttack.Damage *= Random.Range(0, 100) < 5 ? 2 : 1;
+
+            enemy.TakeDamage(newAttack);
         }
     }
 }

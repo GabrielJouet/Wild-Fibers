@@ -73,6 +73,8 @@ public class Tower : MonoBehaviour
 
     public int CumulativeGold { get; protected set; } = 0;
 
+    protected Attack _attack;
+
 
 
     protected void Awake()
@@ -131,6 +133,8 @@ public class Tower : MonoBehaviour
         _collider.localScale = _initialColliderScale * (0.9f * Data.Range);
 
         _collider.GetComponent<TowerCollider>().ParentTower = this;
+
+        _attack = new Attack(Data.Damage, Data.ArmorThrough, Data.DotDuration, Data.ArmorThroughMalus, Data.Dot);
     }
 
 
@@ -160,7 +164,7 @@ public class Tower : MonoBehaviour
             SortEnemies();
 
         foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().Initialize(Data, current, _projectilePool, transform);
+            _projectilePool.GetOneProjectile().Initialize(_attack, current, _projectilePool, transform);
 
         yield return new WaitForSeconds(Data.TimeShots);
         _coroutineStarted = false;

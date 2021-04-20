@@ -15,14 +15,13 @@ public class ToxicLeaf : Projectile
 
 
     //Method used to initialize class (like a constructor)
-    public void Initialize(TowerData newData, ProjectilePool newPool, Vector2 newPosition, bool slowDown, bool bigger)
+    public void Initialize(ProjectilePool newPool, Vector2 newPosition, bool slowDown, bool bigger)
     {
         _following = false;
         _angle = Random.Range(0, 360);
 
         StopAllCoroutines();
 
-        _data = newData;
         _projectilePool = newPool;
 
         _initialPosition = newPosition;
@@ -37,7 +36,7 @@ public class ToxicLeaf : Projectile
     }
 
 
-    public void StartFollowing(Enemy newEnemy, TowerData newData)
+    public void StartFollowing(Enemy newEnemy, Attack newData)
     {
         if (!_following)
         {
@@ -64,7 +63,7 @@ public class ToxicLeaf : Projectile
         {
             _angle += Time.deltaTime;
             transform.localPosition = _initialPosition + new Vector2(Mathf.Sin(_angle) * 0.15f, Mathf.Cos(_angle) * 0.15f);
-            transform.RotateAround(transform.position, new Vector3(0, 0, 1), _data.ProjectileSpeed * 4 * Time.deltaTime);
+            transform.RotateAround(transform.position, new Vector3(0, 0, 1), _projectileSpeed * 4 * Time.deltaTime);
         }
     }
 
@@ -77,18 +76,13 @@ public class ToxicLeaf : Projectile
     {
         if (enemy != null)
         {
-            enemy.TakeDamage(_data.ArmorThrough, _data.Damage);
+            if (_slowDown)
+                enemy.ApplySlowDown(10, 2f);
 
-            if (_data.DotIcon != null)
-            {
-                if (_bigger)
-                    enemy.ApplyDot(_data.ArmorThroughMalus * 1.75f, Mathf.FloorToInt(_data.Dot * 1.5f), _data.DotDuration, _data.DotIcon);
-                else 
-                    enemy.ApplyDot(_data.ArmorThroughMalus, _data.Dot, _data.DotDuration, _data.DotIcon);
-
-                if (_slowDown)
-                    enemy.ApplySlowDown(10, 2f);
-            }
+            if (_bigger)
+                enemy.TakeDamage(new Attack(_data.Damage, _data.ArmorThrough, _data.DotDuration, _data.ArmorThroughMalus * 1.75f, Mathf.FloorToInt(_data.DotDamage * 1.5f)));
+            else 
+                enemy.TakeDamage(_data);
         }
     }
 }

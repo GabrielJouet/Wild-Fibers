@@ -5,7 +5,7 @@ public class Vines : Tower
 {
     protected override void LevelOneAugmentation()
     {
-        _towerData.Damage++;
+        _attack.Damage++;
     }
 
 
@@ -22,7 +22,7 @@ public class Vines : Tower
     {
         _coroutineStarted = true;
 
-        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_towerData, _projectilePool, transform, Data.AugmentationLevel > 3);
+        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_attack, _projectilePool, transform, Data.AugmentationLevel > 3, Data.Range);
         yield return new WaitForSeconds(_towerData.TimeShots);
 
         _coroutineStarted = false;

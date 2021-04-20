@@ -23,7 +23,6 @@ MonoBehaviour:
   _timeBetweenShots: 1.9
   _damage: 0
   _armorThrough: 0
-  _speed: 2.75
   _numberOfShots: 3
   _range: 1.15
   _canHitFlying: 1
@@ -31,9 +30,9 @@ MonoBehaviour:
   _armorThroughMalus: 10
   _damageOverTime: 3
   _dotDuration: 4.5
-  _dotIcon: {fileID: 21300000, guid: 7cd5152f67673104f8eaee17fb065362, type: 3}
   _towerUpgrades: []
   _towerSpecs: []
+  _towerAugmentations: []
   _scriptName: ToxicIvy
   _special: 
   _screenShot: {fileID: 21300000, guid: 0eff3e362748a1e4ba6ae1590c639b01, type: 3}
