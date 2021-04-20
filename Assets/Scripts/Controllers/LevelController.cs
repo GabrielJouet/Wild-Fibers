@@ -93,7 +93,7 @@ public class LevelController : MonoBehaviour
         _poolController = Controller.Instance.PoolControl;
         _poolController.ReInitialize();
 
-        if (LoadedLevel.TowerLevel > _saveController.SaveFile.TowerLevelMax)
+        if (LoadedLevel.TowerLevel > _saveController.SaveFile.CurrentSquad.TowerLevelMax)
         {
             //TO DO : DISPLAY A SCREEN WITH NEW TOWERS
             _saveController.SaveTowerLevel(LoadedLevel.TowerLevel);

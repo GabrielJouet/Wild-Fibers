@@ -11,6 +11,7 @@ public class RootsStump : Tower
 
     protected int _rootsIndex = 0;
 
+
     /// <summary>
     /// Method used to update special behavior.
     /// </summary>
@@ -34,7 +35,7 @@ public class RootsStump : Tower
             {
                 StartCoroutine(SummonSpike(1));
 
-                _availableSpikes[0].StartFollowing(enemies[i], _towerData);
+                _availableSpikes[0].StartFollowing(enemies[i], _attack, Data.AugmentationLevel > 1, Data.AugmentationLevel > 2, Data.AugmentationLevel > 4, Data.AugmentationLevel > 3);
                 _availableSpikes.RemoveAt(0);
             }
         }
@@ -66,7 +67,7 @@ public class RootsStump : Tower
         yield return new WaitForSeconds(_towerData.TimeShots * multiplier);
 
         ChocSpikes buffer = _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>();
-        buffer.Initialize(_towerData, _projectilePool, GetSpikePosition(_rootsIndex));
+        buffer.Initialize(_projectilePool, GetSpikePosition(_rootsIndex));
 
         _rootsIndex = _rootsIndex == _towerData.Shots - 1? 0 : _rootsIndex + 1 ;
 

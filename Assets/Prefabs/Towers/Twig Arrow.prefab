@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3891878839269484181}
   - component: {fileID: 3819917524024459315}
-  - component: {fileID: 4837995601281344530}
   - component: {fileID: -7893831894644614616}
+  - component: {fileID: -5507935167662861222}
   m_Layer: 0
   m_Name: Twig Arrow
   m_TagString: Untagged
@@ -83,18 +83,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4837995601281344530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7123463354834142406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8bbee7ad4d3fa74b9eeae4ba686bcdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-7893831894644614616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,3 +95,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-5507935167662861222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7123463354834142406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af429c1e40efda94f860ef23205fded8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectileSpeed: 3.75

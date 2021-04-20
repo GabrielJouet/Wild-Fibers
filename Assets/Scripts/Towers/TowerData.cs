@@ -21,7 +21,13 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     protected int _price;
-    public int Price { get => _price; private set => _price = value; }
+    public int Price { get; set; }
+
+    /// <summary>
+    /// Resell Price factor of the tower.
+    /// </summary>
+    protected float _resellPriceFactor = 1;
+    public float ResellPriceFactor { get; set; }
 
     /// <summary>
     /// Icon of the tower.
@@ -60,42 +66,35 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     protected float _timeBetweenShots;
-    public float TimeShots { get => _timeBetweenShots; private set => _timeBetweenShots = value; }
+    public float TimeShots { get; set; }
 
     /// <summary>
     /// Damage per attack.
     /// </summary>
     [SerializeField]
     protected int _damage;
-    public int Damage { get => _damage; private set => _damage = value; }
+    public int Damage { get; set; }
 
     /// <summary>
     /// Armor through on each attack.
     /// </summary>
     [SerializeField]
     protected float _armorThrough;
-    public float ArmorThrough { get => _armorThrough; private set => _armorThrough = value; }
-
-    /// <summary>
-    /// Armor through on each attack.
-    /// </summary>
-    [SerializeField]
-    protected float _speed;
-    public float ProjectileSpeed { get => _speed; private set => _speed = value; }
+    public float ArmorThrough { get; set; }
 
     /// <summary>
     /// Number of projectile per attack.
     /// </summary>
     [SerializeField]
     protected int _numberOfShots;
-    public int Shots { get => _numberOfShots; private set => _numberOfShots = value; }
+    public int Shots { get; set; }
 
     /// <summary>
     /// Range of the tower.
     /// </summary>
     [SerializeField]
     protected float _range;
-    public float Range { get => _range; private set => _range = value; }
+    public float Range { get; set; }
 
     /// <summary>
     /// Can the tower hits flying target?
@@ -119,28 +118,21 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     private float _armorThroughMalus;
-    public float ArmorThroughMalus { get => _armorThroughMalus; private set => _armorThroughMalus = value; }
+    public float ArmorThroughMalus { get; set; }
 
     /// <summary>
     /// Dot over time damage.
     /// </summary>
     [SerializeField]
     private int _damageOverTime;
-    public int Dot { get => _damageOverTime; private set => _damageOverTime = value; }
+    public int Dot { get; set; }
 
     /// <summary>
     /// Dot duration.
     /// </summary>
     [SerializeField]
     private float _dotDuration;
-    public float DotDuration { get => _dotDuration; private set => _dotDuration = value; }
-
-    /// <summary>
-    /// Dot sprite.
-    /// </summary>
-    [SerializeField]
-    private Sprite _dotIcon;
-    public Sprite DotIcon { get => _dotIcon; }
+    public float DotDuration { get; set; }
 
 
     [Header("Upgrades")]
@@ -163,6 +155,9 @@ public class TowerData : ScriptableObject
     [SerializeField]
     protected List<Augmentation> _towerAugmentations;
     public List<Augmentation> Augmentations { get => _towerAugmentations; }
+
+    public int AugmentationLevel { get; set; }
+
 
     /// <summary>
     /// Script used for this tower.
@@ -217,4 +212,39 @@ public class TowerData : ScriptableObject
     /// Damage in string version.
     /// </summary>
     public string DamageInfo { get => _damage.ToString(); }
+
+
+    private void OnEnable()
+    {
+        Price = _price;
+        ResellPriceFactor = _resellPriceFactor;
+
+        TimeShots = _timeBetweenShots;
+        Damage = _damage;
+        ArmorThrough = _armorThrough;
+        Shots = _numberOfShots;
+        Range = _range;
+
+        ArmorThroughMalus = _armorThroughMalus;
+        Dot = _damageOverTime;
+        DotDuration = _dotDuration;
+    }
+
+
+    public void ReducePrice(float ratio)
+    {
+        Price = Mathf.FloorToInt(_price * ratio);
+    }
+
+
+    public void ReducePrice(int count)
+    {
+        Price = _price - count;
+    }
+
+
+    public void IncreaseResellPrice(float factor)
+    {
+        ResellPriceFactor = _resellPriceFactor * factor;
+    }
 }

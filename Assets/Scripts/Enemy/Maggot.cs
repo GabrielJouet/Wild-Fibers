@@ -70,7 +70,7 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     {
         yield return new WaitForSeconds(_hatchingTime + Random.Range(-_hatchingTime / 20, _hatchingTime / 20));
         _animator.SetTrigger("cocoon");
-        ActivateShield(_armorMax, _dotApplied);
+        ActivateShield(_armorMax, _dots.Count > 0);
 
         yield return new WaitForSeconds((_animator.runtimeAnimatorController.animationClips[1].length / 0.3f) + 0.05f);
 

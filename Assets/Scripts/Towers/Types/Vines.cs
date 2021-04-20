@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class Vines : Tower
 {
-    /// <summary>
-    /// FixedUpdate, called 50 times a second.
-    /// </summary>
-    protected override void FixedUpdate()
+    protected override void LevelOneAugmentation()
     {
-        if (_availableEnemies.Count > 0 && !_coroutineStarted)
-            StartCoroutine(SummonProjectile());
+        _attack.Damage++;
+    }
+
+
+    protected override void LevelFiveAugmentation()
+    {
+        _towerData.Range *= 1.15f;
     }
 
 
@@ -20,7 +22,7 @@ public class Vines : Tower
     {
         _coroutineStarted = true;
 
-        _projectilePool.GetOneProjectile().Initialize(_towerData, null, _projectilePool, transform);
+        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_attack, _projectilePool, transform, Data.AugmentationLevel > 3, Data.Range);
         yield return new WaitForSeconds(_towerData.TimeShots);
 
         _coroutineStarted = false;

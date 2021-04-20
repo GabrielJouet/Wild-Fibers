@@ -198,16 +198,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public string HealthInfo { get => _healthMax.ToString(); }
 
-
-    /// <summary>
-    /// Dot duration in second.
-    /// </summary>
-    protected float _dotDuration;
-
-    /// <summary>
-    /// Dot health malus / ticks (0.5 sec).
-    /// </summary>
-    protected float _healthMalus = 0;
+    protected List<Attack> _dots = new List<Attack>();
 
 
     /// <summary>
@@ -224,12 +215,6 @@ public class Enemy : MonoBehaviour
     /// Particle controller component.
     /// </summary>
     protected ParticleController _particleController;
-
-
-    /// <summary>
-    /// Does a dot is applied?
-    /// </summary>
-    protected bool _dotApplied = false;
 
 
     /// <summary>
@@ -258,18 +243,16 @@ public class Enemy : MonoBehaviour
     public BackgroudSelecter InformationUI { get; set; }
 
 
-    public List<TowerData> Attacks { get; set; } = new List<TowerData>();
-
-    /// <summary>
-    /// Does the enemy is already dotted?
-    /// </summary>
-    public bool AlreadyDotted { get; set; } = false;
+    public List<Attack> Attacks { get; set; } = new List<Attack>();
 
 
     /// <summary>
     /// Can the enemy be targeted?
     /// </summary>
     public bool CanBeTargeted { get; protected set; } = true;
+
+
+    public bool IsDotted { get; protected set; }
 
 
 
@@ -281,19 +264,18 @@ public class Enemy : MonoBehaviour
     /// <param name="pathIndex">Current progression on the path</param>
     public virtual void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
+        _dotDisplay.gameObject.SetActive(false);
+        IsDotted = false;
         CanBeTargeted = true;
         Attacks.Clear();
-        AlreadyDotted = false;
 
         if (_particleController == null)
             _particleController = FindObjectOfType<ParticleController>();
 
         InformationUI = null;
-        _dotApplied = false;
-        _dotDisplay.sprite = null;
         _isSlowDown = false;
 
-        _healthMalus = 0;
+        _dots = new List<Attack>();
         gameObject.SetActive(true);
 
         Speed = SpeedMax;
@@ -352,23 +334,23 @@ public class Enemy : MonoBehaviour
     /// Method to remove health to enemy.
     /// </summary>
     /// <param name="data">The tower data damaging enemy</param>
-    public void TakeDamage(TowerData data)
+    public void TakeDamage(Attack newAttack)
     {
-        float armorThrough = data.ArmorThrough;
-        float damage = data.Damage;
+        float armorThrough = newAttack.ArmorThrough;
+        float damage = newAttack.Damage;
 
         int damageLeft = Mathf.FloorToInt(Armor - armorThrough < 0 ? damage + (damage * (armorThrough - Armor)/100)/2 : damage - ((Armor - armorThrough)/100 * damage));
 
-        if (Attacks.Count > 0 && Attacks.Contains(data))
-            Attacks.Remove(data);
-
         TakeDamage(damageLeft);
 
+        Attacks.Remove(newAttack);
+
         foreach (Transform current in _particleEmissionsPoints)
-        {
             foreach (Particle particle in _particleController.GetParticle(_damageParticle, 3))
                 particle.Initialize(current.position);
-        }
+
+        if (newAttack.DotDuration > 0)
+            ApplyDot(newAttack);
     }
 
 
@@ -417,20 +399,24 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Method used to apply a dot on the enemy.
     /// </summary>
-    /// <param name="armorThroughMalus">The armor through malus applied</param>
-    /// <param name="healthMalus">How much damage the enemy will take every 0.5 sec?</param>
-    /// <param name="duration">Duration of the dot</param>
-    /// <param name="newIcon">The new dot icon</param>
-    public void ApplyDot(float armorThroughMalus, int healthMalus, float duration, Sprite newIcon)
+    protected void ApplyDot(Attack newAttack)
     {
-        _healthMalus = Mathf.Clamp(healthMalus * ResistancePercentage, 1, healthMalus);
-        _dotDuration = duration;
-        _dotDisplay.sprite = newIcon;
+        bool alreadyTouched = false;
+        foreach (Attack current in _dots)
+            if (current.ID == newAttack.ID)
+                alreadyTouched = true;
 
-        if(!_dotApplied && isActiveAndEnabled)
+        if (!alreadyTouched)
         {
-            StartCoroutine(TakePersistentDamage());
-            Armor -= armorThroughMalus * ResistancePercentage;
+            IsDotted = true;
+
+            _dots.Add(newAttack);
+
+            //TO REWORK, ITS NOT A PROPER WAY TO DISPLAY DOT
+            _dotDisplay.gameObject.SetActive(true);
+
+            if (isActiveAndEnabled)
+                StartCoroutine(TakePersistentDamage(newAttack));
         }
     }
 
@@ -439,20 +425,26 @@ public class Enemy : MonoBehaviour
     /// Coroutine used take damage from dot.
     /// </summary>
     /// <returns>Yield 0.5 sec</returns>
-    protected IEnumerator TakePersistentDamage()
+    protected IEnumerator TakePersistentDamage(Attack newDot)
     {
-        _dotApplied = true;
-        while(_dotDuration > 0)
+        Armor -= newDot.ArmorThroughMalus * ResistancePercentage;
+        float timeRemaining = newDot.DotDuration;
+
+        while(timeRemaining > 0)
         {
-            _dotDuration -= 0.5f;
-            TakeDamage(_healthMalus);
+            timeRemaining -= 0.5f;
+            TakeDamage(newDot.DotDamage);
             yield return new WaitForSeconds(0.5f);
         }
 
-        AlreadyDotted = false;
-        _dotDisplay.sprite = null;
-        _dotApplied = false;
-        Armor = _armorMax;
+        _dots.Remove(newDot);
+        Armor += newDot.ArmorThroughMalus * ResistancePercentage;
+
+        if (_dots.Count == 0)
+        {
+            _dotDisplay.gameObject.SetActive(false);
+            IsDotted = false;
+        }
     }
 
 
@@ -464,6 +456,13 @@ public class Enemy : MonoBehaviour
     {
         _pathIndex -= indexLosts;
         transform.position =  _path[_pathIndex];
+    }
+
+
+    public void DestroyArmor(int percentage)
+    {
+        ArmorMax -= percentage;
+        Armor -= percentage;
     }
 
 
@@ -499,21 +498,23 @@ public class Enemy : MonoBehaviour
     /// Method used to add a new attack on enemy and check if it can survive.
     /// </summary>
     /// <param name="newAttack">The data of the attack</param>
-    public void AddAttack(TowerData newAttack)
+    public void AddAttack(Attack newAttack)
     {
         Attacks.Add(newAttack);
 
-        if (newAttack.DotDuration != 0)
-            AlreadyDotted = true;
+        int total = 0;
+        foreach (Attack current in Attacks)
+        {
+            float armor = ArmorMax - current.ArmorThroughMalus;
 
-        float total = 0;
-        foreach (TowerData current in Attacks)
-            total += Mathf.FloorToInt(_armorMax - current.ArmorThrough < 0 ? current.Damage + (current.Damage * (current.ArmorThrough - _armorMax) / 100) / 2 : current.Damage - ((_armorMax - current.ArmorThrough) / 100 * current.Damage));
+            total += Mathf.FloorToInt(armor - current.ArmorThrough < 0 ? current.Damage + (current.Damage * (current.ArmorThrough - armor) / 100) / 2 : current.Damage - ((armor - current.ArmorThrough) / 100 * current.Damage));
+            total += Mathf.FloorToInt(current.DotDamage * 2 * current.DotDuration);
+        }
 
-        if (Health - (_dotDuration * 2 * _healthMalus + total) <= 0)
+        if (Health - total <= 0)
             CanBeTargeted = false;
-
     }
+
 
     /// <summary>
     /// Activate or desactivate selector state.

@@ -54,11 +54,11 @@ public class Shielded : Enemy, IShieldable
         {
             yield return new WaitForSeconds(_timeBetweenShield + Random.Range(-_timeBetweenShield / 20, _timeBetweenShield / 20));
 
-            ActivateShield(ArmorMax, _dotApplied);
+            ActivateShield(ArmorMax, _dots.Count > 0);
             _animator.SetTrigger("shield");
             yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[1].length / 0.5f);
 
-            ResetShield(_dotApplied);
+            ResetShield(_dots.Count > 0);
         }
     }
 

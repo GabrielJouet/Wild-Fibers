@@ -23,7 +23,6 @@ MonoBehaviour:
   _timeBetweenShots: 4.2
   _damage: 12
   _armorThrough: 0
-  _speed: 0.75
   _numberOfShots: 1
   _range: 0.9
   _canHitFlying: 1
@@ -31,9 +30,9 @@ MonoBehaviour:
   _armorThroughMalus: 0
   _damageOverTime: 0
   _dotDuration: 0
-  _dotIcon: {fileID: 0}
   _towerUpgrades: []
   _towerSpecs: []
+  _towerAugmentations: []
   _scriptName: Vines
   _special: 
   _screenShot: {fileID: 21300000, guid: 780864a8a6bfbbc40bfa291b810699f3, type: 3}

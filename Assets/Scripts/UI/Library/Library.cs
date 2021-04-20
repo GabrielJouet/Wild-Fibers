@@ -88,7 +88,7 @@ public class Library : MonoBehaviour
 
     private void Awake()
     {
-        List<TowerData> towers = Controller.Instance.SquadControl.Squads[0].Towers;
+        List<TowerData> towers = Controller.Instance.SquadControl.CurrentSquad.Towers;
 
         SaveController saveController = Controller.Instance.SaveControl;
 
@@ -103,7 +103,7 @@ public class Library : MonoBehaviour
                 newEnemy.Enemy = enemies[i];
         }
 
-        int maxLevel = saveController.SaveFile.TowerLevelMax;
+        int maxLevel = saveController.SaveFile.CurrentSquad.TowerLevelMax;
         for (int i = 0; i < towers.Count; i++)
             _towerIcons[i].Populate(towers[i], maxLevel);
 

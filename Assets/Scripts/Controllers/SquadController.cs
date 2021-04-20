@@ -11,23 +11,31 @@ public class SquadController : MonoBehaviour
     /// </summary>
     [SerializeField]
     private List<Squad> _squads;
-    public List<Squad> Squads { get => _squads; }
+    public List<Squad> Squads 
+    { 
+        get 
+        {
+            _squads[0].UpdateTowerDatas(Controller.Instance.SaveControl.SaveFile.CurrentSquad.AugmentationLevelMax);
+            return _squads;
+        } 
+    }
 
-    public int CurrentSquad { get; set; } = 0;
+    public Squad CurrentSquad { get => Squads[0]; }
 
 
-    public List<Augmentation> RecoverBoughtAugmentations(List<string> augmentationIDs)
+    public List<Augmentation> RecoverBoughtAugmentations(List<int> augmentationLevel)
     {
         List<Augmentation> result = new List<Augmentation>();
 
-        foreach (Augmentation current in Squads[CurrentSquad].Augmentations)
-            if (augmentationIDs.Contains(current.name))
-                result.Add(current);
-
-        foreach (TowerData current in Squads[CurrentSquad].Towers)
-            foreach (Augmentation augmentation in current.Augmentations)
-                if (augmentationIDs.Contains(augmentation.name))
-                    result.Add(augmentation);
+        for (int j = 0; j < augmentationLevel.Count; j ++)
+        {
+            if (j == 4)
+                for (int i = 0; i < augmentationLevel[j]; i++)
+                    result.Add(CurrentSquad.Augmentations[i]);
+            else
+                for (int i = 0; i < augmentationLevel[j]; i++)
+                    result.Add(CurrentSquad.Towers[j].Augmentations[i]);
+        }
 
         return result;
     }

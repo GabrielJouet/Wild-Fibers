@@ -53,7 +53,6 @@ public class TowerBalancer : EditorWindow
             _newTimeBetweenShots = _loadedData.TimeShots;
             _newDamage = _loadedData.Damage;
             _newArmorThrough = _loadedData.ArmorThrough;
-            _newSpeed = _loadedData.ProjectileSpeed;
             _newNumberOfShots = _loadedData.Shots;
             _newRange = _loadedData.Range;
             _newCanHitFlying = _loadedData.HitFlying;

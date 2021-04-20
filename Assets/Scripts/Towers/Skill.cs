@@ -76,11 +76,8 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Purchase()
     {
-        SquadProgression current = Controller.Instance.SaveControl.SaveFile.SquadsProgression[0];
-
-        if (current.CurrencyAvailable >= _augmentation.Price)
+        if (Controller.Instance.SaveControl.SaveFile.CurrentSquad.CurrencyAvailable >= _augmentation.Price)
         {
-            current.AddNewAugmentation(_augmentation.name);
             SetAsBought();
             transform.parent.GetComponent<SkillUpgrades>().PurchaseAugmentation(this);
         }

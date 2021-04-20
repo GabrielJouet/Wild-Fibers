@@ -23,7 +23,6 @@ MonoBehaviour:
   _timeBetweenShots: 2.75
   _damage: 15
   _armorThrough: 15
-  _speed: 0.75
   _numberOfShots: 3
   _range: 1.2
   _canHitFlying: 0
@@ -31,7 +30,6 @@ MonoBehaviour:
   _armorThroughMalus: 0
   _damageOverTime: 0
   _dotDuration: 0
-  _dotIcon: {fileID: 0}
   _towerUpgrades:
   - {fileID: 11400000, guid: aceb2695358352a40a59841d085a4072, type: 2}
   - {fileID: 11400000, guid: 58c1c5ad6fa9ece47897ac8f41e577d6, type: 2}

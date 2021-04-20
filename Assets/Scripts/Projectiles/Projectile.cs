@@ -5,7 +5,10 @@
 /// </summary>
 public class Projectile : MonoBehaviour
 {
-    protected TowerData _data;
+    [SerializeField]
+    protected float _projectileSpeed;
+
+    protected Attack _data;
 
     /// <summary>
     /// The related pool.
@@ -24,7 +27,7 @@ public class Projectile : MonoBehaviour
     /// <param name="newEnemy">New Enemy tracked</param>
     /// <param name="newPool">The projectile pool used</param>
     /// <param name="newTransform">The parent tower</param>
-    public virtual void Initialize(TowerData newData, Enemy newEnemy, ProjectilePool newPool, Transform newTransform)
+    public virtual void Initialize(Attack newData, Enemy newEnemy, ProjectilePool newPool, Transform newTransform)
     {
         transform.position = newTransform.position;
         _data = newData;
@@ -67,7 +70,7 @@ public class Projectile : MonoBehaviour
     //Parameter => the point position in a vector 3
     protected bool FollowPoint(Vector3 position, bool rotate)
     {
-        transform.position = Vector3.MoveTowards(transform.position, position, _data.ProjectileSpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, position, _projectileSpeed * Time.deltaTime);
 
         if (rotate)
         {
@@ -85,15 +88,10 @@ public class Projectile : MonoBehaviour
     /// Method called to hurt an enemy.
     /// </summary>
     /// <param name="enemy">The related enemy</param>
-    protected void AttackEnemy(Enemy enemy)
+    protected virtual void AttackEnemy(Enemy enemy)
     {
         if (enemy != null)
-        {
             enemy.TakeDamage(_data);
-
-            if (_data.DotIcon != null)
-                enemy.ApplyDot(_data.ArmorThroughMalus, _data.Dot, _data.DotDuration, _data.DotIcon);
-        }
     }
 
 

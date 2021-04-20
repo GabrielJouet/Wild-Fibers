@@ -10,17 +10,19 @@ public class SkillUpgrades : MonoBehaviour
     [SerializeField]
     private Image _towerIcon;
 
+    private int _index;
 
 
-    public void Initialize(Sprite newTower, List<Augmentation> newAugmentations, List<string> augmentations)
+
+    public void Initialize(Sprite newTower, List<Augmentation> newAugmentations, int augmentationLevel, int newIndex)
     {
         for (int i = 0; i < _skills.Count; i ++)
         {
             AugmentationState newState;
 
-            if (augmentations.Contains(newAugmentations[i].name))
+            if (augmentationLevel > i)
                 newState = AugmentationState.BOUGHT;
-            else if (i == 0 || (i > 0 && augmentations.Contains(newAugmentations[i - 1].name)))
+            else if (i == 0 || augmentationLevel == i)
                 newState = AugmentationState.AVAILABLE;
             else
                 newState = AugmentationState.LOCKED;
@@ -28,6 +30,7 @@ public class SkillUpgrades : MonoBehaviour
             _skills[i].Initialize(newAugmentations[i], newState);
         }
 
+        _index = newIndex;
         _towerIcon.sprite = newTower;
     }
 
@@ -35,6 +38,8 @@ public class SkillUpgrades : MonoBehaviour
     public void PurchaseAugmentation(Skill purchased)
     {
         int index = _skills.IndexOf(purchased);
+
+        Controller.Instance.SaveControl.SaveTowerAugmentationLevel(_index, index + 1);
 
         if (index + 1 < _skills.Count)
             _skills[index + 1].Activate();
