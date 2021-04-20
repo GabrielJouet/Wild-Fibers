@@ -350,7 +350,7 @@ public class Enemy : MonoBehaviour
                 particle.Initialize(current.position);
 
         if (newAttack.DotDuration > 0)
-            ApplyDot(newAttack.ArmorThroughMalus, newAttack.DotDamage, newAttack.DotDuration);
+            ApplyDot(newAttack);
     }
 
 
@@ -399,20 +399,25 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Method used to apply a dot on the enemy.
     /// </summary>
-    /// <param name="armorThroughMalus">The armor through malus applied</param>
-    /// <param name="healthMalus">How much damage the enemy will take every 0.5 sec?</param>
-    /// <param name="duration">Duration of the dot</param>
-    protected void ApplyDot(float armorThroughMalus, int healthMalus, float duration)
+    protected void ApplyDot(Attack newAttack)
     {
-        IsDotted = true;
-        Attack buffer = new Attack(0, 0, duration, armorThroughMalus, healthMalus);
-        _dots.Add(buffer);
+        bool alreadyTouched = false;
+        foreach (Attack current in _dots)
+            if (current.ID == newAttack.ID)
+                alreadyTouched = true;
 
-        //TO REWORK, ITS NOT A PROPER WAY TO DISPLAY DOT
-        _dotDisplay.gameObject.SetActive(true);
+        if (!alreadyTouched)
+        {
+            IsDotted = true;
 
-        if(isActiveAndEnabled)
-            StartCoroutine(TakePersistentDamage(buffer));
+            _dots.Add(newAttack);
+
+            //TO REWORK, ITS NOT A PROPER WAY TO DISPLAY DOT
+            _dotDisplay.gameObject.SetActive(true);
+
+            if (isActiveAndEnabled)
+                StartCoroutine(TakePersistentDamage(newAttack));
+        }
     }
 
 
@@ -493,9 +498,9 @@ public class Enemy : MonoBehaviour
     /// Method used to add a new attack on enemy and check if it can survive.
     /// </summary>
     /// <param name="newAttack">The data of the attack</param>
-    public void AddAttack(TowerData newAttack)
+    public void AddAttack(Attack newAttack)
     {
-        Attacks.Add(new Attack(newAttack.Damage, newAttack.ArmorThrough, newAttack.DotDuration, newAttack.ArmorThroughMalus, newAttack.Dot));
+        Attacks.Add(newAttack);
 
         int total = 0;
         foreach (Attack current in Attacks)
@@ -509,6 +514,7 @@ public class Enemy : MonoBehaviour
         if (Health - total <= 0)
             CanBeTargeted = false;
     }
+
 
     /// <summary>
     /// Activate or desactivate selector state.

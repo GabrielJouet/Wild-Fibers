@@ -49,7 +49,7 @@ public class ShockWave : Projectile
         if (collision.TryGetComponent(out Enemy newEnemy))
         {
             if (_hitGroundHarder)
-                newEnemy.TakeDamage(new Attack(_data.Damage + (!newEnemy.Flying ? 2 : 1), _data.ArmorThrough, _data.DotDuration, _data.ArmorThroughMalus, _data.DotDamage));
+                newEnemy.TakeDamage(new Attack(_data.Damage + (!newEnemy.Flying ? 2 : 1), _data.ArmorThrough, _data.DotDuration, _data.ArmorThroughMalus, _data.DotDamage, _data.ID));
             else 
                 newEnemy.TakeDamage(_data);
         }

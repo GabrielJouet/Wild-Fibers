@@ -122,7 +122,7 @@ public class Tower : MonoBehaviour
         _transformRange.gameObject.SetActive(false);
 
         _towerData = newData;
-        _attack = new Attack(Data.Damage, Data.ArmorThrough, Data.DotDuration, Data.ArmorThroughMalus, Data.Dot);
+        _attack = new Attack(Data.Damage, Data.ArmorThrough, Data.DotDuration, Data.ArmorThroughMalus, Data.Dot, gameObject.GetInstanceID());
         CheckAugmentation();
 
         CumulativeGold += Data.Price;
@@ -312,7 +312,7 @@ public class Tower : MonoBehaviour
                 if (buffer.CanBeTargeted)
                 {
                     availableEnemies.Add(buffer);
-                    buffer.AddAttack(Data);
+                    buffer.AddAttack(_attack);
                 }
             }
         }
@@ -322,7 +322,7 @@ public class Tower : MonoBehaviour
             if (buffer.CanBeTargeted)
             {
                 availableEnemies.Add(buffer);
-                buffer.AddAttack(Data);
+                buffer.AddAttack(_attack);
 
                 if (availableEnemies.Count >= numberOfEnemiesToFound)
                     break;

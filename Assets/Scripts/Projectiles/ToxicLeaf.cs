@@ -80,7 +80,7 @@ public class ToxicLeaf : Projectile
                 enemy.ApplySlowDown(10, 2f);
 
             if (_bigger)
-                enemy.TakeDamage(new Attack(_data.Damage, _data.ArmorThrough, _data.DotDuration, _data.ArmorThroughMalus * 1.75f, Mathf.FloorToInt(_data.DotDamage * 1.5f)));
+                enemy.TakeDamage(new Attack(_data.Damage, _data.ArmorThrough, _data.DotDuration, _data.ArmorThroughMalus * 1.75f, Mathf.FloorToInt(_data.DotDamage * 1.5f), _data.ID));
             else 
                 enemy.TakeDamage(_data);
         }
