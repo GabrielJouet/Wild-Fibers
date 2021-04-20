@@ -133,7 +133,7 @@ public class TowerButtonController : MonoBehaviour
         else if (_currentTower.Data.Specs.Count > 0)
             UpdateTowerSpecButtons();
 
-        _sellButton.Initialize(Mathf.FloorToInt((newTower.CumulativeGold * newTower.Data.ResellPriceFactor) / 4f));
+        _sellButton.Initialize(Mathf.FloorToInt((newTower.CumulativeGold * newTower.Data.ResellPriceFactor) * 0.65f));
         _sellButton.gameObject.SetActive(true);
         _sellButton.ChangeBehavior(() => _currentTower.ResellTower());
         _sellButton.UpdateState(true);
