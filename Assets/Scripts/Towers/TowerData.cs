@@ -214,7 +214,6 @@ public class TowerData : ScriptableObject
     public string DamageInfo { get => _damage.ToString(); }
 
 
-
     private void OnEnable()
     {
         Price = _price;
@@ -229,5 +228,23 @@ public class TowerData : ScriptableObject
         ArmorThroughMalus = _armorThroughMalus;
         Dot = _damageOverTime;
         DotDuration = _dotDuration;
+    }
+
+
+    public void ReducePrice(float ratio)
+    {
+        Price = Mathf.FloorToInt(_price * ratio);
+    }
+
+
+    public void ReducePrice(int count)
+    {
+        Price = _price - count;
+    }
+
+
+    public void IncreaseResellPrice(float factor)
+    {
+        ResellPriceFactor = _resellPriceFactor * factor;
     }
 }

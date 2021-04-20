@@ -32,13 +32,6 @@ public class Squad : ScriptableObject
 
 
 
-    private void OnEnable()
-    {
-        LivesBonus = _livesBonus;
-        GoldBonus = _goldBonus;
-    }
-
-
     public void UpdateTowerDatas(List<int> newLevels)
     {
         for (int i = 0; i < _towers.Count; i ++)
@@ -57,18 +50,20 @@ public class Squad : ScriptableObject
     {
         TowerData currentTower = _towers[1];
         if (currentTower.AugmentationLevel > 0)
-            currentTower.Price = Mathf.FloorToInt(currentTower.Price * 0.9f);
+            currentTower.ReducePrice(0.9f);
 
         currentTower = _towers[2];
         if (currentTower.AugmentationLevel > 1)
         {
             foreach (TowerData current in currentTower.Upgrades)
-                current.Price -= 25;
+                current.ReducePrice(25);
 
             if (currentTower.AugmentationLevel > 2)
-                currentTower.ResellPriceFactor *= 1.25f;
+                currentTower.IncreaseResellPrice(1.25f);
         }
 
+        LivesBonus = _livesBonus;
+        GoldBonus = _goldBonus;
         if (squadLevel > 0)
         {
             GoldBonus += 10;
