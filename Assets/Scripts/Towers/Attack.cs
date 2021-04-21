@@ -1,7 +1,5 @@
 ﻿public class Attack
 {
-    public int ID { get; set; }
-
     public float Damage { get; set; }
 
     public float ArmorThrough { get; set; }
@@ -13,14 +11,13 @@
     public int DotDamage { get; set; }
 
 
-    public Attack(float damage, float armorThrough, float dotDuration, float armorMalus, int dotDamage, int id)
+    public Attack(float damage, float armorThrough, float dotDuration, float armorMalus, int dotDamage)
     {
         Damage = damage;
         ArmorThrough = armorThrough;
         DotDuration = dotDuration;
         ArmorThroughMalus = armorMalus;
         DotDamage = dotDamage;
-        ID = id;
     }
 
 
@@ -34,6 +31,5 @@
         DotDuration = clone.DotDuration;
         ArmorThroughMalus = clone.ArmorThroughMalus;
         DotDamage = clone.DotDamage;
-        ID = clone.ID;
     }
 }

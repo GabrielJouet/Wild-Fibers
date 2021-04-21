@@ -15,19 +15,37 @@ public class ToxicIvy : Tower
 
     protected override void LevelTwoAugmentation()
     {
-        _attack.DotDuration += 0.5f;
+        Data.DotDuration += 0.5f;
     }
 
 
     protected override void LevelThreeAugmentation()
     {
-        _attack.DotDamage++;
+        Data.Dot++;
     }
 
 
     protected override void LevelFourAugmentation()
     {
-        _attack.ArmorThroughMalus *= 1.05f;
+        Data.ArmorThroughMalus *= 1.05f;
+    }
+
+
+    protected override Attack ChangeNextAttack(Enemy enemy)
+    {
+        Attack newAttack = new Attack(_attack);
+
+        if (_shotsBeforeBiggerProjectile > 0)
+            _shotsBeforeBiggerProjectile--;
+        else
+        {
+            newAttack.DotDamage = Mathf.FloorToInt(newAttack.DotDamage * 1.5f);
+            newAttack.ArmorThroughMalus *= 1.75f;
+
+            _shotsBeforeBiggerProjectile = 8;
+        }
+
+        return newAttack;
     }
 
 
@@ -54,7 +72,7 @@ public class ToxicIvy : Tower
             {
                 StartCoroutine(SummonLeaf(1));
 
-                _availableLeaves.Pop().StartFollowing(enemies[i], _attack);
+                _availableLeaves.Pop().StartFollowing(enemies[i], _nextAttack.Dequeue());
             }
         }
     }
@@ -83,18 +101,8 @@ public class ToxicIvy : Tower
     {
         yield return new WaitForSeconds(_towerData.TimeShots * multiplier);
 
-        bool biggerLeaf = false;
-
-        if (_shotsBeforeBiggerProjectile > 0)
-            _shotsBeforeBiggerProjectile--;
-        else
-        {
-            biggerLeaf = true;
-            _shotsBeforeBiggerProjectile = 8;
-        }
-
         ToxicLeaf buffer = _projectilePool.GetOneProjectile().GetComponent<ToxicLeaf>();
-        buffer.Initialize(_projectilePool, transform.localPosition, Data.AugmentationLevel > 3, biggerLeaf);
+        buffer.Initialize(_projectilePool, transform.localPosition, Data.AugmentationLevel > 3);
 
         _availableLeaves.Push(buffer);
     }

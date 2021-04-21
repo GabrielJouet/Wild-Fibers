@@ -255,7 +255,6 @@ public class Enemy : MonoBehaviour
     public bool IsDotted { get; protected set; }
 
 
-
     /// <summary>
     /// Initialize method.
     /// </summary>
@@ -333,7 +332,6 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Method to remove health to enemy.
     /// </summary>
-    /// <param name="data">The tower data damaging enemy</param>
     public void TakeDamage(Attack newAttack)
     {
         float armorThrough = newAttack.ArmorThrough;
@@ -351,6 +349,9 @@ public class Enemy : MonoBehaviour
 
         if (newAttack.DotDuration > 0)
             ApplyDot(newAttack);
+
+        if(Health > 0 && Attacks.Count == 0 && _dots.Count == 0)
+            CanBeTargeted = true;
     }
 
 
@@ -401,23 +402,15 @@ public class Enemy : MonoBehaviour
     /// </summary>
     protected void ApplyDot(Attack newAttack)
     {
-        bool alreadyTouched = false;
-        foreach (Attack current in _dots)
-            if (current.ID == newAttack.ID)
-                alreadyTouched = true;
+        IsDotted = true;
 
-        if (!alreadyTouched)
-        {
-            IsDotted = true;
+        _dots.Add(newAttack);
 
-            _dots.Add(newAttack);
+        //TO REWORK, ITS NOT A PROPER WAY TO DISPLAY DOT
+        _dotDisplay.gameObject.SetActive(true);
 
-            //TO REWORK, ITS NOT A PROPER WAY TO DISPLAY DOT
-            _dotDisplay.gameObject.SetActive(true);
-
-            if (isActiveAndEnabled)
-                StartCoroutine(TakePersistentDamage(newAttack));
-        }
+        if (isActiveAndEnabled)
+            StartCoroutine(TakePersistentDamage(newAttack));
     }
 
 
@@ -445,6 +438,9 @@ public class Enemy : MonoBehaviour
             _dotDisplay.gameObject.SetActive(false);
             IsDotted = false;
         }
+
+        if (Health > 0 && Attacks.Count == 0 && _dots.Count == 0)
+            CanBeTargeted = true;
     }
 
 
@@ -504,12 +500,10 @@ public class Enemy : MonoBehaviour
 
         int total = 0;
         foreach (Attack current in Attacks)
-        {
-            float armor = ArmorMax - current.ArmorThroughMalus;
+            total += Mathf.FloorToInt(Armor - current.ArmorThrough < 0 ? current.Damage + (current.Damage * (current.ArmorThrough - Armor) / 100) / 2 : current.Damage - ((Armor - current.ArmorThrough) / 100 * current.Damage));
 
-            total += Mathf.FloorToInt(armor - current.ArmorThrough < 0 ? current.Damage + (current.Damage * (current.ArmorThrough - armor) / 100) / 2 : current.Damage - ((armor - current.ArmorThrough) / 100 * current.Damage));
+        foreach (Attack current in _dots)
             total += Mathf.FloorToInt(current.DotDamage * 2 * current.DotDuration);
-        }
 
         if (Health - total <= 0)
             CanBeTargeted = false;

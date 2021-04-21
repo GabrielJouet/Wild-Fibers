@@ -5,13 +5,24 @@ public class Vines : Tower
 {
     protected override void LevelOneAugmentation()
     {
-        _attack.Damage++;
+        Data.Damage++;
     }
 
 
     protected override void LevelFiveAugmentation()
     {
-        _towerData.Range *= 1.15f;
+        Data.Range *= 1.15f;
+    }
+
+
+    protected override Attack ChangeNextAttack(Enemy enemy)
+    {
+        Attack newAttack = new Attack(_attack);
+
+        if (Data.AugmentationLevel > 3 && enemy.Flying)
+            newAttack.Damage += 2;
+
+        return newAttack;
     }
 
 
@@ -22,7 +33,7 @@ public class Vines : Tower
     {
         _coroutineStarted = true;
 
-        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_attack, _projectilePool, transform, Data.AugmentationLevel > 3, Data.Range);
+        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_nextAttack.Dequeue(), _projectilePool, transform, Data.Range);
         yield return new WaitForSeconds(_towerData.TimeShots);
 
         _coroutineStarted = false;

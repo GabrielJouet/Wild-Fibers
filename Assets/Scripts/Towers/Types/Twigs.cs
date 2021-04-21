@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Twigs : Tower
 {
@@ -21,27 +20,19 @@ public class Twigs : Tower
     }
 
 
-    /// <summary>
-    /// Coroutine used to delay attacks.
-    /// </summary>
-    protected override IEnumerator SummonProjectile()
+    protected override Attack ChangeNextAttack(Enemy enemy)
     {
-        _coroutineStarted = true;
+        Attack newAttack = new Attack(_attack);
 
-        int numberOfStrikes = _availableEnemies.Count < _towerData.Shots ? _availableEnemies.Count : _towerData.Shots;
+        if (Data.AugmentationLevel > 1)
+        {
+            newAttack.ArmorThroughMalus = 0;
+            newAttack.DotDamage = 1;
+            newAttack.DotDuration = 3;
+        }
 
-        if (!_towerData.ShotsRandomly)
-            SortEnemies();
+        newAttack.ArmorThrough = (Data.AugmentationLevel > 3 && Random.Range(0, 100) < 10) ? 100 : _towerData.ArmorThrough;
 
-        float buffer = _towerData.ArmorThrough;
-        _towerData.ArmorThrough = (Data.AugmentationLevel > 3 && Random.Range(0, 100) < 10) ? 100 : buffer;
-
-        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().GetComponent<Twig>().Initialize(_attack, current, _projectilePool, transform, Data.AugmentationLevel > 1);
-
-        _towerData.ArmorThrough = buffer;
-
-        yield return new WaitForSeconds(_towerData.TimeShots);
-        _coroutineStarted = false;
+        return newAttack;
     }
 }

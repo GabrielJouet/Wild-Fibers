@@ -10,12 +10,10 @@ public class ToxicLeaf : Projectile
 
     private bool _slowDown;
 
-    private bool _bigger;
-
 
 
     //Method used to initialize class (like a constructor)
-    public void Initialize(ProjectilePool newPool, Vector2 newPosition, bool slowDown, bool bigger)
+    public void Initialize(ProjectilePool newPool, Vector2 newPosition, bool slowDown)
     {
         _following = false;
         _angle = Random.Range(0, 360);
@@ -29,10 +27,6 @@ public class ToxicLeaf : Projectile
         transform.localScale = new Vector3(1, 1, 1);
 
         _slowDown = slowDown;
-        _bigger = bigger;
-
-        if (bigger)
-            transform.localScale = new Vector3(1.25f, 1.25f, 1.25f);
     }
 
 
@@ -79,10 +73,7 @@ public class ToxicLeaf : Projectile
             if (_slowDown)
                 enemy.ApplySlowDown(10, 2f);
 
-            if (_bigger)
-                enemy.TakeDamage(new Attack(_data.Damage, _data.ArmorThrough, _data.DotDuration, _data.ArmorThroughMalus * 1.75f, Mathf.FloorToInt(_data.DotDamage * 1.5f), _data.ID));
-            else 
-                enemy.TakeDamage(_data);
+            enemy.TakeDamage(_data);
         }
     }
 }

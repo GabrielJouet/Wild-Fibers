@@ -35,10 +35,27 @@ public class RootsStump : Tower
             {
                 StartCoroutine(SummonSpike(1));
 
-                _availableSpikes[0].StartFollowing(enemies[i], _attack, Data.AugmentationLevel > 1, Data.AugmentationLevel > 2, Data.AugmentationLevel > 4, Data.AugmentationLevel > 3);
+                _availableSpikes[0].StartFollowing(enemies[i], _nextAttack.Dequeue(), Data.AugmentationLevel > 1);
                 _availableSpikes.RemoveAt(0);
             }
         }
+    }
+
+
+    protected override Attack ChangeNextAttack(Enemy enemy)
+    {
+        Attack newAttack = new Attack(_attack);
+
+        if (Data.AugmentationLevel > 4)
+            newAttack.ArmorThrough *= (enemy.ArmorMax < 25 ? 1.5f : 1);
+
+        if (Data.AugmentationLevel > 2)
+            newAttack.Damage += enemy.IsDotted ? 1 : 0;
+
+        if (Data.AugmentationLevel > 3)
+            newAttack.Damage *= Random.Range(0, 100) < 5 ? 2 : 1;
+
+        return newAttack;
     }
 
     /// <summary>

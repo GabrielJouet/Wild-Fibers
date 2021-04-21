@@ -75,6 +75,8 @@ public class Tower : MonoBehaviour
 
     protected Attack _attack;
 
+    protected Queue<Attack> _nextAttack = new Queue<Attack>();
+
 
 
     protected void Awake()
@@ -102,6 +104,7 @@ public class Tower : MonoBehaviour
     /// <param name="newTowerPool">The new tower pool</param>
     public virtual void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool, TowerData newData)
     {
+        _nextAttack.Clear();
         SetDefaultValues(newData);
 
         transform.position = newSlot.transform.position;
@@ -122,7 +125,7 @@ public class Tower : MonoBehaviour
         _transformRange.gameObject.SetActive(false);
 
         _towerData = newData;
-        _attack = new Attack(Data.Damage, Data.ArmorThrough, Data.DotDuration, Data.ArmorThroughMalus, Data.Dot, gameObject.GetInstanceID());
+        _attack = new Attack(Data.Damage, Data.ArmorThrough, Data.DotDuration, Data.ArmorThroughMalus, Data.Dot);
         CheckAugmentation();
 
         CumulativeGold += Data.Price;
@@ -163,7 +166,7 @@ public class Tower : MonoBehaviour
             SortEnemies();
 
         foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().Initialize(_attack, current, _projectilePool, transform);
+            _projectilePool.GetOneProjectile().Initialize(_nextAttack.Dequeue(), current, _projectilePool, transform);
 
         yield return new WaitForSeconds(Data.TimeShots);
         _coroutineStarted = false;
@@ -295,7 +298,7 @@ public class Tower : MonoBehaviour
     /// Method used to recover available and prefered enemies.
     /// </summary>
     /// <param name="numberOfEnemiesToFound">How many enemies are needed</param>
-    /// <returns>A list of foound enemies</returns>
+    /// <returns>A list of found enemies</returns>
     protected List<Enemy> RecoverAvailableEnemies(int numberOfEnemiesToFound)
     {
         List<Enemy> availableEnemies = new List<Enemy>();
@@ -311,8 +314,11 @@ public class Tower : MonoBehaviour
             {
                 if (buffer.CanBeTargeted)
                 {
+                    Attack attackBuffered = ChangeNextAttack(buffer);
+                    _nextAttack.Enqueue(attackBuffered);
+
                     availableEnemies.Add(buffer);
-                    buffer.AddAttack(_attack);
+                    buffer.AddAttack(attackBuffered);
                 }
             }
         }
@@ -321,8 +327,11 @@ public class Tower : MonoBehaviour
         {
             if (buffer.CanBeTargeted)
             {
+                Attack attackBuffered = ChangeNextAttack(buffer);
+                _nextAttack.Enqueue(attackBuffered);
+
                 availableEnemies.Add(buffer);
-                buffer.AddAttack(_attack);
+                buffer.AddAttack(attackBuffered);
 
                 if (availableEnemies.Count >= numberOfEnemiesToFound)
                     break;
@@ -330,6 +339,12 @@ public class Tower : MonoBehaviour
         }
 
         return availableEnemies;
+    }
+
+
+    protected virtual Attack ChangeNextAttack(Enemy enemy)
+    {
+        return _attack;
     }
     #endregion
 

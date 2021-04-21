@@ -14,12 +14,6 @@ public class ChocSpikes : Projectile
 
     private bool _canDestroyArmor = false;
 
-    private bool _hitDotted = false;
-
-    private bool _hitLight = false;
-
-    private bool _canCrit = false;
-
 
 
     //Method used to initialize class (like a constructor)
@@ -40,14 +34,11 @@ public class ChocSpikes : Projectile
     }
 
 
-    public void StartFollowing(Enemy newEnemy, Attack newData, bool canDestroyArmor, bool hitDotted, bool hitLight, bool canCrit)
+    public void StartFollowing(Enemy newEnemy, Attack newData, bool canDestroyArmor)
     {
         if (!_following)
         {
             _canDestroyArmor = canDestroyArmor;
-            _hitDotted = hitDotted;
-            _hitLight = hitLight;
-            _canCrit = canCrit;
 
             _data = newData;
             _following = true;
@@ -112,18 +103,7 @@ public class ChocSpikes : Projectile
             if (_canDestroyArmor)
                 enemy.DestroyArmor(2);
 
-            Attack newAttack = new Attack(_data);
-
-            if (_hitLight)
-                newAttack.ArmorThrough *= (enemy.ArmorMax < 25 ? 1.5f : 1);
-
-            if (_hitDotted)
-                newAttack.Damage += enemy.IsDotted ? 1 : 0;
-
-            if (_canCrit)
-                newAttack.Damage *= Random.Range(0, 100) < 5 ? 2 : 1;
-
-            enemy.TakeDamage(newAttack);
+            enemy.TakeDamage(_data);
         }
     }
 }
