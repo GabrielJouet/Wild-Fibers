@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: b7ec109405b91f34594cba5e39841cb4, type: 3}
   _price: 5
-  _description: With a stone-like soil, trees are less susceptible to insects.
+  _description: Add 2 bonus lives.

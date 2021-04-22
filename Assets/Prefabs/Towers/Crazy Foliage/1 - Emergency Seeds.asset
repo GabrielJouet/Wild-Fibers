@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 26b5e5cf802f89541a99c50783651647, type: 3}
   _price: 2
-  _description: A little bag of seeds hidden inside a hollow trunk, how useful!
+  _description: Permanently add 10 seeds in each battle. (Stacks with other upgrades)

@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: e836636965114c44797e1fe75e9adf7f, type: 3}
   _price: 2
-  _description: Poison does a more damage.
+  _description: Poison does more damage.

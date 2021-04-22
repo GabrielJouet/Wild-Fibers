@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 3f8fcc2a5ea53714b97fb9e8de390bd2, type: 3}
   _price: 3
-  _description: A good shower is the key to success!
+  _description: Add 5 seeds in each battle.

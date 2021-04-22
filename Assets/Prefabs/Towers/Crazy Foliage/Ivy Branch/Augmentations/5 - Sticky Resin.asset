@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 669b1290032a4fd48a39ea2c4fbaa772, type: 3}
   _price: 4
-  _description: Poison now induces a slowdown.
+  _description: Poison now induces a slowdown of 10%.
