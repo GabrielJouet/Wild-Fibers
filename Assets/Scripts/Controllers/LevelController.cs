@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -133,7 +133,7 @@ public class LevelController : MonoBehaviour
         i = 0;
         foreach(EnemyGroup current in LoadedLevel.Waves[_waveIndex].EnemyGroups)
         {
-            int index = Controller.Instance.EnemyControl.FindEnemyIndex(current.Enemy.GetComponent<Enemy>());
+            int index = Controller.Instance.EnemyControl.Enemies.IndexOf(current.Enemy.GetComponent<Enemy>());
             if (!_saveController.SaveFile.EnemiesUnlocked[index])
             {
                 //TO DO : DISPLAY ENEMY VIGNETTE
