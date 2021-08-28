@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Acid Seed
   m_EditorClassIdentifier: 
   _description: A single projectile launcher with larger acid levels
-  _price: 275
+  _price: 235
   _icon: {fileID: 21300000, guid: 3f8fcc2a5ea53714b97fb9e8de390bd2, type: 3}
   _sprite: {fileID: 21300000, guid: d5aad07613e1dd441a1952d320a555f8, type: 3}
   _shadowSprite: {fileID: -7910471043360895327, guid: 4759e7b1f5652584c839b69f066f97c2,
