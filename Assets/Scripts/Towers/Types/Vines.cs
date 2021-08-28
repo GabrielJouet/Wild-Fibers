@@ -33,7 +33,8 @@ public class Vines : Tower
     {
         _coroutineStarted = true;
 
-        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_nextAttack.Dequeue(), _projectilePool, transform, Data.Range);
+        //TO FIX, SHOULD NOT WORK LIKE THIS
+        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(new Attack(Data.Damage, Data.ArmorThrough, 0, 0, 0), _projectilePool, transform, Data.Range);
         yield return new WaitForSeconds(_towerData.TimeShots);
 
         _coroutineStarted = false;
