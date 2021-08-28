@@ -41,10 +41,19 @@ public class SaveFile
     public List<bool> EnemiesUnlocked { get; set; } = new List<bool>();
 
 
+    /// <summary>
+    /// Squad progression (each squad has its own list of level saves.
+    /// </summary>
     public List<SquadProgression> SquadsProgression { get; private set; }
 
+    /// <summary>
+    /// Current squad used.
+    /// </summary>
     public SquadProgression CurrentSquad { get => SquadsProgression[0]; }
 
+    /// <summary>
+    /// Current save of the current squad.
+    /// </summary>
     public List<LevelSave> CurrentSave { get => SquadsProgression[0].Saves; }
 
 

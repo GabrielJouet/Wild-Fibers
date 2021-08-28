@@ -20,18 +20,28 @@ public class SquadController : MonoBehaviour
         } 
     }
 
+    /// <summary>
+    /// Current squad loaded.
+    /// </summary>
     public Squad CurrentSquad { get => Squads[0]; }
 
 
+    /// <summary>
+    /// Method used to recover bought augmentations of a squad.
+    /// </summary>
+    /// <param name="augmentationLevel">Augmentation level of the squad</param>
+    /// <returns>A list of augmentation</returns>
     public List<Augmentation> RecoverBoughtAugmentations(List<int> augmentationLevel)
     {
         List<Augmentation> result = new List<Augmentation>();
 
         for (int j = 0; j < augmentationLevel.Count; j ++)
         {
+            //We recover the squad augmentations
             if (j == 4)
                 for (int i = 0; i < augmentationLevel[j]; i++)
                     result.Add(CurrentSquad.Augmentations[i]);
+            //Then we recover the towers augmentations
             else
                 for (int i = 0; i < augmentationLevel[j]; i++)
                     result.Add(CurrentSquad.Towers[j].Augmentations[i]);
