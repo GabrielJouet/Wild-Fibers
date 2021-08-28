@@ -94,6 +94,8 @@ public class RessourceController : MonoBehaviour
         if (count > 0f)
         {
             _goldIconAnimator.SetTrigger("lose");
+
+            //If we are in a special level the amount of gold gained is factored.
             GoldCount += Mathf.RoundToInt(count * (applyMultiplier ? _levelController.LoadedLevel.GoldMultiplier : 1));
             _goldText.text = GoldCount.ToString();
         }

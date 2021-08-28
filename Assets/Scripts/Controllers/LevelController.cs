@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -62,6 +62,9 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private RessourceController _ressourceController;
 
+    /// <summary>
+    /// Save controller used to track advancements and saves.
+    /// </summary>
     private SaveController _saveController;
 
     /// <summary>
@@ -93,6 +96,7 @@ public class LevelController : MonoBehaviour
         _poolController = Controller.Instance.PoolControl;
         _poolController.ReInitialize();
 
+        //If we unlock new towers in this level.
         if (LoadedLevel.TowerLevel > _saveController.SaveFile.CurrentSquad.TowerLevelMax)
         {
             //TO DO : DISPLAY A SCREEN WITH NEW TOWERS
@@ -111,7 +115,7 @@ public class LevelController : MonoBehaviour
     {
         StartWave();
 
-        //If there is time left, we give money to player based on time left
+        //If there is time left, we give money to player based on time left.
         if (timeLeft > 0)
             _ressourceController.AddGold(Mathf.FloorToInt(LoadedLevel.Waves[_waveIndex].BonusGold * (timeLeft / LoadedLevel.Waves[_waveIndex].TimeWave)), false);
     }
@@ -126,22 +130,23 @@ public class LevelController : MonoBehaviour
 
         int spawnerLeft = LoadedLevel.Waves[_waveIndex].EnemyGroups.Count - _spawners.Count;
 
-        int i;
-        for(i = 0; i < spawnerLeft; i ++)
+        for(int i = 0; i < spawnerLeft; i ++)
             _spawners.Add(Instantiate(_spawnerPrefab, transform));
 
-        i = 0;
+        int j = 0;
         foreach(EnemyGroup current in LoadedLevel.Waves[_waveIndex].EnemyGroups)
         {
             int index = Controller.Instance.EnemyControl.Enemies.IndexOf(current.Enemy.GetComponent<Enemy>());
+
+            //If in this wave we uncounter new enemies.
             if (!_saveController.SaveFile.EnemiesUnlocked[index])
             {
                 //TO DO : DISPLAY ENEMY VIGNETTE
                 _saveController.SaveNewEnemyFound(index);
             }
 
-            _spawners[i].SetNewGroup(_availablePath[current.Path], current, this, _poolController);
-            i++;
+            _spawners[j].SetNewGroup(_availablePath[current.Path], current, this, _poolController);
+            j++;
         }
     }
 
