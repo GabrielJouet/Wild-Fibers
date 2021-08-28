@@ -12,11 +12,10 @@ public class ChangeScene : MonoBehaviour
     /// <param name="destinationName">The destination scene</param>
     public void LoadScene(string destinationName)
     {
+        //If we are in a playable level
+        if (FindObjectsOfType<LevelController>().Length > 0)
+            Controller.Instance.PoolControl.DesactivateEntities();
+
         SceneManager.LoadScene(destinationName);
-
-        PoolController buffer = Controller.Instance.PoolControl;
-
-        if (buffer != null && FindObjectsOfType<LevelController>().Length > 0)
-            buffer.DesactivateEntities();
     }
 }
