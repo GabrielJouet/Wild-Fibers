@@ -9,14 +9,16 @@ using UnityEngine;
 /// </summary>
 public class SaveController : MonoBehaviour
 {
-	[SerializeField]
 	/// <summary>
 	/// All levels.
 	/// </summary>
+	[SerializeField]
 	private List<LevelData> _levels;
 	public List<LevelData> Levels { get => _levels; }
 
-
+	/// <summary>
+	/// Enemy controller component.
+	/// </summary>
 	[SerializeField]
 	private EnemyController _enemyController;
 
@@ -42,6 +44,9 @@ public class SaveController : MonoBehaviour
 	private string _gameSavePath;
 
 
+	/// <summary>
+	/// Does this component is initialized?
+	/// </summary>
 	public bool Initialized { get; private set; } = false;
 
 
@@ -100,9 +105,10 @@ public class SaveController : MonoBehaviour
 			string[] savedVersionNumber = SaveFile.VersionNumber.Split('.');
 			string[] currentVersionNumber = Application.version.Split('.');
 
+			//Version number is saved in the following format: 0.4.1
 			if (int.Parse(currentVersionNumber[0]) > int.Parse(savedVersionNumber[0]))
 				AddLevelData();
-			else if (int.Parse(currentVersionNumber[0]) == int.Parse(savedVersionNumber[0]) && int.Parse(currentVersionNumber[1]) > int.Parse(savedVersionNumber[1]))
+			else if (int.Parse(currentVersionNumber[1]) > int.Parse(savedVersionNumber[1]))
 				AddLevelData();
 		}
 	}
@@ -115,9 +121,15 @@ public class SaveController : MonoBehaviour
 	{
 		int missingLevels = Levels.Count - SaveFile.CurrentSave.Count;
 
-		if (missingLevels > 0)
-			for (int i = 0; i < missingLevels; i++)
+		LevelState lastLevelState = SaveFile.CurrentSave[SaveFile.CurrentSave.Count - 1].State;
+
+		for (int i = 0; i < missingLevels; i++)
+		{
+			if (i == 0 && (lastLevelState != LevelState.LOCKED && lastLevelState != LevelState.UNLOCKED))
 				SaveFile.CurrentSave.Add(new LevelSave(0, LevelState.UNLOCKED));
+			else
+				SaveFile.CurrentSave.Add(new LevelSave(0, LevelState.LOCKED));
+		}
 	}
 
 
