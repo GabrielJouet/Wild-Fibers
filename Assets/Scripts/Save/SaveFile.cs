@@ -77,4 +77,37 @@ public class SaveFile
 
         CurrentSquad.TowerLevelMax = 1;
     }
+
+
+    /// <summary>
+    /// Method called when an old save has been detected.
+    /// </summary>
+    /// <param name="numberOfLevels">Number of levels missing</param>
+    /// <param name="numberOfEnemies">Number of enemies missing</param>
+    /// <param name="numberOfSquads">Number of squads missing</param>
+    /// <param name="blankSave">A blank save without anything in it</param>
+    public void UpdateOldSave(int numberOfLevels, int numberOfEnemies, int numberOfSquads, List<LevelSave> blankSave)
+    {
+        LevelState lastLevelState = CurrentSave[CurrentSave.Count - 1].State;
+
+        int oldSquadCount = SquadsProgression.Count;
+        for (int j = 0; j < SquadsProgression.Count + numberOfSquads; j ++)
+        {
+            if (j < oldSquadCount)
+            {
+                for (int i = 0; i < numberOfLevels; i++)
+                {
+                    if (i == 0 && (lastLevelState != LevelState.LOCKED && lastLevelState != LevelState.UNLOCKED))
+                        CurrentSave.Add(new LevelSave(0, LevelState.UNLOCKED));
+                    else
+                        CurrentSave.Add(new LevelSave(0, LevelState.LOCKED));
+                }
+            }
+            else
+                SquadsProgression.Add(new SquadProgression(blankSave));
+        }
+
+        for (int g = 0; g < numberOfEnemies; g++)
+            EnemiesUnlocked.Add(false);
+    }
 }

@@ -49,6 +49,21 @@ public class SaveController : MonoBehaviour
 	/// </summary>
 	public bool Initialized { get; private set; } = false;
 
+	/// <summary>
+	/// A list of blank saves.
+	/// </summary>
+	public List<LevelSave> BlankSave
+	{
+		get 
+		{
+			List<LevelSave> allSaves = new List<LevelSave>();
+
+			for (int i = 0; i < Levels.Count; i++)
+				allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED));
+			return allSaves;
+		}
+	}
+
 
 	/// <summary>
 	/// Awake method, used for initialization.
@@ -102,34 +117,27 @@ public class SaveController : MonoBehaviour
 			ResetData();
 		else
 		{
+			//Version number is saved in the following format: 0.4.1
 			string[] savedVersionNumber = SaveFile.VersionNumber.Split('.');
 			string[] currentVersionNumber = Application.version.Split('.');
 
-			//Version number is saved in the following format: 0.4.1
-			if (int.Parse(currentVersionNumber[0]) > int.Parse(savedVersionNumber[0]))
-				AddLevelData();
-			else if (int.Parse(currentVersionNumber[1]) > int.Parse(savedVersionNumber[1]))
-				AddLevelData();
+			//If the save is older
+			if (int.Parse(currentVersionNumber[0]) > int.Parse(savedVersionNumber[0]) || int.Parse(currentVersionNumber[1]) > int.Parse(savedVersionNumber[1]))
+				UpdateOldSave();
 		}
 	}
 
 
 	/// <summary>
-	/// Method used to create a new level save.
+	/// Method used to update an old save.
 	/// </summary>
-	private void AddLevelData()
+	private void UpdateOldSave()
 	{
 		int missingLevels = Levels.Count - SaveFile.CurrentSave.Count;
+		int missingEnemies = _enemyController.Enemies.Count - SaveFile.EnemiesUnlocked.Count;
+		int missingSquads = Controller.Instance.SquadControl.Squads.Count - SaveFile.SquadsProgression.Count;
 
-		LevelState lastLevelState = SaveFile.CurrentSave[SaveFile.CurrentSave.Count - 1].State;
-
-		for (int i = 0; i < missingLevels; i++)
-		{
-			if (i == 0 && (lastLevelState != LevelState.LOCKED && lastLevelState != LevelState.UNLOCKED))
-				SaveFile.CurrentSave.Add(new LevelSave(0, LevelState.UNLOCKED));
-			else
-				SaveFile.CurrentSave.Add(new LevelSave(0, LevelState.LOCKED));
-		}
+		SaveFile.UpdateOldSave(missingLevels, missingEnemies, missingSquads, BlankSave);
 	}
 
 
@@ -138,12 +146,7 @@ public class SaveController : MonoBehaviour
 	/// </summary>
 	private void CreateSave()
 	{
-		List<LevelSave> allSaves = new List<LevelSave>();
-
-		for (int i = 0; i < Levels.Count; i ++)
-			allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED));
-
-		SaveFile = new SaveFile(Application.version, allSaves, 1, 1, _enemyController.Enemies.Count, 1);
+		SaveFile = new SaveFile(Application.version, BlankSave, 1, 1, _enemyController.Enemies.Count, 1);
 
 		SaveData();
 	}
@@ -178,7 +181,6 @@ public class SaveController : MonoBehaviour
 	public void SaveMusicMute(bool musicMuted)
 	{
 		SaveFile.MusicMuted = musicMuted;
-
 		SaveData();
 	}
 
@@ -190,11 +192,14 @@ public class SaveController : MonoBehaviour
 	public void SaveSoundMute(bool soundMuted)
 	{
 		SaveFile.SoundMuted = soundMuted;
-
 		SaveData();
 	}
 
 
+	/// <summary>
+	/// Method used to save a new enemy found.
+	/// </summary>
+	/// <param name="enemyIndex">Enemy index</param>
 	public void SaveNewEnemyFound(int enemyIndex)
 	{
 		SaveFile.EnemiesUnlocked[enemyIndex] = true;
@@ -202,6 +207,10 @@ public class SaveController : MonoBehaviour
 	}
 
 
+	/// <summary>
+	/// Method used to save a new tower level discovered.
+	/// </summary>
+	/// <param name="newLevel">New tower level</param>
 	public void SaveTowerLevel(int newLevel)
 	{
 		if (newLevel > SaveFile.CurrentSquad.TowerLevelMax)
@@ -212,10 +221,14 @@ public class SaveController : MonoBehaviour
 	}
 
 
+	/// <summary>
+	/// Method used to save a new tower augmentation level.
+	/// </summary>
+	/// <param name="index">The augmentation index</param>
+	/// <param name="newLevel">New tower augmentation level</param>
 	public void SaveTowerAugmentationLevel(int index, int newLevel)
 	{
-		SaveFile.SquadsProgression[0].AddNewAugmentation(index, newLevel);
-
+		SaveFile.CurrentSquad.AddNewAugmentation(index, newLevel);
 		SaveData();
 	}
 
