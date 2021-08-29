@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 /// <remarks>Needs a static depth manager</remarks>
 [RequireComponent(typeof(StaticDepthManager))]
-public class Tower : MonoBehaviour
+public abstract class Tower : MonoBehaviour
 {
     [SerializeField]
     protected TowerData _towerData;
@@ -119,7 +119,9 @@ public class Tower : MonoBehaviour
         _selector.SetActive(false);
         _transformRange.gameObject.SetActive(false);
 
-        _towerData = newData;
+        _towerData = ScriptableObject.CreateInstance<TowerData>();
+        _towerData.Populate(newData);
+
         _attack = new Attack(Data.Damage, Data.ArmorThrough, Data.DotDuration, Data.ArmorThroughMalus, Data.Dot);
         CheckAugmentation();
 
@@ -208,10 +210,7 @@ public class Tower : MonoBehaviour
     /// <summary>
     /// Method used to add a spec to the tower.
     /// </summary>
-    public virtual void AddSpec(TowerSpec newSpec)
-    {
-
-    }
+    public virtual void AddSpec(TowerSpec newSpec) { }
 
     protected void CheckAugmentation()
     {

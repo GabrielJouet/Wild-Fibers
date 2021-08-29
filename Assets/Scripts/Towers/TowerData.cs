@@ -7,6 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Towers/Data", fileName = "NewTower")]
 public class TowerData : ScriptableObject
 {
+    #region Description
     [Header("Description")]
 
     /// <summary>
@@ -21,37 +22,46 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     protected int _price;
-    public int Price { get; set; }
+    public int Price { get => _price; set => _price = value; }
 
     /// <summary>
     /// Resell Price factor of the tower.
     /// </summary>
     protected float _resellPriceFactor = 1;
-    public float ResellPriceFactor { get; set; }
+    public float ResellPriceFactor { get => _resellPriceFactor; set => _resellPriceFactor = value; }
 
     /// <summary>
     /// Icon of the tower.
     /// </summary>
     [SerializeField]
     protected Sprite _icon;
-    public Sprite Icon { get => _icon; }
+    public Sprite Icon { get => _icon; private set => _icon = value; }
 
     /// <summary>
     /// Sprite used in game.
     /// </summary>
     [SerializeField]
     protected Sprite _sprite;
-    public Sprite Sprite { get => _sprite; }
+    public Sprite Sprite { get => _sprite; private set => _sprite = value; }
 
     /// <summary>
     /// Shadow sprite used in game.
     /// </summary>
     [SerializeField]
     protected Sprite _shadowSprite;
-    public Sprite Shadow { get => _shadowSprite; }
+    public Sprite Shadow { get => _shadowSprite; private set => _shadowSprite = value; }
+
+    /// <summary>
+    /// Script used for this tower.
+    /// </summary>
+    [SerializeField]
+    protected string _scriptName;
+    public string Script { get => _scriptName; private set => _scriptName = value; }
+    #endregion
 
 
 
+    #region Damage
     [Header("Damage Related")]
 
     /// <summary>
@@ -59,42 +69,47 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     protected GameObject _projectileUsed;
-    public GameObject Projectile { get => _projectileUsed; }
+    public GameObject Projectile { get => _projectileUsed; private set => _projectileUsed = value; }
 
     /// <summary>
     /// Time between attack in second.
     /// </summary>
     [SerializeField]
     protected float _timeBetweenShots;
-    public float TimeShots { get; set; }
+    public float TimeShots { get => _timeBetweenShots; set => _timeBetweenShots = value; }
 
     /// <summary>
     /// Damage per attack.
     /// </summary>
     [SerializeField]
     protected int _damage;
-    public int Damage { get; set; }
+    public int Damage { get => _damage; set => _damage = value; }
+
+    /// <summary>
+    /// Damage in string version.
+    /// </summary>
+    public string DamageInfo { get => _damage.ToString(); }
 
     /// <summary>
     /// Armor through on each attack.
     /// </summary>
     [SerializeField]
     protected float _armorThrough;
-    public float ArmorThrough { get; set; }
+    public float ArmorThrough { get => _armorThrough; set => _armorThrough = value; }
 
     /// <summary>
     /// Number of projectile per attack.
     /// </summary>
     [SerializeField]
     protected int _numberOfShots;
-    public int Shots { get; set; }
+    public int Shots { get => _numberOfShots; set => _numberOfShots = value; }
 
     /// <summary>
     /// Range of the tower.
     /// </summary>
     [SerializeField]
     protected float _range;
-    public float Range { get; set; }
+    public float Range { get => _range; set => _range = value; }
 
     /// <summary>
     /// Can the tower hits flying target?
@@ -109,8 +124,11 @@ public class TowerData : ScriptableObject
     [SerializeField]
     protected bool _shotsRandomly;
     public bool ShotsRandomly { get => _shotsRandomly; private set => _shotsRandomly = value; }
+    #endregion
 
 
+
+    #region Dot
     [Header("Dot related")]
 
     /// <summary>
@@ -118,23 +136,26 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     private float _armorThroughMalus;
-    public float ArmorThroughMalus { get; set; }
+    public float ArmorThroughMalus { get => _armorThroughMalus; set => _armorThroughMalus = value; }
 
     /// <summary>
     /// Dot over time damage.
     /// </summary>
     [SerializeField]
     private int _damageOverTime;
-    public int Dot { get; set; }
+    public int Dot { get => _damageOverTime; set => _damageOverTime = value; }
 
     /// <summary>
     /// Dot duration.
     /// </summary>
     [SerializeField]
     private float _dotDuration;
-    public float DotDuration { get; set; }
+    public float DotDuration { get => _dotDuration; set => _dotDuration = value; }
+    #endregion
 
 
+
+    #region Upgrades
     [Header("Upgrades")]
 
     /// <summary>
@@ -142,31 +163,26 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     protected List<TowerData> _towerUpgrades;
-    public List<TowerData> Upgrades { get => _towerUpgrades; }
+    public List<TowerData> Upgrades { get => _towerUpgrades; private set => _towerUpgrades = value; }
 
     /// <summary>
     /// Tower specs (only for last level).
     /// </summary>
     [SerializeField]
     protected List<TowerSpec> _towerSpecs;
-    public List<TowerSpec> Specs { get => _towerSpecs; }
+    public List<TowerSpec> Specs { get => _towerSpecs; private set => _towerSpecs = value; }
 
 
     [SerializeField]
     protected List<Augmentation> _towerAugmentations;
-    public List<Augmentation> Augmentations { get => _towerAugmentations; }
+    public List<Augmentation> Augmentations { get => _towerAugmentations; private set => _towerAugmentations = value; }
 
     public int AugmentationLevel { get; set; }
+    #endregion
 
 
-    /// <summary>
-    /// Script used for this tower.
-    /// </summary>
-    [SerializeField]
-    protected string _scriptName;
-    public string Script { get => _scriptName; }
 
-
+    #region Library
     [Header("Info related")]
 
     /// <summary>
@@ -207,42 +223,70 @@ public class TowerData : ScriptableObject
     /// Price in string version.
     /// </summary>
     public string PriceInfo { get => _price.ToString(); }
+    #endregion
+
+
 
     /// <summary>
-    /// Damage in string version.
+    /// Method used to clone tower data.
     /// </summary>
-    public string DamageInfo { get => _damage.ToString(); }
-
-
-    private void OnEnable()
+    /// <param name="clone">The object to clone</param>
+    public void Populate(TowerData clone)
     {
-        Price = _price;
-        ResellPriceFactor = _resellPriceFactor;
+        name = clone.name;
+        Description = clone.Description;
+        Price = clone.Price;
+        ResellPriceFactor = clone.ResellPriceFactor;
+        Icon = clone.Icon;
+        Sprite = clone.Sprite;
+        Shadow = clone.Shadow;
+        Script = clone.Script;
 
-        TimeShots = _timeBetweenShots;
-        Damage = _damage;
-        ArmorThrough = _armorThrough;
-        Shots = _numberOfShots;
-        Range = _range;
+        Projectile = clone.Projectile;
 
-        ArmorThroughMalus = _armorThroughMalus;
-        Dot = _damageOverTime;
-        DotDuration = _dotDuration;
+        TimeShots = clone.TimeShots;
+        Damage = clone.Damage;
+        ArmorThrough = clone.ArmorThrough;
+        Shots = clone.Shots;
+        Range = clone.Range;
+        HitFlying = clone.HitFlying;
+        ShotsRandomly = clone.ShotsRandomly;
+
+        ArmorThroughMalus = clone.ArmorThroughMalus;
+        Dot = clone.Dot;
+        DotDuration = clone.DotDuration;
+
+        Upgrades = clone.Upgrades;
+        Specs = clone.Specs;
+        Augmentations = clone.Augmentations;
+        AugmentationLevel = clone.AugmentationLevel;
     }
 
 
+    /// <summary>
+    /// Method used to reduce price of a tower with a ratio.
+    /// </summary>
+    /// <param name="ratio">Ratio of the price asked</param>
     public void ReducePrice(float ratio)
     {
         Price = Mathf.FloorToInt(_price * ratio);
     }
 
 
+    /// <summary>
+    /// Method used to reduce price of a tower with a fixed amount.
+    /// </summary>
+    /// <param name="count">Amount of the price lowered</param>
     public void ReducePrice(int count)
     {
         Price = _price - count;
     }
 
 
+    /// <summary>
+    /// Method used to increase the resell price.
+    /// </summary>
+    /// <param name="factor">Factor of the resell price</param>
     public void IncreaseResellPrice(float factor)
     {
         ResellPriceFactor = _resellPriceFactor * factor;
