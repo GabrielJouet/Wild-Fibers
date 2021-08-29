@@ -69,14 +69,26 @@ public abstract class Tower : MonoBehaviour
     /// </summary>
     protected TowerPool _towerPool;
 
+    /// <summary>
+    /// How much gold was used on this tower from the beginning.
+    /// </summary>
     public int CumulativeGold { get; protected set; } = 0;
 
+    /// <summary>
+    /// Basic attack of this tower.
+    /// </summary>
     protected Attack _attack;
 
+    /// <summary>
+    /// Queue of attacks, used for multi shots towers.
+    /// </summary>
     protected Queue<Attack> _nextAttack = new Queue<Attack>();
 
 
 
+    /// <summary>
+    /// Awake method used at initialization.
+    /// </summary>
     protected void Awake()
     {
         _transformRange = transform.Find("Range");
@@ -114,6 +126,10 @@ public abstract class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method used to reset the tower to tower data values.
+    /// </summary>
+    /// <param name="newData">The new data to use</param>
     private void SetDefaultValues(TowerData newData)
     {
         _selector.SetActive(false);
@@ -137,6 +153,9 @@ public abstract class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method used to add a special behavior at the start of the initialization.
+    /// </summary>
     protected virtual void SpecialBehavior() { }
 
 
