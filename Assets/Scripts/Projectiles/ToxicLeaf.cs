@@ -34,7 +34,7 @@ public class ToxicLeaf : Projectile
     {
         if (!_following)
         {
-            _data = newData;
+            _attack = newData;
             _following = true;
             _enemyTracked = newEnemy;
         }
@@ -73,7 +73,7 @@ public class ToxicLeaf : Projectile
             if (_slowDown)
                 enemy.ApplySlowDown(10, 2f);
 
-            enemy.TakeDamage(_data);
+            enemy.TakeDamage(_attack);
         }
     }
 }

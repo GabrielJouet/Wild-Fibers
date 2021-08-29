@@ -26,6 +26,12 @@ public class Vines : Tower
     }
 
 
+    protected override void SpecialBehavior() 
+    {
+        _attack = new Attack(Data.Damage, Data.ArmorThrough, 0, 0, 0);
+    }
+
+
     /// <summary>
     /// Coroutine used to delay attacks.
     /// </summary>
@@ -33,8 +39,7 @@ public class Vines : Tower
     {
         _coroutineStarted = true;
 
-        //TO FIX, SHOULD NOT WORK LIKE THIS
-        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(new Attack(Data.Damage, Data.ArmorThrough, 0, 0, 0), _projectilePool, transform, Data.Range);
+        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_attack, _projectilePool, transform, Data.Range, Data.AugmentationLevel > 3);
         yield return new WaitForSeconds(_towerData.TimeShots);
 
         _coroutineStarted = false;

@@ -8,13 +8,16 @@ public class ShockWave : Projectile
     private Vector3 _previousScale;
 
     private float _range;
+
+    private bool _hitFLyingHarder;
     
     
     //Method used to initialize class (like a constructor)
-    public void Initialize(Attack newData, ProjectilePool newPool, Transform newTransform, float range)
+    public void Initialize(Attack newData, ProjectilePool newPool, Transform newTransform, float range, bool hitFlyingHarder)
     {
+        _hitFLyingHarder = hitFlyingHarder;
         transform.position = newTransform.position;
-        _data = newData;
+        _attack = newData;
         _projectilePool = newPool;
         _previousScale = new Vector3(0, 0, 1);
 
@@ -44,6 +47,11 @@ public class ShockWave : Projectile
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent(out Enemy newEnemy))
-            newEnemy.TakeDamage(_data);
+        {
+            if (_hitFLyingHarder && newEnemy.Flying)
+                newEnemy.TakeDamage(new Attack(_attack.Damage + 2, _attack.ArmorThrough, 0, 0, 0));
+            else
+                newEnemy.TakeDamage(_attack);
+        }
     }
 }

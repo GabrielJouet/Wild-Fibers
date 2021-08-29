@@ -40,7 +40,7 @@ public class ChocSpikes : Projectile
         {
             _canDestroyArmor = canDestroyArmor;
 
-            _data = newData;
+            _attack = newData;
             _following = true;
             _enemyTracked = newEnemy;
         }
@@ -103,7 +103,7 @@ public class ChocSpikes : Projectile
             if (_canDestroyArmor)
                 enemy.DestroyArmor(2);
 
-            enemy.TakeDamage(_data);
+            enemy.TakeDamage(_attack);
         }
     }
 }

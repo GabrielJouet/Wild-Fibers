@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     protected float _projectileSpeed;
 
-    protected Attack _data;
+    protected Attack _attack;
 
     /// <summary>
     /// The related pool.
@@ -30,7 +30,7 @@ public class Projectile : MonoBehaviour
     public virtual void Initialize(Attack newData, Enemy newEnemy, ProjectilePool newPool, Transform newTransform)
     {
         transform.position = newTransform.position;
-        _data = newData;
+        _attack = newData;
         _projectilePool = newPool;
 
         _enemyTracked = newEnemy;
@@ -91,7 +91,7 @@ public class Projectile : MonoBehaviour
     protected virtual void AttackEnemy(Enemy enemy)
     {
         if (enemy != null)
-            enemy.TakeDamage(_data);
+            enemy.TakeDamage(_attack);
     }
 
 
