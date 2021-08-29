@@ -93,6 +93,16 @@ public class ToxicIvy : Tower
             StartCoroutine(SummonLeaf(0.5f));
     }
 
+
+    /// <summary>
+    /// Method called when the tower is resell.
+    /// </summary>
+    protected override void ResellSpecialBehavior()
+    {
+        foreach (ToxicLeaf current in _availableLeaves)
+            current.StopProjectile();
+    }
+
     /// <summary>
     /// Method used to summon projectile.
     /// </summary>

@@ -76,6 +76,16 @@ public class RootsStump : Tower
 
 
     /// <summary>
+    /// Method called when the tower is resell.
+    /// </summary>
+    protected override void ResellSpecialBehavior()
+    {
+        foreach (ChocSpikes current in _availableSpikes)
+            current.StopProjectile();
+    }
+
+
+    /// <summary>
     /// Method used to summon projectile needed.
     /// </summary>
     /// <param name="multiplier">Coroutine execution time multiplier</param>
