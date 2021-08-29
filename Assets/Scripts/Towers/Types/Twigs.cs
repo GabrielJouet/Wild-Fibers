@@ -4,19 +4,19 @@ public class Twigs : Tower
 {
     protected override void LevelOneAugmentation()
     {
-        _towerData.Range *= 1.1f;
+        Data.Range *= 1.1f;
     }
 
 
     protected override void LevelTwoAugmentation() 
     {
-        _towerData.ArmorThrough += 5;
+        Data.ArmorThrough += 5;
     }
 
 
     protected override void LevelFourAugmentation() 
     {
-        _towerData.TimeShots *= 0.95f;
+        Data.TimeShots *= 0.95f;
     }
 
 
@@ -24,7 +24,7 @@ public class Twigs : Tower
     {
         Attack newAttack = new Attack(_attack);
 
-        if (Data.AugmentationLevel > 1)
+        if (Data.AugmentationLevel > 2)
         {
             newAttack.ArmorThroughMalus = 0;
             newAttack.DotDamage = 1;
