@@ -18,13 +18,11 @@ public class Tower : MonoBehaviour
     /// Range display.
     /// </summary>
     protected Transform _transformRange;
-    protected Vector3 _initialRangeScale;
 
     /// <summary>
     /// Collider used in range detection.
     /// </summary>
     protected Transform _collider;
-    protected Vector3 _initialColliderScale;
 
     protected SpriteRenderer _spriteRenderer;
 
@@ -88,9 +86,6 @@ public class Tower : MonoBehaviour
         _shadowSpriteRenderer = transform.Find("Shadow").GetComponent<SpriteRenderer>();
 
         _selector = transform.Find("Selecter").gameObject;
-
-        _initialColliderScale = _collider.localScale;
-        _initialRangeScale = _transformRange.localScale;
     }
 
 
@@ -133,8 +128,8 @@ public class Tower : MonoBehaviour
         _spriteRenderer.sprite = Data.Sprite;
         _shadowSpriteRenderer.sprite = Data.Shadow;
 
-        _transformRange.localScale = _initialRangeScale * Data.Range;
-        _collider.localScale = _initialColliderScale * (0.9f * Data.Range);
+        _transformRange.localScale = Data.Range * Vector3.one;
+        _collider.localScale = (0.9f * Data.Range) * Vector3.one;
 
         _collider.GetComponent<TowerCollider>().ParentTower = this;
     }
@@ -375,8 +370,8 @@ public class Tower : MonoBehaviour
     {
         DesactivateRangeDisplay();
 
-        _collider.localScale = _initialColliderScale;
-        _transformRange.localScale = _initialRangeScale;
+        _collider.localScale = Vector3.one;
+        _transformRange.localScale = Vector3.one;
 
         gameObject.SetActive(false);
     }
