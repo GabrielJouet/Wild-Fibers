@@ -190,14 +190,14 @@ public class TowerData : ScriptableObject
     /// </summary>
     [SerializeField]
     protected string _special;
-    public string Special { get => _special; }
+    public string Special { get => _special; private set => _special = value; }
 
     /// <summary>
     /// Screen shot displaying what the tower can do.
     /// </summary>
     [SerializeField]
     protected Sprite _screenShot;
-    public Sprite ScreenShot { get => _screenShot; }
+    public Sprite ScreenShot { get => _screenShot; private set => _screenShot = value; }
 
     /// <summary>
     /// Fire rate transformed.
@@ -243,7 +243,6 @@ public class TowerData : ScriptableObject
         Script = clone.Script;
 
         Projectile = clone.Projectile;
-
         TimeShots = clone.TimeShots;
         Damage = clone.Damage;
         ArmorThrough = clone.ArmorThrough;
@@ -256,10 +255,21 @@ public class TowerData : ScriptableObject
         Dot = clone.Dot;
         DotDuration = clone.DotDuration;
 
-        Upgrades = clone.Upgrades;
+        List<TowerData> newUpgrades = new List<TowerData>();
+        foreach(TowerData upgrade in clone.Upgrades)
+        {
+            TowerData buffer = CreateInstance<TowerData>();
+            buffer.Populate(upgrade);
+            newUpgrades.Add(buffer);
+        }
+
+        Upgrades = newUpgrades;
         Specs = clone.Specs;
         Augmentations = clone.Augmentations;
         AugmentationLevel = clone.AugmentationLevel;
+
+        ScreenShot = clone.ScreenShot;
+        Special = clone.Special;
     }
 
 
