@@ -173,10 +173,16 @@ public class TowerData : ScriptableObject
     public List<TowerSpec> Specs { get => _towerSpecs; private set => _towerSpecs = value; }
 
 
+    /// <summary>
+    /// Tower Augmentations (only for first level).
+    /// </summary>
     [SerializeField]
     protected List<Augmentation> _towerAugmentations;
     public List<Augmentation> Augmentations { get => _towerAugmentations; private set => _towerAugmentations = value; }
 
+    /// <summary>
+    /// Current augmentation level of this tower.
+    /// </summary>
     public int AugmentationLevel { get; set; }
     #endregion
 

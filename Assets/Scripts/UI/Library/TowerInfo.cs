@@ -7,10 +7,7 @@ public class TowerInfo : MonoBehaviour
     private TowerData _tower;
     public TowerData Tower
     {
-        get
-        {
-            return _tower;
-        }
+        get => _tower;
 
         set
         {
