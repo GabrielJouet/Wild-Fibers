@@ -184,7 +184,7 @@ MonoBehaviour:
   _displayName: Scyther
   _selector: {fileID: 4000618669885677062}
   _healthBar: {fileID: 8863022456078644539}
-  _dotDisplay: {fileID: 3842665942187024139}
+  _dotDisplay: {fileID: 1262192122651188265}
   _spriteRenderer: {fileID: 8203056244331385572}
   _animator: {fileID: 4810297222311416622}
   _damageParticle: {fileID: 4405452952222755525, guid: 5d5493e82985e114dab5f2a1b97dde63,
@@ -284,15 +284,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a7ebdb59535a441a4c7b5d6e455920, type: 3}
---- !u!4 &522071239486010086 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!1 &1262192122651188265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4206444510151701932, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 3162793518331619717}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &3842665942187024139 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!4 &522071239486010086 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 3162793518331619717}
   m_PrefabAsset: {fileID: 0}
