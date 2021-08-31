@@ -28,6 +28,11 @@ public class LevelData : ScriptableObject
     public Level Challenge { get => _challenge; }
 
 
+    /// <summary>
+    /// Method used to check if the level exists in this data.
+    /// </summary>
+    /// <param name="levelChecked">The level to check</param>
+    /// <returns>Returns true if found, false otherwise</returns>
     public bool LevelExists(Level levelChecked)
     {
         return levelChecked == Classic || levelChecked == Side || levelChecked == Challenge;
