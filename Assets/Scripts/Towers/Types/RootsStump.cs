@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class used by roots-like towers for behavior modification purposes.
+/// </summary>
 public class RootsStump : Tower
 {
     /// <summary>
@@ -9,7 +12,11 @@ public class RootsStump : Tower
     /// </summary>
     protected List<ChocSpikes> _availableSpikes = new List<ChocSpikes>();
 
+    /// <summary>
+    /// Next root spawn index.
+    /// </summary>
     protected int _rootsIndex = 0;
+
 
 
     /// <summary>
@@ -42,12 +49,14 @@ public class RootsStump : Tower
     }
 
 
+    /// <summary>
+    /// Method called before an attack occurs to apply modifications on the current attack.
+    /// </summary>
+    /// <param name="enemy">The enemy targeted</param>
+    /// <returns>The new attack with new parameters</returns>
     protected override Attack ChangeNextAttack(Enemy enemy)
     {
         Attack newAttack = new Attack(_attack);
-
-        if (Data.AugmentationLevel > 4)
-            newAttack.ArmorThrough *= (enemy.ArmorMax < 25 ? 1.5f : 1);
 
         if (Data.AugmentationLevel > 2)
             newAttack.Damage += enemy.IsDotted ? 1 : 0;
@@ -55,8 +64,12 @@ public class RootsStump : Tower
         if (Data.AugmentationLevel > 3)
             newAttack.Damage *= Random.Range(0, 100) < 5 ? 2 : 1;
 
+        if (Data.AugmentationLevel > 4)
+            newAttack.ArmorThrough *= (enemy.ArmorMax < 25 ? 1.5f : 1);
+
         return newAttack;
     }
+
 
     /// <summary>
     /// Method used to update upgrade special behavior.

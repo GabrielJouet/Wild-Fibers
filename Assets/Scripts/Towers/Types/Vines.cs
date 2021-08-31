@@ -1,31 +1,33 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Class used by vines-like tower for behavior purpose.
+/// </summary>
 public class Vines : Tower
 {
+    /// <summary>
+    /// Level one augmentation special behavior.
+    /// </summary>
     protected override void LevelOneAugmentation()
     {
         Data.Damage++;
     }
 
 
+    /// <summary>
+    /// Level five augmentation special behavior.
+    /// </summary>
     protected override void LevelFiveAugmentation()
     {
         Data.Range *= 1.15f;
     }
 
 
-    protected override Attack ChangeNextAttack(Enemy enemy)
-    {
-        Attack newAttack = new Attack(_attack);
-
-        if (Data.AugmentationLevel > 3 && enemy.Flying)
-            newAttack.Damage += 2;
-
-        return newAttack;
-    }
-
-
+    /// <summary>
+    /// Method used to override special behavior.
+    /// </summary>
+    /// <remarks>Called after initialization and before first update</remarks>
     protected override void SpecialBehavior() 
     {
         _attack = new Attack(Data.Damage, Data.ArmorThrough, 0, 0, 0);

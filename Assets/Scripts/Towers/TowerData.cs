@@ -261,18 +261,65 @@ public class TowerData : ScriptableObject
         Dot = clone.Dot;
         DotDuration = clone.DotDuration;
 
+        Specs = clone.Specs;
+        Augmentations = clone.Augmentations;
+        AugmentationLevel = clone.AugmentationLevel;
+
+        ScreenShot = clone.ScreenShot;
+        Special = clone.Special;
+
         List<TowerData> newUpgrades = new List<TowerData>();
-        foreach(TowerData upgrade in clone.Upgrades)
+        foreach (TowerData upgrade in clone.Upgrades)
         {
             TowerData buffer = CreateInstance<TowerData>();
-            buffer.Populate(upgrade);
+            buffer.Populate(upgrade, AugmentationLevel);
+            newUpgrades.Add(buffer);
+        }
+
+        Upgrades = newUpgrades;
+    }
+
+    /// <summary>
+    /// Method used to clone tower data.
+    /// </summary>
+    /// <param name="clone">The object to clone</param>
+    /// <param name="augmentationLevel">The new augmentation level</param>
+    public void Populate(TowerData clone, int augmentationLevel)
+    {
+        name = clone.name;
+        Description = clone.Description;
+        Price = clone.Price;
+        ResellPriceFactor = clone.ResellPriceFactor;
+        Icon = clone.Icon;
+        Sprite = clone.Sprite;
+        Shadow = clone.Shadow;
+        Script = clone.Script;
+
+        Projectile = clone.Projectile;
+        TimeShots = clone.TimeShots;
+        Damage = clone.Damage;
+        ArmorThrough = clone.ArmorThrough;
+        Shots = clone.Shots;
+        Range = clone.Range;
+        HitFlying = clone.HitFlying;
+        ShotsRandomly = clone.ShotsRandomly;
+
+        ArmorThroughMalus = clone.ArmorThroughMalus;
+        Dot = clone.Dot;
+        DotDuration = clone.DotDuration;
+
+        List<TowerData> newUpgrades = new List<TowerData>();
+        foreach (TowerData upgrade in clone.Upgrades)
+        {
+            TowerData buffer = CreateInstance<TowerData>();
+            buffer.Populate(upgrade, augmentationLevel);
             newUpgrades.Add(buffer);
         }
 
         Upgrades = newUpgrades;
         Specs = clone.Specs;
         Augmentations = clone.Augmentations;
-        AugmentationLevel = clone.AugmentationLevel;
+        AugmentationLevel = augmentationLevel;
 
         ScreenShot = clone.ScreenShot;
         Special = clone.Special;
