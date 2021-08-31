@@ -1,18 +1,38 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Class used by Toxic like towers as a projectile.
+/// </summary>
 public class ToxicLeaf : Projectile
 {
+    /// <summary>
+    /// Does the leaf is following an enemy?
+    /// </summary>
     protected bool _following;
 
+    /// <summary>
+    /// Actual angle of the leaf.
+    /// </summary>
     protected float _angle;
 
+    /// <summary>
+    /// Position of the tower when rotating around.
+    /// </summary>
     protected Vector2 _initialPosition;
 
+
+    /// <summary>
+    /// Does the projectile apply slowDown?
+    /// </summary>
     private bool _slowDown;
 
 
-
-    //Method used to initialize class (like a constructor)
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="newPool">New pool attached</param>
+    /// <param name="newPosition">New position of the projectile</param>
+    /// <param name="slowDown">Does the projectile apply slowDown?</param>
     public void Initialize(ProjectilePool newPool, Vector2 newPosition, bool slowDown)
     {
         _following = false;
@@ -30,17 +50,9 @@ public class ToxicLeaf : Projectile
     }
 
 
-    public void StartFollowing(Enemy newEnemy, Attack newData)
-    {
-        if (!_following)
-        {
-            _attack = newData;
-            _following = true;
-            _enemyTracked = newEnemy;
-        }
-    }
-
-
+    /// <summary>
+    /// Update is called each frame.
+    /// </summary>
     protected override void Update()
     {
         if (_following)
@@ -58,6 +70,22 @@ public class ToxicLeaf : Projectile
             _angle += Time.deltaTime;
             transform.localPosition = _initialPosition + new Vector2(Mathf.Sin(_angle) * 0.15f, Mathf.Cos(_angle) * 0.15f);
             transform.RotateAround(transform.position, new Vector3(0, 0, 1), _projectileSpeed * 4 * Time.deltaTime);
+        }
+    }
+
+
+    /// <summary>
+    /// Method called by tower when starting to follow an enemy.
+    /// </summary>
+    /// <param name="newEnemy">The enemy followed</param>
+    /// <param name="newData">The new attack</param>
+    public void StartFollowing(Enemy newEnemy, Attack newData)
+    {
+        if (!_following)
+        {
+            _attack = newData;
+            _following = true;
+            _enemyTracked = newEnemy;
         }
     }
 

@@ -1,22 +1,38 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-/*
- * CHoc spikes is the projectile of choc tower
- */
+/// <summary>
+/// Choc spikes is used by Roots towers.
+/// </summary>
 public class ChocSpikes : Projectile
 {
+    /// <summary>
+    /// Does the projectile is following an enemy?
+    /// </summary>
     protected bool _following = false;
 
+    /// <summary>
+    /// Does the projectile is attacking an enemy?
+    /// </summary>
     protected bool _attacking = false;
 
+    /// <summary>
+    /// Current animator.
+    /// </summary>
     protected Animator _animator;
 
+
+    /// <summary>
+    /// Can the spike destroy some armor on hit?
+    /// </summary>
     private bool _canDestroyArmor = false;
 
 
-
-    //Method used to initialize class (like a constructor)
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="newPool">Pool related to this projectile</param>
+    /// <param name="newPosition">New position of this projectile</param>
     public void Initialize(ProjectilePool newPool, Vector2 newPosition)
     {
         _following = false;
@@ -34,6 +50,27 @@ public class ChocSpikes : Projectile
     }
 
 
+    /// <summary>
+    /// Update method, called each frame.
+    /// </summary>
+    protected override void Update()
+    {
+        if (_following)
+        {
+            if (_enemyTracked != null)
+                TrackEnemy();
+            else if (FollowPoint(_goalPosition, false))
+                StopProjectile();
+        }
+    }
+
+
+    /// <summary>
+    /// Method used by tower when attacking an enemy.
+    /// </summary>
+    /// <param name="newEnemy">Enemy aimed</param>
+    /// <param name="newData">New attack for this spike</param>
+    /// <param name="canDestroyArmor">Can this projectile destroys armor?</param>
     public void StartFollowing(Enemy newEnemy, Attack newData, bool canDestroyArmor)
     {
         if (!_following)
@@ -47,19 +84,9 @@ public class ChocSpikes : Projectile
     }
 
 
-    protected override void Update()
-    {
-        if (_following)
-        {
-            if (_enemyTracked != null)
-                TrackEnemy();
-            else if (FollowPoint(_goalPosition, false))
-                StopProjectile();
-        }
-    }
-
-
-    //Method used to track an enemy moving 
+    /// <summary>
+    /// Method used to track and follow an enemy.
+    /// </summary>
     protected override void TrackEnemy()
     {
         if (_enemyTracked.gameObject.activeSelf)
@@ -75,15 +102,15 @@ public class ChocSpikes : Projectile
     }
 
 
-    //Coroutine used to attack
+    /// <summary>
+    /// Method called to strike an enemy.
+    /// </summary>
+    /// <remarks>Needs to be a coroutine because animation</remarks>
     private IEnumerator Strike()
     {
         _attacking = true;
-
-        //Time to attack
         _animator.enabled = true;
 
-        //Time to stay a little longer, visibility purpose
         AttackEnemy(_enemyTracked);
 
         _following = false;

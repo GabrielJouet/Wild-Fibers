@@ -5,9 +5,15 @@
 /// </summary>
 public class Projectile : MonoBehaviour
 {
+    /// <summary>
+    /// Speed of this projectile.
+    /// </summary>
     [SerializeField]
     protected float _projectileSpeed;
 
+    /// <summary>
+    /// Attack linked.
+    /// </summary>
     protected Attack _attack;
 
     /// <summary>
@@ -15,9 +21,16 @@ public class Projectile : MonoBehaviour
     /// </summary>
     protected ProjectilePool _projectilePool;
 
+    /// <summary>
+    /// Which enemy is tracked by this projectile?
+    /// </summary>
     protected Enemy _enemyTracked;
 
+    /// <summary>
+    /// The actual goal position of this projectile.
+    /// </summary>
     protected Vector3 _goalPosition;
+
 
 
     /// <summary>
@@ -37,6 +50,9 @@ public class Projectile : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Update is called each frame.
+    /// </summary>
     protected virtual void Update()
     {
         if (_enemyTracked != null)
@@ -46,7 +62,10 @@ public class Projectile : MonoBehaviour
     }
 
 
-    //Method used to track an enemy moving 
+
+    /// <summary>
+    /// Method used to track a specific enemy.
+    /// </summary>
     protected virtual void TrackEnemy()
     {
         if (_enemyTracked.gameObject.activeSelf)
@@ -65,9 +84,11 @@ public class Projectile : MonoBehaviour
     }
 
 
-    //Method used to follow a point moving in space
-    //
-    //Parameter => the point position in a vector 3
+    /// <summary>
+    /// Method used to follow a point in space.
+    /// </summary>
+    /// <param name="position">The new position to move</param>
+    /// <param name="rotate">Does the projectile rotate during move?</param>
     protected bool FollowPoint(Vector3 position, bool rotate)
     {
         transform.position = Vector3.MoveTowards(transform.position, position, _projectileSpeed * Time.deltaTime);
@@ -96,7 +117,7 @@ public class Projectile : MonoBehaviour
 
 
     /// <summary>
-    /// Method called when a projectile hurt an enemy.
+    /// Method called when a projectile hurt an enemy or stop moving.
     /// </summary>
     public void StopProjectile()
     {
