@@ -33,6 +33,8 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     public int BaseShieldValue { get => _baseShieldValue; set => _baseShieldValue = value; }
 
 
+
+    #region Unused
     public bool StopWhileShielding { get; set; }
 
     public float TimeBetweenSpawn { get; }
@@ -42,6 +44,7 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     public bool StopWhileSpawning { get; }
 
     public int NumberOfEnemiesPerSpawn { get; }
+    #endregion
 
 
 
@@ -81,6 +84,11 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     }
 
 
+    /// <summary>
+    /// Method used to change shield value.
+    /// </summary>
+    /// <param name="shieldValue">New shield value</param>
+    /// <param name="dotApplied">Does a dot is applied to the shield?</param>
     public void ActivateShield(float shieldValue, bool dotApplied)
     {
         Moving = !StopWhileShielding;
@@ -92,6 +100,10 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     }
 
 
+    /// <summary>
+    /// Default shield value.
+    /// </summary>
+    /// <param name="dotApplied">Does a dot is applied to the shield?</param>
     public void ResetShield(bool dotApplied)
     {
         if (dotApplied)

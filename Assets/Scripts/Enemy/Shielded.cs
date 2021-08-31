@@ -67,6 +67,7 @@ public class Shielded : Enemy, IShieldable
     /// Method used to change shield value.
     /// </summary>
     /// <param name="shieldValue">New shield value</param>
+    /// <param name="dotApplied">Does a dot is applied to the shield?</param>
     public void ActivateShield(float shieldValue, bool dotApplied)
     {
         Moving = !StopWhileShielding;
@@ -81,6 +82,7 @@ public class Shielded : Enemy, IShieldable
     /// <summary>
     /// Default shield value.
     /// </summary>
+    /// <param name="dotApplied">Does a dot is applied to the shield?</param>
     public void ResetShield(bool dotApplied)
     {
         if (dotApplied)

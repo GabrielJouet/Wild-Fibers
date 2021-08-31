@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     public string Name { get => _displayName; }
 
 
+    #region Display
     [Header("Display")]
 
     /// <summary>
@@ -35,7 +36,7 @@ public class Enemy : MonoBehaviour
     /// Dot display object.
     /// </summary>
     [SerializeField]
-    protected SpriteRenderer _dotDisplay;
+    protected GameObject _dotDisplay;
 
     /// <summary>
     /// Sprite renderer component.
@@ -48,8 +49,10 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected Animator _animator;
+    #endregion
 
 
+    #region Particles
     [Header("Particle")]
 
     /// <summary>
@@ -63,8 +66,10 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected List<Transform> _particleEmissionsPoints;
+    #endregion
 
 
+    #region Behavior
     [Header("Behaviour Variables")]
 
     /// <summary>
@@ -143,8 +148,10 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     protected Transform _damagePosition;
     public Vector2 DamagePosition { get => _damagePosition.position; }
+    #endregion
 
 
+    #region Bestiary
     [Header("Bestiary related")]
 
     /// <summary>
@@ -197,9 +204,7 @@ public class Enemy : MonoBehaviour
     /// Health in string version.
     /// </summary>
     public string HealthInfo { get => _healthMax.ToString(); }
-
-    protected List<Attack> _dots = new List<Attack>();
-
+    #endregion
 
     /// <summary>
     /// Does the enemy is moving?
@@ -215,7 +220,6 @@ public class Enemy : MonoBehaviour
     /// Particle controller component.
     /// </summary>
     protected ParticleController _particleController;
-
 
     /// <summary>
     /// Loaded path.
@@ -242,8 +246,15 @@ public class Enemy : MonoBehaviour
     /// </summary>
     public BackgroudSelecter InformationUI { get; set; }
 
-
+    /// <summary>
+    /// Current attacks waited.
+    /// </summary>
     public List<Attack> Attacks { get; set; } = new List<Attack>();
+
+    /// <summary>
+    /// Current dot used.
+    /// </summary>
+    protected List<Attack> _dots = new List<Attack>();
 
 
     /// <summary>
@@ -252,6 +263,9 @@ public class Enemy : MonoBehaviour
     public bool CanBeTargeted { get; protected set; } = true;
 
 
+    /// <summary>
+    /// Is the enemy dotted?
+    /// </summary>
     public bool IsDotted { get; protected set; }
 
 
@@ -263,7 +277,7 @@ public class Enemy : MonoBehaviour
     /// <param name="pathIndex">Current progression on the path</param>
     public virtual void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
-        _dotDisplay.gameObject.SetActive(false);
+        _dotDisplay.SetActive(false);
         IsDotted = false;
         CanBeTargeted = true;
         Attacks.Clear();
@@ -332,12 +346,13 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Method to remove health to enemy.
     /// </summary>
+    /// <param name="newAttack">The related attack</param>
     public void TakeDamage(Attack newAttack)
     {
         float armorThrough = newAttack.ArmorThrough;
         float damage = newAttack.Damage;
 
-        int damageLeft = Mathf.FloorToInt(Armor - armorThrough < 0 ? damage + (damage * (armorThrough - Armor)/100)/2 : damage - ((Armor - armorThrough)/100 * damage));
+        int damageLeft = Mathf.FloorToInt(Armor - armorThrough < 0 ? damage + (damage * (armorThrough - Armor) / 100) / 2 : damage - ((Armor - armorThrough) / 100 * damage));
 
         TakeDamage(damageLeft);
 
@@ -388,6 +403,7 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Coroutine used to delay the slow down reset.
     /// </summary>
+    /// <param name="slowDownTime">The slow down time</param>
     /// <returns>Yield the slow down reset time</returns>
     protected IEnumerator ResetSlowDown(float slowDownTime)
     {
@@ -400,14 +416,14 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Method used to apply a dot on the enemy.
     /// </summary>
+    /// <param name="newAttack">The new dot applied</param>
     protected void ApplyDot(Attack newAttack)
     {
         IsDotted = true;
 
         _dots.Add(newAttack);
 
-        //TO REWORK, ITS NOT A PROPER WAY TO DISPLAY DOT
-        _dotDisplay.gameObject.SetActive(true);
+        _dotDisplay.SetActive(true);
 
         if (isActiveAndEnabled)
             StartCoroutine(TakePersistentDamage(newAttack));
@@ -417,6 +433,7 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Coroutine used take damage from dot.
     /// </summary>
+    /// <param name="newDot">The dot applied</param>
     /// <returns>Yield 0.5 sec</returns>
     protected IEnumerator TakePersistentDamage(Attack newDot)
     {
@@ -435,7 +452,7 @@ public class Enemy : MonoBehaviour
 
         if (_dots.Count == 0)
         {
-            _dotDisplay.gameObject.SetActive(false);
+            _dotDisplay.SetActive(false);
             IsDotted = false;
         }
 
@@ -455,6 +472,10 @@ public class Enemy : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method called when a tower destroy a bit of armor each hit.
+    /// </summary>
+    /// <param name="percentage">The percentage broken by hit</param>
     public void DestroyArmor(int percentage)
     {
         ArmorMax -= percentage;
@@ -500,10 +521,7 @@ public class Enemy : MonoBehaviour
 
         int total = 0;
         foreach (Attack current in Attacks)
-            total += Mathf.FloorToInt(Armor - current.ArmorThrough < 0 ? current.Damage + (current.Damage * (current.ArmorThrough - Armor) / 100) / 2 : current.Damage - ((Armor - current.ArmorThrough) / 100 * current.Damage));
-
-        foreach (Attack current in _dots)
-            total += Mathf.FloorToInt(current.DotDamage * 2 * current.DotDuration);
+            total += Mathf.FloorToInt(Armor - current.ArmorThrough < 0 ? current.Damage + (current.Damage * (current.ArmorThrough - Armor) / 100) / 2 : current.Damage - ((Armor - current.ArmorThrough) / 100 * current.Damage) + current.DotDamage * 2 * current.DotDuration);
 
         if (Health - total <= 0)
             CanBeTargeted = false;
@@ -513,6 +531,7 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Activate or desactivate selector state.
     /// </summary>
+    /// <param name="state">The state value</param>
     public void SetSelector(bool state) 
     { 
         _selector.SetActive(state);
