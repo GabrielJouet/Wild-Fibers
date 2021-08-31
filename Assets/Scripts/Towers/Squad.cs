@@ -12,27 +12,7 @@ public class Squad : ScriptableObject
     /// </summary>
     [SerializeField]
     private List<TowerData> _towers;
-    private readonly List<TowerData> _towersWithChanges = new List<TowerData>();
-    public List<TowerData> Towers 
-    { 
-        get
-        {
-            //When the squad is not yet initialized, we update it.
-            if (_towersWithChanges.Count == 0)
-            {
-                foreach (TowerData tower in _towers)
-                {
-                    TowerData buffer = CreateInstance<TowerData>();
-                    buffer.Populate(tower);
-                    _towersWithChanges.Add(buffer);
-                }
-            }
-
-            return _towersWithChanges;
-        }
-
-        private set => _towers = value;
-    }
+    public List<TowerData> Towers { get => _towers; private set => _towers = value; }
 
 
     /// <summary>
@@ -76,7 +56,15 @@ public class Squad : ScriptableObject
     public void Populate(Squad clone)
     {
         name = clone.name;
-        Towers = clone.Towers;
+
+        Towers = new List<TowerData>();
+        foreach (TowerData tower in clone.Towers)
+        {
+            TowerData buffer = CreateInstance<TowerData>();
+            buffer.Populate(tower);
+            Towers.Add(buffer);
+        }
+
         Augmentations = clone.Augmentations;
         SquadSprite = clone.SquadSprite;
         LivesBonus = clone.LivesBonus;
@@ -132,7 +120,17 @@ public class Squad : ScriptableObject
 
             //And a better resell price on the third.
             if (currentTower.AugmentationLevel > 2)
+            {
+                foreach (TowerData tower in currentTower.Upgrades)
+                {
+                    foreach (TowerData towerUpgrades in tower.Upgrades)
+                        towerUpgrades.IncreaseResellPrice(1.25f);
+
+                    tower.IncreaseResellPrice(1.25f);
+                }
+
                 currentTower.IncreaseResellPrice(1.25f);
+            }
         }
 
         LivesBonus = _livesBonus;
