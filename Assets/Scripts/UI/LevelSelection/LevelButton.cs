@@ -20,6 +20,9 @@ public class LevelButton : MonoBehaviour
     [SerializeField]
     private SpriteRenderer _hoverDisplayer;
 
+    /// <summary>
+    /// Level data associated with this button.
+    /// </summary>
     [SerializeField]
     private LevelData _levelData;
     public LevelData LevelData { get => _levelData; }
@@ -90,7 +93,9 @@ public class LevelButton : MonoBehaviour
     private SpriteRenderer _buttonDisplay;
 
 
-
+    /// <summary>
+    /// Awake method, called at first.
+    /// </summary>
     private void Awake()
     {
         _buttonDisplay = GetComponent<SpriteRenderer>();

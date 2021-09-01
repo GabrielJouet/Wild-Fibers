@@ -1,12 +1,22 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class used to handle the skill tree.
+/// </summary>
 public class SkillTree : MonoBehaviour
 {
+    /// <summary>
+    /// List of skill component.
+    /// </summary>
     [SerializeField]
     private List<SkillUpgrades> _skills;
-    
-    
+
+
+
+    /// <summary>
+    /// Start method, called after Awake.
+    /// </summary>
     private void Start()
     {
         Squad currentSquad = Controller.Instance.SquadControl.CurrentSquad;

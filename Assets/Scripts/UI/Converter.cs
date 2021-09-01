@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
+﻿/// <summary>
+/// Class used to handle conversion between numeric to string values.
+/// </summary>
 public static class Converter
 {
     private static readonly string veryFast = "V. Fast";

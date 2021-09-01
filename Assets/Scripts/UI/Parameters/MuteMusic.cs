@@ -26,8 +26,14 @@ public class MuteMusic : MonoBehaviour
     private Sprite _activatedSprite;
 
 
+    /// <summary>
+    /// Does the button is activated?
+    /// </summary>
     private bool _activated = true;
 
+    /// <summary>
+    /// Save controller component.
+    /// </summary>
     private SaveController _saveController;
 
 
@@ -35,6 +41,7 @@ public class MuteMusic : MonoBehaviour
     /// <summary>
     /// Coroutine used for initialization.
     /// </summary>
+    /// <remarks>We wait for the save controller to be initialized</remarks>
     private IEnumerator Start()
     {
         _saveController = Controller.Instance.SaveControl;

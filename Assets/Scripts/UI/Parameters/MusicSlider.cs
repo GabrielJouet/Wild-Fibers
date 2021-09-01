@@ -5,6 +5,7 @@ using UnityEngine.UI;
 /// <summary>
 /// Class used to handle music and sound levels.
 /// </summary>
+[RequireComponent(typeof(Slider))]
 public class MusicSlider : MonoBehaviour
 {
     /// <summary>
@@ -14,8 +15,14 @@ public class MusicSlider : MonoBehaviour
     private bool _sound;
 
 
+    /// <summary>
+    /// Save controller component.
+    /// </summary>
     private SaveController _saveController;
 
+    /// <summary>
+    /// Slider component.
+    /// </summary>
     private Slider _slider;
 
 
