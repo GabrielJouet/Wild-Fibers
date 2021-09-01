@@ -184,7 +184,7 @@ MonoBehaviour:
   _displayName: Digger
   _selector: {fileID: 7325471192700415939}
   _healthBar: {fileID: 3144667757886646281}
-  _dotDisplay: {fileID: 3511199004427678630}
+  _dotDisplay: {fileID: 1472001672212050052}
   _spriteRenderer: {fileID: 2394709574171677322}
   _animator: {fileID: 3597370224652989133}
   _damageParticle: {fileID: 4405452952222755525, guid: 5d5493e82985e114dab5f2a1b97dde63,
@@ -314,7 +314,7 @@ PrefabInstance:
     - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
@@ -383,15 +383,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a7ebdb59535a441a4c7b5d6e455920, type: 3}
---- !u!4 &204748521848675915 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!1 &1472001672212050052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4206444510151701932, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 3318540798143825192}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &3511199004427678630 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!4 &204748521848675915 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 3318540798143825192}
   m_PrefabAsset: {fileID: 0}

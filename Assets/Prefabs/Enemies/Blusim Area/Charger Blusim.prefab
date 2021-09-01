@@ -184,7 +184,7 @@ MonoBehaviour:
   _displayName: Charger
   _selector: {fileID: 3926785066840358764}
   _healthBar: {fileID: 5063341698596176217}
-  _dotDisplay: {fileID: 5416901568167784886}
+  _dotDisplay: {fileID: 8069151022372795028}
   _spriteRenderer: {fileID: 6617693188845866255}
   _animator: {fileID: 5545853804847231419}
   _damageParticle: {fileID: 4405452952222755525, guid: 5d5493e82985e114dab5f2a1b97dde63,
@@ -568,15 +568,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a7ebdb59535a441a4c7b5d6e455920, type: 3}
---- !u!4 &8737425352351800411 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!1 &8069151022372795028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4206444510151701932, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 6168569076705216312}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &5416901568167784886 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!4 &8737425352351800411 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 6168569076705216312}
   m_PrefabAsset: {fileID: 0}

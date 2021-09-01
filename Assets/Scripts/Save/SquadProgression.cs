@@ -1,9 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 
+/// <summary>
+/// Class used to handle and save a specific squad progression.
+/// </summary>
 [Serializable]
 public class SquadProgression
 {
+    /// <summary>
+    /// Augmentation level max of this squad.
+    /// </summary>
     public List<int> AugmentationLevelMax { get; private set; }
 
 
@@ -19,16 +25,11 @@ public class SquadProgression
     public List<LevelSave> Saves { get; private set; }
 
 
-
-    public SquadProgression(List<LevelSave> newSaves)
+    /// <summary>
+    /// How much skill points the squad can use?
+    /// </summary>
+    public int CurrencyAvailable
     {
-        Saves = new List<LevelSave>(newSaves);
-        AugmentationLevelMax = new List<int> { 0, 0, 0, 0, 0 };
-    }
-
-
-    public int CurrencyAvailable 
-    { 
         get
         {
             int buffer = 0;
@@ -44,6 +45,23 @@ public class SquadProgression
     }
 
 
+
+    /// <summary>
+    /// Constructor.
+    /// </summary>
+    /// <param name="newSaves">New save for this squad</param>
+    public SquadProgression(List<LevelSave> newSaves)
+    {
+        Saves = new List<LevelSave>(newSaves);
+        AugmentationLevelMax = new List<int> { 0, 0, 0, 0, 0 };
+    }
+
+
+    /// <summary>
+    /// Method called when a new augmentation is bought.
+    /// </summary>
+    /// <param name="index">The augmentation index</param>
+    /// <param name="newLevel">The new augmentation level</param>
     public void AddNewAugmentation(int index, int newLevel)
     {
         AugmentationLevelMax[index] = newLevel;

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class used by toxic-like towers for behavior modification purposes.
+/// </summary>
 public class ToxicIvy : Tower
 {
     /// <summary>
@@ -10,39 +13,62 @@ public class ToxicIvy : Tower
     protected Stack<ToxicLeaf> _availableLeaves = new Stack<ToxicLeaf>();
 
 
+    /// <summary>
+    /// Number of shots before a bigger projectile is sent.
+    /// </summary>
     private int _shotsBeforeBiggerProjectile = 8;
 
 
+
+    /// <summary>
+    /// Level two augmentation special behavior.
+    /// </summary>
     protected override void LevelTwoAugmentation()
     {
         Data.DotDuration += 0.5f;
     }
 
 
+    /// <summary>
+    /// Level three augmentation special behavior.
+    /// </summary>
     protected override void LevelThreeAugmentation()
     {
         Data.Dot++;
     }
 
 
+    /// <summary>
+    /// Level four augmentation special behavior.
+    /// </summary>
     protected override void LevelFourAugmentation()
     {
         Data.ArmorThroughMalus *= 1.05f;
     }
 
 
+
+    /// <summary>
+    /// Method called before an attack occurs to apply modifications on the current attack.
+    /// </summary>
+    /// <param name="enemy">The enemy targeted</param>
+    /// <returns>The new attack with new parameters</returns>
+    /// <remarks>This method is only valable when the augmentation level is higher than 0</remarks>
     protected override Attack ChangeNextAttack(Enemy enemy)
     {
         Attack newAttack = new Attack(_attack);
 
-        if (_shotsBeforeBiggerProjectile > 0)
-            _shotsBeforeBiggerProjectile--;
-        else
+        if (Data.AugmentationLevel > 0)
         {
-            newAttack.DotDamage = Mathf.FloorToInt(newAttack.DotDamage * 1.5f);
-            newAttack.ArmorThroughMalus *= 1.75f;
+            if (_shotsBeforeBiggerProjectile > 0)
+                _shotsBeforeBiggerProjectile--;
+            else
+            {
+                newAttack.DotDamage = Mathf.FloorToInt(newAttack.DotDamage * 1.5f);
+                newAttack.ArmorThroughMalus *= 1.75f;
 
-            _shotsBeforeBiggerProjectile = 8;
+                _shotsBeforeBiggerProjectile = 8;
+            }
         }
 
         return newAttack;
@@ -77,6 +103,7 @@ public class ToxicIvy : Tower
         }
     }
 
+
     /// <summary>
     /// Upgrade special behavior method used to improve tower method Upgrade.
     /// </summary>
@@ -92,6 +119,17 @@ public class ToxicIvy : Tower
         for (int i = 0; i < _towerData.Shots; i ++) 
             StartCoroutine(SummonLeaf(0.5f));
     }
+
+
+    /// <summary>
+    /// Method called when the tower is resell.
+    /// </summary>
+    protected override void ResellSpecialBehavior()
+    {
+        foreach (ToxicLeaf current in _availableLeaves)
+            current.StopProjectile();
+    }
+
 
     /// <summary>
     /// Method used to summon projectile.

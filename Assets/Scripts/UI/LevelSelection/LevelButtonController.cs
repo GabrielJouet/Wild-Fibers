@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class used to handle several level button in level selection.
+/// </summary>
 public class LevelButtonController : MonoBehaviour
 {
     /// <summary>

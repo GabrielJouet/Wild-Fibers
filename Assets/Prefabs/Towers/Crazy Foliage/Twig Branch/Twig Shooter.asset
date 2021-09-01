@@ -18,6 +18,7 @@ MonoBehaviour:
   _sprite: {fileID: 6408979333349359234, guid: 57baeccb8e0e34146890d817328beafd, type: 3}
   _shadowSprite: {fileID: -5974878852189205205, guid: 0e04fa1292b970b46a872d4eb69229d5,
     type: 3}
+  _scriptName: Twigs
   _projectileUsed: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
     type: 3}
   _timeBetweenShots: 1.05
@@ -40,7 +41,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c46aaf1140295aa43945c1928fd3873b, type: 2}
   - {fileID: 11400000, guid: 269f3af02c1d39843b41f07f0de7dbdd, type: 2}
   - {fileID: 11400000, guid: fe6c0a1a6d5261c46b469793921138a5, type: 2}
-  _scriptName: Twigs
   _special: 
   _screenShot: {fileID: 6408979333349359234, guid: 57baeccb8e0e34146890d817328beafd,
     type: 3}

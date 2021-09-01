@@ -1,4 +1,7 @@
-﻿public interface IShieldable
+﻿/// <summary>
+/// Interface used for entity shielding.
+/// </summary>
+public interface IShieldable
 {
     /// <summary>
     /// Default shield value.

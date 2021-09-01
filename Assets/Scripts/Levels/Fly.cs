@@ -1,17 +1,32 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Class used to emits a small light in dark environnements.
+/// </summary>
 public class Fly : MonoBehaviour
 {
+    /// <summary>
+    /// Movement max of the fly.
+    /// </summary>
     [SerializeField]
     private float _movementMax;
 
 
+    /// <summary>
+    /// Goal position.
+    /// </summary>
     private Vector3 _goalPosition;
 
+    /// <summary>
+    /// Speed of the fly, computed each move.
+    /// </summary>
     private float _speed;
 
 
+    /// <summary>
+    /// Start used as coroutine, each time a fly travel it computes a new distance and speed.
+    /// </summary>
     private IEnumerator Start()
     {
         while (true)
@@ -23,6 +38,9 @@ public class Fly : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Update is called each frame.
+    /// </summary>
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, _goalPosition, Time.deltaTime * _speed);

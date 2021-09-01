@@ -7,8 +7,11 @@ using UnityEngine;
 /// </summary>
 /// <remarks>Needs a static depth manager</remarks>
 [RequireComponent(typeof(StaticDepthManager))]
-public class Tower : MonoBehaviour
+public abstract class Tower : MonoBehaviour
 {
+    /// <summary>
+    /// Data associated to this tower.
+    /// </summary>
     [SerializeField]
     protected TowerData _towerData;
     public TowerData Data { get => _towerData; }
@@ -18,17 +21,22 @@ public class Tower : MonoBehaviour
     /// Range display.
     /// </summary>
     protected Transform _transformRange;
-    protected Vector3 _initialRangeScale;
 
     /// <summary>
     /// Collider used in range detection.
     /// </summary>
     protected Transform _collider;
-    protected Vector3 _initialColliderScale;
 
+    /// <summary>
+    /// Sprite renderer component.
+    /// </summary>
     protected SpriteRenderer _spriteRenderer;
 
+    /// <summary>
+    /// Sprite renderer component of the shadow.
+    /// </summary>
     protected SpriteRenderer _shadowSpriteRenderer;
+
 
     /// <summary>
     /// Selector object used when clicked.
@@ -71,14 +79,26 @@ public class Tower : MonoBehaviour
     /// </summary>
     protected TowerPool _towerPool;
 
+    /// <summary>
+    /// How much gold was used on this tower from the beginning.
+    /// </summary>
     public int CumulativeGold { get; protected set; } = 0;
 
+    /// <summary>
+    /// Basic attack of this tower.
+    /// </summary>
     protected Attack _attack;
 
+    /// <summary>
+    /// Queue of attacks, used for multi shots towers.
+    /// </summary>
     protected Queue<Attack> _nextAttack = new Queue<Attack>();
 
 
 
+    /// <summary>
+    /// Awake method used at initialization.
+    /// </summary>
     protected void Awake()
     {
         _transformRange = transform.Find("Range");
@@ -88,9 +108,6 @@ public class Tower : MonoBehaviour
         _shadowSpriteRenderer = transform.Find("Shadow").GetComponent<SpriteRenderer>();
 
         _selector = transform.Find("Selecter").gameObject;
-
-        _initialColliderScale = _collider.localScale;
-        _initialRangeScale = _transformRange.localScale;
     }
 
 
@@ -119,12 +136,18 @@ public class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method used to reset the tower to tower data values.
+    /// </summary>
+    /// <param name="newData">The new data to use</param>
     private void SetDefaultValues(TowerData newData)
     {
         _selector.SetActive(false);
         _transformRange.gameObject.SetActive(false);
 
-        _towerData = newData;
+        _towerData = ScriptableObject.CreateInstance<TowerData>();
+        _towerData.Populate(newData);
+
         _attack = new Attack(Data.Damage, Data.ArmorThrough, Data.DotDuration, Data.ArmorThroughMalus, Data.Dot);
         CheckAugmentation();
 
@@ -133,13 +156,16 @@ public class Tower : MonoBehaviour
         _spriteRenderer.sprite = Data.Sprite;
         _shadowSpriteRenderer.sprite = Data.Shadow;
 
-        _transformRange.localScale = _initialRangeScale * Data.Range;
-        _collider.localScale = _initialColliderScale * (0.9f * Data.Range);
+        _transformRange.localScale = Data.Range * Vector3.one;
+        _collider.localScale = (0.9f * Data.Range) * Vector3.one;
 
         _collider.GetComponent<TowerCollider>().ParentTower = this;
     }
 
 
+    /// <summary>
+    /// Method used to add a special behavior at the start of the initialization.
+    /// </summary>
     protected virtual void SpecialBehavior() { }
 
 
@@ -192,6 +218,9 @@ public class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method override by children to improve resell behavior.
+    /// </summary>
     protected virtual void ResellSpecialBehavior() { }
 
 
@@ -208,16 +237,23 @@ public class Tower : MonoBehaviour
         UpgradeSpecialBehavior();
     }
 
-    protected virtual void UpgradeSpecialBehavior() { }
 
     /// <summary>
-    /// Method used to add a spec to the tower.
+    /// Method override by children to improve upgrade behavior.
     /// </summary>
-    public virtual void AddSpec(TowerSpec newSpec)
-    {
+    protected virtual void UpgradeSpecialBehavior() { }
 
-    }
 
+    /// <summary>
+    /// Method used to add a spec to the tower, will be override by children.
+    /// </summary>
+    /// <param name="newSpec">The new spec to add</param>
+    public virtual void AddSpec(TowerSpec newSpec) { }
+
+
+    /// <summary>
+    /// Method used to check augmentation level of a tower and applying changes.
+    /// </summary>
     protected void CheckAugmentation()
     {
         if (Data.AugmentationLevel > 0)
@@ -245,18 +281,33 @@ public class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method called when the tower has one augmentation.
+    /// </summary>
     protected virtual void LevelOneAugmentation() { }
 
 
+    /// <summary>
+    /// Method called when the tower has two augmentations.
+    /// </summary>
     protected virtual void LevelTwoAugmentation() { }
 
 
+    /// <summary>
+    /// Method called when the tower has three augmentations.
+    /// </summary>
     protected virtual void LevelThreeAugmentation() { }
 
 
+    /// <summary>
+    /// Method called when the tower has four augmentations.
+    /// </summary>
     protected virtual void LevelFourAugmentation() { }
 
 
+    /// <summary>
+    /// Method called when the tower has five augmentations.
+    /// </summary>
     protected virtual void LevelFiveAugmentation() { }
     #endregion 
 
@@ -342,6 +393,10 @@ public class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method override by children to change their attack.
+    /// </summary>
+    /// <param name="enemy">Enemt targeted</param>
     protected virtual Attack ChangeNextAttack(Enemy enemy)
     {
         return _attack;
@@ -371,15 +426,17 @@ public class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method called when the tower needs to be desactivated.
+    /// </summary>
     public void DesactivateTower()
     {
         DesactivateRangeDisplay();
 
-        _collider.localScale = _initialColliderScale;
-        _transformRange.localScale = _initialRangeScale;
+        _collider.localScale = Vector3.one;
+        _transformRange.localScale = Vector3.one;
 
         gameObject.SetActive(false);
     }
-
     #endregion
 }

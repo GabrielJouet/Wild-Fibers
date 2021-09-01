@@ -27,6 +27,9 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private Text _levelDescription;
 
+    /// <summary>
+    /// Text component of the side level (and challenge).
+    /// </summary>
     [SerializeField]
     private Text _sideDescription;
 
@@ -42,21 +45,37 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private List<Image> _scores;
 
+    /// <summary>
+    /// Side and challenge score icon.
+    /// </summary>
     [SerializeField]
     private Image _sideScore;
 
+    /// <summary>
+    /// Side button component.
+    /// </summary>
     [SerializeField]
     private Button _sideButton;
 
+    /// <summary>
+    /// Challenge button component.
+    /// </summary>
     [SerializeField]
     private Button _challengeButton;
 
 
+    /// <summary>
+    /// Classic layout parent object.
+    /// </summary>
     [SerializeField]
     private GameObject _classicLayout;
 
+    /// <summary>
+    /// Side and challenge layout parent object.
+    /// </summary>
     [SerializeField]
     private GameObject _sideLayout;
+
 
     /// <summary>
     /// Activated sprite of score items.
@@ -70,22 +89,40 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private Sprite _desactivatedSprite;
 
+    /// <summary>
+    /// Sprite of the side activated.
+    /// </summary>
     [SerializeField]
     private Sprite _sideActivated;
 
+    /// <summary>
+    /// Sprite of the side desactivated.
+    /// </summary>
     [SerializeField]
     private Sprite _sideDesactivated;
 
+    /// <summary>
+    /// Side icon component.
+    /// </summary>
     [SerializeField]
     private Image _sideIcon;
 
 
+    /// <summary>
+    /// Sprite of the challenge activated.
+    /// </summary>
     [SerializeField]
     private Sprite _challengeActivated;
 
+    /// <summary>
+    /// Sprite of the challenge desactivated.
+    /// </summary>
     [SerializeField]
     private Sprite _challengeDesactivated;
 
+    /// <summary>
+    /// Challenge icon component.
+    /// </summary>
     [SerializeField]
     private Image _challengeIcon;
 
@@ -105,14 +142,21 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private DisplayController _displayController;
 
+    /// <summary>
+    /// Level data buffered.
+    /// </summary>
     private LevelData _level;
 
+    /// <summary>
+    /// Display type of this level.
+    /// </summary>
     private LevelType _displayType;
 
 
     /// <summary>
     /// Method used to open level selection menu.
     /// </summary>
+    /// <param name="buttonUsed">Which button was used</param>
     public void ActivateLevelSelectionMenu(LevelButton buttonUsed)
     {
         _level = buttonUsed.LevelData;
@@ -133,6 +177,9 @@ public class LevelSelection : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method called to activate the base menu.
+    /// </summary>
     public void ActivateBaseMenu()
     {
         _classicLayout.SetActive(true);
@@ -157,6 +204,10 @@ public class LevelSelection : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method called to activate alternate menu (side or challenge).
+    /// </summary>
+    /// <param name="levelType">The type of level activated, side or challenge</param>
     public void ActivateAlternateMenu(string levelType)
     {
         LevelType enumBuffer = (LevelType)System.Enum.Parse(typeof(LevelType), levelType);

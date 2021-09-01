@@ -1,5 +1,8 @@
 ﻿using System.Collections;
 
+/// <summary>
+/// Interface used for spawn of entity.
+/// </summary>
 public interface ISpawnable
 {
     /// <summary>

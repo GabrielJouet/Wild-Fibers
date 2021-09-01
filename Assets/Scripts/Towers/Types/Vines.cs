@@ -1,28 +1,36 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Class used by vines-like tower for behavior purpose.
+/// </summary>
 public class Vines : Tower
 {
+    /// <summary>
+    /// Level one augmentation special behavior.
+    /// </summary>
     protected override void LevelOneAugmentation()
     {
         Data.Damage++;
     }
 
 
+    /// <summary>
+    /// Level five augmentation special behavior.
+    /// </summary>
     protected override void LevelFiveAugmentation()
     {
         Data.Range *= 1.15f;
     }
 
 
-    protected override Attack ChangeNextAttack(Enemy enemy)
+    /// <summary>
+    /// Method used to override special behavior.
+    /// </summary>
+    /// <remarks>Called after initialization and before first update</remarks>
+    protected override void SpecialBehavior() 
     {
-        Attack newAttack = new Attack(_attack);
-
-        if (Data.AugmentationLevel > 3 && enemy.Flying)
-            newAttack.Damage += 2;
-
-        return newAttack;
+        _attack = new Attack(Data.Damage, Data.ArmorThrough, 0, 0, 0);
     }
 
 
@@ -33,7 +41,7 @@ public class Vines : Tower
     {
         _coroutineStarted = true;
 
-        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_nextAttack.Dequeue(), _projectilePool, transform, Data.Range);
+        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_attack, _projectilePool, transform, Data.Range, Data.AugmentationLevel > 3);
         yield return new WaitForSeconds(_towerData.TimeShots);
 
         _coroutineStarted = false;

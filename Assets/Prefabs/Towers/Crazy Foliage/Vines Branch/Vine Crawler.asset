@@ -18,6 +18,7 @@ MonoBehaviour:
   _sprite: {fileID: 1249832811290648610, guid: d66cd7d1ed7cd8844a044f06e18d4422, type: 3}
   _shadowSprite: {fileID: 4684895350081689219, guid: c7e168489f1f2224f8cada98fed0f4a7,
     type: 3}
+  _scriptName: Vines
   _projectileUsed: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,
     type: 3}
   _timeBetweenShots: 4
@@ -40,7 +41,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 01ea9e6c87a2073498d59e2b3b97f403, type: 2}
   - {fileID: 11400000, guid: 17b0757aa11fd45439e35d971ea1dfc1, type: 2}
   - {fileID: 11400000, guid: f28b3df3b9b26084490f3f73c68f25a2, type: 2}
-  _scriptName: Vines
   _special: 
   _screenShot: {fileID: 1249832811290648610, guid: d66cd7d1ed7cd8844a044f06e18d4422,
     type: 3}

@@ -35,8 +35,12 @@ public class TowerButtonController : MonoBehaviour
     [SerializeField]
     private TowerButton _sellButton;
 
+    /// <summary>
+    /// Tower upgrades buttons.
+    /// </summary>
     [SerializeField]
     private List<TowerButton> _towerUpgradesButtons;
+
 
     /// <summary>
     /// Rect transform used in movement.
@@ -50,14 +54,21 @@ public class TowerButtonController : MonoBehaviour
     /// </summary>
     public bool SellButtonActive { get => _sellButton.gameObject.activeSelf; }
 
-
+    /// <summary>
+    /// Buffer tower.
+    /// </summary>
     private Tower _currentTower;
 
-
+    /// <summary>
+    /// Squad controller component.
+    /// </summary>
     private SquadController _squadController;
 
 
 
+    /// <summary>
+    /// Awake method, called at first.
+    /// </summary>
     private void Awake()
     {
         _squadController = Controller.Instance.SquadControl;
@@ -65,7 +76,7 @@ public class TowerButtonController : MonoBehaviour
 
 
     /// <summary>
-    /// Start method, called at first.
+    /// Start method, called at first, after Awake.
     /// </summary>
     private void Start()
     {
@@ -140,6 +151,11 @@ public class TowerButtonController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method called to update the tower upgrades buttons.
+    /// </summary>
+    /// <param name="buttonIndex">The button to update</param>
+    /// <param name="index">The upgrade index</param>
     private void UpdateTowerUpgradeButtons(int buttonIndex, int index)
     {
         TowerData buffer = _currentTower.Data.Upgrades[index];
@@ -159,6 +175,10 @@ public class TowerButtonController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method called to update tower upgrade button.
+    /// </summary>
+    /// <remarks>The previous method update 2 buttons, whereas, this one only activate one</remarks>
     private void UpdateTowerUpgradeButton()
     {
         TowerData buffer = _currentTower.Data.Upgrades[0];
@@ -178,6 +198,9 @@ public class TowerButtonController : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method called to update tower specs buttons.
+    /// </summary>
     private void UpdateTowerSpecButtons()
     {
         for (int i = 0; i < _towerUpgradesButtons.Count; i++)
