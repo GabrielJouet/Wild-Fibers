@@ -162,8 +162,6 @@ public class LevelController : MonoBehaviour
             if (!current.WaveFinished)
                 result = false;
 
-        Debug.Log(result);
-
         if (result)
             StartCoroutine(DelayWave());
     }
@@ -200,8 +198,6 @@ public class LevelController : MonoBehaviour
             foreach (Spawner current in _spawners)
                 if (!current.EnemiesKilled)
                     result = false;
-
-        Debug.Log(result);
 
         if (result)
             StartCoroutine(DelayGameScreen(lose));
