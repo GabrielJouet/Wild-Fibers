@@ -43,7 +43,7 @@ public class ShockWave : Projectile
     protected override void Update()
     {
         if (transform.localScale.x < _range)
-            transform.localScale = Vector3.one * _projectileSpeed * Time.deltaTime;
+            transform.localScale += Vector3.one * _projectileSpeed * Time.deltaTime;
         else
             StopProjectile();
     }
