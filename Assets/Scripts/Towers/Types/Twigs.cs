@@ -41,7 +41,6 @@ public class Twigs : Tower
     {
         Attack newAttack = new Attack(_attack);
 
-        Debug.Log(Data.AugmentationLevel);
         if (Data.AugmentationLevel > 2)
         {
             newAttack.ArmorThroughMalus = 0;
