@@ -9,6 +9,9 @@ using UnityEngine;
 [RequireComponent(typeof(StaticDepthManager))]
 public abstract class Tower : MonoBehaviour
 {
+    /// <summary>
+    /// Data associated to this tower.
+    /// </summary>
     [SerializeField]
     protected TowerData _towerData;
     public TowerData Data { get => _towerData; }
@@ -24,9 +27,16 @@ public abstract class Tower : MonoBehaviour
     /// </summary>
     protected Transform _collider;
 
+    /// <summary>
+    /// Sprite renderer component.
+    /// </summary>
     protected SpriteRenderer _spriteRenderer;
 
+    /// <summary>
+    /// Sprite renderer component of the shadow.
+    /// </summary>
     protected SpriteRenderer _shadowSpriteRenderer;
+
 
     /// <summary>
     /// Selector object used when clicked.
@@ -208,6 +218,9 @@ public abstract class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method override by children to improve resell behavior.
+    /// </summary>
     protected virtual void ResellSpecialBehavior() { }
 
 
@@ -224,13 +237,23 @@ public abstract class Tower : MonoBehaviour
         UpgradeSpecialBehavior();
     }
 
-    protected virtual void UpgradeSpecialBehavior() { }
 
     /// <summary>
-    /// Method used to add a spec to the tower.
+    /// Method override by children to improve upgrade behavior.
     /// </summary>
+    protected virtual void UpgradeSpecialBehavior() { }
+
+
+    /// <summary>
+    /// Method used to add a spec to the tower, will be override by children.
+    /// </summary>
+    /// <param name="newSpec">The new spec to add</param>
     public virtual void AddSpec(TowerSpec newSpec) { }
 
+
+    /// <summary>
+    /// Method used to check augmentation level of a tower and applying changes.
+    /// </summary>
     protected void CheckAugmentation()
     {
         if (Data.AugmentationLevel > 0)
@@ -258,18 +281,33 @@ public abstract class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method called when the tower has one augmentation.
+    /// </summary>
     protected virtual void LevelOneAugmentation() { }
 
 
+    /// <summary>
+    /// Method called when the tower has two augmentations.
+    /// </summary>
     protected virtual void LevelTwoAugmentation() { }
 
 
+    /// <summary>
+    /// Method called when the tower has three augmentations.
+    /// </summary>
     protected virtual void LevelThreeAugmentation() { }
 
 
+    /// <summary>
+    /// Method called when the tower has four augmentations.
+    /// </summary>
     protected virtual void LevelFourAugmentation() { }
 
 
+    /// <summary>
+    /// Method called when the tower has five augmentations.
+    /// </summary>
     protected virtual void LevelFiveAugmentation() { }
     #endregion 
 
@@ -355,6 +393,10 @@ public abstract class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method override by children to change their attack.
+    /// </summary>
+    /// <param name="enemy">Enemt targeted</param>
     protected virtual Attack ChangeNextAttack(Enemy enemy)
     {
         return _attack;
@@ -384,6 +426,9 @@ public abstract class Tower : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// Method called when the tower needs to be desactivated.
+    /// </summary>
     public void DesactivateTower()
     {
         DesactivateRangeDisplay();
@@ -393,6 +438,5 @@ public abstract class Tower : MonoBehaviour
 
         gameObject.SetActive(false);
     }
-
     #endregion
 }
