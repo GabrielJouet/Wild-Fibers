@@ -23,7 +23,7 @@ MonoBehaviour:
     type: 3}
   _timeBetweenShots: 1.9
   _damage: 22
-  _armorThrough: 45
+  _armorThrough: 32
   _numberOfShots: 3
   _range: 1.15
   _canHitFlying: 0
