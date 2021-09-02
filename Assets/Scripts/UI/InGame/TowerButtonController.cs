@@ -85,7 +85,17 @@ public class TowerButtonController : MonoBehaviour
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i ++)
         {
-            if (!blockedTowers.Contains(buffer[i]))
+            bool found = false;
+            foreach(TowerData blockedTower in blockedTowers)
+            {
+                if (blockedTower.name == buffer[i].name)
+                {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
                 _towerPurchaseButtons[i].Initialize(buffer[i].Icon, buffer[i].Price, _ressourceController, buffer[i].Description);
             else
                 _towerPurchaseButtons[i].Lock();
