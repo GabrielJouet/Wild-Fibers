@@ -22,10 +22,10 @@ MonoBehaviour:
   _projectileUsed: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,
     type: 3}
   _timeBetweenShots: 3.1
-  _damage: 10
+  _damage: 12
   _armorThrough: 0
   _numberOfShots: 1
-  _range: 0.8
+  _range: 0.85
   _canHitFlying: 1
   _shotsRandomly: 0
   _armorThroughMalus: 0
