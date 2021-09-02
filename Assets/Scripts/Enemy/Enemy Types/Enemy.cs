@@ -188,7 +188,7 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Armor transformed.
     /// </summary>
-    public string ArmorInfo { get => Converter.TransformArmor(ArmorMax / 100); }
+    public string ArmorInfo { get => Converter.TransformArmor(Armor / 100); }
 
     /// <summary>
     /// Resistance transformed.
