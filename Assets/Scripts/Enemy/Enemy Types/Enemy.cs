@@ -421,6 +421,16 @@ public class Enemy : MonoBehaviour
     {
         IsDotted = true;
 
+        if (_dots.Count > 3)
+        {
+            Attack attackRemoved = _dots[0];
+            foreach(Attack attack in _dots)
+                if (attack.DotDamage * attack.DotDuration * attack.ArmorThroughMalus < attackRemoved.DotDamage * attackRemoved.DotDuration * attackRemoved.ArmorThroughMalus)
+                    attackRemoved = attack;
+
+            _dots.Remove(attackRemoved);
+        }
+
         _dots.Add(newAttack);
 
         _dotDisplay.SetActive(true);
