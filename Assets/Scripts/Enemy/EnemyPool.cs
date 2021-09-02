@@ -34,7 +34,7 @@ public class EnemyPool : MonoBehaviour
     /// <summary>
     /// The spawner related to current pool.
     /// </summary>
-    private Spawner _spawner;
+    private List<Spawner> _spawners;
 
 
     /// <summary>
@@ -49,7 +49,7 @@ public class EnemyPool : MonoBehaviour
         if(newPrefab != null)
             Enemy = newPrefab;
 
-        _spawner = null;
+        _spawners = new List<Spawner>();
         _livingEnemies.Clear();
         _waitForEnd = false;
     }
@@ -90,7 +90,8 @@ public class EnemyPool : MonoBehaviour
         _livingEnemies.Remove(newEnemy); 
 
         if (_waitForEnd && _livingEnemies.Count == 0)
-            _spawner.AllEnemiesKilled();
+            foreach (Spawner spawner in _spawners)
+                spawner.AllEnemiesKilled();
 
         newEnemy.gameObject.SetActive(false);
         _enemyPool.Push(newEnemy);
@@ -123,10 +124,11 @@ public class EnemyPool : MonoBehaviour
     public void RecordLevelEnd(Spawner newSpawner)
     {
         _waitForEnd = true;
-        _spawner = newSpawner;
+        _spawners.Add(newSpawner);
 
         if (_livingEnemies.Count == 0)
-            _spawner.AllEnemiesKilled();
+            foreach (Spawner spawner in _spawners)
+                spawner.AllEnemiesKilled();
     }
 
 
