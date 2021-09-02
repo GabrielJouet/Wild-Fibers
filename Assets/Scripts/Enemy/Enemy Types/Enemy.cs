@@ -188,7 +188,7 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Armor transformed.
     /// </summary>
-    public string ArmorInfo { get => Converter.TransformArmor(ArmorMax / 100); }
+    public string ArmorInfo { get => Converter.TransformArmor(Armor / 100); }
 
     /// <summary>
     /// Resistance transformed.
@@ -420,6 +420,16 @@ public class Enemy : MonoBehaviour
     protected void ApplyDot(Attack newAttack)
     {
         IsDotted = true;
+
+        if (_dots.Count > 3)
+        {
+            Attack attackRemoved = _dots[0];
+            foreach(Attack attack in _dots)
+                if (attack.DotDamage * attack.DotDuration * attack.ArmorThroughMalus < attackRemoved.DotDamage * attackRemoved.DotDuration * attackRemoved.ArmorThroughMalus)
+                    attackRemoved = attack;
+
+            _dots.Remove(attackRemoved);
+        }
 
         _dots.Add(newAttack);
 

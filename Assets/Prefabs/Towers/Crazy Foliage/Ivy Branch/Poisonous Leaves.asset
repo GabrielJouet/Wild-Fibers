@@ -28,7 +28,7 @@ MonoBehaviour:
   _range: 1.15
   _canHitFlying: 1
   _shotsRandomly: 1
-  _armorThroughMalus: 10
+  _armorThroughMalus: 7
   _damageOverTime: 3
   _dotDuration: 4.5
   _towerUpgrades: []
