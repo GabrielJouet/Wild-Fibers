@@ -12,12 +12,12 @@ public class TowerIcon : MonoBehaviour
     {
         transform.GetChild(0).GetComponent<TowerInfo>().Tower = newData;
 
-        if (maxLevel > 1)
+        if (maxLevel > 0)
         {
             transform.GetChild(1).GetComponent<TowerInfo>().Tower = newData.Upgrades[0];
             transform.GetChild(2).GetComponent<TowerInfo>().Tower = newData.Upgrades[1];
 
-            if (maxLevel > 2)
+            if (maxLevel > 1)
             {
                 transform.GetChild(3).GetComponent<TowerInfo>().Tower = newData.Upgrades[0].Upgrades[0];
                 transform.GetChild(4).GetComponent<TowerInfo>().Tower = newData.Upgrades[1].Upgrades[0];
