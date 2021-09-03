@@ -188,7 +188,7 @@ public class Enemy : MonoBehaviour
     /// <summary>
     /// Armor transformed.
     /// </summary>
-    public string ArmorInfo { get => Converter.TransformArmor(Armor / 100); }
+    public string ArmorInfo { get => Converter.TransformArmor((Armor > 0 ? Armor : ArmorMax) / 100); }
 
     /// <summary>
     /// Resistance transformed.
@@ -488,8 +488,8 @@ public class Enemy : MonoBehaviour
     /// <param name="percentage">The percentage broken by hit</param>
     public void DestroyArmor(int percentage)
     {
-        ArmorMax -= percentage;
-        Armor -= percentage;
+        ArmorMax = Mathf.Clamp(ArmorMax - percentage, 0, ArmorMax);
+        Armor = Mathf.Clamp(Armor - percentage, 0, Armor);
     }
 
 
