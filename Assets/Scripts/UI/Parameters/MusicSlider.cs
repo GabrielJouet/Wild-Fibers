@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -28,16 +27,13 @@ public class MusicSlider : MonoBehaviour
 
 
     /// <summary>
-    /// Method called at initialization.
+    /// Method called when the object is activated.
     /// </summary>
-    private IEnumerator Start()
+    private void OnEnable()
     {
         _saveController = Controller.Instance.SaveControl;
         _slider = GetComponent<Slider>();
-
-        yield return new WaitUntil(() => _saveController.Initialized);
-
-        _slider.value = _sound? _saveController.SaveFile.Sound : _saveController.SaveFile.Music;
+        _slider.value = _sound ? _saveController.SaveFile.Sound : _saveController.SaveFile.Music;
     }
 
 

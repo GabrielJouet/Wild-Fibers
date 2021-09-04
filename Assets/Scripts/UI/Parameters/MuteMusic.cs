@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -39,15 +38,11 @@ public class MuteMusic : MonoBehaviour
 
 
     /// <summary>
-    /// Coroutine used for initialization.
+    /// Method called when the object is activated.
     /// </summary>
-    /// <remarks>We wait for the save controller to be initialized</remarks>
-    private IEnumerator Start()
+    private void OnEnable()
     {
         _saveController = Controller.Instance.SaveControl;
-
-        yield return new WaitUntil(() => _saveController.Initialized);
-
         _activated = _sound ? _saveController.SaveFile.SoundMuted : _saveController.SaveFile.MusicMuted;
         transform.GetChild(0).GetComponent<Image>().sprite = _activated ? _activatedSprite : _desactivatedSprite;
     }
