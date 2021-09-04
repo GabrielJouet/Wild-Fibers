@@ -51,6 +51,14 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private Image _sideScore;
 
+
+    /// <summary>
+    /// Classic layout parent object.
+    /// </summary>
+    [SerializeField]
+    private GameObject _classicArrow;
+
+
     /// <summary>
     /// Side button component.
     /// </summary>
@@ -148,9 +156,9 @@ public class LevelSelection : MonoBehaviour
     private LevelData _level;
 
     /// <summary>
-    /// Display type of this level.
+    /// Previous arrow displayed when changing menu.
     /// </summary>
-    private LevelType _displayType;
+    private GameObject _previousDisplayedObject;
 
 
     /// <summary>
@@ -173,6 +181,7 @@ public class LevelSelection : MonoBehaviour
 
         _displayController.DisplayObject(gameObject);
 
+        _previousDisplayedObject = _classicArrow;
         ActivateBaseMenu();
     }
 
@@ -184,8 +193,6 @@ public class LevelSelection : MonoBehaviour
     {
         _classicLayout.SetActive(true);
         _sideLayout.SetActive(false);
-
-        _displayType = LevelType.CLASSIC;
 
         _levelName.text = _level.Classic.Name;
         _levelPicture.sprite = _level.Classic.Picture;
@@ -212,36 +219,43 @@ public class LevelSelection : MonoBehaviour
     {
         LevelType enumBuffer = (LevelType)System.Enum.Parse(typeof(LevelType), levelType);
 
-        if (enumBuffer == _displayType)
-            ActivateBaseMenu();
-        else
+        Level buffer = enumBuffer == LevelType.SIDE ? _level.Side : _level.Challenge;
+
+        _classicLayout.SetActive(false);
+        _sideLayout.SetActive(true);
+
+        _levelName.text = buffer.Name;
+        _levelPicture.sprite = buffer.Picture;
+        _sideDescription.text = buffer.Description;
+
+        _sideScore.sprite = _desactivatedSprite;
+
+        LevelState bufferState = Controller.Instance.SaveControl.RecoverLevelSave(buffer).State;
+
+        if (enumBuffer == LevelType.SIDE && bufferState == LevelState.SIDED || bufferState == LevelState.CHALLENGED)
+            _sideScore.sprite = _activatedSprite;
+        else if (enumBuffer == LevelType.CHALLENGE && bufferState == LevelState.CHALLENGED)
+            _sideScore.sprite = _activatedSprite;
+
+        _launchBattleMenu.onClick.RemoveAllListeners();
+        _launchBattleMenu.onClick.AddListener(() =>
         {
-            _displayType = enumBuffer;
+            Controller.Instance.SaveControl.LoadedLevel = buffer;
+            _sceneChanger.LoadScene(buffer.Scene);
+        });
+    }
 
-            Level buffer = enumBuffer == LevelType.SIDE ? _level.Side : _level.Challenge;
 
-            _classicLayout.SetActive(false);
-            _sideLayout.SetActive(true);
+    /// <summary>
+    /// Display a new arrow based on the button pressed.
+    /// </summary>
+    /// <param name="displayedObject">The arrow to display</param>
+    public void DisplayChoice(GameObject displayedObject)
+    {
+        if (_previousDisplayedObject != null)
+            _previousDisplayedObject.SetActive(false);
 
-            _levelName.text = buffer.Name;
-            _levelPicture.sprite = buffer.Picture;
-            _sideDescription.text = buffer.Description;
-
-            _sideScore.sprite = _desactivatedSprite;
-
-            LevelState bufferState = Controller.Instance.SaveControl.RecoverLevelSave(buffer).State;
-
-            if (enumBuffer == LevelType.SIDE && bufferState == LevelState.SIDED || bufferState == LevelState.CHALLENGED)
-                _sideScore.sprite = _activatedSprite;
-            else if (enumBuffer == LevelType.CHALLENGE && bufferState == LevelState.CHALLENGED)
-                _sideScore.sprite = _activatedSprite;
-
-            _launchBattleMenu.onClick.RemoveAllListeners();
-            _launchBattleMenu.onClick.AddListener(() =>
-            {
-                Controller.Instance.SaveControl.LoadedLevel = buffer;
-                _sceneChanger.LoadScene(buffer.Scene);
-            });
-        }
+        _previousDisplayedObject = displayedObject;
+        displayedObject.SetActive(true);
     }
 }
