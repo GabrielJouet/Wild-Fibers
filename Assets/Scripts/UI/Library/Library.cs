@@ -47,6 +47,24 @@ public class Library : MonoBehaviour
     [SerializeField]
     private List<TowerIcon> _towerIcons;
 
+    /// <summary>
+    /// Spearator image component.
+    /// </summary>
+    [SerializeField]
+    private Transform _separator;
+
+    /// <summary>
+    /// Towers tab image component.
+    /// </summary>
+    [SerializeField]
+    private Image _towerTab;
+
+    /// <summary>
+    /// Enemies tab image component.
+    /// </summary>
+    [SerializeField]
+    private Image _enemiesTab;
+
 
     [Header("Tower related")]
 
@@ -161,6 +179,11 @@ public class Library : MonoBehaviour
     [SerializeField]
     private Text _enemySpecial;
 
+    /// <summary>
+    /// Color used for desactivated tabs.
+    /// </summary>
+    private Color _desactivatedColor = new Color(0.7f, 0.7f, 0.7f);
+
 
     /// <summary>
     /// Awake method, called at first.
@@ -204,6 +227,10 @@ public class Library : MonoBehaviour
     {
         _towerList.SetActive(!enemy);
         _enemyList.SetActive(enemy);
+
+        _separator.localScale = new Vector3(enemy ? -1 : 1, 1, 1);
+        _towerTab.color = enemy ? _desactivatedColor : Color.white;
+        _enemiesTab.color = !enemy ? _desactivatedColor : Color.white;
 
         _towerPanel.SetActive(!enemy);
         _enemyPanel.SetActive(enemy);
