@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Toxic Ivy
   m_EditorClassIdentifier: 
   _description: A poisonous flower that dealt most of its damage over time
+  _libraryDescription: Long ago these seeds were used to poison blusim borrows, hopefully,
+    this poison is  not lethal for plants. This flower shoots two seeds at a time,
+    using little magic to levitate them for better range.
   _price: 130
   _icon: {fileID: 21300000, guid: 9e800b1a3b271c04a956ee99c67b88e7, type: 3}
   _sprite: {fileID: -2559415124775340982, guid: 7d6556d7176d77b489d8638dcd6b642f,
@@ -43,5 +46,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3d068f1566863294a808c709d102db4c, type: 2}
   - {fileID: 11400000, guid: 5a210a43dc593974283647ae37967623, type: 2}
   _special: 
-  _screenShot: {fileID: -2559415124775340982, guid: 7d6556d7176d77b489d8638dcd6b642f,
-    type: 3}
+  _screenShot: {fileID: 21300000, guid: 63abd53a37dd4584ab4acf1ed36bf1a2, type: 3}

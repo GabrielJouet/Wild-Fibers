@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -219,7 +219,7 @@ public class Library : MonoBehaviour
         TowerData newTower = newInfo.Tower;
 
         _towerName.text = newTower.name;
-        _towerDescription.text = newTower.Description;
+        _towerDescription.text = newTower.LibraryDescription;
         _towerPrice.text = newTower.PriceInfo;
         _towerDamage.text = newTower.DamageInfo;
         _towerFireRate.text = newTower.FireRateInfo;
