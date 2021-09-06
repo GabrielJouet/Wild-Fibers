@@ -365,8 +365,7 @@ public class Enemy : MonoBehaviour
         if (newAttack.DotDuration > 0)
             ApplyDot(newAttack);
 
-        if(Health > 0 && Attacks.Count == 0 && _dots.Count == 0)
-            CanBeTargeted = true;
+        CanBeTargeted = CalculateTargetness();
     }
 
 
@@ -429,6 +428,8 @@ public class Enemy : MonoBehaviour
                     attackRemoved = attack;
 
             _dots.Remove(attackRemoved);
+
+            CanBeTargeted = CalculateTargetness();
         }
 
         _dots.Add(newAttack);
@@ -460,14 +461,13 @@ public class Enemy : MonoBehaviour
         _dots.Remove(newDot);
         Armor += newDot.ArmorThroughMalus * ResistancePercentage;
 
+        CanBeTargeted = CalculateTargetness();
+
         if (_dots.Count == 0)
         {
             _dotDisplay.SetActive(false);
             IsDotted = false;
         }
-
-        if (Health > 0 && Attacks.Count == 0 && _dots.Count == 0)
-            CanBeTargeted = true;
     }
 
 
@@ -490,6 +490,8 @@ public class Enemy : MonoBehaviour
     {
         ArmorMax = Mathf.Clamp(ArmorMax - percentage, 0, ArmorMax);
         Armor = Mathf.Clamp(Armor - percentage, 0, Armor);
+
+        CanBeTargeted = CalculateTargetness();
     }
 
 
@@ -529,12 +531,24 @@ public class Enemy : MonoBehaviour
     {
         Attacks.Add(newAttack);
 
+        CanBeTargeted = CalculateTargetness();
+    }
+
+
+    /// <summary>
+    /// Method used to check if the enemy can survive with applied attacks and dot.
+    /// </summary>
+    /// <returns>Returns true if the entity will not die, false otherwise</returns>
+    private bool CalculateTargetness()
+    {
         int total = 0;
         foreach (Attack current in Attacks)
-            total += Mathf.FloorToInt(Armor - current.ArmorThrough < 0 ? current.Damage + (current.Damage * (current.ArmorThrough - Armor) / 100) / 2 : current.Damage - ((Armor - current.ArmorThrough) / 100 * current.Damage) + current.DotDamage * 2 * current.DotDuration);
+            total += DamageTaken(current);
 
-        if (Health - total <= 0)
-            CanBeTargeted = false;
+        foreach (Attack current in _dots)
+            total += DamageTaken(current);
+
+        return Health - total > 0;
     }
 
 
@@ -568,5 +582,19 @@ public class Enemy : MonoBehaviour
     {
         if (collision.TryGetComponent(out TowerCollider towerCollider))
             towerCollider.EnemyExit(this);
+    }
+
+
+    public int DamageTaken(Attack attack)
+    {
+        float dotDamage = attack.DotDamage * 2 * attack.DotDuration;
+        float rawDamage;
+
+        if (Armor - attack.ArmorThrough <= 0)
+            rawDamage = attack.Damage + (attack.Damage * (attack.ArmorThrough - Armor) / 100) / 2;
+        else
+            rawDamage = attack.Damage - ((Armor - attack.ArmorThrough) / 100 * attack.Damage);
+
+        return Mathf.FloorToInt(rawDamage + dotDamage);
     }
 }
