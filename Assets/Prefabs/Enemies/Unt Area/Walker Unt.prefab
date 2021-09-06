@@ -203,7 +203,7 @@ MonoBehaviour:
     versatile but also good for picking objects and bringing it back to the hive.
     But, without any weaponry its only goal in combat is to flood the enemy or as
     bait.
-  _screenShot: {fileID: 0}
+  _screenShot: {fileID: 21300000, guid: 68943bb627b10e9488c6480752e89be9, type: 3}
   _special: 
 --- !u!1001 &3162793518331619717
 PrefabInstance:

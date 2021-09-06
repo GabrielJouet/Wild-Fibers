@@ -203,7 +203,7 @@ MonoBehaviour:
     with time. With its sharp arms it is able to destroy wood and fiber plant in
     several minutes. They are generally roaming alone in the hive due to their high
     agressivity.
-  _screenShot: {fileID: 0}
+  _screenShot: {fileID: 21300000, guid: 8cede30fc73eb5747a270a04dbfa79b2, type: 3}
   _special: 
 --- !u!1001 &3162793518331619717
 PrefabInstance:
