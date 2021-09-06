@@ -1,0 +1,10 @@
+How to use the map you ask?
+You have three images and three layers.
+
+The first image is based before the conflict take place
+The second image is based just after insects start attacking
+The third image is right now, the conflict is now
+
+The first layer, "Levels", contains every levels in the game (each black dot is a level and the black line is liaison)
+The second layer, "Insects", contains information about insect species in a specific area: Red for Huta, Green for Unt and Grey for Blusim
+The fourth layer, "Map", is the plain map
