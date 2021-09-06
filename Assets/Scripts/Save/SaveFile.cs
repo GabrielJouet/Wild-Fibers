@@ -84,7 +84,7 @@ public class SaveFile
         for (int i = 0; i < numberOfEnemies; i++)
             EnemiesUnlocked.Add(false);
 
-        CurrentSquad.TowerLevelMax = 1;
+        CurrentSquad.TowerLevelMax = 0;
     }
 
 

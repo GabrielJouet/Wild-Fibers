@@ -79,21 +79,12 @@ public class GameOverScreen : MonoBehaviour
     /// Method used to activate and display the screen.
     /// </summary>
     /// <param name="win">Does the player wins this level?</param>
-    public void Activate(bool win)
+    /// <param name="sideOrChallenge">Does the level is a side or challenge one?</param>
+    public void Activate(bool win, bool sideOrChallenge)
     {
         _displayController.PauseGame();
         _displayController.DisplayObject(gameObject);
 
-        DelayShow(win); 
-    }
-
-
-    /// <summary>
-    /// Coroutine used to delay the display.
-    /// </summary>
-    /// <param name="win">Does the player wins this level?</param>
-    private void DelayShow(bool win)
-    {
         _boxCollider.enabled = true;
         _boxCollider.size = new Vector2(Screen.width + _transform.sizeDelta.x, Screen.height + _transform.sizeDelta.y);
 
@@ -101,6 +92,12 @@ public class GameOverScreen : MonoBehaviour
 
         _gameScreen.sprite = win ? _winScreen : _loseScreen;
         _mainText.text = win ? "Win" : "Lose";
+
+        if (sideOrChallenge)
+        {
+            _seedScores[0].gameObject.SetActive(false);
+            _seedScores[2].gameObject.SetActive(false);
+        }
 
         if (win)
         {

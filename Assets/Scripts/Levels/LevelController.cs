@@ -212,6 +212,6 @@ public class LevelController : MonoBehaviour
     private IEnumerator DelayGameScreen(bool lose)
     {
         yield return new WaitForSeconds(1f);
-        _gameOverScreen.Activate(!lose);
+        _gameOverScreen.Activate(!lose, LoadedLevel.Type != LevelType.CLASSIC);
     }
 }
