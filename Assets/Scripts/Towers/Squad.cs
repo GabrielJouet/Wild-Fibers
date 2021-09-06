@@ -100,14 +100,14 @@ public class Squad : ScriptableObject
         TowerData currentTower = Towers[1];
         if (currentTower.AugmentationLevel > 0)
         {
-            currentTower.ReducePrice(0.9f);
+            currentTower.ReducePrice(0.8f);
 
             foreach (TowerData tower in currentTower.Upgrades)
             {
                 foreach(TowerData towerUpgrades in tower.Upgrades)
-                    towerUpgrades.ReducePrice(0.9f);
+                    towerUpgrades.ReducePrice(0.8f);
 
-                tower.ReducePrice(0.9f);
+                tower.ReducePrice(0.8f);
             }
         }
 

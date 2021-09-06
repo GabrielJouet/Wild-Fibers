@@ -43,7 +43,7 @@ public class ToxicIvy : Tower
     /// </summary>
     protected override void LevelFourAugmentation()
     {
-        Data.ArmorThroughMalus *= 1.05f;
+        Data.ArmorThroughMalus *= 1.15f;
     }
 
 

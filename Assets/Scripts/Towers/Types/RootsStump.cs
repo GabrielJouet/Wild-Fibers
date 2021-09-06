@@ -59,13 +59,13 @@ public class RootsStump : Tower
         Attack newAttack = new Attack(_attack);
 
         if (Data.AugmentationLevel > 2)
-            newAttack.Damage += enemy.IsDotted ? 1 : 0;
+            newAttack.Damage *= (enemy.IsDotted ? 1.25f : 1);
+
+        if (Data.AugmentationLevel > 4)
+            newAttack.ArmorThrough *= (enemy.ArmorMax < 25 ? 1.15f : 1);
 
         if (Data.AugmentationLevel > 3)
             newAttack.Damage *= Random.Range(0, 100) < 5 ? 2 : 1;
-
-        if (Data.AugmentationLevel > 4)
-            newAttack.ArmorThrough *= (enemy.ArmorMax < 25 ? 1.5f : 1);
 
         return newAttack;
     }

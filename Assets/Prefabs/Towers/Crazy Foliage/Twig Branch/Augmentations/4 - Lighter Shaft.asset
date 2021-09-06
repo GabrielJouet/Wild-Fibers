@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _icon: {fileID: 21300000, guid: 0eff3e362748a1e4ba6ae1590c639b01, type: 3}
   _price: 3
-  _description: Fire rate is increased by 5%.
+  _description: Fire rate is increased.
