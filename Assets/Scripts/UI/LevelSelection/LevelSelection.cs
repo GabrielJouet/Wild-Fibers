@@ -28,12 +28,6 @@ public class LevelSelection : MonoBehaviour
     private Text _levelDescription;
 
     /// <summary>
-    /// Text component of the side level (and challenge).
-    /// </summary>
-    [SerializeField]
-    private Text _sideDescription;
-
-    /// <summary>
     /// Launch battle menu button.
     /// </summary>
     [SerializeField]
@@ -46,44 +40,16 @@ public class LevelSelection : MonoBehaviour
     private List<Image> _scores;
 
     /// <summary>
-    /// Side and challenge score icon.
-    /// </summary>
-    [SerializeField]
-    private Image _sideScore;
-
-
-    /// <summary>
     /// Classic layout parent object.
     /// </summary>
     [SerializeField]
     private GameObject _classicArrow;
-
-
-    /// <summary>
-    /// Side button component.
-    /// </summary>
-    [SerializeField]
-    private Button _sideButton;
-
-    /// <summary>
-    /// Challenge button component.
-    /// </summary>
-    [SerializeField]
-    private Button _challengeButton;
-
 
     /// <summary>
     /// Classic layout parent object.
     /// </summary>
     [SerializeField]
     private GameObject _classicLayout;
-
-    /// <summary>
-    /// Side and challenge layout parent object.
-    /// </summary>
-    [SerializeField]
-    private GameObject _sideLayout;
-
 
     /// <summary>
     /// Activated sprite of score items.
@@ -96,6 +62,39 @@ public class LevelSelection : MonoBehaviour
     /// </summary>
     [SerializeField]
     private Sprite _desactivatedSprite;
+
+
+    [Header("Side Panel")]
+
+    /// <summary>
+    /// Text component of the side level (and challenge).
+    /// </summary>
+    [SerializeField]
+    private Text _sideDescription;
+
+    /// <summary>
+    /// Side and challenge score icon.
+    /// </summary>
+    [SerializeField]
+    private Image _sideScore;
+
+    /// <summary>
+    /// Classic layout parent object.
+    /// </summary>
+    [SerializeField]
+    private GameObject _sideArrow;
+
+    /// <summary>
+    /// Side button component.
+    /// </summary>
+    [SerializeField]
+    private Button _sideButton;
+
+    /// <summary>
+    /// Side and challenge layout parent object.
+    /// </summary>
+    [SerializeField]
+    private GameObject _sideLayout;
 
     /// <summary>
     /// Sprite of the side activated.
@@ -115,6 +114,20 @@ public class LevelSelection : MonoBehaviour
     [SerializeField]
     private Image _sideIcon;
 
+
+    [Header("Challenge Panel")]
+
+    /// <summary>
+    /// Classic layout parent object.
+    /// </summary>
+    [SerializeField]
+    private GameObject _challengeArrow;
+
+    /// <summary>
+    /// Challenge button component.
+    /// </summary>
+    [SerializeField]
+    private Button _challengeButton;
 
     /// <summary>
     /// Sprite of the challenge activated.
@@ -182,6 +195,10 @@ public class LevelSelection : MonoBehaviour
         _displayController.DisplayObject(gameObject);
 
         _previousDisplayedObject = _classicArrow;
+        _classicArrow.SetActive(true);
+        _sideArrow.SetActive(false);
+        _challengeArrow.SetActive(false);
+
         ActivateBaseMenu();
     }
 
