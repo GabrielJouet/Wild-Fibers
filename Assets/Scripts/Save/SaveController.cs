@@ -305,6 +305,7 @@ public class SaveController : MonoBehaviour
 	{
 		try
 		{
+			Controller.Instance.SquadControl.ResetData();
 			FileStream file = File.OpenWrite(_gameSavePath);
 
 			_binaryFormatter.Serialize(file, SaveFile);

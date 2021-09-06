@@ -11,7 +11,7 @@ public class SquadController : MonoBehaviour
     /// </summary>
     [SerializeField]
     private List<Squad> _squads;
-    private readonly List<Squad> _updatedSquads = new List<Squad>();
+    private List<Squad> _updatedSquads = new List<Squad>();
     public List<Squad> Squads 
     { 
         get 
@@ -62,5 +62,14 @@ public class SquadController : MonoBehaviour
         }
 
         return result;
+    }
+
+
+    /// <summary>
+    /// Method used to reset data when a change on save is done.
+    /// </summary>
+    public void ResetData()
+    {
+        _updatedSquads = new List<Squad>();
     }
 }
