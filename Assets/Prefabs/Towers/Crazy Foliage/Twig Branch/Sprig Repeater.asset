@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Sprig Repeater
   m_EditorClassIdentifier: 
   _description: Slightly stronger but with a rapid firerate
+  _libraryDescription: Whenever this plant go, the area is recovered of a thick mossy
+    grass. Allowing it to use every resources available to fight.
   _price: 165
   _icon: {fileID: 21300000, guid: e16169d8c5f47ed49b03e13d08b04611, type: 3}
   _sprite: {fileID: 21300000, guid: 493064ed8ee7c47428d290e6a28f2f62, type: 3}
@@ -35,4 +37,4 @@ MonoBehaviour:
   _towerSpecs: []
   _towerAugmentations: []
   _special: 
-  _screenShot: {fileID: 21300000, guid: 493064ed8ee7c47428d290e6a28f2f62, type: 3}
+  _screenShot: {fileID: 21300000, guid: 5da97164a6232f64a843cdad47d54cdd, type: 3}

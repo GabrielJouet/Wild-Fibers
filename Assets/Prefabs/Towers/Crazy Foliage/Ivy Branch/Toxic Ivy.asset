@@ -45,5 +45,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4816070e09f504345aa2f526e465e86c, type: 2}
   - {fileID: 11400000, guid: 3d068f1566863294a808c709d102db4c, type: 2}
   - {fileID: 11400000, guid: 5a210a43dc593974283647ae37967623, type: 2}
-  _special: 
+  _special: Poison
   _screenShot: {fileID: 21300000, guid: 63abd53a37dd4584ab4acf1ed36bf1a2, type: 3}

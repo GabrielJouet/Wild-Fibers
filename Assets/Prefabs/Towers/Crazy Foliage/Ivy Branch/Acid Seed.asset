@@ -38,5 +38,5 @@ MonoBehaviour:
   _towerUpgrades: []
   _towerSpecs: []
   _towerAugmentations: []
-  _special: 
-  _screenShot: {fileID: 21300000, guid: d5aad07613e1dd441a1952d320a555f8, type: 3}
+  _special: Poison
+  _screenShot: {fileID: 21300000, guid: 10e4aed5a44266a4fa8444d4d9358b31, type: 3}

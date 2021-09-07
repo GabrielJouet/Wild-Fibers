@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Burried Germs
   m_EditorClassIdentifier: 
   _description: A multi roots larger stump with a large range
+  _libraryDescription: Usage of great quantity of magic allows this rotting stump
+    to generate roots faster and with more damage.
   _price: 290
   _icon: {fileID: 21300000, guid: 6427901d56730e8468944434a9d9bffd, type: 3}
   _sprite: {fileID: 21300000, guid: be5a928fd9f833a47815fe52eb3f05e9, type: 3}
@@ -34,5 +36,5 @@ MonoBehaviour:
   _towerUpgrades: []
   _towerSpecs: []
   _towerAugmentations: []
-  _special: 
-  _screenShot: {fileID: 21300000, guid: be5a928fd9f833a47815fe52eb3f05e9, type: 3}
+  _special: Only ground
+  _screenShot: {fileID: 21300000, guid: 1022d9d8330522a44941c0a2e55a7767, type: 3}
