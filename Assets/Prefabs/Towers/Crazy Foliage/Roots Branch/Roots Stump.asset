@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Roots Stump
   m_EditorClassIdentifier: 
   _description: An old stump with ferocious sharp roots
+  _libraryDescription: An old stump of a forgotten tree. Legends tells this tree
+    was reaching clouds and can use magic daily.
   _price: 165
   _icon: {fileID: 21300000, guid: bff7ca8cdc8698642aef3dfdd18ee513, type: 3}
   _sprite: {fileID: 5698191664513791026, guid: d85b23dd25bcdec49a6528cafd18e59c, type: 3}
@@ -41,6 +43,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 61e58c90aa85b6c45a9bc6a1bf0da809, type: 2}
   - {fileID: 11400000, guid: 1183047c2476d604d96102d730cbd86b, type: 2}
   - {fileID: 11400000, guid: df106fa72cb921c42bcbabba3856f70e, type: 2}
-  _special: 
-  _screenShot: {fileID: 5698191664513791026, guid: d85b23dd25bcdec49a6528cafd18e59c,
-    type: 3}
+  _special: Only ground
+  _screenShot: {fileID: 21300000, guid: cf74c7114ee2c63409370abc7ca70ecf, type: 3}

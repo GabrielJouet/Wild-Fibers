@@ -29,6 +29,6 @@ public class TowerInfo : MonoBehaviour
     /// </summary>
     public void Activate()
     {
-        transform.parent.parent.parent.parent.GetComponent<Library>().ShowTowerInfo(this);
+        transform.parent.parent.parent.parent.parent.parent.GetComponent<Library>().ShowTowerInfo(this);
     }
 }

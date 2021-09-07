@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Poisonous Leaves
   m_EditorClassIdentifier: 
   _description: A multi shoter poisonous flower
+  _libraryDescription: A very efficient cold killer. Every insect trying to swallow
+    these leaves or seeds will be posioned from the inside. Even if not eaten, these
+    seeds are known to inflict severe loss to insects. With  higher rate of fire
+    and seeds production thant its predecessor, the Posionous Leaves is ready to
+    fight.
   _price: 245
   _icon: {fileID: 21300000, guid: 01c3cee923afd764f90cc2584d2aa17d, type: 3}
   _sprite: {fileID: 21300000, guid: 0eff3e362748a1e4ba6ae1590c639b01, type: 3}
@@ -34,5 +39,5 @@ MonoBehaviour:
   _towerUpgrades: []
   _towerSpecs: []
   _towerAugmentations: []
-  _special: 
-  _screenShot: {fileID: 21300000, guid: 0eff3e362748a1e4ba6ae1590c639b01, type: 3}
+  _special: Poison
+  _screenShot: {fileID: 21300000, guid: f09bc56956fc3094c8c56796779a80d0, type: 3}

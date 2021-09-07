@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: Spike Grower
   m_EditorClassIdentifier: 
   _description: A lspiker and larger version of the bramble
+  _libraryDescription: Usually found in dryer places, this plant is one of the best
+    offense against crowds. Its unique vines size and spike hardness make it a formidable
+    foe. Unprotected insects are afraid of this killer.
   _price: 240
   _icon: {fileID: 21300000, guid: ab0a42eb98b6a7e4e87f8b3679778576, type: 3}
   _sprite: {fileID: 21300000, guid: 780864a8a6bfbbc40bfa291b810699f3, type: 3}
@@ -34,5 +37,5 @@ MonoBehaviour:
   _towerUpgrades: []
   _towerSpecs: []
   _towerAugmentations: []
-  _special: 
-  _screenShot: {fileID: 21300000, guid: 780864a8a6bfbbc40bfa291b810699f3, type: 3}
+  _special: Wave
+  _screenShot: {fileID: 21300000, guid: f9f459813c058b841a6c0f1ac3a492d7, type: 3}

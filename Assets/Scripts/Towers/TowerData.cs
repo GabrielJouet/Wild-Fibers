@@ -18,6 +18,13 @@ public class TowerData : ScriptableObject
     public string Description { get => _description; private set => _description = value; }
 
     /// <summary>
+    /// Description.
+    /// </summary>
+    [SerializeField]
+    protected string _libraryDescription;
+    public string LibraryDescription { get => _libraryDescription; private set => _libraryDescription = value; }
+
+    /// <summary>
     /// Price of the tower.
     /// </summary>
     [SerializeField]
@@ -241,6 +248,7 @@ public class TowerData : ScriptableObject
     {
         name = clone.name;
         Description = clone.Description;
+        LibraryDescription = clone.LibraryDescription;
         Price = clone.Price;
         ResellPriceFactor = clone.ResellPriceFactor;
         Icon = clone.Icon;
@@ -288,6 +296,7 @@ public class TowerData : ScriptableObject
     {
         name = clone.name;
         Description = clone.Description;
+        LibraryDescription = clone.LibraryDescription;
         Price = clone.Price;
         ResellPriceFactor = clone.ResellPriceFactor;
         Icon = clone.Icon;
