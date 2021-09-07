@@ -189,16 +189,16 @@ public class Library : MonoBehaviour
         int maxLevel = saveController.SaveFile.CurrentSquad.TowerLevelMax;
 
         TowerIcon firstIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
-        firstIcon.Populate(towers[0], maxLevel);
+        firstIcon.Populate(towers[0], maxLevel, false);
 
         TowerIcon newIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
-        newIcon.Populate(towers[1], maxLevel);
+        newIcon.Populate(towers[1], maxLevel, false);
 
         newIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
-        newIcon.Populate(towers[2], maxLevel);
+        newIcon.Populate(towers[2], maxLevel, false);
 
         newIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
-        newIcon.Populate(towers[3], maxLevel);
+        newIcon.Populate(towers[3], maxLevel, true);
 
         RectTransform towerPanel = _towerList.GetComponent<RectTransform>();
         VerticalLayoutGroup towerLayout = _towerList.GetComponent<VerticalLayoutGroup>();

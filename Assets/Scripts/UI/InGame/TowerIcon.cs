@@ -36,6 +36,12 @@ public class TowerIcon : MonoBehaviour
     [SerializeField]
     private TowerInfo _secondLevelLeft;
 
+    /// <summary>
+    /// Border image component.
+    /// </summary>
+    [SerializeField]
+    private GameObject _border;
+
 
 
     /// <summary>
@@ -43,7 +49,8 @@ public class TowerIcon : MonoBehaviour
     /// </summary>
     /// <param name="newData">New data used for this tower</param>
     /// <param name="maxLevel">The new max level of this tower</param>
-    public void Populate(TowerData newData, int maxLevel)
+    /// <param name="last">Does this tower icon is the last one?</param>
+    public void Populate(TowerData newData, int maxLevel, bool last)
     {
         _base.Tower = newData;
 
@@ -58,5 +65,8 @@ public class TowerIcon : MonoBehaviour
                 _secondLevelLeft.Tower = newData.Upgrades[1].Upgrades[0];
             }
         }
+
+        if (last)
+            _border.SetActive(false);
     }
 }

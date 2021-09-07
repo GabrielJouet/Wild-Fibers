@@ -499,7 +499,7 @@ MonoBehaviour:
     m_Top: 10
     m_Bottom: 10
   m_ChildAlignment: 1
-  m_Spacing: 100
+  m_Spacing: 55
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -1956,6 +1956,8 @@ MonoBehaviour:
   _enemyPanel: {fileID: 4696118492461454348}
   _towerList: {fileID: 1604148810157933786}
   _enemyList: {fileID: 2077952380727520819}
+  _towerTreePrefab: {fileID: 2171526650154281932, guid: 318aed5c1e7f5be4a86cb5cadcab8712,
+    type: 3}
   _towerName: {fileID: 7229222466365673528}
   _towerDescription: {fileID: 5482382402101396454}
   _towerPrice: {fileID: 7349800284515359933}
@@ -1974,8 +1976,6 @@ MonoBehaviour:
   _enemyResistance: {fileID: 5162958383803581683}
   _enemyLivesLost: {fileID: 8007723034179306574}
   _enemySpecial: {fileID: 5492109101035039240}
-  _towerTreePrefab: {fileID: 2171526650154281932, guid: 318aed5c1e7f5be4a86cb5cadcab8712,
-    type: 3}
 --- !u!1 &4628677901937811193
 GameObject:
   m_ObjectHideFlags: 0
