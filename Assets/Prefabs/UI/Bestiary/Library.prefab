@@ -1990,7 +1990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyInfoPrefab: {fileID: 7758772164408991083, guid: ae8288275c39e7b489f063cf013b1535,
     type: 3}
-  _towerPanel: {fileID: 5575951972707165611}
+  _towerPanel: {fileID: 5305219129644711971}
   _enemyPanel: {fileID: 4696118492461454348}
   _towerList: {fileID: 1604148810157933786}
   _enemyList: {fileID: 2077952380727520819}
@@ -2237,7 +2237,7 @@ GameObject:
   - component: {fileID: 2296402554302355671}
   - component: {fileID: 5598041545409939869}
   m_Layer: 5
-  m_Name: Scroll View
+  m_Name: TowerScrollView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
