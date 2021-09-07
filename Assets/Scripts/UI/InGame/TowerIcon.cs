@@ -5,22 +5,57 @@
 /// </summary>
 public class TowerIcon : MonoBehaviour
 {
-    public TowerInfo First { get => transform.GetChild(0).GetComponent<TowerInfo>(); }
+    /// <summary>
+    /// Base tower.
+    /// </summary>
+    [SerializeField]
+    private TowerInfo _base;
+    public TowerInfo First { get => _base; }
+
+    /// <summary>
+    /// First level tower, upgrade of right.
+    /// </summary>
+    [SerializeField]
+    private TowerInfo _firstLevelRight;
+
+    /// <summary>
+    /// First level tower, upgrade of left.
+    /// </summary>
+    [SerializeField]
+    private TowerInfo _firstLevelLeft;
+
+    /// <summary>
+    /// Second level tower, upgrade of right.
+    /// </summary>
+    [SerializeField]
+    private TowerInfo _secondLevelRight;
+
+    /// <summary>
+    /// Second level tower, upgrade of left.
+    /// </summary>
+    [SerializeField]
+    private TowerInfo _secondLevelLeft;
 
 
+
+    /// <summary>
+    /// Initialize method.
+    /// </summary>
+    /// <param name="newData">New data used for this tower</param>
+    /// <param name="maxLevel">The new max level of this tower</param>
     public void Populate(TowerData newData, int maxLevel)
     {
-        transform.GetChild(0).GetComponent<TowerInfo>().Tower = newData;
+        _base.Tower = newData;
 
         if (maxLevel > 0)
         {
-            transform.GetChild(1).GetComponent<TowerInfo>().Tower = newData.Upgrades[0];
-            transform.GetChild(2).GetComponent<TowerInfo>().Tower = newData.Upgrades[1];
+            _firstLevelRight.Tower = newData.Upgrades[0];
+            _firstLevelLeft.Tower = newData.Upgrades[1];
 
             if (maxLevel > 1)
             {
-                transform.GetChild(3).GetComponent<TowerInfo>().Tower = newData.Upgrades[0].Upgrades[0];
-                transform.GetChild(4).GetComponent<TowerInfo>().Tower = newData.Upgrades[1].Upgrades[0];
+                _secondLevelRight.Tower = newData.Upgrades[0].Upgrades[0];
+                _secondLevelLeft.Tower = newData.Upgrades[1].Upgrades[0];
             }
         }
     }

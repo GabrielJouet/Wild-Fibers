@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -42,10 +42,10 @@ public class Library : MonoBehaviour
     private GameObject _enemyList;
 
     /// <summary>
-    /// List of tower icons in the library.
+    /// Tower tree prefab, used for tower display.
     /// </summary>
     [SerializeField]
-    private List<TowerIcon> _towerIcons;
+    private GameObject _towerTreePrefab;
 
 
     [Header("Tower related")]
@@ -162,6 +162,7 @@ public class Library : MonoBehaviour
     private Text _enemySpecial;
 
 
+
     /// <summary>
     /// Awake method, called at first.
     /// </summary>
@@ -186,10 +187,24 @@ public class Library : MonoBehaviour
         }
 
         int maxLevel = saveController.SaveFile.CurrentSquad.TowerLevelMax;
-        for (int i = 0; i < towers.Count; i++)
-            _towerIcons[i].Populate(towers[i], maxLevel);
 
-        ShowTowerInfo(_towerIcons[0].First);
+        TowerIcon firstIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
+        firstIcon.Populate(towers[0], maxLevel);
+
+        TowerIcon newIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
+        newIcon.Populate(towers[1], maxLevel);
+
+        newIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
+        newIcon.Populate(towers[2], maxLevel);
+
+        newIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
+        newIcon.Populate(towers[3], maxLevel);
+
+        RectTransform towerPanel = _towerList.GetComponent<RectTransform>();
+        VerticalLayoutGroup towerLayout = _towerList.GetComponent<VerticalLayoutGroup>();
+        towerPanel.sizeDelta = new Vector2(towerPanel.sizeDelta.x, towerLayout.padding.top * 2 + towerLayout.spacing * 3 + 4 * _towerTreePrefab.GetComponent<RectTransform>().sizeDelta.y);
+
+        ShowTowerInfo(firstIcon.First);
 
         ShowPanel(false);
     }
