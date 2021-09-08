@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f93a738c01d9b44483aba2f0a4f91fa, type: 3}
+  m_Name: Craveler Stub
+  m_EditorClassIdentifier: 
+  _description: A powerful and devastating roots generator
+  _libraryDescription: In order to seek resources far below the surface, these roots
+    fused with metal by using some kind of magic. Hopefully for insects, these metallic
+    roots are slow to use.
+  _price: 270
+  _icon: {fileID: 21300000, guid: be6ff14271a38d742b919f1f0b2db118, type: 3}
+  _sprite: {fileID: 21300000, guid: b0341094ba9a29841b3d21e1316f2444, type: 3}
+  _shadowSprite: {fileID: -748965943684247502, guid: 45a27df0871ec9d4987415581c933c7e,
+    type: 3}
+  _scriptName: RootsStump
+  _projectileUsed: {fileID: 3530943198929188429, guid: 486543b54c3e008478b0aa8e5834702f,
+    type: 3}
+  _timeBetweenShots: 1.9
+  _damage: 22
+  _armorThrough: 32
+  _numberOfShots: 3
+  _range: 1.15
+  _canHitFlying: 0
+  _shotsRandomly: 0
+  _armorThroughMalus: 0
+  _damageOverTime: 0
+  _dotDuration: 0
+  _towerUpgrades: []
+  _towerSpecs: []
+  _towerAugmentations: []
+  _special: Only ground
+  _screenShot: {fileID: 21300000, guid: ebe803496fd9c304a9d8ba450ffeb2d8, type: 3}

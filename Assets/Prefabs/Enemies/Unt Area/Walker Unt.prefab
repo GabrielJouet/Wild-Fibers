@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -181,10 +181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Unt
+  _displayName: Walker
   _selector: {fileID: 4000618669885677062}
   _healthBar: {fileID: 8863022456078644539}
-  _dotDisplay: {fileID: 3842665942187024139}
+  _dotDisplay: {fileID: 1262192122651188265}
   _spriteRenderer: {fileID: 8203056244331385572}
   _animator: {fileID: 4810297222311416622}
   _damageParticle: {fileID: 4405452952222755525, guid: 5d5493e82985e114dab5f2a1b97dde63,
@@ -193,12 +193,18 @@ MonoBehaviour:
   - {fileID: 3623001225806360375}
   _healthMax: 85
   _armorMax: 15
-  _resistanceMax: 0
+  _resistance: 25
   _speedMax: 0.45
   _numberOfLivesTaken: 1
   _goldGained: 7
   _flying: 0
   _damagePosition: {fileID: 3623001225806360375}
+  _description: Walkers are the dominant cast in an Unt hive. Their speed make them
+    versatile but also good for picking objects and bringing it back to the hive.
+    But, without any weaponry its only goal in combat is to flood the enemy or as
+    bait.
+  _screenShot: {fileID: 21300000, guid: 68943bb627b10e9488c6480752e89be9, type: 3}
+  _special: 
 --- !u!1001 &3162793518331619717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -209,7 +215,7 @@ PrefabInstance:
     - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
@@ -224,7 +230,7 @@ PrefabInstance:
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
@@ -278,15 +284,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a7ebdb59535a441a4c7b5d6e455920, type: 3}
---- !u!4 &522071239486010086 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!1 &1262192122651188265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4206444510151701932, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 3162793518331619717}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &3842665942187024139 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!4 &522071239486010086 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 3162793518331619717}
   m_PrefabAsset: {fileID: 0}

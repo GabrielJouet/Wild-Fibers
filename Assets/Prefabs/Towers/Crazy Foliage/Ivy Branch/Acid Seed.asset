@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f93a738c01d9b44483aba2f0a4f91fa, type: 3}
+  m_Name: Acid Seed
+  m_EditorClassIdentifier: 
+  _description: A single projectile launcher with larger acid levels
+  _libraryDescription: Despite being one of the quickest chitin-dissolver around,
+    this tower suffers from frinedly fire. On old battles, both sides suffers loss
+    from this deadly plant. It shoots only one high-acidic projectile with greater
+    effect than this predecessor.
+  _price: 235
+  _icon: {fileID: 21300000, guid: 3f8fcc2a5ea53714b97fb9e8de390bd2, type: 3}
+  _sprite: {fileID: 21300000, guid: d5aad07613e1dd441a1952d320a555f8, type: 3}
+  _shadowSprite: {fileID: -7910471043360895327, guid: 4759e7b1f5652584c839b69f066f97c2,
+    type: 3}
+  _scriptName: ToxicIvy
+  _projectileUsed: {fileID: 6202831532110672975, guid: 6d1ab6e57f0408b46b61c99a97400f16,
+    type: 3}
+  _timeBetweenShots: 1.6
+  _damage: 0
+  _armorThrough: 0
+  _numberOfShots: 1
+  _range: 1.3
+  _canHitFlying: 1
+  _shotsRandomly: 1
+  _armorThroughMalus: 28
+  _damageOverTime: 5
+  _dotDuration: 6.5
+  _towerUpgrades: []
+  _towerSpecs: []
+  _towerAugmentations: []
+  _special: Poison
+  _screenShot: {fileID: 21300000, guid: 10e4aed5a44266a4fa8444d4d9358b31, type: 3}

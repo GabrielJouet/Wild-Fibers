@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   _displayName: Charger
   _selector: {fileID: 3926785066840358764}
   _healthBar: {fileID: 5063341698596176217}
-  _dotDisplay: {fileID: 5416901568167784886}
+  _dotDisplay: {fileID: 8069151022372795028}
   _spriteRenderer: {fileID: 6617693188845866255}
   _animator: {fileID: 5545853804847231419}
   _damageParticle: {fileID: 4405452952222755525, guid: 5d5493e82985e114dab5f2a1b97dde63,
@@ -193,12 +193,18 @@ MonoBehaviour:
   - {fileID: 5906076658267085393}
   _healthMax: 150
   _armorMax: 30
-  _resistanceMax: 0
+  _resistance: 0
   _speedMax: 0.2
   _numberOfLivesTaken: 3
   _goldGained: 20
   _flying: 0
   _damagePosition: {fileID: 5906076658267085393}
+  _description: When the hive is endangered, Maggots became bigger and spend more
+    time inside their cocoon. When they spent more than four days they rise as a
+    Charger. A powerful beast that roams around the hive and search for a prey. They
+    are though but small-brained.
+  _screenShot: {fileID: 21300000, guid: 8788ca7ee8f9d87448e7884ec447b1aa, type: 3}
+  _special: 
 --- !u!1001 &4201768652579246608
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -500,16 +506,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5906076658267085393}
     m_Modifications:
-    - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
-        type: 3}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -518,7 +514,7 @@ PrefabInstance:
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
@@ -572,15 +568,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a7ebdb59535a441a4c7b5d6e455920, type: 3}
---- !u!4 &8737425352351800411 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!1 &8069151022372795028 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4206444510151701932, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 6168569076705216312}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &5416901568167784886 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!4 &8737425352351800411 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 6168569076705216312}
   m_PrefabAsset: {fileID: 0}

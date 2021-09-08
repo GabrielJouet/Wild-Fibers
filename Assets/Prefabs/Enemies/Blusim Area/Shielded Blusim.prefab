@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   _displayName: Shielded
   _selector: {fileID: 7325471192700415939}
   _healthBar: {fileID: 3144667757886646281}
-  _dotDisplay: {fileID: 3511199004427678630}
+  _dotDisplay: {fileID: 1472001672212050052}
   _spriteRenderer: {fileID: 2394709574171677322}
   _animator: {fileID: 3597370224652989133}
   _damageParticle: {fileID: 4405452952222755525, guid: 5d5493e82985e114dab5f2a1b97dde63,
@@ -193,12 +193,19 @@ MonoBehaviour:
   - {fileID: 1049263690152909913}
   _healthMax: 135
   _armorMax: 90
-  _resistanceMax: 0
+  _resistance: 0
   _speedMax: 0.17
   _numberOfLivesTaken: 2
   _goldGained: 13
   _flying: 0
   _damagePosition: {fileID: 1049263690152909913}
+  _description: A special Blusim that spawns by mistake. When a pheromone is used
+    on a bigger Maggot the result is a Blusim with bigger wings but with a bigger
+    body as well. They are the most shielded Blusim of the hive, but their weight
+    make them almost useless. They are used as guards, blocking the way with their
+    bodies.
+  _screenShot: {fileID: 21300000, guid: cc1eff44af9c7a64abfb4f10dab0baf2, type: 3}
+  _special: Shield
   _timeBetweenShield: 10
   _stopWhileShielding: 1
   _baseShieldValue: 65
@@ -313,7 +320,7 @@ PrefabInstance:
     - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
       propertyPath: m_WasSpriteAssigned
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
@@ -328,7 +335,7 @@ PrefabInstance:
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.26
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
@@ -382,15 +389,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a7ebdb59535a441a4c7b5d6e455920, type: 3}
---- !u!4 &204748521848675915 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!1 &1472001672212050052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4206444510151701932, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 3318540798143825192}
   m_PrefabAsset: {fileID: 0}
---- !u!212 &3511199004427678630 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+--- !u!4 &204748521848675915 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 3318540798143825192}
   m_PrefabAsset: {fileID: 0}

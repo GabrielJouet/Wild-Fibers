@@ -29,6 +29,13 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private Animator _shadowAnimator;
 
+    /// <summary>
+    /// Does this tower slot use up or down description?
+    /// </summary>
+    [SerializeField]
+    private bool _useUpDescription;
+    public bool UpDescription { get => _useUpDescription; }
+
 
     /// <summary>
     /// Level controller is used to recover pools.
@@ -59,7 +66,7 @@ public class TowerSlot : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _poolController = FindObjectOfType<PoolController>();
+        _poolController = Controller.Instance.PoolControl;
         _animator = GetComponent<Animator>();
         _collider = GetComponent<CapsuleCollider2D>();
     }
@@ -98,10 +105,9 @@ public class TowerSlot : MonoBehaviour
 
         TowerPool currentPool = _poolController.TowerPool;
         GameObject buffer = currentPool.GetOneTower();
-        buffer.AddComponent(Type.GetType(string.IsNullOrEmpty(tower.Script) ? "Tower" : tower.Script));
+        buffer.AddComponent(Type.GetType(tower.Script));
 
-        Tower = buffer.GetComponent<Tower>();
-        Tower.Initialize(this, _ressourceController, _backgroundSelecter, _poolController.RecoverProjectilePool(tower.Projectile.GetComponent<Projectile>()), currentPool, tower);
+        buffer.GetComponent<Tower>().Initialize(this, _ressourceController, _backgroundSelecter, _poolController.RecoverProjectilePool(tower.Projectile.GetComponent<Projectile>()), currentPool, tower);
     }
     #endregion
 

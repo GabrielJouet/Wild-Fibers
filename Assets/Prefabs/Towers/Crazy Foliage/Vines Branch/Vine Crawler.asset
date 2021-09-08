@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f93a738c01d9b44483aba2f0a4f91fa, type: 3}
+  m_Name: Vine Crawler
+  m_EditorClassIdentifier: 
+  _description: A cactus-like flower that will put spikes on the path
+  _libraryDescription: Insects that go through a wall of vines like this one always
+    suffer a loss of chitin scales. But, due to its high resources consumption, this
+    plant can't reach far away from its ttrunk.
+  _price: 145
+  _icon: {fileID: 21300000, guid: 937f4fdadbb0a2e4fa9504908ea8f300, type: 3}
+  _sprite: {fileID: 1249832811290648610, guid: d66cd7d1ed7cd8844a044f06e18d4422, type: 3}
+  _shadowSprite: {fileID: 4684895350081689219, guid: c7e168489f1f2224f8cada98fed0f4a7,
+    type: 3}
+  _scriptName: Vines
+  _projectileUsed: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,
+    type: 3}
+  _timeBetweenShots: 4
+  _damage: 9
+  _armorThrough: 0
+  _numberOfShots: 1
+  _range: 0.9
+  _canHitFlying: 1
+  _shotsRandomly: 0
+  _armorThroughMalus: 0
+  _damageOverTime: 0
+  _dotDuration: 0
+  _towerUpgrades:
+  - {fileID: 11400000, guid: 417876734bf6e1a4e88b47f546972662, type: 2}
+  - {fileID: 11400000, guid: 82b23e9f588f63648b88e41d308729a8, type: 2}
+  _towerSpecs: []
+  _towerAugmentations:
+  - {fileID: 11400000, guid: 28d716d7bae50174986a58f82ee82fb3, type: 2}
+  - {fileID: 11400000, guid: 0972f773d66d5a8429a6f76135f4338b, type: 2}
+  - {fileID: 11400000, guid: 01ea9e6c87a2073498d59e2b3b97f403, type: 2}
+  - {fileID: 11400000, guid: 17b0757aa11fd45439e35d971ea1dfc1, type: 2}
+  - {fileID: 11400000, guid: f28b3df3b9b26084490f3f73c68f25a2, type: 2}
+  _special: Wave
+  _screenShot: {fileID: 21300000, guid: ffacadf0e9762694f8df5eee1b7fa044, type: 3}

@@ -11,13 +11,6 @@ public class TowerCollider : MonoBehaviour
     public Tower ParentTower { get; set; }
 
 
-
-    public void UpdateTower(Tower newTower)
-    {
-        ParentTower = newTower;
-    }
-
-
     /// <summary>
     /// Method called when an enemy enters the range.
     /// </summary>
