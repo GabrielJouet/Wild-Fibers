@@ -2685,6 +2685,11 @@ PrefabInstance:
       propertyPath: _poolController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _useUpDescription
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241418, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: m_SortingLayer
@@ -2913,6 +2918,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _poolController
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _useUpDescription
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
@@ -6887,6 +6897,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _poolController
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _useUpDescription
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}

@@ -30,6 +30,18 @@ public class TowerButtonController : MonoBehaviour
     private List<TowerButton> _towerPurchaseButtons;
 
     /// <summary>
+    /// Up description object.
+    /// </summary>
+    [SerializeField]
+    private GameObject _upDescription;
+
+    /// <summary>
+    /// Down description object.
+    /// </summary>
+    [SerializeField]
+    private GameObject _downDescription;
+
+    /// <summary>
     /// Sell button.
     /// </summary>
     [SerializeField]
@@ -115,6 +127,8 @@ public class TowerButtonController : MonoBehaviour
         for (int i = 0; i < _towerPurchaseButtons.Count; i++)
         {
             TowerData buffer = _squadController.CurrentSquad.Towers[i];
+
+            _towerPurchaseButtons[i].SetTargetDescription(newUsedTowerSlot.UpDescription? _upDescription : _downDescription);
             _towerPurchaseButtons[i].gameObject.SetActive(true);
 
             _towerPurchaseButtons[i].ChangeBehavior(() => newUsedTowerSlot.ChooseTower(buffer));

@@ -29,6 +29,13 @@ public class TowerSlot : MonoBehaviour
     [SerializeField]
     private Animator _shadowAnimator;
 
+    /// <summary>
+    /// Does this tower slot use up or down description?
+    /// </summary>
+    [SerializeField]
+    private bool _useUpDescription;
+    public bool UpDescription { get => _useUpDescription; }
+
 
     /// <summary>
     /// Level controller is used to recover pools.

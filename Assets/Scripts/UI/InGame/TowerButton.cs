@@ -50,8 +50,12 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// <summary>
     /// Description of the tower.
     /// </summary>
-    [SerializeField]
     private Text _descriptionText;
+
+    /// <summary>
+    /// Description game object of the tower.
+    /// </summary>
+    private GameObject _descriptionObject;
 
     /// <summary>
     /// Ressource controller component.
@@ -62,6 +66,11 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// Does the button is locked?
     /// </summary>
     private bool _locked = false;
+
+    /// <summary>
+    /// Does the button is locked?
+    /// </summary>
+    private string _description;
 
 
     /// <summary>
@@ -75,7 +84,7 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     {
         _resourceController = newController;
 
-        _descriptionText.text = newDescription;
+        _description = newDescription;
         _buttonImage.sprite = newSprite;
         _buttonImage.SetNativeSize();
         _buttonImage.rectTransform.sizeDelta *= 2.4f;
@@ -120,6 +129,17 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
 
     /// <summary>
+    /// Method called when we want to change the target description object.
+    /// </summary>
+    /// <param name="descriptionObject">The description game object related</param>
+    public void SetTargetDescription(GameObject descriptionObject)
+    {
+        _descriptionObject = descriptionObject;
+        _descriptionText = descriptionObject.GetComponentInChildren<Text>();
+    }
+
+
+    /// <summary>
     /// Method called to lock a specific button.
     /// </summary>
     public void Lock()
@@ -153,8 +173,11 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// <param name="eventData">The pointer event</param>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!_locked && _descriptionText != null)
-            _descriptionText.rectTransform.parent.gameObject.SetActive(true);
+        if (!_locked)
+        {
+            _descriptionObject.SetActive(true);
+            _descriptionText.text = _description;
+        }
     }
 
 
@@ -164,7 +187,7 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// <param name="eventData">The pointer event</param>
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (!_locked && _descriptionText != null)
-            _descriptionText.rectTransform.parent.gameObject.SetActive(false);
+        if (!_locked)
+            _descriptionObject.SetActive(false);
     }
 }
