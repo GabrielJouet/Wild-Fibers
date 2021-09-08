@@ -20,10 +20,20 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private Image _icon;
 
     /// <summary>
-    /// Text component that will handle the description.
+    /// Position of the description relative to this skill.
     /// </summary>
     [SerializeField]
+    private RectTransform _descriptionPosition;
+
+    /// <summary>
+    /// Text component that will handle the description.
+    /// </summary>
     private Text _description;
+
+    /// <summary>
+    /// Game Object component that will handle the description parent.
+    /// </summary>
+    private GameObject _descriptionGameObject;
 
 
     /// <summary>
@@ -37,15 +47,15 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     /// <param name="relatedAugmentation">The related augmentation</param>
     /// <param name="newState">The state of the augmentation (Bought, Locked or Unlocked)</param>
-    public void Initialize(Augmentation relatedAugmentation, AugmentationState newState)
+    public void Initialize(Augmentation relatedAugmentation, AugmentationState newState, Text description)
     {
+        _description = description;
+        _descriptionGameObject = description.transform.parent.gameObject;
+
         _price.text = relatedAugmentation.Price.ToString();
         _icon.sprite = relatedAugmentation.Icon;
-        _description.text = relatedAugmentation.Description;
 
         _augmentation = relatedAugmentation;
-
-        _description.transform.parent.gameObject.SetActive(false);
 
         switch (newState)
         {
@@ -99,7 +109,9 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// <remarks>Interface needed because this is a UI object</remarks>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        _description.transform.parent.gameObject.SetActive(true);
+        _description.text = _augmentation.Description;
+        _descriptionGameObject.GetComponent<RectTransform>().position = _descriptionPosition.position;
+        _descriptionGameObject.SetActive(true);
     }
 
 

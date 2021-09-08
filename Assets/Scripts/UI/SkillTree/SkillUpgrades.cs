@@ -33,7 +33,8 @@ public class SkillUpgrades : MonoBehaviour
     /// <param name="newAugmentations">Augmentation to display</param>
     /// <param name="augmentationLevel">Current augmentation level of the skill</param>
     /// <param name="newIndex">Buffered index</param>
-    public void Initialize(Sprite newTower, List<Augmentation> newAugmentations, int augmentationLevel, int newIndex)
+    /// <param name="description">The description text object needed</param>
+    public void Initialize(Sprite newTower, List<Augmentation> newAugmentations, int augmentationLevel, int newIndex, Text description)
     {
         for (int i = 0; i < _skills.Count; i ++)
         {
@@ -46,7 +47,7 @@ public class SkillUpgrades : MonoBehaviour
             else
                 newState = AugmentationState.LOCKED;
 
-            _skills[i].Initialize(newAugmentations[i], newState);
+            _skills[i].Initialize(newAugmentations[i], newState, description);
         }
 
         _index = newIndex;
