@@ -175,6 +175,7 @@ public class TowerButtonController : MonoBehaviour
     /// </summary>
     /// <param name="buttonIndex">The button to update</param>
     /// <param name="index">The upgrade index</param>
+    /// <param name="descriptionObject">The game object used for description display</param>
     private void UpdateTowerUpgradeButtons(int buttonIndex, int index, GameObject descriptionObject)
     {
         TowerData buffer = _currentTower.Data.Upgrades[index];
@@ -194,6 +195,7 @@ public class TowerButtonController : MonoBehaviour
     /// <summary>
     /// Method called to update tower upgrade button.
     /// </summary>
+    /// <param name="descriptionObject">The game object used for description display</param>
     /// <remarks>The previous method update 2 buttons, whereas, this one only activate one</remarks>
     private void UpdateTowerUpgradeButton(GameObject descriptionObject)
     {
@@ -214,6 +216,7 @@ public class TowerButtonController : MonoBehaviour
     /// <summary>
     /// Method called to update tower specs buttons.
     /// </summary>
+    /// <param name="descriptionObject">The game object used for description display</param>
     private void UpdateTowerSpecButtons(GameObject descriptionObject)
     {
         for (int i = 0; i < _towerUpgradesButtons.Count; i++)
