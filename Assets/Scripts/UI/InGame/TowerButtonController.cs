@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -107,9 +107,7 @@ public class TowerButtonController : MonoBehaviour
                 }
             }
 
-            if (!found)
-                _towerPurchaseButtons[i].Initialize(buffer[i].Icon, buffer[i].Price, _ressourceController, buffer[i].Description);
-            else
+            if (found)
                 _towerPurchaseButtons[i].Lock();
         }
     }
@@ -128,9 +126,8 @@ public class TowerButtonController : MonoBehaviour
         {
             TowerData buffer = _squadController.CurrentSquad.Towers[i];
 
-            _towerPurchaseButtons[i].SetTargetDescription(newUsedTowerSlot.UpDescription? _upDescription : _downDescription);
             _towerPurchaseButtons[i].gameObject.SetActive(true);
-
+            _towerPurchaseButtons[i].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description, newUsedTowerSlot.UpDescription ? _upDescription : _downDescription);
             _towerPurchaseButtons[i].ChangeBehavior(() => newUsedTowerSlot.ChooseTower(buffer));
             _sellButton.UpdateState(buffer.Price < _ressourceController.GoldCount);
         }
@@ -156,20 +153,20 @@ public class TowerButtonController : MonoBehaviour
     {
         _currentTower = newTower;
         _rectTransform.localPosition = newPosition;
-        GameObject buffer = _currentTower.gameObject;
+        GameObject descriptionObject = newTower.Slot.UpDescription ? _upDescription : _downDescription;
 
         if (_currentTower.Data.Upgrades.Count > 1)
         {
-            UpdateTowerUpgradeButtons(0, 0);
-            UpdateTowerUpgradeButtons(2, 1);
+            UpdateTowerUpgradeButtons(0, 0, descriptionObject);
+            UpdateTowerUpgradeButtons(2, 1, descriptionObject);
         }
         else if (_currentTower.Data.Upgrades.Count == 1)
-            UpdateTowerUpgradeButton();
+            UpdateTowerUpgradeButton(descriptionObject);
         else if (_currentTower.Data.Specs.Count > 0)
-            UpdateTowerSpecButtons();
+            UpdateTowerSpecButtons(descriptionObject);
 
-        _sellButton.Initialize(Mathf.FloorToInt((newTower.CumulativeGold * newTower.Data.ResellPriceFactor) * 0.65f));
         _sellButton.gameObject.SetActive(true);
+        _sellButton.Initialize(Mathf.FloorToInt((newTower.CumulativeGold * newTower.Data.ResellPriceFactor) * 0.65f), descriptionObject);
         _sellButton.ChangeBehavior(() => _currentTower.ResellTower());
         _sellButton.UpdateState(true);
     }
@@ -180,11 +177,11 @@ public class TowerButtonController : MonoBehaviour
     /// </summary>
     /// <param name="buttonIndex">The button to update</param>
     /// <param name="index">The upgrade index</param>
-    private void UpdateTowerUpgradeButtons(int buttonIndex, int index)
+    private void UpdateTowerUpgradeButtons(int buttonIndex, int index, GameObject descriptionObject)
     {
         TowerData buffer = _currentTower.Data.Upgrades[index];
         _towerUpgradesButtons[buttonIndex].gameObject.SetActive(true);
-        _towerUpgradesButtons[buttonIndex].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description);
+        _towerUpgradesButtons[buttonIndex].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description, descriptionObject);
 
         if(_levelController.LoadedLevel.TowerLevel > 0)
         {
@@ -203,11 +200,11 @@ public class TowerButtonController : MonoBehaviour
     /// Method called to update tower upgrade button.
     /// </summary>
     /// <remarks>The previous method update 2 buttons, whereas, this one only activate one</remarks>
-    private void UpdateTowerUpgradeButton()
+    private void UpdateTowerUpgradeButton(GameObject descriptionObject)
     {
         TowerData buffer = _currentTower.Data.Upgrades[0];
         _towerUpgradesButtons[1].gameObject.SetActive(true);
-        _towerUpgradesButtons[1].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description);
+        _towerUpgradesButtons[1].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description, descriptionObject);
 
         if (_levelController.LoadedLevel.TowerLevel > 1)
         {
@@ -225,14 +222,14 @@ public class TowerButtonController : MonoBehaviour
     /// <summary>
     /// Method called to update tower specs buttons.
     /// </summary>
-    private void UpdateTowerSpecButtons()
+    private void UpdateTowerSpecButtons(GameObject descriptionObject)
     {
         for (int i = 0; i < _towerUpgradesButtons.Count; i++)
         {
             TowerSpec buffer = _currentTower.Data.Specs[i];
 
             _towerUpgradesButtons[i].gameObject.SetActive(true);
-            _towerUpgradesButtons[1].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description);
+            _towerUpgradesButtons[i].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description, descriptionObject);
 
             if (_levelController.LoadedLevel.TowerLevel > 1)
             {
