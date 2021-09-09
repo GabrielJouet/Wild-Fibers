@@ -149,7 +149,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: -205.20001}
+  m_AnchoredPosition: {x: 0, y: -220}
   m_SizeDelta: {x: 128, y: 128}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2604096296494983133
@@ -2612,6 +2612,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4541158168501935614}
     m_Modifications:
+    - target: {fileID: 351065715868922911, guid: 862c3cdf711a3444fa92c0b2721f26af,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MusicSlider, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1759824421000992701, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -2621,6 +2626,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -51.200195
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525512932653046494, guid: 862c3cdf711a3444fa92c0b2721f26af,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MusicSlider, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6327266466586803030, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
