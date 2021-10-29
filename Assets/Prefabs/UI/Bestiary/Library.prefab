@@ -2018,7 +2018,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyInfoPrefab: {fileID: 7758772164408991083, guid: ae8288275c39e7b489f063cf013b1535,
     type: 3}
-  _towerPanel: {fileID: 5305219129644711971}
+  _towerPanel: {fileID: 5575951972707165611}
   _enemyPanel: {fileID: 4696118492461454348}
   _towerList: {fileID: 1604148810157933786}
   _enemyList: {fileID: 2077952380727520819}
@@ -2535,7 +2535,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &4836823157980652520
 RectTransform:
   m_ObjectHideFlags: 0
