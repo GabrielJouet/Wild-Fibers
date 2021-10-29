@@ -80,7 +80,8 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// <param name="newPrice">The new price of the tower</param>
     /// <param name="newController">The ressource controller to use</param>
     /// <param name="newDescription">The new description of this button</param>
-    public void Initialize(Sprite newSprite, int newPrice, RessourceController newController, string newDescription)
+    /// <param name="descriptionObject">The game object used for description display</param>
+    public void Initialize(Sprite newSprite, int newPrice, RessourceController newController, string newDescription, GameObject descriptionObject)
     {
         _resourceController = newController;
 
@@ -91,6 +92,8 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
         _price = newPrice;
         _priceText.text = _price.ToString();
+
+        SetTargetDescription(descriptionObject);
     }
 
 
@@ -99,9 +102,12 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// </summary>
     /// <remarks>Only used when reselling a tower</remarks>
     /// <param name="newPrice">The new price of this button</param>
-    public void Initialize(int newPrice)
+    /// <param name="descriptionObject">The game object used for description display</param>
+    public void Initialize(int newPrice, GameObject descriptionObject)
     {
+        _description = "Resell this tower";
         _priceText.text = newPrice.ToString();
+        SetTargetDescription(descriptionObject);
     }
 
 
@@ -132,7 +138,7 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// Method called when we want to change the target description object.
     /// </summary>
     /// <param name="descriptionObject">The description game object related</param>
-    public void SetTargetDescription(GameObject descriptionObject)
+    private void SetTargetDescription(GameObject descriptionObject)
     {
         _descriptionObject = descriptionObject;
         _descriptionText = descriptionObject.GetComponentInChildren<Text>();
@@ -173,7 +179,7 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// <param name="eventData">The pointer event</param>
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (!_locked)
+        if (!_locked && _descriptionObject != null)
         {
             _descriptionObject.SetActive(true);
             _descriptionText.text = _description;
@@ -187,7 +193,7 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// <param name="eventData">The pointer event</param>
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (!_locked)
+        if (!_locked && _descriptionObject != null)
             _descriptionObject.SetActive(false);
     }
 }

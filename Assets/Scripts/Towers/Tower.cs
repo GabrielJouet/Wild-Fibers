@@ -53,6 +53,7 @@ public abstract class Tower : MonoBehaviour
     /// The related tower slot.
     /// </summary>
     protected TowerSlot _currentSlot;
+    public TowerSlot Slot { get => _currentSlot; }
 
     /// <summary>
     /// Resource controller used to record money.

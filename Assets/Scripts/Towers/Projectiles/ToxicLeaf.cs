@@ -26,6 +26,12 @@ public class ToxicLeaf : Projectile
     /// </summary>
     private bool _slowDown;
 
+    /// <summary>
+    /// Rotation speed of the projectile itself.
+    /// </summary>
+    private float _rotationSpeed;
+
+
 
     /// <summary>
     /// Constructor.
@@ -47,6 +53,9 @@ public class ToxicLeaf : Projectile
         transform.localScale = new Vector3(1, 1, 1);
 
         _slowDown = slowDown;
+
+        _rotationSpeed = Random.Range(0.5f, 1.5f);
+        _rotationSpeed *= Random.Range(0, 2) == 1 ? -1 : 1;
     }
 
 
@@ -67,7 +76,7 @@ public class ToxicLeaf : Projectile
         }
         else
         {
-            _angle += Time.deltaTime;
+            _angle += Time.deltaTime * _rotationSpeed;
             transform.localPosition = _initialPosition + new Vector2(Mathf.Sin(_angle) * 0.15f, Mathf.Cos(_angle) * 0.15f);
             transform.RotateAround(transform.position, new Vector3(0, 0, 1), _projectileSpeed * 4 * Time.deltaTime);
         }
