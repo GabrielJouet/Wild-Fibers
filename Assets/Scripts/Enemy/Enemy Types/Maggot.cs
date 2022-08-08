@@ -51,7 +51,7 @@ public class Maggot : Enemy
     /// Coroutine used to delay the hatch of the maggot.
     /// </summary>
     /// <returns>Yield the hatchling time and cocooning time</returns>
-    public IEnumerator DelaySpawn()
+    protected IEnumerator DelaySpawn()
     {
         yield return new WaitForSeconds(_hatchingTime + Random.Range(-_hatchingTime / 20, _hatchingTime / 20));
         _animator.SetTrigger("cocoon");
@@ -71,7 +71,7 @@ public class Maggot : Enemy
     /// </summary>
     /// <param name="shieldValue">New shield value</param>
     /// <param name="dotApplied">Does a dot is applied to the shield?</param>
-    public void ActivateShield(float shieldValue, bool dotApplied)
+    protected void ActivateShield(float shieldValue, bool dotApplied)
     {
         Moving = false;
 
@@ -79,20 +79,5 @@ public class Maggot : Enemy
             Armor = shieldValue - (ArmorMax - Armor);
         else
             Armor = shieldValue;
-    }
-
-
-    /// <summary>
-    /// Default shield value.
-    /// </summary>
-    /// <param name="dotApplied">Does a dot is applied to the shield?</param>
-    public void ResetShield(bool dotApplied)
-    {
-        if (dotApplied)
-            Armor = _baseShieldValue - (ArmorMax - Armor);
-        else
-            Armor = _baseShieldValue;
-
-        Moving = true;
     }
 }

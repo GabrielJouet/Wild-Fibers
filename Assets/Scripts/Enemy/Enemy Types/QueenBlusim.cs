@@ -53,7 +53,7 @@ public class QueenBlusim : Enemy
     /// Coroutine used to delay each spawn wave.
     /// </summary>
     /// <returns>Yield time between spawn and spawn times</returns>
-    public IEnumerator DelaySpawn()
+    protected IEnumerator DelaySpawn()
     {
         while(true)
         {
