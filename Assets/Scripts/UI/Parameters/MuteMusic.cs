@@ -42,7 +42,7 @@ public class MuteMusic : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        _saveController = Controller.Instance.SaveControl;
+        _saveController = Controller.Instance.SaveController;
         _activated = _sound ? _saveController.SaveFile.SoundMuted : _saveController.SaveFile.MusicMuted;
         transform.GetChild(0).GetComponent<Image>().sprite = _activated ? _activatedSprite : _desactivatedSprite;
     }

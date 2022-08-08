@@ -191,12 +191,12 @@ public class Library : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        List<TowerData> towers = Controller.Instance.SquadControl.CurrentSquad.Towers;
+        List<TowerData> towers = Controller.Instance.SquadController.CurrentSquad.Towers;
 
-        SaveController saveController = Controller.Instance.SaveControl;
+        SaveController saveController = Controller.Instance.SaveController;
 
         List<bool> enemiesFound = saveController.SaveFile.EnemiesUnlocked;
-        List<Enemy> enemies = Controller.Instance.EnemyControl.Enemies;
+        List<Enemy> enemies = Controller.Instance.EnemyController.Enemies;
 
         for (int i = 0; i < enemiesFound.Count; i ++)
         {

@@ -89,11 +89,11 @@ public class LevelController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _saveController = Controller.Instance.SaveControl;
+        _saveController = Controller.Instance.SaveController;
         LoadedLevel = _saveController.LoadedLevel;
 
         _ressourceController = GetComponent<RessourceController>();
-        _poolController = Controller.Instance.PoolControl;
+        _poolController = Controller.Instance.PoolController;
         _poolController.ReInitialize();
 
         //If we unlock new towers in this level.
@@ -136,7 +136,7 @@ public class LevelController : MonoBehaviour
         int j = 0;
         foreach(EnemyGroup current in LoadedLevel.Waves[_waveIndex].EnemyGroups)
         {
-            int index = Controller.Instance.EnemyControl.Enemies.IndexOf(current.Enemy.GetComponent<Enemy>());
+            int index = Controller.Instance.EnemyController.Enemies.IndexOf(current.Enemy.GetComponent<Enemy>());
 
             //If in this wave we uncounter new enemies.
             if (!_saveController.SaveFile.EnemiesUnlocked[index])

@@ -63,7 +63,7 @@ public class SkillUpgrades : MonoBehaviour
     {
         int index = _skills.IndexOf(purchased);
 
-        Controller.Instance.SaveControl.SaveTowerAugmentationLevel(_index, index + 1);
+        Controller.Instance.SaveController.SaveTowerAugmentationLevel(_index, index + 1);
 
         if (index + 1 < _skills.Count)
             _skills[index + 1].Activate();

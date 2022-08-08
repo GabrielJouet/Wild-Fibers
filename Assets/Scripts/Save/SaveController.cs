@@ -70,7 +70,9 @@ public class SaveController : MonoBehaviour
 	/// </summary>
 	private IEnumerator Start()
 	{
-		yield return new WaitUntil(() => Controller.Instance.SaveControl);
+		yield return new WaitUntil(() => Controller.Instance);
+
+		_enemyController = Controller.Instance.EnemyController;
 		_gameSavePath = Application.persistentDataPath + "/player.dat";
 		_binaryFormatter = new BinaryFormatter();
 
@@ -135,7 +137,7 @@ public class SaveController : MonoBehaviour
 	{
 		int missingLevels = Levels.Count - SaveFile.CurrentSave.Count;
 		int missingEnemies = _enemyController.Enemies.Count - SaveFile.EnemiesUnlocked.Count;
-		int missingSquads = Controller.Instance.SquadControl.Squads.Count - SaveFile.SquadsProgression.Count;
+		int missingSquads = Controller.Instance.SquadController.Squads.Count - SaveFile.SquadsProgression.Count;
 
 		SaveFile.UpdateOldSave(missingLevels, missingEnemies, missingSquads, BlankSave);
 	}
@@ -305,7 +307,7 @@ public class SaveController : MonoBehaviour
 	{
 		try
 		{
-			Controller.Instance.SquadControl.ResetData();
+			Controller.Instance.SquadController.ResetData();
 			FileStream file = File.OpenWrite(_gameSavePath);
 
 			_binaryFormatter.Serialize(file, SaveFile);

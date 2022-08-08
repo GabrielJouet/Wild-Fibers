@@ -83,7 +83,7 @@ public class TowerButtonController : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _squadController = Controller.Instance.SquadControl;
+        _squadController = Controller.Instance.SquadController;
     }
 
 
@@ -93,7 +93,7 @@ public class TowerButtonController : MonoBehaviour
     private void Start()
     {
         List<TowerData> buffer = _squadController.CurrentSquad.Towers;
-        List<TowerData> blockedTowers = Controller.Instance.SaveControl.LoadedLevel.BlockedTowers;
+        List<TowerData> blockedTowers = Controller.Instance.SaveController.LoadedLevel.BlockedTowers;
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i ++)
         {

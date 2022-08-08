@@ -130,7 +130,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     public void Purchase()
     {
-        if (Controller.Instance.SaveControl.SaveFile.CurrentSquad.CurrencyAvailable >= _augmentation.Price)
+        if (Controller.Instance.SaveController.SaveFile.CurrentSquad.CurrencyAvailable >= _augmentation.Price)
         {
             SetAsBought();
             transform.parent.GetComponent<SkillUpgrades>().PurchaseAugmentation(this);

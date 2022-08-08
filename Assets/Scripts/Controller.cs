@@ -3,6 +3,10 @@
 /// <summary>
 /// Class that handle every controllers.
 /// </summary>
+[RequireComponent(typeof(SaveController))]
+[RequireComponent(typeof(SquadController))]
+[RequireComponent(typeof(PoolController))]
+[RequireComponent(typeof(EnemyController))]
 public class Controller : MonoBehaviour
 {
     /// <summary>
@@ -13,22 +17,22 @@ public class Controller : MonoBehaviour
     /// <summary>
     /// Save controller component.
     /// </summary>
-    public SaveController SaveControl { get; private set; }
+    public SaveController SaveController { get; private set; }
 
     /// <summary>
     /// Squad controller component.
     /// </summary>
-    public SquadController SquadControl { get; private set; }
+    public SquadController SquadController { get; private set; }
 
     /// <summary>
     /// Pool controller component.
     /// </summary>
-    public PoolController PoolControl { get; private set; }
+    public PoolController PoolController { get; private set; }
 
     /// <summary>
     /// Enemy controller component.
     /// </summary>
-    public EnemyController EnemyControl { get; private set; }
+    public EnemyController EnemyController { get; private set; }
 
 
 
@@ -44,9 +48,9 @@ public class Controller : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        SaveControl = FindObjectOfType<SaveController>();
-        SquadControl = FindObjectOfType<SquadController>();
-        PoolControl = FindObjectOfType<PoolController>();
-        EnemyControl = FindObjectOfType<EnemyController>();
+        SaveController = GetComponent<SaveController>();
+        SquadController = GetComponent<SquadController>();
+        PoolController = GetComponent<PoolController>();
+        EnemyController = GetComponent<EnemyController>();
     }
 }

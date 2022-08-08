@@ -116,7 +116,7 @@ public class GameOverScreen : MonoBehaviour
                 }
             }
 
-            Controller.Instance.SaveControl.SaveLevelData(livesLost);
+            Controller.Instance.SaveController.SaveLevelData(livesLost);
         }
     }
 }
