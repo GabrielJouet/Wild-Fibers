@@ -52,23 +52,6 @@ public class Enemy : MonoBehaviour
     #endregion
 
 
-    #region Particles
-    [Header("Particle")]
-
-    /// <summary>
-    /// Damage particle used.
-    /// </summary>
-    [SerializeField]
-    protected Particle _damageParticle;
-
-    /// <summary>
-    /// Emission points particle.
-    /// </summary>
-    [SerializeField]
-    protected List<Transform> _particleEmissionsPoints;
-    #endregion
-
-
     #region Behavior
     [Header("Behaviour Variables")]
 
@@ -217,11 +200,6 @@ public class Enemy : MonoBehaviour
     protected bool _isSlowDown = false;
 
     /// <summary>
-    /// Particle controller component.
-    /// </summary>
-    protected ParticleController _particleController;
-
-    /// <summary>
     /// Loaded path.
     /// </summary>
     protected List<Vector2> _path;
@@ -281,9 +259,6 @@ public class Enemy : MonoBehaviour
         IsDotted = false;
         CanBeTargeted = true;
         Attacks.Clear();
-
-        if (_particleController == null)
-            _particleController = FindObjectOfType<ParticleController>();
 
         InformationUI = null;
         _isSlowDown = false;
@@ -357,10 +332,6 @@ public class Enemy : MonoBehaviour
         TakeDamage(damageLeft);
 
         Attacks.Remove(newAttack);
-
-        foreach (Transform current in _particleEmissionsPoints)
-            foreach (Particle particle in _particleController.GetParticle(_damageParticle, 3))
-                particle.Initialize(current.position);
 
         if (newAttack.DotDuration > 0)
             ApplyDot(newAttack);
