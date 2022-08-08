@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Maggot enemy type, will cocoon itself to revive as another enemy.
 /// </summary>
-public class Maggot : Enemy, IShieldable, ISpawnable
+public class Maggot : Enemy
 {
     [Header("Hatchling related")]
 
@@ -14,7 +14,6 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     /// </summary>
     [SerializeField]
     protected Enemy _hatchling;
-    public Enemy Spawnling { get => _hatchling; }
 
     /// <summary>
     /// Time before the maggot cocoon itself.
@@ -30,21 +29,6 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     /// </summary>
     [SerializeField]
     protected int _baseShieldValue;
-    public int BaseShieldValue { get => _baseShieldValue; set => _baseShieldValue = value; }
-
-
-
-    #region Unused
-    public bool StopWhileShielding { get; set; }
-
-    public float TimeBetweenSpawn { get; }
-
-    public float SpawnTime { get; }
-
-    public bool StopWhileSpawning { get; }
-
-    public int NumberOfEnemiesPerSpawn { get; }
-    #endregion
 
 
 
@@ -57,9 +41,7 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     public override void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
     {
         base.Initialize(newPath, newPool, pathIndex);
-
-        StopWhileShielding = true;
-        Armor = BaseShieldValue;
+        Armor = _baseShieldValue;
 
         StartCoroutine(DelaySpawn());
     }
@@ -91,7 +73,7 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     /// <param name="dotApplied">Does a dot is applied to the shield?</param>
     public void ActivateShield(float shieldValue, bool dotApplied)
     {
-        Moving = !StopWhileShielding;
+        Moving = false;
 
         if (dotApplied)
             Armor = shieldValue - (ArmorMax - Armor);
@@ -107,9 +89,9 @@ public class Maggot : Enemy, IShieldable, ISpawnable
     public void ResetShield(bool dotApplied)
     {
         if (dotApplied)
-            Armor = BaseShieldValue - (ArmorMax - Armor);
+            Armor = _baseShieldValue - (ArmorMax - Armor);
         else
-            Armor = BaseShieldValue;
+            Armor = _baseShieldValue;
 
         Moving = true;
     }
