@@ -16,22 +16,11 @@ public class SaveController : MonoBehaviour
 	private List<LevelData> _levels;
 	public List<LevelData> Levels { get => _levels; }
 
+
 	/// <summary>
 	/// Enemy controller component.
 	/// </summary>
-	[SerializeField]
 	private EnemyController _enemyController;
-
-
-	/// <summary>
-	/// Loaded level.
-	/// </summary>
-	public Level LoadedLevel { get; set; }
-
-	/// <summary>
-	/// Loaded save file.
-	/// </summary>
-	public SaveFile SaveFile { get; private set; }
 
 	/// <summary>
 	/// Binary formatter used.
@@ -60,9 +49,22 @@ public class SaveController : MonoBehaviour
 
 			for (int i = 0; i < Levels.Count; i++)
 				allSaves.Add(new LevelSave(0, i == 0 ? LevelState.UNLOCKED : LevelState.LOCKED));
+
 			return allSaves;
 		}
 	}
+
+
+	/// <summary>
+	/// Loaded level.
+	/// </summary>
+	public Level LoadedLevel { get; set; }
+
+	/// <summary>
+	/// Loaded save file.
+	/// </summary>
+	public SaveFile SaveFile { get; private set; }
+
 
 
 	/// <summary>
@@ -135,11 +137,7 @@ public class SaveController : MonoBehaviour
 	/// </summary>
 	private void UpdateOldSave()
 	{
-		int missingLevels = Levels.Count - SaveFile.CurrentSave.Count;
-		int missingEnemies = _enemyController.Enemies.Count - SaveFile.EnemiesUnlocked.Count;
-		int missingSquads = Controller.Instance.SquadController.Squads.Count - SaveFile.SquadsProgression.Count;
-
-		SaveFile.UpdateOldSave(missingLevels, missingEnemies, missingSquads, BlankSave);
+		SaveFile.UpdateOldSave(Levels.Count - SaveFile.CurrentSave.Count, _enemyController.Enemies.Count - SaveFile.EnemiesUnlocked.Count, Controller.Instance.SquadController.Squads.Count - SaveFile.SquadsProgression.Count, BlankSave);
 	}
 
 
