@@ -189,10 +189,11 @@ public class Enemy : MonoBehaviour
     public string HealthInfo { get => _healthMax.ToString(); }
     #endregion
 
+
     /// <summary>
     /// Does the enemy is moving?
     /// </summary>
-    public bool Moving { get; set; } = false;
+    protected bool _moving = false;
 
     /// <summary>
     /// Does the enemy is slow down?
@@ -278,7 +279,7 @@ public class Enemy : MonoBehaviour
         _path = newPath;
         _poolController = newPool;
 
-        Moving = true;
+        _moving = true;
     }
 
 
@@ -287,8 +288,17 @@ public class Enemy : MonoBehaviour
     /// </summary>
     protected void Update()
     {
-        if(Moving)
-            FollowPath();
+        if(_moving)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _path[_pathIndex], Time.deltaTime * Speed);
+
+            if ((Vector2)transform.position == _path[_pathIndex] && _pathIndex + 1 < _path.Count)
+                _pathIndex++;
+            else if (_pathIndex + 1 == _path.Count)
+                Die(true);
+
+            _spriteRenderer.flipX = transform.position.x - _path[_pathIndex].x > 0;
+        }
     }
 
 
@@ -297,24 +307,9 @@ public class Enemy : MonoBehaviour
     /// </summary>
     protected void FixedUpdate()
     {
+        //TO CHANGE, SHOULD NOT BE IN FIXED UPDATE, INSTEAD, ONLY WHEN DAMAGED
         if (InformationUI != null)
             InformationUI.UpdateEnemyInformation(this);
-    }
-
-
-    /// <summary>
-    /// Method used to follow bezier path.
-    /// </summary>
-    protected void FollowPath()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, _path[_pathIndex], Time.deltaTime * Speed);
-
-        if ((Vector2)transform.position == _path[_pathIndex] && _pathIndex + 1 < _path.Count)
-            _pathIndex++;
-        else if (_pathIndex + 1 == _path.Count)
-            Die(true);
-
-        _spriteRenderer.flipX = transform.position.x - _path[_pathIndex].x > 0;
     }
 
 
@@ -556,6 +551,11 @@ public class Enemy : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="attack"></param>
+    /// <returns></returns>
     public int DamageTaken(Attack attack)
     {
         float dotDamage = attack.DotDamage * 2 * attack.DotDuration;

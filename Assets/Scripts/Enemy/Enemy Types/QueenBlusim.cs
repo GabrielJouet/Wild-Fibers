@@ -59,7 +59,7 @@ public class QueenBlusim : Enemy
         {
             yield return new WaitForSeconds(_timeBetweenSpawn + Random.Range(-_timeBetweenSpawn / 20, _timeBetweenSpawn / 20));
 
-            Moving = false;
+            _moving = false;
             _animator.SetBool("lay", true);
 
             for (int i = 0; i < _numberOfEnemiesPerSpawn; i++)
@@ -70,7 +70,7 @@ public class QueenBlusim : Enemy
             }
 
             _animator.SetBool("lay", false);
-            Moving = true;
+            _moving = true;
         }
     }
 }

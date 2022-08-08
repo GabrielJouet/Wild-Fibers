@@ -73,7 +73,7 @@ public class Maggot : Enemy
     /// <param name="dotApplied">Does a dot is applied to the shield?</param>
     protected void ActivateShield(float shieldValue, bool dotApplied)
     {
-        Moving = false;
+        _moving = false;
 
         if (dotApplied)
             Armor = shieldValue - (ArmorMax - Armor);
