@@ -3,32 +3,6 @@
 /// </summary>
 public static class Converter
 {
-    private static readonly string veryFast = "V. Fast";
-    private static readonly string veryHigh = "V. High";
-    private static readonly string destroyer = "Destroyer";
-    private static readonly string unbreakable = "Unbreakable";
-
-    private static readonly string fast = "Fast";
-    private static readonly string high = "High";
-    private static readonly string breacher = "Breacher";
-
-    private static readonly string average = "Average";
-    private static readonly string bigHitter = "Big Hitter";
-    private static readonly string shielded = "Shielded";
-
-    private static readonly string small = "Small";
-    private static readonly string slow = "Slow";
-    private static readonly string scratcher = "Scratcher";
-    private static readonly string low = "Low";
-
-    private static readonly string verySmall = "V. Small";
-    private static readonly string verySlow = "V. Slow";
-    private static readonly string stillPolish = "Still Polish";
-
-    private static readonly string none = "None";
-
-
-
     /// <summary>
     /// Method used to convert value.
     /// </summary>
@@ -37,15 +11,15 @@ public static class Converter
     public static string TransformArmor(float armor)
     {
         if (armor <= 0.1f)
-            return none;
+            return "None";
         else if (0.1f < armor && armor <= 0.25f)
-            return low;
+            return "Low";
         else if (0.25f < armor && armor <= 0.45f)
-            return shielded;
+            return "Shielded";
         else if (0.45f < armor && armor <= 0.85f)
-            return high;
+            return "High";
         else if (armor > 0.85f)
-            return unbreakable;
+            return "Unbreakable";
         else
             return "Unknown";
     }
@@ -60,15 +34,15 @@ public static class Converter
     public static string TransformResistance(float armor)
     {
         if (armor <= 0.1f)
-            return none;
+            return "None";
         else if (0.1f < armor && armor <= 0.25f)
-            return low;
+            return "Low";
         else if (0.25f < armor && armor <= 0.45f)
-            return shielded;
+            return "Shielded";
         else if (0.45f < armor && armor <= 0.85f)
-            return high;
+            return "High";
         else if (armor > 0.85f)
-            return unbreakable;
+            return "Unbreakable";
         else
             return "Unknown";
     }
@@ -81,15 +55,15 @@ public static class Converter
     public static string TransformArmorThrough(float armorThrough)
     {
         if (armorThrough <= 0.05f)
-            return stillPolish;
+            return "Still Polish";
         else if (0.05f < armorThrough && armorThrough <= 0.15f)
-            return scratcher;
+            return "Scratcher";
         else if (0.15f < armorThrough && armorThrough <= 0.35f)
-            return bigHitter;
+            return "Big Hitter";
         else if (0.35f < armorThrough && armorThrough <= 0.65f)
-            return breacher;
+            return "Breacher";
         else if (armorThrough > 0.65f)
-            return destroyer;
+            return "Destroyer";
         else
             return "Unknown";
     }
@@ -102,17 +76,17 @@ public static class Converter
     public static string TransformDot(float dot)
     {
         if (dot <= 0)
-            return none;
+            return "None";
         else if (0 < dot && dot <= 10)
-            return verySmall;
+            return "V. Small";
         else if (10 < dot && dot <= 25)
-            return small;
+            return "Small";
         else if (25 < dot && dot <= 55)
-            return average;
+            return "Average";
         else if (55 < dot && dot <= 80)
-            return high;
+            return "High";
         else if (dot > 80)
-            return veryHigh;
+            return "V. High";
         else
             return "Unknown";
     }
@@ -127,15 +101,15 @@ public static class Converter
     public static string TransformSpeed(float speed)
     {
         if (speed <= 0.1f)
-            return verySlow;
+            return "V. Slow";
         else if (0.1f < speed && speed <= 0.2f)
-            return slow;
+            return "Slow";
         else if (0.2f < speed && speed <= 0.3f)
-            return average;
+            return "Average";
         else if (0.3f < speed && speed <= 0.4f)
-            return fast;
+            return "Fast";
         else if (speed > 0.4f)
-            return veryFast;
+            return "V. Fast";
         else
             return "Unknown";
     }
@@ -150,15 +124,15 @@ public static class Converter
     public static string TransformFireRate(float fireRate)
     {
         if (fireRate <= 0.25f)
-            return verySlow;
+            return "V. Slow";
         else if (0.25f < fireRate && fireRate <= 0.55f)
-            return slow;
+            return "Slow";
         else if (0.55f < fireRate && fireRate <= 0.85f)
-            return average;
+            return "Average";
         else if (0.85f < fireRate && fireRate <= 1.15f)
-            return fast;
+            return "Fast";
         else if (fireRate > 1.15f)
-            return veryFast;
+            return "V. Fast";
         else
             return "Unknown";
     }
