@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5906076658267085393}
   - component: {fileID: 6617693188845866255}
   - component: {fileID: 5545853804847231419}
-  - component: {fileID: 5945167318015518382}
+  - component: {fileID: 6745826152485097962}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -108,7 +108,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &5945167318015518382
+--- !u!114 &6745826152485097962
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,10 +117,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5875892769604272345}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 376f1868ae61e554d8e6399ef4e7a63b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _transform: {fileID: 1413919725990256858}
+  _updates: 1
+  _target: {fileID: 1413919725990256858}
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,10 +189,6 @@ MonoBehaviour:
   _dotDisplay: {fileID: 8069151022372795028}
   _spriteRenderer: {fileID: 6617693188845866255}
   _animator: {fileID: 5545853804847231419}
-  _damageParticle: {fileID: 4405452952222755525, guid: 5d5493e82985e114dab5f2a1b97dde63,
-    type: 3}
-  _particleEmissionsPoints:
-  - {fileID: 5906076658267085393}
   _healthMax: 150
   _armorMax: 30
   _resistance: 0

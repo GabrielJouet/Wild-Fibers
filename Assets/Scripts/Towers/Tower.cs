@@ -6,7 +6,7 @@ using UnityEngine;
 /// Tower class, main object of the game.
 /// </summary>
 /// <remarks>Needs a static depth manager</remarks>
-[RequireComponent(typeof(StaticDepthManager))]
+[RequireComponent(typeof(DepthManager))]
 public abstract class Tower : MonoBehaviour
 {
     /// <summary>
@@ -132,7 +132,6 @@ public abstract class Tower : MonoBehaviour
         _currentSlot = newSlot;
         _towerPool = newTowerPool;
 
-        GetComponent<StaticDepthManager>().ResetSortingOrder();
         SpecialBehavior();
     }
 

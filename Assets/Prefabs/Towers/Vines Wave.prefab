@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1241556183771889381}
   - component: {fileID: 6104449477245763960}
   - component: {fileID: 2430961559830057209}
+  - component: {fileID: 1228322846168505861}
   m_Layer: 0
   m_Name: Vines Wave
   m_TagString: Untagged
@@ -123,7 +124,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 1.6}
+    oldSize: {x: 3.6, y: 2}
     newSize: {x: 3.2, y: 1.6}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -220,3 +221,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileSpeed: 0.6
+--- !u!114 &1228322846168505861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1457297254810030874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _updates: 0
+  _target: {fileID: 0}
