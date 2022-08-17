@@ -363,30 +363,22 @@ public abstract class Tower : MonoBehaviour
         {
             foreach (Enemy buffer in _availableEnemies)
             {
-                if (buffer.CanBeTargeted)
-                {
-                    Attack attackBuffered = ChangeNextAttack(buffer);
-                    _nextAttack.Enqueue(attackBuffered);
+                Attack attackBuffered = ChangeNextAttack(buffer);
+                _nextAttack.Enqueue(attackBuffered);
 
-                    availableEnemies.Add(buffer);
-                    buffer.AddAttack(attackBuffered);
-                }
+                availableEnemies.Add(buffer);
             }
         }
 
         foreach (Enemy buffer in _availableEnemies)
         {
-            if (buffer.CanBeTargeted)
-            {
-                Attack attackBuffered = ChangeNextAttack(buffer);
-                _nextAttack.Enqueue(attackBuffered);
+            Attack attackBuffered = ChangeNextAttack(buffer);
+            _nextAttack.Enqueue(attackBuffered);
 
-                availableEnemies.Add(buffer);
-                buffer.AddAttack(attackBuffered);
+            availableEnemies.Add(buffer);
 
-                if (availableEnemies.Count >= numberOfEnemiesToFound)
-                    break;
-            }
+            if (availableEnemies.Count >= numberOfEnemiesToFound)
+                break;
         }
 
         return availableEnemies;

@@ -226,20 +226,9 @@ public class Enemy : MonoBehaviour
     public BackgroudSelecter InformationUI { get; set; }
 
     /// <summary>
-    /// Current attacks waited.
-    /// </summary>
-    public List<Attack> Attacks { get; set; } = new List<Attack>();
-
-    /// <summary>
     /// Current dot used.
     /// </summary>
     protected List<Attack> _dots = new List<Attack>();
-
-
-    /// <summary>
-    /// Can the enemy be targeted?
-    /// </summary>
-    public bool CanBeTargeted { get; protected set; } = true;
 
 
     /// <summary>
@@ -258,8 +247,6 @@ public class Enemy : MonoBehaviour
     {
         _dotDisplay.SetActive(false);
         IsDotted = false;
-        CanBeTargeted = true;
-        Attacks.Clear();
 
         InformationUI = null;
         _isSlowDown = false;
@@ -303,17 +290,6 @@ public class Enemy : MonoBehaviour
 
 
     /// <summary>
-    /// Fixed Update method, called 50 times a second.
-    /// </summary>
-    protected void FixedUpdate()
-    {
-        //TO CHANGE, SHOULD NOT BE IN FIXED UPDATE, INSTEAD, ONLY WHEN DAMAGED
-        if (InformationUI != null)
-            InformationUI.UpdateEnemyInformation(this);
-    }
-
-
-    /// <summary>
     /// Method to remove health to enemy.
     /// </summary>
     /// <param name="newAttack">The related attack</param>
@@ -326,12 +302,8 @@ public class Enemy : MonoBehaviour
 
         TakeDamage(damageLeft);
 
-        Attacks.Remove(newAttack);
-
         if (newAttack.DotDuration > 0)
             ApplyDot(newAttack);
-
-        CanBeTargeted = CalculateTargetness();
     }
 
 
@@ -347,6 +319,9 @@ public class Enemy : MonoBehaviour
             Health -= damage;
 
         _healthBar.ChangeSize(Health / _healthMax);
+
+        if (InformationUI != null)
+            InformationUI.UpdateEnemyInformation(this);
     }
 
 
@@ -362,6 +337,9 @@ public class Enemy : MonoBehaviour
             _isSlowDown = true;
             StartCoroutine(ResetSlowDown(slowDownTime));
             Speed = _speedMax * (100 - slowDownRatio * ResistancePercentage) / 100f;
+
+            if (InformationUI != null)
+                InformationUI.UpdateEnemyInformation(this);
         }
     }
 
@@ -375,6 +353,9 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(slowDownTime);
         _isSlowDown = false;
         Speed = _speedMax;
+
+        if (InformationUI != null)
+            InformationUI.UpdateEnemyInformation(this);
     }
 
 
@@ -394,13 +375,14 @@ public class Enemy : MonoBehaviour
                     attackRemoved = attack;
 
             _dots.Remove(attackRemoved);
-
-            CanBeTargeted = CalculateTargetness();
         }
 
         _dots.Add(newAttack);
 
         _dotDisplay.SetActive(true);
+
+        if (InformationUI != null)
+            InformationUI.UpdateEnemyInformation(this);
 
         if (isActiveAndEnabled)
             StartCoroutine(TakePersistentDamage(newAttack));
@@ -426,8 +408,6 @@ public class Enemy : MonoBehaviour
 
         _dots.Remove(newDot);
         Armor += newDot.ArmorThroughMalus * ResistancePercentage;
-
-        CanBeTargeted = CalculateTargetness();
 
         if (_dots.Count == 0)
         {
@@ -457,7 +437,8 @@ public class Enemy : MonoBehaviour
         ArmorMax = Mathf.Clamp(ArmorMax - percentage, 0, ArmorMax);
         Armor = Mathf.Clamp(Armor - percentage, 0, Armor);
 
-        CanBeTargeted = CalculateTargetness();
+        if (InformationUI != null)
+            InformationUI.UpdateEnemyInformation(this);
     }
 
 
@@ -486,35 +467,6 @@ public class Enemy : MonoBehaviour
         _selector.SetActive(false);
 
         InformationUI = null;
-    }
-
-
-    /// <summary>
-    /// Method used to add a new attack on enemy and check if it can survive.
-    /// </summary>
-    /// <param name="newAttack">The data of the attack</param>
-    public void AddAttack(Attack newAttack)
-    {
-        Attacks.Add(newAttack);
-
-        CanBeTargeted = CalculateTargetness();
-    }
-
-
-    /// <summary>
-    /// Method used to check if the enemy can survive with applied attacks and dot.
-    /// </summary>
-    /// <returns>Returns true if the entity will not die, false otherwise</returns>
-    private bool CalculateTargetness()
-    {
-        int total = 0;
-        foreach (Attack current in Attacks)
-            total += DamageTaken(current);
-
-        foreach (Attack current in _dots)
-            total += DamageTaken(current);
-
-        return Health - total > 0;
     }
 
 
