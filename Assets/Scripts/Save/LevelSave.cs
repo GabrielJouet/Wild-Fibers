@@ -11,11 +11,11 @@ public class LevelSave
     /// </summary>
     public int SeedsGained { get; set; }
 
-
     /// <summary>
     /// Actual state of the level.
     /// </summary>
     public LevelState State { get; set; }
+
 
 
     /// <summary>

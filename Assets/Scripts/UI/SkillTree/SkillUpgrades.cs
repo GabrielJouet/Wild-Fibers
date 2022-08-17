@@ -19,6 +19,7 @@ public class SkillUpgrades : MonoBehaviour
     [SerializeField]
     private Image _towerIcon;
 
+
     /// <summary>
     /// Index buffered.
     /// </summary>
