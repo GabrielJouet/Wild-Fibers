@@ -11,31 +11,31 @@ public class DepthManager : MonoBehaviour
     /// Does this depth manager updates itself?
     /// </summary>
     [SerializeField]
-    protected bool _updates;
+    private bool _updates;
 
     /// <summary>
     /// Targeted transform object.
     /// </summary>
     [SerializeField]
-    protected Transform _target;
+    private Transform _target;
 
 
     /// <summary>
     /// The sprite renderer component that will be update.
     /// </summary>
-    protected SpriteRenderer _spriteRenderer;
+    private SpriteRenderer _spriteRenderer;
 
     /// <summary>
     /// Camera used to find current position.
     /// </summary>
-    protected Camera _camera;
+    private Camera _camera;
 
 
 
     /// <summary>
     /// Awake method, used at first to initialize.
     /// </summary>
-    protected virtual void Start()
+    private void Start()
     {
         if (_target == null)
             _target = transform;
@@ -60,7 +60,7 @@ public class DepthManager : MonoBehaviour
     /// <summary>
     /// Method used for re-instantiated objects.
     /// </summary>
-    public virtual void SetSortingOrder()
+    private void SetSortingOrder()
     {
         _spriteRenderer.sortingOrder = (int)_camera.WorldToScreenPoint(_target.position).y * -1;
     }
