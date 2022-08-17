@@ -13,10 +13,7 @@ public class EnemyInfo : MonoBehaviour
     private Enemy _enemy;
     public Enemy Enemy
     {
-        get
-        {
-            return _enemy;
-        }
+        get => _enemy;
 
         set
         {
