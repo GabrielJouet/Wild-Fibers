@@ -90,7 +90,7 @@ public class Spawner : MonoBehaviour
             {
                 _enemyIndex++;
                 Enemy buffer = _enemyPool.GetOneEnemy();
-                buffer.Initialize(_randomPath.CalculateRandomPath(), _poolController, 0);
+                buffer.Initialize(_randomPath.GeneratedPath, _poolController, 0);
 
                 yield return new WaitForSeconds(_enemyGroup.Patterns[_patternIndex].EnemiesTime);
             }

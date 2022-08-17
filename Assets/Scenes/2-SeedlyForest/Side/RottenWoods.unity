@@ -362,12 +362,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _numberOfIterations: 100
+  _activateGizmos: 0
   _startPoint: {fileID: 1676222190}
   _parameterStartPoint: {fileID: 372500582}
   _endPoint: {fileID: 693515325}
   _parameterEndPoint: {fileID: 347627452}
-  _numberOfIterations: 100
-  _activateGizmos: 0
 --- !u!1001 &59853151
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -884,12 +884,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _numberOfIterations: 100
+  _activateGizmos: 0
   _startPoint: {fileID: 1573849062}
   _parameterStartPoint: {fileID: 1370128241}
   _endPoint: {fileID: 997759467}
   _parameterEndPoint: {fileID: 156550303}
-  _numberOfIterations: 100
-  _activateGizmos: 0
 --- !u!1 &136733149
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,12 +936,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _numberOfIterations: 100
+  _activateGizmos: 0
   _startPoint: {fileID: 64854281}
   _parameterStartPoint: {fileID: 2128233228}
   _endPoint: {fileID: 1573849062}
   _parameterEndPoint: {fileID: 1639836133}
-  _numberOfIterations: 100
-  _activateGizmos: 0
 --- !u!1001 &145119553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1784,12 +1784,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _numberOfIterations: 100
+  _activateGizmos: 0
   _startPoint: {fileID: 693515325}
   _parameterStartPoint: {fileID: 918739154}
   _endPoint: {fileID: 64854281}
   _parameterEndPoint: {fileID: 1821485951}
-  _numberOfIterations: 100
-  _activateGizmos: 0
 --- !u!1 &347627451
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,12 +2089,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _numberOfIterations: 100
+  _activateGizmos: 0
   _startPoint: {fileID: 2022270376}
   _parameterStartPoint: {fileID: 1413487943}
   _endPoint: {fileID: 246045898}
   _parameterEndPoint: {fileID: 247093251}
-  _numberOfIterations: 100
-  _activateGizmos: 0
 --- !u!1 &372500581
 GameObject:
   m_ObjectHideFlags: 0
@@ -3428,12 +3428,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _numberOfIterations: 100
+  _activateGizmos: 0
   _startPoint: {fileID: 1869960494}
   _parameterStartPoint: {fileID: 1760153125}
   _endPoint: {fileID: 1940935361}
   _parameterEndPoint: {fileID: 1089585581}
-  _numberOfIterations: 100
-  _activateGizmos: 0
 --- !u!1001 &640888616
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9015,12 +9015,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _numberOfIterations: 100
+  _activateGizmos: 0
   _startPoint: {fileID: 1739957516}
   _parameterStartPoint: {fileID: 1720488651}
   _endPoint: {fileID: 1869960494}
   _parameterEndPoint: {fileID: 865646176}
-  _numberOfIterations: 100
-  _activateGizmos: 0
 --- !u!1 &1847370843
 GameObject:
   m_ObjectHideFlags: 0
@@ -10431,12 +10431,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _numberOfIterations: 100
+  _activateGizmos: 0
   _startPoint: {fileID: 1940935361}
   _parameterStartPoint: {fileID: 100752163}
   _endPoint: {fileID: 2022270376}
   _parameterEndPoint: {fileID: 650676743}
-  _numberOfIterations: 100
-  _activateGizmos: 0
 --- !u!1001 &2143944758
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11536,6 +11536,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 5642841925502757250, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -41.999985
+      objectReference: {fileID: 0}
     - target: {fileID: 6149924887037693013, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
@@ -11560,6 +11565,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _pauseController
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298848818510874535, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -41.999985
       objectReference: {fileID: 0}
     - target: {fileID: 7316781347235863435, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
