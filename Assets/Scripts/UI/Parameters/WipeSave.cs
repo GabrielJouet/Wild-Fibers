@@ -10,6 +10,6 @@ public class WipeSave : MonoBehaviour
     /// </summary>
     public void WipeEntireSave()
     {
-        Controller.Instance.SaveControl.ResetData();
+        Controller.Instance.SaveController.ResetData();
     }
 }

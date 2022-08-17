@@ -25,7 +25,7 @@ public class SquadController : MonoBehaviour
 
                     //TO CHANGE 
                     //USE CURRENT SQUAD INSTEAD OF SQUAD NUMBER
-                    buffer.UpdateTowerDatas(Controller.Instance.SaveControl.SaveFile.CurrentSquad.AugmentationLevelMax);
+                    buffer.UpdateTowerDatas(Controller.Instance.SaveController.SaveFile.CurrentSquad.AugmentationLevelMax);
                     _updatedSquads.Add(buffer);
                 }
             }

@@ -6,8 +6,6 @@ using UnityEngine;
 /// </summary>
 public class RandomPath : MonoBehaviour
 {
-    [Header("Bezier Curves")]
-
     /// <summary>
     /// First curve in game.
     /// </summary>
@@ -20,25 +18,11 @@ public class RandomPath : MonoBehaviour
     [SerializeField]
     private List<BezierCurve> _secondBezierCurves;
 
-
-    [Header("Generation variables")]
-
     /// <summary>
     /// How many paths we want to generate.
     /// </summary>
     [SerializeField]
     private int _numberOfAlreadyGeneratedPaths;
-
-
-    /// <summary>
-    /// First path divided in points.
-    /// </summary>
-    private readonly List<Vector2> _firstPath = new List<Vector2>();
-
-    /// <summary>
-    /// Second path divided in points.
-    /// </summary>
-    private readonly List<Vector2> _secondPath = new List<Vector2>();
 
 
     /// <summary>
@@ -48,48 +32,38 @@ public class RandomPath : MonoBehaviour
 
 
     /// <summary>
-    /// Awake method, used for initialization.
+    /// One generated path given randomly.
+    /// </summary>
+    public List<Vector2> GeneratedPath { get => _alreadyGeneratedPaths[Random.Range(0, _numberOfAlreadyGeneratedPaths)]; }
+
+
+
+    /// <summary>
+    /// Start method, used for initialization.
     /// </summary>
     private void Start()
     {
-        CalculatePath(_firstPath, _firstBezierCurves);
-        CalculatePath(_secondPath, _secondBezierCurves);
-    }
-
-
-    /// <summary>
-    /// Method used to calculate the first two paths.
-    /// </summary>
-    /// <param name="path">The current path wanted</param>
-    /// <param name="newCurves">The related curve</param>
-    private void CalculatePath(in List<Vector2> path, List<BezierCurve> newCurves)
-    {
-        foreach (BezierCurve current in newCurves)
-        {
+        List<Vector3> firstPath = new List<Vector3>();
+        List<Vector3> secondPath = new List<Vector3>();
+        foreach (BezierCurve current in _firstBezierCurves)
             foreach (Vector3 currentVector in current.Curve)
-                path.Add(currentVector);
-        }
-    }
+                firstPath.Add(currentVector);
 
+        foreach (BezierCurve current in _secondBezierCurves)
+            foreach (Vector3 currentVector in current.Curve)
+                secondPath.Add(currentVector);
 
-    /// <summary>
-    /// Method used to calculate and returns a random path.
-    /// </summary>
-    /// <returns>Returns a random path generated</returns>
-    public List<Vector2> CalculateRandomPath()
-    {
-        if(_alreadyGeneratedPaths.Count < _numberOfAlreadyGeneratedPaths)
+        float ratio;
+        List<Vector2> newPath;
+        for (int i = 0; i < _numberOfAlreadyGeneratedPaths; i ++)
         {
-            float ratio = Random.Range(0, 100f);
-            List<Vector2> newPath = new List<Vector2>();
+            ratio = Random.Range(0, 100f);
+            newPath = new List<Vector2>();
 
-            for (int i = 0; i < _firstPath.Count; i++)
-                newPath.Add((ratio * _firstPath[i] + (100f - ratio) * _secondPath[i]) / 100f);
+            for (int j = 0; j < firstPath.Count; j++)
+                newPath.Add((ratio * firstPath[j] + (100f - ratio) * secondPath[j]) / 100f);
 
             _alreadyGeneratedPaths.Add(newPath);
-            return newPath;
         }
-        else
-            return _alreadyGeneratedPaths[Random.Range(0, _alreadyGeneratedPaths.Count)];
     }
 }

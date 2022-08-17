@@ -103,20 +103,11 @@ public class GameOverScreen : MonoBehaviour
         {
             int livesLost = _ressourceController.LivesLost;
 
-            if (livesLost <= 15)
-            {
-                _seedScores[2].sprite = _activatedSprite;
+            _seedScores[2].sprite = livesLost <= 15 ? _activatedSprite : _seedScores[2].sprite;
+            _seedScores[1].sprite = livesLost <= 10 ? _activatedSprite : _seedScores[1].sprite;
+            _seedScores[0].sprite = livesLost <= 3 ? _activatedSprite : _seedScores[0].sprite;
 
-                if (livesLost <= 10)
-                {
-                    _seedScores[1].sprite = _activatedSprite;
-
-                    if (livesLost <= 3)
-                        _seedScores[0].sprite = _activatedSprite;
-                }
-            }
-
-            Controller.Instance.SaveControl.SaveLevelData(livesLost);
+            Controller.Instance.SaveController.SaveLevelData(livesLost);
         }
     }
 }

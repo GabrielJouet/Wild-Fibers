@@ -52,23 +52,6 @@ public class Enemy : MonoBehaviour
     #endregion
 
 
-    #region Particles
-    [Header("Particle")]
-
-    /// <summary>
-    /// Damage particle used.
-    /// </summary>
-    [SerializeField]
-    protected Particle _damageParticle;
-
-    /// <summary>
-    /// Emission points particle.
-    /// </summary>
-    [SerializeField]
-    protected List<Transform> _particleEmissionsPoints;
-    #endregion
-
-
     #region Behavior
     [Header("Behaviour Variables")]
 
@@ -206,20 +189,16 @@ public class Enemy : MonoBehaviour
     public string HealthInfo { get => _healthMax.ToString(); }
     #endregion
 
+
     /// <summary>
     /// Does the enemy is moving?
     /// </summary>
-    public bool Moving { get; set; } = false;
+    protected bool _moving = false;
 
     /// <summary>
     /// Does the enemy is slow down?
     /// </summary>
     protected bool _isSlowDown = false;
-
-    /// <summary>
-    /// Particle controller component.
-    /// </summary>
-    protected ParticleController _particleController;
 
     /// <summary>
     /// Loaded path.
@@ -247,20 +226,9 @@ public class Enemy : MonoBehaviour
     public BackgroudSelecter InformationUI { get; set; }
 
     /// <summary>
-    /// Current attacks waited.
-    /// </summary>
-    public List<Attack> Attacks { get; set; } = new List<Attack>();
-
-    /// <summary>
     /// Current dot used.
     /// </summary>
     protected List<Attack> _dots = new List<Attack>();
-
-
-    /// <summary>
-    /// Can the enemy be targeted?
-    /// </summary>
-    public bool CanBeTargeted { get; protected set; } = true;
 
 
     /// <summary>
@@ -279,11 +247,6 @@ public class Enemy : MonoBehaviour
     {
         _dotDisplay.SetActive(false);
         IsDotted = false;
-        CanBeTargeted = true;
-        Attacks.Clear();
-
-        if (_particleController == null)
-            _particleController = FindObjectOfType<ParticleController>();
 
         InformationUI = null;
         _isSlowDown = false;
@@ -303,7 +266,7 @@ public class Enemy : MonoBehaviour
         _path = newPath;
         _poolController = newPool;
 
-        Moving = true;
+        _moving = true;
     }
 
 
@@ -312,34 +275,17 @@ public class Enemy : MonoBehaviour
     /// </summary>
     protected void Update()
     {
-        if(Moving)
-            FollowPath();
-    }
+        if(_moving)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, _path[_pathIndex], Time.deltaTime * Speed);
 
+            if ((Vector2)transform.position == _path[_pathIndex] && _pathIndex + 1 < _path.Count)
+                _pathIndex++;
+            else if (_pathIndex + 1 == _path.Count)
+                Die(true);
 
-    /// <summary>
-    /// Fixed Update method, called 50 times a second.
-    /// </summary>
-    protected void FixedUpdate()
-    {
-        if (InformationUI != null)
-            InformationUI.UpdateEnemyInformation(this);
-    }
-
-
-    /// <summary>
-    /// Method used to follow bezier path.
-    /// </summary>
-    protected void FollowPath()
-    {
-        transform.position = Vector3.MoveTowards(transform.position, _path[_pathIndex], Time.deltaTime * Speed);
-
-        if ((Vector2)transform.position == _path[_pathIndex] && _pathIndex + 1 < _path.Count)
-            _pathIndex++;
-        else if (_pathIndex + 1 == _path.Count)
-            Die(true);
-
-        _spriteRenderer.flipX = transform.position.x - _path[_pathIndex].x > 0;
+            _spriteRenderer.flipX = transform.position.x - _path[_pathIndex].x > 0;
+        }
     }
 
 
@@ -356,16 +302,8 @@ public class Enemy : MonoBehaviour
 
         TakeDamage(damageLeft);
 
-        Attacks.Remove(newAttack);
-
-        foreach (Transform current in _particleEmissionsPoints)
-            foreach (Particle particle in _particleController.GetParticle(_damageParticle, 3))
-                particle.Initialize(current.position);
-
         if (newAttack.DotDuration > 0)
             ApplyDot(newAttack);
-
-        CanBeTargeted = CalculateTargetness();
     }
 
 
@@ -381,6 +319,9 @@ public class Enemy : MonoBehaviour
             Health -= damage;
 
         _healthBar.ChangeSize(Health / _healthMax);
+
+        if (InformationUI != null)
+            InformationUI.UpdateEnemyInformation(this);
     }
 
 
@@ -396,6 +337,9 @@ public class Enemy : MonoBehaviour
             _isSlowDown = true;
             StartCoroutine(ResetSlowDown(slowDownTime));
             Speed = _speedMax * (100 - slowDownRatio * ResistancePercentage) / 100f;
+
+            if (InformationUI != null)
+                InformationUI.UpdateEnemyInformation(this);
         }
     }
 
@@ -409,6 +353,9 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(slowDownTime);
         _isSlowDown = false;
         Speed = _speedMax;
+
+        if (InformationUI != null)
+            InformationUI.UpdateEnemyInformation(this);
     }
 
 
@@ -428,13 +375,14 @@ public class Enemy : MonoBehaviour
                     attackRemoved = attack;
 
             _dots.Remove(attackRemoved);
-
-            CanBeTargeted = CalculateTargetness();
         }
 
         _dots.Add(newAttack);
 
         _dotDisplay.SetActive(true);
+
+        if (InformationUI != null)
+            InformationUI.UpdateEnemyInformation(this);
 
         if (isActiveAndEnabled)
             StartCoroutine(TakePersistentDamage(newAttack));
@@ -460,8 +408,6 @@ public class Enemy : MonoBehaviour
 
         _dots.Remove(newDot);
         Armor += newDot.ArmorThroughMalus * ResistancePercentage;
-
-        CanBeTargeted = CalculateTargetness();
 
         if (_dots.Count == 0)
         {
@@ -491,7 +437,8 @@ public class Enemy : MonoBehaviour
         ArmorMax = Mathf.Clamp(ArmorMax - percentage, 0, ArmorMax);
         Armor = Mathf.Clamp(Armor - percentage, 0, Armor);
 
-        CanBeTargeted = CalculateTargetness();
+        if (InformationUI != null)
+            InformationUI.UpdateEnemyInformation(this);
     }
 
 
@@ -520,35 +467,6 @@ public class Enemy : MonoBehaviour
         _selector.SetActive(false);
 
         InformationUI = null;
-    }
-
-
-    /// <summary>
-    /// Method used to add a new attack on enemy and check if it can survive.
-    /// </summary>
-    /// <param name="newAttack">The data of the attack</param>
-    public void AddAttack(Attack newAttack)
-    {
-        Attacks.Add(newAttack);
-
-        CanBeTargeted = CalculateTargetness();
-    }
-
-
-    /// <summary>
-    /// Method used to check if the enemy can survive with applied attacks and dot.
-    /// </summary>
-    /// <returns>Returns true if the entity will not die, false otherwise</returns>
-    private bool CalculateTargetness()
-    {
-        int total = 0;
-        foreach (Attack current in Attacks)
-            total += DamageTaken(current);
-
-        foreach (Attack current in _dots)
-            total += DamageTaken(current);
-
-        return Health - total > 0;
     }
 
 
@@ -585,6 +503,11 @@ public class Enemy : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="attack"></param>
+    /// <returns></returns>
     public int DamageTaken(Attack attack)
     {
         float dotDamage = attack.DotDamage * 2 * attack.DotDuration;

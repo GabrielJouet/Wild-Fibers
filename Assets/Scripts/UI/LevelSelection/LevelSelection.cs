@@ -182,7 +182,7 @@ public class LevelSelection : MonoBehaviour
     {
         _level = buttonUsed.LevelData;
 
-        LevelState buffer = Controller.Instance.SaveControl.RecoverLevelSave(_level.Classic).State;
+        LevelState buffer = Controller.Instance.SaveController.RecoverLevelSave(_level.Classic).State;
         bool sidedOrChallenged = buffer == LevelState.SIDED || buffer == LevelState.CHALLENGED;
         bool notLocked = buffer == LevelState.COMPLETED || sidedOrChallenged;
 
@@ -215,14 +215,14 @@ public class LevelSelection : MonoBehaviour
         _levelPicture.sprite = _level.Classic.Picture;
         _levelDescription.text = _level.Classic.Description;
 
-        int seedGainedBuffer = Controller.Instance.SaveControl.RecoverLevelSave(_level.Classic).SeedsGained;
+        int seedGainedBuffer = Controller.Instance.SaveController.RecoverLevelSave(_level.Classic).SeedsGained;
         for (int i = 0; i < _scores.Count; i++)
             _scores[i].sprite = seedGainedBuffer > i ? _activatedSprite : _desactivatedSprite;
 
         _launchBattleMenu.onClick.RemoveAllListeners();
         _launchBattleMenu.onClick.AddListener(() =>
         {
-            Controller.Instance.SaveControl.LoadedLevel = _level.Classic;
+            Controller.Instance.SaveController.LoadedLevel = _level.Classic;
             _sceneChanger.LoadScene(_level.Classic.Scene);
         });
     }
@@ -247,7 +247,7 @@ public class LevelSelection : MonoBehaviour
 
         _sideScore.sprite = _desactivatedSprite;
 
-        LevelState bufferState = Controller.Instance.SaveControl.RecoverLevelSave(buffer).State;
+        LevelState bufferState = Controller.Instance.SaveController.RecoverLevelSave(buffer).State;
 
         if (enumBuffer == LevelType.SIDE && bufferState == LevelState.SIDED || bufferState == LevelState.CHALLENGED)
             _sideScore.sprite = _activatedSprite;
@@ -257,7 +257,7 @@ public class LevelSelection : MonoBehaviour
         _launchBattleMenu.onClick.RemoveAllListeners();
         _launchBattleMenu.onClick.AddListener(() =>
         {
-            Controller.Instance.SaveControl.LoadedLevel = buffer;
+            Controller.Instance.SaveController.LoadedLevel = buffer;
             _sceneChanger.LoadScene(buffer.Scene);
         });
     }

@@ -31,7 +31,7 @@ public class MusicSlider : MonoBehaviour
     /// </summary>
     private void OnEnable()
     {
-        _saveController = Controller.Instance.SaveControl;
+        _saveController = Controller.Instance.SaveController;
         _slider = GetComponent<Slider>();
         _slider.value = _sound ? _saveController.SaveFile.Sound : _saveController.SaveFile.Music;
     }

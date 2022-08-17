@@ -37,7 +37,7 @@ public class SquadProgression
             foreach (LevelSave current in Saves)
                 buffer += current.SeedsGained + (current.State == LevelState.SIDED ? 1 : 0) + (current.State == LevelState.CHALLENGED ? 2 : 0);
 
-            foreach (Augmentation current in Controller.Instance.SquadControl.RecoverBoughtAugmentations(AugmentationLevelMax))
+            foreach (Augmentation current in Controller.Instance.SquadController.RecoverBoughtAugmentations(AugmentationLevelMax))
                 buffer -= current.Price;
 
             return buffer;

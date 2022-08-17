@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 571994285330439663}
   - component: {fileID: 571994285330439660}
   - component: {fileID: 571994285330439440}
-  - component: {fileID: 5328857676684429541}
   - component: {fileID: -1700647694407411006}
   m_Layer: 0
   m_Name: LevelCamera
@@ -121,20 +120,6 @@ MonoBehaviour:
   _lifeIconAnimator: {fileID: 0}
   _goldText: {fileID: 0}
   _goldIconAnimator: {fileID: 0}
---- !u!114 &5328857676684429541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 571994285330439662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ab689c91ebd627409b8c7d892be1d82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _poolPrefab: {fileID: 7733916024386685136, guid: e485fd1a5f14ecd4a844d974b196ef4f,
-    type: 3}
 --- !u!114 &-1700647694407411006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,6 +142,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2

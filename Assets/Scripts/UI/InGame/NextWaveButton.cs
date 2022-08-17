@@ -19,6 +19,12 @@ public class NextWaveButton : MonoBehaviour
     [SerializeField]
     private Animator _animator;
 
+    /// <summary>
+    /// Last sprite of the countdown animation.
+    /// </summary>
+    [SerializeField]
+    private Sprite _lastFrameCountDownSprite;
+
 
     /// <summary>
     /// Time before next wave.
@@ -29,13 +35,6 @@ public class NextWaveButton : MonoBehaviour
     /// Does the time is decreasing?
     /// </summary>
     private bool _timeDecrease = false;
-
-
-    /// <summary>
-    /// Last sprite of the countdown animation.
-    /// </summary>
-    [SerializeField]
-    private Sprite _lastFrameCountDownSprite;
 
 
 

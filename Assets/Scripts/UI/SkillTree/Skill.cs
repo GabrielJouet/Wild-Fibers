@@ -25,6 +25,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField]
     private RectTransform _descriptionPosition;
 
+
     /// <summary>
     /// Text component that will handle the description.
     /// </summary>
@@ -35,11 +36,11 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     private GameObject _descriptionGameObject;
 
-
     /// <summary>
     /// Related augmentation.
     /// </summary>
     private Augmentation _augmentation;
+
 
 
     /// <summary>
@@ -60,7 +61,8 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         switch (newState)
         {
             case AugmentationState.LOCKED:
-                Desactivate();
+                GetComponent<Button>().enabled = false;
+                _icon.color = new Color(0.25f, 0.25f, 0.25f, 0.4f);
                 break;
 
             case AugmentationState.AVAILABLE:
@@ -94,16 +96,6 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 
     /// <summary>
-    /// Method called when the skill is locked.
-    /// </summary>
-    public void Desactivate()
-    {
-        GetComponent<Button>().enabled = false;
-        _icon.color = new Color(0.25f, 0.25f, 0.25f, 0.4f);
-    }
-
-
-    /// <summary>
     /// Method called when the mouse enter the skill (hovers it).
     /// </summary>
     /// <remarks>Interface needed because this is a UI object</remarks>
@@ -130,7 +122,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     public void Purchase()
     {
-        if (Controller.Instance.SaveControl.SaveFile.CurrentSquad.CurrencyAvailable >= _augmentation.Price)
+        if (Controller.Instance.SaveController.SaveFile.CurrentSquad.CurrencyAvailable >= _augmentation.Price)
         {
             SetAsBought();
             transform.parent.GetComponent<SkillUpgrades>().PurchaseAugmentation(this);
