@@ -261,10 +261,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 64f5b3101bd428d4d83c78070b3c646d, type: 3}
-    m_FontSize: 35
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 45
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -788,8 +788,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -1300, y: -700}
+  m_AnchoredPosition: {x: 0, y: 25}
+  m_SizeDelta: {x: -1400, y: -750}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &453803063
 MonoBehaviour:
@@ -1206,10 +1206,10 @@ RectTransform:
   m_Father: {fileID: 453803062}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 69.2}
-  m_SizeDelta: {x: -150, y: 75}
+  m_SizeDelta: {x: 350, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &918521437
 MonoBehaviour:
@@ -1579,10 +1579,10 @@ RectTransform:
   m_Father: {fileID: 453803062}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -207.8}
-  m_SizeDelta: {x: -150, y: 75}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1299662416
 MonoBehaviour:
@@ -1952,7 +1952,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1ff984134a7102e4d97dc1e2faf671f6, type: 2}
   - {fileID: 11400000, guid: e93e7400512c4ae468864e3a8888fd35, type: 2}
   - {fileID: 11400000, guid: f64f20542d729ec4ca1d4f48c551a656, type: 2}
-  _enemyController: {fileID: 0}
 --- !u!1 &1595930342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,10 +2090,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 64f5b3101bd428d4d83c78070b3c646d, type: 3}
-    m_FontSize: 35
+    m_FontSize: 28
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 3
+    m_MinSize: 2
     m_MaxSize: 45
     m_Alignment: 4
     m_AlignByGeometry: 0
