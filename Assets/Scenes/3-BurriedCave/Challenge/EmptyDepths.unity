@@ -9965,22 +9965,22 @@ PrefabInstance:
     - target: {fileID: 3728384710849152155, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.435
+      value: 3.4276
       objectReference: {fileID: 0}
     - target: {fileID: 3728384710849152155, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.063
+      value: 2.0642
       objectReference: {fileID: 0}
     - target: {fileID: 3728384710869479816, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.792
+      value: -3.7939
       objectReference: {fileID: 0}
     - target: {fileID: 3728384710869479816, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.032
+      value: 0.0203
       objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203476, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}

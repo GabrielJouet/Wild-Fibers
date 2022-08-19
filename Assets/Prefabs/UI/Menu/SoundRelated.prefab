@@ -37,7 +37,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 0}
+  m_SizeDelta: {x: 450, y: -60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2425258117028853675
 MonoBehaviour:
@@ -91,7 +91,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 2812173820802579118}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: MusicSlider, Assembly-CSharp
         m_MethodName: ChangeSliderValue
         m_Mode: 1
         m_Arguments:
