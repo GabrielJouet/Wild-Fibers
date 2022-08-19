@@ -43,7 +43,14 @@ public class Controller : MonoBehaviour
     {
         if (FindObjectsOfType<Controller>().Length > 1)
             Destroy(gameObject);
+    }
 
+
+    /// <summary>
+    /// Start is called after Awake.
+    /// </summary>
+    private void Start()
+    {
         Application.targetFrameRate = 60;
         Instance = this;
         DontDestroyOnLoad(gameObject);
