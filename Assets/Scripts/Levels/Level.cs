@@ -92,8 +92,8 @@ public class Level : ScriptableObject
     /// Non-allowed towers in this level.
     /// </summary>
     [SerializeField]
-    private List<TowerData> _blockedTowers;
-    public List<TowerData> BlockedTowers { get => _blockedTowers; }
+    private List<Tower> _blockedTowers;
+    public List<Tower> BlockedTowers { get => _blockedTowers; }
 
 
     /// <summary>

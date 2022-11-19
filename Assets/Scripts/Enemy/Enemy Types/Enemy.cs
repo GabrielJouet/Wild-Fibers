@@ -5,18 +5,8 @@ using UnityEngine;
 /// <summary>
 /// Enemy base class.
 /// </summary>
-public class Enemy : MonoBehaviour
+public class Enemy : PoolableObject
 {
-    [Header("Description")]
-
-    /// <summary>
-    /// Display name.
-    /// </summary>
-    [SerializeField]
-    protected string _displayName;
-    public string Name { get => _displayName; }
-
-
     #region Display
     [Header("Display")]
 
@@ -216,11 +206,6 @@ public class Enemy : MonoBehaviour
     public float PathRatio { get => (float)_pathIndex / (float)_path.Count; }
 
     /// <summary>
-    /// Pool Controller used to retrieve enemy.
-    /// </summary>
-    protected PoolController _poolController;
-
-    /// <summary>
     /// Information UI component.
     /// </summary>
     public BackgroudSelecter InformationUI { get; set; }
@@ -230,11 +215,17 @@ public class Enemy : MonoBehaviour
     /// </summary>
     protected List<Attack> _dots = new List<Attack>();
 
+    /// <summary>
+    /// 
+    /// </summary>
+    protected Spawner _spawner;
+
 
     /// <summary>
     /// Is the enemy dotted?
     /// </summary>
     public bool IsDotted { get; protected set; }
+
 
 
     /// <summary>
@@ -243,8 +234,10 @@ public class Enemy : MonoBehaviour
     /// <param name="newPath">New path used</param>
     /// <param name="newPool">Pool used for the current enemy</param>
     /// <param name="pathIndex">Current progression on the path</param>
-    public virtual void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
+    public virtual void Initialize(List<Vector2> newPath, int pathIndex, Spawner spawner)
     {
+        _spawner = spawner;
+
         _dotDisplay.SetActive(false);
         IsDotted = false;
 
@@ -264,7 +257,6 @@ public class Enemy : MonoBehaviour
 
         transform.position = newPath[pathIndex];
         _path = newPath;
-        _poolController = newPool;
 
         _moving = true;
     }
@@ -448,12 +440,19 @@ public class Enemy : MonoBehaviour
     /// <param name="reachEnd">Does the enemy reaches the end?</param>
     protected void Die(bool reachEnd)
     {
+        _spawner.EnemyKilled();
+
         if (InformationUI)
             DesactivateUI();
 
         StopAllCoroutines();
 
-        _poolController.RecoverEnemyPool(this).AddOneEnemy(this, reachEnd, reachEnd ? _numberOfLivesTaken : _goldGained);
+        Controller.Instance.PoolController.In(GetComponent<PoolableObject>());
+
+        if (!reachEnd)
+            Controller.Instance.EnemyController.Die(_goldGained);
+        else
+            Controller.Instance.EnemyController.ReachEnd(_numberOfLivesTaken);
     }
 
 
@@ -519,5 +518,14 @@ public class Enemy : MonoBehaviour
             rawDamage = attack.Damage - ((Armor - attack.ArmorThrough) / 100 * attack.Damage);
 
         return Mathf.FloorToInt(rawDamage + dotDamage);
+    }
+
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public override void OnInPool()
+    {
+
     }
 }

@@ -191,7 +191,7 @@ public class Library : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        List<TowerData> towers = Controller.Instance.SquadController.CurrentSquad.Towers;
+        List<Tower> towers = Controller.Instance.SquadController.CurrentSquad.Towers;
 
         SaveController saveController = Controller.Instance.SaveController;
 
@@ -258,7 +258,7 @@ public class Library : MonoBehaviour
     /// <param name="newInfo">The info tower to display</param>
     public void ShowTowerInfo(TowerInfo newInfo)
     {
-        TowerData newTower = newInfo.Tower;
+        Tower newTower = newInfo.Tower;
 
         _towerName.text = newTower.name;
         _towerDescription.text = newTower.LibraryDescription;

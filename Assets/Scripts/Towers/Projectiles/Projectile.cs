@@ -3,7 +3,7 @@
 /// <summary>
 /// Class used by projectile like object.
 /// </summary>
-public class Projectile : MonoBehaviour
+public class Projectile : PoolableObject
 {
     /// <summary>
     /// Speed of this projectile.
@@ -11,15 +11,11 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     protected float _projectileSpeed;
 
+
     /// <summary>
     /// Attack linked.
     /// </summary>
     protected Attack _attack;
-
-    /// <summary>
-    /// The related pool.
-    /// </summary>
-    protected ProjectilePool _projectilePool;
 
     /// <summary>
     /// Which enemy is tracked by this projectile?
@@ -38,13 +34,11 @@ public class Projectile : MonoBehaviour
     /// </summary>
     /// <param name="newData">Tower Data used to populate the class</param>
     /// <param name="newEnemy">New Enemy tracked</param>
-    /// <param name="newPool">The projectile pool used</param>
     /// <param name="newTransform">The parent tower</param>
-    public virtual void Initialize(Attack newData, Enemy newEnemy, ProjectilePool newPool, Transform newTransform)
+    public virtual void Initialize(Attack newData, Enemy newEnemy, Transform newTransform)
     {
         transform.position = newTransform.position;
         _attack = newData;
-        _projectilePool = newPool;
 
         _enemyTracked = newEnemy;
     }
@@ -121,7 +115,6 @@ public class Projectile : MonoBehaviour
     /// </summary>
     public void StopProjectile()
     {
-        gameObject.SetActive(false);
-        _projectilePool.AddOneProjectile(this);
+        Controller.Instance.PoolController.In(GetComponent<PoolableObject>());
     }
 }

@@ -134,6 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d384ee91fd6da94ca63fb6ab9dc37ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _towerPrefab: {fileID: 7550639336727220406, guid: b0c8be174e4aa4a4aa4fcf05b6b62cfa,
+    type: 3}
   _ressourceController: {fileID: 0}
   _backgroundSelecter: {fileID: 0}
   _shadowAnimator: {fileID: 2277773444987878438}

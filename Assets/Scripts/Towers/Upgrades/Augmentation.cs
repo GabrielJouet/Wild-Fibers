@@ -25,7 +25,7 @@ public class Augmentation : ScriptableObject
     /// <summary>
     /// Short description.
     /// </summary>
-    [SerializeField]
+    [SerializeField, TextArea]
     private string _description;
     public string Description { get => _description; }
 }

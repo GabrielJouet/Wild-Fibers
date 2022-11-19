@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f9f29fb63c3714ca853ca6926368d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: Vines Wave
   _projectileSpeed: 0.6
 --- !u!114 &1228322846168505861
 MonoBehaviour:

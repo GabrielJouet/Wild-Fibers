@@ -13,7 +13,7 @@ public class Maggot : Enemy
     /// The newborn enemy.
     /// </summary>
     [SerializeField]
-    protected Enemy _hatchling;
+    protected GameObject _hatchling;
 
     /// <summary>
     /// Time before the maggot cocoon itself.
@@ -38,9 +38,9 @@ public class Maggot : Enemy
     /// <param name="newPath">The new path used</param>
     /// <param name="newPool">The pool used when dying or finishing path</param>
     /// <param name="pathIndex">Current progression on the path</param>
-    public override void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
+    public override void Initialize(List<Vector2> newPath, int pathIndex, Spawner spawner)
     {
-        base.Initialize(newPath, newPool, pathIndex);
+        base.Initialize(newPath, pathIndex, spawner);
         Armor = _baseShieldValue;
 
         StartCoroutine(DelaySpawn());
@@ -55,29 +55,19 @@ public class Maggot : Enemy
     {
         yield return new WaitForSeconds(_hatchingTime + Random.Range(-_hatchingTime / 20, _hatchingTime / 20));
         _animator.SetTrigger("cocoon");
-        ActivateShield(_armorMax, _dots.Count > 0);
+
+        _moving = false;
+
+        if (_dots.Count > 0)
+            Armor = _armorMax - (ArmorMax - Armor);
+        else
+            Armor = _armorMax;
 
         yield return new WaitForSeconds((_animator.runtimeAnimatorController.animationClips[1].length / 0.3f) + 0.05f);
 
-        _poolController.RecoverEnemyPool(_hatchling).GetOneEnemy().Initialize(_path, _poolController, _pathIndex);
+        Controller.Instance.PoolController.Out(_hatchling.GetComponent<PoolableObject>()).GetComponent<Enemy>().Initialize(_path, _pathIndex, _spawner);
 
         _goldGained = 0;
         Die(false);
-    }
-
-
-    /// <summary>
-    /// Method used to change shield value.
-    /// </summary>
-    /// <param name="shieldValue">New shield value</param>
-    /// <param name="dotApplied">Does a dot is applied to the shield?</param>
-    protected void ActivateShield(float shieldValue, bool dotApplied)
-    {
-        _moving = false;
-
-        if (dotApplied)
-            Armor = shieldValue - (ArmorMax - Armor);
-        else
-            Armor = shieldValue;
     }
 }

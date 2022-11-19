@@ -31,17 +31,14 @@ public class ChocSpikes : Projectile
     /// <summary>
     /// Constructor.
     /// </summary>
-    /// <param name="newPool">Pool related to this projectile</param>
     /// <param name="newPosition">New position of this projectile</param>
-    public void Initialize(ProjectilePool newPool, Vector2 newPosition)
+    public void Initialize(Vector2 newPosition)
     {
         _following = false;
         _attacking = false;
 
         StopAllCoroutines();
         GetComponent<SpriteRenderer>().sprite = null;
-
-        _projectilePool = newPool;
 
         _animator = GetComponent<Animator>();
         _animator.enabled = false;

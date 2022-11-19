@@ -38,11 +38,6 @@ public class TowerSlot : MonoBehaviour
 
 
     /// <summary>
-    /// Level controller is used to recover pools.
-    /// </summary>
-    private PoolController _poolController;
-
-    /// <summary>
     /// Collider component.
     /// </summary>
     private CapsuleCollider2D _collider;
@@ -66,7 +61,6 @@ public class TowerSlot : MonoBehaviour
     /// </summary>
     private void Awake()
     {
-        _poolController = Controller.Instance.PoolController;
         _animator = GetComponent<Animator>();
         _collider = GetComponent<CapsuleCollider2D>();
     }
@@ -77,7 +71,7 @@ public class TowerSlot : MonoBehaviour
     /// Method used to create a new tower.
     /// </summary>
     /// <param name="tower">The chosen tower</param>
-    public void ChooseTower(TowerData tower)
+    public void ChooseTower(Tower tower)
     {
         _ressourceController.RemoveGold(tower.Price);
 
@@ -92,10 +86,10 @@ public class TowerSlot : MonoBehaviour
     /// </summary>
     /// <param name="tower">The chosen tower</param>
     /// <returns>Yield the construction time</returns>
-    private IEnumerator DelayConstruct(TowerData tower)
+    private IEnumerator DelayConstruct(Tower tower)
     {
-        _shadowAnimator.SetTrigger(tower.name);
-        _animator.SetTrigger(tower.name);
+        _shadowAnimator.SetTrigger(tower.Name);
+        _animator.SetTrigger(tower.Name);
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
         _shadowAnimator.SetTrigger("Base");
@@ -103,11 +97,7 @@ public class TowerSlot : MonoBehaviour
         yield return new WaitForEndOfFrame();
         _animator.SetTrigger("Base");
 
-        TowerPool currentPool = _poolController.TowerPool;
-        GameObject buffer = currentPool.GetOneTower();
-        buffer.AddComponent(Type.GetType(tower.Script));
-
-        buffer.GetComponent<Tower>().Initialize(this, _ressourceController, _backgroundSelecter, _poolController.RecoverProjectilePool(tower.Projectile.GetComponent<Projectile>()), currentPool, tower);
+        Controller.Instance.PoolController.Out(tower).GetComponent<Tower>().Initialize(this, _ressourceController, _backgroundSelecter, 0);
     }
     #endregion
 

@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Scyther
+  _name: Scyther Unt
   _selector: {fileID: 4000618669885677062}
   _healthBar: {fileID: 8863022456078644539}
   _dotDisplay: {fileID: 1262192122651188265}

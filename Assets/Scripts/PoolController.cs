@@ -4,104 +4,47 @@ using UnityEngine;
 public class PoolController : MonoBehaviour
 {
     /// <summary>
-    /// Enemy pool that contains every enemies in storage.
+    /// 
     /// </summary>
-    [SerializeField]
-    private EnemyPool _enemyPoolPrefab;
-    private readonly List<EnemyPool> _enemyPools = new List<EnemyPool>();
+    private readonly Dictionary<string, Pool> _pools = new Dictionary<string, Pool>();
 
-    /// <summary>
-    /// Projectile pool that contains every projectile.
-    /// </summary>
-    [SerializeField]
-    private ProjectilePool _projectilePoolPrefab;
-    private readonly List<ProjectilePool> _projectilePools = new List<ProjectilePool>();
-
-    /// <summary>
-    /// Tower pool that contains every tower.
-    /// </summary>
-    [SerializeField]
-    private TowerPool _towerPoolPrefab;
-    public TowerPool TowerPool { get; private set; }
-
-    /// <summary>
-    /// Resource controller.
-    /// </summary>
-    private RessourceController _ressourceController;
 
 
     /// <summary>
-    /// Awake method used when object is initialized.
+    /// 
     /// </summary>
-    private void Start()
+    /// <param name="stored"></param>
+    public void In(PoolableObject stored)
     {
-        TowerPool = Instantiate(_towerPoolPrefab, transform);
+        _pools[stored.Name].In(stored.gameObject);
     }
 
 
     /// <summary>
-    /// Method called everytime a level is loaded.
+    /// 
     /// </summary>
-    public void ReInitialize()
+    /// <param name="wanted"></param>
+    /// <returns></returns>
+    public GameObject Out(PoolableObject wanted)
     {
-        _ressourceController = FindObjectOfType<RessourceController>();
+        if (_pools.ContainsKey(wanted.Name))
+            return _pools[wanted.Name].Out();
 
-        foreach (EnemyPool current in _enemyPools)
-            current.Initialize(null, _ressourceController);
+        Pool newPool = new GameObject(wanted.name + " Pool").AddComponent<Pool>();
+        newPool.transform.parent = transform;
+        newPool.Class = wanted;
+        _pools.Add(wanted.Name, newPool);
+
+        return newPool.Out();
     }
 
-
-    #region Pools related
-    /// <summary>
-    /// Recover one enemy pool.
-    /// </summary>
-    /// <param name="wantedEnemy">The enemy type we want to recover</param>
-    /// <returns>The wanted enemy pool</returns>
-    public EnemyPool RecoverEnemyPool(Enemy wantedEnemy)
-    {
-        foreach (EnemyPool current in _enemyPools)
-            if (current.Enemy.Name == wantedEnemy.Name)
-                return current;
-
-        EnemyPool buffer = Instantiate(_enemyPoolPrefab, transform);
-        buffer.Initialize(wantedEnemy, _ressourceController);
-        _enemyPools.Add(buffer);
-
-        return buffer;
-    }
-
-
-    /// <summary>
-    /// Recover one projectile pool.
-    /// </summary>
-    /// <param name="wantedProjectile">The projectile type we want to recover</param>
-    /// <returns>The wanted projectile pool</returns>
-    public ProjectilePool RecoverProjectilePool(Projectile wantedProjectile)
-    {
-        foreach (ProjectilePool current in _projectilePools)
-            if (current.Projectile.name == wantedProjectile.name)
-                return current;
-
-        ProjectilePool newPool = Instantiate(_projectilePoolPrefab, transform);
-        newPool.Projectile = wantedProjectile;
-        _projectilePools.Add(newPool);
-
-        return newPool;
-    }
-    
 
     /// <summary>
     /// Method called by level controller or change scene when the level is either loading or unloading.
     /// </summary>
     public void DesactivateEntities()
     {
-        TowerPool.DesactivateTowers();
-
-        foreach (ProjectilePool current in _projectilePools)
-            current.DesactivateProjectiles();
-
-        foreach (EnemyPool current in _enemyPools)
-            current.DesactivateEnemies();
+        foreach (Pool pool in _pools.Values)
+            pool.DisactivateObjects();
     }
-    #endregion
 }

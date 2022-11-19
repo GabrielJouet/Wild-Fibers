@@ -39,14 +39,12 @@ public class ToxicLeaf : Projectile
     /// <param name="newPool">New pool attached</param>
     /// <param name="newPosition">New position of the projectile</param>
     /// <param name="slowDown">Does the projectile apply slowDown?</param>
-    public void Initialize(ProjectilePool newPool, Vector2 newPosition, bool slowDown)
+    public void Initialize(Vector2 newPosition, bool slowDown)
     {
         _following = false;
         _angle = Random.Range(0, 360);
 
         StopAllCoroutines();
-
-        _projectilePool = newPool;
 
         _initialPosition = newPosition;
         transform.position = _initialPosition;
@@ -69,10 +67,7 @@ public class ToxicLeaf : Projectile
             if (_enemyTracked != null)
                 TrackEnemy();
             else if (FollowPoint(_goalPosition, true))
-            {
-                transform.parent = _projectilePool.transform;
                 StopProjectile();
-            }
         }
         else
         {

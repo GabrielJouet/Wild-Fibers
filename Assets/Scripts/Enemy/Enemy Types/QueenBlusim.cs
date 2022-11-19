@@ -39,11 +39,10 @@ public class QueenBlusim : Enemy
     /// Initialize method.
     /// </summary>
     /// <param name="newPath">New path used</param>
-    /// <param name="newPool">Pool used for the current enemy</param>
     /// <param name="pathIndex">Current progression on the path</param>
-    public override void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
+    public override void Initialize(List<Vector2> newPath, int pathIndex, Spawner spawner)
     {
-        base.Initialize(newPath, newPool, pathIndex);
+        base.Initialize(newPath, pathIndex, spawner);
         
         StartCoroutine(DelaySpawn());
     }
@@ -64,7 +63,7 @@ public class QueenBlusim : Enemy
 
             for (int i = 0; i < _numberOfEnemiesPerSpawn; i++)
             {
-                _poolController.RecoverEnemyPool(_enemySpawnedPrefab).GetOneEnemy().Initialize(_path, _poolController, _pathIndex);
+                Controller.Instance.PoolController.Out(_enemySpawnedPrefab.GetComponent<PoolableObject>()).GetComponent<Enemy>().Initialize(_path, _pathIndex, _spawner);
 
                 yield return new WaitForSeconds(_spawnTime + Random.Range(-_spawnTime / 20, _spawnTime / 20));
             }

@@ -29,6 +29,7 @@ public class SkillTree : MonoBehaviour
         Squad currentSquad = Controller.Instance.SquadController.CurrentSquad;
         List<int> augmentations = Controller.Instance.SaveController.SaveFile.SquadsProgression[0].AugmentationLevelMax;
 
+        /*
         for (int i = 0; i < _skills.Count; i ++)
         {
             if (i == 4)
@@ -36,5 +37,6 @@ public class SkillTree : MonoBehaviour
             else
                 _skills[i].Initialize(currentSquad.Towers[i].Sprite, currentSquad.Towers[i].Augmentations, augmentations[i], i, _description);
         }
+        */
     }
 }

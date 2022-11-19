@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -6,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class Spawner : MonoBehaviour
 {
+    private int _spawnedEnemies;
+
     /// <summary>
     /// Index of the current pattern.
     /// </summary>
@@ -25,16 +28,6 @@ public class Spawner : MonoBehaviour
     /// Level controller component used to handles end of wave.
     /// </summary>
     private LevelController _levelController;
-    
-    /// <summary>
-    /// Pool controller that handles enemies and resources.
-    /// </summary>
-    private PoolController _poolController;
-
-    /// <summary>
-    /// Enemy pool used to recover and spawns enemies.
-    /// </summary>
-    private EnemyPool _enemyPool;
 
     /// <summary>
     /// Random Path component.
@@ -51,6 +44,11 @@ public class Spawner : MonoBehaviour
     /// </summary>
     public bool WaveFinished { get; private set; } = false;
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool WaitEnd { get; set; }
+
 
 
     /// <summary>
@@ -59,18 +57,16 @@ public class Spawner : MonoBehaviour
     /// <param name="newRandomPath">The component that handles pathfinding</param>
     /// <param name="newGroup">The new loaded group</param>
     /// <param name="newLevelController">The level controller component</param>
-    /// <param name="newEnemyPool">The new enemy pool component</param>
-    public void SetNewGroup(RandomPath newRandomPath, EnemyGroup newGroup, LevelController newLevelController, PoolController newPoolController)
+    public void SetNewGroup(RandomPath newRandomPath, EnemyGroup newGroup, LevelController newLevelController)
     {
+        _spawnedEnemies = 0;
         _levelController = newLevelController;
-        _poolController = newPoolController;
         _enemyGroup = newGroup;
         _randomPath = newRandomPath;
 
-        _enemyPool = _poolController.RecoverEnemyPool(_enemyGroup.Enemy.GetComponent<Enemy>());
-
         _patternIndex = 0;
         _enemyIndex = 0;
+        EnemiesKilled = false;
         WaveFinished = false;
 
         StartCoroutine(SpawnEnemies());
@@ -89,9 +85,9 @@ public class Spawner : MonoBehaviour
             if (_enemyIndex < _enemyGroup.Patterns[_patternIndex].EnemiesCount)
             {
                 _enemyIndex++;
-                Enemy buffer = _enemyPool.GetOneEnemy();
-                buffer.Initialize(_randomPath.GeneratedPath, _poolController, 0);
+                Controller.Instance.PoolController.Out(_enemyGroup.Enemy.GetComponent<PoolableObject>()).GetComponent<Enemy>().Initialize(_randomPath.GeneratedPath, 0, this);
 
+                _spawnedEnemies++;
                 yield return new WaitForSeconds(_enemyGroup.Patterns[_patternIndex].EnemiesTime);
             }
             //Else if the pattern is finished
@@ -106,39 +102,28 @@ public class Spawner : MonoBehaviour
                 }
                 //If the wave is finished
                 else
-                    EndSpawn();
+                {
+                    _enemyGroup = null;
+                    WaveFinished = true;
+
+                    _levelController.EndWave();
+                }
             }
         }
     }
 
 
     /// <summary>
-    /// Method called when the wave is finished for this group.
-    /// </summary>
-    private void EndSpawn()
-    {
-        _enemyGroup = null;
-        WaveFinished = true;
-
-        _levelController.EndWave();
-    }
-
-
-    /// <summary>
-    /// Method used to flag enemy pool to start tracking.
-    /// </summary>
-    public void NotifyPool()
-    {
-        _enemyPool.RecordLevelEnd(this);
-    }
-
-
-    /// <summary>
     /// Method called by pools to track when all enemies are dead.
     /// </summary>
-    public void AllEnemiesKilled()
+    public void EnemyKilled()
     {
-        EnemiesKilled = true;
-        _levelController.EndLevel(false);
+        _spawnedEnemies--;
+
+        if (_spawnedEnemies == 0 && WaitEnd)
+        {
+            EnemiesKilled = true;
+            _levelController.EndLevel(false);
+        }
     }
 }

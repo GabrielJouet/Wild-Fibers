@@ -183,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea02469733532443b1a9d43853c05e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Shielded
+  _name: Shielded Blusim
   _selector: {fileID: 7325471192700415939}
   _healthBar: {fileID: 3144667757886646281}
   _dotDisplay: {fileID: 1472001672212050052}

@@ -256,7 +256,7 @@ public class BackgroudSelecter : MonoBehaviour
         if (!_towerButtonController.SellButtonActive)
         {
             ActivateTowerSellButton(finalPosition, selectedTower);
-            SetTowerInformation(selectedTower.Data);
+            SetTowerInformation(selectedTower);
 
             selectedTower.ActivateRangeDisplay();
         }
@@ -292,14 +292,14 @@ public class BackgroudSelecter : MonoBehaviour
     /// Method used to set or update tower information.
     /// </summary>
     /// <param name="newTower">The tower to display</param>
-    public void SetTowerInformation(TowerData newTower)
+    public void SetTowerInformation(Tower newTower)
     {
         if (_enemyInformationPanel.activeSelf)
             DisableEnemyInformation();
 
         _towerInformationPanel.SetActive(true);
 
-        _towerName.text = newTower.name;
+        _towerName.text = newTower.Name;
         _damageText.text = newTower.DamageInfo;
         _breakArmorText.text = newTower.ArmorThroughInfo;
         _fireRateText.text = newTower.FireRateInfo;

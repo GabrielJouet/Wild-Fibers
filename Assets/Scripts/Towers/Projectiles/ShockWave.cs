@@ -21,16 +21,14 @@ public class ShockWave : Projectile
     /// Constructor.
     /// </summary>
     /// <param name="newData">Attack related</param>
-    /// <param name="newPool">Projectile pool related</param>
     /// <param name="newTransform">Tower position</param>
     /// <param name="range">Max range of this wave</param>
     /// <param name="hitFlyingHarder">Does the wave hit flying enemies harder?</param>
-    public void Initialize(Attack newData, ProjectilePool newPool, Transform newTransform, float range, bool hitFlyingHarder)
+    public void Initialize(Attack newData, Transform newTransform, float range, bool hitFlyingHarder)
     {
         _hitFLyingHarder = hitFlyingHarder;
         transform.position = newTransform.position;
         _attack = newData;
-        _projectilePool = newPool;
 
         _range = range;
         transform.localScale = new Vector3(0, 0, 1);

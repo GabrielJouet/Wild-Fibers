@@ -92,13 +92,13 @@ public class TowerButtonController : MonoBehaviour
     /// </summary>
     private void Start()
     {
-        List<TowerData> buffer = _squadController.CurrentSquad.Towers;
-        List<TowerData> blockedTowers = Controller.Instance.SaveController.LoadedLevel.BlockedTowers;
+        List<Tower> buffer = _squadController.CurrentSquad.Towers;
+        List<Tower> blockedTowers = Controller.Instance.SaveController.LoadedLevel.BlockedTowers;
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i ++)
         {
             bool found = false;
-            foreach(TowerData blockedTower in blockedTowers)
+            foreach (Tower blockedTower in blockedTowers)
             {
                 if (blockedTower.name == buffer[i].name)
                 {
@@ -124,7 +124,7 @@ public class TowerButtonController : MonoBehaviour
 
         for (int i = 0; i < _towerPurchaseButtons.Count; i++)
         {
-            TowerData buffer = _squadController.CurrentSquad.Towers[i];
+            Tower buffer = _squadController.CurrentSquad.Towers[i];
 
             _towerPurchaseButtons[i].gameObject.SetActive(true);
             _towerPurchaseButtons[i].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description, newUsedTowerSlot.UpDescription ? _upDescription : _downDescription);
@@ -154,18 +154,18 @@ public class TowerButtonController : MonoBehaviour
         _rectTransform.localPosition = newPosition;
         GameObject descriptionObject = newTower.Slot.UpDescription ? _upDescription : _downDescription;
 
-        if (_currentTower.Data.Upgrades.Count > 1)
+        if (_currentTower.Upgrades.Count > 1)
         {
             UpdateTowerUpgradeButtons(0, 0, descriptionObject);
             UpdateTowerUpgradeButtons(2, 1, descriptionObject);
         }
-        else if (_currentTower.Data.Upgrades.Count == 1)
+        else if (_currentTower.Upgrades.Count == 1)
             UpdateTowerUpgradeButton(descriptionObject);
-        else if (_currentTower.Data.Specs.Count > 0)
+        else if (_currentTower.Specs.Count > 0)
             UpdateTowerSpecButtons(descriptionObject);
 
         _sellButton.gameObject.SetActive(true);
-        _sellButton.Initialize(Mathf.FloorToInt((newTower.CumulativeGold * newTower.Data.ResellPriceFactor) * 0.65f), descriptionObject);
+        _sellButton.Initialize(Mathf.FloorToInt((newTower.CumulativeGold * newTower.ResellPriceFactor) * 0.65f), descriptionObject);
         _sellButton.ChangeBehavior(() => _currentTower.ResellTower());
     }
 
@@ -178,7 +178,7 @@ public class TowerButtonController : MonoBehaviour
     /// <param name="descriptionObject">The game object used for description display</param>
     private void UpdateTowerUpgradeButtons(int buttonIndex, int index, GameObject descriptionObject)
     {
-        TowerData buffer = _currentTower.Data.Upgrades[index];
+        Tower buffer = _currentTower.Upgrades[index];
         _towerUpgradesButtons[buttonIndex].gameObject.SetActive(true);
         _towerUpgradesButtons[buttonIndex].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description, descriptionObject);
 
@@ -199,7 +199,7 @@ public class TowerButtonController : MonoBehaviour
     /// <remarks>The previous method update 2 buttons, whereas, this one only activate one</remarks>
     private void UpdateTowerUpgradeButton(GameObject descriptionObject)
     {
-        TowerData buffer = _currentTower.Data.Upgrades[0];
+        Tower buffer = _currentTower.Upgrades[0];
         _towerUpgradesButtons[1].gameObject.SetActive(true);
         _towerUpgradesButtons[1].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description, descriptionObject);
 
@@ -221,13 +221,13 @@ public class TowerButtonController : MonoBehaviour
     {
         for (int i = 0; i < _towerUpgradesButtons.Count; i++)
         {
-            TowerSpec buffer = _currentTower.Data.Specs[i];
+            TowerSpec buffer = _currentTower.Specs[i];
 
             _towerUpgradesButtons[i].gameObject.SetActive(true);
             _towerUpgradesButtons[i].Initialize(buffer.Icon, buffer.Price, _ressourceController, buffer.Description, descriptionObject);
 
             if (_levelController.LoadedLevel.TowerLevel > 1)
-                _towerUpgradesButtons[i].ChangeBehavior(() => _currentTower.AddSpec(_currentTower.Data.Specs[i]));
+                _towerUpgradesButtons[i].ChangeBehavior(() => _currentTower.AddSpec(_currentTower.Specs[i]));
             else
             {
                 _towerUpgradesButtons[i].Lock();

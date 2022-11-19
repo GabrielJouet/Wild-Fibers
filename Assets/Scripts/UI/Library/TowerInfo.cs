@@ -10,8 +10,8 @@ public class TowerInfo : MonoBehaviour
     /// <summary>
     /// Tower data buffered in this tower info.
     /// </summary>
-    private TowerData _tower;
-    public TowerData Tower
+    private Tower _tower;
+    public Tower Tower
     {
         get => _tower;
 
