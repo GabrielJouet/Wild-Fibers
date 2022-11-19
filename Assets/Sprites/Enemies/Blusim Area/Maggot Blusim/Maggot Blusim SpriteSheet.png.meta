@@ -81,7 +81,7 @@ TextureImporter:
       213: -5741569577593345974
     second: Maggot Blusim Cocoon5
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -101,6 +101,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -110,8 +112,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -132,10 +134,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -151,6 +157,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -180,7 +210,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 5684a5e05dfb8fa90800000000000000
-      internalID: -7279857875854669723
+      internalID: 956936253234346663
       vertices: []
       indices: 
       edges: []
@@ -201,7 +231,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 368c549a7ba5f24c0800000000000000
-      internalID: -4310126573504837533
+      internalID: 2606507432749049928
       vertices: []
       indices: 
       edges: []
@@ -222,7 +252,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f3b1d109014d2cf00800000000000000
-      internalID: 1135703223653178175
+      internalID: -2810387338972676494
       vertices: []
       indices: 
       edges: []
@@ -243,7 +273,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 74632bf11efbcaac0800000000000000
-      internalID: -3842485408433555897
+      internalID: 6399860878504892633
       vertices: []
       indices: 
       edges: []
@@ -264,7 +294,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: b38d65a2e706a59a0800000000000000
-      internalID: -6243571838403291077
+      internalID: 8280391395440306465
       vertices: []
       indices: 
       edges: []
@@ -285,7 +315,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: f05ef7f4e38ffe290800000000000000
-      internalID: -7858789878232783601
+      internalID: -4888570019653752193
       vertices: []
       indices: 
       edges: []
@@ -306,7 +336,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1d38be80d895caf70800000000000000
-      internalID: 9199826601085993937
+      internalID: -1346419922625287363
       vertices: []
       indices: 
       edges: []
@@ -327,7 +357,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 217d0f05462a53cd0800000000000000
-      internalID: -2578976659861350638
+      internalID: -5977040466543617060
       vertices: []
       indices: 
       edges: []
@@ -348,7 +378,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 7f3a51fa38b8a3f80800000000000000
-      internalID: -8126029179942231049
+      internalID: -7552096340062230510
       vertices: []
       indices: 
       edges: []
@@ -489,6 +519,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Maggot Blusim Walk4: 8280391395440306465
+      Maggot Blusim Walk6: -1346419922625287363
+      Maggot Blusim Cocoon3: 8510360492524687318
+      Maggot Blusim Cocoon4: 1199947074543869845
+      Maggot Blusim Cocoon0: -1559604942833274382
+      Maggot Blusim Cocoon1: 8823972203230990063
+      Maggot Blusim Cocoon2: 532622098329097980
+      Maggot Blusim Walk0: 956936253234346663
+      Maggot Blusim Walk5: -4888570019653752193
+      Maggot Blusim Shadow: -7552096340062230510
+      Maggot Blusim Walk3: 6399860878504892633
+      Maggot Blusim Cocoon5: -5741569577593345974
+      Maggot Blusim Walk1: 2606507432749049928
+      Maggot Blusim Walk7: -5977040466543617060
+      Maggot Blusim Walk2: -2810387338972676494
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

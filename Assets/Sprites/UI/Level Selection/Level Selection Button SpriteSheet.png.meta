@@ -57,7 +57,7 @@ TextureImporter:
       213: -3071613485526271407
     second: Level Selection Button SpriteSheet_9
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -77,6 +77,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -86,8 +88,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -108,10 +110,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -127,6 +133,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -156,7 +186,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: c91565df53009d9a0800000000000000
-      internalID: -6207930379469958756
+      internalID: 7254002967335079205
       vertices: []
       indices: 
       edges: []
@@ -177,7 +207,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 242fc9de095f6e260800000000000000
-      internalID: 7126653463170970178
+      internalID: 5876473196031235697
       vertices: []
       indices: 
       edges: []
@@ -198,7 +228,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: bcf879b1a96e42d40800000000000000
-      internalID: 5558821389644304331
+      internalID: 154085672403700459
       vertices: []
       indices: 
       edges: []
@@ -219,7 +249,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: e07087716ad0abf10800000000000000
-      internalID: 2286154767853422350
+      internalID: -2154632028628315019
       vertices: []
       indices: 
       edges: []
@@ -240,7 +270,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a7395bf4a36f85ba0800000000000000
-      internalID: -6099854964967500934
+      internalID: 4910959925763933065
       vertices: []
       indices: 
       edges: []
@@ -261,7 +291,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 74c64c0ef7cdde0d0800000000000000
-      internalID: -3391812502550188985
+      internalID: 357011432055814445
       vertices: []
       indices: 
       edges: []
@@ -282,7 +312,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a58e061ed326c2b60800000000000000
-      internalID: 7722655478947309658
+      internalID: 3811417429819893015
       vertices: []
       indices: 
       edges: []
@@ -303,7 +333,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 017693286816186e0800000000000000
-      internalID: -1837079942652139760
+      internalID: 2694338018779796811
       vertices: []
       indices: 
       edges: []
@@ -360,6 +390,17 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Level Selection Button SpriteSheet_1: 5876473196031235697
+      Level Selection Button SpriteSheet_8: -18717582051522283
+      Level Selection Button SpriteSheet_9: -3071613485526271407
+      Level Selection Button SpriteSheet_6: 3811417429819893015
+      Level Selection Button SpriteSheet_0: 7254002967335079205
+      Level Selection Button SpriteSheet_4: 4910959925763933065
+      Level Selection Button SpriteSheet_3: -2154632028628315019
+      Level Selection Button SpriteSheet_5: 357011432055814445
+      Level Selection Button SpriteSheet_7: 2694338018779796811
+      Level Selection Button SpriteSheet_2: 154085672403700459
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

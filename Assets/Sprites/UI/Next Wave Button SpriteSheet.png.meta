@@ -111,7 +111,7 @@ TextureImporter:
       213: 8171800426467839558
     second: Next Wave Button SpriteSheet_35
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -131,6 +131,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -140,8 +142,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -162,10 +164,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -181,6 +187,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -960,6 +990,43 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Next Wave Button SpriteSheet_11: -1596554033274270806
+      Next Wave Button SpriteSheet_29: -6151445370691456215
+      Next Wave Button SpriteSheet_3: -2580748758896110756
+      Next Wave Button SpriteSheet_4: -5444382018135170813
+      Next Wave Button SpriteSheet_13: -4531864525843725278
+      Next Wave Button SpriteSheet_21: 8359775533837700830
+      Next Wave Button SpriteSheet_28: 3812484761416174997
+      Next Wave Button SpriteSheet_31: 8049770530789644579
+      Next Wave Button SpriteSheet_27: 5579128722849741053
+      Next Wave Button SpriteSheet_16: -7505549265951744484
+      Next Wave Button SpriteSheet_1: -1845368775358569397
+      Next Wave Button SpriteSheet_35: 8171800426467839558
+      Next Wave Button SpriteSheet_17: 4462473564212190555
+      Next Wave Button SpriteSheet_5: 3056561799102449024
+      Next Wave Button SpriteSheet_12: 2724227446925434207
+      Next Wave Button SpriteSheet_26: -7390662541499729401
+      Next Wave Button SpriteSheet_30: -9085898185194885429
+      Next Wave Button SpriteSheet_0: 3666253996315707145
+      Next Wave Button SpriteSheet_33: -3321958904605197514
+      Next Wave Button SpriteSheet_32: 8710095401512621022
+      Next Wave Button SpriteSheet_22: 2996350139977403419
+      Next Wave Button SpriteSheet_34: -1323000287033122367
+      Next Wave Button SpriteSheet_9: 7883401262090458282
+      Next Wave Button SpriteSheet_8: 2555621651939629126
+      Next Wave Button SpriteSheet_20: 1362262785754063909
+      Next Wave Button SpriteSheet_15: -6544397316732549720
+      Next Wave Button SpriteSheet_23: -234412580486615192
+      Next Wave Button SpriteSheet_18: 2902579212843535419
+      Next Wave Button SpriteSheet_25: 7808132590253443313
+      Next Wave Button SpriteSheet_2: -5622946003032932998
+      Next Wave Button SpriteSheet_7: 488195159220125432
+      Next Wave Button SpriteSheet_24: 4679264947391311272
+      Next Wave Button SpriteSheet_10: 7079118362221971985
+      Next Wave Button SpriteSheet_6: 2578821390427694985
+      Next Wave Button SpriteSheet_14: 8620095821025344306
+      Next Wave Button SpriteSheet_19: 4397110768041737474
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

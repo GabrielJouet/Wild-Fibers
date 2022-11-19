@@ -66,7 +66,7 @@ TextureImporter:
       213: -5026787805793173994
     second: Queen Blusim Lay6
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -86,6 +86,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -95,8 +97,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -117,10 +119,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -136,6 +142,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -165,7 +195,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 95ec4ab9ee3e0e650800000000000000
-      internalID: 6260254095997980249
+      internalID: 66842103471939306
       vertices: []
       indices: 
       edges: []
@@ -186,7 +216,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 48da57ea673261a20800000000000000
-      internalID: 3032650391720668548
+      internalID: 3896022012865483234
       vertices: []
       indices: 
       edges: []
@@ -558,6 +588,26 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Queen Blusim Walk10: -2257670323080422126
+      Queen Blusim Walk9: -5481266113516440203
+      Queen Blusim Lay0: 3488591466379645431
+      Queen Blusim Walk2: -3453380373256166935
+      Queen Blusim Lay2: 116486036660577307
+      Queen Blusim Shadow: 3357953316438243261
+      Queen Blusim Lay5: -1168877265387842849
+      Queen Blusim Walk3: 456197481753907788
+      Queen Blusim Lay4: -8997716435735561262
+      Queen Blusim Walk8: 3534293310740236802
+      Queen Blusim Walk6: 3948200842901380584
+      Queen Blusim Walk7: 1662592279291701886
+      Queen Blusim Lay1: 8656758162212415552
+      Queen Blusim Walk5: -2210100903190654835
+      Queen Blusim Lay3: -7684021475896397791
+      Queen Blusim Walk1: 3896022012865483234
+      Queen Blusim Walk4: -4556378214677241384
+      Queen Blusim Lay6: -5026787805793173994
+      Queen Blusim Walk0: 66842103471939306
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
