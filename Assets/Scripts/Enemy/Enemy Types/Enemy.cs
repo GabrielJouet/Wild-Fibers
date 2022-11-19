@@ -216,7 +216,7 @@ public class Enemy : PoolableObject
     protected List<Attack> _dots = new List<Attack>();
 
     /// <summary>
-    /// 
+    /// Current spawner related to this enemy.
     /// </summary>
     protected Spawner _spawner;
 
@@ -232,7 +232,7 @@ public class Enemy : PoolableObject
     /// Initialize method.
     /// </summary>
     /// <param name="newPath">New path used</param>
-    /// <param name="newPool">Pool used for the current enemy</param>
+    /// <param name="spawner">Spawner that spawns this enemy</param>
     /// <param name="pathIndex">Current progression on the path</param>
     public virtual void Initialize(List<Vector2> newPath, int pathIndex, Spawner spawner)
     {
@@ -479,7 +479,6 @@ public class Enemy : PoolableObject
     }
 
 
-
     /// <summary>
     /// Collision enter on 2D objects.
     /// </summary>
@@ -518,14 +517,5 @@ public class Enemy : PoolableObject
             rawDamage = attack.Damage - ((Armor - attack.ArmorThrough) / 100 * attack.Damage);
 
         return Mathf.FloorToInt(rawDamage + dotDamage);
-    }
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public override void OnInPool()
-    {
-
     }
 }

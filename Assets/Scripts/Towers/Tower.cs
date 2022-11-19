@@ -285,6 +285,7 @@ public abstract class Tower : PoolableObject
     protected Queue<Attack> _nextAttack = new Queue<Attack>();
 
 
+
     /// <summary>
     /// Method used to initialize.
     /// </summary>
@@ -339,12 +340,10 @@ public abstract class Tower : PoolableObject
     {
         _coroutineStarted = true;
 
-        int numberOfStrikes = _availableEnemies.Count < Shots ? _availableEnemies.Count : Shots;
-
         if (!ShotsRandomly)
             SortEnemies();
 
-        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
+        foreach (Enemy current in RecoverAvailableEnemies(_availableEnemies.Count < Shots ? _availableEnemies.Count : Shots))
             Controller.Instance.PoolController.Out(Projectile.GetComponent<PoolableObject>()).GetComponent<Projectile>().Initialize(_nextAttack.Dequeue(), current, transform);
 
         yield return new WaitForSeconds(TimeShots);
@@ -382,7 +381,6 @@ public abstract class Tower : PoolableObject
     /// </summary>
     public void UpgradeTower(Tower newData)
     {
-        //Needs to remove old one and put new one
         _ressourceController.RemoveGold(newData.Price);
 
         _backgroundSelecter.DesactivateTower();
@@ -518,8 +516,7 @@ public abstract class Tower : PoolableObject
         {
             foreach (Enemy buffer in _availableEnemies)
             {
-                Attack attackBuffered = ChangeNextAttack(buffer);
-                _nextAttack.Enqueue(attackBuffered);
+                _nextAttack.Enqueue(ChangeNextAttack(buffer));
 
                 availableEnemies.Add(buffer);
             }
@@ -527,8 +524,7 @@ public abstract class Tower : PoolableObject
 
         foreach (Enemy buffer in _availableEnemies)
         {
-            Attack attackBuffered = ChangeNextAttack(buffer);
-            _nextAttack.Enqueue(attackBuffered);
+            _nextAttack.Enqueue(ChangeNextAttack(buffer));
 
             availableEnemies.Add(buffer);
 

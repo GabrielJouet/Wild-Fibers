@@ -40,6 +40,7 @@ public class QueenBlusim : Enemy
     /// </summary>
     /// <param name="newPath">New path used</param>
     /// <param name="pathIndex">Current progression on the path</param>
+    /// <param name="spawner">Spawner that spawns this enemy</param>
     public override void Initialize(List<Vector2> newPath, int pathIndex, Spawner spawner)
     {
         base.Initialize(newPath, pathIndex, spawner);
