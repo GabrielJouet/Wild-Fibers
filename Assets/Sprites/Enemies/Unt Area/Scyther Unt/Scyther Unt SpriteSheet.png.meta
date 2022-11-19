@@ -111,7 +111,7 @@ TextureImporter:
       213: -1387759067679412541
     second: Scyther Unt SpriteSheet_21
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -131,6 +131,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -140,8 +142,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -162,10 +164,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -181,6 +187,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -210,7 +240,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 4d95856da8ab3ddb0800000000000000
-      internalID: -4768262474990855724
+      internalID: -1219450226919108179
       vertices: []
       indices: 
       edges: []
@@ -231,7 +261,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 9d92e581c0c87f440800000000000000
-      internalID: 4969594697402952153
+      internalID: -3703550325147593879
       vertices: []
       indices: 
       edges: []
@@ -252,7 +282,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 088a7c673356a6ae0800000000000000
-      internalID: -1555319449592551296
+      internalID: 9125929170869810824
       vertices: []
       indices: 
       edges: []
@@ -273,7 +303,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a10973dda310ca220800000000000000
-      internalID: 2498373245614919706
+      internalID: 7550378020794697587
       vertices: []
       indices: 
       edges: []
@@ -294,7 +324,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 035c5e48f922646d0800000000000000
-      internalID: -3006677632698432208
+      internalID: 4673790755349875017
       vertices: []
       indices: 
       edges: []
@@ -315,7 +345,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 818edecad8643df70800000000000000
-      internalID: 9210783237208401944
+      internalID: 8091378124375363710
       vertices: []
       indices: 
       edges: []
@@ -336,7 +366,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: ed341881567871520800000000000000
-      internalID: 2672753772140250078
+      internalID: -5757992473112610424
       vertices: []
       indices: 
       edges: []
@@ -357,7 +387,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 568bf3f47bd6ee530800000000000000
-      internalID: 3886164162543335525
+      internalID: 1622366791293101852
       vertices: []
       indices: 
       edges: []
@@ -378,7 +408,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: bf8340df62cb8d770800000000000000
-      internalID: 8635859161122617595
+      internalID: 1457378971256593036
       vertices: []
       indices: 
       edges: []
@@ -399,7 +429,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: bb7d4dda838be71e0800000000000000
-      internalID: -2198117014536136773
+      internalID: -6426516815311192403
       vertices: []
       indices: 
       edges: []
@@ -420,7 +450,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: a2c1a17479c4a5220800000000000000
-      internalID: 2475375157810175018
+      internalID: 3870810292957854456
       vertices: []
       indices: 
       edges: []
@@ -441,7 +471,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 1caf8403de6f6b980800000000000000
-      internalID: -8523353746174313791
+      internalID: 4630526377472429554
       vertices: []
       indices: 
       edges: []
@@ -462,7 +492,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 52ed6c138cb204da0800000000000000
-      internalID: -5962717767809966555
+      internalID: 3236850816366701009
       vertices: []
       indices: 
       edges: []
@@ -666,6 +696,29 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Scyther Unt SpriteSheet_9: -6426516815311192403
+      Scyther Unt SpriteSheet_20: -3975996439052038399
+      Scyther Unt SpriteSheet_2: 9125929170869810824
+      Scyther Unt SpriteSheet_8: 1457378971256593036
+      Scyther Unt SpriteSheet_5: 8091378124375363710
+      Scyther Unt SpriteSheet_11: 4630526377472429554
+      Scyther Unt SpriteSheet_16: 2907629226847107680
+      Scyther Unt SpriteSheet_21: -1387759067679412541
+      Scyther Unt SpriteSheet_13: -2196211338362541412
+      Scyther Unt SpriteSheet_3: 7550378020794697587
+      Scyther Unt SpriteSheet_14: -2816802660592724731
+      Scyther Unt SpriteSheet_10: 3870810292957854456
+      Scyther Unt SpriteSheet_19: -2007779639835221249
+      Scyther Unt SpriteSheet_15: -4502213494324187079
+      Scyther Unt SpriteSheet_7: 1622366791293101852
+      Scyther Unt SpriteSheet_12: 3236850816366701009
+      Scyther Unt SpriteSheet_4: 4673790755349875017
+      Scyther Unt SpriteSheet_6: -5757992473112610424
+      Scyther Unt SpriteSheet_18: 8126968930595048330
+      Scyther Unt SpriteSheet_1: -3703550325147593879
+      Scyther Unt SpriteSheet_17: -6461317712060805179
+      Scyther Unt SpriteSheet_0: -1219450226919108179
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

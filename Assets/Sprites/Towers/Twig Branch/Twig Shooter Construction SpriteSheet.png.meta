@@ -48,7 +48,7 @@ TextureImporter:
       213: 6408979333349359234
     second: Twig Shooter Construction SpriteSheet_14
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -68,6 +68,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -77,8 +79,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -99,10 +101,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -118,6 +124,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -456,6 +486,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Twig Shooter Construction SpriteSheet_9: 6554984258406286563
+      Twig Shooter Construction SpriteSheet_14: 6408979333349359234
+      Twig Shooter Construction SpriteSheet_12: 9157304216877346020
+      Twig Shooter Construction SpriteSheet_1: 8928753752131006037
+      Twig Shooter Construction SpriteSheet_10: 2180372051894020460
+      Twig Shooter Construction SpriteSheet_11: -765378427043310635
+      Twig Shooter Construction SpriteSheet_8: -162080047814490572
+      Twig Shooter Construction SpriteSheet_2: -7884758981776741740
+      Twig Shooter Construction SpriteSheet_13: 3299711662909658723
+      Twig Shooter Construction SpriteSheet_4: 1712105472251255331
+      Twig Shooter Construction SpriteSheet_6: 2393731004806427111
+      Twig Shooter Construction SpriteSheet_3: 1180052025142865910
+      Twig Shooter Construction SpriteSheet_0: -3061841160501331598
+      Twig Shooter Construction SpriteSheet_5: -1383538831613746199
+      Twig Shooter Construction SpriteSheet_7: 7337911825667998032
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

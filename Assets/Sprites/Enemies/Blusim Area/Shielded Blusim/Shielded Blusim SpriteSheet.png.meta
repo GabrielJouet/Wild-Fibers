@@ -99,7 +99,7 @@ TextureImporter:
       213: -3272807248732641952
     second: Shielded Blusim Walk12
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -119,6 +119,8 @@ TextureImporter:
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -128,8 +130,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -150,10 +152,14 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -169,6 +175,30 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -198,7 +228,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: d7a80efc9fc615480800000000000000
-      internalID: -8912222367399245187
+      internalID: 3180726396486898061
       vertices: []
       indices: 
       edges: []
@@ -219,7 +249,7 @@ TextureImporter:
       tessellationDetail: 0
       bones: []
       spriteID: 29aaf7f387ea63330800000000000000
-      internalID: 3690328776161340050
+      internalID: 4997716768292252831
       vertices: []
       indices: 
       edges: []
@@ -822,6 +852,37 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Shielded Blusim Walk10: 7802070094769845829
+      Shielded Blusim Shield4: 1866232852364472514
+      Shielded Blusim Walk0: 3180726396486898061
+      Shielded Blusim Shield2: 5287653593731259850
+      Shielded Blusim Walk8: 471945794874209253
+      Shielded Blusim Shield13: -2628194091721191425
+      Shielded Blusim Shield3: 535002446490190885
+      Shielded Blusim Shield1: -2705055885213452014
+      Shielded Blusim Shield14: -3902688960119500431
+      Shielded Blusim Shadow: 4997716768292252831
+      Shielded Blusim Walk4: -7185941299803971909
+      Shielded Blusim Walk6: -5417864215818354285
+      Shielded Blusim Shield12: -7630030577231369727
+      Shielded Blusim Shield0: -4736773687947733992
+      Shielded Blusim Walk5: 6642848221264246532
+      Shielded Blusim Shield8: -2569566931520456820
+      Shielded Blusim Shield11: -4623952819294130499
+      Shielded Blusim Walk1: -7755615782821423880
+      Shielded Blusim Shield15: 6185945776564450512
+      Shielded Blusim Shield6: -9174466824684139240
+      Shielded Blusim Walk9: -1419354474138680295
+      Shielded Blusim Walk7: -8567422560163557669
+      Shielded Blusim Shield7: 8614033941262897909
+      Shielded Blusim Shield5: 7367230405498730886
+      Shielded Blusim Shield9: 4464235227656976660
+      Shielded Blusim Walk3: 4912945743265268177
+      Shielded Blusim Walk2: -5006537349258901245
+      Shielded Blusim Walk12: -3272807248732641952
+      Shielded Blusim Shield10: 738255083171122308
+      Shielded Blusim Walk11: 3706161831248281589
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
