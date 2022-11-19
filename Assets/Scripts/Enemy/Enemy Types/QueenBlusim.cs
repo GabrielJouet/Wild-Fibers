@@ -13,7 +13,7 @@ public class QueenBlusim : Enemy
     /// The enemy spawned.
     /// </summary>
     [SerializeField]
-    protected Enemy _enemySpawnedPrefab;
+    protected GameObject _enemySpawnedPrefab;
 
     /// <summary>
     /// Time between each wave of spawned enemies.

@@ -201,7 +201,7 @@ MonoBehaviour:
     the entire hive and sense everything inside.
   _screenShot: {fileID: 21300000, guid: 2ab2cec2b5a508c47a5d1e8b4ffbb67c, type: 3}
   _special: Spawner
-  _enemySpawnedPrefab: {fileID: 1001176562105206731, guid: d9daef3f950273945b1eb5cea886939b,
+  _enemySpawnedPrefab: {fileID: 6914183812568595844, guid: d9daef3f950273945b1eb5cea886939b,
     type: 3}
   _timeBetweenSpawn: 4.5
   _spawnTime: 0.8
