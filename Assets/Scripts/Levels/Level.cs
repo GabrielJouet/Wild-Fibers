@@ -94,23 +94,4 @@ public class Level : ScriptableObject
     [SerializeField]
     private List<Tower> _blockedTowers;
     public List<Tower> BlockedTowers { get => _blockedTowers; }
-
-
-    /// <summary>
-    /// Enemies type in the level.
-    /// </summary>
-    public List<Enemy> Enemies 
-    { 
-        get
-        {
-            List<Enemy> availableEnemies = new List<Enemy>();
-
-            foreach (Wave current in _availableWaves)
-                foreach (EnemyGroup buffer in current.EnemyGroups)
-                    if (!availableEnemies.Contains(buffer.Enemy.GetComponent<Enemy>()))
-                        availableEnemies.Add(buffer.Enemy.GetComponent<Enemy>());
-
-            return availableEnemies;
-        } 
-    }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -7,6 +6,9 @@ using UnityEngine;
 /// </summary>
 public class Spawner : MonoBehaviour
 {
+    /// <summary>
+    /// How many enemies are spawned.
+    /// </summary>
     private int _spawnedEnemies;
 
     /// <summary>
