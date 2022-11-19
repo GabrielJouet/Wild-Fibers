@@ -202,7 +202,8 @@ MonoBehaviour:
     sun or damage.
   _screenShot: {fileID: 21300000, guid: d3eb6bc226b19aa4c9c86df35d17d30b, type: 3}
   _special: Hatches
-  _hatchling: {fileID: 0}
+  _hatchling: {fileID: 6914183812568595844, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb,
+    type: 3}
   _hatchingTime: 15
   _baseShieldValue: 10
 --- !u!1001 &1741317206090716099
