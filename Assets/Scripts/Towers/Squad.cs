@@ -11,8 +11,8 @@ public class Squad : ScriptableObject
     /// Avaiable towers in this squad.
     /// </summary>
     [SerializeField]
-    private List<TowerData> _towers;
-    public List<TowerData> Towers { get => _towers; private set => _towers = value; }
+    private List<Tower> _towers;
+    public List<Tower> Towers { get => _towers; private set => _towers = value; }
 
 
     /// <summary>
@@ -57,13 +57,7 @@ public class Squad : ScriptableObject
     {
         name = clone.name;
 
-        Towers = new List<TowerData>();
-        foreach (TowerData tower in clone.Towers)
-        {
-            TowerData buffer = CreateInstance<TowerData>();
-            buffer.Populate(tower);
-            Towers.Add(buffer);
-        }
+        Towers = new List<Tower>(clone.Towers);
 
         Augmentations = clone.Augmentations;
         SquadSprite = clone.SquadSprite;
@@ -97,14 +91,14 @@ public class Squad : ScriptableObject
     private void UpdateCrazyFoliage(int squadLevel)
     {
         //Roots tower has a reduced price on first augmentation.
-        TowerData currentTower = Towers[1];
-        if (currentTower.AugmentationLevel > 0)
+        Tower tower = Towers[1];
+        if (tower.AugmentationLevel > 0)
         {
-            currentTower.ReducePrice(0.8f);
+            tower.ReducePrice(0.8f);
 
-            foreach (TowerData tower in currentTower.Upgrades)
+            foreach (Tower upgrade in tower.Upgrades)
             {
-                foreach(TowerData towerUpgrades in tower.Upgrades)
+                foreach(Tower towerUpgrades in upgrade.Upgrades)
                     towerUpgrades.ReducePrice(0.8f);
 
                 tower.ReducePrice(0.8f);
@@ -112,24 +106,24 @@ public class Squad : ScriptableObject
         }
 
         //Vines tower has a reduced price on the second augmentation.
-        currentTower = Towers[2];
-        if (currentTower.AugmentationLevel > 1)
+        tower = Towers[2];
+        if (tower.AugmentationLevel > 1)
         {
-            foreach (TowerData current in currentTower.Upgrades)
-                current.ReducePrice(25);
+            foreach (Tower current in tower.Upgrades)
+                current.ReducePrice(0.75f);
 
             //And a better resell price on the third.
-            if (currentTower.AugmentationLevel > 2)
+            if (tower.AugmentationLevel > 2)
             {
-                foreach (TowerData tower in currentTower.Upgrades)
+                foreach (Tower upgrade in tower.Upgrades)
                 {
-                    foreach (TowerData towerUpgrades in tower.Upgrades)
+                    foreach (Tower towerUpgrades in upgrade.Upgrades)
                         towerUpgrades.IncreaseResellPrice(1.25f);
 
                     tower.IncreaseResellPrice(1.25f);
                 }
 
-                currentTower.IncreaseResellPrice(1.25f);
+                tower.IncreaseResellPrice(1.25f);
             }
         }
 

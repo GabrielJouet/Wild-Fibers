@@ -27,11 +27,10 @@ public class Shielded : Enemy
     /// Initialize method.
     /// </summary>
     /// <param name="newPath">New path used</param>
-    /// <param name="newPool">Pool used for the current enemy</param>
     /// <param name="pathIndex">Current progression on the path</param>
-    public override void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
+    public override void Initialize(List<Vector2> newPath, int pathIndex, Spawner spawner)
     {
-        base.Initialize(newPath, newPool, pathIndex);
+        base.Initialize(newPath, pathIndex, spawner);
         Armor = _baseShieldValue;
         StartCoroutine(DelayShield());
     }
@@ -46,42 +45,22 @@ public class Shielded : Enemy
         {
             yield return new WaitForSeconds(_timeBetweenShield + Random.Range(-_timeBetweenShield / 20, _timeBetweenShield / 20));
 
-            ActivateShield(ArmorMax, _dots.Count > 0);
+            _moving = false;
+
+            if (_dots.Count > 0)
+                Armor = ArmorMax - (ArmorMax - Armor);
+            else
+                Armor = ArmorMax;
             _animator.SetTrigger("shield");
+
             yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[1].length / 0.5f);
 
-            ResetShield(_dots.Count > 0);
+            if (_dots.Count > 0)
+                Armor = _baseShieldValue - (ArmorMax - Armor);
+            else
+                Armor = _baseShieldValue;
+
+            _moving = true;
         }
-    }
-
-
-    /// <summary>
-    /// Method used to change shield value.
-    /// </summary>
-    /// <param name="shieldValue">New shield value</param>
-    /// <param name="dotApplied">Does a dot is applied to the shield?</param>
-    protected void ActivateShield(float shieldValue, bool dotApplied)
-    {
-        _moving = false;
-
-        if (dotApplied)
-            Armor = shieldValue - (ArmorMax - Armor);
-        else
-            Armor = shieldValue;
-    }
-
-
-    /// <summary>
-    /// Default shield value.
-    /// </summary>
-    /// <param name="dotApplied">Does a dot is applied to the shield?</param>
-    protected void ResetShield(bool dotApplied)
-    {
-        if (dotApplied)
-            Armor = _baseShieldValue - (ArmorMax - Armor);
-        else
-            Armor = _baseShieldValue;
-
-        _moving = true;
     }
 }

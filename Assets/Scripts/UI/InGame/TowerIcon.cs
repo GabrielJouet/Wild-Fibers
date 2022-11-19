@@ -50,7 +50,7 @@ public class TowerIcon : MonoBehaviour
     /// <param name="newData">New data used for this tower</param>
     /// <param name="maxLevel">The new max level of this tower</param>
     /// <param name="last">Does this tower icon is the last one?</param>
-    public void Populate(TowerData newData, int maxLevel, bool last)
+    public void Populate(Tower newData, int maxLevel, bool last)
     {
         _base.Tower = newData;
 

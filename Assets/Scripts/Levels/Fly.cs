@@ -24,6 +24,7 @@ public class Fly : MonoBehaviour
     private float _speed;
 
 
+
     /// <summary>
     /// Start used as coroutine, each time a fly travel it computes a new distance and speed.
     /// </summary>

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 /// <summary>
 /// Class used to store and manage level resources.
 /// </summary>
-[RequireComponent(typeof(RessourceController))]
 public class LevelController : MonoBehaviour
 {
     [Header("UI related")]
@@ -68,11 +67,6 @@ public class LevelController : MonoBehaviour
     private SaveController _saveController;
 
     /// <summary>
-    /// Pool controller component, used to store pools
-    /// </summary>
-    private PoolController _poolController;
-
-    /// <summary>
     /// Time between each next wave button display
     /// </summary>
     private readonly float _timeBetweenNextWaveButtonDisplay = 5f;
@@ -93,8 +87,6 @@ public class LevelController : MonoBehaviour
         LoadedLevel = _saveController.LoadedLevel;
 
         _ressourceController = GetComponent<RessourceController>();
-        _poolController = Controller.Instance.PoolController;
-        _poolController.ReInitialize();
 
         //If we unlock new towers in this level.
         if (LoadedLevel.TowerLevel > _saveController.SaveFile.CurrentSquad.TowerLevelMax)
@@ -145,7 +137,7 @@ public class LevelController : MonoBehaviour
                 _saveController.SaveNewEnemyFound(index);
             }
 
-            _spawners[j].SetNewGroup(_availablePath[current.Path], current, this, _poolController);
+            _spawners[j].SetNewGroup(_availablePath[current.Path], current, this);
             j++;
         }
     }
@@ -182,8 +174,8 @@ public class LevelController : MonoBehaviour
             _nextWaveButton.ActivateNewWaveButton(LoadedLevel.Waves[_waveIndex].TimeWave);
         }
         else
-            foreach (Spawner current in _spawners)
-                current.NotifyPool();
+            foreach (Spawner spawner in _spawners)
+                spawner.WaitEnd = true;
     }
 
 

@@ -24,7 +24,7 @@ public class RootsStump : Tower
     /// </summary>
     protected override void SpecialBehavior()
     {
-        for (int i = 0; i < _towerData.Shots; i ++)
+        for (int i = 0; i < Shots; i ++)
             StartCoroutine(SummonSpike(0.25f));
     }
 
@@ -42,7 +42,7 @@ public class RootsStump : Tower
             {
                 StartCoroutine(SummonSpike(1));
 
-                _availableSpikes[0].StartFollowing(enemies[i], _nextAttack.Dequeue(), Data.AugmentationLevel > 1);
+                _availableSpikes[0].StartFollowing(enemies[i], _nextAttack.Dequeue(), AugmentationLevel > 1);
                 _availableSpikes.RemoveAt(0);
             }
         }
@@ -58,13 +58,13 @@ public class RootsStump : Tower
     {
         Attack newAttack = new Attack(_attack);
 
-        if (Data.AugmentationLevel > 2)
+        if (AugmentationLevel > 2)
             newAttack.Damage *= (enemy.IsDotted ? 1.25f : 1);
 
-        if (Data.AugmentationLevel > 4)
+        if (AugmentationLevel > 4)
             newAttack.ArmorThrough *= (enemy.ArmorMax < 25 ? 1.15f : 1);
 
-        if (Data.AugmentationLevel > 3)
+        if (AugmentationLevel > 3)
             newAttack.Damage *= Random.Range(0, 100) < 5 ? 2 : 1;
 
         return newAttack;
@@ -80,11 +80,6 @@ public class RootsStump : Tower
 
         foreach (ChocSpikes current in _availableSpikes)
             current.StopProjectile();
-
-        _availableSpikes.Clear();
-
-        for (int i = 0; i < _towerData.Shots; i++)
-            StartCoroutine(SummonSpike(0.5f));
     }
 
 
@@ -104,12 +99,12 @@ public class RootsStump : Tower
     /// <param name="multiplier">Coroutine execution time multiplier</param>
     protected virtual IEnumerator SummonSpike(float multiplier)
     {
-        yield return new WaitForSeconds(_towerData.TimeShots * multiplier);
+        yield return new WaitForSeconds(TimeShots * multiplier);
 
-        ChocSpikes buffer = _projectilePool.GetOneProjectile().GetComponent<ChocSpikes>();
-        buffer.Initialize(_projectilePool, GetSpikePosition(_rootsIndex));
+        ChocSpikes buffer = Controller.Instance.PoolController.Out(Projectile.GetComponent<PoolableObject>()).GetComponent<ChocSpikes>();
+        buffer.Initialize(GetSpikePosition(_rootsIndex));
 
-        _rootsIndex = _rootsIndex == _towerData.Shots - 1? 0 : _rootsIndex + 1 ;
+        _rootsIndex = _rootsIndex == Shots - 1? 0 : _rootsIndex + 1 ;
 
         _availableSpikes.Add(buffer);
     }
@@ -132,9 +127,9 @@ public class RootsStump : Tower
 
             case 2:
                 {
-                    if (_towerData.Shots == 3)
+                    if (Shots == 3)
                         return new Vector2(transform.localPosition.x, transform.localPosition.y - 0.15f);
-                    else if (_towerData.Shots == 4)
+                    else if (Shots == 4)
                         return new Vector2(transform.localPosition.x + 0.2f, transform.localPosition.y - 0.1f);
                     break;
                 }

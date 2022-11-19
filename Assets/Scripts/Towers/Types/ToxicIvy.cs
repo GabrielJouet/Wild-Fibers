@@ -25,7 +25,7 @@ public class ToxicIvy : Tower
     /// </summary>
     protected override void LevelTwoAugmentation()
     {
-        Data.DotDuration += 0.5f;
+        DotDuration += 0.5f;
     }
 
 
@@ -34,7 +34,7 @@ public class ToxicIvy : Tower
     /// </summary>
     protected override void LevelThreeAugmentation()
     {
-        Data.Dot++;
+        Dot++;
     }
 
 
@@ -43,7 +43,7 @@ public class ToxicIvy : Tower
     /// </summary>
     protected override void LevelFourAugmentation()
     {
-        Data.ArmorThroughMalus *= 1.15f;
+        ArmorThroughMalus *= 1.15f;
     }
 
 
@@ -58,7 +58,7 @@ public class ToxicIvy : Tower
     {
         Attack newAttack = new Attack(_attack);
 
-        if (Data.AugmentationLevel > 0)
+        if (AugmentationLevel > 0)
         {
             if (_shotsBeforeBiggerProjectile > 0)
                 _shotsBeforeBiggerProjectile--;
@@ -80,7 +80,7 @@ public class ToxicIvy : Tower
     /// </summary>
     protected override void SpecialBehavior()
     {
-        for (int i = 0; i < _towerData.Shots; i++)
+        for (int i = 0; i < Shots; i++)
             StartCoroutine(SummonLeaf(0.25f));
     }
 
@@ -113,11 +113,6 @@ public class ToxicIvy : Tower
 
         foreach (ToxicLeaf current in _availableLeaves)
             current.StopProjectile();
-
-        _availableLeaves.Clear();
-
-        for (int i = 0; i < _towerData.Shots; i ++) 
-            StartCoroutine(SummonLeaf(0.5f));
     }
 
 
@@ -137,10 +132,10 @@ public class ToxicIvy : Tower
     /// <param name="multiplier">Coroutine execution time multiplier</param>
     protected virtual IEnumerator SummonLeaf(float multiplier)
     {
-        yield return new WaitForSeconds(_towerData.TimeShots * multiplier);
+        yield return new WaitForSeconds(TimeShots * multiplier);
 
-        ToxicLeaf buffer = _projectilePool.GetOneProjectile().GetComponent<ToxicLeaf>();
-        buffer.Initialize(_projectilePool, transform.localPosition, Data.AugmentationLevel > 3);
+        ToxicLeaf buffer = Controller.Instance.PoolController.Out(Projectile.GetComponent<PoolableObject>()).GetComponent<ToxicLeaf>();
+        buffer.Initialize(transform.localPosition, AugmentationLevel > 3);
 
         _availableLeaves.Push(buffer);
     }

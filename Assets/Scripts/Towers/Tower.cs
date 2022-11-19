@@ -7,41 +7,240 @@ using UnityEngine;
 /// </summary>
 /// <remarks>Needs a static depth manager</remarks>
 [RequireComponent(typeof(DepthManager))]
-public abstract class Tower : MonoBehaviour
+public abstract class Tower : PoolableObject
 {
-    /// <summary>
-    /// Data associated to this tower.
-    /// </summary>
-    [SerializeField]
-    protected TowerData _towerData;
-    public TowerData Data { get => _towerData; }
-
-
     /// <summary>
     /// Range display.
     /// </summary>
+    [SerializeField]
     protected Transform _transformRange;
 
     /// <summary>
     /// Collider used in range detection.
     /// </summary>
+    [SerializeField]
     protected Transform _collider;
-
-    /// <summary>
-    /// Sprite renderer component.
-    /// </summary>
-    protected SpriteRenderer _spriteRenderer;
-
-    /// <summary>
-    /// Sprite renderer component of the shadow.
-    /// </summary>
-    protected SpriteRenderer _shadowSpriteRenderer;
-
 
     /// <summary>
     /// Selector object used when clicked.
     /// </summary>
+    [SerializeField]
     protected GameObject _selector;
+
+
+    #region Description
+    [Header("Description")]
+
+    /// <summary>
+    /// Description.
+    /// </summary>
+    [SerializeField, TextArea]
+    protected string _description;
+    public string Description { get => _description; private set => _description = value; }
+
+    /// <summary>
+    /// Description.
+    /// </summary>
+    [SerializeField, TextArea]
+    protected string _libraryDescription;
+    public string LibraryDescription { get => _libraryDescription; private set => _libraryDescription = value; }
+
+    /// <summary>
+    /// Base price of the tower.
+    /// </summary>
+    [SerializeField]
+    protected int _price;
+    public float PriceFactor { get; set; } = 1f;
+
+    /// <summary>
+    /// Resell Price factor of the tower.
+    /// </summary>
+    public float ResellPriceFactor { get;  set; } = 1f;
+
+    /// <summary>
+    /// Calculated price of the tower.
+    /// </summary>
+    public int Price { get => Mathf.FloorToInt(_price * PriceFactor); }
+
+    /// <summary>
+    /// Icon of the tower.
+    /// </summary>
+    [SerializeField]
+    protected Sprite _icon;
+    public Sprite Icon { get => _icon; private set => _icon = value; }
+    #endregion
+
+
+
+    #region Damage
+    [Header("Damage Related")]
+
+    /// <summary>
+    /// Projectile used in attack.
+    /// </summary>
+    [SerializeField]
+    protected GameObject _projectileUsed;
+    public GameObject Projectile { get => _projectileUsed; private set => _projectileUsed = value; }
+
+    /// <summary>
+    /// Time between attack in second.
+    /// </summary>
+    [SerializeField]
+    protected float _timeBetweenShots;
+    public float TimeShots { get => _timeBetweenShots; set => _timeBetweenShots = value; }
+
+    /// <summary>
+    /// Damage per attack.
+    /// </summary>
+    [SerializeField]
+    protected int _damage;
+    public int Damage { get => _damage; set => _damage = value; }
+
+    /// <summary>
+    /// Damage in string version.
+    /// </summary>
+    public string DamageInfo { get => _damage.ToString(); }
+
+    /// <summary>
+    /// Armor through on each attack.
+    /// </summary>
+    [SerializeField]
+    protected float _armorThrough;
+    public float ArmorThrough { get => _armorThrough; set => _armorThrough = value; }
+
+    /// <summary>
+    /// Number of projectile per attack.
+    /// </summary>
+    [SerializeField]
+    protected int _numberOfShots;
+    public int Shots { get => _numberOfShots; set => _numberOfShots = value; }
+
+    /// <summary>
+    /// Range of the tower.
+    /// </summary>
+    [SerializeField]
+    protected float _range;
+    public float Range { get => _range; set => _range = value; }
+
+    /// <summary>
+    /// Can the tower hits flying target?
+    /// </summary>
+    [SerializeField]
+    protected bool _canHitFlying;
+    public bool HitFlying { get => _canHitFlying; private set => _canHitFlying = value; }
+
+    /// <summary>
+    /// Does the towers choose its target?
+    /// </summary>
+    [SerializeField]
+    protected bool _shotsRandomly;
+    public bool ShotsRandomly { get => _shotsRandomly; private set => _shotsRandomly = value; }
+    #endregion
+
+
+
+    #region Dot
+    [Header("Dot related")]
+
+    /// <summary>
+    /// Armor malus with each shot.
+    /// </summary>
+    [SerializeField]
+    private float _armorThroughMalus;
+    public float ArmorThroughMalus { get => _armorThroughMalus; set => _armorThroughMalus = value; }
+
+    /// <summary>
+    /// Dot over time damage.
+    /// </summary>
+    [SerializeField]
+    private int _damageOverTime;
+    public int Dot { get => _damageOverTime; set => _damageOverTime = value; }
+
+    /// <summary>
+    /// Dot duration.
+    /// </summary>
+    [SerializeField]
+    private float _dotDuration;
+    public float DotDuration { get => _dotDuration; set => _dotDuration = value; }
+    #endregion
+
+
+
+    #region Upgrades
+    [Header("Upgrades")]
+
+    /// <summary>
+    /// Tower upgrades.
+    /// </summary>
+    [SerializeField]
+    protected List<Tower> _towerUpgrades;
+    public List<Tower> Upgrades { get => _towerUpgrades; private set => _towerUpgrades = value; }
+
+    /// <summary>
+    /// Tower specs (only for last level).
+    /// </summary>
+    [SerializeField]
+    protected List<TowerSpec> _towerSpecs;
+    public List<TowerSpec> Specs { get => _towerSpecs; private set => _towerSpecs = value; }
+
+
+    /// <summary>
+    /// Tower Augmentations (only for first level).
+    /// </summary>
+    [SerializeField]
+    protected List<Augmentation> _towerAugmentations;
+    public List<Augmentation> Augmentations { get => _towerAugmentations; private set => _towerAugmentations = value; }
+
+    /// <summary>
+    /// Current augmentation level of this tower.
+    /// </summary>
+    public int AugmentationLevel { get; set; }
+    #endregion
+
+
+
+    #region Library
+    [Header("Info related")]
+
+    /// <summary>
+    /// A special info box.
+    /// </summary>
+    [SerializeField, TextArea]
+    protected string _special;
+    public string Special { get => _special; private set => _special = value; }
+
+    /// <summary>
+    /// Screen shot displaying what the tower can do.
+    /// </summary>
+    [SerializeField]
+    protected Sprite _screenShot;
+    public Sprite ScreenShot { get => _screenShot; private set => _screenShot = value; }
+
+    /// <summary>
+    /// Fire rate transformed.
+    /// </summary>
+    public string FireRateInfo { get => Converter.TransformFireRate(1 / _timeBetweenShots); }
+
+    /// <summary>
+    /// Armor through transformed.
+    /// </summary>
+    public string ArmorThroughInfo { get => Converter.TransformArmorThrough((_armorThroughMalus + _armorThrough) / 100); }
+
+    /// <summary>
+    /// Dot transformed.
+    /// </summary>
+    public string DotInfo { get => Converter.TransformDot(_dotDuration * _damageOverTime * 2); }
+
+    /// <summary>
+    /// Number of shots in string version.
+    /// </summary>
+    public string ShotsInfo { get => _numberOfShots.ToString(); }
+
+    /// <summary>
+    /// Price in string version.
+    /// </summary>
+    public string PriceInfo { get => _price.ToString(); }
+    #endregion
 
 
     /// <summary>
@@ -71,16 +270,6 @@ public abstract class Tower : MonoBehaviour
     protected bool _coroutineStarted;
 
     /// <summary>
-    /// Pool used to recover projectiles.
-    /// </summary>
-    protected ProjectilePool _projectilePool;
-
-    /// <summary>
-    /// Tower pool to recover and create towers.
-    /// </summary>
-    protected TowerPool _towerPool;
-
-    /// <summary>
     /// How much gold was used on this tower from the beginning.
     /// </summary>
     public int CumulativeGold { get; protected set; } = 0;
@@ -98,68 +287,33 @@ public abstract class Tower : MonoBehaviour
 
 
     /// <summary>
-    /// Awake method used at initialization.
-    /// </summary>
-    protected void Awake()
-    {
-        _transformRange = transform.Find("Range");
-        _collider = transform.Find("Collider");
-
-        _spriteRenderer = GetComponent<SpriteRenderer>();
-        _shadowSpriteRenderer = transform.Find("Shadow").GetComponent<SpriteRenderer>();
-
-        _selector = transform.Find("Selecter").gameObject;
-    }
-
-
-    /// <summary>
     /// Method used to initialize.
     /// </summary>
     /// <param name="newSlot">The parent slot</param>
     /// <param name="newRessourceController">The resource controller</param>
     /// <param name="newBackgroundSelecter">The background selecter component</param>
-    /// <param name="newPool">The new projectile pool</param>
-    /// <param name="newTowerPool">The new tower pool</param>
-    public virtual void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, ProjectilePool newPool, TowerPool newTowerPool, TowerData newData)
+    public virtual void Initialize(TowerSlot newSlot, RessourceController newRessourceController, BackgroudSelecter newBackgroundSelecter, int cumulativeGold)
     {
         _nextAttack.Clear();
-        SetDefaultValues(newData);
+        _selector.SetActive(false);
+        _transformRange.gameObject.SetActive(false);
+
+        _attack = new Attack(Damage, ArmorThrough, DotDuration, ArmorThroughMalus, Dot);
+        CheckAugmentation();
+
+        CumulativeGold = cumulativeGold + Mathf.FloorToInt(_price * PriceFactor);
+
+        _transformRange.localScale = Range * Vector3.one;
+        _collider.localScale = (0.9f * Range) * Vector3.one;
+
+        _collider.GetComponent<TowerCollider>().ParentTower = this;
 
         transform.position = newSlot.transform.position;
         _backgroundSelecter = newBackgroundSelecter;
         _ressourceController = newRessourceController;
-        _projectilePool = newPool;
         _currentSlot = newSlot;
-        _towerPool = newTowerPool;
 
         SpecialBehavior();
-    }
-
-
-    /// <summary>
-    /// Method used to reset the tower to tower data values.
-    /// </summary>
-    /// <param name="newData">The new data to use</param>
-    private void SetDefaultValues(TowerData newData)
-    {
-        _selector.SetActive(false);
-        _transformRange.gameObject.SetActive(false);
-
-        _towerData = ScriptableObject.CreateInstance<TowerData>();
-        _towerData.Populate(newData);
-
-        _attack = new Attack(Data.Damage, Data.ArmorThrough, Data.DotDuration, Data.ArmorThroughMalus, Data.Dot);
-        CheckAugmentation();
-
-        CumulativeGold += Data.Price;
-
-        _spriteRenderer.sprite = Data.Sprite;
-        _shadowSpriteRenderer.sprite = Data.Shadow;
-
-        _transformRange.localScale = Data.Range * Vector3.one;
-        _collider.localScale = (0.9f * Data.Range) * Vector3.one;
-
-        _collider.GetComponent<TowerCollider>().ParentTower = this;
     }
 
 
@@ -186,15 +340,13 @@ public abstract class Tower : MonoBehaviour
     {
         _coroutineStarted = true;
 
-        int numberOfStrikes = _availableEnemies.Count < Data.Shots ? _availableEnemies.Count : Data.Shots;
-
-        if (!Data.ShotsRandomly)
+        if (!ShotsRandomly)
             SortEnemies();
 
-        foreach (Enemy current in RecoverAvailableEnemies(numberOfStrikes))
-            _projectilePool.GetOneProjectile().Initialize(_nextAttack.Dequeue(), current, _projectilePool, transform);
+        foreach (Enemy current in RecoverAvailableEnemies(_availableEnemies.Count < Shots ? _availableEnemies.Count : Shots))
+            Controller.Instance.PoolController.Out(Projectile.GetComponent<PoolableObject>()).GetComponent<Projectile>().Initialize(_nextAttack.Dequeue(), current, transform);
 
-        yield return new WaitForSeconds(Data.TimeShots);
+        yield return new WaitForSeconds(TimeShots);
         _coroutineStarted = false;
     }
 
@@ -208,13 +360,13 @@ public abstract class Tower : MonoBehaviour
     {
         ResellSpecialBehavior();
 
-        _ressourceController.AddGold(Mathf.FloorToInt((CumulativeGold * Data.ResellPriceFactor) * 0.65f), false);
+        _ressourceController.AddGold(Mathf.FloorToInt((CumulativeGold * ResellPriceFactor) * 0.65f), false);
 
         _backgroundSelecter.DisableTowerInformation();
         _backgroundSelecter.DisableTowerSellButton();
 
         _currentSlot.ResetSlot();
-        _towerPool.AddOneTower(gameObject);
+        Controller.Instance.PoolController.In(GetComponent<PoolableObject>());
     }
 
 
@@ -227,14 +379,15 @@ public abstract class Tower : MonoBehaviour
     /// <summary>
     /// Method used to upgrade the tower.
     /// </summary>
-    public void UpgradeTower(TowerData newData)
+    public void UpgradeTower(Tower newData)
     {
         _ressourceController.RemoveGold(newData.Price);
 
-        SetDefaultValues(newData);
         _backgroundSelecter.DesactivateTower();
-
         UpgradeSpecialBehavior();
+
+        Controller.Instance.PoolController.In(GetComponent<PoolableObject>());
+        Controller.Instance.PoolController.Out(newData).GetComponent<Tower>().Initialize(_currentSlot, _ressourceController, _backgroundSelecter, Price);
     }
 
 
@@ -256,23 +409,23 @@ public abstract class Tower : MonoBehaviour
     /// </summary>
     protected void CheckAugmentation()
     {
-        if (Data.AugmentationLevel > 0)
+        if (AugmentationLevel > 0)
         {
             LevelOneAugmentation();
 
-            if (Data.AugmentationLevel > 1)
+            if (AugmentationLevel > 1)
             {
                 LevelTwoAugmentation();
 
-                if (Data.AugmentationLevel > 2)
+                if (AugmentationLevel > 2)
                 {
                     LevelThreeAugmentation();
 
-                    if (Data.AugmentationLevel > 3)
+                    if (AugmentationLevel > 3)
                     {
                         LevelFourAugmentation();
 
-                        if (Data.AugmentationLevel > 4)
+                        if (AugmentationLevel > 4)
                             LevelFiveAugmentation();
                     }
                 }
@@ -320,7 +473,7 @@ public abstract class Tower : MonoBehaviour
     /// <param name="enemy">The enemy to add</param>
     public void AddEnemy(Enemy enemy)
     {
-        if (!(!Data.HitFlying && enemy.Flying))
+        if (!(!HitFlying && enemy.Flying))
             _availableEnemies.Add(enemy);
     }
 
@@ -354,7 +507,7 @@ public abstract class Tower : MonoBehaviour
     {
         List<Enemy> availableEnemies = new List<Enemy>();
 
-        if (Data.ShotsRandomly)
+        if (ShotsRandomly)
             _availableEnemies.Shuffle();
         else
             SortEnemies();
@@ -363,8 +516,7 @@ public abstract class Tower : MonoBehaviour
         {
             foreach (Enemy buffer in _availableEnemies)
             {
-                Attack attackBuffered = ChangeNextAttack(buffer);
-                _nextAttack.Enqueue(attackBuffered);
+                _nextAttack.Enqueue(ChangeNextAttack(buffer));
 
                 availableEnemies.Add(buffer);
             }
@@ -372,8 +524,7 @@ public abstract class Tower : MonoBehaviour
 
         foreach (Enemy buffer in _availableEnemies)
         {
-            Attack attackBuffered = ChangeNextAttack(buffer);
-            _nextAttack.Enqueue(attackBuffered);
+            _nextAttack.Enqueue(ChangeNextAttack(buffer));
 
             availableEnemies.Add(buffer);
 
@@ -421,9 +572,12 @@ public abstract class Tower : MonoBehaviour
     /// <summary>
     /// Method called when the tower needs to be desactivated.
     /// </summary>
-    public void DesactivateTower()
+    public override void OnInPool()
     {
         DesactivateRangeDisplay();
+
+        _coroutineStarted = false;
+        StopAllCoroutines();
 
         _collider.localScale = Vector3.one;
         _transformRange.localScale = Vector3.one;
@@ -431,4 +585,25 @@ public abstract class Tower : MonoBehaviour
         gameObject.SetActive(false);
     }
     #endregion
+
+
+
+    /// <summary>
+    /// Method used to reduce price of a tower with a ratio.
+    /// </summary>
+    /// <param name="ratio">Ratio of the price asked</param>
+    public void ReducePrice(float ratio)
+    {
+        PriceFactor = ratio;
+    }
+
+
+    /// <summary>
+    /// Method used to increase the resell price.
+    /// </summary>
+    /// <param name="factor">Factor of the resell price</param>
+    public void IncreaseResellPrice(float factor)
+    {
+        ResellPriceFactor = factor;
+    }
 }

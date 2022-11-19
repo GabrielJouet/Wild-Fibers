@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71d4a9a6a7996647805f3612939421f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: Ivy Dot
   _projectileSpeed: 3
 --- !u!114 &196777602175494921
 MonoBehaviour:

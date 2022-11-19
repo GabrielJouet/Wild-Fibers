@@ -5,18 +5,8 @@ using UnityEngine;
 /// <summary>
 /// Enemy base class.
 /// </summary>
-public class Enemy : MonoBehaviour
+public class Enemy : PoolableObject
 {
-    [Header("Description")]
-
-    /// <summary>
-    /// Display name.
-    /// </summary>
-    [SerializeField]
-    protected string _displayName;
-    public string Name { get => _displayName; }
-
-
     #region Display
     [Header("Display")]
 
@@ -60,7 +50,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected float _healthMax;
-    public float HealthMax { get => _healthMax; protected set => _healthMax = value; }
+    public float HealthMax { get => _healthMax; }
 
     /// <summary>
     /// Current health.
@@ -94,7 +84,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected float _speedMax;
-    public float SpeedMax { get => _speedMax; protected set => _speedMax = value; }
+    public float SpeedMax { get => _speedMax; }
 
     /// <summary>
     /// Current speed.
@@ -107,7 +97,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected int _numberOfLivesTaken;
-    public int LivesTaken { get => _numberOfLivesTaken; protected set => _numberOfLivesTaken = value; }
+    public int LivesTaken { get => _numberOfLivesTaken; }
 
 
     /// <summary>
@@ -122,7 +112,7 @@ public class Enemy : MonoBehaviour
     /// </summary>
     [SerializeField]
     protected bool _flying;
-    public bool Flying { get => _flying; protected set => _flying = value; }
+    public bool Flying { get => _flying; }
 
 
     /// <summary>
@@ -216,11 +206,6 @@ public class Enemy : MonoBehaviour
     public float PathRatio { get => (float)_pathIndex / (float)_path.Count; }
 
     /// <summary>
-    /// Pool Controller used to retrieve enemy.
-    /// </summary>
-    protected PoolController _poolController;
-
-    /// <summary>
     /// Information UI component.
     /// </summary>
     public BackgroudSelecter InformationUI { get; set; }
@@ -230,6 +215,11 @@ public class Enemy : MonoBehaviour
     /// </summary>
     protected List<Attack> _dots = new List<Attack>();
 
+    /// <summary>
+    /// Current spawner related to this enemy.
+    /// </summary>
+    protected Spawner _spawner;
+
 
     /// <summary>
     /// Is the enemy dotted?
@@ -237,14 +227,17 @@ public class Enemy : MonoBehaviour
     public bool IsDotted { get; protected set; }
 
 
+
     /// <summary>
     /// Initialize method.
     /// </summary>
     /// <param name="newPath">New path used</param>
-    /// <param name="newPool">Pool used for the current enemy</param>
+    /// <param name="spawner">Spawner that spawns this enemy</param>
     /// <param name="pathIndex">Current progression on the path</param>
-    public virtual void Initialize(List<Vector2> newPath, PoolController newPool, int pathIndex)
+    public virtual void Initialize(List<Vector2> newPath, int pathIndex, Spawner spawner)
     {
+        _spawner = spawner;
+
         _dotDisplay.SetActive(false);
         IsDotted = false;
 
@@ -264,7 +257,6 @@ public class Enemy : MonoBehaviour
 
         transform.position = newPath[pathIndex];
         _path = newPath;
-        _poolController = newPool;
 
         _moving = true;
     }
@@ -448,12 +440,19 @@ public class Enemy : MonoBehaviour
     /// <param name="reachEnd">Does the enemy reaches the end?</param>
     protected void Die(bool reachEnd)
     {
+        _spawner.EnemyKilled();
+
         if (InformationUI)
             DesactivateUI();
 
         StopAllCoroutines();
 
-        _poolController.RecoverEnemyPool(this).AddOneEnemy(this, reachEnd, reachEnd ? _numberOfLivesTaken : _goldGained);
+        Controller.Instance.PoolController.In(GetComponent<PoolableObject>());
+
+        if (!reachEnd)
+            Controller.Instance.EnemyController.Die(_goldGained);
+        else
+            Controller.Instance.EnemyController.ReachEnd(_numberOfLivesTaken);
     }
 
 
@@ -478,7 +477,6 @@ public class Enemy : MonoBehaviour
     { 
         _selector.SetActive(state);
     }
-
 
 
     /// <summary>

@@ -1916,12 +1916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5119875402b31374e8b52d8410981f38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyPoolPrefab: {fileID: 126690080380749959, guid: 5290313942fd44c47a415e04a43f7199,
-    type: 3}
-  _projectilePoolPrefab: {fileID: 84294416418586699, guid: 8ede7dec034367348ad1ca8db8a6aca5,
-    type: 3}
-  _towerPoolPrefab: {fileID: 1453506259218874649, guid: 54cdacbb96ebd5f4c8b6a5fe13a6a498,
-    type: 3}
 --- !u!114 &1431316440
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class Vines : Tower
     /// </summary>
     protected override void LevelOneAugmentation()
     {
-        Data.Damage++;
+        Damage++;
     }
 
 
@@ -20,7 +20,7 @@ public class Vines : Tower
     /// </summary>
     protected override void LevelFiveAugmentation()
     {
-        Data.Range *= 1.15f;
+        Range *= 1.15f;
     }
 
 
@@ -30,7 +30,7 @@ public class Vines : Tower
     /// <remarks>Called after initialization and before first update</remarks>
     protected override void SpecialBehavior() 
     {
-        _attack = new Attack(Data.Damage, Data.ArmorThrough, 0, 0, 0);
+        _attack = new Attack(Damage, ArmorThrough, 0, 0, 0);
     }
 
 
@@ -41,8 +41,8 @@ public class Vines : Tower
     {
         _coroutineStarted = true;
 
-        _projectilePool.GetOneProjectile().GetComponent<ShockWave>().Initialize(_attack, _projectilePool, transform, Data.Range, Data.AugmentationLevel > 3);
-        yield return new WaitForSeconds(_towerData.TimeShots);
+        Controller.Instance.PoolController.Out(Projectile.GetComponent<PoolableObject>()).GetComponent<ShockWave>().Initialize(_attack, transform, Range, AugmentationLevel > 3);
+        yield return new WaitForSeconds(TimeShots);
 
         _coroutineStarted = false;
     }

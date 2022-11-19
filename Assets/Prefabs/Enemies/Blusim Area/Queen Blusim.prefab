@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae428879fc19e054fa942bf41085a343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _displayName: Queen
+  _name: Queen Blusim
   _selector: {fileID: 7325471192700415939}
   _healthBar: {fileID: 3144667757886646281}
   _dotDisplay: {fileID: 1472001672212050052}
@@ -201,7 +201,7 @@ MonoBehaviour:
     the entire hive and sense everything inside.
   _screenShot: {fileID: 21300000, guid: 2ab2cec2b5a508c47a5d1e8b4ffbb67c, type: 3}
   _special: Spawner
-  _enemySpawnedPrefab: {fileID: 1001176562105206731, guid: d9daef3f950273945b1eb5cea886939b,
+  _enemySpawnedPrefab: {fileID: 6914183812568595844, guid: d9daef3f950273945b1eb5cea886939b,
     type: 3}
   _timeBetweenSpawn: 4.5
   _spawnTime: 0.8
