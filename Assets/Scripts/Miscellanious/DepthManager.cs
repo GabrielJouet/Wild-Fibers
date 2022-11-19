@@ -25,11 +25,6 @@ public class DepthManager : MonoBehaviour
     /// </summary>
     private SpriteRenderer _spriteRenderer;
 
-    /// <summary>
-    /// Camera used to find current position.
-    /// </summary>
-    private Camera _camera;
-
 
 
     /// <summary>
@@ -41,7 +36,6 @@ public class DepthManager : MonoBehaviour
             _target = transform;
 
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _camera = Camera.main;
 
         SetSortingOrder();
     }
@@ -62,6 +56,6 @@ public class DepthManager : MonoBehaviour
     /// </summary>
     private void SetSortingOrder()
     {
-        _spriteRenderer.sortingOrder = (int)_camera.WorldToScreenPoint(_target.position).y * -1;
+        _spriteRenderer.sortingOrder = (int)Camera.main.WorldToScreenPoint(_target.position).y * -1;
     }
 }
