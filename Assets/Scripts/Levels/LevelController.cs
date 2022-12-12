@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 /// <summary>
 /// Class used to store and manage level resources.
@@ -14,7 +14,7 @@ public class LevelController : MonoBehaviour
     /// Text component that displays wave number.
     /// </summary>
     [SerializeField]
-    private Text _waveText;
+    private TextMeshProUGUI _waveText;
 
     /// <summary>
     /// Game over object that is used when the player finish the level.

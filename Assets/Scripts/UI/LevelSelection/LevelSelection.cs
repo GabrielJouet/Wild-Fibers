@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class LevelSelection : MonoBehaviour
     /// Level name text component.
     /// </summary>
     [SerializeField]
-    private Text _levelName;
+    private TextMeshProUGUI _levelName;
 
     /// <summary>
     /// Level Thumbnail.
@@ -25,7 +26,7 @@ public class LevelSelection : MonoBehaviour
     /// Level description text component.
     /// </summary>
     [SerializeField]
-    private Text _levelDescription;
+    private TextMeshProUGUI _levelDescription;
 
     /// <summary>
     /// Launch battle menu button.
@@ -70,7 +71,7 @@ public class LevelSelection : MonoBehaviour
     /// Text component of the side level (and challenge).
     /// </summary>
     [SerializeField]
-    private Text _sideDescription;
+    private TextMeshProUGUI _sideDescription;
 
     /// <summary>
     /// Side and challenge score icon.

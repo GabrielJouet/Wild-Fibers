@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
@@ -18,25 +19,25 @@ public class BackgroudSelecter : MonoBehaviour
     /// Text component containing the tower name.
     /// </summary>
     [SerializeField]
-    private Text _towerName;
+    private TextMeshProUGUI _towerName;
 
     /// <summary>
     /// Text component containing the tower damage.
     /// </summary>
     [SerializeField]
-    private Text _damageText;
+    private TextMeshProUGUI _damageText;
 
     /// <summary>
     /// Text component containing the break armor value.
     /// </summary>
     [SerializeField]
-    private Text _breakArmorText;
+    private TextMeshProUGUI _breakArmorText;
 
     /// <summary>
     /// Text component containing the fire rate value.
     /// </summary>
     [SerializeField]
-    private Text _fireRateText;
+    private TextMeshProUGUI _fireRateText;
 
 
     [Header("Enemy related objects")]
@@ -51,26 +52,26 @@ public class BackgroudSelecter : MonoBehaviour
     /// Text component containing the enemy name.
     /// </summary>
     [SerializeField]
-    private Text _enemyName;
+    private TextMeshProUGUI _enemyName;
 
     /// <summary>
     /// Text component containing the enemy life value.
     /// </summary>
     [SerializeField]
-    private Text _lifeValue;
+    private TextMeshProUGUI _lifeValue;
 
     /// <summary>
     /// Text component containing the armor value.
     /// </summary>
     [SerializeField]
-    private Text _armorValue;
+    private TextMeshProUGUI _armorValue;
 
 
     /// <summary>
     /// Text component containing the number of lives lost.
     /// </summary>
     [SerializeField]
-    private Text _livesLostValue;
+    private TextMeshProUGUI _livesLostValue;
 
 
     [Header("Tower buttons related")]

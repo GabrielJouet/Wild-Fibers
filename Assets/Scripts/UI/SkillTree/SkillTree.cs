@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ public class SkillTree : MonoBehaviour
     /// Description text object, used for skills.
     /// </summary>
     [SerializeField]
-    private Text _description;
+    private TextMeshProUGUI _description;
 
 
 
@@ -29,14 +30,12 @@ public class SkillTree : MonoBehaviour
         Squad currentSquad = Controller.Instance.SquadController.CurrentSquad;
         List<int> augmentations = Controller.Instance.SaveController.SaveFile.SquadsProgression[0].AugmentationLevelMax;
 
-        /*
         for (int i = 0; i < _skills.Count; i ++)
         {
             if (i == 4)
                 _skills[i].Initialize(currentSquad.SquadSprite, currentSquad.Augmentations, augmentations[i], i, _description);
             else
-                _skills[i].Initialize(currentSquad.Towers[i].Sprite, currentSquad.Towers[i].Augmentations, augmentations[i], i, _description);
+                _skills[i].Initialize(currentSquad.Towers[i].Icon, currentSquad.Towers[i].Augmentations, augmentations[i], i, _description);
         }
-        */
     }
 }

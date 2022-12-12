@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// Actual price of this skill.
     /// </summary>
     [SerializeField]
-    private Text _price;
+    private TextMeshProUGUI _price;
 
     /// <summary>
     /// Image component that will handle icon of the skill displayed.
@@ -29,7 +30,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// <summary>
     /// Text component that will handle the description.
     /// </summary>
-    private Text _description;
+    private TextMeshProUGUI _description;
 
     /// <summary>
     /// Game Object component that will handle the description parent.
@@ -48,7 +49,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     /// <param name="relatedAugmentation">The related augmentation</param>
     /// <param name="newState">The state of the augmentation (Bought, Locked or Unlocked)</param>
-    public void Initialize(Augmentation relatedAugmentation, AugmentationState newState, Text description)
+    public void Initialize(Augmentation relatedAugmentation, AugmentationState newState, TextMeshProUGUI description)
     {
         _description = description;
         _descriptionGameObject = description.transform.parent.gameObject;

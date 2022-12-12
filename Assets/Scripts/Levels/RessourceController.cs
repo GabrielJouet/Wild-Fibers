@@ -1,5 +1,5 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using TMPro;
+using UnityEngine;
 
 /// <summary>
 /// Class used to store and manage resources (gold and lives).
@@ -14,7 +14,7 @@ public class RessourceController : MonoBehaviour
     /// Life text component used to display lives count.
     /// </summary>
     [SerializeField]
-    private Text _lifeText;
+    private TextMeshProUGUI _lifeText;
 
     /// <summary>
     /// Health animator component updated each time we lose health.
@@ -26,7 +26,7 @@ public class RessourceController : MonoBehaviour
     /// Gold text component used to display gold count.
     /// </summary>
     [SerializeField]
-    private Text _goldText;
+    private TextMeshProUGUI _goldText;
 
     /// <summary>
     /// Gold animator component updated each time we gain money.
