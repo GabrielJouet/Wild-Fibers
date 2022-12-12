@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +14,7 @@ public class GameOverScreen : MonoBehaviour
     /// Main text component.
     /// </summary>
     [SerializeField]
-    private Text _mainText;
+    private TextMeshProUGUI _mainText;
 
     /// <summary>
     /// Game screen image component.
