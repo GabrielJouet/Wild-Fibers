@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -72,55 +73,55 @@ public class Library : MonoBehaviour
     /// Tower name text component.
     /// </summary>
     [SerializeField]
-    private Text _towerName;
+    private TextMeshProUGUI _towerName;
 
     /// <summary>
     /// Tower description text component.
     /// </summary>
     [SerializeField]
-    private Text _towerDescription;
+    private TextMeshProUGUI _towerDescription;
 
     /// <summary>
     /// Tower price text component.
     /// </summary>
     [SerializeField]
-    private Text _towerPrice;
+    private TextMeshProUGUI _towerPrice;
 
     /// <summary>
     /// Tower damage text component.
     /// </summary>
     [SerializeField]
-    private Text _towerDamage;
+    private TextMeshProUGUI _towerDamage;
 
     /// <summary>
     /// Tower fire rate text component.
     /// </summary>
     [SerializeField]
-    private Text _towerFireRate;
+    private TextMeshProUGUI _towerFireRate;
 
     /// <summary>
     /// Tower armor through text component.
     /// </summary>
     [SerializeField]
-    private Text _towerArmorThrough;
+    private TextMeshProUGUI _towerArmorThrough;
 
     /// <summary>
     /// Tower dot text component.
     /// </summary>
     [SerializeField]
-    private Text _towerDot;
+    private TextMeshProUGUI _towerDot;
 
     /// <summary>
     /// Tower special text component.
     /// </summary>
     [SerializeField]
-    private Text _towerSpecial;
+    private TextMeshProUGUI _towerSpecial;
 
     /// <summary>
     /// Tower number of shots text component.
     /// </summary>
     [SerializeField]
-    private Text _towerShots;
+    private TextMeshProUGUI _towerShots;
 
 
     [Header("Enemy related")]
@@ -129,55 +130,55 @@ public class Library : MonoBehaviour
     /// Enemy name text component.
     /// </summary>
     [SerializeField]
-    private Text _enemyName;
+    private TextMeshProUGUI _enemyName;
 
     /// <summary>
     /// Enemy description text component.
     /// </summary>
     [SerializeField]
-    private Text _enemyDescription;
+    private TextMeshProUGUI _enemyDescription;
 
     /// <summary>
     /// Enemy gold gained text component.
     /// </summary>
     [SerializeField]
-    private Text _enemyGold;
+    private TextMeshProUGUI _enemyGold;
 
     /// <summary>
     /// Enemy health text component.
     /// </summary>
     [SerializeField]
-    private Text _enemyHealth;
+    private TextMeshProUGUI _enemyHealth;
 
     /// <summary>
     /// Enemy speed text component.
     /// </summary>
     [SerializeField]
-    private Text _enemySpeed;
+    private TextMeshProUGUI _enemySpeed;
 
     /// <summary>
     /// Enemy armor text component.
     /// </summary>
     [SerializeField]
-    private Text _enemyArmor;
+    private TextMeshProUGUI _enemyArmor;
 
     /// <summary>
     /// Enemy resistance text component.
     /// </summary>
     [SerializeField]
-    private Text _enemyResistance;
+    private TextMeshProUGUI _enemyResistance;
 
     /// <summary>
     /// Enemy lives lost text component.
     /// </summary>
     [SerializeField]
-    private Text _enemyLivesLost;
+    private TextMeshProUGUI _enemyLivesLost;
 
     /// <summary>
     /// Enemy special text component.
     /// </summary>
     [SerializeField]
-    private Text _enemySpecial;
+    private TextMeshProUGUI _enemySpecial;
 
     /// <summary>
     /// Color used for desactivated tabs.

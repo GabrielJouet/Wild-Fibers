@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,7 +36,7 @@ public class SkillUpgrades : MonoBehaviour
     /// <param name="augmentationLevel">Current augmentation level of the skill</param>
     /// <param name="newIndex">Buffered index</param>
     /// <param name="description">The description text object needed</param>
-    public void Initialize(Sprite newTower, List<Augmentation> newAugmentations, int augmentationLevel, int newIndex, Text description)
+    public void Initialize(Sprite newTower, List<Augmentation> newAugmentations, int augmentationLevel, int newIndex, TextMeshProUGUI description)
     {
         for (int i = 0; i < _skills.Count; i ++)
         {

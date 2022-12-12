@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -33,7 +34,7 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// Text component of the price.
     /// </summary>
     [SerializeField]
-    private Text _priceText;
+    private TextMeshProUGUI _priceText;
 
     /// <summary>
     /// Actual price displayed.
@@ -50,7 +51,7 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     /// <summary>
     /// Description of the tower.
     /// </summary>
-    private Text _descriptionText;
+    private TextMeshProUGUI _descriptionText;
 
     /// <summary>
     /// Description game object of the tower.
@@ -141,7 +142,7 @@ public class TowerButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
     private void SetTargetDescription(GameObject descriptionObject)
     {
         _descriptionObject = descriptionObject;
-        _descriptionText = descriptionObject.GetComponentInChildren<Text>();
+        _descriptionText = descriptionObject.GetComponentInChildren<TextMeshProUGUI>();
     }
 
 
