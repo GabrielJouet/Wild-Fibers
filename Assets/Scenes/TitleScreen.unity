@@ -158,7 +158,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50}
+  m_AnchoredPosition: {x: 0, y: -65}
   m_SizeDelta: {x: -150, y: 75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &19742569
@@ -353,8 +353,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -414,6 +414,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6327266466586803030, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6327266466586803030, guid: 862c3cdf711a3444fa92c0b2721f26af,
+        type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
@@ -465,12 +470,12 @@ PrefabInstance:
     - target: {fileID: 6834637539777712883, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1000
+      value: -900
       objectReference: {fileID: 0}
     - target: {fileID: 6834637539777712883, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -300
+      value: -400
       objectReference: {fileID: 0}
     - target: {fileID: 6834637539777712883, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
@@ -515,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 6834637539777712883, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -61
       objectReference: {fileID: 0}
     - target: {fileID: 6834637539777712883, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
@@ -586,6 +591,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7204889064017646999, guid: 862c3cdf711a3444fa92c0b2721f26af,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7204889064017646999, guid: 862c3cdf711a3444fa92c0b2721f26af,
         type: 3}
@@ -916,8 +926,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 25}
-  m_SizeDelta: {x: -1400, y: -750}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: -1400, y: -700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &453803063
 MonoBehaviour:
@@ -948,7 +958,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.3
 --- !u!222 &453803064
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1486,7 +1496,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.6
 --- !u!222 &918521439
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1870,7 +1880,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 0.6
 --- !u!1 &1409857560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2371,8 +2381,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
