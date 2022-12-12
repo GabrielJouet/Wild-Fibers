@@ -6760,7 +6760,7 @@ MonoBehaviour:
   - {fileID: 6999921877151512328}
   - {fileID: 3899856864096226949}
   _classicArrow: {fileID: 7607797188672177720}
-  _classicLayout: {fileID: 0}
+  _classicLayout: {fileID: 2159500298807725941}
   _activatedSprite: {fileID: 21300000, guid: 05d8577a4bc817749a9e1b909563ee6a, type: 3}
   _desactivatedSprite: {fileID: 21300000, guid: dd60591a1a0003641a48795ef2d86014,
     type: 3}
