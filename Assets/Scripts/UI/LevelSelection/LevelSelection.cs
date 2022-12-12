@@ -68,12 +68,6 @@ public class LevelSelection : MonoBehaviour
     [Header("Side Panel")]
 
     /// <summary>
-    /// Text component of the side level (and challenge).
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _sideDescription;
-
-    /// <summary>
     /// Side and challenge score icon.
     /// </summary>
     [SerializeField]
@@ -244,7 +238,7 @@ public class LevelSelection : MonoBehaviour
 
         _levelName.text = buffer.Name;
         _levelPicture.sprite = buffer.Picture;
-        _sideDescription.text = buffer.Description;
+        _levelDescription.text = buffer.Description;
 
         _sideScore.sprite = _desactivatedSprite;
 

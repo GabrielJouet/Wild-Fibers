@@ -25,7 +25,7 @@ public class HealthBar : MonoBehaviour
     /// <param name="percentage">The new percentage scale to apply</param>
     public void ChangeSize(float percentage)
     {
-        _healthBar.localScale = Vector3.right * percentage;
+        _healthBar.localScale = new Vector3(percentage, 1, 1);
         _healthBar.localPosition = new Vector3(-(1 - _healthBar.localScale.x) * _spriteRenderer.size.x / 2 + 0.005f, 0.005f, 0);
     }
 

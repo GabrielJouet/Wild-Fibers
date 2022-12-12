@@ -8,6 +8,20 @@ using UnityEngine.UI;
 public class EnemyInfo : MonoBehaviour
 {
     /// <summary>
+    /// ScreenShot image component, used to display actual enemy.
+    /// </summary>
+    [SerializeField]
+    private Image _screenShot;
+
+
+    /// <summary>
+    /// Locked sprite game object, used to show that this enemy is locked.
+    /// </summary>
+    [SerializeField]
+    private GameObject _lockedSprite;
+
+
+    /// <summary>
     /// Enemy data buffered.
     /// </summary>
     private Enemy _enemy;
@@ -19,7 +33,10 @@ public class EnemyInfo : MonoBehaviour
         {
             _enemy = value;
             GetComponent<Button>().enabled = true;
-            transform.GetChild(0).GetComponent<Image>().sprite = Enemy.ScreenShot;
+
+            _lockedSprite.SetActive(false);
+            _screenShot.sprite = _enemy.ScreenShot;
+            _screenShot.gameObject.SetActive(true);
         }
     }
 
