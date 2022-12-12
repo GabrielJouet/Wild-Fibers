@@ -2570,7 +2570,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _ressourceController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4541158167840557063}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _informationUIController
@@ -4825,7 +4825,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _ressourceController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4541158167840557063}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _informationUIController
@@ -7005,7 +7005,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _ressourceController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4541158167840557063}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _informationUIController
@@ -7851,7 +7851,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _ressourceController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4541158167840557063}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _informationUIController
@@ -8529,7 +8529,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _ressourceController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4541158167840557063}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _informationUIController
@@ -9725,7 +9725,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _ressourceController
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4541158167840557063}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _informationUIController
@@ -13063,6 +13063,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab062a4349966594386bc59557a6906a, type: 3}
+--- !u!114 &4541158167840557063 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5540332597901643163, guid: ab062a4349966594386bc59557a6906a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4541158167840557062}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260fd861c1ec51047a97ac81619d8349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4541158167840557065 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1200197998690057621, guid: ab062a4349966594386bc59557a6906a,
