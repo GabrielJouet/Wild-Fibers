@@ -8,6 +8,20 @@ using UnityEngine.UI;
 public class TowerInfo : MonoBehaviour
 {
     /// <summary>
+    /// ScreenShot image component, used to display actual tower.
+    /// </summary>
+    [SerializeField]
+    private Image _screenShot;
+
+
+    /// <summary>
+    /// Locked sprite game object, used to show that this tower is locked.
+    /// </summary>
+    [SerializeField]
+    private GameObject _lockedSprite;
+
+
+    /// <summary>
     /// Tower data buffered in this tower info.
     /// </summary>
     private Tower _tower;
@@ -19,7 +33,10 @@ public class TowerInfo : MonoBehaviour
         {
             _tower = value;
             GetComponent<Button>().enabled = true;
-            transform.GetChild(0).GetComponent<Image>().sprite = Tower.ScreenShot;
+
+            _lockedSprite.SetActive(false);
+            _screenShot.sprite = _tower.ScreenShot;
+            _screenShot.gameObject.SetActive(true);
         }
     }
 
