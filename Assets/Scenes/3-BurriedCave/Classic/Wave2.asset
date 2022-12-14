@@ -29,7 +29,7 @@ MonoBehaviour:
       _timeBetweenEnemies: 0.55
     - _numberOfEnemies: 7
       _timeBetweenEnemies: 0.5
-    _enemyUsed: {fileID: 6914183812568595844, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb,
+    _enemyUsed: {fileID: 3708422920091029229, guid: b4466da44875549409b186495230993a,
       type: 3}
     _timeBetweenPattern: 1.5
     _pathIndex: 0
