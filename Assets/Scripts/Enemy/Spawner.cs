@@ -14,12 +14,12 @@ public class Spawner : MonoBehaviour
     /// <summary>
     /// Index of the current pattern.
     /// </summary>
-    private int _patternIndex = 0;
+    private int _patternIndex;
 
     /// <summary>
     /// Index of the current enemy group.
     /// </summary>
-    private int _enemyIndex = 0;
+    private int _enemyIndex;
 
     /// <summary>
     /// Current enemy group loaded.
@@ -39,15 +39,15 @@ public class Spawner : MonoBehaviour
     /// <summary>
     /// Does every enemy is dead?
     /// </summary>
-    public bool EnemiesKilled { get; private set; } = false;
+    public bool EnemiesKilled { get; private set; }
 
     /// <summary>
     /// Does this wave is finished?
     /// </summary>
-    public bool WaveFinished { get; private set; } = false;
+    public bool WaveFinished { get; private set; }
 
     /// <summary>
-    /// 
+    /// Does this spawner waits for the end of the wave?
     /// </summary>
     public bool WaitEnd { get; set; }
 
@@ -105,7 +105,6 @@ public class Spawner : MonoBehaviour
                 //If the wave is finished
                 else
                 {
-                    _enemyGroup = null;
                     WaveFinished = true;
 
                     _levelController.EndWave();
