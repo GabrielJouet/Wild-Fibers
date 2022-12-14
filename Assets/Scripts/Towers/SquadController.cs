@@ -11,7 +11,15 @@ public class SquadController : MonoBehaviour
     /// </summary>
     [SerializeField]
     private List<Squad> _squads;
+
+    /// <summary>
+    /// Squads available.
+    /// </summary>
     private List<Squad> _updatedSquads = new List<Squad>();
+
+    /// <summary>
+    /// Squads available.
+    /// </summary>
     public List<Squad> Squads 
     { 
         get 
@@ -23,8 +31,6 @@ public class SquadController : MonoBehaviour
                     Squad buffer = ScriptableObject.CreateInstance<Squad>();
                     buffer.Populate(squad);
 
-                    //TO CHANGE 
-                    //USE CURRENT SQUAD INSTEAD OF SQUAD NUMBER
                     buffer.UpdateTowerDatas(Controller.Instance.SaveController.SaveFile.CurrentSquad.AugmentationLevelMax);
                     _updatedSquads.Add(buffer);
                 }

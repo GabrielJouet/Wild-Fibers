@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -34,6 +34,10 @@ public class TowerSlot : MonoBehaviour
     /// </summary>
     [SerializeField]
     private bool _useUpDescription;
+
+    /// <summary>
+    /// Does this tower slot use up or down description?
+    /// </summary>
     public bool UpDescription { get => _useUpDescription; }
 
 
