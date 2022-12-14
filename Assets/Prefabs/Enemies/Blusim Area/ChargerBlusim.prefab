@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 2409035626049427819, guid: 4dab7da206da42945ba906f073799019,
         type: 3}
       propertyPath: m_Name
-      value: DiggerBlusim 1
+      value: ChargerBlusim
       objectReference: {fileID: 0}
     - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
         type: 3}
@@ -156,6 +156,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 5726025113749804578, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d485fa07d1673514597d9cd89e341f89, type: 2}
     - target: {fileID: 6598429466991533773, guid: 4dab7da206da42945ba906f073799019,
         type: 3}
       propertyPath: m_LocalPosition.y
