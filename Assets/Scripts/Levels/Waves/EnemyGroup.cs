@@ -15,6 +15,10 @@ public class EnemyGroup
     /// </summary>
     [SerializeField]
     private List<EnemyPattern> _enemyPatterns;
+
+    /// <summary>
+    /// Enemy groups in this pattern.
+    /// </summary>
     public List<EnemyPattern> Patterns { get => _enemyPatterns; }
 
     [Space(15)]
@@ -24,21 +28,33 @@ public class EnemyGroup
     /// </summary>
     [SerializeField]
     private GameObject _enemyUsed;
+
+    /// <summary>
+    /// Enemy used in this group.
+    /// </summary>
     public GameObject Enemy { get => _enemyUsed; }
 
-    [Min(0.1f)]
 
     /// <summary>
     /// Time between each pattern.
     /// </summary>
-    [SerializeField]
+    [SerializeField, Min(0.1f)]
     private float _timeBetweenPattern;
+
+    /// <summary>
+    /// Time between each pattern.
+    /// </summary>
     public float TimeBetweenPattern { get => _timeBetweenPattern; }
+
 
     /// <summary>
     /// Path used by the enemy.
     /// </summary>
     [SerializeField]
     private int _pathIndex;
+
+    /// <summary>
+    /// Path used by the enemy.
+    /// </summary>
     public int Path { get => _pathIndex; }
 }

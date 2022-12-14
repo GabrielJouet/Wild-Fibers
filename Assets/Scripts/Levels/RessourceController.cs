@@ -60,19 +60,12 @@ public class RessourceController : MonoBehaviour
 
 
     /// <summary>
-    /// Awake method, called at first.
-    /// </summary>
-    private void Awake()
-    {
-        _levelController = GetComponent<LevelController>();
-    }
-
-
-    /// <summary>
     /// Start method, called after Start.
     /// </summary>
     private void Start()
     {
+        _levelController = GetComponent<LevelController>();
+
         _lifeCountMax = _levelController.LoadedLevel.Lives + Controller.Instance.SquadController.CurrentSquad.LivesBonus;
         _lifeCount = _lifeCountMax;
 
