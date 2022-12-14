@@ -126,9 +126,9 @@ public class LevelController : MonoBehaviour
             _spawners.Add(Instantiate(_spawnerPrefab, transform));
 
         int j = 0;
-        foreach(EnemyGroup current in LoadedLevel.Waves[_waveIndex].EnemyGroups)
+        foreach(EnemyGroup enemyGroup in LoadedLevel.Waves[_waveIndex].EnemyGroups)
         {
-            int index = Controller.Instance.EnemyController.Enemies.IndexOf(current.Enemy.GetComponent<Enemy>());
+            int index = Controller.Instance.EnemyController.Enemies.IndexOf(enemyGroup.Enemy.GetComponent<Enemy>());
 
             //If in this wave we uncounter new enemies.
             if (!_saveController.SaveFile.EnemiesUnlocked[index])
@@ -137,7 +137,7 @@ public class LevelController : MonoBehaviour
                 _saveController.SaveNewEnemyFound(index);
             }
 
-            _spawners[j].SetNewGroup(_availablePath[current.Path], current, this);
+            _spawners[j].SetNewGroup(_availablePath[enemyGroup.Path], enemyGroup, this);
             j++;
         }
     }
