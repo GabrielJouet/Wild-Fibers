@@ -3227,8 +3227,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waveText: {fileID: 7905463592852785289}
   _gameOverScreen: {fileID: 173176981539081000}
-  _spawnerPrefab: {fileID: 3737898244477904241, guid: 0e99a190fc65e1641be113fee59fcec3,
-    type: 3}
   _nextWaveButton: {fileID: 3451936902988104724}
   _availablePath: []
 --- !u!114 &5540332597901643163

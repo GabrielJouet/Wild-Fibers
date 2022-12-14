@@ -28,12 +28,6 @@ public class LevelController : MonoBehaviour
     /// <summary>
     /// Entity spawner prefab.
     /// </summary>
-    [SerializeField]
-    private Spawner _spawnerPrefab;
-
-    /// <summary>
-    /// Entity spawner prefab.
-    /// </summary>
     private readonly List<Spawner> _spawners = new List<Spawner>();
 
     /// <summary>
@@ -126,8 +120,12 @@ public class LevelController : MonoBehaviour
 
         int spawnerLeft = LoadedLevel.Waves[_waveIndex].EnemyGroups.Count - _spawners.Count;
 
-        for(int i = 0; i < spawnerLeft; i ++)
-            _spawners.Add(Instantiate(_spawnerPrefab, transform));
+        for (int i = 0; i < spawnerLeft; i ++)
+        {
+            Spawner spawner = new GameObject("Spawner").AddComponent<Spawner>();
+            spawner.transform.parent = transform;
+            _spawners.Add(spawner);
+        }
 
         int j = 0;
         foreach(EnemyGroup enemyGroup in LoadedLevel.Waves[_waveIndex].EnemyGroups)
