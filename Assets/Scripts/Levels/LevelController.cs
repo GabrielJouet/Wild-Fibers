@@ -30,6 +30,10 @@ public class LevelController : MonoBehaviour
     /// </summary>
     [SerializeField]
     private Spawner _spawnerPrefab;
+
+    /// <summary>
+    /// Entity spawner prefab.
+    /// </summary>
     private readonly List<Spawner> _spawners = new List<Spawner>();
 
     /// <summary>

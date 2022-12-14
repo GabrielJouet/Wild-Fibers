@@ -50,6 +50,10 @@ public class Enemy : PoolableObject
     /// </summary>
     [SerializeField]
     protected float _healthMax;
+
+    /// <summary>
+    /// Health max.
+    /// </summary>
     public float HealthMax { get => _healthMax; }
 
     /// <summary>
@@ -63,6 +67,10 @@ public class Enemy : PoolableObject
     /// </summary>
     [SerializeField]
     protected float _armorMax;
+
+    /// <summary>
+    /// Armor max value.
+    /// </summary>
     public float ArmorMax { get => _armorMax; protected set => _armorMax = value; }
 
     /// <summary>
@@ -76,6 +84,10 @@ public class Enemy : PoolableObject
     /// </summary>
     [SerializeField]
     protected float _resistance;
+
+    /// <summary>
+    /// Resistance max value (resistance is used for dot and magic attacks).
+    /// </summary>
     public float ResistancePercentage { get => (100 - _resistance) / 100;  }
 
 
@@ -96,6 +108,10 @@ public class Enemy : PoolableObject
     /// </summary>
     [SerializeField]
     protected int _numberOfLivesTaken;
+
+    /// <summary>
+    /// Number of lives removed if the enemy reaches the end of the path.
+    /// </summary>
     public int LivesTaken { get => _numberOfLivesTaken; }
 
 
@@ -111,6 +127,10 @@ public class Enemy : PoolableObject
     /// </summary>
     [SerializeField]
     protected bool _flying;
+
+    /// <summary>
+    /// Does the enemy actually flies?
+    /// </summary>
     public bool Flying { get => _flying; }
 
 
@@ -119,6 +139,10 @@ public class Enemy : PoolableObject
     /// </summary>
     [SerializeField]
     protected Transform _damagePosition;
+
+    /// <summary>
+    /// Damage position transform component.
+    /// </summary>
     public Vector2 DamagePosition { get => _damagePosition.position; }
     #endregion
 
@@ -131,36 +155,54 @@ public class Enemy : PoolableObject
     /// </summary>
     [SerializeField]
     protected string _description;
+
+    /// <summary>
+    /// Description used in bestiary.
+    /// </summary>
     public string Description { get => _description; }
+
 
     /// <summary>
     /// Screen shot used in bestiary.
     /// </summary>
     [SerializeField]
     protected Sprite _screenShot;
+
+    /// <summary>
+    /// Screen shot used in bestiary.
+    /// </summary>
     public Sprite ScreenShot { get => _screenShot; }
+
 
     /// <summary>
     /// Special info box.
     /// </summary>
     [SerializeField]
     protected string _special;
+
+    /// <summary>
+    /// Special info box.
+    /// </summary>
     public string Special { get => _special; }
+
 
     /// <summary>
     /// Gold in string version.
     /// </summary>
     public string GoldInfo { get => _goldGained.ToString(); }
 
+
     /// <summary>
     /// Speed transformed.
     /// </summary>
     public string SpeedInfo { get => Converter.TransformSpeed(_speedMax); }
 
+
     /// <summary>
     /// Armor transformed.
     /// </summary>
     public string ArmorInfo { get => Converter.TransformArmor((Armor > 0 ? Armor : ArmorMax) / 100); }
+
 
     /// <summary>
     /// Resistance transformed.
