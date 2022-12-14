@@ -15,6 +15,10 @@ public class EnemyPattern
     [Min(1)]
     [SerializeField]
     private int _numberOfEnemies;
+
+    /// <summary>
+    /// Number of enemies in this group.
+    /// </summary>
     public int EnemiesCount { get => _numberOfEnemies; }
 
 
@@ -24,5 +28,9 @@ public class EnemyPattern
     [Min(0.05f)]
     [SerializeField]
     private float _timeBetweenEnemies;
+
+    /// <summary>
+    /// Time between each enemy.
+    /// </summary>
     public float EnemiesTime { get => _timeBetweenEnemies; }
 }
