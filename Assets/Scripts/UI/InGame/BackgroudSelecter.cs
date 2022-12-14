@@ -194,7 +194,7 @@ public class BackgroudSelecter : MonoBehaviour
         _lifeValue.text = enemyToDisplay.Health + " / " + enemyToDisplay.HealthMax;
         _enemyName.text = enemyToDisplay.Name;
         _armorValue.text = enemyToDisplay.ArmorInfo;
-        _livesLostValue.text = enemyToDisplay.LivesTakenInfo;
+        _livesLostValue.text = enemyToDisplay.LivesTaken.ToString();
     }
 
 

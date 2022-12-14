@@ -284,11 +284,11 @@ public class Library : MonoBehaviour
         _enemyName.text = newEnemy.name;
         _enemyDescription.text = newEnemy.Description;
         _enemyGold.text = newEnemy.GoldInfo;
-        _enemyHealth.text = newEnemy.HealthInfo;
+        _enemyHealth.text = newEnemy.HealthMax.ToString();
         _enemySpeed.text = newEnemy.SpeedInfo;
         _enemyArmor.text = newEnemy.ArmorInfo;
         _enemyResistance.text = newEnemy.ResistanceInfo;
-        _enemyLivesLost.text = newEnemy.LivesTakenInfo;
+        _enemyLivesLost.text = newEnemy.LivesTaken.ToString();
         _enemySpecial.text = newEnemy.Special;
     }
 }

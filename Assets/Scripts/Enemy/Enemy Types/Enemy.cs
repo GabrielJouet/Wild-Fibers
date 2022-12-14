@@ -84,7 +84,6 @@ public class Enemy : PoolableObject
     /// </summary>
     [SerializeField]
     protected float _speedMax;
-    public float SpeedMax { get => _speedMax; }
 
     /// <summary>
     /// Current speed.
@@ -167,16 +166,6 @@ public class Enemy : PoolableObject
     /// Resistance transformed.
     /// </summary>
     public string ResistanceInfo { get => Converter.TransformResistance(_resistance / 100); }
-
-    /// <summary>
-    /// Lives taken in string version.
-    /// </summary>
-    public string LivesTakenInfo { get => _numberOfLivesTaken.ToString(); }
-
-    /// <summary>
-    /// Health in string version.
-    /// </summary>
-    public string HealthInfo { get => _healthMax.ToString(); }
     #endregion
 
 
@@ -213,7 +202,7 @@ public class Enemy : PoolableObject
     /// <summary>
     /// Current dot used.
     /// </summary>
-    protected List<Attack> _dots = new List<Attack>();
+    protected List<Attack> _dots;
 
     /// <summary>
     /// Current spawner related to this enemy.
@@ -224,12 +213,12 @@ public class Enemy : PoolableObject
     /// <summary>
     /// Is the enemy dotted?
     /// </summary>
-    public bool IsDotted { get; protected set; }
+    public bool IsDotted { get => _dots.Count != 0; }
 
 
 
     /// <summary>
-    /// Initialize method.
+    /// Initialize method, called at enemy creation or re-use.
     /// </summary>
     /// <param name="newPath">New path used</param>
     /// <param name="spawner">Spawner that spawns this enemy</param>
@@ -239,24 +228,21 @@ public class Enemy : PoolableObject
         _spawner = spawner;
 
         _dotDisplay.SetActive(false);
-        IsDotted = false;
+        _dots = new List<Attack>();
 
         InformationUI = null;
         _isSlowDown = false;
 
-        _dots = new List<Attack>();
-        gameObject.SetActive(true);
-
-        Speed = SpeedMax;
+        Speed = _speedMax;
         Health = HealthMax;
         Armor = ArmorMax;
 
         _healthBar.ResetSize();
 
         _pathIndex = pathIndex;
-
-        transform.position = newPath[pathIndex];
         _path = newPath;
+
+        transform.position = _path[_pathIndex];
 
         _moving = true;
     }
@@ -312,7 +298,7 @@ public class Enemy : PoolableObject
 
         _healthBar.ChangeSize(Health / _healthMax);
 
-        if (InformationUI != null)
+        if (InformationUI)
             InformationUI.UpdateEnemyInformation(this);
     }
 
@@ -330,7 +316,7 @@ public class Enemy : PoolableObject
             StartCoroutine(ResetSlowDown(slowDownTime));
             Speed = _speedMax * (100 - slowDownRatio * ResistancePercentage) / 100f;
 
-            if (InformationUI != null)
+            if (InformationUI)
                 InformationUI.UpdateEnemyInformation(this);
         }
     }
@@ -346,7 +332,7 @@ public class Enemy : PoolableObject
         _isSlowDown = false;
         Speed = _speedMax;
 
-        if (InformationUI != null)
+        if (InformationUI)
             InformationUI.UpdateEnemyInformation(this);
     }
 
@@ -357,8 +343,6 @@ public class Enemy : PoolableObject
     /// <param name="newAttack">The new dot applied</param>
     protected void ApplyDot(Attack newAttack)
     {
-        IsDotted = true;
-
         if (_dots.Count > 3)
         {
             Attack attackRemoved = _dots[0];
@@ -373,7 +357,7 @@ public class Enemy : PoolableObject
 
         _dotDisplay.SetActive(true);
 
-        if (InformationUI != null)
+        if (InformationUI)
             InformationUI.UpdateEnemyInformation(this);
 
         if (isActiveAndEnabled)
@@ -401,22 +385,7 @@ public class Enemy : PoolableObject
         _dots.Remove(newDot);
         Armor += newDot.ArmorThroughMalus * ResistancePercentage;
 
-        if (_dots.Count == 0)
-        {
-            _dotDisplay.SetActive(false);
-            IsDotted = false;
-        }
-    }
-
-
-    /// <summary>
-    /// Method used to teleport back enemy.
-    /// </summary>
-    /// <param name="indexLosts">The number of steps lost</param>
-    public void TeleportBack(int indexLosts)
-    {
-        _pathIndex -= indexLosts;
-        transform.position =  _path[_pathIndex];
+        _dotDisplay.SetActive(_dots.Count != 0);
     }
 
 
@@ -429,7 +398,7 @@ public class Enemy : PoolableObject
         ArmorMax = Mathf.Clamp(ArmorMax - percentage, 0, ArmorMax);
         Armor = Mathf.Clamp(Armor - percentage, 0, Armor);
 
-        if (InformationUI != null)
+        if (InformationUI)
             InformationUI.UpdateEnemyInformation(this);
     }
 
@@ -443,29 +412,21 @@ public class Enemy : PoolableObject
         _spawner.EnemyKilled();
 
         if (InformationUI)
-            DesactivateUI();
+        {
+            InformationUI.ErasePreviousEnemy();
+            InformationUI.DisableEnemyInformation();
+
+            _selector.SetActive(false);
+        }
 
         StopAllCoroutines();
-
-        Controller.Instance.PoolController.In(GetComponent<PoolableObject>());
 
         if (!reachEnd)
             Controller.Instance.EnemyController.Die(_goldGained);
         else
             Controller.Instance.EnemyController.ReachEnd(_numberOfLivesTaken);
-    }
 
-
-    /// <summary>
-    /// Method used to desactivate enemy information UI.
-    /// </summary>
-    protected void DesactivateUI()
-    {
-        InformationUI.ErasePreviousEnemy();
-        InformationUI.DisableEnemyInformation();
-        _selector.SetActive(false);
-
-        InformationUI = null;
+        Controller.Instance.PoolController.In(GetComponent<PoolableObject>());
     }
 
 
@@ -498,24 +459,5 @@ public class Enemy : PoolableObject
     {
         if (collision.TryGetComponent(out TowerCollider towerCollider))
             towerCollider.EnemyExit(this);
-    }
-
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="attack"></param>
-    /// <returns></returns>
-    public int DamageTaken(Attack attack)
-    {
-        float dotDamage = attack.DotDamage * 2 * attack.DotDuration;
-        float rawDamage;
-
-        if (Armor - attack.ArmorThrough <= 0)
-            rawDamage = attack.Damage + (attack.Damage * (attack.ArmorThrough - Armor) / 100) / 2;
-        else
-            rawDamage = attack.Damage - ((Armor - attack.ArmorThrough) / 100 * attack.Damage);
-
-        return Mathf.FloorToInt(rawDamage + dotDamage);
     }
 }
