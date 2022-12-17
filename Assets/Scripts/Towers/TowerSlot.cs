@@ -96,10 +96,6 @@ public class TowerSlot : MonoBehaviour
         _animator.SetTrigger(tower.Name);
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
-        _shadowAnimator.SetTrigger("Base");
-
-        yield return new WaitForEndOfFrame();
-        _animator.SetTrigger("Base");
 
         Controller.Instance.PoolController.Out(tower).GetComponent<Tower>().Initialize(this, _ressourceController, _backgroundSelecter, 0);
     }
@@ -113,5 +109,7 @@ public class TowerSlot : MonoBehaviour
     {
         Tower = null;
         _collider.enabled = true;
+        _animator.SetTrigger("Base");
+        _shadowAnimator.SetTrigger("Base");
     }
 }
