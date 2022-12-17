@@ -263,13 +263,13 @@ public class Library : MonoBehaviour
 
         _towerName.text = newTower.name;
         _towerDescription.text = newTower.LibraryDescription;
-        _towerPrice.text = newTower.PriceInfo;
-        _towerDamage.text = newTower.DamageInfo;
+        _towerPrice.text = newTower.Price.ToString();
+        _towerDamage.text = newTower.Damage.ToString();
         _towerFireRate.text = newTower.FireRateInfo;
         _towerArmorThrough.text = newTower.ArmorThroughInfo;
         _towerDot.text = newTower.DotInfo;
         _towerSpecial.text = newTower.Special;
-        _towerShots.text = newTower.ShotsInfo;
+        _towerShots.text = newTower.Shots.ToString();
     }
 
 

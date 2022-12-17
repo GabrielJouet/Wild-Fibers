@@ -36,20 +36,34 @@ public abstract class Tower : PoolableObject
     /// </summary>
     [SerializeField, TextArea]
     protected string _description;
+
+    /// <summary>
+    /// Description.
+    /// </summary>
     public string Description { get => _description; private set => _description = value; }
+
 
     /// <summary>
     /// Description.
     /// </summary>
     [SerializeField, TextArea]
     protected string _libraryDescription;
+
+    /// <summary>
+    /// Description.
+    /// </summary>
     public string LibraryDescription { get => _libraryDescription; private set => _libraryDescription = value; }
+
 
     /// <summary>
     /// Base price of the tower.
     /// </summary>
     [SerializeField]
     protected int _price;
+
+    /// <summary>
+    /// Base price of the tower.
+    /// </summary>
     public float PriceFactor { get; set; } = 1f;
 
     /// <summary>
@@ -62,11 +76,16 @@ public abstract class Tower : PoolableObject
     /// </summary>
     public int Price { get => Mathf.FloorToInt(_price * PriceFactor); }
 
+
     /// <summary>
     /// Icon of the tower.
     /// </summary>
     [SerializeField]
     protected Sprite _icon;
+
+    /// <summary>
+    /// Icon of the tower.
+    /// </summary>
     public Sprite Icon { get => _icon; private set => _icon = value; }
     #endregion
 
@@ -80,61 +99,95 @@ public abstract class Tower : PoolableObject
     /// </summary>
     [SerializeField]
     protected GameObject _projectileUsed;
-    public GameObject Projectile { get => _projectileUsed; private set => _projectileUsed = value; }
+
+    /// <summary>
+    /// Projectile used in attack.
+    /// </summary>
+    public GameObject Projectile { get => _projectileUsed; }
+
 
     /// <summary>
     /// Time between attack in second.
     /// </summary>
     [SerializeField]
     protected float _timeBetweenShots;
+
+    /// <summary>
+    /// Time between attack in second.
+    /// </summary>
     public float TimeShots { get => _timeBetweenShots; set => _timeBetweenShots = value; }
+
 
     /// <summary>
     /// Damage per attack.
     /// </summary>
     [SerializeField]
     protected int _damage;
-    public int Damage { get => _damage; set => _damage = value; }
 
     /// <summary>
-    /// Damage in string version.
+    /// Damage per attack.
     /// </summary>
-    public string DamageInfo { get => _damage.ToString(); }
+    public int Damage { get => _damage; set => _damage = value; }
+
 
     /// <summary>
     /// Armor through on each attack.
     /// </summary>
     [SerializeField]
     protected float _armorThrough;
+
+    /// <summary>
+    /// Armor through on each attack.
+    /// </summary>
     public float ArmorThrough { get => _armorThrough; set => _armorThrough = value; }
+
 
     /// <summary>
     /// Number of projectile per attack.
     /// </summary>
     [SerializeField]
     protected int _numberOfShots;
-    public int Shots { get => _numberOfShots; set => _numberOfShots = value; }
+
+    /// <summary>
+    /// Number of projectile per attack.
+    /// </summary>
+    public int Shots { get => _numberOfShots; }
+
 
     /// <summary>
     /// Range of the tower.
     /// </summary>
     [SerializeField]
     protected float _range;
+
+    /// <summary>
+    /// Range of the tower.
+    /// </summary>
     public float Range { get => _range; set => _range = value; }
+
 
     /// <summary>
     /// Can the tower hits flying target?
     /// </summary>
     [SerializeField]
     protected bool _canHitFlying;
-    public bool HitFlying { get => _canHitFlying; private set => _canHitFlying = value; }
+
+    /// <summary>
+    /// Can the tower hits flying target?
+    /// </summary>
+    public bool HitFlying { get => _canHitFlying; }
+
 
     /// <summary>
     /// Does the towers choose its target?
     /// </summary>
     [SerializeField]
     protected bool _shotsRandomly;
-    public bool ShotsRandomly { get => _shotsRandomly; private set => _shotsRandomly = value; }
+
+    /// <summary>
+    /// Does the towers choose its target?
+    /// </summary>
+    public bool ShotsRandomly { get => _shotsRandomly; }
     #endregion
 
 
@@ -147,20 +200,34 @@ public abstract class Tower : PoolableObject
     /// </summary>
     [SerializeField]
     private float _armorThroughMalus;
+
+    /// <summary>
+    /// Armor malus with each shot.
+    /// </summary>
     public float ArmorThroughMalus { get => _armorThroughMalus; set => _armorThroughMalus = value; }
+
 
     /// <summary>
     /// Dot over time damage.
     /// </summary>
     [SerializeField]
     private int _damageOverTime;
+
+    /// <summary>
+    /// Dot over time damage.
+    /// </summary>
     public int Dot { get => _damageOverTime; set => _damageOverTime = value; }
+
 
     /// <summary>
     /// Dot duration.
     /// </summary>
     [SerializeField]
     private float _dotDuration;
+
+    /// <summary>
+    /// Dot duration.
+    /// </summary>
     public float DotDuration { get => _dotDuration; set => _dotDuration = value; }
     #endregion
 
@@ -174,14 +241,23 @@ public abstract class Tower : PoolableObject
     /// </summary>
     [SerializeField]
     protected List<Tower> _towerUpgrades;
-    public List<Tower> Upgrades { get => _towerUpgrades; private set => _towerUpgrades = value; }
+
+    /// <summary>
+    /// Tower upgrades.
+    /// </summary>
+    public List<Tower> Upgrades { get => _towerUpgrades; }
+
 
     /// <summary>
     /// Tower specs (only for last level).
     /// </summary>
     [SerializeField]
     protected List<TowerSpec> _towerSpecs;
-    public List<TowerSpec> Specs { get => _towerSpecs; private set => _towerSpecs = value; }
+
+    /// <summary>
+    /// Tower specs (only for last level).
+    /// </summary>
+    public List<TowerSpec> Specs { get => _towerSpecs; }
 
 
     /// <summary>
@@ -189,7 +265,11 @@ public abstract class Tower : PoolableObject
     /// </summary>
     [SerializeField]
     protected List<Augmentation> _towerAugmentations;
-    public List<Augmentation> Augmentations { get => _towerAugmentations; private set => _towerAugmentations = value; }
+
+    /// <summary>
+    /// Tower Augmentations (only for first level).
+    /// </summary>
+    public List<Augmentation> Augmentations { get => _towerAugmentations; }
 
     /// <summary>
     /// Current augmentation level of this tower.
@@ -207,14 +287,24 @@ public abstract class Tower : PoolableObject
     /// </summary>
     [SerializeField, TextArea]
     protected string _special;
-    public string Special { get => _special; private set => _special = value; }
+
+    /// <summary>
+    /// A special info box.
+    /// </summary>
+    public string Special { get => _special; }
+
 
     /// <summary>
     /// Screen shot displaying what the tower can do.
     /// </summary>
     [SerializeField]
     protected Sprite _screenShot;
-    public Sprite ScreenShot { get => _screenShot; private set => _screenShot = value; }
+
+    /// <summary>
+    /// Screen shot displaying what the tower can do.
+    /// </summary>
+    public Sprite ScreenShot { get => _screenShot; }
+
 
     /// <summary>
     /// Fire rate transformed.
@@ -230,16 +320,6 @@ public abstract class Tower : PoolableObject
     /// Dot transformed.
     /// </summary>
     public string DotInfo { get => Converter.TransformDot(_dotDuration * _damageOverTime * 2); }
-
-    /// <summary>
-    /// Number of shots in string version.
-    /// </summary>
-    public string ShotsInfo { get => _numberOfShots.ToString(); }
-
-    /// <summary>
-    /// Price in string version.
-    /// </summary>
-    public string PriceInfo { get => _price.ToString(); }
     #endregion
 
 

@@ -301,7 +301,7 @@ public class BackgroudSelecter : MonoBehaviour
         _towerInformationPanel.SetActive(true);
 
         _towerName.text = newTower.Name;
-        _damageText.text = newTower.DamageInfo;
+        _damageText.text = newTower.Damage.ToString();
         _breakArmorText.text = newTower.ArmorThroughInfo;
         _fireRateText.text = newTower.FireRateInfo;
     }
