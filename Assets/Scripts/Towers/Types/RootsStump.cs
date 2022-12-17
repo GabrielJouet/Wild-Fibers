@@ -138,9 +138,9 @@ public class RootsStump : Tower
                 return new Vector2(transform.localPosition.x - 0.2f, transform.localPosition.y - 0.1f);
 
             default:
-                return new Vector2();
+                return Vector2.zero;
         }
 
-        return new Vector2();
+        return Vector2.zero;
     }
 }
