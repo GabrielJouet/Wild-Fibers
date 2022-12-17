@@ -11,6 +11,10 @@ public class Augmentation : ScriptableObject
     /// </summary>
     [SerializeField]
     private Sprite _icon;
+
+    /// <summary>
+    /// Icon displayed.
+    /// </summary>
     public Sprite Icon { get => _icon; }
 
 
@@ -19,6 +23,10 @@ public class Augmentation : ScriptableObject
     /// </summary>
     [SerializeField]
     private int _price;
+
+    /// <summary>
+    /// Price in skill points.
+    /// </summary>
     public int Price { get => _price; }
 
 
@@ -27,5 +35,9 @@ public class Augmentation : ScriptableObject
     /// </summary>
     [SerializeField, TextArea]
     private string _description;
+
+    /// <summary>
+    /// Short description.
+    /// </summary>
     public string Description { get => _description; }
 }
