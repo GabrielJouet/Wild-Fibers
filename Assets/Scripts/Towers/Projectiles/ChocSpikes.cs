@@ -9,12 +9,12 @@ public class ChocSpikes : Projectile
     /// <summary>
     /// Does the projectile is following an enemy?
     /// </summary>
-    protected bool _following = false;
+    protected bool _following;
 
     /// <summary>
     /// Does the projectile is attacking an enemy?
     /// </summary>
-    protected bool _attacking = false;
+    protected bool _attacking;
 
     /// <summary>
     /// Current animator.
@@ -25,7 +25,7 @@ public class ChocSpikes : Projectile
     /// <summary>
     /// Can the spike destroy some armor on hit?
     /// </summary>
-    private bool _canDestroyArmor = false;
+    private bool _canDestroyArmor;
 
 
     /// <summary>

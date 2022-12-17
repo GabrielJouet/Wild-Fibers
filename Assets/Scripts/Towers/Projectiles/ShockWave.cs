@@ -13,7 +13,7 @@ public class ShockWave : Projectile
     /// <summary>
     /// Does the wave hit flying enemies harder?
     /// </summary>
-    private bool _hitFLyingHarder;
+    private bool _hitFlyingHarder;
 
 
 
@@ -26,12 +26,12 @@ public class ShockWave : Projectile
     /// <param name="hitFlyingHarder">Does the wave hit flying enemies harder?</param>
     public void Initialize(Attack newData, Transform newTransform, float range, bool hitFlyingHarder)
     {
-        _hitFLyingHarder = hitFlyingHarder;
+        _hitFlyingHarder = hitFlyingHarder;
         transform.position = newTransform.position;
         _attack = newData;
 
         _range = range;
-        transform.localScale = new Vector3(0, 0, 1);
+        transform.localScale = Vector3.forward;
     }
 
 
@@ -55,7 +55,7 @@ public class ShockWave : Projectile
     {
         if (collision.TryGetComponent(out Enemy newEnemy))
         {
-            if (_hitFLyingHarder && newEnemy.Flying)
+            if (_hitFlyingHarder && newEnemy.Flying)
                 newEnemy.TakeDamage(new Attack(_attack.Damage + 2, _attack.ArmorThrough, 0, 0, 0));
             else
                 newEnemy.TakeDamage(_attack);
