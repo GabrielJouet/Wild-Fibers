@@ -420,9 +420,6 @@ public abstract class Tower : PoolableObject
     {
         _coroutineStarted = true;
 
-        if (!ShotsRandomly)
-            SortEnemies();
-
         foreach (Enemy current in RecoverAvailableEnemies(_availableEnemies.Count < Shots ? _availableEnemies.Count : Shots))
             Controller.Instance.PoolController.Out(Projectile.GetComponent<PoolableObject>()).GetComponent<Projectile>().Initialize(_nextAttack.Dequeue(), current, transform);
 
@@ -661,8 +658,6 @@ public abstract class Tower : PoolableObject
 
         _collider.localScale = Vector3.one;
         _transformRange.localScale = Vector3.one;
-
-        gameObject.SetActive(false);
     }
     #endregion
 
