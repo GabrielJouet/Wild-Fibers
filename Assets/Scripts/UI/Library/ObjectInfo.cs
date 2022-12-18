@@ -21,12 +21,21 @@ public class ObjectInfo : MonoBehaviour
     protected GameObject _lockedSprite;
 
 
+    /// <summary>
+    /// Library shortcut object.
+    /// </summary>
+    private Library _library;
+
+
 
     /// <summary>
     /// Method called at initialization.
     /// </summary>
-    protected void Initialize()
+    /// <param name="library">Library object used to activate the info</param>
+    public void Initialize(Library library)
     {
+        _library = library;
+
         GetComponent<Button>().enabled = true;
         _screenShot.gameObject.SetActive(true);
         _lockedSprite.SetActive(false);
@@ -38,6 +47,6 @@ public class ObjectInfo : MonoBehaviour
     /// </summary>
     public void Activate()
     {
-        transform.parent.parent.parent.parent.parent.parent.GetComponent<Library>().ShowInfo(this);
+        _library.ShowInfo(this);
     }
 }

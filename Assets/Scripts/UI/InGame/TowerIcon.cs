@@ -10,7 +10,6 @@ public class TowerIcon : MonoBehaviour
     /// </summary>
     [SerializeField]
     private TowerInfo _base;
-    public TowerInfo First { get => _base; }
 
     /// <summary>
     /// First level tower, upgrade of right.
@@ -36,6 +35,7 @@ public class TowerIcon : MonoBehaviour
     [SerializeField]
     private TowerInfo _secondLevelLeft;
 
+
     /// <summary>
     /// Border image component.
     /// </summary>
@@ -50,19 +50,26 @@ public class TowerIcon : MonoBehaviour
     /// <param name="newData">New data used for this tower</param>
     /// <param name="maxLevel">The new max level of this tower</param>
     /// <param name="last">Does this tower icon is the last one?</param>
-    public void Populate(Tower newData, int maxLevel, bool last)
+    /// <param name="library">Library object used to activate the info</param>
+    public void Populate(Tower newData, int maxLevel, bool last, Library library)
     {
+        _base.Initialize(library);
+        
         _base.Tower = newData;
 
         if (maxLevel > 0)
         {
             _firstLevelRight.Tower = newData.Upgrades[0];
             _firstLevelLeft.Tower = newData.Upgrades[1];
+            _firstLevelRight.Initialize(library);
+            _firstLevelLeft.Initialize(library);
 
             if (maxLevel > 1)
             {
                 _secondLevelRight.Tower = newData.Upgrades[0].Upgrades[0];
                 _secondLevelLeft.Tower = newData.Upgrades[1].Upgrades[0];
+                _secondLevelRight.Initialize(library);
+                _secondLevelLeft.Initialize(library);
             }
         }
 

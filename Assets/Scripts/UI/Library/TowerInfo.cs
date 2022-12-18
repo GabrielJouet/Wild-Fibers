@@ -14,10 +14,7 @@ public class TowerInfo : ObjectInfo
         set
         {
             _tower = value;
-
             _screenShot.sprite = _tower.ScreenShot;
-
-            Initialize();
         }
     }
 }

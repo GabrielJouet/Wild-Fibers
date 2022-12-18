@@ -15,8 +15,6 @@ public class EnemyInfo : ObjectInfo
         {
             _enemy = value;
             _screenShot.sprite = _enemy.ScreenShot;
-
-            Initialize();
         }
     }
 }
