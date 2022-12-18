@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -25,6 +26,10 @@ public class LevelButton : MonoBehaviour
     /// </summary>
     [SerializeField]
     private LevelData _levelData;
+
+    /// <summary>
+    /// Level data associated with this button.
+    /// </summary>
     public LevelData LevelData { get => _levelData; }
 
 
@@ -93,12 +98,50 @@ public class LevelButton : MonoBehaviour
     private SpriteRenderer _buttonDisplay;
 
 
+
     /// <summary>
     /// Awake method, called at first.
     /// </summary>
     private void Awake()
     {
         _buttonDisplay = GetComponent<SpriteRenderer>();
+    }
+
+
+    /// <summary>
+    /// Start method, changed as a coroutine to wait Controller initialization.
+    /// </summary>
+    private IEnumerator Start()
+    {
+        yield return new WaitUntil(() => Controller.Instance);
+        int index = Controller.Instance.SaveController.Levels.IndexOf(LevelData);
+
+        switch(Controller.Instance.SaveController.SaveFile.CurrentSave[index].State)
+        {
+            case LevelState.LOCKED:
+                _isLocked = true;
+                break;
+
+            case LevelState.UNLOCKED:
+                _hoverDisplayer.sprite = _unlockedHover;
+                _buttonDisplay.sprite = _activatedSprite;
+                break;
+
+            case LevelState.COMPLETED:
+                _buttonDisplay.sprite = _completedSprite;
+                _hoverDisplayer.sprite = _finishedHover;
+                break;
+
+            case LevelState.SIDED:
+                _buttonDisplay.sprite = _sidedSprite;
+                _hoverDisplayer.sprite = _asideHover;
+                break;
+
+            case LevelState.CHALLENGED:
+                _buttonDisplay.sprite = _challengedSprite;
+                _hoverDisplayer.sprite = _challengedHover;
+                break;
+        }
     }
 
 
@@ -127,54 +170,5 @@ public class LevelButton : MonoBehaviour
     {
         if (!_isLocked)
             _levelSelection.ActivateLevelSelectionMenu(this);
-    }
-
-
-    /// <summary>
-    /// Method used to lock the level.
-    /// </summary>
-    public void LockLevel()
-    {
-        _isLocked = true;
-    }
-
-
-    /// <summary>
-    /// Method used to unlock the level.
-    /// </summary>
-    public void UnlockLevel()
-    {
-        _hoverDisplayer.sprite = _unlockedHover;
-        _buttonDisplay.sprite = _activatedSprite;
-    }
-
-
-    /// <summary>
-    /// Method used to set the level as complete.
-    /// </summary>
-    public void SetCompleted()
-    {
-        _buttonDisplay.sprite = _completedSprite;
-        _hoverDisplayer.sprite = _finishedHover;
-    }
-
-
-    /// <summary>
-    /// Method used to set the level as sided.
-    /// </summary>
-    public void SetSided()
-    {
-        _buttonDisplay.sprite = _sidedSprite;
-        _hoverDisplayer.sprite = _asideHover;
-    }
-
-
-    /// <summary>
-    /// Method used to set the level as challenged.
-    /// </summary>
-    public void SetChallenged()
-    {
-        _buttonDisplay.sprite = _challengedSprite;
-        _hoverDisplayer.sprite = _challengedHover;
     }
 }
