@@ -224,7 +224,7 @@ public class Library : MonoBehaviour
     /// <param name="enemy">Does the panel shown is the enemy one?</param>
     public void ShowPanel(bool enemy)
     {
-        _towerList.SetActive(!enemy);
+        _towerList.transform.parent.parent.gameObject.SetActive(!enemy);
         _enemyList.SetActive(enemy);
 
         _separator.localScale = new Vector3(enemy ? -1 : 1, 1, 1);
