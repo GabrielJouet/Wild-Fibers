@@ -1,26 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-
-/// <summary>
+﻿/// <summary>
 /// Tower info button used in library.
 /// </summary>
-[RequireComponent(typeof(Button))]
-public class TowerInfo : MonoBehaviour
+public class TowerInfo : ObjectInfo
 {
-    /// <summary>
-    /// ScreenShot image component, used to display actual tower.
-    /// </summary>
-    [SerializeField]
-    private Image _screenShot;
-
-
-    /// <summary>
-    /// Locked sprite game object, used to show that this tower is locked.
-    /// </summary>
-    [SerializeField]
-    private GameObject _lockedSprite;
-
-
     /// <summary>
     /// Tower data buffered in this tower info.
     /// </summary>
@@ -32,20 +14,10 @@ public class TowerInfo : MonoBehaviour
         set
         {
             _tower = value;
-            GetComponent<Button>().enabled = true;
 
-            _lockedSprite.SetActive(false);
             _screenShot.sprite = _tower.ScreenShot;
-            _screenShot.gameObject.SetActive(true);
+
+            Initialize();
         }
-    }
-
-
-    /// <summary>
-    /// Method called to activate this button.
-    /// </summary>
-    public void Activate()
-    {
-        transform.parent.parent.parent.parent.parent.parent.GetComponent<Library>().ShowTowerInfo(this);
     }
 }

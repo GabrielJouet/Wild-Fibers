@@ -254,6 +254,19 @@ public class Library : MonoBehaviour
 
 
     /// <summary>
+    /// Method called to show an object info.
+    /// </summary>
+    /// <param name="newInfo">The info object to display</param>
+    public void ShowInfo(ObjectInfo newInfo)
+    {
+        if (newInfo.TryGetComponent(out TowerInfo towerInfo))
+            ShowTowerInfo(towerInfo);
+        else if (newInfo.TryGetComponent(out EnemyInfo enemyInfo))
+            ShowEnemyInfo(enemyInfo);
+    }
+
+
+    /// <summary>
     /// Method called to show a tower info.
     /// </summary>
     /// <param name="newInfo">The info tower to display</param>
