@@ -14,6 +14,10 @@ public class SaveController : MonoBehaviour
 	/// </summary>
 	[SerializeField]
 	private List<LevelData> _levels;
+
+	/// <summary>
+	/// All levels.
+	/// </summary>
 	public List<LevelData> Levels { get => _levels; }
 
 

@@ -1,19 +1,22 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Class used to handle pools and pool related behavior.
+/// </summary>
 public class PoolController : MonoBehaviour
 {
     /// <summary>
-    /// 
+    /// All pools available.
     /// </summary>
     private readonly Dictionary<string, Pool> _pools = new Dictionary<string, Pool>();
 
 
 
     /// <summary>
-    /// 
+    /// Method called to put an object inside the pool.
     /// </summary>
-    /// <param name="stored"></param>
+    /// <param name="stored">The object stored in a poolable object format.</param>
     public void In(PoolableObject stored)
     {
         _pools[stored.Name].In(stored.gameObject);
@@ -21,10 +24,10 @@ public class PoolController : MonoBehaviour
 
 
     /// <summary>
-    /// 
+    /// Method called to retrieve an object from the pool.
     /// </summary>
-    /// <param name="wanted"></param>
-    /// <returns></returns>
+    /// <param name="wanted">The object we want to retrieve</param>
+    /// <returns>Returns the object retrieved or instantiated</returns>
     public GameObject Out(PoolableObject wanted)
     {
         if (_pools.ContainsKey(wanted.Name))

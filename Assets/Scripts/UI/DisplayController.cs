@@ -12,11 +12,6 @@ public class DisplayController : MonoBehaviour
     [SerializeField]
     private GameObject _hider;
 
-    /// <summary>
-    /// Previous object displayed.
-    /// </summary>
-    [SerializeField]
-    private GameObject _defaultMenu;
 
     /// <summary>
     /// Previous object displayed.
@@ -50,6 +45,10 @@ public class DisplayController : MonoBehaviour
         Paused = false;
     }
 
+
+    /// <summary>
+    /// Method used to toogle pause.
+    /// </summary>
     public void TooglePause()
     {
         Paused = !Paused;
@@ -81,6 +80,11 @@ public class DisplayController : MonoBehaviour
         }
     }
 
+
+    /// <summary>
+    /// Coroutine used to delay the hider display.
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator DelayHiderSpawn()
     {
         yield return new WaitForEndOfFrame();

@@ -28,8 +28,6 @@ public class LevelController : MonoBehaviour
     /// <summary>
     /// Entity spawner prefab.
     /// </summary>
-    [SerializeField]
-    private Spawner _spawnerPrefab;
     private readonly List<Spawner> _spawners = new List<Spawner>();
 
     /// <summary>
@@ -122,13 +120,17 @@ public class LevelController : MonoBehaviour
 
         int spawnerLeft = LoadedLevel.Waves[_waveIndex].EnemyGroups.Count - _spawners.Count;
 
-        for(int i = 0; i < spawnerLeft; i ++)
-            _spawners.Add(Instantiate(_spawnerPrefab, transform));
+        for (int i = 0; i < spawnerLeft; i ++)
+        {
+            Spawner spawner = new GameObject("Spawner").AddComponent<Spawner>();
+            spawner.transform.parent = transform;
+            _spawners.Add(spawner);
+        }
 
         int j = 0;
-        foreach(EnemyGroup current in LoadedLevel.Waves[_waveIndex].EnemyGroups)
+        foreach(EnemyGroup enemyGroup in LoadedLevel.Waves[_waveIndex].EnemyGroups)
         {
-            int index = Controller.Instance.EnemyController.Enemies.IndexOf(current.Enemy.GetComponent<Enemy>());
+            int index = Controller.Instance.EnemyController.Enemies.IndexOf(enemyGroup.Enemy.GetComponent<Enemy>());
 
             //If in this wave we uncounter new enemies.
             if (!_saveController.SaveFile.EnemiesUnlocked[index])
@@ -137,7 +139,7 @@ public class LevelController : MonoBehaviour
                 _saveController.SaveNewEnemyFound(index);
             }
 
-            _spawners[j].SetNewGroup(_availablePath[current.Path], current, this);
+            _spawners[j].SetNewGroup(_availablePath[enemyGroup.Path], enemyGroup, this);
             j++;
         }
     }

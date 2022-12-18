@@ -180,6 +180,7 @@ public class Library : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _enemySpecial;
 
+
     /// <summary>
     /// Color used for desactivated tabs.
     /// </summary>
@@ -190,45 +191,27 @@ public class Library : MonoBehaviour
     /// <summary>
     /// Awake method, called at first.
     /// </summary>
-    private void Awake()
+    private void Start()
     {
         List<Tower> towers = Controller.Instance.SquadController.CurrentSquad.Towers;
 
-        SaveController saveController = Controller.Instance.SaveController;
-
-        List<bool> enemiesFound = saveController.SaveFile.EnemiesUnlocked;
         List<Enemy> enemies = Controller.Instance.EnemyController.Enemies;
 
-        for (int i = 0; i < enemiesFound.Count; i ++)
+        for (int i = 0; i < Controller.Instance.SaveController.SaveFile.EnemiesUnlocked.Count; i ++)
         {
-            EnemyInfo newEnemy = Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>();
-
-            if (enemiesFound[i]) 
-                newEnemy.Enemy = enemies[i];
-
-            if (i == 0 && enemiesFound[i])
-                ShowEnemyInfo(newEnemy);
+            EnemyInfo enemyBuffered = Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>();
+            enemyBuffered.Enemy = enemies[i];
+            enemyBuffered.Initialize(this);
         }
 
-        int maxLevel = saveController.SaveFile.CurrentSquad.TowerLevelMax;
+        int maxLevel = Controller.Instance.SaveController.SaveFile.CurrentSquad.TowerLevelMax;
 
-        TowerIcon firstIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
-        firstIcon.Populate(towers[0], maxLevel, false);
-
-        TowerIcon newIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
-        newIcon.Populate(towers[1], maxLevel, false);
-
-        newIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
-        newIcon.Populate(towers[2], maxLevel, false);
-
-        newIcon = Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>();
-        newIcon.Populate(towers[3], maxLevel, true);
+        for (int i = 0; i < 4; i ++)
+            Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>().Populate(towers[i], maxLevel, i != 3, this);
 
         RectTransform towerPanel = _towerList.GetComponent<RectTransform>();
         VerticalLayoutGroup towerLayout = _towerList.GetComponent<VerticalLayoutGroup>();
         towerPanel.sizeDelta = new Vector2(towerPanel.sizeDelta.x, towerLayout.padding.top * 2 + towerLayout.spacing * 3 + 4 * _towerTreePrefab.GetComponent<RectTransform>().sizeDelta.y);
-
-        ShowTowerInfo(firstIcon.First);
 
         ShowPanel(false);
     }
@@ -241,7 +224,7 @@ public class Library : MonoBehaviour
     /// <param name="enemy">Does the panel shown is the enemy one?</param>
     public void ShowPanel(bool enemy)
     {
-        _towerList.SetActive(!enemy);
+        _towerList.transform.parent.parent.gameObject.SetActive(!enemy);
         _enemyList.SetActive(enemy);
 
         _separator.localScale = new Vector3(enemy ? -1 : 1, 1, 1);
@@ -254,22 +237,35 @@ public class Library : MonoBehaviour
 
 
     /// <summary>
+    /// Method called to show an object info.
+    /// </summary>
+    /// <param name="newInfo">The info object to display</param>
+    public void ShowInfo(ObjectInfo newInfo)
+    {
+        if (newInfo.TryGetComponent(out TowerInfo towerInfo))
+            ShowTowerInfo(towerInfo);
+        else if (newInfo.TryGetComponent(out EnemyInfo enemyInfo))
+            ShowEnemyInfo(enemyInfo);
+    }
+
+
+    /// <summary>
     /// Method called to show a tower info.
     /// </summary>
     /// <param name="newInfo">The info tower to display</param>
-    public void ShowTowerInfo(TowerInfo newInfo)
+    private void ShowTowerInfo(TowerInfo newInfo)
     {
         Tower newTower = newInfo.Tower;
 
         _towerName.text = newTower.name;
         _towerDescription.text = newTower.LibraryDescription;
-        _towerPrice.text = newTower.PriceInfo;
-        _towerDamage.text = newTower.DamageInfo;
+        _towerPrice.text = newTower.Price.ToString();
+        _towerDamage.text = newTower.Damage.ToString();
         _towerFireRate.text = newTower.FireRateInfo;
         _towerArmorThrough.text = newTower.ArmorThroughInfo;
         _towerDot.text = newTower.DotInfo;
         _towerSpecial.text = newTower.Special;
-        _towerShots.text = newTower.ShotsInfo;
+        _towerShots.text = newTower.Shots.ToString();
     }
 
 
@@ -277,18 +273,18 @@ public class Library : MonoBehaviour
     /// Method called to show an enemy info.
     /// </summary>
     /// <param name="newInfo">The info enemy to show</param>
-    public void ShowEnemyInfo(EnemyInfo newInfo)
+    private void ShowEnemyInfo(EnemyInfo newInfo)
     {
         Enemy newEnemy = newInfo.Enemy;
 
         _enemyName.text = newEnemy.name;
         _enemyDescription.text = newEnemy.Description;
         _enemyGold.text = newEnemy.GoldInfo;
-        _enemyHealth.text = newEnemy.HealthInfo;
+        _enemyHealth.text = newEnemy.HealthMax.ToString();
         _enemySpeed.text = newEnemy.SpeedInfo;
         _enemyArmor.text = newEnemy.ArmorInfo;
         _enemyResistance.text = newEnemy.ResistanceInfo;
-        _enemyLivesLost.text = newEnemy.LivesTakenInfo;
+        _enemyLivesLost.text = newEnemy.LivesTaken.ToString();
         _enemySpecial.text = newEnemy.Special;
     }
 }

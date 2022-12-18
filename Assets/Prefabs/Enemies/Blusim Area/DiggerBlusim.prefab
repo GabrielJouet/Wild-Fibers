@@ -1,0 +1,180 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1303910684913735558
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 78945468440522725, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 99565433844753580, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734522360954112770, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734522360954112770, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734522360954112770, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734522360954112770, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734522360954112770, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734522360954112770, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734522360954112770, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734522360954112770, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734522360954112770, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734522360954112770, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734522360954112770, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409035626049427819, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_Name
+      value: DiggerBlusim
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: _name
+      value: Digger Blusim
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: _armorMax
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: _speedMax
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: _healthMax
+      value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: _goldGained
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: _screenShot
+      value: 
+      objectReference: {fileID: 21300000, guid: ac9cce6f4203d63408fbab2420319d1b,
+        type: 3}
+    - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: _description
+      value: A small insect found in open areas. They are the hive dedicated miners.
+        Although they are not resistent, they move swiftly.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: _numberOfLivesTaken
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526737602585744538, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526737602585744538, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526737602585744538, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4526737602585744538, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 5726025113749804578, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1bb6fe17e33af7d42a97de7239b8f2c0, type: 2}
+    - target: {fileID: 6598429466991533773, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 6890849393205655141, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3057520092514895828, guid: 4fda286bfa5978644afb560c8e734c67,
+        type: 3}
+    - target: {fileID: 6890849393205655141, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489765962369580056, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 9212283791406915769, guid: 64fd6e4aee80cd84e874546c0fb15f87,
+        type: 3}
+    - target: {fileID: 7489765962369580056, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8957071532578077348, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.26
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4dab7da206da42945ba906f073799019, type: 3}

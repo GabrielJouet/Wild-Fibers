@@ -11,21 +11,36 @@ public class LevelData : ScriptableObject
     /// </summary>
     [SerializeField]
     private Level _classic;
+
+    /// <summary>
+    /// Classic level data.
+    /// </summary>
     public Level Classic { get => _classic; }
+
 
     /// <summary>
     /// Side level data.
     /// </summary>
     [SerializeField]
     private Level _side;
+
+    /// <summary>
+    /// Side level data.
+    /// </summary>
     public Level Side { get => _side; }
+
 
     /// <summary>
     /// Challenge level data.
     /// </summary>
     [SerializeField]
     private Level _challenge;
+
+    /// <summary>
+    /// Challenge level data.
+    /// </summary>
     public Level Challenge { get => _challenge; }
+
 
 
     /// <summary>

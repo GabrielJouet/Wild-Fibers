@@ -16,7 +16,7 @@ MonoBehaviour:
   - _enemyPatterns:
     - _numberOfEnemies: 8
       _timeBetweenEnemies: 5
-    _enemyUsed: {fileID: 6914183812568595844, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb,
+    _enemyUsed: {fileID: 3708422920091029229, guid: 787fd507911235e4f89ae35abfd35d73,
       type: 3}
     _timeBetweenPattern: 2
     _pathIndex: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
       _timeBetweenEnemies: 0.3
     - _numberOfEnemies: 12
       _timeBetweenEnemies: 0.4
-    _enemyUsed: {fileID: 6914183812568595844, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb,
+    _enemyUsed: {fileID: 3708422920091029229, guid: b4466da44875549409b186495230993a,
       type: 3}
     _timeBetweenPattern: 3
     _pathIndex: 0

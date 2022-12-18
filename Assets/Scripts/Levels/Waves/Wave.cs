@@ -12,6 +12,10 @@ public class Wave : ScriptableObject
     /// </summary>
     [SerializeField]
     private List<EnemyGroup> _availableEnemyGroups;
+
+    /// <summary>
+    /// All groups in current wave.
+    /// </summary>
     public List<EnemyGroup> EnemyGroups { get => _availableEnemyGroups; }
 
     [Space(15)]
@@ -19,15 +23,23 @@ public class Wave : ScriptableObject
     /// <summary>
     /// Time between wave.
     /// </summary>
-    [Min(0.1f)]
-    [SerializeField]
+    [SerializeField, Min(0.1f)]
     private float _timeBeforeNextWave;
+
+    /// <summary>
+    /// Time between wave.
+    /// </summary>
     public float TimeWave { get => _timeBeforeNextWave; }
+
 
     /// <summary>
     /// Gold bonus by calling early wave.
     /// </summary>
     [SerializeField]
     private int _goldBonus;
+    
+    /// <summary>
+    /// Gold bonus by calling early wave.
+    /// </summary>
     public int BonusGold { get => _goldBonus; }
 }

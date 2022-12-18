@@ -12,6 +12,10 @@ public class Squad : ScriptableObject
     /// </summary>
     [SerializeField]
     private List<Tower> _towers;
+
+    /// <summary>
+    /// Avaiable towers in this squad.
+    /// </summary>
     public List<Tower> Towers { get => _towers; private set => _towers = value; }
 
 
@@ -21,6 +25,11 @@ public class Squad : ScriptableObject
     /// <remarks>These augmentations are for squad only, not for towers.</remarks>
     [SerializeField]
     private List<Augmentation> _augmentations;
+
+    /// <summary>
+    /// List of augmentations available for this squad.
+    /// </summary>
+    /// <remarks>These augmentations are for squad only, not for towers.</remarks>
     public List<Augmentation> Augmentations { get => _augmentations; private set => _augmentations = value; }
 
 
@@ -29,6 +38,10 @@ public class Squad : ScriptableObject
     /// </summary>
     [SerializeField]
     private Sprite _spriteSquad;
+
+    /// <summary>
+    /// The sprite of the squad used in various UI.
+    /// </summary>
     public Sprite SquadSprite { get => _spriteSquad; private set => _spriteSquad = value; }
 
 
@@ -37,6 +50,10 @@ public class Squad : ScriptableObject
     /// </summary>
     [SerializeField]
     private int _livesBonus;
+
+    /// <summary>
+    /// How many bonus lives the squad has.
+    /// </summary>
     public int LivesBonus { get; private set; }
 
 
@@ -45,6 +62,10 @@ public class Squad : ScriptableObject
     /// </summary>
     [SerializeField]
     private int _goldBonus;
+
+    /// <summary>
+    /// How much gold bonus this squad has.
+    /// </summary>
     public int GoldBonus { get; private set; }
 
 
