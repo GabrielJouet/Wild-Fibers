@@ -3148,6 +3148,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1126799837}
     m_Modifications:
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _poolController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _levelController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _playerController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _backgroundSelecter
+      value: 
+      objectReference: {fileID: 2125523296}
+    - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.6781268
+      objectReference: {fileID: 0}
     - target: {fileID: 2557709338138010730, guid: d273228316a970f4c979b34e511473d6,
         type: 3}
       propertyPath: m_Name
@@ -3202,31 +3227,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
-        type: 3}
-      propertyPath: _poolController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
-        type: 3}
-      propertyPath: _levelController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
-        type: 3}
-      propertyPath: _playerController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
-        type: 3}
-      propertyPath: _backgroundSelecter
-      value: 
-      objectReference: {fileID: 2125523296}
-    - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.6781268
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d273228316a970f4c979b34e511473d6, type: 3}
@@ -8868,6 +8868,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541158168596965236, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 76.600006
       objectReference: {fileID: 0}
     - target: {fileID: 4541158168596965239, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
