@@ -3600,7 +3600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfIterations: 50
+  _numberOfIterations: 100
   _activateGizmos: 0
   _startPoint: {fileID: 2141380583}
   _parameterStartPoint: {fileID: 1908300725}
@@ -5320,7 +5320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfIterations: 50
+  _numberOfIterations: 100
   _activateGizmos: 0
   _startPoint: {fileID: 1755780110}
   _parameterStartPoint: {fileID: 1646787528}
@@ -7740,7 +7740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfIterations: 50
+  _numberOfIterations: 100
   _activateGizmos: 0
   _startPoint: {fileID: 64854281}
   _parameterStartPoint: {fileID: 703873516}
@@ -8603,7 +8603,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8d1cfdb2884a0d449091011f7f000ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numberOfIterations: 50
+  _numberOfIterations: 100
   _activateGizmos: 0
   _startPoint: {fileID: 1940935361}
   _parameterStartPoint: {fileID: 340662351}
@@ -9998,6 +9998,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4541158168596965236, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 76.600006
       objectReference: {fileID: 0}
     - target: {fileID: 4541158168596965239, guid: ab062a4349966594386bc59557a6906a,
         type: 3}

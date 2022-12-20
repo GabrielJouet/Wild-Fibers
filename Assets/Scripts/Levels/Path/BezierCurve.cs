@@ -4,7 +4,6 @@ using UnityEngine;
 /// <summary>
 /// Class used to create a bezier curve.
 /// </summary>
-[ExecuteAlways]
 public class BezierCurve : MonoBehaviour
 {
     /// <summary>
@@ -69,11 +68,14 @@ public class BezierCurve : MonoBehaviour
     /// </summary>
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.red;
+
         if (_activateGizmos)
         {
-            Gizmos.color = Color.red;
+            Curve.Clear();
+            ComputePath();
 
-            for(int i = 0; i < Curve.Count - 1; i ++)
+            for (int i = 0; i < Curve.Count - 1; i ++)
                 Gizmos.DrawLine(Curve[i], Curve[i + 1]);
         }
     }
