@@ -1,12 +1,11 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
 /// Class used to handle interactivity in skill tree.
 /// </summary>
-public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class Skill : MonoBehaviour
 {
     /// <summary>
     /// Actual price of this skill.
@@ -20,22 +19,6 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField]
     private Image _icon;
 
-    /// <summary>
-    /// Position of the description relative to this skill.
-    /// </summary>
-    [SerializeField]
-    private RectTransform _descriptionPosition;
-
-
-    /// <summary>
-    /// Text component that will handle the description.
-    /// </summary>
-    private TextMeshProUGUI _description;
-
-    /// <summary>
-    /// Game Object component that will handle the description parent.
-    /// </summary>
-    private GameObject _descriptionGameObject;
 
     /// <summary>
     /// Related augmentation.
@@ -49,11 +32,8 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     /// </summary>
     /// <param name="relatedAugmentation">The related augmentation</param>
     /// <param name="newState">The state of the augmentation (Bought, Locked or Unlocked)</param>
-    public void Initialize(Augmentation relatedAugmentation, AugmentationState newState, TextMeshProUGUI description)
+    public void Initialize(Augmentation relatedAugmentation, AugmentationState newState)
     {
-        _description = description;
-        _descriptionGameObject = description.transform.parent.gameObject;
-
         _price.text = relatedAugmentation.Price.ToString();
         _icon.sprite = relatedAugmentation.Icon;
 
@@ -97,24 +77,11 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
 
     /// <summary>
-    /// Method called when the mouse enter the skill (hovers it).
+    /// Method called when the skill is pressed.
     /// </summary>
-    /// <remarks>Interface needed because this is a UI object</remarks>
-    public void OnPointerEnter(PointerEventData eventData)
+    public void Select()
     {
-        _description.text = _augmentation.Description;
-        _descriptionGameObject.GetComponent<RectTransform>().position = _descriptionPosition.position;
-        _descriptionGameObject.SetActive(true);
-    }
-
-
-    /// <summary>
-    /// Method called when the mouse exits the skill (hovers it).
-    /// </summary>
-    /// <remarks>Interface needed because this is a UI object</remarks>
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        _description.transform.parent.gameObject.SetActive(false);
+        transform.parent.parent.parent.GetComponent<SkillTree>().SelectAugmentation(() => Purchase(), _augmentation.Description);
     }
 
 
@@ -126,7 +93,7 @@ public class Skill : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (Controller.Instance.SaveController.SaveFile.CurrentSquad.CurrencyAvailable >= _augmentation.Price)
         {
             SetAsBought();
-            transform.parent.GetComponent<SkillUpgrades>().PurchaseAugmentation(this);
+            transform.parent.GetComponent<SkillColumn>().PurchaseAugmentation(this);
         }
     }
 }

@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
 /// Class used to handle skill upgrades in the skill tree.
 /// </summary>
-public class SkillUpgrades : MonoBehaviour
+public class SkillColumn : MonoBehaviour
 {
     /// <summary>
     /// List of skill availables.
@@ -35,8 +34,7 @@ public class SkillUpgrades : MonoBehaviour
     /// <param name="newAugmentations">Augmentation to display</param>
     /// <param name="augmentationLevel">Current augmentation level of the skill</param>
     /// <param name="newIndex">Buffered index</param>
-    /// <param name="description">The description text object needed</param>
-    public void Initialize(Sprite newTower, List<Augmentation> newAugmentations, int augmentationLevel, int newIndex, TextMeshProUGUI description)
+    public void Initialize(Sprite newTower, List<Augmentation> newAugmentations, int augmentationLevel, int newIndex)
     {
         for (int i = 0; i < _skills.Count; i ++)
         {
@@ -49,7 +47,7 @@ public class SkillUpgrades : MonoBehaviour
             else
                 newState = AugmentationState.LOCKED;
 
-            _skills[i].Initialize(newAugmentations[i], newState, description);
+            _skills[i].Initialize(newAugmentations[i], newState);
         }
 
         _index = newIndex;
