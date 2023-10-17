@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Miscellanious.Enums;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;

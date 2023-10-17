@@ -1,9 +1,12 @@
-﻿/// <summary>
-/// Enum used to define level type.
-/// </summary>
-public enum LevelType 
+﻿namespace Miscellanious.Enums
 {
-    CLASSIC,
-    SIDE,
-    CHALLENGE
+    /// <summary>
+    /// Enum used to define level type.
+    /// </summary>
+    public enum LevelType 
+    {
+        CLASSIC,
+        SIDE,
+        CHALLENGE
+    }
 }

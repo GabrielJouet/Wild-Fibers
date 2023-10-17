@@ -1,31 +1,32 @@
-﻿using System.Collections.Generic;
-using System;
+﻿using System;
+using System.Collections.Generic;
 
-/// <summary>
-/// Class used to randomize array.
-/// </summary>
-public static class ArrayRandomizer
+namespace Miscellanious
 {
     /// <summary>
-    /// Rng variable.
+    /// Class used to randomize array.
     /// </summary>
-    private static readonly Random rng = new Random();
-
-
-    /// <summary>
-    /// Method used to shuffle an array.
-    /// </summary>
-    /// <param name="list">The list to shuffle</param>
-    public static void Shuffle<T>(this IList<T> list)
+    public static class ArrayRandomizer
     {
-        int n = list.Count;
-        while (n > 1)
+        /// <summary>
+        /// Rng variable.
+        /// </summary>
+        private static readonly Random Rng = new();
+
+
+        /// <summary>
+        /// Method used to shuffle an array.
+        /// </summary>
+        /// <param name="list">The list to shuffle</param>
+        public static void Shuffle<T>(this IList<T> list)
         {
-            n--;
-            int k = rng.Next(n + 1);
-            T value = list[k];
-            list[k] = list[n];
-            list[n] = value;
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = Rng.Next(n + 1);
+                (list[k], list[n]) = (list[n], list[k]);
+            }
         }
     }
 }
