@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68636bbd532bf364b9d4bab07898cb81, type: 3}
   m_Name: FieldData
   m_EditorClassIdentifier: 
-  _classic: {fileID: 11400000, guid: 7b1bc5ec89c95a846b583f549b2629a6, type: 2}
-  _side: {fileID: 11400000, guid: 548591ebfbf785a40b76a911fff0dfb0, type: 2}
-  _challenge: {fileID: 11400000, guid: 26d9002954a5adc418f4153f04a40ae7, type: 2}
+  <Classic>k__BackingField: {fileID: 11400000, guid: 7b1bc5ec89c95a846b583f549b2629a6,
+    type: 2}
+  <Side>k__BackingField: {fileID: 11400000, guid: 548591ebfbf785a40b76a911fff0dfb0,
+    type: 2}
+  <Challenge>k__BackingField: {fileID: 11400000, guid: 26d9002954a5adc418f4153f04a40ae7,
+    type: 2}

@@ -12,31 +12,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c38062d58063c489c1f62c7a95a8ce, type: 3}
   m_Name: Wave3
   m_EditorClassIdentifier: 
-  _availableEnemyGroups:
-  - _enemyPatterns:
-    - _numberOfEnemies: 7
-      _timeBetweenEnemies: 4.5
-    _enemyUsed: {fileID: 6914183812568595844, guid: 75053fef349185741a6dd180b501757c,
+  <EnemyGroups>k__BackingField:
+  - <Patterns>k__BackingField:
+    - <NumberOfEnemies>k__BackingField: 7
+      <TimeBetweenEnemies>k__BackingField: 4.5
+    <Enemy>k__BackingField: {fileID: 6914183812568595844, guid: 75053fef349185741a6dd180b501757c,
       type: 3}
-    _timeBetweenPattern: 0.1
-    _pathIndex: 0
-  - _enemyPatterns:
-    - _numberOfEnemies: 17
-      _timeBetweenEnemies: 1.5
-    _enemyUsed: {fileID: 6914183812568595844, guid: 76e6d98bff05e8948b947d2b45938fa4,
+    <TimeBetweenPattern>k__BackingField: 0.1
+    <PathIndex>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <NumberOfEnemies>k__BackingField: 17
+      <TimeBetweenEnemies>k__BackingField: 1.5
+    <Enemy>k__BackingField: {fileID: 6914183812568595844, guid: 76e6d98bff05e8948b947d2b45938fa4,
       type: 3}
-    _timeBetweenPattern: 0.1
-    _pathIndex: 0
-  - _enemyPatterns:
-    - _numberOfEnemies: 4
-      _timeBetweenEnemies: 3
-    - _numberOfEnemies: 5
-      _timeBetweenEnemies: 2
-    - _numberOfEnemies: 6
-      _timeBetweenEnemies: 2.5
-    _enemyUsed: {fileID: 3708422920091029229, guid: 787fd507911235e4f89ae35abfd35d73,
+    <TimeBetweenPattern>k__BackingField: 0.1
+    <PathIndex>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <NumberOfEnemies>k__BackingField: 4
+      <TimeBetweenEnemies>k__BackingField: 3
+    - <NumberOfEnemies>k__BackingField: 5
+      <TimeBetweenEnemies>k__BackingField: 2
+    - <NumberOfEnemies>k__BackingField: 6
+      <TimeBetweenEnemies>k__BackingField: 2.5
+    <Enemy>k__BackingField: {fileID: 3708422920091029229, guid: 787fd507911235e4f89ae35abfd35d73,
       type: 3}
-    _timeBetweenPattern: 3.75
-    _pathIndex: 0
-  _timeBeforeNextWave: 10
-  _goldBonus: 30
+    <TimeBetweenPattern>k__BackingField: 3.75
+    <PathIndex>k__BackingField: 0
+  <TimeBeforeNextWave>k__BackingField: 10
+  <GoldBonus>k__BackingField: 30

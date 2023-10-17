@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9275da23ffe138249b48ceb9809eaf68, type: 3}
   m_Name: BurriedCave
   m_EditorClassIdentifier: 
-  _name: Burried Cave
-  _picture: {fileID: 21300000, guid: c3c2dc114b081a440befd73e543716d9, type: 3}
-  _description: These blusims seems to came from a nasty and smelly cave, you need
-    to protect your land
-  _playSceneName: BurriedCave
-  _levelType: 0
-  _availableWaves:
+  <Name>k__BackingField: Burried Cave
+  <Picture>k__BackingField: {fileID: 21300000, guid: c3c2dc114b081a440befd73e543716d9,
+    type: 3}
+  <Description>k__BackingField: These blusims seems to came from a nasty and smelly
+    cave, you need to protect your land
+  <PlaySceneName>k__BackingField: BurriedCave
+  <Type>k__BackingField: 0
+  <Waves>k__BackingField:
   - {fileID: 11400000, guid: c22334bdbf118df419b3ef383d29b8d4, type: 2}
   - {fileID: 11400000, guid: 2ebcf68fe36872c4f89c6a83631edd47, type: 2}
   - {fileID: 11400000, guid: b559cc745c5cc0041a306837d15e0d7a, type: 2}
@@ -26,8 +27,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 52d4dd9d56b8a9c419ecfb12664df0e2, type: 2}
   - {fileID: 11400000, guid: 2ff14742de60aec49a236f57864a48a8, type: 2}
   - {fileID: 11400000, guid: 9e2b7db8c8ac1ae458a512377695fb41, type: 2}
-  _lifeCount: 20
-  _goldCount: 650
-  _towerLevel: 1
-  _goldMultiplier: 1
-  _blockedTowers: []
+  <LifeCount>k__BackingField: 20
+  <GoldCount>k__BackingField: 650
+  <TowerLevel>k__BackingField: 1
+  <GoldMultiplier>k__BackingField: 1
+  <BlockedTowers>k__BackingField: []

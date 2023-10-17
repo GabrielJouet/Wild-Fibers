@@ -1,110 +1,113 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Class used to create a bezier curve.
-/// </summary>
-public class BezierCurve : MonoBehaviour
+namespace Levels.Path
 {
     /// <summary>
-    /// Number of iterations for each curve.
+    /// Class used to create a bezier curve.
     /// </summary>
-    [SerializeField]
-    private int _numberOfIterations;
-
-    /// <summary>
-    /// Did we need debug display?
-    /// </summary>
-    [SerializeField]
-    private bool _activateGizmos;
-
-
-    [Header("Points")]
-
-    /// <summary>
-    /// Start point of the curve.
-    /// </summary>
-    [SerializeField]
-    private Transform _startPoint;
-
-    /// <summary>
-    /// Parameter point of the start point.
-    /// </summary>
-    [SerializeField]
-    private Transform _parameterStartPoint;
-
-    /// <summary>
-    /// End point of the curve.
-    /// </summary>
-    [SerializeField]
-    private Transform _endPoint;
-
-    /// <summary>
-    /// Parameter point of the end point.
-    /// </summary>
-    [SerializeField]
-    private Transform _parameterEndPoint;
-
-
-    /// <summary>
-    /// List of point creating the curve.
-    /// </summary>
-    public List<Vector3> Curve { get; private set; } = new List<Vector3>();
-
-
-
-    /// <summary>
-    /// Awake method in order to initialize.
-    /// </summary>
-    private void Awake()
+    public class BezierCurve : MonoBehaviour
     {
-        ComputePath();
-    }
+        /// <summary>
+        /// Number of iterations for each curve.
+        /// </summary>
+        [SerializeField]
+        private int numberOfIterations;
+
+        /// <summary>
+        /// Did we need debug display?
+        /// </summary>
+        [SerializeField]
+        private bool activateGizmos;
 
 
-    
-    /// <summary>
-    /// On draw Gizmos is used to display curve in editor.
-    /// </summary>
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
+        [Header("Points")]
 
-        if (_activateGizmos)
+        /// <summary>
+        /// Start point of the curve.
+        /// </summary>
+        [SerializeField]
+        private Transform startPoint;
+
+        /// <summary>
+        /// Parameter point of the start point.
+        /// </summary>
+        [SerializeField]
+        private Transform parameterStartPoint;
+
+        /// <summary>
+        /// End point of the curve.
+        /// </summary>
+        [SerializeField]
+        private Transform endPoint;
+
+        /// <summary>
+        /// Parameter point of the end point.
+        /// </summary>
+        [SerializeField]
+        private Transform parameterEndPoint;
+
+
+        /// <summary>
+        /// List of point creating the curve.
+        /// </summary>
+        public List<Vector3> Curve { get; } = new();
+
+
+
+        /// <summary>
+        /// Awake method in order to initialize.
+        /// </summary>
+        private void Awake()
         {
-            Curve.Clear();
             ComputePath();
-
-            for (int i = 0; i < Curve.Count - 1; i ++)
-                Gizmos.DrawLine(Curve[i], Curve[i + 1]);
         }
-    }
+
+
+    
+        /// <summary>
+        /// On draw Gizmos is used to display curve in editor.
+        /// </summary>
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+
+            if (activateGizmos)
+            {
+                Curve.Clear();
+                ComputePath();
+
+                for (int i = 0; i < Curve.Count - 1; i ++)
+                    Gizmos.DrawLine(Curve[i], Curve[i + 1]);
+            }
+        }
     
 
 
-    /// <summary>
-    /// Method used to compute the bezier curve.
-    /// </summary>
-    private void ComputePath()
-    {
-        Vector3 A = _startPoint.position;
-        Vector3 D = _endPoint.position;
-        Vector3 B = _parameterStartPoint.position;
-        Vector3 C = _parameterEndPoint.position;
-
-        for (int i = 1; i <= _numberOfIterations; i++)
+        /// <summary>
+        /// Method used to compute the bezier curve.
+        /// </summary>
+        private void ComputePath()
         {
-            float t = i * 0.01f;
-            float oneMinusT = 1f - t;
+            Vector3 a = startPoint.position;
+            Vector3 d = endPoint.position;
+            Vector3 b = parameterStartPoint.position;
+            Vector3 c = parameterEndPoint.position;
 
-            Vector3 Q = oneMinusT * A + t * B;
-            Vector3 R = oneMinusT * B + t * C;
-            Vector3 S = oneMinusT * C + t * D;
+            for (int i = 1; i <= numberOfIterations; i++)
+            {
+                float time = i * 0.01f;
+                float oneMinusT = 1f - time;
 
-            Vector3 P = oneMinusT * Q + t * R;
-            Vector3 T = oneMinusT * R + t * S;
+                Vector3 q = oneMinusT * a + time * b;
+                Vector3 r = oneMinusT * b + time * c;
+                Vector3 s = oneMinusT * c + time * d;
 
-            Curve.Add(oneMinusT * P + t * T);
+                Vector3 p = oneMinusT * q + time * r;
+                Vector3 t = oneMinusT * r + time * s;
+
+                Curve.Add(oneMinusT * p + time * t);
+            }
         }
     }
 }

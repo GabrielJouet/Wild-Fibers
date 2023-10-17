@@ -12,21 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9275da23ffe138249b48ceb9809eaf68, type: 3}
   m_Name: RottenWoods
   m_EditorClassIdentifier: 
-  _name: Rotten Woods
-  _picture: {fileID: 21300000, guid: cad09f24362b5de4ab3a0ec81b82dafc, type: 3}
-  _description: Trees stop growing in these lands, better be careful of corrupted
-    stumps.
-  _playSceneName: RottenWoods
-  _levelType: 1
-  _availableWaves:
+  <Name>k__BackingField: Rotten Woods
+  <Picture>k__BackingField: {fileID: 21300000, guid: cad09f24362b5de4ab3a0ec81b82dafc,
+    type: 3}
+  <Description>k__BackingField: Trees stop growing in these lands, better be careful
+    of corrupted stumps.
+  <PlaySceneName>k__BackingField: RottenWoods
+  <Type>k__BackingField: 1
+  <Waves>k__BackingField:
   - {fileID: 11400000, guid: c059e04d7088aec47a590ad40271bae9, type: 2}
   - {fileID: 11400000, guid: 7207b875552b2a14794c3015a7440fee, type: 2}
   - {fileID: 11400000, guid: c9731e0774ed9ea40bc14b563e189479, type: 2}
   - {fileID: 11400000, guid: 6ebf76b1eb3f55448ae64334f7b5fdd4, type: 2}
   - {fileID: 11400000, guid: 523476d54b4f5d04ab91f72f20f7bc9d, type: 2}
   - {fileID: 11400000, guid: 9c1ebebe41b3b924c8f0b70deac627f0, type: 2}
-  _lifeCount: 5
-  _goldCount: 755
-  _towerLevel: 1
-  _goldMultiplier: 0.75
-  _blockedTowers: []
+  <LifeCount>k__BackingField: 5
+  <GoldCount>k__BackingField: 755
+  <TowerLevel>k__BackingField: 1
+  <GoldMultiplier>k__BackingField: 0.75
+  <BlockedTowers>k__BackingField: []

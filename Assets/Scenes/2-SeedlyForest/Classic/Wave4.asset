@@ -12,35 +12,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c38062d58063c489c1f62c7a95a8ce, type: 3}
   m_Name: Wave4
   m_EditorClassIdentifier: 
-  _availableEnemyGroups:
-  - _enemyPatterns:
-    - _numberOfEnemies: 30
-      _timeBetweenEnemies: 0.3
-    _enemyUsed: {fileID: 6914183812568595844, guid: d9daef3f950273945b1eb5cea886939b,
+  <EnemyGroups>k__BackingField:
+  - <Patterns>k__BackingField:
+    - <NumberOfEnemies>k__BackingField: 30
+      <TimeBetweenEnemies>k__BackingField: 0.3
+    <Enemy>k__BackingField: {fileID: 6914183812568595844, guid: d9daef3f950273945b1eb5cea886939b,
       type: 3}
-    _timeBetweenPattern: 2
-    _pathIndex: 0
-  - _enemyPatterns:
-    - _numberOfEnemies: 2
-      _timeBetweenEnemies: 5.5
-    - _numberOfEnemies: 1
-      _timeBetweenEnemies: 6
-    - _numberOfEnemies: 2
-      _timeBetweenEnemies: 5
-    _enemyUsed: {fileID: 6914183812568595844, guid: 75053fef349185741a6dd180b501757c,
+    <TimeBetweenPattern>k__BackingField: 2
+    <PathIndex>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <NumberOfEnemies>k__BackingField: 2
+      <TimeBetweenEnemies>k__BackingField: 5.5
+    - <NumberOfEnemies>k__BackingField: 1
+      <TimeBetweenEnemies>k__BackingField: 6
+    - <NumberOfEnemies>k__BackingField: 2
+      <TimeBetweenEnemies>k__BackingField: 5
+    <Enemy>k__BackingField: {fileID: 6914183812568595844, guid: 75053fef349185741a6dd180b501757c,
       type: 3}
-    _timeBetweenPattern: 3
-    _pathIndex: 0
-  - _enemyPatterns:
-    - _numberOfEnemies: 4
-      _timeBetweenEnemies: 3
-    - _numberOfEnemies: 3
-      _timeBetweenEnemies: 2.5
-    - _numberOfEnemies: 4
-      _timeBetweenEnemies: 1.5
-    _enemyUsed: {fileID: 3708422920091029229, guid: 787fd507911235e4f89ae35abfd35d73,
+    <TimeBetweenPattern>k__BackingField: 3
+    <PathIndex>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <NumberOfEnemies>k__BackingField: 4
+      <TimeBetweenEnemies>k__BackingField: 3
+    - <NumberOfEnemies>k__BackingField: 3
+      <TimeBetweenEnemies>k__BackingField: 2.5
+    - <NumberOfEnemies>k__BackingField: 4
+      <TimeBetweenEnemies>k__BackingField: 1.5
+    <Enemy>k__BackingField: {fileID: 3708422920091029229, guid: 787fd507911235e4f89ae35abfd35d73,
       type: 3}
-    _timeBetweenPattern: 1.5
-    _pathIndex: 0
-  _timeBeforeNextWave: 20
-  _goldBonus: 35
+    <TimeBetweenPattern>k__BackingField: 1.5
+    <PathIndex>k__BackingField: 0
+  <TimeBeforeNextWave>k__BackingField: 20
+  <GoldBonus>k__BackingField: 35

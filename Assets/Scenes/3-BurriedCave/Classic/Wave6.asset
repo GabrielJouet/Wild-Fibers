@@ -12,46 +12,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c38062d58063c489c1f62c7a95a8ce, type: 3}
   m_Name: Wave6
   m_EditorClassIdentifier: 
-  _availableEnemyGroups:
-  - _enemyPatterns:
-    - _numberOfEnemies: 25
-      _timeBetweenEnemies: 0.75
-    - _numberOfEnemies: 30
-      _timeBetweenEnemies: 0.95
-    _enemyUsed: {fileID: 3708422920091029229, guid: b4466da44875549409b186495230993a,
+  <EnemyGroups>k__BackingField:
+  - <Patterns>k__BackingField:
+    - <NumberOfEnemies>k__BackingField: 25
+      <TimeBetweenEnemies>k__BackingField: 0.75
+    - <NumberOfEnemies>k__BackingField: 30
+      <TimeBetweenEnemies>k__BackingField: 0.95
+    <Enemy>k__BackingField: {fileID: 3708422920091029229, guid: b4466da44875549409b186495230993a,
       type: 3}
-    _timeBetweenPattern: 3.75
-    _pathIndex: 0
-  - _enemyPatterns:
-    - _numberOfEnemies: 5
-      _timeBetweenEnemies: 0.5
-    - _numberOfEnemies: 4
-      _timeBetweenEnemies: 0.4
-    - _numberOfEnemies: 6
-      _timeBetweenEnemies: 0.45
-    - _numberOfEnemies: 5
-      _timeBetweenEnemies: 0.55
-    - _numberOfEnemies: 2
-      _timeBetweenEnemies: 0.25
-    _enemyUsed: {fileID: 6914183812568595844, guid: d9daef3f950273945b1eb5cea886939b,
+    <TimeBetweenPattern>k__BackingField: 3.75
+    <PathIndex>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <NumberOfEnemies>k__BackingField: 5
+      <TimeBetweenEnemies>k__BackingField: 0.5
+    - <NumberOfEnemies>k__BackingField: 4
+      <TimeBetweenEnemies>k__BackingField: 0.4
+    - <NumberOfEnemies>k__BackingField: 6
+      <TimeBetweenEnemies>k__BackingField: 0.45
+    - <NumberOfEnemies>k__BackingField: 5
+      <TimeBetweenEnemies>k__BackingField: 0.55
+    - <NumberOfEnemies>k__BackingField: 2
+      <TimeBetweenEnemies>k__BackingField: 0.25
+    <Enemy>k__BackingField: {fileID: 6914183812568595844, guid: d9daef3f950273945b1eb5cea886939b,
       type: 3}
-    _timeBetweenPattern: 1.5
-    _pathIndex: 0
-  - _enemyPatterns:
-    - _numberOfEnemies: 5
-      _timeBetweenEnemies: 5.5
-    - _numberOfEnemies: 4
-      _timeBetweenEnemies: 6
-    _enemyUsed: {fileID: 6914183812568595844, guid: 75053fef349185741a6dd180b501757c,
+    <TimeBetweenPattern>k__BackingField: 1.5
+    <PathIndex>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <NumberOfEnemies>k__BackingField: 5
+      <TimeBetweenEnemies>k__BackingField: 5.5
+    - <NumberOfEnemies>k__BackingField: 4
+      <TimeBetweenEnemies>k__BackingField: 6
+    <Enemy>k__BackingField: {fileID: 6914183812568595844, guid: 75053fef349185741a6dd180b501757c,
       type: 3}
-    _timeBetweenPattern: 4
-    _pathIndex: 0
-  - _enemyPatterns:
-    - _numberOfEnemies: 15
-      _timeBetweenEnemies: 3.5
-    _enemyUsed: {fileID: 6914183812568595844, guid: 3a10d5fb2f081234aba26b426ea831c4,
+    <TimeBetweenPattern>k__BackingField: 4
+    <PathIndex>k__BackingField: 0
+  - <Patterns>k__BackingField:
+    - <NumberOfEnemies>k__BackingField: 15
+      <TimeBetweenEnemies>k__BackingField: 3.5
+    <Enemy>k__BackingField: {fileID: 6914183812568595844, guid: 3a10d5fb2f081234aba26b426ea831c4,
       type: 3}
-    _timeBetweenPattern: 4
-    _pathIndex: 1
-  _timeBeforeNextWave: 25
-  _goldBonus: 40
+    <TimeBetweenPattern>k__BackingField: 4
+    <PathIndex>k__BackingField: 1
+  <TimeBeforeNextWave>k__BackingField: 25
+  <GoldBonus>k__BackingField: 40

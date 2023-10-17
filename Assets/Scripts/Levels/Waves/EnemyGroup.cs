@@ -2,59 +2,38 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Class used to store enemy group data.
-/// </summary>
-[Serializable]
-public class EnemyGroup
+namespace Levels.Waves
 {
-    [Header("Parameters")]
-
     /// <summary>
-    /// Enemy groups in this pattern.
+    /// Class used to store enemy group data.
     /// </summary>
-    [SerializeField]
-    private List<EnemyPattern> _enemyPatterns;
+    [Serializable]
+    public class EnemyGroup
+    {
+        /// <summary>
+        /// Enemy groups in this pattern.
+        /// </summary>
+        [field: SerializeField, Header("Parameters")]
+        public List<EnemyPattern> Patterns { get; private set; }
 
-    /// <summary>
-    /// Enemy groups in this pattern.
-    /// </summary>
-    public List<EnemyPattern> Patterns { get => _enemyPatterns; }
-
-    [Space(15)]
-
-    /// <summary>
-    /// Enemy used in this group.
-    /// </summary>
-    [SerializeField]
-    private GameObject _enemyUsed;
-
-    /// <summary>
-    /// Enemy used in this group.
-    /// </summary>
-    public GameObject Enemy { get => _enemyUsed; }
+        /// <summary>
+        /// Enemy used in this group.
+        /// </summary>
+        [field: SerializeField, Space(15)]
+        public GameObject Enemy { get; private set; }
 
 
-    /// <summary>
-    /// Time between each pattern.
-    /// </summary>
-    [SerializeField, Min(0.1f)]
-    private float _timeBetweenPattern;
-
-    /// <summary>
-    /// Time between each pattern.
-    /// </summary>
-    public float TimeBetweenPattern { get => _timeBetweenPattern; }
+        /// <summary>
+        /// Time between each pattern.
+        /// </summary>
+        [field: SerializeField, Min(0.1f)]
+        public float TimeBetweenPattern { get; private set; }
 
 
-    /// <summary>
-    /// Path used by the enemy.
-    /// </summary>
-    [SerializeField]
-    private int _pathIndex;
-
-    /// <summary>
-    /// Path used by the enemy.
-    /// </summary>
-    public int Path { get => _pathIndex; }
+        /// <summary>
+        /// Path used by the enemy.
+        /// </summary>
+        [field: SerializeField]
+        public int PathIndex { get; private set; }
+    }
 }

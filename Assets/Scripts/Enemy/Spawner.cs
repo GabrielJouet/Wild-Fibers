@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using Levels;
+using Levels.Path;
+using Levels.Waves;
 using UnityEngine;
 
 /// <summary>
@@ -85,13 +87,13 @@ public class Spawner : MonoBehaviour
         while (!WaveFinished)
         {
             //If we are not at the end of the pattern
-            if (_enemyIndex < _enemyGroup.Patterns[_patternIndex].EnemiesCount)
+            if (_enemyIndex < _enemyGroup.Patterns[_patternIndex].NumberOfEnemies)
             {
                 _enemyIndex++;
                 Instantiate(_enemyGroup.Enemy).GetComponent<Enemy>().Initialize(_randomPath.GeneratedPath, 0, this);
 
                 _spawnedEnemies++;
-                yield return new WaitForSeconds(_enemyGroup.Patterns[_patternIndex].EnemiesTime);
+                yield return new WaitForSeconds(_enemyGroup.Patterns[_patternIndex].TimeBetweenEnemies);
             }
             //Else if the pattern is finished
             else

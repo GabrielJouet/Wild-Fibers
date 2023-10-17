@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Levels.Path;
+using Levels.Waves;
 using Miscellanious.Enums;
 using Save;
 using TMPro;
@@ -112,7 +114,7 @@ namespace Levels
 
             //If there is time left, we give money to player based on time left.
             if (timeLeft > 0)
-                _resourceController.AddGold(Mathf.FloorToInt(LoadedLevel.Waves[_waveIndex].BonusGold * (timeLeft / LoadedLevel.Waves[_waveIndex].TimeWave)), false);
+                _resourceController.AddGold(Mathf.FloorToInt(LoadedLevel.Waves[_waveIndex].GoldBonus * (timeLeft / LoadedLevel.Waves[_waveIndex].TimeBeforeNextWave)), false);
         }
 
 
@@ -144,7 +146,7 @@ namespace Levels
                     _saveController.SaveNewEnemyFound(index);
                 }
 
-                _spawners[j].SetNewGroup(availablePath[enemyGroup.Path], enemyGroup, this);
+                _spawners[j].SetNewGroup(availablePath[enemyGroup.PathIndex], enemyGroup, this);
                 j++;
             }
         }
@@ -178,7 +180,7 @@ namespace Levels
                 _waveIndex++;
                 yield return new WaitForSeconds(TimeBetweenNextWaveButtonDisplay);
 
-                nextWaveButton.ActivateNewWaveButton(LoadedLevel.Waves[_waveIndex].TimeWave);
+                nextWaveButton.ActivateNewWaveButton(LoadedLevel.Waves[_waveIndex].TimeBeforeNextWave);
             }
             else
                 foreach (Spawner spawner in _spawners)
