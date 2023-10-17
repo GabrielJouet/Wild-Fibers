@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Levels;
+using UnityEngine;
 
 /// <summary>
 /// Class used to improve UI interactivity.
