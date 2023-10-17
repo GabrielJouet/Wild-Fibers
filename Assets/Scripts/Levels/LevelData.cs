@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Levels;
+using UnityEngine;
 
 /// <summary>
 /// Class used to handles level data for classic, side and challenge ones.

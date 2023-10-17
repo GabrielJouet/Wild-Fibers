@@ -66,10 +66,10 @@ public class RessourceController : MonoBehaviour
     {
         _levelController = GetComponent<LevelController>();
 
-        _lifeCountMax = _levelController.LoadedLevel.Lives + Controller.Instance.SquadController.CurrentSquad.LivesBonus;
+        _lifeCountMax = _levelController.LoadedLevel.LifeCount + Controller.Instance.SquadController.CurrentSquad.LivesBonus;
         _lifeCount = _lifeCountMax;
 
-        GoldCount = _levelController.LoadedLevel.Gold + Controller.Instance.SquadController.CurrentSquad.GoldBonus;
+        GoldCount = _levelController.LoadedLevel.GoldCount + Controller.Instance.SquadController.CurrentSquad.GoldBonus;
         _goldText.text = GoldCount.ToString();
         _lifeText.text = _lifeCount.ToString();
     }

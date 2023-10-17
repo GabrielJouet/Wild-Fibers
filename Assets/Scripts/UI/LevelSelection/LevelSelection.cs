@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Levels;
 using Miscellanious;
 using Miscellanious.Enums;
 using TMPro;
@@ -220,7 +221,7 @@ public class LevelSelection : MonoBehaviour
         _launchBattleMenu.onClick.AddListener(() =>
         {
             Controller.Instance.SaveController.LoadedLevel = _level.Classic;
-            _sceneChanger.LoadScene(_level.Classic.Scene);
+            _sceneChanger.LoadScene(_level.Classic.PlaySceneName);
         });
     }
 
@@ -255,7 +256,7 @@ public class LevelSelection : MonoBehaviour
         _launchBattleMenu.onClick.AddListener(() =>
         {
             Controller.Instance.SaveController.LoadedLevel = buffer;
-            _sceneChanger.LoadScene(buffer.Scene);
+            _sceneChanger.LoadScene(buffer.PlaySceneName);
         });
     }
 
