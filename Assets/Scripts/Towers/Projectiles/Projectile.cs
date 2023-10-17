@@ -3,7 +3,7 @@
 /// <summary>
 /// Class used by projectile like object.
 /// </summary>
-public class Projectile : PoolableObject
+public class Projectile : MonoBehaviour
 {
     /// <summary>
     /// Speed of this projectile.
@@ -115,6 +115,6 @@ public class Projectile : PoolableObject
     /// </summary>
     public void StopProjectile()
     {
-        Controller.Instance.PoolController.In(GetComponent<PoolableObject>());
+        Destroy(gameObject);
     }
 }

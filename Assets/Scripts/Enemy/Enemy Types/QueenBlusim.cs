@@ -64,7 +64,7 @@ public class QueenBlusim : Enemy
 
             for (int i = 0; i < _numberOfEnemiesPerSpawn; i++)
             {
-                Controller.Instance.PoolController.Out(_enemySpawnedPrefab.GetComponent<PoolableObject>()).GetComponent<Enemy>().Initialize(_path, _pathIndex, _spawner);
+                Instantiate(_enemySpawnedPrefab).GetComponent<Enemy>().Initialize(_path, _pathIndex, _spawner);
 
                 yield return new WaitForSeconds(_spawnTime + Random.Range(-_spawnTime / 20, _spawnTime / 20));
             }

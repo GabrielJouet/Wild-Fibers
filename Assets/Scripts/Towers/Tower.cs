@@ -7,7 +7,7 @@ using UnityEngine;
 /// </summary>
 /// <remarks>Needs a static depth manager</remarks>
 [RequireComponent(typeof(DepthManager))]
-public abstract class Tower : PoolableObject
+public abstract class Tower : MonoBehaviour
 {
     /// <summary>
     /// Range display.
@@ -421,7 +421,7 @@ public abstract class Tower : PoolableObject
         _coroutineStarted = true;
 
         foreach (Enemy current in RecoverAvailableEnemies(_availableEnemies.Count < Shots ? _availableEnemies.Count : Shots))
-            Controller.Instance.PoolController.Out(Projectile.GetComponent<PoolableObject>()).GetComponent<Projectile>().Initialize(_nextAttack.Dequeue(), current, transform);
+            Instantiate(Projectile).GetComponent<Projectile>().Initialize(_nextAttack.Dequeue(), current, transform);
 
         yield return new WaitForSeconds(TimeShots);
         _coroutineStarted = false;
@@ -443,7 +443,7 @@ public abstract class Tower : PoolableObject
         _backgroundSelecter.DisableTowerSellButton();
 
         _currentSlot.ResetSlot();
-        Controller.Instance.PoolController.In(GetComponent<PoolableObject>());
+        Destroy(gameObject);
     }
 
 
@@ -463,8 +463,8 @@ public abstract class Tower : PoolableObject
         _backgroundSelecter.DesactivateTower();
         UpgradeSpecialBehavior();
 
-        Controller.Instance.PoolController.In(GetComponent<PoolableObject>());
-        Controller.Instance.PoolController.Out(newData).GetComponent<Tower>().Initialize(_currentSlot, _ressourceController, _backgroundSelecter, Price);
+        Destroy(gameObject);
+        Instantiate(newData).GetComponent<Tower>().Initialize(_currentSlot, _ressourceController, _backgroundSelecter, Price);
     }
 
 
@@ -643,21 +643,6 @@ public abstract class Tower : PoolableObject
     {
         _transformRange.gameObject.SetActive(false);
         _selector.SetActive(false);
-    }
-
-
-    /// <summary>
-    /// Method called when the tower needs to be desactivated.
-    /// </summary>
-    public override void OnInPool()
-    {
-        DesactivateRangeDisplay();
-
-        _coroutineStarted = false;
-        StopAllCoroutines();
-
-        _collider.localScale = Vector3.one;
-        _transformRange.localScale = Vector3.one;
     }
     #endregion
 

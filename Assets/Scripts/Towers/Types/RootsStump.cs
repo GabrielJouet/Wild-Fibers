@@ -101,7 +101,7 @@ public class RootsStump : Tower
     {
         yield return new WaitForSeconds(TimeShots * multiplier);
 
-        ChocSpikes buffer = Controller.Instance.PoolController.Out(Projectile.GetComponent<PoolableObject>()).GetComponent<ChocSpikes>();
+        ChocSpikes buffer = Instantiate(Projectile).GetComponent<ChocSpikes>();
         buffer.Initialize(GetSpikePosition(_rootsIndex));
 
         _rootsIndex = _rootsIndex == Shots - 1? 0 : _rootsIndex + 1 ;

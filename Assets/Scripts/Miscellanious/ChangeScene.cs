@@ -14,7 +14,9 @@ public class ChangeScene : MonoBehaviour
     {
         //If we are in a playable level
         if (FindObjectsOfType<LevelController>().Length > 0)
-            Controller.Instance.PoolController.DesactivateEntities();
+        {
+            //TO CHANGE, NEED TO REMOVE ENEMIES AND ENTITIES
+        }
 
         SceneManager.LoadScene(destinationName);
     }

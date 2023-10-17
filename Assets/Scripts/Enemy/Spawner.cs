@@ -87,7 +87,7 @@ public class Spawner : MonoBehaviour
             if (_enemyIndex < _enemyGroup.Patterns[_patternIndex].EnemiesCount)
             {
                 _enemyIndex++;
-                Controller.Instance.PoolController.Out(_enemyGroup.Enemy.GetComponent<PoolableObject>()).GetComponent<Enemy>().Initialize(_randomPath.GeneratedPath, 0, this);
+                Instantiate(_enemyGroup.Enemy).GetComponent<Enemy>().Initialize(_randomPath.GeneratedPath, 0, this);
 
                 _spawnedEnemies++;
                 yield return new WaitForSeconds(_enemyGroup.Patterns[_patternIndex].EnemiesTime);

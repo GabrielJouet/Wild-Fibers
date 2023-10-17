@@ -6,7 +6,6 @@ using UnityEngine;
 /// </summary>
 [RequireComponent(typeof(SaveController))]
 [RequireComponent(typeof(SquadController))]
-[RequireComponent(typeof(PoolController))]
 [RequireComponent(typeof(EnemyController))]
 public class Controller : MonoBehaviour
 {
@@ -24,11 +23,6 @@ public class Controller : MonoBehaviour
     /// Squad controller component.
     /// </summary>
     public SquadController SquadController { get; private set; }
-
-    /// <summary>
-    /// Pool controller component.
-    /// </summary>
-    public PoolController PoolController { get; private set; }
 
     /// <summary>
     /// Enemy controller component.
@@ -58,7 +52,6 @@ public class Controller : MonoBehaviour
 
         SaveController = GetComponent<SaveController>();
         SquadController = GetComponent<SquadController>();
-        PoolController = GetComponent<PoolController>();
         EnemyController = GetComponent<EnemyController>();
     }
 }

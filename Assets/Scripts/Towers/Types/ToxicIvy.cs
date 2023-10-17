@@ -134,7 +134,7 @@ public class ToxicIvy : Tower
     {
         yield return new WaitForSeconds(TimeShots * multiplier);
 
-        ToxicLeaf buffer = Controller.Instance.PoolController.Out(Projectile.GetComponent<PoolableObject>()).GetComponent<ToxicLeaf>();
+        ToxicLeaf buffer = Instantiate(Projectile).GetComponent<ToxicLeaf>();
         buffer.Initialize(transform.localPosition, AugmentationLevel > 3);
 
         _availableLeaves.Push(buffer);

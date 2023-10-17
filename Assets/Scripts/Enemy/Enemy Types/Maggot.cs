@@ -65,7 +65,7 @@ public class Maggot : Enemy
 
         yield return new WaitForSeconds((_animator.runtimeAnimatorController.animationClips[1].length / 0.3f) + 0.05f);
 
-        Controller.Instance.PoolController.Out(_hatchling.GetComponent<PoolableObject>()).GetComponent<Enemy>().Initialize(_path, _pathIndex, _spawner);
+        Instantiate(_hatchling).GetComponent<Enemy>().Initialize(_path, _pathIndex, _spawner);
 
         _goldGained = 0;
         Die(false);

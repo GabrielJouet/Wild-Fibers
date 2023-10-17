@@ -92,12 +92,12 @@ public class TowerSlot : MonoBehaviour
     /// <returns>Yield the construction time</returns>
     private IEnumerator DelayConstruct(Tower tower)
     {
-        _shadowAnimator.SetTrigger(tower.Name);
-        _animator.SetTrigger(tower.Name);
+        _shadowAnimator.SetTrigger(tower.name);
+        _animator.SetTrigger(tower.name);
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
 
-        Controller.Instance.PoolController.Out(tower).GetComponent<Tower>().Initialize(this, _ressourceController, _backgroundSelecter, 0);
+        Instantiate(tower).GetComponent<Tower>().Initialize(this, _ressourceController, _backgroundSelecter, 0);
     }
     #endregion
 

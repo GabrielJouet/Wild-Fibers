@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Enemy base class.
 /// </summary>
-public class Enemy : PoolableObject
+public class Enemy : MonoBehaviour
 {
     #region Display
     [Header("Display")]
@@ -467,8 +467,8 @@ public class Enemy : PoolableObject
             Controller.Instance.EnemyController.Die(_goldGained);
         else
             Controller.Instance.EnemyController.ReachEnd(_numberOfLivesTaken);
-
-        Controller.Instance.PoolController.In(GetComponent<PoolableObject>());
+        
+        Destroy(gameObject);
     }
 
 

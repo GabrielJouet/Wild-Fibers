@@ -41,7 +41,7 @@ public class Vines : Tower
     {
         _coroutineStarted = true;
 
-        Controller.Instance.PoolController.Out(Projectile.GetComponent<PoolableObject>()).GetComponent<ShockWave>().Initialize(_attack, transform, Range, AugmentationLevel > 3);
+        Instantiate(Projectile).GetComponent<ShockWave>().Initialize(_attack, transform, Range, AugmentationLevel > 3);
         yield return new WaitForSeconds(TimeShots);
 
         _coroutineStarted = false;
