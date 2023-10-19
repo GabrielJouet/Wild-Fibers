@@ -12,7 +12,7 @@ public class Controller : MonoBehaviour
     /// <summary>
     /// Instance of itself.
     /// </summary>
-    public static Controller Instance { get; private set; } = null;
+    public static Controller Instance { get; private set; }
 
     /// <summary>
     /// Save controller component.
