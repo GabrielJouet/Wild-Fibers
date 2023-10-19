@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Levels.Path;
 using Levels.Waves;
 using Miscellanious.Enums;
 using Save;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 namespace Levels
 {
@@ -37,11 +37,13 @@ namespace Levels
         [SerializeField]
         private NextWaveButton nextWaveButton;
 
-        /// <summary>
-        /// Bezier curve paths.
-        /// </summary>
+        [Header("Levels Structure")] 
         [SerializeField]
-        private List<RandomPath> availablePath;
+        private List<LevelCreation> levels;
+
+        [SerializeField] 
+        private Light2D levelLight;
+
         
 
         /// <summary>
@@ -60,6 +62,12 @@ namespace Levels
         /// </summary>
         public bool Ended { get; private set; }
 
+        /// <summary>
+        /// Currently loaded level creation data.
+        /// </summary>
+        private LevelCreationData _loadedLevelData;
+
+
 
         /// <summary>
         /// Resource controller used to track lives and gold.
@@ -70,7 +78,7 @@ namespace Levels
         /// Save controller used to track advancements and saves.
         /// </summary>
         private SaveController _saveController;
-
+        
         /// <summary>
         /// Time between each next wave button display
         /// </summary>
@@ -82,7 +90,6 @@ namespace Levels
         private int _waveIndex;
 
 
-
         /// <summary>
         /// Awake method used for initialization.
         /// </summary>
@@ -90,6 +97,14 @@ namespace Levels
         {
             _saveController = Controller.Instance.SaveController;
             LoadedLevel = _saveController.LoadedLevel;
+
+            LevelCreation levelCreation = levels[_saveController.RecoverLevelIndex(LoadedLevel)];
+            levelCreation.ParentObject.SetActive(true);
+            
+            _loadedLevelData = levelCreation.LevelsCreation[(int)LoadedLevel.Type];
+            _loadedLevelData.LevelStructure.SetActive(true);
+            levelLight.color = _loadedLevelData.LightColor;
+            levelLight.intensity = _loadedLevelData.LightIntensity;
 
             _resourceController = GetComponent<RessourceController>();
 
@@ -146,7 +161,7 @@ namespace Levels
                     _saveController.SaveNewEnemyFound(index);
                 }
 
-                _spawners[j].SetNewGroup(availablePath[enemyGroup.PathIndex], enemyGroup, this);
+                _spawners[j].SetNewGroup(_loadedLevelData.Paths[enemyGroup.PathIndex], enemyGroup, this);
                 j++;
             }
         }

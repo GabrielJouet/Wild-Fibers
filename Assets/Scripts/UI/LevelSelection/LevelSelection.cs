@@ -224,7 +224,7 @@ namespace UI.LevelSelection
             launchBattleMenu.onClick.AddListener(() =>
             {
                 Controller.Instance.SaveController.LoadedLevel = _level.Classic;
-                sceneChanger.LoadScene(_level.Classic.PlaySceneName);
+                sceneChanger.LoadScene("CombatScene");
             });
         }
 
@@ -257,7 +257,7 @@ namespace UI.LevelSelection
             launchBattleMenu.onClick.AddListener(() =>
             {
                 Controller.Instance.SaveController.LoadedLevel = buffer;
-                sceneChanger.LoadScene(buffer.PlaySceneName);
+                sceneChanger.LoadScene("CombatScene");
             });
         }
 

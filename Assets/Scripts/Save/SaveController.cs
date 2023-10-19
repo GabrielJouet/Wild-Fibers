@@ -262,7 +262,7 @@ namespace Save
 		/// </summary>
 		/// <param name="levelSearched">The searched level</param>
 		/// <returns>The level index searched</returns>
-		private int RecoverLevelIndex(Level levelSearched)
+		public int RecoverLevelIndex(Level levelSearched)
 		{
 			int i;
 			for (i = 0; i < Levels.Count; i ++)
