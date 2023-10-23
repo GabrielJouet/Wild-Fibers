@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enemies.Enemy_Types;
+using UnityEngine;
 
 /// <summary>
 /// Tower collider, used to recover enemies in range.

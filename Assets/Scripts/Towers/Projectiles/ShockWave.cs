@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enemies.Enemy_Types;
+using UnityEngine;
 
 /// <summary>
 /// ShockWave is used by vines like towers as a projectile.

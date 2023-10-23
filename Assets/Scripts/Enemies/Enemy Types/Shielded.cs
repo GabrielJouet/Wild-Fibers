@@ -1,67 +1,69 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Enemies;
 using UnityEngine;
 
-/// <summary>
-/// Shielded enemy, from time to time this enemy will stop and protects itself.
-/// </summary>
-public class Shielded : Enemy
+namespace Enemies.Enemy_Types
 {
-    [Header("Shield related")]
-
     /// <summary>
-    /// Time between every shield.
+    /// Shielded enemy, from time to time this enemy will stop and protects itself.
     /// </summary>
-    [SerializeField]
-    protected float _timeBetweenShield;
-
-    /// <summary>
-    /// Shield value when not shielding.
-    /// </summary>
-    [SerializeField]
-    protected int _baseShieldValue;
-
-
-
-    /// <summary>
-    /// Initialize method.
-    /// </summary>
-    /// <param name="newPath">New path used</param>
-    /// <param name="pathIndex">Current progression on the path</param>
-    public override void Initialize(List<Vector2> newPath, int pathIndex, Spawner spawner)
+    public class Shielded : Enemy
     {
-        base.Initialize(newPath, pathIndex, spawner);
-        Armor = _baseShieldValue;
-        StartCoroutine(DelayShield());
-    }
+        [Header("Shield related")]
+
+        /// <summary>
+        /// Time between every shield.
+        /// </summary>
+        [SerializeField]
+        protected float timeBetweenShield;
+
+        /// <summary>
+        /// Shield value when not shielding.
+        /// </summary>
+        [SerializeField]
+        protected int baseShieldValue;
 
 
-    /// <summary>
-    /// Coroutine used to delay every shield use.
-    /// </summary>
-    protected IEnumerator DelayShield()
-    {
-        while (true)
+
+        /// <summary>
+        /// Initialize method.
+        /// </summary>
+        /// <param name="newPath">New path used</param>
+        /// <param name="pathIndex">Current progression on the path</param>
+        public override void Initialize(List<Vector2> newPath, int pathIndex, Spawner spawner)
         {
-            yield return new WaitForSeconds(_timeBetweenShield + Random.Range(-_timeBetweenShield / 20, _timeBetweenShield / 20));
+            base.Initialize(newPath, pathIndex, spawner);
+            Armor = baseShieldValue;
+            StartCoroutine(DelayShield());
+        }
 
-            _moving = false;
 
-            if (_dots.Count > 0)
-                Armor = ArmorMax - (ArmorMax - Armor);
-            else
-                Armor = ArmorMax;
-            _animator.SetTrigger("shield");
+        /// <summary>
+        /// Coroutine used to delay every shield use.
+        /// </summary>
+        protected IEnumerator DelayShield()
+        {
+            while (true)
+            {
+                yield return new WaitForSeconds(timeBetweenShield + Random.Range(-timeBetweenShield / 20, timeBetweenShield / 20));
 
-            yield return new WaitForSeconds(_animator.runtimeAnimatorController.animationClips[1].length / 0.5f);
+                _moving = false;
 
-            if (_dots.Count > 0)
-                Armor = _baseShieldValue - (ArmorMax - Armor);
-            else
-                Armor = _baseShieldValue;
+                if (_dots.Count > 0)
+                    Armor = ArmorMax - (ArmorMax - Armor);
+                else
+                    Armor = ArmorMax;
+                animator.SetTrigger("shield");
 
-            _moving = true;
+                yield return new WaitForSeconds(animator.runtimeAnimatorController.animationClips[1].length / 0.5f);
+
+                if (_dots.Count > 0)
+                    Armor = baseShieldValue - (ArmorMax - Armor);
+                else
+                    Armor = baseShieldValue;
+
+                _moving = true;
+            }
         }
     }
 }

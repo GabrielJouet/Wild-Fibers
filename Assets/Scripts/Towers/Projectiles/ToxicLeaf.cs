@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enemies.Enemy_Types;
+using UnityEngine;
 
 /// <summary>
 /// Class used by Toxic like towers as a projectile.

@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using Enemies.Enemy_Types;
+
+/// <summary>
 /// Class used to handle enemy info in library.
 /// </summary>
 public class EnemyInfo : ObjectInfo

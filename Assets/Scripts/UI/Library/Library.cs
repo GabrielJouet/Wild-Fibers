@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Enemies.Enemy_Types;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -279,11 +280,11 @@ public class Library : MonoBehaviour
 
         _enemyName.text = newEnemy.name;
         _enemyDescription.text = newEnemy.Description;
-        _enemyGold.text = newEnemy.GoldInfo;
+        _enemyGold.text = newEnemy.GoldGained.ToString();
         _enemyHealth.text = newEnemy.HealthMax.ToString();
-        _enemySpeed.text = newEnemy.SpeedInfo;
-        _enemyArmor.text = newEnemy.ArmorInfo;
-        _enemyResistance.text = newEnemy.ResistanceInfo;
+        _enemySpeed.text = Converter.TransformSpeed(newEnemy.SpeedMax);
+        _enemyArmor.text = Converter.TransformArmor(newEnemy.ArmorMax / 100);
+        _enemyResistance.text = Converter.TransformResistance(newEnemy.Resistance / 100);
         _enemyLivesLost.text = newEnemy.LivesTaken.ToString();
         _enemySpecial.text = newEnemy.Special;
     }

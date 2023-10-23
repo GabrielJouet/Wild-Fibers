@@ -296,6 +296,25 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -314,23 +333,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: 
-  _selector: {fileID: 1960136301919603500}
-  _healthBar: {fileID: 6142516275889491174}
-  _dotDisplay: {fileID: 7707656847049430123}
-  _spriteRenderer: {fileID: 6890849393205655141}
-  _animator: {fileID: 5726025113749804578}
-  _healthMax: 0
-  _armorMax: 0
-  _resistance: 0
-  _speedMax: 0
-  _numberOfLivesTaken: 0
-  _goldGained: 0
-  _flying: 0
-  _damagePosition: {fileID: 8076426843298756790}
-  _description: 
-  _screenShot: {fileID: 0}
-  _special: 
+  selector: {fileID: 1960136301919603500}
+  healthBar: {fileID: 6142516275889491174}
+  dotDisplay: {fileID: 7707656847049430123}
+  spriteRenderer: {fileID: 6890849393205655141}
+  animator: {fileID: 5726025113749804578}
+  <HealthMax>k__BackingField: 0
+  <ArmorMax>k__BackingField: 0
+  <Resistance>k__BackingField: 0
+  <SpeedMax>k__BackingField: 0
+  <LivesTaken>k__BackingField: 0
+  <GoldGained>k__BackingField: 0
+  <Flying>k__BackingField: 0
+  <DamagePosition>k__BackingField: {x: 0, y: 0}
+  <Description>k__BackingField: 
+  <ScreenShot>k__BackingField: {fileID: 0}
+  <Special>k__BackingField: 
 --- !u!1 &3550178842742010830
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,7 +441,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &5726025113749804578
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -440,7 +458,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &8623543066297710264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,8 +472,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updates: 1
-  _target: {fileID: 4526737602585744538}
+  update: 0
+  target: {fileID: 0}
 --- !u!1 &4586774241790363650
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,8 +519,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad7522eb9a1802428a6d6bf81753aef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthBar: {fileID: 6885999691147670922}
-  _spriteRenderer: {fileID: 6955961882266501307}
+  healthBar: {fileID: 6885999691147670922}
+  spriteRenderer: {fileID: 6955961882266501307}
 --- !u!1 &7707656847049430123
 GameObject:
   m_ObjectHideFlags: 0

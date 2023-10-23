@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using Enemies.Enemy_Types;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -193,7 +194,7 @@ public class BackgroudSelecter : MonoBehaviour
         
         _lifeValue.text = enemyToDisplay.Health + " / " + enemyToDisplay.HealthMax;
         _enemyName.text = enemyToDisplay.name;
-        _armorValue.text = enemyToDisplay.ArmorInfo;
+        _armorValue.text = Converter.TransformArmor(enemyToDisplay.Armor / 100);
         _livesLostValue.text = enemyToDisplay.LivesTaken.ToString();
     }
 

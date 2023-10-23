@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using Enemies.Enemy_Types;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Enemies
 {
@@ -12,7 +12,7 @@ namespace Enemies
         /// <summary>
         /// All enemies in a list format.
         /// </summary>
-        [field: SerializeField, FormerlySerializedAs("_allEnemies")]
+        [field: SerializeField]
         public List<Enemy> Enemies { get; private set; }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Enemies
 {
@@ -11,13 +10,13 @@ namespace Enemies
         /// <summary>
         /// Transform component of the health bar.
         /// </summary>
-        [FormerlySerializedAs("_healthBar")] [SerializeField]
+        [SerializeField]
         private Transform healthBar;
 
         /// <summary>
         /// Sprite renderer component of the health bar.
         /// </summary>
-        [FormerlySerializedAs("_spriteRenderer")] [SerializeField]
+        [SerializeField]
         private SpriteRenderer spriteRenderer;
 
 
