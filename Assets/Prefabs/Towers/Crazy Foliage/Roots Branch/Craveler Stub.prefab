@@ -100,6 +100,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -118,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updates: 0
-  _target: {fileID: 0}
+  update: 0
+  target: {fileID: 0}
 --- !u!114 &1080351901052007690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,38 +151,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7710bf5e9c31ddd419a952ee2d840c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Craveler Stub
-  _transformRange: {fileID: 4806223525183258625}
-  _collider: {fileID: 7749480133040294714}
-  _selector: {fileID: 8321813927317738175}
-  _description: A powerful and devastating roots generator
-  _libraryDescription: In order to seek resources far below the surface, these roots
-    fused with metal by using some kind of magic. Hopefully for insects, these metallic
-    roots are slow to use.
+  transformRange: {fileID: 4806223525183258625}
+  towerCollider: {fileID: 4806223525183258625}
+  selector: {fileID: 8321813927317738175}
+  <Description>k__BackingField: A powerful and devastating roots generator
+  <LibraryDescription>k__BackingField: In order to seek resources far below the surface,
+    these roots fused with metal by using some kind of magic. Hopefully for insects,
+    these metallic roots are slow to use.
   _price: 270
-  _icon: {fileID: 21300000, guid: be6ff14271a38d742b919f1f0b2db118, type: 3}
-  _projectileUsed: {fileID: 3530943198929188429, guid: 486543b54c3e008478b0aa8e5834702f,
+  <Icon>k__BackingField: {fileID: 21300000, guid: be6ff14271a38d742b919f1f0b2db118,
     type: 3}
-  _timeBetweenShots: 1.9
-  _damage: 22
-  _armorThrough: 32
-  _numberOfShots: 3
-  _range: 1.15
-  _canHitFlying: 0
-  _shotsRandomly: 0
-  _armorThroughMalus: 0
-  _damageOverTime: 0
-  _dotDuration: 0
-  _towerUpgrades: []
-  _towerSpecs: []
-  _towerAugmentations: []
-  _special: Only ground
-  _screenShot: {fileID: 21300000, guid: ebe803496fd9c304a9d8ba450ffeb2d8, type: 3}
+  <Projectile>k__BackingField: {fileID: 3530943198929188429, guid: 486543b54c3e008478b0aa8e5834702f,
+    type: 3}
+  <TimeShots>k__BackingField: 1.9
+  <Damage>k__BackingField: 22
+  <ArmorThrough>k__BackingField: 32
+  <Shots>k__BackingField: 3
+  <Range>k__BackingField: 1.15
+  <HitFlying>k__BackingField: 0
+  <ShotsRandomly>k__BackingField: 0
+  <ArmorThroughMalus>k__BackingField: 0
+  <Dot>k__BackingField: 0
+  <DotDuration>k__BackingField: 0
+  <Upgrades>k__BackingField: []
+  <Specs>k__BackingField: []
+  <Augmentations>k__BackingField: []
+  <Special>k__BackingField: Only ground
+  <ScreenShot>k__BackingField: {fileID: 21300000, guid: ebe803496fd9c304a9d8ba450ffeb2d8,
+    type: 3}
 --- !u!1001 &1080351898989631500
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1080351901052007685}
     m_Modifications:
     - target: {fileID: 2616836571559558307, guid: a0747cfa70861f444a27da50f9419661,
@@ -237,6 +258,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0747cfa70861f444a27da50f9419661, type: 3}
 --- !u!4 &7749480133040294714 stripped
 Transform:
@@ -249,6 +273,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1080351901052007685}
     m_Modifications:
     - target: {fileID: 966113606595656746, guid: f2cf1260bb4d0984d978d4c6eef7553a,
@@ -317,6 +342,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2cf1260bb4d0984d978d4c6eef7553a, type: 3}
 --- !u!4 &4806223525183258625 stripped
 Transform:
@@ -329,6 +357,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1080351901052007685}
     m_Modifications:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
@@ -417,6 +446,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbd39873f2e903e43b64fb0035085e24, type: 3}
 --- !u!4 &6241140142085426441 stripped
 Transform:

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Towers;
+using UnityEngine;
 
 /// <summary>
 /// Class used in Library to contain one tower info.

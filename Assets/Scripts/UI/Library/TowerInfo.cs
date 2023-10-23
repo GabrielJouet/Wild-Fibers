@@ -1,4 +1,6 @@
-﻿/// <summary>
+﻿using Towers;
+
+/// <summary>
 /// Tower info button used in library.
 /// </summary>
 public class TowerInfo : ObjectInfo

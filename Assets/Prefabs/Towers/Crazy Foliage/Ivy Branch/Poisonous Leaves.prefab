@@ -100,6 +100,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -118,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updates: 0
-  _target: {fileID: 0}
+  update: 0
+  target: {fileID: 0}
 --- !u!114 &5787756435907015991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,40 +151,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: deb0ef7fc86b9d441ba03ad347ad199e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Poisonous Leaves
-  _transformRange: {fileID: 2026392581298113131}
-  _collider: {fileID: 3830237383561997893}
-  _selector: {fileID: 3301444368728862877}
-  _description: A multi shoter poisonous flower
-  _libraryDescription: A very efficient cold killer. Every insect trying to swallow
-    these leaves or seeds will be posioned from the inside. Even if not eaten, these
-    seeds are known to inflict severe loss to insects. With  higher rate of fire
-    and seeds production thant its predecessor, the Posionous Leaves is ready to
-    fight.
+  transformRange: {fileID: 2026392581298113131}
+  towerCollider: {fileID: 2026392581298113131}
+  selector: {fileID: 3301444368728862877}
+  <Description>k__BackingField: A multi shoter poisonous flower
+  <LibraryDescription>k__BackingField: A very efficient cold killer. Every insect
+    trying to swallow these leaves or seeds will be posioned from the inside. Even
+    if not eaten, these seeds are known to inflict severe loss to insects. With 
+    higher rate of fire and seeds production thant its predecessor, the Posionous
+    Leaves is ready to fight.
   _price: 245
-  _icon: {fileID: 21300000, guid: 01c3cee923afd764f90cc2584d2aa17d, type: 3}
-  _projectileUsed: {fileID: 6202831532110672975, guid: 6d1ab6e57f0408b46b61c99a97400f16,
+  <Icon>k__BackingField: {fileID: 21300000, guid: 01c3cee923afd764f90cc2584d2aa17d,
     type: 3}
-  _timeBetweenShots: 1.9
-  _damage: 0
-  _armorThrough: 0
-  _numberOfShots: 3
-  _range: 1.15
-  _canHitFlying: 1
-  _shotsRandomly: 1
-  _armorThroughMalus: 7
-  _damageOverTime: 3
-  _dotDuration: 4.5
-  _towerUpgrades: []
-  _towerSpecs: []
-  _towerAugmentations: []
-  _special: Poison
-  _screenShot: {fileID: 21300000, guid: f09bc56956fc3094c8c56796779a80d0, type: 3}
+  <Projectile>k__BackingField: {fileID: 6202831532110672975, guid: 6d1ab6e57f0408b46b61c99a97400f16,
+    type: 3}
+  <TimeShots>k__BackingField: 1.9
+  <Damage>k__BackingField: 0
+  <ArmorThrough>k__BackingField: 0
+  <Shots>k__BackingField: 3
+  <Range>k__BackingField: 1.15
+  <HitFlying>k__BackingField: 1
+  <ShotsRandomly>k__BackingField: 1
+  <ArmorThroughMalus>k__BackingField: 7
+  <Dot>k__BackingField: 3
+  <DotDuration>k__BackingField: 4.5
+  <Upgrades>k__BackingField: []
+  <Specs>k__BackingField: []
+  <Augmentations>k__BackingField: []
+  <Special>k__BackingField: Poison
+  <ScreenShot>k__BackingField: {fileID: 21300000, guid: f09bc56956fc3094c8c56796779a80d0,
+    type: 3}
 --- !u!1001 &5787756434766708083
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5787756435907015990}
     m_Modifications:
     - target: {fileID: 2616836571559558307, guid: a0747cfa70861f444a27da50f9419661,
@@ -239,6 +260,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0747cfa70861f444a27da50f9419661, type: 3}
 --- !u!4 &3830237383561997893 stripped
 Transform:
@@ -251,6 +275,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5787756435907015990}
     m_Modifications:
     - target: {fileID: 966113606595656746, guid: f2cf1260bb4d0984d978d4c6eef7553a,
@@ -319,6 +344,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2cf1260bb4d0984d978d4c6eef7553a, type: 3}
 --- !u!4 &2026392581298113131 stripped
 Transform:
@@ -331,6 +359,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5787756435907015990}
     m_Modifications:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
@@ -419,6 +448,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbd39873f2e903e43b64fb0035085e24, type: 3}
 --- !u!4 &590227050754666283 stripped
 Transform:

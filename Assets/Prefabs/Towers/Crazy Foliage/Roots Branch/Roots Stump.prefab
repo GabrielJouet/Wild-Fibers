@@ -101,6 +101,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -119,8 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updates: 0
-  _target: {fileID: 0}
+  update: 0
+  target: {fileID: 0}
 --- !u!114 &8992812145563469472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,44 +152,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7710bf5e9c31ddd419a952ee2d840c9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Roots Stump
-  _transformRange: {fileID: 3495338121445860552}
-  _collider: {fileID: 1853620797473741069}
-  _selector: {fileID: 94515090449025949}
-  _description: An old stump with ferocious sharp roots
-  _libraryDescription: An old stump of a forgotten tree. Legends tells this tree
-    was reaching clouds and can use magic daily.
+  transformRange: {fileID: 3495338121445860552}
+  towerCollider: {fileID: 3495338121445860552}
+  selector: {fileID: 94515090449025949}
+  <Description>k__BackingField: An old stump with ferocious sharp roots
+  <LibraryDescription>k__BackingField: An old stump of a forgotten tree. Legends
+    tells this tree was reaching clouds and can use magic daily.
   _price: 165
-  _icon: {fileID: 21300000, guid: bff7ca8cdc8698642aef3dfdd18ee513, type: 3}
-  _projectileUsed: {fileID: 3530943198929188429, guid: 486543b54c3e008478b0aa8e5834702f,
+  <Icon>k__BackingField: {fileID: 21300000, guid: bff7ca8cdc8698642aef3dfdd18ee513,
     type: 3}
-  _timeBetweenShots: 2.75
-  _damage: 15
-  _armorThrough: 15
-  _numberOfShots: 3
-  _range: 1.2
-  _canHitFlying: 0
-  _shotsRandomly: 0
-  _armorThroughMalus: 0
-  _damageOverTime: 0
-  _dotDuration: 0
-  _towerUpgrades:
+  <Projectile>k__BackingField: {fileID: 3530943198929188429, guid: 486543b54c3e008478b0aa8e5834702f,
+    type: 3}
+  <TimeShots>k__BackingField: 2.75
+  <Damage>k__BackingField: 15
+  <ArmorThrough>k__BackingField: 15
+  <Shots>k__BackingField: 3
+  <Range>k__BackingField: 1.2
+  <HitFlying>k__BackingField: 0
+  <ShotsRandomly>k__BackingField: 0
+  <ArmorThroughMalus>k__BackingField: 0
+  <Dot>k__BackingField: 0
+  <DotDuration>k__BackingField: 0
+  <Upgrades>k__BackingField:
   - {fileID: 1080351901052007690, guid: 6123e10b00eadc348b9f04e336789439, type: 3}
   - {fileID: 7283818554149120610, guid: 8de10d6bb0de9f1418b80b84fca1c650, type: 3}
-  _towerSpecs: []
-  _towerAugmentations:
+  <Specs>k__BackingField: []
+  <Augmentations>k__BackingField:
   - {fileID: 11400000, guid: 2a7815a84dbd89d4991228a37adfed52, type: 2}
   - {fileID: 11400000, guid: cc4740225c341994a848a490cd779218, type: 2}
   - {fileID: 11400000, guid: 61e58c90aa85b6c45a9bc6a1bf0da809, type: 2}
   - {fileID: 11400000, guid: 1183047c2476d604d96102d730cbd86b, type: 2}
   - {fileID: 11400000, guid: df106fa72cb921c42bcbabba3856f70e, type: 2}
-  _special: Only ground
-  _screenShot: {fileID: 21300000, guid: cf74c7114ee2c63409370abc7ca70ecf, type: 3}
+  <Special>k__BackingField: Only ground
+  <ScreenShot>k__BackingField: {fileID: 21300000, guid: cf74c7114ee2c63409370abc7ca70ecf,
+    type: 3}
 --- !u!1001 &8992812145189095995
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 8992812145563469479}
     m_Modifications:
     - target: {fileID: 2616836571559558307, guid: a0747cfa70861f444a27da50f9419661,
@@ -244,6 +265,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0747cfa70861f444a27da50f9419661, type: 3}
 --- !u!4 &1853620797473741069 stripped
 Transform:
@@ -256,6 +280,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 8992812145563469479}
     m_Modifications:
     - target: {fileID: 966113606595656746, guid: f2cf1260bb4d0984d978d4c6eef7553a,
@@ -324,6 +349,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2cf1260bb4d0984d978d4c6eef7553a, type: 3}
 --- !u!4 &3495338121445860552 stripped
 Transform:
@@ -336,6 +364,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 8992812145563469479}
     m_Modifications:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
@@ -424,6 +453,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbd39873f2e903e43b64fb0035085e24, type: 3}
 --- !u!1 &94515090449025949 stripped
 GameObject:

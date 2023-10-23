@@ -100,6 +100,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -118,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updates: 0
-  _target: {fileID: 0}
+  update: 0
+  target: {fileID: 0}
 --- !u!114 &4739830843829354791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,38 +151,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c60065a7758294db4bd3b3b4f369bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Spike Grower
-  _transformRange: {fileID: 975679726211895701}
-  _collider: {fileID: 2644389516715710698}
-  _selector: {fileID: 4342711334488492381}
-  _description: A spiker and larger version of the bramble
-  _libraryDescription: Usually found in dryer places, this plant is one of the best
-    offense against crowds. Its unique vines size and spike hardness make it a formidable
-    foe. Unprotected insects are afraid of this killer.
+  transformRange: {fileID: 975679726211895701}
+  towerCollider: {fileID: 975679726211895701}
+  selector: {fileID: 4342711334488492381}
+  <Description>k__BackingField: A spiker and larger version of the bramble
+  <LibraryDescription>k__BackingField: Usually found in dryer places, this plant
+    is one of the best offense against crowds. Its unique vines size and spike hardness
+    make it a formidable foe. Unprotected insects are afraid of this killer.
   _price: 240
-  _icon: {fileID: 21300000, guid: ab0a42eb98b6a7e4e87f8b3679778576, type: 3}
-  _projectileUsed: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,
+  <Icon>k__BackingField: {fileID: 21300000, guid: ab0a42eb98b6a7e4e87f8b3679778576,
     type: 3}
-  _timeBetweenShots: 4.2
-  _damage: 14
-  _armorThrough: 15
-  _numberOfShots: 1
-  _range: 0.95
-  _canHitFlying: 1
-  _shotsRandomly: 0
-  _armorThroughMalus: 0
-  _damageOverTime: 0
-  _dotDuration: 0
-  _towerUpgrades: []
-  _towerSpecs: []
-  _towerAugmentations: []
-  _special: Wave
-  _screenShot: {fileID: 21300000, guid: f9f459813c058b841a6c0f1ac3a492d7, type: 3}
+  <Projectile>k__BackingField: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,
+    type: 3}
+  <TimeShots>k__BackingField: 4.2
+  <Damage>k__BackingField: 14
+  <ArmorThrough>k__BackingField: 15
+  <Shots>k__BackingField: 1
+  <Range>k__BackingField: 0.95
+  <HitFlying>k__BackingField: 1
+  <ShotsRandomly>k__BackingField: 0
+  <ArmorThroughMalus>k__BackingField: 0
+  <Dot>k__BackingField: 0
+  <DotDuration>k__BackingField: 0
+  <Upgrades>k__BackingField: []
+  <Specs>k__BackingField: []
+  <Augmentations>k__BackingField: []
+  <Special>k__BackingField: Wave
+  <ScreenShot>k__BackingField: {fileID: 21300000, guid: f9f459813c058b841a6c0f1ac3a492d7,
+    type: 3}
 --- !u!1001 &4739830843280471389
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4739830843829354790}
     m_Modifications:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
@@ -252,6 +273,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbd39873f2e903e43b64fb0035085e24, type: 3}
 --- !u!4 &1848048949005194987 stripped
 Transform:
@@ -270,6 +294,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4739830843829354790}
     m_Modifications:
     - target: {fileID: 2616836571559558307, guid: a0747cfa70861f444a27da50f9419661,
@@ -343,6 +368,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0747cfa70861f444a27da50f9419661, type: 3}
 --- !u!4 &2644389516715710698 stripped
 Transform:
@@ -355,6 +383,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4739830843829354790}
     m_Modifications:
     - target: {fileID: 966113606595656746, guid: f2cf1260bb4d0984d978d4c6eef7553a,
@@ -423,6 +452,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2cf1260bb4d0984d978d4c6eef7553a, type: 3}
 --- !u!4 &975679726211895701 stripped
 Transform:

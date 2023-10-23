@@ -1,5 +1,6 @@
 ﻿using Enemies.Enemy_Types;
 using TMPro;
+using Towers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -268,7 +269,7 @@ public class BackgroudSelecter : MonoBehaviour
             DisableTowerInformation();
             DisableTowerSellButton();
 
-            selectedTower.DesactivateRangeDisplay();
+            selectedTower.DeactivateRangeDisplay();
         }
 
         _previousTower = selectedTower;
@@ -280,7 +281,7 @@ public class BackgroudSelecter : MonoBehaviour
     /// </summary>
     public void DesactivateTower()
     {
-        _previousTower.DesactivateRangeDisplay();
+        _previousTower.DeactivateRangeDisplay();
 
         DisableTowerSellButton();
         DisableTowerChooseButton();

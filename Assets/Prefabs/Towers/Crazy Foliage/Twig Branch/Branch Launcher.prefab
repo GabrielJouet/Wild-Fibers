@@ -100,6 +100,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -118,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updates: 0
-  _target: {fileID: 0}
+  update: 0
+  target: {fileID: 0}
 --- !u!114 &460024003024786714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,37 +151,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3315191245a9fb4ab7cfbcdc83d503c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Branch Launcher
-  _transformRange: {fileID: 5345590119244065888}
-  _collider: {fileID: 7140409036441972706}
-  _selector: {fileID: 8926555152830931055}
-  _description: Larger than before, it shoots arrows with a greater strength
-  _libraryDescription: By growing more slowly than its predecessor, this plant is
-    able to tear appart insect chitin. But, each shot needs more preparation.
+  transformRange: {fileID: 5345590119244065888}
+  towerCollider: {fileID: 5345590119244065888}
+  selector: {fileID: 8926555152830931055}
+  <Description>k__BackingField: Larger than before, it shoots arrows with a greater
+    strength
+  <LibraryDescription>k__BackingField: By growing more slowly than its predecessor,
+    this plant is able to tear appart insect chitin. But, each shot needs more preparation.
   _price: 185
-  _icon: {fileID: 21300000, guid: b725ba58a4052b94b917cbdf62c2fa21, type: 3}
-  _projectileUsed: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
+  <Icon>k__BackingField: {fileID: 21300000, guid: b725ba58a4052b94b917cbdf62c2fa21,
     type: 3}
-  _timeBetweenShots: 1.4
-  _damage: 23
-  _armorThrough: 32
-  _numberOfShots: 1
-  _range: 1.4
-  _canHitFlying: 1
-  _shotsRandomly: 0
-  _armorThroughMalus: 0
-  _damageOverTime: 0
-  _dotDuration: 0
-  _towerUpgrades: []
-  _towerSpecs: []
-  _towerAugmentations: []
-  _special: Far reacher
-  _screenShot: {fileID: 21300000, guid: 3c8344849da1e694ca243bcdd12394a4, type: 3}
+  <Projectile>k__BackingField: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
+    type: 3}
+  <TimeShots>k__BackingField: 1.4
+  <Damage>k__BackingField: 23
+  <ArmorThrough>k__BackingField: 32
+  <Shots>k__BackingField: 1
+  <Range>k__BackingField: 1.4
+  <HitFlying>k__BackingField: 1
+  <ShotsRandomly>k__BackingField: 0
+  <ArmorThroughMalus>k__BackingField: 0
+  <Dot>k__BackingField: 0
+  <DotDuration>k__BackingField: 0
+  <Upgrades>k__BackingField: []
+  <Specs>k__BackingField: []
+  <Augmentations>k__BackingField: []
+  <Special>k__BackingField: Far reacher
+  <ScreenShot>k__BackingField: {fileID: 21300000, guid: 3c8344849da1e694ca243bcdd12394a4,
+    type: 3}
 --- !u!1001 &460024002891398356
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 460024003024786693}
     m_Modifications:
     - target: {fileID: 2616836571559558307, guid: a0747cfa70861f444a27da50f9419661,
@@ -236,6 +258,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0747cfa70861f444a27da50f9419661, type: 3}
 --- !u!4 &7140409036441972706 stripped
 Transform:
@@ -248,6 +273,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 460024003024786693}
     m_Modifications:
     - target: {fileID: 966113606595656746, guid: f2cf1260bb4d0984d978d4c6eef7553a,
@@ -316,6 +342,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2cf1260bb4d0984d978d4c6eef7553a, type: 3}
 --- !u!4 &5345590119244065888 stripped
 Transform:
@@ -328,6 +357,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 460024003024786693}
     m_Modifications:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
@@ -416,6 +446,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbd39873f2e903e43b64fb0035085e24, type: 3}
 --- !u!4 &6773555490315665369 stripped
 Transform:
