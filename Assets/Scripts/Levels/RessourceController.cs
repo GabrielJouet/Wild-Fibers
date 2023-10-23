@@ -59,7 +59,15 @@ namespace Levels
         /// </summary>
         private LevelController _levelController;
 
+        /// <summary>
+        /// Loose animation in a hash format.
+        /// </summary>
         private static readonly int LoseAnimation = Animator.StringToHash("lose");
+        
+        /// <summary>
+        /// Instance of ressource controller in a scene.
+        /// </summary>
+        public static RessourceController Instance { get; private set; }
 
 
         /// <summary>
@@ -67,6 +75,7 @@ namespace Levels
         /// </summary>
         private void Start()
         {
+            Instance = this;
             _levelController = GetComponent<LevelController>();
 
             _lifeCountMax = _levelController.LoadedLevel.LifeCount + Controller.Instance.SquadController.CurrentSquad.LivesBonus;

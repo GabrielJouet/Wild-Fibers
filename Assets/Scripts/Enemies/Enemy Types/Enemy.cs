@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Enemies;
+using Levels;
 using UnityEngine;
 
 /// <summary>
@@ -464,9 +466,9 @@ public class Enemy : MonoBehaviour
         StopAllCoroutines();
 
         if (!reachEnd)
-            EnemyController.Die(_goldGained);
+            RessourceController.Instance.AddGold(_goldGained, true);
         else
-            EnemyController.ReachEnd(_numberOfLivesTaken);
+            RessourceController.Instance.RemoveLives(_numberOfLivesTaken);
         
         Destroy(gameObject);
     }

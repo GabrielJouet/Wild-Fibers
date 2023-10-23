@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Enemies;
 using Levels.Waves;
 using Miscellanious.Enums;
 using Save;
@@ -38,14 +39,20 @@ namespace Levels
         private NextWaveButton nextWaveButton;
 
         [Header("Levels Structure")] 
+        
+        /// <summary>
+        /// All levels creation data available.
+        /// </summary>
         [SerializeField]
         private List<LevelCreation> levels;
 
+        /// <summary>
+        /// Light component used in the level.
+        /// </summary>
         [SerializeField] 
         private Light2D levelLight;
 
         
-
         /// <summary>
         /// Entity spawner prefab.
         /// </summary>
