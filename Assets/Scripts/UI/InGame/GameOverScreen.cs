@@ -2,7 +2,6 @@
 using Levels;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.InGame
@@ -53,19 +52,6 @@ namespace UI.InGame
 
         [Header("Components")]
 
-
-        /// <summary>
-        /// Box collider component.
-        /// </summary>
-        [SerializeField]
-        private BoxCollider2D boxCollider;
-
-        /// <summary>
-        /// Rect transform component.
-        /// </summary>
-        [SerializeField]
-        private RectTransform rectTransform;
-
         /// <summary>
         /// Display controller object.
         /// </summary>
@@ -83,9 +69,6 @@ namespace UI.InGame
         {
             displayController.PauseGame();
             displayController.DisplayObject(gameObject);
-
-            boxCollider.enabled = true;
-            boxCollider.size = new Vector2(Screen.width + rectTransform.sizeDelta.x, Screen.height + rectTransform.sizeDelta.y);
 
             gameScreen.gameObject.SetActive(true);
 

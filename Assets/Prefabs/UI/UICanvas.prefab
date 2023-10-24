@@ -2275,7 +2275,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4541158168375821627}
-  - component: {fileID: 4541158168375821624}
   m_Layer: 5
   m_Name: TowerDeconstruct
   m_TagString: Untagged
@@ -2304,23 +2303,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4541158168375821624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4541158168375821626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2074f9dbefc4c14c9d90664f3bb6038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonComponent: {fileID: 0}
-  buttonImage: {fileID: 0}
-  backgroundImage: {fileID: 0}
-  priceText: {fileID: 0}
-  lockedSprite: {fileID: 0}
 --- !u!1 &4541158168376624177
 GameObject:
   m_ObjectHideFlags: 0
@@ -4866,7 +4848,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6445939989494718104, guid: e50b5478ea3721b45b4004bfccfb9c18, type: 3}
+    - {fileID: 6700239046471915818, guid: e50b5478ea3721b45b4004bfccfb9c18, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

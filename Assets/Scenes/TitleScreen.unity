@@ -608,7 +608,8 @@ PrefabInstance:
       propertyPath: m_text
       value: Quit Game
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4277809643697568838, guid: 862c3cdf711a3444fa92c0b2721f26af, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
