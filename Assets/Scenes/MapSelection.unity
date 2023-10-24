@@ -7281,13 +7281,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59be00cf645175040a6c5dd42949358f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skills:
+  skills:
   - {fileID: 1795175977}
   - {fileID: 460018207}
   - {fileID: 1271457707}
   - {fileID: 2024673326}
   - {fileID: 546006573}
-  _description: {fileID: 752928288}
+  description: {fileID: 752928288}
 --- !u!114 &7950376547906839224
 MonoBehaviour:
   m_ObjectHideFlags: 0
