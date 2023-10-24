@@ -3176,6 +3176,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 1723518841}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 1723518841}
@@ -5956,6 +5961,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 3728384712623645578}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _backgroundSelecter
@@ -10826,6 +10836,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 606935110}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 0}
@@ -11123,6 +11138,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 606935110}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 0}
@@ -11382,9 +11402,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 76563471}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _canvas
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: enemyName
+      value: 
+      objectReference: {fileID: 215093664}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: lifeValue
+      value: 
+      objectReference: {fileID: 215093663}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: towerName
+      value: 
+      objectReference: {fileID: 232736431}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: _enemyName
@@ -11407,6 +11447,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: armorValue
+      value: 
+      objectReference: {fileID: 215093662}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: damageText
+      value: 
+      objectReference: {fileID: 232736430}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _armorValue
       value: 
       objectReference: {fileID: 0}
@@ -11422,6 +11472,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: fireRateText
+      value: 
+      objectReference: {fileID: 232736429}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _chooseButton
       value: 
       objectReference: {fileID: 0}
@@ -11432,6 +11487,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: breakArmorText
+      value: 
+      objectReference: {fileID: 232736428}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: livesLostValue
+      value: 
+      objectReference: {fileID: 215093661}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _breakArmorText
       value: 
       objectReference: {fileID: 0}
@@ -11440,6 +11505,21 @@ PrefabInstance:
       propertyPath: _livesLostValue
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: enemyInformationPanel
+      value: 
+      objectReference: {fileID: 1094080043}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: towerButtonController
+      value: 
+      objectReference: {fileID: 4541158167840557067}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: towerInformationPanel
+      value: 
+      objectReference: {fileID: 18790795}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: _enemyInformationPanel
@@ -11460,6 +11540,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 798cc569aff95aa409324f9473b898e3, type: 3}
+--- !u!114 &606935110 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 606935109}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17da3aba860f22c4b8cdb3efe33c3722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &606935111 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3728384711104203476, guid: 798cc569aff95aa409324f9473b898e3,
@@ -11982,6 +12074,11 @@ PrefabInstance:
       propertyPath: _useUpDescription
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 606935110}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _backgroundSelecter
@@ -15330,6 +15427,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 1723518841}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 1723518841}
@@ -16375,6 +16477,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 606935110}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 0}
@@ -16778,6 +16885,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 1723518841}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _backgroundSelecter
@@ -17415,6 +17527,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 1723518841}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _backgroundSelecter
@@ -19283,6 +19400,11 @@ PrefabInstance:
       propertyPath: _useUpDescription
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 3728384712623645578}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _backgroundSelecter
@@ -22648,6 +22770,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 606935110}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 0}
@@ -23318,6 +23445,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 3728384712623645578}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 0}
@@ -23558,6 +23690,11 @@ PrefabInstance:
       propertyPath: _useUpDescription
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 1723518841}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _backgroundSelecter
@@ -24272,6 +24409,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 3728384712623645578}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _backgroundSelecter
@@ -28361,9 +28503,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 76563471}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _canvas
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: enemyName
+      value: 
+      objectReference: {fileID: 215093664}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: lifeValue
+      value: 
+      objectReference: {fileID: 215093663}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: towerName
+      value: 
+      objectReference: {fileID: 232736431}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: _enemyName
@@ -28386,6 +28548,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: armorValue
+      value: 
+      objectReference: {fileID: 215093662}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: damageText
+      value: 
+      objectReference: {fileID: 232736430}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _armorValue
       value: 
       objectReference: {fileID: 0}
@@ -28401,6 +28573,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: fireRateText
+      value: 
+      objectReference: {fileID: 232736429}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _chooseButton
       value: 
       objectReference: {fileID: 0}
@@ -28411,6 +28588,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: breakArmorText
+      value: 
+      objectReference: {fileID: 232736428}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: livesLostValue
+      value: 
+      objectReference: {fileID: 215093661}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _breakArmorText
       value: 
       objectReference: {fileID: 0}
@@ -28419,6 +28606,21 @@ PrefabInstance:
       propertyPath: _livesLostValue
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: enemyInformationPanel
+      value: 
+      objectReference: {fileID: 1094080043}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: towerButtonController
+      value: 
+      objectReference: {fileID: 4541158167840557067}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: towerInformationPanel
+      value: 
+      objectReference: {fileID: 18790795}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: _enemyInformationPanel
@@ -29839,6 +30041,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 606935110}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 0}
@@ -30000,6 +30207,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 3728384712623645578}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _backgroundSelecter
@@ -32469,6 +32681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 1723518841}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 1723518841}
@@ -33485,6 +33702,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 606935110}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 0}
@@ -33730,6 +33952,11 @@ PrefabInstance:
       propertyPath: _useUpDescription
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 3728384712623645578}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _backgroundSelecter
@@ -34708,6 +34935,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 606935110}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 0}
@@ -35345,6 +35577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 606935110}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
       propertyPath: _backgroundSelecter
       value: 
       objectReference: {fileID: 0}
@@ -35482,6 +35719,11 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: backgroundSelecter
+      value: 
+      objectReference: {fileID: 606935110}
     - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
         type: 3}
       propertyPath: _backgroundSelecter
@@ -35936,9 +36178,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 76563471}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _canvas
       value: 
       objectReference: {fileID: 76563471}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: enemyName
+      value: 
+      objectReference: {fileID: 215093664}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: lifeValue
+      value: 
+      objectReference: {fileID: 215093663}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: towerName
+      value: 
+      objectReference: {fileID: 232736431}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: _enemyName
@@ -35961,6 +36223,16 @@ PrefabInstance:
       objectReference: {fileID: 232736431}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: armorValue
+      value: 
+      objectReference: {fileID: 215093662}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: damageText
+      value: 
+      objectReference: {fileID: 232736430}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _armorValue
       value: 
       objectReference: {fileID: 215093662}
@@ -35976,6 +36248,11 @@ PrefabInstance:
       objectReference: {fileID: 1642564924}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: fireRateText
+      value: 
+      objectReference: {fileID: 232736429}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _chooseButton
       value: 
       objectReference: {fileID: 408832404}
@@ -35986,6 +36263,16 @@ PrefabInstance:
       objectReference: {fileID: 232736429}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
+      propertyPath: breakArmorText
+      value: 
+      objectReference: {fileID: 232736428}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: livesLostValue
+      value: 
+      objectReference: {fileID: 215093661}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
       propertyPath: _breakArmorText
       value: 
       objectReference: {fileID: 232736428}
@@ -35994,6 +36281,21 @@ PrefabInstance:
       propertyPath: _livesLostValue
       value: 
       objectReference: {fileID: 215093661}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: enemyInformationPanel
+      value: 
+      objectReference: {fileID: 1094080043}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: towerButtonController
+      value: 
+      objectReference: {fileID: 4541158167840557067}
+    - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+        type: 3}
+      propertyPath: towerInformationPanel
+      value: 
+      objectReference: {fileID: 18790795}
     - target: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: _enemyInformationPanel
@@ -36014,6 +36316,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 798cc569aff95aa409324f9473b898e3, type: 3}
+--- !u!114 &3728384712623645578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3728384711104203497, guid: 798cc569aff95aa409324f9473b898e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3728384712623645577}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17da3aba860f22c4b8cdb3efe33c3722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4541158167840557062
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36087,6 +36401,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 3451936902988104724, guid: ab062a4349966594386bc59557a6906a,
+        type: 3}
+      propertyPath: levelController
+      value: 
+      objectReference: {fileID: 225968721}
     - target: {fileID: 3451936902988104724, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: _levelController

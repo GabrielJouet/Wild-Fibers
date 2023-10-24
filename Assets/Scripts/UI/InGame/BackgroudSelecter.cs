@@ -108,7 +108,7 @@ namespace UI.InGame
 
         private void Start()
         {
-            _currentCamera = Camera.current;
+            _currentCamera = Camera.main;
         }
 
 
