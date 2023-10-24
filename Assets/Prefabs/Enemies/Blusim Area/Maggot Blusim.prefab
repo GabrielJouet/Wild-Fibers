@@ -218,7 +218,7 @@ MonoBehaviour:
   <LivesTaken>k__BackingField: 1
   <GoldGained>k__BackingField: 0
   <Flying>k__BackingField: 0
-  <DamagePosition>k__BackingField: {x: 0, y: 0}
+  <DamageTransform>k__BackingField: {fileID: 1049263690152909913}
   <Description>k__BackingField: A fresh-spawned maggot that cannot protects itself.
     Many of these will hatch into Diggers but sometimes bigger ones does not hatch
     for days and became Chargers. They create a silk cocoon after a few seconds to

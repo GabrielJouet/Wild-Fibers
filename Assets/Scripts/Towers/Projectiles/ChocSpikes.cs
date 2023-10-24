@@ -91,12 +91,12 @@ namespace Towers.Projectiles
         {
             if (_enemyTracked.gameObject.activeSelf)
             {
-                if (FollowPoint(_enemyTracked.DamagePosition, false) && ! _attacking)
+                if (FollowPoint(_enemyTracked.DamageTransform.position, false) && ! _attacking)
                     StartCoroutine(Strike());
             }
             else
             {
-                _goalPosition = _enemyTracked.DamagePosition;
+                _goalPosition = _lastKnownPosition;
                 _enemyTracked = null;
             }
         }

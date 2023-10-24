@@ -30,6 +30,11 @@ namespace Towers.Projectiles
         /// </summary>
         protected Vector3 _goalPosition;
 
+        /// <summary>
+        /// Last position known of this enemy.
+        /// </summary>
+        protected Vector3 _lastKnownPosition;
+
 
 
         /// <summary>
@@ -67,7 +72,7 @@ namespace Towers.Projectiles
         {
             if (_enemyTracked.gameObject.activeSelf)
             {
-                if (FollowPoint(_enemyTracked.DamagePosition, true))
+                if (FollowPoint(_enemyTracked.DamageTransform.position, true))
                 {
                     AttackEnemy(_enemyTracked);
                     StopProjectile();
@@ -75,7 +80,7 @@ namespace Towers.Projectiles
             }
             else
             {
-                _goalPosition = _enemyTracked.DamagePosition;
+                _goalPosition = _lastKnownPosition;
                 _enemyTracked = null;
             }
         }
@@ -97,6 +102,8 @@ namespace Towers.Projectiles
 
                 transform.rotation = Quaternion.Euler(0, 0, angle);
             }
+
+            _lastKnownPosition = position;
 
             return (transform.position - position).magnitude < 0.025f;
         }

@@ -219,7 +219,7 @@ MonoBehaviour:
   <LivesTaken>k__BackingField: 2
   <GoldGained>k__BackingField: 13
   <Flying>k__BackingField: 0
-  <DamagePosition>k__BackingField: {x: 0, y: 0}
+  <DamageTransform>k__BackingField: {fileID: 1049263690152909913}
   <Description>k__BackingField: A special Blusim that spawns by mistake. When a pheromone
     is used on a bigger Maggot the result is a Blusim with bigger wings but with
     a bigger body as well. They are the most shielded Blusim of the hive, but their

@@ -218,7 +218,7 @@ MonoBehaviour:
   <LivesTaken>k__BackingField: 20
   <GoldGained>k__BackingField: 450
   <Flying>k__BackingField: 0
-  <DamagePosition>k__BackingField: {x: 0, y: 0}
+  <DamageTransform>k__BackingField: {fileID: 1049263690152909913}
   <Description>k__BackingField: The Queen of the hive is the bigger Blusim in the
     hive. It never moves and lay eggs every day until it dies. With pheromones it
     is able to control the entire hive and sense everything inside.

@@ -156,6 +156,11 @@ PrefabInstance:
         A powerful beast that roams around the hive and search for a prey. They are
         though but small-brained.
       objectReference: {fileID: 0}
+    - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: <DamageTransform>k__BackingField
+      value: 
+      objectReference: {fileID: 7065392108607041328}
     - target: {fileID: 3616839821771204713, guid: 4dab7da206da42945ba906f073799019,
         type: 3}
       propertyPath: m_Size.x
@@ -243,3 +248,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dab7da206da42945ba906f073799019, type: 3}
+--- !u!4 &7065392108607041328 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8076426843298756790, guid: 4dab7da206da42945ba906f073799019,
+    type: 3}
+  m_PrefabInstance: {fileID: 1303910684913735558}
+  m_PrefabAsset: {fileID: 0}
