@@ -1,107 +1,110 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-/// <summary>
-/// Class used to handle map selection menus.
-/// </summary>
-public class DisplayController : MonoBehaviour
+namespace UI
 {
     /// <summary>
-    /// Hider used.
+    /// Class used to handle map selection menus.
     /// </summary>
-    [SerializeField]
-    private GameObject _hider;
-
-
-    /// <summary>
-    /// Previous object displayed.
-    /// </summary>
-    private GameObject _displayedObject = null;
-
-
-    /// <summary>
-    /// Did the game is paused?
-    /// </summary>
-    public bool Paused { get; private set; } = false;
-
-
-
-    /// <summary>
-    /// Method used to pause the game.
-    /// </summary>
-    public void PauseGame()
+    public class DisplayController : MonoBehaviour
     {
-        Time.timeScale = 0f;
-        Paused = true;
-    }
+        /// <summary>
+        /// Hider used.
+        /// </summary>
+        [SerializeField]
+        private GameObject hider;
 
 
-    /// <summary>
-    /// Method used to pause the game.
-    /// </summary>
-    public void UnPauseGame()
-    {
-        Time.timeScale = 1f;
-        Paused = false;
-    }
+        /// <summary>
+        /// Previous object displayed.
+        /// </summary>
+        private GameObject _displayedObject;
 
 
-    /// <summary>
-    /// Method used to toogle pause.
-    /// </summary>
-    public void TooglePause()
-    {
-        Paused = !Paused;
-        Time.timeScale = Paused ? 0f : 1f;
-    }
+        /// <summary>
+        /// Did the game is paused?
+        /// </summary>
+        public bool Paused { get; private set; }
 
 
-    /// <summary>
-    /// Method used to display menu.
-    /// </summary>
-    /// <param name="displayedObject">The new displayed object</param>
-    public void DisplayObject(GameObject displayedObject)
-    {
-        if (displayedObject == _displayedObject)
+
+        /// <summary>
+        /// Method used to pause the game.
+        /// </summary>
+        public void PauseGame()
+        {
+            Time.timeScale = 0f;
+            Paused = true;
+        }
+
+
+        /// <summary>
+        /// Method used to pause the game.
+        /// </summary>
+        public void UnPauseGame()
+        {
+            Time.timeScale = 1f;
+            Paused = false;
+        }
+
+
+        /// <summary>
+        /// Method used to toogle pause.
+        /// </summary>
+        public void TooglePause()
+        {
+            Paused = !Paused;
+            Time.timeScale = Paused ? 0f : 1f;
+        }
+
+
+        /// <summary>
+        /// Method used to display menu.
+        /// </summary>
+        /// <param name="displayedObject">The new displayed object</param>
+        public void DisplayObject(GameObject displayedObject)
+        {
+            if (displayedObject == _displayedObject)
+            {
+                _displayedObject.SetActive(false);
+                hider.SetActive(false);
+                _displayedObject = null;
+            }
+            else
+            {
+                if (_displayedObject)
+                    _displayedObject.SetActive(false);
+
+                _displayedObject = displayedObject;
+
+                _displayedObject.SetActive(true);
+                StartCoroutine(DelayHiderSpawn());
+            }
+        }
+
+
+        /// <summary>
+        /// Coroutine used to delay the hider display.
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator DelayHiderSpawn()
+        {
+            yield return new WaitForEndOfFrame();
+            hider.SetActive(true);
+        }
+
+
+        /// <summary>
+        /// Method used to reset displayed menu.
+        /// </summary>
+        public void ResetDisplay()
         {
             _displayedObject.SetActive(false);
-            _hider.SetActive(false);
             _displayedObject = null;
+
+            hider.SetActive(false);
+
+            UnPauseGame();
         }
-        else
-        {
-            if(_displayedObject != null)
-                _displayedObject.SetActive(false);
-
-            _displayedObject = displayedObject;
-
-            _displayedObject.SetActive(true);
-            StartCoroutine(DelayHiderSpawn());
-        }
-    }
-
-
-    /// <summary>
-    /// Coroutine used to delay the hider display.
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator DelayHiderSpawn()
-    {
-        yield return new WaitForEndOfFrame();
-        _hider.SetActive(true);
-    }
-
-
-    /// <summary>
-    /// Method used to reset displayed menu.
-    /// </summary>
-    public void ResetDisplay()
-    {
-        _displayedObject.SetActive(false);
-        _displayedObject = null;
-
-        _hider.SetActive(false);
-
-        UnPauseGame();
     }
 }

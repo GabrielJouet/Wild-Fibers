@@ -1624,6 +1624,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 50981945163020683, guid: 2f0c27b7213d8a8418d2dd1112b156f2,
         type: 3}
+      propertyPath: displayController
+      value: 
+      objectReference: {fileID: 1409857563}
+    - target: {fileID: 50981945163020683, guid: 2f0c27b7213d8a8418d2dd1112b156f2,
+        type: 3}
       propertyPath: _displayController
       value: 
       objectReference: {fileID: 1409857563}
@@ -1951,7 +1956,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a7f177196caedf41b2d8a1162b0556b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hider: {fileID: 1282037621}
+  hider: {fileID: 1282037621}
 --- !u!81 &1409857564
 AudioListener:
   m_ObjectHideFlags: 0
