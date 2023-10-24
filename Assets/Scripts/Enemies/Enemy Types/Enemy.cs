@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Levels;
 using Towers;
+using Towers.Projectiles;
 using UnityEngine;
 
 namespace Enemies.Enemy_Types
