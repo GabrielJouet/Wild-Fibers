@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformRange: {fileID: 2436533493298751902}
-  towerCollider: {fileID: 2436533493298751902}
+  towerCollider: {fileID: 641977928928822256}
   selector: {fileID: 1161481428002591208}
   <Description>k__BackingField: Slightly stronger but with a rapid firerate
   <LibraryDescription>k__BackingField: Whenever this plant go, the area is recovered

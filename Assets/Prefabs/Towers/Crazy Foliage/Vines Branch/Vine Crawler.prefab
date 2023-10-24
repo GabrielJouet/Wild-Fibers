@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformRange: {fileID: 6249564359251404173}
-  towerCollider: {fileID: 6249564359251404173}
+  towerCollider: {fileID: 9188016586827921904}
   selector: {fileID: 7454810700379776889}
   <Description>k__BackingField: A cactus-like flower that will put spikes on the
     path

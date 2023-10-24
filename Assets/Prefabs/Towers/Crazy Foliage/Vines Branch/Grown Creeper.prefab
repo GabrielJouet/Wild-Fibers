@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformRange: {fileID: 7623029166853424083}
-  towerCollider: {fileID: 7623029166853424083}
+  towerCollider: {fileID: 4680081587663505740}
   selector: {fileID: 6342290769791053501}
   <Description>k__BackingField: A quick growing spikes flowers but range-limited
   <LibraryDescription>k__BackingField: By using less elastic vines, this plant cannot

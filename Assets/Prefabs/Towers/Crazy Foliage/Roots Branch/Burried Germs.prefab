@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformRange: {fileID: 2979235481568068967}
-  towerCollider: {fileID: 2979235481568068967}
+  towerCollider: {fileID: 27253770860673116}
   selector: {fileID: 1771737210301611880}
   <Description>k__BackingField: A multi roots larger stump with a large range
   <LibraryDescription>k__BackingField: Usage of great quantity of magic allows this

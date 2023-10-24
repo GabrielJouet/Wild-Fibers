@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformRange: {fileID: 2974891326143792613}
-  towerCollider: {fileID: 2974891326143792613}
+  towerCollider: {fileID: 31633145762700704}
   selector: {fileID: 1767320491369309302}
   <Description>k__BackingField: A poisonous flower that dealt most of its damage
     over time
