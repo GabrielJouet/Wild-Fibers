@@ -1048,7 +1048,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 75}
+  m_AnchoredPosition: {x: 0, y: 60}
   m_SizeDelta: {x: -1300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &557552618
@@ -1155,9 +1155,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'A game made by Valentin Dremaux and Gabriel Jouet
+  m_text: 'A game made by Gabriel Jouet
 
-    Wild Box Studio'
+    Additional Art Valentin Dremaux'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78c6bed4a7ea4384b9ae7c34d80aeee3, type: 2}
   m_sharedMaterial: {fileID: 5002598167601909803, guid: 78c6bed4a7ea4384b9ae7c34d80aeee3,
@@ -1526,6 +1526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tryText: {fileID: 1781530786}
+  buttonComponent: {fileID: 918521437}
 --- !u!1 &948009331
 GameObject:
   m_ObjectHideFlags: 0
