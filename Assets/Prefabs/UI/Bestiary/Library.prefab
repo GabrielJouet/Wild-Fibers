@@ -2912,7 +2912,7 @@ RectTransform:
   - {fileID: 2054970467452613850}
   - {fileID: 3999590375415438079}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2967,6 +2967,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2995,6 +3014,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 396c610555f1eca44a6276af9cf4ded1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 0}
+  boxCollider2D: {fileID: 0}
 --- !u!114 &6123271220255228632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3007,35 +3028,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef3efb23973b8ec4a874d80aa7003192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyInfoPrefab: {fileID: 7758772164408991083, guid: ae8288275c39e7b489f063cf013b1535,
+  enemyInfoPrefab: {fileID: 7758772164408991083, guid: ae8288275c39e7b489f063cf013b1535,
     type: 3}
-  _towerPanel: {fileID: 5575951972707165611}
-  _enemyPanel: {fileID: 4696118492461454348}
-  _towerList: {fileID: 1604148810157933786}
-  _enemyList: {fileID: 2077952380727520819}
-  _towerTreePrefab: {fileID: 2171526650154281932, guid: 318aed5c1e7f5be4a86cb5cadcab8712,
+  towerPanel: {fileID: 5575951972707165611}
+  enemyPanel: {fileID: 4696118492461454348}
+  towerList: {fileID: 1604148810157933786}
+  enemyList: {fileID: 2077952380727520819}
+  towerTreePrefab: {fileID: 2171526650154281932, guid: 318aed5c1e7f5be4a86cb5cadcab8712,
     type: 3}
-  _separator: {fileID: 5685892871461786723}
-  _towerTab: {fileID: 577676100613668099}
-  _enemiesTab: {fileID: 4176099195649826087}
-  _towerName: {fileID: 4252296763779970605}
-  _towerDescription: {fileID: 8046722504477762992}
-  _towerPrice: {fileID: 2856228087553376791}
-  _towerDamage: {fileID: 8352390143826588066}
-  _towerFireRate: {fileID: 6942262049049415895}
-  _towerArmorThrough: {fileID: 8477967080696113619}
-  _towerDot: {fileID: 1776094061158767944}
-  _towerSpecial: {fileID: 4085204562408304467}
-  _towerShots: {fileID: 1014735676083813103}
-  _enemyName: {fileID: 2521652283812731334}
-  _enemyDescription: {fileID: 2756006088986910715}
-  _enemyGold: {fileID: 1367695126639042891}
-  _enemyHealth: {fileID: 2315228723215814615}
-  _enemySpeed: {fileID: 6362108702712556310}
-  _enemyArmor: {fileID: 1536818140058311550}
-  _enemyResistance: {fileID: 3767410105816357059}
-  _enemyLivesLost: {fileID: 5999164433833109497}
-  _enemySpecial: {fileID: 8341648069360566914}
+  separator: {fileID: 5685892871461786723}
+  towerTab: {fileID: 577676100613668099}
+  enemiesTab: {fileID: 4176099195649826087}
+  towerName: {fileID: 4252296763779970605}
+  towerDescription: {fileID: 8046722504477762992}
+  towerPrice: {fileID: 2856228087553376791}
+  towerDamage: {fileID: 8352390143826588066}
+  towerFireRate: {fileID: 6942262049049415895}
+  towerArmorThrough: {fileID: 8477967080696113619}
+  towerDot: {fileID: 1776094061158767944}
+  towerSpecial: {fileID: 4085204562408304467}
+  towerShots: {fileID: 1014735676083813103}
+  enemyName: {fileID: 2521652283812731334}
+  enemyDescription: {fileID: 2756006088986910715}
+  enemyGold: {fileID: 1367695126639042891}
+  enemyHealth: {fileID: 2315228723215814615}
+  enemySpeed: {fileID: 6362108702712556310}
+  enemyArmor: {fileID: 1536818140058311550}
+  enemyResistance: {fileID: 3767410105816357059}
+  enemyLivesLost: {fileID: 5999164433833109497}
+  enemySpecial: {fileID: 8341648069360566914}
 --- !u!1 &4628677901937811193
 GameObject:
   m_ObjectHideFlags: 0

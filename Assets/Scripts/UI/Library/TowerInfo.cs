@@ -1,22 +1,25 @@
 ﻿using Towers;
 
-/// <summary>
-/// Tower info button used in library.
-/// </summary>
-public class TowerInfo : ObjectInfo
+namespace UI.Library
 {
     /// <summary>
-    /// Tower data buffered in this tower info.
+    /// Tower info button used in library.
     /// </summary>
-    private Tower _tower;
-    public Tower Tower
+    public class TowerInfo : ObjectInfo
     {
-        get => _tower;
-
-        set
+        /// <summary>
+        /// Tower data buffered in this tower info.
+        /// </summary>
+        private Tower _tower;
+        public Tower Tower
         {
-            _tower = value;
-            _screenShot.sprite = _tower.ScreenShot;
+            get => _tower;
+
+            set
+            {
+                _tower = value;
+                screenShot.sprite = _tower.ScreenShot;
+            }
         }
     }
 }
