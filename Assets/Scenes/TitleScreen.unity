@@ -2150,7 +2150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf622c6c2353c7846a3daa7da8c61fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _squads:
+  squads:
   - {fileID: 11400000, guid: eebbba80d9dc12b4390dc955ca0e2244, type: 2}
 --- !u!114 &1431316441
 MonoBehaviour:
