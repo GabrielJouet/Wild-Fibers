@@ -6,6 +6,7 @@ using Miscellanious;
 using Towers.Projectiles;
 using Towers.Upgrades;
 using UI;
+using UI.InGame;
 using UnityEngine;
 
 namespace Towers
@@ -353,7 +354,7 @@ namespace Towers
         {
             _ressourceController.RemoveGold(newData.Price);
 
-            _backgroundSelecter.DesactivateTower();
+            _backgroundSelecter.DeactivateTower();
             UpgradeSpecialBehavior();
 
             Destroy(gameObject);

@@ -1567,21 +1567,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636a5715d8a5df5469fe3b7cd4b59700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ressourceController: {fileID: 0}
-  _levelController: {fileID: 0}
-  _towerPurchaseButtons:
+  levelController: {fileID: 0}
+  towerPurchaseButtons:
   - {fileID: 1581902934677282967}
   - {fileID: 4244655394627921668}
   - {fileID: 5165387077531724702}
   - {fileID: 1881802243133348824}
-  _upDescription: {fileID: 474903562345323510}
-  _downDescription: {fileID: 1016200783166832729}
-  _sellButton: {fileID: 2647055278944084161}
-  _towerUpgradesButtons:
+  upDescription: {fileID: 474903562345323510}
+  downDescription: {fileID: 1016200783166832729}
+  sellButton: {fileID: 2647055278944084161}
+  towerUpgradesButtons:
   - {fileID: 7390763254196642935}
   - {fileID: 2626637569526540595}
   - {fileID: 7569199469200349692}
-  _rectTransform: {fileID: 4541158167694618842}
+  rectTransform: {fileID: 4541158167694618842}
 --- !u!1 &4541158167825789325
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,11 +2316,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2074f9dbefc4c14c9d90664f3bb6038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _buttonComponent: {fileID: 0}
-  _buttonImage: {fileID: 0}
-  _backgroundImage: {fileID: 0}
-  _priceText: {fileID: 0}
-  _lockedSprite: {fileID: 0}
+  buttonComponent: {fileID: 0}
+  buttonImage: {fileID: 0}
+  backgroundImage: {fileID: 0}
+  priceText: {fileID: 0}
+  lockedSprite: {fileID: 0}
 --- !u!1 &4541158168376624177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3714,9 +3713,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71391ecb4fb3704995eb0f177f4e954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelController: {fileID: 0}
-  _animator: {fileID: 7090598435326711034}
-  _lastFrameCountDownSprite: {fileID: 8171800426467839558, guid: 07f23416fa91e2244813a73f9d03bdef,
+  levelController: {fileID: 0}
+  animator: {fileID: 7090598435326711034}
+  lastFrameCountDownSprite: {fileID: 8171800426467839558, guid: 07f23416fa91e2244813a73f9d03bdef,
     type: 3}
 --- !u!1 &8227841912292297891
 GameObject:
@@ -5965,6 +5964,11 @@ PrefabInstance:
       propertyPath: _pauseController
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7841588796658028507, guid: 33a95885d27b48b46b3dc016ffb87ee1,
+        type: 3}
+      propertyPath: displayController
+      value: 
+      objectReference: {fileID: 2778464473622268528}
     - target: {fileID: 7841588796658028507, guid: 33a95885d27b48b46b3dc016ffb87ee1,
         type: 3}
       propertyPath: _displayController

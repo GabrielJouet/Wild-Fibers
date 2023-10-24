@@ -6,6 +6,7 @@ using Levels.Waves;
 using Miscellanious.Enums;
 using Save;
 using TMPro;
+using UI.InGame;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
