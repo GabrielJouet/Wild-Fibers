@@ -2,7 +2,6 @@
 using TMPro;
 using Towers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace UI.SkillTree
 {
@@ -14,13 +13,13 @@ namespace UI.SkillTree
         /// <summary>
         /// List of skill component.
         /// </summary>
-        [FormerlySerializedAs("_skills")] [SerializeField]
+        [SerializeField]
         private List<SkillUpgrades> skills;
 
         /// <summary>
         /// Description text object, used for skills.
         /// </summary>
-        [FormerlySerializedAs("_description")] [SerializeField]
+        [SerializeField]
         private TextMeshProUGUI description;
 
 

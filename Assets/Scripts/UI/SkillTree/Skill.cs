@@ -3,7 +3,6 @@ using TMPro;
 using Towers.Upgrades;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.SkillTree
@@ -16,19 +15,19 @@ namespace UI.SkillTree
         /// <summary>
         /// Actual price of this skill.
         /// </summary>
-        [FormerlySerializedAs("_price")] [SerializeField]
+        [SerializeField]
         private TextMeshProUGUI price;
 
         /// <summary>
         /// Image component that will handle icon of the skill displayed.
         /// </summary>
-        [FormerlySerializedAs("_icon")] [SerializeField]
+        [SerializeField]
         private Image icon;
 
         /// <summary>
         /// Position of the description relative to this skill.
         /// </summary>
-        [FormerlySerializedAs("_descriptionPosition")] [SerializeField]
+        [SerializeField]
         private RectTransform descriptionPosition;
 
 

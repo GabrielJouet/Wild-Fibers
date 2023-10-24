@@ -3,7 +3,6 @@ using Miscellanious.Enums;
 using TMPro;
 using Towers.Upgrades;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.SkillTree
@@ -16,13 +15,13 @@ namespace UI.SkillTree
         /// <summary>
         /// List of skill available.
         /// </summary>
-        [FormerlySerializedAs("_skills")] [SerializeField]
+        [SerializeField]
         private List<Skill> skills;
 
         /// <summary>
         /// Tower icon component.
         /// </summary>
-        [FormerlySerializedAs("_towerIcon")] [SerializeField]
+        [SerializeField]
         private Image towerIcon;
 
 
