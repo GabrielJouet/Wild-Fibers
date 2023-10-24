@@ -1,116 +1,113 @@
 ﻿using System.Collections.Generic;
 using Levels;
 using TMPro;
-using UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-/// <summary>
-/// Class used for game over screen and handling end of level.
-/// </summary>
-public class GameOverScreen : MonoBehaviour
+namespace UI.InGame
 {
-    [Header("UI elements")]
-
     /// <summary>
-    /// Main text component.
+    /// Class used for game over screen and handling end of level.
     /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _mainText;
-
-    /// <summary>
-    /// Game screen image component.
-    /// </summary>
-    [SerializeField]
-    private Image _gameScreen;
-
-    /// <summary>
-    /// Sprite for win.
-    /// </summary>
-    [SerializeField]
-    private Sprite _winScreen;
-
-    /// <summary>
-    /// Sprite for loose.
-    /// </summary>
-    [SerializeField]
-    private Sprite _loseScreen;
-
-    /// <summary>
-    /// List of all seeds at the end of the level.
-    /// </summary>
-    [SerializeField]
-    private List<Image> _seedScores;
-
-    /// <summary>
-    /// Activated seed sprite.
-    /// </summary>
-    [SerializeField]
-    private Sprite _activatedSprite;
-
-
-    [Header("Components")]
-
-    /// <summary>
-    /// Resource controller component.
-    /// </summary>
-    [SerializeField]
-    private RessourceController _ressourceController;
-
-
-    /// <summary>
-    /// Box collider component.
-    /// </summary>
-    [SerializeField]
-    private BoxCollider2D _boxCollider;
-
-    /// <summary>
-    /// Rect transform component.
-    /// </summary>
-    [SerializeField]
-    private RectTransform _transform;
-
-    /// <summary>
-    /// Display controller object.
-    /// </summary>
-    [SerializeField]
-    private DisplayController _displayController;
-
-
-
-    /// <summary>
-    /// Method used to activate and display the screen.
-    /// </summary>
-    /// <param name="win">Does the player wins this level?</param>
-    /// <param name="sideOrChallenge">Does the level is a side or challenge one?</param>
-    public void Activate(bool win, bool sideOrChallenge)
+    public class GameOverScreen : MonoBehaviour
     {
-        _displayController.PauseGame();
-        _displayController.DisplayObject(gameObject);
+        [Header("UI elements")]
 
-        _boxCollider.enabled = true;
-        _boxCollider.size = new Vector2(Screen.width + _transform.sizeDelta.x, Screen.height + _transform.sizeDelta.y);
+        /// <summary>
+        /// Main text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI mainText;
 
-        _gameScreen.gameObject.SetActive(true);
+        /// <summary>
+        /// Game screen image component.
+        /// </summary>
+        [SerializeField]
+        private Image gameScreen;
 
-        _gameScreen.sprite = win ? _winScreen : _loseScreen;
-        _mainText.text = win ? "Win" : "Lose";
+        /// <summary>
+        /// Sprite for win.
+        /// </summary>
+        [SerializeField]
+        private Sprite winScreen;
 
-        if (sideOrChallenge)
+        /// <summary>
+        /// Sprite for loose.
+        /// </summary>
+        [SerializeField]
+        private Sprite loseScreen;
+
+        /// <summary>
+        /// List of all seeds at the end of the level.
+        /// </summary>
+        [SerializeField]
+        private List<Image> seedScores;
+
+        /// <summary>
+        /// Activated seed sprite.
+        /// </summary>
+        [SerializeField]
+        private Sprite activatedSprite;
+
+
+        [Header("Components")]
+
+
+        /// <summary>
+        /// Box collider component.
+        /// </summary>
+        [SerializeField]
+        private BoxCollider2D boxCollider;
+
+        /// <summary>
+        /// Rect transform component.
+        /// </summary>
+        [SerializeField]
+        private RectTransform rectTransform;
+
+        /// <summary>
+        /// Display controller object.
+        /// </summary>
+        [SerializeField]
+        private DisplayController displayController;
+
+
+
+        /// <summary>
+        /// Method used to activate and display the screen.
+        /// </summary>
+        /// <param name="win">Does the player wins this level?</param>
+        /// <param name="sideOrChallenge">Does the level is a side or challenge one?</param>
+        public void Activate(bool win, bool sideOrChallenge)
         {
-            _seedScores[0].gameObject.SetActive(false);
-            _seedScores[2].gameObject.SetActive(false);
-        }
+            displayController.PauseGame();
+            displayController.DisplayObject(gameObject);
 
-        if (win)
-        {
-            int livesLost = _ressourceController.LivesLost;
+            boxCollider.enabled = true;
+            boxCollider.size = new Vector2(Screen.width + rectTransform.sizeDelta.x, Screen.height + rectTransform.sizeDelta.y);
 
-            _seedScores[2].sprite = livesLost <= 15 ? _activatedSprite : _seedScores[2].sprite;
-            _seedScores[1].sprite = livesLost <= 10 ? _activatedSprite : _seedScores[1].sprite;
-            _seedScores[0].sprite = livesLost <= 3 ? _activatedSprite : _seedScores[0].sprite;
+            gameScreen.gameObject.SetActive(true);
 
-            Controller.Instance.SaveController.SaveLevelData(livesLost);
+            gameScreen.sprite = win ? winScreen : loseScreen;
+            mainText.text = win ? "Win" : "Lose";
+
+            if (sideOrChallenge)
+            {
+                seedScores[0].gameObject.SetActive(false);
+                seedScores[2].gameObject.SetActive(false);
+            }
+
+            if (win)
+            {
+                int livesLost = RessourceController.Instance.LivesLost;
+
+                seedScores[2].sprite = livesLost <= 15 ? activatedSprite : seedScores[2].sprite;
+                seedScores[1].sprite = livesLost <= 10 ? activatedSprite : seedScores[1].sprite;
+                seedScores[0].sprite = livesLost <= 3 ? activatedSprite : seedScores[0].sprite;
+
+                Controller.Instance.SaveController.SaveLevelData(livesLost);
+            }
         }
     }
 }

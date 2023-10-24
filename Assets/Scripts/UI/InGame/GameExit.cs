@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Class used to handles exit game.
-/// </summary>
-public class GameExit : MonoBehaviour
+namespace UI.InGame
 {
     /// <summary>
-    /// Method used to exit the game.
+    /// Class used to handles exit game.
     /// </summary>
-    public void ExitGame()
+    public class GameExit : MonoBehaviour
     {
-        Application.Quit();
+        /// <summary>
+        /// Method used to exit the game.
+        /// </summary>
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
     }
 }
