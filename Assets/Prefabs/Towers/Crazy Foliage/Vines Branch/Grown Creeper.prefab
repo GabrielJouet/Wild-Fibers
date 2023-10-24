@@ -100,6 +100,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -118,8 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updates: 0
-  _target: {fileID: 0}
+  update: 0
+  target: {fileID: 0}
 --- !u!114 &2704266593141781641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -132,37 +151,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8c60065a7758294db4bd3b3b4f369bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Grown Creeper
-  _transformRange: {fileID: 7623029166853424083}
-  _collider: {fileID: 4680081587663505740}
-  _selector: {fileID: 6342290769791053501}
-  _description: A quick growing spikes flowers but range-limited
-  _libraryDescription: By using less elastic vines, this plant cannot reach far.
-    But, its high damage output is a guaranted win on the battlefield.
+  transformRange: {fileID: 7623029166853424083}
+  towerCollider: {fileID: 7623029166853424083}
+  selector: {fileID: 6342290769791053501}
+  <Description>k__BackingField: A quick growing spikes flowers but range-limited
+  <LibraryDescription>k__BackingField: By using less elastic vines, this plant cannot
+    reach far. But, its high damage output is a guaranted win on the battlefield.
   _price: 270
-  _icon: {fileID: 21300000, guid: f4c056fa3309ab64fbfddf862140df30, type: 3}
-  _projectileUsed: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,
+  <Icon>k__BackingField: {fileID: 21300000, guid: f4c056fa3309ab64fbfddf862140df30,
     type: 3}
-  _timeBetweenShots: 3.1
-  _damage: 12
-  _armorThrough: 10
-  _numberOfShots: 1
-  _range: 0.85
-  _canHitFlying: 1
-  _shotsRandomly: 0
-  _armorThroughMalus: 0
-  _damageOverTime: 0
-  _dotDuration: 0
-  _towerUpgrades: []
-  _towerSpecs: []
-  _towerAugmentations: []
-  _special: Wave
-  _screenShot: {fileID: 21300000, guid: 259e6de2b81a11441b95dce7b09bdefd, type: 3}
+  <Projectile>k__BackingField: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,
+    type: 3}
+  <TimeShots>k__BackingField: 3.1
+  <Damage>k__BackingField: 12
+  <ArmorThrough>k__BackingField: 10
+  <Shots>k__BackingField: 1
+  <Range>k__BackingField: 0.85
+  <HitFlying>k__BackingField: 1
+  <ShotsRandomly>k__BackingField: 0
+  <ArmorThroughMalus>k__BackingField: 0
+  <Dot>k__BackingField: 0
+  <DotDuration>k__BackingField: 0
+  <Upgrades>k__BackingField: []
+  <Specs>k__BackingField: []
+  <Augmentations>k__BackingField: []
+  <Special>k__BackingField: Wave
+  <ScreenShot>k__BackingField: {fileID: 21300000, guid: 259e6de2b81a11441b95dce7b09bdefd,
+    type: 3}
 --- !u!1001 &2704266591305044669
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2704266593141781646}
     m_Modifications:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
@@ -251,6 +272,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbd39873f2e903e43b64fb0035085e24, type: 3}
 --- !u!1 &6342290769791053501 stripped
 GameObject:
@@ -269,6 +293,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2704266593141781646}
     m_Modifications:
     - target: {fileID: 2616836571559558307, guid: a0747cfa70861f444a27da50f9419661,
@@ -342,6 +367,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0747cfa70861f444a27da50f9419661, type: 3}
 --- !u!4 &4680081587663505740 stripped
 Transform:
@@ -354,6 +382,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2704266593141781646}
     m_Modifications:
     - target: {fileID: 966113606595656746, guid: f2cf1260bb4d0984d978d4c6eef7553a,
@@ -422,6 +451,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2cf1260bb4d0984d978d4c6eef7553a, type: 3}
 --- !u!4 &7623029166853424083 stripped
 Transform:

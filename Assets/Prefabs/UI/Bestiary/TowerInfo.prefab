@@ -187,7 +187,7 @@ RectTransform:
   - {fileID: 3316436148782792716}
   - {fileID: 6641753911841234021}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -300,5 +300,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e2ae6f1a8d7f6543afc0f644ada95d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _screenShot: {fileID: 900304759181021451}
-  _lockedSprite: {fileID: 1998648008025366604}
+  screenShot: {fileID: 900304759181021451}
+  lockedSprite: {fileID: 1998648008025366604}

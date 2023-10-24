@@ -1,36 +1,25 @@
 ﻿using System;
 using UnityEngine;
 
-/// <summary>
-/// Class used to store enemy information.
-/// </summary>
-[Serializable]
-public class EnemyPattern
+namespace Levels.Waves
 {
-    [Space(10)]
-
     /// <summary>
-    /// Number of enemies in this group.
+    /// Class used to store enemy information.
     /// </summary>
-    [Min(1)]
-    [SerializeField]
-    private int _numberOfEnemies;
+    [Serializable]
+    public class EnemyPattern
+    {
+        /// <summary>
+        /// Number of enemies in this group.
+        /// </summary>
+        [field: SerializeField, Min(1), Space(10)]
+        public int NumberOfEnemies { get; private set; }
 
-    /// <summary>
-    /// Number of enemies in this group.
-    /// </summary>
-    public int EnemiesCount { get => _numberOfEnemies; }
 
-
-    /// <summary>
-    /// Time between each enemy.
-    /// </summary>
-    [Min(0.05f)]
-    [SerializeField]
-    private float _timeBetweenEnemies;
-
-    /// <summary>
-    /// Time between each enemy.
-    /// </summary>
-    public float EnemiesTime { get => _timeBetweenEnemies; }
+        /// <summary>
+        /// Time between each enemy.
+        /// </summary>
+        [field: SerializeField, Min(0.05f)]
+        public float TimeBetweenEnemies { get; private set; }
+    }
 }

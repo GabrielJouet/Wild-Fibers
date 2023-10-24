@@ -1,11 +1,14 @@
-﻿/// <summary>
-/// Enum used to set level state.
-/// </summary>
-public enum LevelState 
+﻿namespace Miscellanious.Enums
 {
-    LOCKED,
-    UNLOCKED,
-    COMPLETED,
-    SIDED,
-    CHALLENGED
+    /// <summary>
+    /// Enum used to set level state.
+    /// </summary>
+    public enum LevelState 
+    {
+        LOCKED,
+        UNLOCKED,
+        COMPLETED,
+        SIDED,
+        CHALLENGED
+    }
 }

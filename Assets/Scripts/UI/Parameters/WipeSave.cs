@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Class used to handles wipe save.
-/// </summary>
-public class WipeSave : MonoBehaviour
+namespace UI.Parameters
 {
     /// <summary>
-    /// Method used to wipe the entire save.
+    /// Class used to handles wipe save.
     /// </summary>
-    public void WipeEntireSave()
+    public class WipeSave : MonoBehaviour
     {
-        Controller.Instance.SaveController.ResetData();
+        /// <summary>
+        /// Method used to wipe the entire save.
+        /// </summary>
+        public void WipeEntireSave()
+        {
+            Controller.Instance.SaveController.ResetData();
+        }
     }
 }

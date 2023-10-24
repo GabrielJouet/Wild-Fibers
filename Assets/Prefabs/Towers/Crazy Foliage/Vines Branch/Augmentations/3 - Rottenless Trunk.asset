@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0d963a86c7ddb4196eaed086540c4c, type: 3}
   m_Name: 3 - Rottenless Trunk
   m_EditorClassIdentifier: 
-  _icon: {fileID: 5996035586896539829, guid: 3e625946b2ae3f04cb8691e7d858376b, type: 3}
-  _price: 2
-  _description: Increase resell price of this tower.
+  <Icon>k__BackingField: {fileID: 5996035586896539829, guid: 3e625946b2ae3f04cb8691e7d858376b,
+    type: 3}
+  <Price>k__BackingField: 2
+  <Description>k__BackingField: Increase resell price of this tower.

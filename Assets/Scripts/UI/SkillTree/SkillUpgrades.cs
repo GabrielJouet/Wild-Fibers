@@ -1,73 +1,78 @@
 ﻿using System.Collections.Generic;
+using Miscellanious.Enums;
 using TMPro;
+using Towers.Upgrades;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Class used to handle skill upgrades in the skill tree.
-/// </summary>
-public class SkillUpgrades : MonoBehaviour
+namespace UI.SkillTree
 {
     /// <summary>
-    /// List of skill availables.
+    /// Class used to handle skill upgrades in the skill tree.
     /// </summary>
-    [SerializeField]
-    private List<Skill> _skills;
-
-    /// <summary>
-    /// Tower icon component.
-    /// </summary>
-    [SerializeField]
-    private Image _towerIcon;
-
-
-    /// <summary>
-    /// Index buffered.
-    /// </summary>
-    private int _index;
-
-
-
-    /// <summary>
-    /// Initialize method.
-    /// </summary>
-    /// <param name="newTower">Tower sprite displayed</param>
-    /// <param name="newAugmentations">Augmentation to display</param>
-    /// <param name="augmentationLevel">Current augmentation level of the skill</param>
-    /// <param name="newIndex">Buffered index</param>
-    /// <param name="description">The description text object needed</param>
-    public void Initialize(Sprite newTower, List<Augmentation> newAugmentations, int augmentationLevel, int newIndex, TextMeshProUGUI description)
+    public class SkillUpgrades : MonoBehaviour
     {
-        for (int i = 0; i < _skills.Count; i ++)
+        /// <summary>
+        /// List of skill available.
+        /// </summary>
+        [SerializeField]
+        private List<Skill> skills;
+
+        /// <summary>
+        /// Tower icon component.
+        /// </summary>
+        [SerializeField]
+        private Image towerIcon;
+
+
+        /// <summary>
+        /// Index buffered.
+        /// </summary>
+        private int _index;
+
+
+
+        /// <summary>
+        /// Initialize method.
+        /// </summary>
+        /// <param name="newTower">Tower sprite displayed</param>
+        /// <param name="newAugmentations">Augmentation to display</param>
+        /// <param name="augmentationLevel">Current augmentation level of the skill</param>
+        /// <param name="newIndex">Buffered index</param>
+        /// <param name="description">The description text object needed</param>
+        public void Initialize(Sprite newTower, List<Augmentation> newAugmentations, int augmentationLevel, int newIndex, TextMeshProUGUI description)
         {
-            AugmentationState newState;
+            for (int i = 0; i < skills.Count; i ++)
+            {
+                AugmentationState newState;
 
-            if (augmentationLevel > i)
-                newState = AugmentationState.BOUGHT;
-            else if (i == 0 || augmentationLevel == i)
-                newState = AugmentationState.AVAILABLE;
-            else
-                newState = AugmentationState.LOCKED;
+                if (augmentationLevel > i)
+                    newState = AugmentationState.BOUGHT;
+                else if (i == 0 || augmentationLevel == i)
+                    newState = AugmentationState.AVAILABLE;
+                else
+                    newState = AugmentationState.LOCKED;
 
-            _skills[i].Initialize(newAugmentations[i], newState, description);
+                skills[i].Initialize(newAugmentations[i], newState, description);
+            }
+
+            _index = newIndex;
+            towerIcon.sprite = newTower;
         }
 
-        _index = newIndex;
-        _towerIcon.sprite = newTower;
-    }
 
+        /// <summary>
+        /// Method called when a skill is purchased.
+        /// </summary>
+        /// <param name="purchased">Skill purchased</param>
+        public void PurchaseAugmentation(Skill purchased)
+        {
+            int index = skills.IndexOf(purchased);
 
-    /// <summary>
-    /// Method called when a skill is purchased.
-    /// </summary>
-    /// <param name="purchased">Skill purchased</param>
-    public void PurchaseAugmentation(Skill purchased)
-    {
-        int index = _skills.IndexOf(purchased);
+            Controller.Instance.SaveController.SaveTowerAugmentationLevel(_index, index + 1);
 
-        Controller.Instance.SaveController.SaveTowerAugmentationLevel(_index, index + 1);
-
-        if (index + 1 < _skills.Count)
-            _skills[index + 1].Activate();
+            if (index + 1 < skills.Count)
+                skills[index + 1].Activate();
+        }
     }
 }

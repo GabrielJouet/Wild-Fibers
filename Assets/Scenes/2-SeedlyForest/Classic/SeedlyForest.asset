@@ -12,21 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9275da23ffe138249b48ceb9809eaf68, type: 3}
   m_Name: SeedlyForest
   m_EditorClassIdentifier: 
-  _name: Seedly Forest
-  _picture: {fileID: 21300000, guid: cad09f24362b5de4ab3a0ec81b82dafc, type: 3}
-  _description: Some plants were found ripped in this forest, could it be the first
-    sign of expansion?
-  _playSceneName: SeedlyForest
-  _levelType: 0
-  _availableWaves:
+  <Name>k__BackingField: Seedly Forest
+  <Picture>k__BackingField: {fileID: 21300000, guid: cad09f24362b5de4ab3a0ec81b82dafc,
+    type: 3}
+  <Description>k__BackingField: Some plants were found ripped in this forest, could
+    it be the first sign of expansion?
+  <PlaySceneName>k__BackingField: SeedlyForest
+  <Type>k__BackingField: 0
+  <Waves>k__BackingField:
   - {fileID: 11400000, guid: 594615787a2c0604d91ebb49819a3d6a, type: 2}
   - {fileID: 11400000, guid: bd06a51b28cced446a22fe6ba57aa341, type: 2}
   - {fileID: 11400000, guid: 71af9e0a227d7ea46b52ba14b3df35cd, type: 2}
   - {fileID: 11400000, guid: 67a66a5b6b1ca4444a9f6ddbf5875c6c, type: 2}
   - {fileID: 11400000, guid: cf43aa27d8b045c40a1a160e61cbfba3, type: 2}
   - {fileID: 11400000, guid: b460c7369bbb5524c89c7aea5f13ad33, type: 2}
-  _lifeCount: 20
-  _goldCount: 635
-  _towerLevel: 1
-  _goldMultiplier: 1
-  _blockedTowers: []
+  <LifeCount>k__BackingField: 20
+  <GoldCount>k__BackingField: 635
+  <TowerLevel>k__BackingField: 1
+  <GoldMultiplier>k__BackingField: 1
+  <BlockedTowers>k__BackingField: []

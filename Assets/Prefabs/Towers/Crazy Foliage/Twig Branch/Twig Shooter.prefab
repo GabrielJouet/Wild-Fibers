@@ -101,6 +101,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -119,8 +138,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updates: 0
-  _target: {fileID: 0}
+  update: 0
+  target: {fileID: 0}
 --- !u!114 &1305009464217428406
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,44 +152,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3315191245a9fb4ab7cfbcdc83d503c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Twig Shooter
-  _transformRange: {fileID: 6796318527216691260}
-  _collider: {fileID: 8604639988615361977}
-  _selector: {fileID: 8043280262850349597}
-  _description: A fast shooting tower that deals little damage
-  _libraryDescription: A small parasite plant that often lives in stone-like environment.
-    Due to its fragile and thin roots, it is unable to use some kind of magic.
+  transformRange: {fileID: 6796318527216691260}
+  towerCollider: {fileID: 6796318527216691260}
+  selector: {fileID: 8043280262850349597}
+  <Description>k__BackingField: A fast shooting tower that deals little damage
+  <LibraryDescription>k__BackingField: A small parasite plant that often lives in
+    stone-like environment. Due to its fragile and thin roots, it is unable to use
+    some kind of magic.
   _price: 90
-  _icon: {fileID: 21300000, guid: 8898088e8c5280447bb4bb6d11c1ca60, type: 3}
-  _projectileUsed: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
+  <Icon>k__BackingField: {fileID: 21300000, guid: 8898088e8c5280447bb4bb6d11c1ca60,
     type: 3}
-  _timeBetweenShots: 1.05
-  _damage: 11
-  _armorThrough: 5
-  _numberOfShots: 1
-  _range: 1.1
-  _canHitFlying: 1
-  _shotsRandomly: 0
-  _armorThroughMalus: 0
-  _damageOverTime: 0
-  _dotDuration: 0
-  _towerUpgrades:
+  <Projectile>k__BackingField: {fileID: 7123463354834142406, guid: afbadb66e1996b245a64d651b44396b9,
+    type: 3}
+  <TimeShots>k__BackingField: 1.05
+  <Damage>k__BackingField: 11
+  <ArmorThrough>k__BackingField: 5
+  <Shots>k__BackingField: 1
+  <Range>k__BackingField: 1.1
+  <HitFlying>k__BackingField: 1
+  <ShotsRandomly>k__BackingField: 0
+  <ArmorThroughMalus>k__BackingField: 0
+  <Dot>k__BackingField: 0
+  <DotDuration>k__BackingField: 0
+  <Upgrades>k__BackingField:
   - {fileID: 7898542770350605050, guid: c5760ae7a4303984b9b66724cdbc829c, type: 3}
   - {fileID: 460024003024786714, guid: db794937c7d59564c98891d5816e4c74, type: 3}
-  _towerSpecs: []
-  _towerAugmentations:
+  <Specs>k__BackingField: []
+  <Augmentations>k__BackingField:
   - {fileID: 11400000, guid: e4aff0a089d64e04eb36a849753dd8b1, type: 2}
   - {fileID: 11400000, guid: 8a6091a8679f6b94bbf63b1f28aae38a, type: 2}
   - {fileID: 11400000, guid: c46aaf1140295aa43945c1928fd3873b, type: 2}
   - {fileID: 11400000, guid: 269f3af02c1d39843b41f07f0de7dbdd, type: 2}
   - {fileID: 11400000, guid: fe6c0a1a6d5261c46b469793921138a5, type: 2}
-  _special: 
-  _screenShot: {fileID: 21300000, guid: 6c647618c8eb0844dac6f90243d8e3d8, type: 3}
+  <Special>k__BackingField: 
+  <ScreenShot>k__BackingField: {fileID: 21300000, guid: 6c647618c8eb0844dac6f90243d8e3d8,
+    type: 3}
 --- !u!1001 &1305009464281724445
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1305009464217428401}
     m_Modifications:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
@@ -259,6 +281,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbd39873f2e903e43b64fb0035085e24, type: 3}
 --- !u!4 &5367875697884386731 stripped
 Transform:
@@ -277,6 +302,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1305009464217428401}
     m_Modifications:
     - target: {fileID: 2616836571559558307, guid: a0747cfa70861f444a27da50f9419661,
@@ -350,6 +376,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0747cfa70861f444a27da50f9419661, type: 3}
 --- !u!4 &8604639988615361977 stripped
 Transform:
@@ -362,6 +391,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1305009464217428401}
     m_Modifications:
     - target: {fileID: 966113606595656746, guid: f2cf1260bb4d0984d978d4c6eef7553a,
@@ -430,6 +460,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2cf1260bb4d0984d978d4c6eef7553a, type: 3}
 --- !u!4 &6796318527216691260 stripped
 Transform:

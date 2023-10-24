@@ -12,21 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9275da23ffe138249b48ceb9809eaf68, type: 3}
   m_Name: DeadField
   m_EditorClassIdentifier: 
-  _name: Dead Field
-  _picture: {fileID: 21300000, guid: 3aeb669f1a183bd4298cc870046f5cb9, type: 3}
-  _description: The field was destroyed years ago now, do you think you still have
-    a chance ?
-  _playSceneName: DeadField
-  _levelType: 1
-  _availableWaves:
+  <Name>k__BackingField: Dead Field
+  <Picture>k__BackingField: {fileID: 21300000, guid: 3aeb669f1a183bd4298cc870046f5cb9,
+    type: 3}
+  <Description>k__BackingField: The field was destroyed years ago now, do you think
+    you still have a chance ?
+  <PlaySceneName>k__BackingField: DeadField
+  <Type>k__BackingField: 1
+  <Waves>k__BackingField:
   - {fileID: 11400000, guid: 541a420d7d13da440bcbd35c9e6c20de, type: 2}
   - {fileID: 11400000, guid: 3834adcdcb4abe54ebdea72c2de96c4c, type: 2}
   - {fileID: 11400000, guid: 42c1c2b8212ec0b4997282684a650378, type: 2}
   - {fileID: 11400000, guid: 1ff8d10d70f625a42a0677fb7f98a235, type: 2}
   - {fileID: 11400000, guid: 05233978e05b313418106ecfe271f448, type: 2}
   - {fileID: 11400000, guid: 9d740f09a9ebfff4ea3e897a598ecae9, type: 2}
-  _lifeCount: 5
-  _goldCount: 445
-  _towerLevel: 0
-  _goldMultiplier: 0.75
-  _blockedTowers: []
+  <LifeCount>k__BackingField: 5
+  <GoldCount>k__BackingField: 445
+  <TowerLevel>k__BackingField: 0
+  <GoldMultiplier>k__BackingField: 0.75
+  <BlockedTowers>k__BackingField: []

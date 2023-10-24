@@ -1,139 +1,123 @@
-﻿/// <summary>
-/// Class used to handle conversion between numeric to string values.
-/// </summary>
-public static class Converter
+﻿namespace UI
 {
     /// <summary>
-    /// Method used to convert value.
+    /// Class used to handle conversion between numeric to string values.
     /// </summary>
-    /// <param name="armor">Float value to convert</param>
-    /// <returns>Converted value</returns>
-    public static string TransformArmor(float armor)
+    public static class Converter
     {
-        if (armor <= 0.1f)
-            return "None";
-        else if (0.1f < armor && armor <= 0.25f)
-            return "Low";
-        else if (0.25f < armor && armor <= 0.45f)
-            return "Shielded";
-        else if (0.45f < armor && armor <= 0.85f)
-            return "High";
-        else if (armor > 0.85f)
-            return "Unbreakable";
-        else
-            return "Unknown";
-    }
+        /// <summary>
+        /// Method used to convert value.
+        /// </summary>
+        /// <param name="armor">Float value to convert</param>
+        /// <returns>Converted value</returns>
+        public static string TransformArmor(float armor)
+        {
+            return armor switch
+            {
+                <= 0.1f => "None",
+                > 0.1f and <= 0.25f => "Low",
+                > 0.25f and <= 0.45f => "Shielded",
+                > 0.45f and <= 0.85f => "High",
+                > 0.85f => "Unbreakable",
+                _ => "Unknown"
+            };
+        }
 
 
 
-    /// <summary>
-    /// Method used to convert value.
-    /// </summary>
-    /// <param name="armor">Float value to convert</param>
-    /// <returns>Converted value</returns>
-    public static string TransformResistance(float armor)
-    {
-        if (armor <= 0.1f)
-            return "None";
-        else if (0.1f < armor && armor <= 0.25f)
-            return "Low";
-        else if (0.25f < armor && armor <= 0.45f)
-            return "Shielded";
-        else if (0.45f < armor && armor <= 0.85f)
-            return "High";
-        else if (armor > 0.85f)
-            return "Unbreakable";
-        else
-            return "Unknown";
-    }
+        /// <summary>
+        /// Method used to convert value.
+        /// </summary>
+        /// <param name="armor">Float value to convert</param>
+        /// <returns>Converted value</returns>
+        public static string TransformResistance(float armor)
+        {
+            return armor switch
+            {
+                <= 0.1f => "None",
+                > 0.1f and <= 0.25f => "Low",
+                > 0.25f and <= 0.45f => "Shielded",
+                > 0.45f and <= 0.85f => "High",
+                > 0.85f => "Unbreakable",
+                _ => "Unknown"
+            };
+        }
 
-    /// <summary>
-    /// Method used to convert value.
-    /// </summary>
-    /// <param name="armorThrough">Float value to convert</param>
-    /// <returns>Converted value</returns>
-    public static string TransformArmorThrough(float armorThrough)
-    {
-        if (armorThrough <= 0.05f)
-            return "Still Polish";
-        else if (0.05f < armorThrough && armorThrough <= 0.15f)
-            return "Scratcher";
-        else if (0.15f < armorThrough && armorThrough <= 0.35f)
-            return "Big Hitter";
-        else if (0.35f < armorThrough && armorThrough <= 0.65f)
-            return "Breacher";
-        else if (armorThrough > 0.65f)
-            return "Destroyer";
-        else
-            return "Unknown";
-    }
+        /// <summary>
+        /// Method used to convert value.
+        /// </summary>
+        /// <param name="armorThrough">Float value to convert</param>
+        /// <returns>Converted value</returns>
+        public static string TransformArmorThrough(float armorThrough)
+        {
+            return armorThrough switch
+            {
+                <= 0.05f => "Still Polish",
+                > 0.05f and <= 0.15f => "Scratcher",
+                > 0.15f and <= 0.35f => "Big Hitter",
+                > 0.35f and <= 0.65f => "Breacher",
+                > 0.65f => "Destroyer",
+                _ => "Unknown"
+            };
+        }
 
-    /// <summary>
-    /// Method used to convert value.
-    /// </summary>
-    /// <param name="dot">Float value to convert</param>
-    /// <returns>Converted value</returns>
-    public static string TransformDot(float dot)
-    {
-        if (dot <= 0)
-            return "None";
-        else if (0 < dot && dot <= 10)
-            return "V. Small";
-        else if (10 < dot && dot <= 25)
-            return "Small";
-        else if (25 < dot && dot <= 55)
-            return "Average";
-        else if (55 < dot && dot <= 80)
-            return "High";
-        else if (dot > 80)
-            return "V. High";
-        else
-            return "Unknown";
-    }
+        /// <summary>
+        /// Method used to convert value.
+        /// </summary>
+        /// <param name="dot">Float value to convert</param>
+        /// <returns>Converted value</returns>
+        public static string TransformDot(float dot)
+        {
+            return dot switch
+            {
+                <= 0 => "None",
+                > 0 and <= 10 => "V. Small",
+                > 10 and <= 25 => "Small",
+                > 25 and <= 55 => "Average",
+                > 55 and <= 80 => "High",
+                > 80 => "V. High",
+                _ => "Unknown"
+            };
+        }
 
 
 
-    /// <summary>
-    /// Method used to convert value.
-    /// </summary>
-    /// <param name="speed">Float value to convert</param>
-    /// <returns>Converted value</returns>
-    public static string TransformSpeed(float speed)
-    {
-        if (speed <= 0.1f)
-            return "V. Slow";
-        else if (0.1f < speed && speed <= 0.2f)
-            return "Slow";
-        else if (0.2f < speed && speed <= 0.3f)
-            return "Average";
-        else if (0.3f < speed && speed <= 0.4f)
-            return "Fast";
-        else if (speed > 0.4f)
-            return "V. Fast";
-        else
-            return "Unknown";
-    }
+        /// <summary>
+        /// Method used to convert value.
+        /// </summary>
+        /// <param name="speed">Float value to convert</param>
+        /// <returns>Converted value</returns>
+        public static string TransformSpeed(float speed)
+        {
+            return speed switch
+            {
+                <= 0.1f => "V. Slow",
+                > 0.1f and <= 0.2f => "Slow",
+                > 0.2f and <= 0.3f => "Average",
+                > 0.3f and <= 0.4f => "Fast",
+                > 0.4f => "V. Fast",
+                _ => "Unknown"
+            };
+        }
 
 
 
-    /// <summary>
-    /// Method used to convert value.
-    /// </summary>
-    /// <param name="fireRate">Float value to convert</param>
-    /// <returns>Converted value</returns>
-    public static string TransformFireRate(float fireRate)
-    {
-        if (fireRate <= 0.25f)
-            return "V. Slow";
-        else if (0.25f < fireRate && fireRate <= 0.55f)
-            return "Slow";
-        else if (0.55f < fireRate && fireRate <= 0.85f)
-            return "Average";
-        else if (0.85f < fireRate && fireRate <= 1.15f)
-            return "Fast";
-        else if (fireRate > 1.15f)
-            return "V. Fast";
-        else
-            return "Unknown";
+        /// <summary>
+        /// Method used to convert value.
+        /// </summary>
+        /// <param name="fireRate">Float value to convert</param>
+        /// <returns>Converted value</returns>
+        public static string TransformFireRate(float fireRate)
+        {
+            return fireRate switch
+            {
+                <= 0.25f => "V. Slow",
+                > 0.25f and <= 0.55f => "Slow",
+                > 0.55f and <= 0.85f => "Average",
+                > 0.85f and <= 1.15f => "Fast",
+                > 1.15f => "V. Fast",
+                _ => "Unknown"
+            };
+        }
     }
 }

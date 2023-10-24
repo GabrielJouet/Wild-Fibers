@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8382053600298428176}
   - {fileID: 522071239486010086}
@@ -48,6 +49,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -91,7 +93,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &4810297222311416622
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,10 +106,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &7069995208607469768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updates: 1
-  _target: {fileID: 1325451588954096048}
+  update: 0
+  target: {fileID: 0}
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +154,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3623001225806360375}
   m_Father: {fileID: 0}
@@ -165,6 +170,25 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -183,31 +207,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Walker Unt
-  _selector: {fileID: 4000618669885677062}
-  _healthBar: {fileID: 8863022456078644539}
-  _dotDisplay: {fileID: 1262192122651188265}
-  _spriteRenderer: {fileID: 8203056244331385572}
-  _animator: {fileID: 4810297222311416622}
-  _healthMax: 85
-  _armorMax: 15
-  _resistance: 25
-  _speedMax: 0.45
-  _numberOfLivesTaken: 1
-  _goldGained: 7
-  _flying: 0
-  _damagePosition: {fileID: 3623001225806360375}
-  _description: Walkers are the dominant cast in an Unt hive. Their speed make them
-    versatile but also good for picking objects and bringing it back to the hive.
-    But, without any weaponry its only goal in combat is to flood the enemy or as
-    bait.
-  _screenShot: {fileID: 21300000, guid: 68943bb627b10e9488c6480752e89be9, type: 3}
-  _special: 
+  selector: {fileID: 4000618669885677062}
+  healthBar: {fileID: 8863022456078644539}
+  dotDisplay: {fileID: 1262192122651188265}
+  spriteRenderer: {fileID: 8203056244331385572}
+  animator: {fileID: 4810297222311416622}
+  <HealthMax>k__BackingField: 85
+  <ArmorMax>k__BackingField: 15
+  <Resistance>k__BackingField: 25
+  <SpeedMax>k__BackingField: 0.45
+  <LivesTaken>k__BackingField: 1
+  <GoldGained>k__BackingField: 7
+  <Flying>k__BackingField: 0
+  <DamagePosition>k__BackingField: {x: 0, y: 0}
+  <Description>k__BackingField: Walkers are the dominant cast in an Unt hive. Their
+    speed make them versatile but also good for picking objects and bringing it back
+    to the hive. But, without any weaponry its only goal in combat is to flood the
+    enemy or as bait.
+  <ScreenShot>k__BackingField: {fileID: 21300000, guid: 68943bb627b10e9488c6480752e89be9,
+    type: 3}
+  <Special>k__BackingField: 
 --- !u!1001 &3162793518331619717
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 3623001225806360375}
     m_Modifications:
     - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
@@ -281,16 +306,19 @@ PrefabInstance:
       value: DotIcon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a7ebdb59535a441a4c7b5d6e455920, type: 3}
---- !u!1 &1262192122651188265 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4206444510151701932, guid: d6a7ebdb59535a441a4c7b5d6e455920,
-    type: 3}
-  m_PrefabInstance: {fileID: 3162793518331619717}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &522071239486010086 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+    type: 3}
+  m_PrefabInstance: {fileID: 3162793518331619717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1262192122651188265 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4206444510151701932, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 3162793518331619717}
   m_PrefabAsset: {fileID: 0}
@@ -299,6 +327,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 3623001225806360375}
     m_Modifications:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
@@ -377,16 +406,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbd39873f2e903e43b64fb0035085e24, type: 3}
---- !u!1 &4000618669885677062 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9044120826128104448, guid: cbd39873f2e903e43b64fb0035085e24,
-    type: 3}
-  m_PrefabInstance: {fileID: 5333993152066298374}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1325451588954096048 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
+    type: 3}
+  m_PrefabInstance: {fileID: 5333993152066298374}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4000618669885677062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9044120826128104448, guid: cbd39873f2e903e43b64fb0035085e24,
     type: 3}
   m_PrefabInstance: {fileID: 5333993152066298374}
   m_PrefabAsset: {fileID: 0}
@@ -395,6 +427,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 3623001225806360375}
     m_Modifications:
     - target: {fileID: 357924142462272881, guid: c1d79214be3f0e64babfd78791ecb9fd,
@@ -479,6 +512,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d79214be3f0e64babfd78791ecb9fd, type: 3}
 --- !u!4 &5467434199165554604 stripped
 Transform:
@@ -491,6 +527,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 3623001225806360375}
     m_Modifications:
     - target: {fileID: 2009948410974079920, guid: 715ad6c1a5b12c549904843e41aef7f5,
@@ -569,6 +606,9 @@ PrefabInstance:
       value: HealthBarComponents
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 715ad6c1a5b12c549904843e41aef7f5, type: 3}
 --- !u!4 &8382053600298428176 stripped
 Transform:

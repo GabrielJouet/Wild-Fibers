@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f0d963a86c7ddb4196eaed086540c4c, type: 3}
   m_Name: 4 - Grounds Spikes
   m_EditorClassIdentifier: 
-  _icon: {fileID: 21300000, guid: 774ca42b67f744f42997ea81b02c758a, type: 3}
-  _price: 4
-  _description: Increase damage to ground units.
+  <Icon>k__BackingField: {fileID: 21300000, guid: 774ca42b67f744f42997ea81b02c758a,
+    type: 3}
+  <Price>k__BackingField: 4
+  <Description>k__BackingField: Increase damage to ground units.

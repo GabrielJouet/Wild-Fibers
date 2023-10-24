@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4632149534653362293}
   - {fileID: 2668615926844750370}
@@ -48,6 +49,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -91,7 +93,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &3597370224652989133
 Animator:
-  serializedVersion: 3
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,10 +106,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &3887681290055951795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _updates: 1
-  _target: {fileID: 4632149534653362293}
+  update: 0
+  target: {fileID: 0}
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +154,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1049263690152909913}
   m_Father: {fileID: 0}
@@ -165,6 +170,25 @@ CapsuleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -183,31 +207,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _name: Scout Blusim
-  _selector: {fileID: 7325471192700415939}
-  _healthBar: {fileID: 3144667757886646281}
-  _dotDisplay: {fileID: 1472001672212050052}
-  _spriteRenderer: {fileID: 2394709574171677322}
-  _animator: {fileID: 3597370224652989133}
-  _healthMax: 30
-  _armorMax: 0
-  _resistance: 0
-  _speedMax: 0.4
-  _numberOfLivesTaken: 1
-  _goldGained: 2
-  _flying: 1
-  _damagePosition: {fileID: 1049263690152909913}
-  _description: A special pheromone used on a Maggot will lead to stronger and lighter
-    blusims. They often bears a pair of wings that are not shaped for underground
-    use.They are used as fast-moving reinforcement troops even if their chitin is
-    frail.
-  _screenShot: {fileID: 21300000, guid: 37bf0474b3f28314391d1d7add9e8ecc, type: 3}
-  _special: Fly
+  selector: {fileID: 7325471192700415939}
+  healthBar: {fileID: 3144667757886646281}
+  dotDisplay: {fileID: 1472001672212050052}
+  spriteRenderer: {fileID: 2394709574171677322}
+  animator: {fileID: 3597370224652989133}
+  <HealthMax>k__BackingField: 30
+  <ArmorMax>k__BackingField: 0
+  <Resistance>k__BackingField: 0
+  <SpeedMax>k__BackingField: 0.4
+  <LivesTaken>k__BackingField: 1
+  <GoldGained>k__BackingField: 2
+  <Flying>k__BackingField: 1
+  <DamagePosition>k__BackingField: {x: 0, y: 0}
+  <Description>k__BackingField: A special pheromone used on a Maggot will lead to
+    stronger and lighter blusims. They often bears a pair of wings that are not shaped
+    for underground use.They are used as fast-moving reinforcement troops even if
+    their chitin is frail.
+  <ScreenShot>k__BackingField: {fileID: 21300000, guid: 37bf0474b3f28314391d1d7add9e8ecc,
+    type: 3}
+  <Special>k__BackingField: Fly
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1049263690152909913}
     m_Modifications:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
@@ -291,16 +316,19 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbd39873f2e903e43b64fb0035085e24, type: 3}
---- !u!1 &7325471192700415939 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9044120826128104448, guid: cbd39873f2e903e43b64fb0035085e24,
-    type: 3}
-  m_PrefabInstance: {fileID: 1741317206090716099}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4632149534653362293 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
+    type: 3}
+  m_PrefabInstance: {fileID: 1741317206090716099}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7325471192700415939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9044120826128104448, guid: cbd39873f2e903e43b64fb0035085e24,
     type: 3}
   m_PrefabInstance: {fileID: 1741317206090716099}
   m_PrefabAsset: {fileID: 0}
@@ -309,6 +337,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1049263690152909913}
     m_Modifications:
     - target: {fileID: 2213408862845597326, guid: d6a7ebdb59535a441a4c7b5d6e455920,
@@ -382,16 +411,19 @@ PrefabInstance:
       value: DotIcon
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6a7ebdb59535a441a4c7b5d6e455920, type: 3}
---- !u!1 &1472001672212050052 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4206444510151701932, guid: d6a7ebdb59535a441a4c7b5d6e455920,
-    type: 3}
-  m_PrefabInstance: {fileID: 3318540798143825192}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &204748521848675915 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
+    type: 3}
+  m_PrefabInstance: {fileID: 3318540798143825192}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1472001672212050052 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4206444510151701932, guid: d6a7ebdb59535a441a4c7b5d6e455920,
     type: 3}
   m_PrefabInstance: {fileID: 3318540798143825192}
   m_PrefabAsset: {fileID: 0}
@@ -400,6 +432,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1049263690152909913}
     m_Modifications:
     - target: {fileID: 2009948410974079920, guid: 715ad6c1a5b12c549904843e41aef7f5,
@@ -478,6 +511,9 @@ PrefabInstance:
       value: HealthBarComponents
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 715ad6c1a5b12c549904843e41aef7f5, type: 3}
 --- !u!4 &2668615926844750370 stripped
 Transform:
@@ -502,6 +538,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 1049263690152909913}
     m_Modifications:
     - target: {fileID: 357924142462272881, guid: c1d79214be3f0e64babfd78791ecb9fd,
@@ -586,6 +623,9 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1d79214be3f0e64babfd78791ecb9fd, type: 3}
 --- !u!4 &9222029069338443843 stripped
 Transform:

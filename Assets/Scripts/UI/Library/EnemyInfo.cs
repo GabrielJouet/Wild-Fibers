@@ -1,20 +1,25 @@
-﻿/// <summary>
-/// Class used to handle enemy info in library.
-/// </summary>
-public class EnemyInfo : ObjectInfo
+﻿using Enemies.Enemy_Types;
+
+namespace UI.Library
 {
     /// <summary>
-    /// Enemy data buffered.
+    /// Class used to handle enemy info in library.
     /// </summary>
-    private Enemy _enemy;
-    public Enemy Enemy
+    public class EnemyInfo : ObjectInfo
     {
-        get => _enemy;
-
-        set
+        /// <summary>
+        /// Enemy data buffered.
+        /// </summary>
+        private Enemy _enemy;
+        public Enemy Enemy
         {
-            _enemy = value;
-            _screenShot.sprite = _enemy.ScreenShot;
+            get => _enemy;
+
+            set
+            {
+                _enemy = value;
+                screenShot.sprite = _enemy.ScreenShot;
+            }
         }
     }
 }

@@ -573,7 +573,7 @@ RectTransform:
   - {fileID: 329719512000828610}
   - {fileID: 492450167425377682}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -628,6 +628,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -656,19 +675,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a12948305cd9d147a7dcf7abe9c7074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mainText: {fileID: 3083444406522115130}
-  _gameScreen: {fileID: 2102273807668080503}
-  _winScreen: {fileID: 21300000, guid: 4a8f0530769bd3b4ca05e9ac802c7146, type: 3}
-  _loseScreen: {fileID: 21300000, guid: 2b12cda0278be1f4d98d482bd15ea86e, type: 3}
-  _seedScores:
+  mainText: {fileID: 3083444406522115130}
+  gameScreen: {fileID: 2102273807668080503}
+  winScreen: {fileID: 21300000, guid: 4a8f0530769bd3b4ca05e9ac802c7146, type: 3}
+  loseScreen: {fileID: 21300000, guid: 2b12cda0278be1f4d98d482bd15ea86e, type: 3}
+  seedScores:
   - {fileID: 1694688511078513423}
   - {fileID: 3539044188182304782}
   - {fileID: 3818703302126455013}
-  _activatedSprite: {fileID: 21300000, guid: 05d8577a4bc817749a9e1b909563ee6a, type: 3}
-  _ressourceController: {fileID: 0}
-  _boxCollider: {fileID: 8003525029727756633}
-  _transform: {fileID: 5211590065191313065}
-  _displayController: {fileID: 0}
+  activatedSprite: {fileID: 21300000, guid: 05d8577a4bc817749a9e1b909563ee6a, type: 3}
+  boxCollider: {fileID: 8003525029727756633}
+  rectTransform: {fileID: 5211590065191313065}
+  displayController: {fileID: 0}
 --- !u!1 &7878089632904234356
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,9 +1,12 @@
-﻿/// <summary>
-/// Enum used for skill state in skill tree.
-/// </summary>
-public enum AugmentationState 
+﻿namespace Miscellanious.Enums
 {
-    LOCKED,
-    AVAILABLE,
-    BOUGHT
+    /// <summary>
+    /// Enum used for skill state in skill tree.
+    /// </summary>
+    public enum AugmentationState 
+    {
+        LOCKED,
+        AVAILABLE,
+        BOUGHT
+    }
 }

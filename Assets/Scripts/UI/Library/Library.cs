@@ -1,290 +1,295 @@
 ﻿using System.Collections.Generic;
+using Enemies.Enemy_Types;
 using TMPro;
+using Towers;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Class used to handle enemy and tower info in library.
-/// </summary>
-public class Library : MonoBehaviour
+namespace UI.Library
 {
-    [Header("Components")]
-
-    [Space(10)]
-
     /// <summary>
-    /// Enemy info prefab component.
+    /// Class used to handle enemy and tower info in library.
     /// </summary>
-    [SerializeField]
-    private GameObject _enemyInfoPrefab;
-
-    /// <summary>
-    /// Tower panel parent object.
-    /// </summary>
-    [SerializeField]
-    private GameObject _towerPanel;
-
-    /// <summary>
-    /// Enemy panel parent object.
-    /// </summary>
-    [SerializeField]
-    private GameObject _enemyPanel;
-
-    /// <summary>
-    /// Tower list game object.
-    /// </summary>
-    [SerializeField]
-    private GameObject _towerList;
-
-    /// <summary>
-    /// Enemy list game object.
-    /// </summary>
-    [SerializeField]
-    private GameObject _enemyList;
-
-    /// <summary>
-    /// Tower tree prefab, used for tower display.
-    /// </summary>
-    [SerializeField]
-    private GameObject _towerTreePrefab;
-
-    /// <summary>
-    /// Spearator image component.
-    /// </summary>
-    [SerializeField]
-    private Transform _separator;
-
-    /// <summary>
-    /// Towers tab image component.
-    /// </summary>
-    [SerializeField]
-    private Image _towerTab;
-
-    /// <summary>
-    /// Enemies tab image component.
-    /// </summary>
-    [SerializeField]
-    private Image _enemiesTab;
-
-
-    [Header("Tower related")]
-
-    /// <summary>
-    /// Tower name text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _towerName;
-
-    /// <summary>
-    /// Tower description text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _towerDescription;
-
-    /// <summary>
-    /// Tower price text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _towerPrice;
-
-    /// <summary>
-    /// Tower damage text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _towerDamage;
-
-    /// <summary>
-    /// Tower fire rate text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _towerFireRate;
-
-    /// <summary>
-    /// Tower armor through text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _towerArmorThrough;
-
-    /// <summary>
-    /// Tower dot text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _towerDot;
-
-    /// <summary>
-    /// Tower special text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _towerSpecial;
-
-    /// <summary>
-    /// Tower number of shots text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _towerShots;
-
-
-    [Header("Enemy related")]
-
-    /// <summary>
-    /// Enemy name text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _enemyName;
-
-    /// <summary>
-    /// Enemy description text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _enemyDescription;
-
-    /// <summary>
-    /// Enemy gold gained text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _enemyGold;
-
-    /// <summary>
-    /// Enemy health text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _enemyHealth;
-
-    /// <summary>
-    /// Enemy speed text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _enemySpeed;
-
-    /// <summary>
-    /// Enemy armor text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _enemyArmor;
-
-    /// <summary>
-    /// Enemy resistance text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _enemyResistance;
-
-    /// <summary>
-    /// Enemy lives lost text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _enemyLivesLost;
-
-    /// <summary>
-    /// Enemy special text component.
-    /// </summary>
-    [SerializeField]
-    private TextMeshProUGUI _enemySpecial;
-
-
-    /// <summary>
-    /// Color used for desactivated tabs.
-    /// </summary>
-    private Color _desactivatedColor = new Color(0.7f, 0.7f, 0.7f);
-
-
-
-    /// <summary>
-    /// Awake method, called at first.
-    /// </summary>
-    private void Start()
+    public class Library : MonoBehaviour
     {
-        List<Tower> towers = Controller.Instance.SquadController.CurrentSquad.Towers;
+        [Header("Components")]
 
-        List<Enemy> enemies = Controller.Instance.EnemyController.Enemies;
+        [Space(10)]
 
-        for (int i = 0; i < Controller.Instance.SaveController.SaveFile.EnemiesUnlocked.Count; i ++)
+        /// <summary>
+        /// Enemy info prefab component.
+        /// </summary>
+        [SerializeField]
+        private GameObject enemyInfoPrefab;
+
+        /// <summary>
+        /// Tower panel parent object.
+        /// </summary>
+        [SerializeField]
+        private GameObject towerPanel;
+
+        /// <summary>
+        /// Enemy panel parent object.
+        /// </summary>
+        [SerializeField]
+        private GameObject enemyPanel;
+
+        /// <summary>
+        /// Tower list game object.
+        /// </summary>
+        [SerializeField]
+        private GameObject towerList;
+
+        /// <summary>
+        /// Enemy list game object.
+        /// </summary>
+        [SerializeField]
+        private GameObject enemyList;
+
+        /// <summary>
+        /// Tower tree prefab, used for tower display.
+        /// </summary>
+        [SerializeField]
+        private GameObject towerTreePrefab;
+
+        /// <summary>
+        /// Separator image component.
+        /// </summary>
+        [SerializeField]
+        private Transform separator;
+
+        /// <summary>
+        /// Towers tab image component.
+        /// </summary>
+        [SerializeField]
+        private Image towerTab;
+
+        /// <summary>
+        /// Enemies tab image component.
+        /// </summary>
+        [SerializeField]
+        private Image enemiesTab;
+
+
+        [Header("Tower related")]
+
+        /// <summary>
+        /// Tower name text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI towerName;
+
+        /// <summary>
+        /// Tower description text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI towerDescription;
+
+        /// <summary>
+        /// Tower price text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI towerPrice;
+
+        /// <summary>
+        /// Tower damage text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI towerDamage;
+
+        /// <summary>
+        /// Tower fire rate text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI towerFireRate;
+
+        /// <summary>
+        /// Tower armor through text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI towerArmorThrough;
+
+        /// <summary>
+        /// Tower dot text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI towerDot;
+
+        /// <summary>
+        /// Tower special text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI towerSpecial;
+
+        /// <summary>
+        /// Tower number of shots text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI towerShots;
+
+
+        [Header("Enemy related")]
+
+        /// <summary>
+        /// Enemy name text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI enemyName;
+
+        /// <summary>
+        /// Enemy description text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI enemyDescription;
+
+        /// <summary>
+        /// Enemy gold gained text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI enemyGold;
+
+        /// <summary>
+        /// Enemy health text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI enemyHealth;
+
+        /// <summary>
+        /// Enemy speed text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI enemySpeed;
+
+        /// <summary>
+        /// Enemy armor text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI enemyArmor;
+
+        /// <summary>
+        /// Enemy resistance text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI enemyResistance;
+
+        /// <summary>
+        /// Enemy lives lost text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI enemyLivesLost;
+
+        /// <summary>
+        /// Enemy special text component.
+        /// </summary>
+        [SerializeField]
+        private TextMeshProUGUI enemySpecial;
+
+
+        /// <summary>
+        /// Color used for deactivated tabs.
+        /// </summary>
+        private readonly Color _deactivatedColor = new Color(0.7f, 0.7f, 0.7f);
+
+
+
+        /// <summary>
+        /// Awake method, called at first.
+        /// </summary>
+        private void Start()
         {
-            EnemyInfo enemyBuffered = Instantiate(_enemyInfoPrefab, _enemyList.transform).GetComponent<EnemyInfo>();
-            enemyBuffered.Enemy = enemies[i];
-            enemyBuffered.Initialize(this);
+            List<Tower> towers = Controller.Instance.SquadController.CurrentSquad.Towers;
+
+            List<Enemy> enemies = Controller.Instance.EnemyController.Enemies;
+
+            for (int i = 0; i < Controller.Instance.SaveController.SaveFile.EnemiesUnlocked.Count; i ++)
+            {
+                EnemyInfo enemyBuffered = Instantiate(enemyInfoPrefab, enemyList.transform).GetComponent<EnemyInfo>();
+                enemyBuffered.Enemy = enemies[i];
+                enemyBuffered.Initialize(this);
+            }
+
+            int maxLevel = Controller.Instance.SaveController.SaveFile.CurrentSquad.TowerLevelMax;
+
+            for (int i = 0; i < 4; i ++)
+                Instantiate(towerTreePrefab, towerList.transform).GetComponent<TowerIcon>().Populate(towers[i], maxLevel, i != 3, this);
+
+            RectTransform towerPanel = towerList.GetComponent<RectTransform>();
+            VerticalLayoutGroup towerLayout = towerList.GetComponent<VerticalLayoutGroup>();
+            towerPanel.sizeDelta = new Vector2(towerPanel.sizeDelta.x, towerLayout.padding.top * 2 + towerLayout.spacing * 3 + 4 * towerTreePrefab.GetComponent<RectTransform>().sizeDelta.y);
+
+            ShowPanel(false);
         }
 
-        int maxLevel = Controller.Instance.SaveController.SaveFile.CurrentSquad.TowerLevelMax;
-
-        for (int i = 0; i < 4; i ++)
-            Instantiate(_towerTreePrefab, _towerList.transform).GetComponent<TowerIcon>().Populate(towers[i], maxLevel, i != 3, this);
-
-        RectTransform towerPanel = _towerList.GetComponent<RectTransform>();
-        VerticalLayoutGroup towerLayout = _towerList.GetComponent<VerticalLayoutGroup>();
-        towerPanel.sizeDelta = new Vector2(towerPanel.sizeDelta.x, towerLayout.padding.top * 2 + towerLayout.spacing * 3 + 4 * _towerTreePrefab.GetComponent<RectTransform>().sizeDelta.y);
-
-        ShowPanel(false);
-    }
 
 
+        /// <summary>
+        /// Method used to show the panels.
+        /// </summary>
+        /// <param name="enemy">Does the panel shown is the enemy one?</param>
+        public void ShowPanel(bool enemy)
+        {
+            towerList.transform.parent.parent.gameObject.SetActive(!enemy);
+            enemyList.SetActive(enemy);
 
-    /// <summary>
-    /// Method used to show the panels.
-    /// </summary>
-    /// <param name="enemy">Does the panel shown is the enemy one?</param>
-    public void ShowPanel(bool enemy)
-    {
-        _towerList.transform.parent.parent.gameObject.SetActive(!enemy);
-        _enemyList.SetActive(enemy);
+            separator.localScale = new Vector3(enemy ? -1 : 1, 1, 1);
+            towerTab.color = enemy ? _deactivatedColor : Color.white;
+            enemiesTab.color = !enemy ? _deactivatedColor : Color.white;
 
-        _separator.localScale = new Vector3(enemy ? -1 : 1, 1, 1);
-        _towerTab.color = enemy ? _desactivatedColor : Color.white;
-        _enemiesTab.color = !enemy ? _desactivatedColor : Color.white;
-
-        _towerPanel.SetActive(!enemy);
-        _enemyPanel.SetActive(enemy);
-    }
-
-
-    /// <summary>
-    /// Method called to show an object info.
-    /// </summary>
-    /// <param name="newInfo">The info object to display</param>
-    public void ShowInfo(ObjectInfo newInfo)
-    {
-        if (newInfo.TryGetComponent(out TowerInfo towerInfo))
-            ShowTowerInfo(towerInfo);
-        else if (newInfo.TryGetComponent(out EnemyInfo enemyInfo))
-            ShowEnemyInfo(enemyInfo);
-    }
+            towerPanel.SetActive(!enemy);
+            enemyPanel.SetActive(enemy);
+        }
 
 
-    /// <summary>
-    /// Method called to show a tower info.
-    /// </summary>
-    /// <param name="newInfo">The info tower to display</param>
-    private void ShowTowerInfo(TowerInfo newInfo)
-    {
-        Tower newTower = newInfo.Tower;
-
-        _towerName.text = newTower.name;
-        _towerDescription.text = newTower.LibraryDescription;
-        _towerPrice.text = newTower.Price.ToString();
-        _towerDamage.text = newTower.Damage.ToString();
-        _towerFireRate.text = newTower.FireRateInfo;
-        _towerArmorThrough.text = newTower.ArmorThroughInfo;
-        _towerDot.text = newTower.DotInfo;
-        _towerSpecial.text = newTower.Special;
-        _towerShots.text = newTower.Shots.ToString();
-    }
+        /// <summary>
+        /// Method called to show an object info.
+        /// </summary>
+        /// <param name="newInfo">The info object to display</param>
+        public void ShowInfo(ObjectInfo newInfo)
+        {
+            if (newInfo.TryGetComponent(out TowerInfo towerInfo))
+                ShowTowerInfo(towerInfo);
+            else if (newInfo.TryGetComponent(out EnemyInfo enemyInfo))
+                ShowEnemyInfo(enemyInfo);
+        }
 
 
-    /// <summary>
-    /// Method called to show an enemy info.
-    /// </summary>
-    /// <param name="newInfo">The info enemy to show</param>
-    private void ShowEnemyInfo(EnemyInfo newInfo)
-    {
-        Enemy newEnemy = newInfo.Enemy;
+        /// <summary>
+        /// Method called to show a tower info.
+        /// </summary>
+        /// <param name="newInfo">The info tower to display</param>
+        private void ShowTowerInfo(TowerInfo newInfo)
+        {
+            Tower newTower = newInfo.Tower;
 
-        _enemyName.text = newEnemy.name;
-        _enemyDescription.text = newEnemy.Description;
-        _enemyGold.text = newEnemy.GoldInfo;
-        _enemyHealth.text = newEnemy.HealthMax.ToString();
-        _enemySpeed.text = newEnemy.SpeedInfo;
-        _enemyArmor.text = newEnemy.ArmorInfo;
-        _enemyResistance.text = newEnemy.ResistanceInfo;
-        _enemyLivesLost.text = newEnemy.LivesTaken.ToString();
-        _enemySpecial.text = newEnemy.Special;
+            towerName.text = newTower.name;
+            towerDescription.text = newTower.LibraryDescription;
+            towerPrice.text = newTower.Price.ToString();
+            towerDamage.text = newTower.Damage.ToString();
+            towerFireRate.text = newTower.FireRateInfo;
+            towerArmorThrough.text = newTower.ArmorThroughInfo;
+            towerDot.text = newTower.DotInfo;
+            towerSpecial.text = newTower.Special;
+            towerShots.text = newTower.Shots.ToString();
+        }
+
+
+        /// <summary>
+        /// Method called to show an enemy info.
+        /// </summary>
+        /// <param name="newInfo">The info enemy to show</param>
+        private void ShowEnemyInfo(EnemyInfo newInfo)
+        {
+            Enemy newEnemy = newInfo.Enemy;
+
+            enemyName.text = newEnemy.name;
+            enemyDescription.text = newEnemy.Description;
+            enemyGold.text = newEnemy.GoldGained.ToString();
+            enemyHealth.text = newEnemy.HealthMax.ToString();
+            enemySpeed.text = Converter.TransformSpeed(newEnemy.SpeedMax);
+            enemyArmor.text = Converter.TransformArmor(newEnemy.ArmorMax / 100);
+            enemyResistance.text = Converter.TransformResistance(newEnemy.Resistance / 100);
+            enemyLivesLost.text = newEnemy.LivesTaken.ToString();
+            enemySpecial.text = newEnemy.Special;
+        }
     }
 }

@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f496cd7d0621c1e40a687124d1356f6f, type: 3}
   m_Name: Crazy Foliage
   m_EditorClassIdentifier: 
-  _towers:
+  <Towers>k__BackingField:
   - {fileID: 1305009464217428406, guid: fa50ddfc76e149643bb81c198ae9d879, type: 3}
   - {fileID: 8992812145563469472, guid: 76badba702d07904a8bcda1641fe650d, type: 3}
   - {fileID: 1943273744301343231, guid: 53960d850f4012741971c5304b6f6772, type: 3}
   - {fileID: 7279474403529807532, guid: ed5325abe98746e4dbda93fc1ec7ba82, type: 3}
-  _augmentations:
+  <Augmentations>k__BackingField:
   - {fileID: 11400000, guid: 55e57f66556052b46ae35ed21c69b853, type: 2}
   - {fileID: 11400000, guid: d90c0ed4f43b5c5498992a40486ecc98, type: 2}
   - {fileID: 11400000, guid: 072221c4a20614b45a786bb25706f868, type: 2}
   - {fileID: 11400000, guid: 7fa3ea5895cc6ed418444c3e2e223519, type: 2}
   - {fileID: 11400000, guid: a63f0b2d104a39f4d949343da8b98845, type: 2}
-  _spriteSquad: {fileID: 21300000, guid: 40057cbfe12fba34fa5943b5f2cd0e2e, type: 3}
-  _livesBonus: 0
-  _goldBonus: 0
+  <SquadSprite>k__BackingField: {fileID: 21300000, guid: 40057cbfe12fba34fa5943b5f2cd0e2e,
+    type: 3}
+  <LivesBonus>k__BackingField: 0
+  <GoldBonus>k__BackingField: 0

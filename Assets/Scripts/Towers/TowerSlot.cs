@@ -1,5 +1,7 @@
-using System;
 using System.Collections;
+using Levels;
+using Towers;
+using UI.InGame;
 using UnityEngine;
 
 /// <summary>
@@ -12,75 +14,54 @@ public class TowerSlot : MonoBehaviour
     [Header("Components")]
 
     /// <summary>
-    /// Resource controller is used to handled gold count.
-    /// </summary>
-    [SerializeField]
-    private RessourceController _ressourceController;
-
-    /// <summary>
     /// Information UI.
     /// </summary>
     [SerializeField]
-    private BackgroudSelecter _backgroundSelecter;
+    private BackgroudSelecter backgroundSelecter;
 
     /// <summary>
     /// Animator component for shadows.
     /// </summary>
     [SerializeField]
-    private Animator _shadowAnimator;
+    private Animator shadowAnimator;
 
     /// <summary>
     /// Does this tower slot use up or down description?
     /// </summary>
-    [SerializeField]
-    private bool _useUpDescription;
-
-    /// <summary>
-    /// Does this tower slot use up or down description?
-    /// </summary>
-    public bool UpDescription { get => _useUpDescription; }
+    [field: SerializeField]
+    public bool UpDescription { get; private set; }
 
 
     /// <summary>
     /// Collider component.
     /// </summary>
-    private CapsuleCollider2D _collider;
+    [SerializeField]
+    private CapsuleCollider2D collider;
 
     /// <summary>
     /// Animator component.
     /// </summary>
-    private Animator _animator;
+    [SerializeField]
+    private Animator animator;
 
 
 
     /// <summary>
     /// Tower associated with tower slot.
     /// </summary>
-    public Tower Tower { get; private set; } = null;
+    public Tower Tower { get; private set; }
 
 
-
-    /// <summary>
-    /// Awake method used for initialization.
-    /// </summary>
-    private void Awake()
-    {
-        _animator = GetComponent<Animator>();
-        _collider = GetComponent<CapsuleCollider2D>();
-    }
-
-
-    #region Construction related
     /// <summary>
     /// Method used to create a new tower.
     /// </summary>
     /// <param name="tower">The chosen tower</param>
     public void ChooseTower(Tower tower)
     {
-        _ressourceController.RemoveGold(tower.Price);
+        RessourceController.Instance.RemoveGold(tower.Price);
 
-        _collider.enabled = false;
-        _backgroundSelecter.DisableTowerChooseButton();
+        collider.enabled = false;
+        backgroundSelecter.DisableTowerChooseButton();
         StartCoroutine(DelayConstruct(tower));
     }
 
@@ -92,14 +73,13 @@ public class TowerSlot : MonoBehaviour
     /// <returns>Yield the construction time</returns>
     private IEnumerator DelayConstruct(Tower tower)
     {
-        _shadowAnimator.SetTrigger(tower.Name);
-        _animator.SetTrigger(tower.Name);
+        shadowAnimator.SetTrigger(tower.name);
+        animator.SetTrigger(tower.name);
 
-        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
-        Controller.Instance.PoolController.Out(tower).GetComponent<Tower>().Initialize(this, _ressourceController, _backgroundSelecter, 0);
+        Instantiate(tower).Initialize(this, backgroundSelecter, 0);
     }
-    #endregion
 
 
     /// <summary>
@@ -108,8 +88,8 @@ public class TowerSlot : MonoBehaviour
     public void ResetSlot()
     {
         Tower = null;
-        _collider.enabled = true;
-        _animator.SetTrigger("Base");
-        _shadowAnimator.SetTrigger("Base");
+        collider.enabled = true;
+        animator.SetTrigger("Base");
+        shadowAnimator.SetTrigger("Base");
     }
 }

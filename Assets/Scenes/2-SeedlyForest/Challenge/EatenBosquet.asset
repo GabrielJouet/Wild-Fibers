@@ -12,21 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9275da23ffe138249b48ceb9809eaf68, type: 3}
   m_Name: EatenBosquet
   m_EditorClassIdentifier: 
-  _name: Eaten Bosquet
-  _picture: {fileID: 21300000, guid: cad09f24362b5de4ab3a0ec81b82dafc, type: 3}
-  _description: Insects are carving alive trunks without mercy.
-  _playSceneName: EatenBosquet
-  _levelType: 2
-  _availableWaves:
+  <Name>k__BackingField: Eaten Bosquet
+  <Picture>k__BackingField: {fileID: 21300000, guid: cad09f24362b5de4ab3a0ec81b82dafc,
+    type: 3}
+  <Description>k__BackingField: Insects are carving alive trunks without mercy.
+  <PlaySceneName>k__BackingField: EatenBosquet
+  <Type>k__BackingField: 2
+  <Waves>k__BackingField:
   - {fileID: 11400000, guid: 2d117b19a8a0db14f92ce44396fe5d88, type: 2}
   - {fileID: 11400000, guid: d9d1e442bfe99834c959487907576464, type: 2}
   - {fileID: 11400000, guid: 7f234c5e5a1aad5469201eade8af5d08, type: 2}
   - {fileID: 11400000, guid: 58cd6d2f20e441d40a3b1d30c94dbeb1, type: 2}
   - {fileID: 11400000, guid: 0d25421b3358fbd4e9577c43326bcd1f, type: 2}
-  _lifeCount: 1
-  _goldCount: 745
-  _towerLevel: 1
-  _goldMultiplier: 0.65
-  _blockedTowers:
+  <LifeCount>k__BackingField: 1
+  <GoldCount>k__BackingField: 745
+  <TowerLevel>k__BackingField: 1
+  <GoldMultiplier>k__BackingField: 0.65
+  <BlockedTowers>k__BackingField:
   - {fileID: 11400000, guid: eef686483be9f3a4cb3aa40c8a6b7bd9, type: 2}
   - {fileID: 11400000, guid: 02d8d222f1904bc44a62ac9958c07937, type: 2}

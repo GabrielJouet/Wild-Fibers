@@ -12,18 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9275da23ffe138249b48ceb9809eaf68, type: 3}
   m_Name: WindlyField
   m_EditorClassIdentifier: 
-  _name: Windly Field
-  _picture: {fileID: 21300000, guid: 3aeb669f1a183bd4298cc870046f5cb9, type: 3}
-  _description: A sunny field filled with flowers and nice grass.
-  _playSceneName: WindyField
-  _levelType: 0
-  _availableWaves:
+  <Name>k__BackingField: Windly Field
+  <Picture>k__BackingField: {fileID: 21300000, guid: 3aeb669f1a183bd4298cc870046f5cb9,
+    type: 3}
+  <Description>k__BackingField: A sunny field filled with flowers and nice grass.
+  <PlaySceneName>k__BackingField: WindyField
+  <Type>k__BackingField: 0
+  <Waves>k__BackingField:
   - {fileID: 11400000, guid: 11b380b1c3ce3ef4aa836c31faa27eae, type: 2}
   - {fileID: 11400000, guid: c060ca80bd3bed145af15376557f1ab9, type: 2}
   - {fileID: 11400000, guid: bd6a59591cad6714a9580ef866b61b4c, type: 2}
   - {fileID: 11400000, guid: 52c827065e1f2f3429488f45f3205fbb, type: 2}
   - {fileID: 11400000, guid: fb170f421942f624490021ca8a457988, type: 2}
-  _lifeCount: 20
-  _goldCount: 400
-  _towerLevel: 0
-  _goldMultiplier: 1
+  <LifeCount>k__BackingField: 20
+  <GoldCount>k__BackingField: 400
+  <TowerLevel>k__BackingField: 0
+  <GoldMultiplier>k__BackingField: 1
+  <BlockedTowers>k__BackingField: []

@@ -1,93 +1,97 @@
-﻿using UnityEngine;
+﻿using Levels;
+using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Class used to handle new waves.
-/// </summary>
-[RequireComponent(typeof(Animator))]
-public class NextWaveButton : MonoBehaviour
+namespace UI.InGame
 {
     /// <summary>
-    /// Level controller of the level.
+    /// Class used to handle new waves.
     /// </summary>
-    [SerializeField]
-    private LevelController _levelController;
-
-    /// <summary>
-    /// Animator component.
-    /// </summary>
-    [SerializeField]
-    private Animator _animator;
-
-    /// <summary>
-    /// Last sprite of the countdown animation.
-    /// </summary>
-    [SerializeField]
-    private Sprite _lastFrameCountDownSprite;
-
-
-    /// <summary>
-    /// Time before next wave.
-    /// </summary>
-    private float _timeLeft = 0;
-
-    /// <summary>
-    /// Does the time is decreasing?
-    /// </summary>
-    private bool _timeDecrease = false;
-
-
-
-    /// <summary>
-    /// First method called after Awake.
-    /// </summary>
-    private void Start()
+    [RequireComponent(typeof(Animator))]
+    public class NextWaveButton : MonoBehaviour
     {
-        _animator.GetComponent<Image>().sprite = _lastFrameCountDownSprite;
-        _animator.enabled = false;
-    }
+        /// <summary>
+        /// Level controller of the level.
+        /// </summary>
+        [SerializeField]
+        private LevelController levelController;
+
+        /// <summary>
+        /// Animator component.
+        /// </summary>
+        [SerializeField]
+        private Animator animator;
+
+        /// <summary>
+        /// Last sprite of the countdown animation.
+        /// </summary>
+        [SerializeField]
+        private Sprite lastFrameCountDownSprite;
 
 
-    /// <summary>
-    /// Fixed Update called 50 times a second.
-    /// </summary>
-    private void FixedUpdate()
-    {
-        if(_timeDecrease)
+        /// <summary>
+        /// Time before next wave.
+        /// </summary>
+        private float _timeLeft = 0;
+
+        /// <summary>
+        /// Does the time is decreasing?
+        /// </summary>
+        private bool _timeDecrease = false;
+
+
+
+        /// <summary>
+        /// First method called after Awake.
+        /// </summary>
+        private void Start()
         {
-            if (_timeLeft - Time.fixedDeltaTime < 0)
-                PressNewWaveButton();
-            else
-                _timeLeft -= Time.fixedDeltaTime;
+            animator.GetComponent<Image>().sprite = lastFrameCountDownSprite;
+            animator.enabled = false;
         }
-    }
 
 
-    /// <summary>
-    /// Method called when we want to activate the button.
-    /// </summary>
-    /// <param name="newTimeLeft">New time left</param>
-    public void ActivateNewWaveButton(float newTimeLeft)
-    {
-        _timeLeft = newTimeLeft;
-        _timeDecrease = true;
+        /// <summary>
+        /// Fixed Update called 50 times a second.
+        /// </summary>
+        private void FixedUpdate()
+        {
+            if(_timeDecrease)
+            {
+                if (_timeLeft - Time.fixedDeltaTime < 0)
+                    PressNewWaveButton();
+                else
+                    _timeLeft -= Time.fixedDeltaTime;
+            }
+        }
 
-        gameObject.SetActive(true);
 
-        _animator.enabled = true;
-        _animator.SetFloat("animSpeed", _animator.runtimeAnimatorController.animationClips[0].length / newTimeLeft);
-    }
+        /// <summary>
+        /// Method called when we want to activate the button.
+        /// </summary>
+        /// <param name="newTimeLeft">New time left</param>
+        public void ActivateNewWaveButton(float newTimeLeft)
+        {
+            _timeLeft = newTimeLeft;
+            _timeDecrease = true;
+
+            gameObject.SetActive(true);
+
+            animator.enabled = true;
+            animator.SetFloat("animSpeed", animator.runtimeAnimatorController.animationClips[0].length / newTimeLeft);
+        }
 
 
-    /// <summary>
-    /// Method used when the time is either depleted or the button is pressed.
-    /// </summary>
-    public void PressNewWaveButton()
-    {
-        _levelController.StartWaveViaButton(_timeLeft);
-        _timeDecrease = false;
+        /// <summary>
+        /// Method used when the time is either depleted or the button is pressed.
+        /// </summary>
+        public void PressNewWaveButton()
+        {
+            levelController.StartWaveViaButton(_timeLeft);
+            _timeDecrease = false;
 
-        _animator.enabled = false;
-        gameObject.SetActive(false);
+            animator.enabled = false;
+            gameObject.SetActive(false);
+        }
     }
 }

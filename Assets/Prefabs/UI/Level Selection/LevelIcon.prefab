@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4891657833135554668}
   m_RootOrder: 1
@@ -42,6 +43,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -109,6 +111,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.33, y: -0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4891657833135554668}
   m_RootOrder: 0
@@ -124,6 +127,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -193,6 +197,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4891657832996300223}
   - {fileID: 4891657832662950270}
@@ -210,6 +215,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -263,24 +269,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90dd31cd8a8a7a54888862a0280e350d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelSelection: {fileID: 0}
-  _hoverDisplayer: {fileID: 4891657832662950271}
-  _levelData: {fileID: 11400000, guid: 1ff984134a7102e4d97dc1e2faf671f6, type: 2}
-  _activatedSprite: {fileID: 5876473196031235697, guid: b4e13f50d3fb2c64296a123d08333805,
+  levelSelection: {fileID: 0}
+  hoverDisplayer: {fileID: 4891657832662950271}
+  <LevelData>k__BackingField: {fileID: 11400000, guid: 1ff984134a7102e4d97dc1e2faf671f6,
+    type: 2}
+  activatedSprite: {fileID: 5876473196031235697, guid: b4e13f50d3fb2c64296a123d08333805,
     type: 3}
-  _completedSprite: {fileID: 154085672403700459, guid: b4e13f50d3fb2c64296a123d08333805,
+  completedSprite: {fileID: 154085672403700459, guid: b4e13f50d3fb2c64296a123d08333805,
     type: 3}
-  _sidedSprite: {fileID: -2154632028628315019, guid: b4e13f50d3fb2c64296a123d08333805,
+  sidedSprite: {fileID: -2154632028628315019, guid: b4e13f50d3fb2c64296a123d08333805,
     type: 3}
-  _challengedSprite: {fileID: 4910959925763933065, guid: b4e13f50d3fb2c64296a123d08333805,
+  challengedSprite: {fileID: 4910959925763933065, guid: b4e13f50d3fb2c64296a123d08333805,
     type: 3}
-  _unlockedHover: {fileID: 3811417429819893015, guid: b4e13f50d3fb2c64296a123d08333805,
+  unlockedHover: {fileID: 3811417429819893015, guid: b4e13f50d3fb2c64296a123d08333805,
     type: 3}
-  _finishedHover: {fileID: 2694338018779796811, guid: b4e13f50d3fb2c64296a123d08333805,
+  finishedHover: {fileID: 2694338018779796811, guid: b4e13f50d3fb2c64296a123d08333805,
     type: 3}
-  _asideHover: {fileID: -18717582051522283, guid: b4e13f50d3fb2c64296a123d08333805,
+  asideHover: {fileID: -18717582051522283, guid: b4e13f50d3fb2c64296a123d08333805,
     type: 3}
-  _challengedHover: {fileID: -3071613485526271407, guid: b4e13f50d3fb2c64296a123d08333805,
+  challengedHover: {fileID: -3071613485526271407, guid: b4e13f50d3fb2c64296a123d08333805,
     type: 3}
 --- !u!58 &5174535586522822220
 CircleCollider2D:
@@ -292,6 +299,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
