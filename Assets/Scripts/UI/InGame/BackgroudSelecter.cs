@@ -91,6 +91,10 @@ namespace UI.InGame
         [SerializeField]
         private RectTransform canvas;
 
+        [Header("Other components")] 
+        [SerializeField]
+        private BoxCollider2D boxCollider2D;
+
 
         /// <summary>
         /// Previous object clicked.
@@ -109,6 +113,7 @@ namespace UI.InGame
         private void Start()
         {
             _currentCamera = Camera.main;
+            boxCollider2D.size = new Vector2(Screen.width, Screen.height);
         }
 
 

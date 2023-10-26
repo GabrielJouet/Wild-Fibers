@@ -41,18 +41,12 @@ namespace Levels
         private NextWaveButton nextWaveButton;
 
         [Header("Levels Structure")] 
-        
-        /// <summary>
-        /// All levels creation data available.
-        /// </summary>
-        [SerializeField]
-        private List<LevelCreation> levels;
 
         /// <summary>
-        /// Light component used in the level.
+        /// Which parent object will be used for spawning level.
         /// </summary>
         [SerializeField] 
-        private Light2D levelLight;
+        private GameObject levelParent;
 
         
         /// <summary>
@@ -70,11 +64,6 @@ namespace Levels
         /// Does the level is ended?
         /// </summary>
         public bool Ended { get; private set; }
-
-        /// <summary>
-        /// Currently loaded level creation data.
-        /// </summary>
-        private LevelCreationData _loadedLevelData;
 
 
 
@@ -107,13 +96,7 @@ namespace Levels
             _saveController = Controller.Instance.SaveController;
             LoadedLevel = _saveController.LoadedLevel;
 
-            LevelCreation levelCreation = levels[_saveController.RecoverLevelIndex(LoadedLevel)];
-            levelCreation.ParentObject.SetActive(true);
-            
-            _loadedLevelData = levelCreation.LevelsCreation[(int)LoadedLevel.Type];
-            _loadedLevelData.LevelStructure.SetActive(true);
-            levelLight.color = _loadedLevelData.LightColor;
-            levelLight.intensity = _loadedLevelData.LightIntensity;
+            Instantiate(LoadedLevel.LevelStructure, levelParent.transform);
 
             _resourceController = GetComponent<RessourceController>();
 
@@ -125,6 +108,9 @@ namespace Levels
             }
 
             waveText.text = 0 + " / " + LoadedLevel.Waves.Count;
+
+            nextWaveButton.GetComponent<RectTransform>().anchoredPosition = LoadedLevel.NextWaveData.ButtonPosition;
+            nextWaveButton.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, LoadedLevel.NextWaveData.Side * 90);
         }
 
 
@@ -170,7 +156,7 @@ namespace Levels
                     _saveController.SaveNewEnemyFound(index);
                 }
 
-                _spawners[j].SetNewGroup(_loadedLevelData.Paths[enemyGroup.PathIndex], enemyGroup, this);
+                _spawners[j].SetNewGroup(LoadedLevel.Paths[enemyGroup.PathIndex], enemyGroup, this);
                 j++;
             }
         }

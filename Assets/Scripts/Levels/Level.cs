@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Levels.Path;
 using Levels.Waves;
 using Miscellanious.Enums;
 using Towers;
@@ -15,7 +17,7 @@ namespace Levels
         /// <summary>
         /// Level name.
         /// </summary>
-        [field: SerializeField]
+        [field: SerializeField, Header("Display")]
         public string Name { get; private set; }
 
 
@@ -43,7 +45,7 @@ namespace Levels
         /// <summary>
         /// Level type: classic, side or challenge.
         /// </summary>
-        [field: SerializeField]
+        [field: SerializeField, Header("Level Parameters")]
         public LevelType Type { get; private set; }
         
         /// <summary>
@@ -69,7 +71,7 @@ namespace Levels
         /// <summary>
         /// Max tower level available.
         /// </summary>
-        [field: SerializeField, Range(0, 3)]
+        [field: SerializeField, Range(0, 3), Header("Tower parameters")]
         public int TowerLevel { get; private set; }
 
         /// <summary>
@@ -84,5 +86,48 @@ namespace Levels
         /// </summary>
         [field: SerializeField]
         public List<Tower> BlockedTowers { get; private set; }
+        
+        
+        /// <summary>
+        /// Chat game object needs to be activated for this level to be working.
+        /// </summary>
+        [field: SerializeField, Header("Level objects")]
+        public GameObject LevelStructure { get; private set; }
+
+        /// <summary>
+        /// Paths available in this level.
+        /// </summary>
+        [field: SerializeField] 
+        public List<RandomPath> Paths { get; private set; }
+        
+        /// <summary>
+        /// Next wave data to know where to spawn the button.
+        /// </summary>
+        [field: SerializeField]
+        public NextWaveData NextWaveData { get; private set; }
+    }
+
+
+    /// <summary>
+    /// Class used to handle the next wave button data in each level.
+    /// </summary>
+    [Serializable]
+    public class NextWaveData
+    {
+        /// <summary>
+        /// Position of the next wave button.
+        /// </summary>
+        [field: SerializeField]
+        public Vector2 ButtonPosition { get; private set; }
+        
+        /// <summary>
+        /// Which side is used for this button.
+        /// 0 : Top
+        /// 1 : Left
+        /// 2 : Bottom
+        /// 3 : Right
+        /// </summary>
+        [field: SerializeField]
+        public int Side { get; private set; }
     }
 }
