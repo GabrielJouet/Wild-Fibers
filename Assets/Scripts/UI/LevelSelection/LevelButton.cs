@@ -96,6 +96,11 @@ namespace UI.LevelSelection
         /// </summary>
         private SpriteRenderer _buttonDisplay;
 
+        /// <summary>
+        /// Does this component has been updated?
+        /// </summary>
+        private bool _hasBeenUpdated;
+
 
 
         /// <summary>
@@ -114,6 +119,7 @@ namespace UI.LevelSelection
         {
             yield return new WaitUntil(() => Controller.Instance);
             int index = Controller.Instance.SaveController.Levels.IndexOf(LevelData);
+            _hasBeenUpdated = true;
 
             switch(Controller.Instance.SaveController.SaveFile.CurrentSave[index].State)
             {
@@ -149,7 +155,8 @@ namespace UI.LevelSelection
         /// </summary>
         private void OnMouseEnter()
         {
-            hoverDisplayer.enabled = !_isLocked;
+            if (_hasBeenUpdated)
+                hoverDisplayer.enabled = !_isLocked;
         }
 
 
@@ -167,7 +174,7 @@ namespace UI.LevelSelection
         /// </summary>
         private void OnMouseUp()
         {
-            if (!_isLocked)
+            if (!_isLocked && _hasBeenUpdated)
                 levelSelection.ActivateLevelSelectionMenu(this);
         }
     }
