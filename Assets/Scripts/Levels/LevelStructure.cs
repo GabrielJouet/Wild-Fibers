@@ -34,7 +34,7 @@ namespace Levels
         /// Position of the next wave button.
         /// </summary>
         [field: SerializeField]
-        public Transform NextWaveButtonPlacement { get; private set; }
+        public Vector2 Position { get; private set; }
         
         /// <summary>
         /// Which side is used for this button.

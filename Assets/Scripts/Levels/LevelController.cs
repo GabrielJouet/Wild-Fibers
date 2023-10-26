@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Enemies;
 using Enemies.Enemy_Types;
@@ -103,6 +104,16 @@ namespace Levels
             _levelCreated = Instantiate(LoadedLevel.LevelStructure, levelParent.transform);
 
             _resourceController = GetComponent<RessourceController>();
+        }
+
+
+        /// <summary>
+        /// Method called after Awake.
+        /// </summary>
+        private void Start()
+        {
+            nextWaveButton.GetComponent<RectTransform>().anchoredPosition = _levelCreated.NextWaveData.Position;
+            nextWaveButton.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, _levelCreated.NextWaveData.Side * 90);
 
             //If we unlock new towers in this level.
             if (LoadedLevel.TowerLevel > _saveController.SaveFile.CurrentSquad.TowerLevelMax)
@@ -112,9 +123,6 @@ namespace Levels
             }
 
             waveText.text = 0 + " / " + LoadedLevel.Waves.Count;
-
-            nextWaveButton.GetComponent<RectTransform>().anchoredPosition = Camera.main.WorldToScreenPoint(_levelCreated.NextWaveData.NextWaveButtonPlacement.position);
-            nextWaveButton.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, _levelCreated.NextWaveData.Side * 90);
         }
 
 

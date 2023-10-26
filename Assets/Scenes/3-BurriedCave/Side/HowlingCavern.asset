@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9275da23ffe138249b48ceb9809eaf68, type: 3}
   m_Name: HowlingCavern
   m_EditorClassIdentifier: 
-  _name: Howling Cavern
-  _picture: {fileID: 21300000, guid: c3c2dc114b081a440befd73e543716d9, type: 3}
-  _description: A sharpening wind is coming straight from this cavern, make it stop!
-  _playSceneName: HowlingCavern
-  _levelType: 1
-  _availableWaves: []
-  _lifeCount: 1
-  _goldCount: 150
-  _towerLevel: 0
-  _goldMultiplier: 0
-  _blockedTowers: []
+  <Name>k__BackingField: 
+  <Picture>k__BackingField: {fileID: 0}
+  <Description>k__BackingField: 
+  <PlaySceneName>k__BackingField: 
+  <Type>k__BackingField: 0
+  <Waves>k__BackingField: []
+  <LifeCount>k__BackingField: 0
+  <GoldCount>k__BackingField: 0
+  <TowerLevel>k__BackingField: 0
+  <GoldMultiplier>k__BackingField: 0
+  <BlockedTowers>k__BackingField: []
+  <LevelStructure>k__BackingField: {fileID: 11137470950139737, guid: 509802ec9d1d25c449735f32b6127404,
+    type: 3}

@@ -2824,7 +2824,7 @@ MonoBehaviour:
   <Paths>k__BackingField:
   - {fileID: 7819463418180202686}
   <NextWaveData>k__BackingField:
-    <NextWaveButtonPlacement>k__BackingField: {fileID: 8973223526828884482}
+    <Position>k__BackingField: {x: 880, y: 240}
     <Side>k__BackingField: 3
 --- !u!1 &8627299858017381459
 GameObject:
@@ -7078,7 +7078,7 @@ PrefabInstance:
     - target: {fileID: 3728384711104203476, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3728384711104203476, guid: 798cc569aff95aa409324f9473b898e3,
         type: 3}
@@ -7241,12 +7241,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 798cc569aff95aa409324f9473b898e3, type: 3}
---- !u!4 &8973223526828884482 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 3728384710869479816, guid: 798cc569aff95aa409324f9473b898e3,
-    type: 3}
-  m_PrefabInstance: {fileID: 5709061730572645258}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8973223526996785502 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3728384711104203476, guid: 798cc569aff95aa409324f9473b898e3,
