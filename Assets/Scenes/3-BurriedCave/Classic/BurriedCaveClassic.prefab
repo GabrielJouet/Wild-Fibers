@@ -3725,6 +3725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8306523218272722797}
+  - component: {fileID: 4891411288943071030}
   m_Layer: 0
   m_Name: BurriedCaveClassic
   m_TagString: Untagged
@@ -3752,6 +3753,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4891411288943071030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7861266318128978180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e5c05ae7fa3f24082cdd11642079bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Paths>k__BackingField:
+  - {fileID: 8739437065594446924}
+  - {fileID: 1968663156184171840}
+  <NextWaveData>k__BackingField:
+    <NextWaveButtonPlacement>k__BackingField: {fileID: 9136660433939806406}
+    <Side>k__BackingField: 1
 --- !u!1 &8560405328880908998
 GameObject:
   m_ObjectHideFlags: 0
@@ -7645,6 +7664,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 798cc569aff95aa409324f9473b898e3, type: 3}
+--- !u!4 &9136660433939806406 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3728384710869479816, guid: 798cc569aff95aa409324f9473b898e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5581669016042621262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9136660434107712410 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3728384711104203476, guid: 798cc569aff95aa409324f9473b898e3,

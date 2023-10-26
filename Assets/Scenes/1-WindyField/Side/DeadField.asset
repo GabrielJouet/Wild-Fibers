@@ -31,3 +31,5 @@ MonoBehaviour:
   <TowerLevel>k__BackingField: 0
   <GoldMultiplier>k__BackingField: 0.75
   <BlockedTowers>k__BackingField: []
+  <LevelStructure>k__BackingField: {fileID: 8133818885090872122, guid: 68afde78c6def89418234667bef35c73,
+    type: 3}

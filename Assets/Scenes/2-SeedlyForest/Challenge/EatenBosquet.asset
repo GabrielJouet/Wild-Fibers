@@ -31,3 +31,5 @@ MonoBehaviour:
   <BlockedTowers>k__BackingField:
   - {fileID: 11400000, guid: eef686483be9f3a4cb3aa40c8a6b7bd9, type: 2}
   - {fileID: 11400000, guid: 02d8d222f1904bc44a62ac9958c07937, type: 2}
+  <LevelStructure>k__BackingField: {fileID: 1682080151124355134, guid: 575c9ff69f025d24a885a4a35b311a0c,
+    type: 3}

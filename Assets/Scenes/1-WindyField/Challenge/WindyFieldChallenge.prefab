@@ -1217,6 +1217,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7828946990096945630}
+  - component: {fileID: 8758969506259965687}
   m_Layer: 0
   m_Name: WindyFieldChallenge
   m_TagString: Untagged
@@ -1244,6 +1245,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8758969506259965687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3923579352731938099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3e5c05ae7fa3f24082cdd11642079bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <Paths>k__BackingField:
+  - {fileID: 5792491655903117388}
+  <NextWaveData>k__BackingField:
+    <NextWaveButtonPlacement>k__BackingField: {fileID: 1464688869555649495}
+    <Side>k__BackingField: 0
 --- !u!1 &4317708958763721871
 GameObject:
   m_ObjectHideFlags: 0
@@ -5795,6 +5813,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 798cc569aff95aa409324f9473b898e3, type: 3}
+--- !u!4 &1464688869555649495 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3728384710869479816, guid: 798cc569aff95aa409324f9473b898e3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2877374514609146463}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1464688869924880523 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3728384711104203476, guid: 798cc569aff95aa409324f9473b898e3,
@@ -7029,6 +7053,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3757445889433178017}
     m_Modifications:
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _poolController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _levelController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _playerController
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: _backgroundSelecter
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.6781268
+      objectReference: {fileID: 0}
     - target: {fileID: 2557709338138010730, guid: d273228316a970f4c979b34e511473d6,
         type: 3}
       propertyPath: m_Name
@@ -7083,31 +7132,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
-        type: 3}
-      propertyPath: _poolController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
-        type: 3}
-      propertyPath: _levelController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
-        type: 3}
-      propertyPath: _playerController
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
-        type: 3}
-      propertyPath: _backgroundSelecter
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656969507452241419, guid: a9f92d36b0e412547bce79f2c21e0c7d,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.6781268
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7207,6 +7231,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3757445889433178017}
     m_Modifications:
+    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 2406574127660198029, guid: 798db00c462e0fe47aebfd8f2392ecd1,
         type: 3}
       propertyPath: m_RootOrder
@@ -7261,11 +7290,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grass3 (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656969507452241416, guid: a9f92d36b0e412547bce79f2c21e0c7d,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

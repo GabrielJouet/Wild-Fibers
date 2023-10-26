@@ -8,7 +8,6 @@ using Save;
 using TMPro;
 using UI.InGame;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 namespace Levels
 {
@@ -87,6 +86,11 @@ namespace Levels
         /// </summary>
         private int _waveIndex;
 
+        /// <summary>
+        /// Level that has been instantiated.
+        /// </summary>
+        private LevelStructure _levelCreated;
+
 
         /// <summary>
         /// Awake method used for initialization.
@@ -96,7 +100,7 @@ namespace Levels
             _saveController = Controller.Instance.SaveController;
             LoadedLevel = _saveController.LoadedLevel;
 
-            Instantiate(LoadedLevel.LevelStructure, levelParent.transform);
+            _levelCreated = Instantiate(LoadedLevel.LevelStructure, levelParent.transform);
 
             _resourceController = GetComponent<RessourceController>();
 
@@ -109,8 +113,8 @@ namespace Levels
 
             waveText.text = 0 + " / " + LoadedLevel.Waves.Count;
 
-            nextWaveButton.GetComponent<RectTransform>().anchoredPosition = LoadedLevel.NextWaveData.ButtonPosition;
-            nextWaveButton.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, LoadedLevel.NextWaveData.Side * 90);
+            nextWaveButton.GetComponent<RectTransform>().anchoredPosition = Camera.main.WorldToScreenPoint(_levelCreated.NextWaveData.NextWaveButtonPlacement.position);
+            nextWaveButton.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, _levelCreated.NextWaveData.Side * 90);
         }
 
 
@@ -156,7 +160,7 @@ namespace Levels
                     _saveController.SaveNewEnemyFound(index);
                 }
 
-                _spawners[j].SetNewGroup(LoadedLevel.Paths[enemyGroup.PathIndex], enemyGroup, this);
+                _spawners[j].SetNewGroup(_levelCreated.Paths[enemyGroup.PathIndex], enemyGroup, this);
                 j++;
             }
         }
