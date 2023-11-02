@@ -101,7 +101,7 @@ namespace Levels
             _saveController = Controller.Instance.SaveController;
             LoadedLevel = _saveController.LoadedLevel;
 
-            _levelCreated = Instantiate(LoadedLevel.LevelStructure, levelParent.transform);
+            _levelCreated = Instantiate(_saveController.LoadedLevelData.LevelStructure, levelParent.transform);
 
             _resourceController = GetComponent<RessourceController>();
         }
@@ -114,6 +114,8 @@ namespace Levels
         {
             nextWaveButton.GetComponent<RectTransform>().anchoredPosition = _levelCreated.NextWaveData.Position;
             nextWaveButton.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, _levelCreated.NextWaveData.Side * 90);
+
+            _levelCreated.ActivateLevelObjectsBasedOnLevelType(LoadedLevel.Type);
 
             //If we unlock new towers in this level.
             if (LoadedLevel.TowerLevel > _saveController.SaveFile.CurrentSquad.TowerLevelMax)

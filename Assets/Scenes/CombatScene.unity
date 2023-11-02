@@ -411,11 +411,6 @@ PrefabInstance:
       propertyPath: _playerController
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 1505118350638574124, guid: ab062a4349966594386bc59557a6906a,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -523.4204
-      objectReference: {fileID: 0}
     - target: {fileID: 2886570652521276066, guid: ab062a4349966594386bc59557a6906a,
         type: 3}
       propertyPath: m_StaticEditorFlags

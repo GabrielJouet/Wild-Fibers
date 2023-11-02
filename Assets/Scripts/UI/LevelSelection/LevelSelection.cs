@@ -223,7 +223,9 @@ namespace UI.LevelSelection
             launchBattleMenu.onClick.RemoveAllListeners();
             launchBattleMenu.onClick.AddListener(() =>
             {
-                Controller.Instance.SaveController.LoadedLevel = _level.Classic;
+                Controller.Instance.SaveController.LoadedLevelData = _level;
+                Controller.Instance.SaveController.LoadedLevelType = LevelType.CLASSIC;
+                
                 sceneChanger.LoadScene("CombatScene");
             });
         }
@@ -256,7 +258,9 @@ namespace UI.LevelSelection
             launchBattleMenu.onClick.RemoveAllListeners();
             launchBattleMenu.onClick.AddListener(() =>
             {
-                Controller.Instance.SaveController.LoadedLevel = buffer;
+                Controller.Instance.SaveController.LoadedLevelData = _level;
+                Controller.Instance.SaveController.LoadedLevelType = enumBuffer;
+                
                 sceneChanger.LoadScene("CombatScene");
             });
         }

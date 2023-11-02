@@ -84,12 +84,5 @@ namespace Levels
         /// </summary>
         [field: SerializeField]
         public List<Tower> BlockedTowers { get; private set; }
-        
-        
-        /// <summary>
-        /// Chat game object needs to be activated for this level to be working.
-        /// </summary>
-        [field: SerializeField, Header("Level objects")]
-        public LevelStructure LevelStructure { get; private set; }
     }
 }
