@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformRange: {fileID: 975679726211895701}
-  towerCollider: {fileID: 975679726211895701}
+  towerCollider: {fileID: 2644389516715710698}
   selector: {fileID: 4342711334488492381}
   <Description>k__BackingField: A spiker and larger version of the bramble
   <LibraryDescription>k__BackingField: Usually found in dryer places, this plant

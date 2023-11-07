@@ -25,7 +25,11 @@ namespace UI
         /// Did the game is paused?
         /// </summary>
         public bool Paused { get; private set; }
-
+        
+        /// <summary>
+        /// Does an object is displayed?
+        /// </summary>
+        public bool ObjectDisplay => _displayedObject != null;
 
 
         /// <summary>

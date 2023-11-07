@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  update: 0
-  target: {fileID: 0}
+  update: 1
+  target: {fileID: 9222029069338443843}
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   <LivesTaken>k__BackingField: 1
   <GoldGained>k__BackingField: 2
   <Flying>k__BackingField: 1
-  <DamagePosition>k__BackingField: {x: 0, y: 0}
+  <DamageTransform>k__BackingField: {fileID: 1049263690152909913}
   <Description>k__BackingField: A special pheromone used on a Maggot will lead to
     stronger and lighter blusims. They often bears a pair of wings that are not shaped
     for underground use.They are used as fast-moving reinforcement troops even if

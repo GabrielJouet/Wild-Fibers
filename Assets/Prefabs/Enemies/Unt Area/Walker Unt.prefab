@@ -124,8 +124,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4871b1607b692aa438f44fbf1ee2b0ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  update: 0
-  target: {fileID: 0}
+  update: 1
+  target: {fileID: 5467434199165554604}
 --- !u!1 &6914183812568595844
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,7 +219,7 @@ MonoBehaviour:
   <LivesTaken>k__BackingField: 1
   <GoldGained>k__BackingField: 7
   <Flying>k__BackingField: 0
-  <DamagePosition>k__BackingField: {x: 0, y: 0}
+  <DamageTransform>k__BackingField: {fileID: 3623001225806360375}
   <Description>k__BackingField: Walkers are the dominant cast in an Unt hive. Their
     speed make them versatile but also good for picking objects and bringing it back
     to the hive. But, without any weaponry its only goal in combat is to flood the

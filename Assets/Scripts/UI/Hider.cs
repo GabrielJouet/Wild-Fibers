@@ -1,4 +1,4 @@
-﻿using Levels;
+﻿using System;
 using UnityEngine;
 
 namespace UI
@@ -15,47 +15,28 @@ namespace UI
         private DisplayController displayController;
 
         /// <summary>
-        /// Level controller component used to know if the game is finished.
-        /// </summary>
-        [SerializeField]
-        private LevelController levelController;
-
-        /// <summary>
-        /// Box collider component used to resize to the size of the screen
+        /// Collider that is used to prevent inputs.
         /// </summary>
         [SerializeField] 
-        private BoxCollider2D boxCollider;
+        private BoxCollider2D collider2D;
 
 
+        
         /// <summary>
-        /// Actual camera used.
+        /// Method called each time the object is enabled.
         /// </summary>
-        private Camera _camera;
-
-
-
-        /// <summary>
-        /// Method used as initialization.
-        /// </summary>
-        private void Start()
+        private void OnEnable()
         {
-            _camera = Camera.current;
-            boxCollider.size = new Vector2(Screen.width, Screen.height);
+            collider2D.size = new Vector2(Screen.width, Screen.height);
         }
 
 
         /// <summary>
-        /// Update method, called each frame.
+        /// Method called when the button is clicked.
         /// </summary>
-        private void Update()
+        public void ResetDisplay()
         {
-            if (Input.GetMouseButtonUp(0))
-            {
-                RaycastHit2D hit = Physics2D.Raycast(_camera.ScreenToWorldPoint(Input.mousePosition), Vector3.forward, 90);
-
-                if (hit.collider && hit.collider.GetComponent<Hider>() && (levelController || !levelController.Ended))
-                    displayController.ResetDisplay();
-            }
+            displayController.ResetDisplay();
         }
     }
 }

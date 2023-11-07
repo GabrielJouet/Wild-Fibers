@@ -15,7 +15,7 @@ namespace Levels
         /// <summary>
         /// Level name.
         /// </summary>
-        [field: SerializeField]
+        [field: SerializeField, Header("Display")]
         public string Name { get; private set; }
 
 
@@ -43,7 +43,7 @@ namespace Levels
         /// <summary>
         /// Level type: classic, side or challenge.
         /// </summary>
-        [field: SerializeField]
+        [field: SerializeField, Header("Level Parameters")]
         public LevelType Type { get; private set; }
         
         /// <summary>
@@ -69,7 +69,7 @@ namespace Levels
         /// <summary>
         /// Max tower level available.
         /// </summary>
-        [field: SerializeField, Range(0, 3)]
+        [field: SerializeField, Range(0, 3), Header("Tower parameters")]
         public int TowerLevel { get; private set; }
 
         /// <summary>

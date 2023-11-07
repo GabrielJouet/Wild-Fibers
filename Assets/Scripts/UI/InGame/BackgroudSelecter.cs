@@ -1,4 +1,4 @@
-﻿using Enemies.Enemy_Types;
+using Enemies.Enemy_Types;
 using TMPro;
 using Towers;
 using UnityEngine;
@@ -11,6 +11,11 @@ namespace UI.InGame
     /// </summary>
     public class BackgroudSelecter : MonoBehaviour
     {
+        /// <summary>
+        /// Instance of itself.
+        /// </summary>
+        public static BackgroudSelecter Instance { get; private set; }
+        
         [Header("Tower related objects")]
 
         /// <summary>
@@ -108,7 +113,8 @@ namespace UI.InGame
 
         private void Start()
         {
-            _currentCamera = Camera.current;
+            _currentCamera = Camera.main;
+            Instance = this;
         }
 
 
@@ -265,7 +271,7 @@ namespace UI.InGame
         /// <param name="selectedTower">The tower to display</param>
         private void ActivateTower(Tower selectedTower)
         {
-            Vector2 cameraScreen = Camera.main.WorldToScreenPoint(selectedTower.transform.position);
+            Vector2 cameraScreen = _currentCamera.WorldToScreenPoint(selectedTower.transform.position);
             Vector2 finalPosition = new Vector2(cameraScreen.x - canvas.rect.width / 2, cameraScreen.y - canvas.rect.height / 2);
 
             if (!towerButtonController.SellButtonActive)

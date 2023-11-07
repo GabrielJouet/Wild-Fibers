@@ -56,7 +56,19 @@ namespace Save
 		/// <summary>
 		/// Loaded level.
 		/// </summary>
-		public Level LoadedLevel { get; set; }
+		public Level LoadedLevel => LoadedLevelData.GetLevelBasedOnType(LoadedLevelType);
+
+
+		/// <summary>
+		/// Loaded level data.
+		/// </summary>
+		public LevelData LoadedLevelData { get; set; }
+
+
+		/// <summary>
+		/// Loaded level type.
+		/// </summary>
+		public LevelType LoadedLevelType { get; set; }
 
 		/// <summary>
 		/// Loaded save file.

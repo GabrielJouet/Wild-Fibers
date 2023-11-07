@@ -119,7 +119,7 @@ namespace Enemies.Enemy_Types
         /// Damage position transform component.
         /// </summary>
         [field: SerializeField]
-        public Vector2 DamagePosition { get; protected set; }
+        public Transform DamageTransform { get; protected set; }
 
         
         /// <summary>

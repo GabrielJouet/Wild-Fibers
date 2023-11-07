@@ -42,8 +42,10 @@ namespace Miscellanious
             if (target == null)
                 target = transform;
 
-            _mainCamera = Camera.current;
+            _mainCamera = Camera.main;
             _spriteRenderer = GetComponent<SpriteRenderer>();
+            
+            _spriteRenderer.sortingOrder = (int)_mainCamera.WorldToScreenPoint(target.position).y * -1;
         }
 
 

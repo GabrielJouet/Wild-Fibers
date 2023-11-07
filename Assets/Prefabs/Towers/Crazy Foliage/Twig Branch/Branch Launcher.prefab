@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformRange: {fileID: 5345590119244065888}
-  towerCollider: {fileID: 5345590119244065888}
+  towerCollider: {fileID: 7140409036441972706}
   selector: {fileID: 8926555152830931055}
   <Description>k__BackingField: Larger than before, it shoots arrows with a greater
     strength

@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformRange: {fileID: 6796318527216691260}
-  towerCollider: {fileID: 6796318527216691260}
+  towerCollider: {fileID: 8604639988615361977}
   selector: {fileID: 8043280262850349597}
   <Description>k__BackingField: A fast shooting tower that deals little damage
   <LibraryDescription>k__BackingField: A small parasite plant that often lives in

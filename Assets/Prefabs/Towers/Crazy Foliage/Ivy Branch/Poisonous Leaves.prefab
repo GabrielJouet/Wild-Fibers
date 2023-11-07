@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformRange: {fileID: 2026392581298113131}
-  towerCollider: {fileID: 2026392581298113131}
+  towerCollider: {fileID: 3830237383561997893}
   selector: {fileID: 3301444368728862877}
   <Description>k__BackingField: A multi shoter poisonous flower
   <LibraryDescription>k__BackingField: A very efficient cold killer. Every insect

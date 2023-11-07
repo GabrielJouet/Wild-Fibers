@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Enemies;
 using Enemies.Enemy_Types;
@@ -8,7 +9,6 @@ using Save;
 using TMPro;
 using UI.InGame;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 
 namespace Levels
 {
@@ -41,18 +41,12 @@ namespace Levels
         private NextWaveButton nextWaveButton;
 
         [Header("Levels Structure")] 
-        
-        /// <summary>
-        /// All levels creation data available.
-        /// </summary>
-        [SerializeField]
-        private List<LevelCreation> levels;
 
         /// <summary>
-        /// Light component used in the level.
+        /// Which parent object will be used for spawning level.
         /// </summary>
         [SerializeField] 
-        private Light2D levelLight;
+        private GameObject levelParent;
 
         
         /// <summary>
@@ -70,11 +64,6 @@ namespace Levels
         /// Does the level is ended?
         /// </summary>
         public bool Ended { get; private set; }
-
-        /// <summary>
-        /// Currently loaded level creation data.
-        /// </summary>
-        private LevelCreationData _loadedLevelData;
 
 
 
@@ -98,6 +87,11 @@ namespace Levels
         /// </summary>
         private int _waveIndex;
 
+        /// <summary>
+        /// Level that has been instantiated.
+        /// </summary>
+        private LevelStructure _levelCreated;
+
 
         /// <summary>
         /// Awake method used for initialization.
@@ -107,15 +101,21 @@ namespace Levels
             _saveController = Controller.Instance.SaveController;
             LoadedLevel = _saveController.LoadedLevel;
 
-            LevelCreation levelCreation = levels[_saveController.RecoverLevelIndex(LoadedLevel)];
-            levelCreation.ParentObject.SetActive(true);
-            
-            _loadedLevelData = levelCreation.LevelsCreation[(int)LoadedLevel.Type];
-            _loadedLevelData.LevelStructure.SetActive(true);
-            levelLight.color = _loadedLevelData.LightColor;
-            levelLight.intensity = _loadedLevelData.LightIntensity;
+            _levelCreated = Instantiate(_saveController.LoadedLevelData.LevelStructure, levelParent.transform);
 
             _resourceController = GetComponent<RessourceController>();
+        }
+
+
+        /// <summary>
+        /// Method called after Awake.
+        /// </summary>
+        private void Start()
+        {
+            nextWaveButton.GetComponent<RectTransform>().anchoredPosition = _levelCreated.NextWaveData.Position;
+            nextWaveButton.GetComponent<RectTransform>().localRotation = Quaternion.Euler(0, 0, _levelCreated.NextWaveData.Side * 90);
+
+            _levelCreated.ActivateLevelObjectsBasedOnLevelType(LoadedLevel.Type);
 
             //If we unlock new towers in this level.
             if (LoadedLevel.TowerLevel > _saveController.SaveFile.CurrentSquad.TowerLevelMax)
@@ -170,7 +170,7 @@ namespace Levels
                     _saveController.SaveNewEnemyFound(index);
                 }
 
-                _spawners[j].SetNewGroup(_loadedLevelData.Paths[enemyGroup.PathIndex], enemyGroup, this);
+                _spawners[j].SetNewGroup(_levelCreated.Paths[enemyGroup.PathIndex], enemyGroup, this);
                 j++;
             }
         }

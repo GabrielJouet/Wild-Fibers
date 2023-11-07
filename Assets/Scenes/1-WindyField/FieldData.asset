@@ -18,3 +18,5 @@ MonoBehaviour:
     type: 2}
   <Challenge>k__BackingField: {fileID: 11400000, guid: 26d9002954a5adc418f4153f04a40ae7,
     type: 2}
+  <LevelStructure>k__BackingField: {fileID: 5617442221752638116, guid: fb4c7802ac6cfee44904c7ed0e845b96,
+    type: 3}

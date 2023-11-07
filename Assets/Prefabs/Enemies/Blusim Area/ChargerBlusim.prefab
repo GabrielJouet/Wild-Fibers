@@ -156,6 +156,11 @@ PrefabInstance:
         A powerful beast that roams around the hive and search for a prey. They are
         though but small-brained.
       objectReference: {fileID: 0}
+    - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: <DamageTransform>k__BackingField
+      value: 
+      objectReference: {fileID: 7065392108607041328}
     - target: {fileID: 3616839821771204713, guid: 4dab7da206da42945ba906f073799019,
         type: 3}
       propertyPath: m_Size.x
@@ -233,6 +238,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.12
       objectReference: {fileID: 0}
+    - target: {fileID: 8623543066297710264, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 1403383518992003882}
     - target: {fileID: 8957071532578077348, guid: 4dab7da206da42945ba906f073799019,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -243,3 +253,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dab7da206da42945ba906f073799019, type: 3}
+--- !u!4 &1403383518992003882 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 99565433844753580, guid: 4dab7da206da42945ba906f073799019,
+    type: 3}
+  m_PrefabInstance: {fileID: 1303910684913735558}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7065392108607041328 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8076426843298756790, guid: 4dab7da206da42945ba906f073799019,
+    type: 3}
+  m_PrefabInstance: {fileID: 1303910684913735558}
+  m_PrefabAsset: {fileID: 0}

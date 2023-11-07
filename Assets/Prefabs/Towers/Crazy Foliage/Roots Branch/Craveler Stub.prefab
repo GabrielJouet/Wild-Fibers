@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transformRange: {fileID: 4806223525183258625}
-  towerCollider: {fileID: 4806223525183258625}
+  towerCollider: {fileID: 7749480133040294714}
   selector: {fileID: 8321813927317738175}
   <Description>k__BackingField: A powerful and devastating roots generator
   <LibraryDescription>k__BackingField: In order to seek resources far below the surface,

@@ -85,6 +85,12 @@ namespace UI.LevelSelection
         [SerializeField]
         private Sprite challengedHover;
 
+        /// <summary>
+        /// Display controller shortcut.
+        /// </summary>
+        [SerializeField] 
+        private DisplayController displayController;
+
 
         /// <summary>
         /// Does the button is locked?
@@ -95,6 +101,11 @@ namespace UI.LevelSelection
         /// Button display object.
         /// </summary>
         private SpriteRenderer _buttonDisplay;
+
+        /// <summary>
+        /// Does this component has been updated?
+        /// </summary>
+        private bool _hasBeenUpdated;
 
 
 
@@ -114,6 +125,7 @@ namespace UI.LevelSelection
         {
             yield return new WaitUntil(() => Controller.Instance);
             int index = Controller.Instance.SaveController.Levels.IndexOf(LevelData);
+            _hasBeenUpdated = true;
 
             switch(Controller.Instance.SaveController.SaveFile.CurrentSave[index].State)
             {
@@ -149,7 +161,8 @@ namespace UI.LevelSelection
         /// </summary>
         private void OnMouseEnter()
         {
-            hoverDisplayer.enabled = !_isLocked;
+            if (_hasBeenUpdated && !displayController.ObjectDisplay)
+                hoverDisplayer.enabled = !_isLocked;
         }
 
 
@@ -167,7 +180,7 @@ namespace UI.LevelSelection
         /// </summary>
         private void OnMouseUp()
         {
-            if (!_isLocked)
+            if (!_isLocked && _hasBeenUpdated)
                 levelSelection.ActivateLevelSelectionMenu(this);
         }
     }
