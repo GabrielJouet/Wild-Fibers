@@ -488,7 +488,6 @@ MonoBehaviour:
   livesLostValue: {fileID: 4036907381508445382}
   towerButtonController: {fileID: 1200197998690057621}
   canvas: {fileID: 4541158168921798197}
-  boxCollider2D: {fileID: 0}
 --- !u!1 &4541158167286608330
 GameObject:
   m_ObjectHideFlags: 0
