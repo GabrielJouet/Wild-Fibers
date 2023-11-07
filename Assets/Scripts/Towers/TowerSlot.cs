@@ -14,12 +14,6 @@ public class TowerSlot : MonoBehaviour
     [Header("Components")]
 
     /// <summary>
-    /// Information UI.
-    /// </summary>
-    [SerializeField]
-    private BackgroudSelecter backgroundSelecter;
-
-    /// <summary>
     /// Animator component for shadows.
     /// </summary>
     [SerializeField]
@@ -61,7 +55,7 @@ public class TowerSlot : MonoBehaviour
         RessourceController.Instance.RemoveGold(tower.Price);
 
         collider.enabled = false;
-        backgroundSelecter.DisableTowerChooseButton();
+        BackgroudSelecter.Instance.DisableTowerChooseButton();
         StartCoroutine(DelayConstruct(tower));
     }
 
@@ -78,7 +72,7 @@ public class TowerSlot : MonoBehaviour
 
         yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
 
-        Instantiate(tower).Initialize(this, backgroundSelecter, 0);
+        Instantiate(tower).Initialize(this, BackgroudSelecter.Instance, 0);
     }
 
 

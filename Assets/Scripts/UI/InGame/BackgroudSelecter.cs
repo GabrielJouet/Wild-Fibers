@@ -11,6 +11,11 @@ namespace UI.InGame
     /// </summary>
     public class BackgroudSelecter : MonoBehaviour
     {
+        /// <summary>
+        /// Instance of itself.
+        /// </summary>
+        public static BackgroudSelecter Instance { get; private set; }
+        
         [Header("Tower related objects")]
 
         /// <summary>
@@ -109,6 +114,7 @@ namespace UI.InGame
         private void Start()
         {
             _currentCamera = Camera.main;
+            Instance = this;
         }
 
 
