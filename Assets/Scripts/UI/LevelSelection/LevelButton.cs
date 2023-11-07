@@ -85,6 +85,12 @@ namespace UI.LevelSelection
         [SerializeField]
         private Sprite challengedHover;
 
+        /// <summary>
+        /// Display controller shortcut.
+        /// </summary>
+        [SerializeField] 
+        private DisplayController displayController;
+
 
         /// <summary>
         /// Does the button is locked?
@@ -155,7 +161,7 @@ namespace UI.LevelSelection
         /// </summary>
         private void OnMouseEnter()
         {
-            if (_hasBeenUpdated)
+            if (_hasBeenUpdated && !displayController.ObjectDisplay)
                 hoverDisplayer.enabled = !_isLocked;
         }
 

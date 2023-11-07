@@ -1563,6 +1563,11 @@ PrefabInstance:
       objectReference: {fileID: 7261920287306049105}
     - target: {fileID: 4891657833135554666, guid: 20ef5d9497745fa4d8ac9f8cd91dc13a,
         type: 3}
+      propertyPath: displayController
+      value: 
+      objectReference: {fileID: 1409857563}
+    - target: {fileID: 4891657833135554666, guid: 20ef5d9497745fa4d8ac9f8cd91dc13a,
+        type: 3}
       propertyPath: <LevelData>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: f64f20542d729ec4ca1d4f48c551a656,
@@ -1668,6 +1673,11 @@ PrefabInstance:
       propertyPath: _levelSelection
       value: 
       objectReference: {fileID: 7261920287306049105}
+    - target: {fileID: 4891657833135554666, guid: 20ef5d9497745fa4d8ac9f8cd91dc13a,
+        type: 3}
+      propertyPath: displayController
+      value: 
+      objectReference: {fileID: 1409857563}
     - target: {fileID: 4891657833135554666, guid: 20ef5d9497745fa4d8ac9f8cd91dc13a,
         type: 3}
       propertyPath: <LevelData>k__BackingField
@@ -5181,6 +5191,11 @@ PrefabInstance:
       propertyPath: _levelSelection
       value: 
       objectReference: {fileID: 7261920287306049105}
+    - target: {fileID: 4891657833135554666, guid: 20ef5d9497745fa4d8ac9f8cd91dc13a,
+        type: 3}
+      propertyPath: displayController
+      value: 
+      objectReference: {fileID: 1409857563}
     - target: {fileID: 4891657833135554668, guid: 20ef5d9497745fa4d8ac9f8cd91dc13a,
         type: 3}
       propertyPath: m_RootOrder
