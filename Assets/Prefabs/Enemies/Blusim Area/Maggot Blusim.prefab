@@ -226,7 +226,7 @@ MonoBehaviour:
   <ScreenShot>k__BackingField: {fileID: 21300000, guid: d3eb6bc226b19aa4c9c86df35d17d30b,
     type: 3}
   <Special>k__BackingField: Hatches
-  hatching: {fileID: 6914183812568595844, guid: d7c33cbf3d81a3d4ebf5536e7b2546eb,
+  hatching: {fileID: 3708422920091029229, guid: b4466da44875549409b186495230993a,
     type: 3}
   hatchingTime: 15
   baseShieldValue: 10
