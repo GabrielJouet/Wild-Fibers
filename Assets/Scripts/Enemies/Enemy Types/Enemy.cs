@@ -189,7 +189,13 @@ namespace Enemies.Enemy_Types
         /// </summary>
         public bool IsDotted => _dots.Count != 0;
 
+        /// <summary>
+        /// Does the enemy already died?
+        /// </summary>
+        private bool _isDead = false;
 
+
+        
         /// <summary>
         /// Initialize method, called at enemy creation or re-use.
         /// </summary>
@@ -377,6 +383,10 @@ namespace Enemies.Enemy_Types
         /// <param name="reachEnd">Does the enemy reaches the end?</param>
         protected void Die(bool reachEnd)
         {
+            if (_isDead)
+                return;
+
+            _isDead = true;
             _spawner.EnemyKilled();
 
             if (InformationUI)
