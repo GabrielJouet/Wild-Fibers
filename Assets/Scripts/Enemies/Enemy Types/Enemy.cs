@@ -393,6 +393,7 @@ namespace Enemies.Enemy_Types
             {
                 InformationUI.ErasePreviousEnemy();
                 InformationUI.DisableEnemyInformation();
+                InformationUI = null;
             }
 
             StopAllCoroutines();
