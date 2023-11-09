@@ -68,7 +68,6 @@ namespace Enemies
         /// <param name="newLevelController">The level controller component</param>
         public void SetNewGroup(RandomPath newRandomPath, EnemyGroup newGroup, LevelController newLevelController)
         {
-            _spawnedEnemies = 0;
             _levelController = newLevelController;
             _enemyGroup = newGroup;
             _randomPath = newRandomPath;
@@ -77,6 +76,7 @@ namespace Enemies
             _enemyIndex = 0;
             EnemiesKilled = false;
             WaveFinished = false;
+            WaitEnd = false;
 
             StartCoroutine(SpawnEnemies());
         }
@@ -128,7 +128,7 @@ namespace Enemies
         {
             _spawnedEnemies--;
 
-            if (_spawnedEnemies == 0 && WaitEnd)
+            if (WaveFinished && _spawnedEnemies == 0 && WaitEnd)
             {
                 EnemiesKilled = true;
                 _levelController.EndLevel(false);
