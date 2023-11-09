@@ -59,7 +59,7 @@ namespace Towers.Projectiles
             {
                 if (_enemyTracked)
                     TrackEnemy();
-                else if (FollowPoint(_goalPosition, false))
+                else if (FollowPoint(_lastKnownPosition, false, false))
                     StopProjectile();
             }
         }
@@ -89,16 +89,8 @@ namespace Towers.Projectiles
         /// </summary>
         protected override void TrackEnemy()
         {
-            if (_enemyTracked.gameObject.activeSelf)
-            {
-                if (FollowPoint(_enemyTracked.DamageTransform.position, false) && ! _attacking)
-                    StartCoroutine(Strike());
-            }
-            else
-            {
-                _goalPosition = _lastKnownPosition;
-                _enemyTracked = null;
-            }
+            if (FollowPoint(_enemyTracked.DamageTransform.position, false) && ! _attacking)
+                StartCoroutine(Strike());
         }
 
 

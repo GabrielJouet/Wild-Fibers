@@ -59,7 +59,7 @@ namespace Towers.Projectiles
         {
             if (_enemyTracked)
                 TrackEnemy();
-            else if (FollowPoint(_goalPosition, true))
+            else if (FollowPoint(_lastKnownPosition, true, false))
                 StopProjectile();
         }
 
@@ -70,18 +70,10 @@ namespace Towers.Projectiles
         /// </summary>
         protected virtual void TrackEnemy()
         {
-            if (_enemyTracked.gameObject.activeSelf)
+            if (FollowPoint(_enemyTracked.DamageTransform.position, true))
             {
-                if (FollowPoint(_enemyTracked.DamageTransform.position, true))
-                {
-                    AttackEnemy(_enemyTracked);
-                    StopProjectile();
-                }
-            }
-            else
-            {
-                _goalPosition = _lastKnownPosition;
-                _enemyTracked = null;
+                AttackEnemy(_enemyTracked);
+                StopProjectile();
             }
         }
 
@@ -91,7 +83,8 @@ namespace Towers.Projectiles
         /// </summary>
         /// <param name="position">The new position to move</param>
         /// <param name="rotate">Does the projectile rotate during move?</param>
-        protected bool FollowPoint(Vector3 position, bool rotate)
+        /// <param name="hasAnEnemyToTargets">Does the projectile follow an enemy?</param>
+        protected bool FollowPoint(Vector3 position, bool rotate, bool hasAnEnemyToTargets = true)
         {
             transform.position = Vector3.MoveTowards(transform.position, position, projectileSpeed * Time.deltaTime);
 
@@ -103,7 +96,11 @@ namespace Towers.Projectiles
                 transform.rotation = Quaternion.Euler(0, 0, angle);
             }
 
-            _lastKnownPosition = position;
+            if (hasAnEnemyToTargets && _enemyTracked)
+                _lastKnownPosition = position;
+            
+            if (!hasAnEnemyToTargets)
+                Debug.Log(position);
 
             return (transform.position - position).magnitude < 0.025f;
         }

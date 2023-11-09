@@ -69,7 +69,7 @@ namespace Towers.Projectiles
             {
                 if (_enemyTracked)
                     TrackEnemy();
-                else if (FollowPoint(_goalPosition, true))
+                else if (FollowPoint(_lastKnownPosition, true, false))
                     StopProjectile();
             }
             else
