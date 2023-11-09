@@ -156,6 +156,7 @@ MonoBehaviour:
   towerCollider: {fileID: 8604639988615361977}
   selector: {fileID: 8043280262850349597}
   <Description>k__BackingField: A fast shooting tower that deals little damage
+  <Name>k__BackingField: Twig Shooter
   <LibraryDescription>k__BackingField: A small parasite plant that often lives in
     stone-like environment. Due to its fragile and thin roots, it is unable to use
     some kind of magic.

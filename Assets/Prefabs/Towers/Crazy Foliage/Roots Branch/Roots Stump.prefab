@@ -156,6 +156,7 @@ MonoBehaviour:
   towerCollider: {fileID: 1853620797473741069}
   selector: {fileID: 94515090449025949}
   <Description>k__BackingField: An old stump with ferocious sharp roots
+  <Name>k__BackingField: Roots Stump
   <LibraryDescription>k__BackingField: An old stump of a forgotten tree. Legends
     tells this tree was reaching clouds and can use magic daily.
   _price: 165

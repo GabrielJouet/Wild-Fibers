@@ -157,6 +157,7 @@ MonoBehaviour:
   selector: {fileID: 1767320491369309302}
   <Description>k__BackingField: A poisonous flower that dealt most of its damage
     over time
+  <Name>k__BackingField: Toxic Ivy
   <LibraryDescription>k__BackingField: Long ago these seeds were used to poison blusim
     borrows, hopefully, this poison is  not lethal for plants. This flower shoots
     two seeds at a time, using little magic to levitate them for better range.

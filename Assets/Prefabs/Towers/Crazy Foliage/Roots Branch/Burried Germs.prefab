@@ -155,6 +155,7 @@ MonoBehaviour:
   towerCollider: {fileID: 27253770860673116}
   selector: {fileID: 1771737210301611880}
   <Description>k__BackingField: A multi roots larger stump with a large range
+  <Name>k__BackingField: Burried Germs
   <LibraryDescription>k__BackingField: Usage of great quantity of magic allows this
     rotting stump to generate roots faster and with more damage.
   _price: 290

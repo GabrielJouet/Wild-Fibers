@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1049263690152909913}
   - component: {fileID: 2394709574171677322}
   - component: {fileID: 3597370224652989133}
-  - component: {fileID: 1613249526350676088}
+  - component: {fileID: 8440523049948372485}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5755112626027321121}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.08, z: 0}
+  m_LocalPosition: {x: 0, y: 0.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -79,12 +79,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 956936253234346663, guid: b4b4d6a1a9b49974594b5a65827a7394, type: 3}
+  m_Sprite: {fileID: 3180726396486898061, guid: cdc6d5cf0aa8e1844ab3429031be2e00,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.24, y: 0.16}
+  m_Size: {x: 0.48, y: 0.24}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,7 +101,7 @@ Animator:
   m_GameObject: {fileID: 5755112626027321121}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b5c57d5bd4d42704c8f80e3045dc7fe0, type: 2}
+  m_Controller: {fileID: 9100000, guid: 72b8c53a7a06c774db8a6a213babab6e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -111,7 +112,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1613249526350676088
+--- !u!114 &8440523049948372485
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,9 +136,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7388368827716972525}
   - component: {fileID: 5524535823760821382}
-  - component: {fileID: 1001176562105206731}
+  - component: {fileID: 4674631295996963510}
   m_Layer: 0
-  m_Name: Maggot Blusim
+  m_Name: ShieldedBlusim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,10 +192,10 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.045}
-  m_Size: {x: 0.18, y: 0.09}
+  m_Offset: {x: 0, y: 0.09}
+  m_Size: {x: 0.34, y: 0.18}
   m_Direction: 1
---- !u!114 &1001176562105206731
+--- !u!114 &4674631295996963510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,33 +204,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 6914183812568595844}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5951dce96024a644493e8fcd5665b3df, type: 3}
+  m_Script: {fileID: 11500000, guid: eea02469733532443b1a9d43853c05e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Name>k__BackingField: Shielded Blusim
   selector: {fileID: 7325471192700415939}
   healthBar: {fileID: 3144667757886646281}
   dotDisplay: {fileID: 1472001672212050052}
   spriteRenderer: {fileID: 2394709574171677322}
   animator: {fileID: 3597370224652989133}
-  <HealthMax>k__BackingField: 10
-  <ArmorMax>k__BackingField: 45
+  <HealthMax>k__BackingField: 135
+  <ArmorMax>k__BackingField: 90
   <Resistance>k__BackingField: 0
-  <SpeedMax>k__BackingField: 0.1
-  <LivesTaken>k__BackingField: 1
-  <GoldGained>k__BackingField: 0
+  <SpeedMax>k__BackingField: 0.17
+  <LivesTaken>k__BackingField: 2
+  <GoldGained>k__BackingField: 13
   <Flying>k__BackingField: 0
   <DamageTransform>k__BackingField: {fileID: 1049263690152909913}
-  <Description>k__BackingField: A fresh-spawned maggot that cannot protects itself.
-    Many of these will hatch into Diggers but sometimes bigger ones does not hatch
-    for days and became Chargers. They create a silk cocoon after a few seconds to
-    hide from the sun or damage.
-  <ScreenShot>k__BackingField: {fileID: 21300000, guid: d3eb6bc226b19aa4c9c86df35d17d30b,
+  <Description>k__BackingField: A special Blusim that spawns by mistake. When a pheromone
+    is used on a bigger Maggot the result is a Blusim with bigger wings but with
+    a bigger body as well. They are the most shielded Blusim of the hive, but their
+    weight make them almost useless. They are used as guards, blocking the way with
+    their bodies.
+  <ScreenShot>k__BackingField: {fileID: 21300000, guid: cc1eff44af9c7a64abfb4f10dab0baf2,
     type: 3}
-  <Special>k__BackingField: Hatches
-  hatching: {fileID: 3708422920091029229, guid: b4466da44875549409b186495230993a,
-    type: 3}
-  hatchingTime: 15
-  baseShieldValue: 10
+  <Special>k__BackingField: Shield
+  timeBetweenShield: 10
+  baseShieldValue: 65
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,12 +247,12 @@ PrefabInstance:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.08
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.08
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
@@ -261,7 +262,7 @@ PrefabInstance:
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.06
+      value: -0.11
       objectReference: {fileID: 0}
     - target: {fileID: 6368887776050488246, guid: cbd39873f2e903e43b64fb0035085e24,
         type: 3}
@@ -366,7 +367,7 @@ PrefabInstance:
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.26
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3232101240382069603, guid: d6a7ebdb59535a441a4c7b5d6e455920,
         type: 3}
@@ -451,7 +452,7 @@ PrefabInstance:
     - target: {fileID: 2009948410974079920, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.12
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: 2009948410974079920, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}
@@ -496,7 +497,7 @@ PrefabInstance:
     - target: {fileID: 4714962810088372888, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4714962810088372888, guid: 715ad6c1a5b12c549904843e41aef7f5,
         type: 3}
@@ -557,7 +558,7 @@ PrefabInstance:
     - target: {fileID: 357924142462272881, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.02
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 357924142462272881, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
@@ -607,18 +608,18 @@ PrefabInstance:
     - target: {fileID: 7090599122710879685, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
       propertyPath: m_Size.x
-      value: 0.24
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 7090599122710879685, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
       propertyPath: m_Size.y
-      value: 0.16
+      value: 0.24
       objectReference: {fileID: 0}
     - target: {fileID: 7090599122710879685, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -7552096340062230510, guid: b4b4d6a1a9b49974594b5a65827a7394,
+      objectReference: {fileID: 4997716768292252831, guid: cdc6d5cf0aa8e1844ab3429031be2e00,
         type: 3}
     - target: {fileID: 7090599122710879685, guid: c1d79214be3f0e64babfd78791ecb9fd,
         type: 3}

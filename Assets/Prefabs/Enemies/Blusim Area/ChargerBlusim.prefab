@@ -119,6 +119,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
         type: 3}
+      propertyPath: <Name>k__BackingField
+      value: Charger Blusim
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476849104750482173, guid: 4dab7da206da42945ba906f073799019,
+        type: 3}
       propertyPath: <ArmorMax>k__BackingField
       value: 30
       objectReference: {fileID: 0}

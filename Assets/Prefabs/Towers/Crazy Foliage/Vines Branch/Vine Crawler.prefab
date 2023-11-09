@@ -157,6 +157,7 @@ MonoBehaviour:
   selector: {fileID: 7454810700379776889}
   <Description>k__BackingField: A cactus-like flower that will put spikes on the
     path
+  <Name>k__BackingField: Vine Crawler
   <LibraryDescription>k__BackingField: Insects that go through a wall of vines like
     this one always suffer a loss of chitin scales. But, due to its high resources
     consumption, this plant can't reach far away from its ttrunk.

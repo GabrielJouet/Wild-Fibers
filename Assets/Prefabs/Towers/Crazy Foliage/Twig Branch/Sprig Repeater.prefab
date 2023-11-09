@@ -155,6 +155,7 @@ MonoBehaviour:
   towerCollider: {fileID: 641977928928822256}
   selector: {fileID: 1161481428002591208}
   <Description>k__BackingField: Slightly stronger but with a rapid firerate
+  <Name>k__BackingField: Sprig Repeater
   <LibraryDescription>k__BackingField: Whenever this plant go, the area is recovered
     of a thick mossy grass. Allowing it to use every resources available to fight.
   _price: 165

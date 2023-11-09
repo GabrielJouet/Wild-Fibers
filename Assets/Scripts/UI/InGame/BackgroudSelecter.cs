@@ -212,7 +212,7 @@ namespace UI.InGame
             }
         
             lifeValue.text = enemyToDisplay.Health + " / " + enemyToDisplay.HealthMax;
-            enemyName.text = enemyToDisplay.name;
+            enemyName.text = enemyToDisplay.Name;
             armorValue.text = Converter.TransformArmor(enemyToDisplay.Armor / 100);
             livesLostValue.text = enemyToDisplay.LivesTaken.ToString();
         }
@@ -320,7 +320,7 @@ namespace UI.InGame
 
             towerInformationPanel.SetActive(true);
 
-            towerName.text = newTower.name;
+            towerName.text = newTower.Name;
             damageText.text = newTower.Damage.ToString();
             breakArmorText.text = newTower.ArmorThroughInfo;
             fireRateText.text = newTower.FireRateInfo;

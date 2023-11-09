@@ -13,7 +13,11 @@ namespace Enemies.Enemy_Types
     /// </summary>
     public class Enemy : MonoBehaviour
     {
-        [Header("Display")]
+        /// <summary>
+        /// Name of this enemy.
+        /// </summary>
+        [field: SerializeField, Header("Display")]
+        public string Name { get; private set; }
 
         /// <summary>
         /// Selector object.

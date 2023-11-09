@@ -155,6 +155,7 @@ MonoBehaviour:
   towerCollider: {fileID: 2644389516715710698}
   selector: {fileID: 4342711334488492381}
   <Description>k__BackingField: A spiker and larger version of the bramble
+  <Name>k__BackingField: Spike Grower
   <LibraryDescription>k__BackingField: Usually found in dryer places, this plant
     is one of the best offense against crowds. Its unique vines size and spike hardness
     make it a formidable foe. Unprotected insects are afraid of this killer.

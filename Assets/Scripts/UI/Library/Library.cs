@@ -261,7 +261,7 @@ namespace UI.Library
         {
             Tower newTower = newInfo.Tower;
 
-            towerName.text = newTower.name;
+            towerName.text = newTower.Name;
             towerDescription.text = newTower.LibraryDescription;
             towerPrice.text = newTower.Price.ToString();
             towerDamage.text = newTower.Damage.ToString();
@@ -281,7 +281,7 @@ namespace UI.Library
         {
             Enemy newEnemy = newInfo.Enemy;
 
-            enemyName.text = newEnemy.name;
+            enemyName.text = newEnemy.Name;
             enemyDescription.text = newEnemy.Description;
             enemyGold.text = newEnemy.GoldGained.ToString();
             enemyHealth.text = newEnemy.HealthMax.ToString();

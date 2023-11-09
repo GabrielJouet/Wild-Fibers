@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 5524535823760821382}
   - component: {fileID: 2832435586917530963}
   m_Layer: 0
-  m_Name: Queen Blusim
+  m_Name: QueenBlusim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -206,6 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae428879fc19e054fa942bf41085a343, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Name>k__BackingField: Queen Blusim
   selector: {fileID: 7325471192700415939}
   healthBar: {fileID: 3144667757886646281}
   dotDisplay: {fileID: 1472001672212050052}

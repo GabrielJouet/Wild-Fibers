@@ -155,6 +155,7 @@ MonoBehaviour:
   towerCollider: {fileID: 7749480133040294714}
   selector: {fileID: 8321813927317738175}
   <Description>k__BackingField: A powerful and devastating roots generator
+  <Name>k__BackingField: Craveler Stub
   <LibraryDescription>k__BackingField: In order to seek resources far below the surface,
     these roots fused with metal by using some kind of magic. Hopefully for insects,
     these metallic roots are slow to use.

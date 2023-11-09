@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 5813397970056962337}
   - component: {fileID: 5682064432001086994}
   m_Layer: 0
-  m_Name: Walker Unt
+  m_Name: WalkerUnt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23923a1542d901b48babae49bd3cdcff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Name>k__BackingField: Walker Unt
   selector: {fileID: 4000618669885677062}
   healthBar: {fileID: 8863022456078644539}
   dotDisplay: {fileID: 1262192122651188265}

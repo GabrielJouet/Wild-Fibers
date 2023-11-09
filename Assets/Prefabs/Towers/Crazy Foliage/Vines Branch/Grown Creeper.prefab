@@ -155,6 +155,7 @@ MonoBehaviour:
   towerCollider: {fileID: 4680081587663505740}
   selector: {fileID: 6342290769791053501}
   <Description>k__BackingField: A quick growing spikes flowers but range-limited
+  <Name>k__BackingField: Grown Creeper
   <LibraryDescription>k__BackingField: By using less elastic vines, this plant cannot
     reach far. But, its high damage output is a guaranted win on the battlefield.
   _price: 270

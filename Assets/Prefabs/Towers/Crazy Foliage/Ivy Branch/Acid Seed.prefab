@@ -155,6 +155,7 @@ MonoBehaviour:
   towerCollider: {fileID: 8043928648266087718}
   selector: {fileID: 4492990698626495473}
   <Description>k__BackingField: A single projectile launcher with larger acid levels
+  <Name>k__BackingField: Acid Seed
   <LibraryDescription>k__BackingField: Despite being one of the quickest chitin-dissolver
     around, this tower suffers from frinedly fire. On old battles, both sides suffers
     loss from this deadly plant. It shoots only one high-acidic projectile with greater

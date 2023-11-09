@@ -156,6 +156,7 @@ MonoBehaviour:
   selector: {fileID: 8926555152830931055}
   <Description>k__BackingField: Larger than before, it shoots arrows with a greater
     strength
+  <Name>k__BackingField: Branch Launcher
   <LibraryDescription>k__BackingField: By growing more slowly than its predecessor,
     this plant is able to tear appart insect chitin. But, each shot needs more preparation.
   _price: 185

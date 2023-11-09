@@ -43,6 +43,12 @@ namespace Towers
         /// </summary>
         [field: SerializeField, TextArea, Header("Description")]
         public string Description { get; private set; }
+        
+        /// <summary>
+        /// Name of this tower.
+        /// </summary>
+        [field: SerializeField]
+        public string Name { get; private set; }
 
 
         /// <summary>
