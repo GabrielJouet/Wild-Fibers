@@ -98,9 +98,6 @@ namespace Towers.Projectiles
 
             if (hasAnEnemyToTargets && _enemyTracked)
                 _lastKnownPosition = position;
-            
-            if (!hasAnEnemyToTargets)
-                Debug.Log(position);
 
             return (transform.position - position).magnitude < 0.025f;
         }
