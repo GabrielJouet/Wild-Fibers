@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 5524535823760821382}
   - component: {fileID: 1001176562105206731}
   m_Layer: 0
-  m_Name: BlusimBlusim
+  m_Name: MaggotBlusim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
