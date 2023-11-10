@@ -25,9 +25,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 52c827065e1f2f3429488f45f3205fbb, type: 2}
   - {fileID: 11400000, guid: fb170f421942f624490021ca8a457988, type: 2}
   <LifeCount>k__BackingField: 20
-  <GoldCount>k__BackingField: 400
+  <GoldCount>k__BackingField: 310
   <TowerLevel>k__BackingField: 0
   <GoldMultiplier>k__BackingField: 1
   <BlockedTowers>k__BackingField: []
-  <LevelStructure>k__BackingField: {fileID: 5617442221752638116, guid: fb4c7802ac6cfee44904c7ed0e845b96,
-    type: 3}
