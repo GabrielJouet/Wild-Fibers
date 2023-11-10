@@ -163,8 +163,8 @@ MonoBehaviour:
     type: 3}
   <Projectile>k__BackingField: {fileID: 1457297254810030874, guid: f8c808ac838dc4949b515f91e2e32784,
     type: 3}
-  <TimeShots>k__BackingField: 3.1
-  <Damage>k__BackingField: 12
+  <TimeShots>k__BackingField: 2.8
+  <Damage>k__BackingField: 13
   <ArmorThrough>k__BackingField: 10
   <Shots>k__BackingField: 1
   <Range>k__BackingField: 0.85
