@@ -366,6 +366,9 @@ namespace Enemies.Enemy_Types
             Armor += armorRemoved;
 
             dotDisplay.SetActive(_dots.Count != 0);
+
+            if (InformationUI)
+                InformationUI.UpdateEnemyInformation(this);
         }
 
 
