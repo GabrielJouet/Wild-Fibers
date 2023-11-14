@@ -214,7 +214,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2394709574171677322}
   animator: {fileID: 3597370224652989133}
   <HealthMax>k__BackingField: 135
-  <ArmorMax>k__BackingField: 90
+  <ArmorMax>k__BackingField: 65
   <Resistance>k__BackingField: 0
   <SpeedMax>k__BackingField: 0.17
   <LivesTaken>k__BackingField: 2
@@ -230,7 +230,7 @@ MonoBehaviour:
     type: 3}
   <Special>k__BackingField: Shield
   timeBetweenShield: 10
-  baseShieldValue: 65
+  shieldGained: 25
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -350,7 +350,9 @@ namespace Enemies.Enemy_Types
         /// <returns>Yield 0.5 sec</returns>
         protected IEnumerator TakePersistentDamage(Attack newDot)
         {
-            Armor -= newDot.ArmorThroughMalus * ResistancePercentage;
+            float armorRemoved = newDot.ArmorThroughMalus * ResistancePercentage;
+            
+            Armor -= armorRemoved;
             float timeRemaining = newDot.DotDuration;
 
             while(timeRemaining > 0)
@@ -361,7 +363,7 @@ namespace Enemies.Enemy_Types
             }
 
             _dots.Remove(newDot);
-            Armor += newDot.ArmorThroughMalus * ResistancePercentage;
+            Armor += armorRemoved;
 
             dotDisplay.SetActive(_dots.Count != 0);
         }

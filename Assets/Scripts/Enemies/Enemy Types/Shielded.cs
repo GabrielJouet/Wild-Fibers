@@ -18,10 +18,10 @@ namespace Enemies.Enemy_Types
         protected float timeBetweenShield;
 
         /// <summary>
-        /// Shield value when not shielding.
+        /// Shield value gained when shielding.
         /// </summary>
         [SerializeField]
-        protected int baseShieldValue;
+        protected int shieldGained;
 
 
 
@@ -33,7 +33,6 @@ namespace Enemies.Enemy_Types
         public override void Initialize(List<Vector2> newPath, int pathIndex, Spawner spawner)
         {
             base.Initialize(newPath, pathIndex, spawner);
-            Armor = baseShieldValue;
             StartCoroutine(DelayShield());
         }
 
@@ -49,19 +48,12 @@ namespace Enemies.Enemy_Types
 
                 _moving = false;
 
-                if (_dots.Count > 0)
-                    Armor = ArmorMax - (ArmorMax - Armor);
-                else
-                    Armor = ArmorMax;
+                Armor += shieldGained;
                 animator.SetTrigger("shield");
-
+                
                 yield return new WaitForSeconds(animator.runtimeAnimatorController.animationClips[1].length / 0.5f);
-
-                if (_dots.Count > 0)
-                    Armor = baseShieldValue - (ArmorMax - Armor);
-                else
-                    Armor = baseShieldValue;
-
+                
+                Armor -= shieldGained;
                 _moving = true;
             }
         }

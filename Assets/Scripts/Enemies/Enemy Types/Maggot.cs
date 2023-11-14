@@ -25,12 +25,12 @@ namespace Enemies.Enemy_Types
 
 
         [Header("Shield related")]
-    
+
         /// <summary>
-        /// Shield value when not protecting.
+        /// Shield value gained when shielding.
         /// </summary>
         [SerializeField]
-        protected int baseShieldValue;
+        protected int shieldGained;
 
 
 
@@ -43,8 +43,7 @@ namespace Enemies.Enemy_Types
         public override void Initialize(List<Vector2> newPath, int pathIndex, Spawner spawner)
         {
             base.Initialize(newPath, pathIndex, spawner);
-            Armor = baseShieldValue;
-
+            
             StartCoroutine(DelaySpawn());
         }
 
@@ -59,11 +58,7 @@ namespace Enemies.Enemy_Types
             animator.SetTrigger("cocoon");
 
             _moving = false;
-
-            if (_dots.Count > 0)
-                Armor = ArmorMax - (ArmorMax - Armor);
-            else
-                Armor = ArmorMax;
+            Armor += shieldGained;
 
             yield return new WaitForSeconds((animator.runtimeAnimatorController.animationClips[1].length / 0.3f) + 0.05f);
 

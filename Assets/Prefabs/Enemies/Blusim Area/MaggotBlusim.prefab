@@ -213,7 +213,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2394709574171677322}
   animator: {fileID: 3597370224652989133}
   <HealthMax>k__BackingField: 10
-  <ArmorMax>k__BackingField: 45
+  <ArmorMax>k__BackingField: 10
   <Resistance>k__BackingField: 0
   <SpeedMax>k__BackingField: 0.1
   <LivesTaken>k__BackingField: 1
@@ -230,7 +230,7 @@ MonoBehaviour:
   hatching: {fileID: 3708422920091029229, guid: b4466da44875549409b186495230993a,
     type: 3}
   hatchingTime: 15
-  baseShieldValue: 10
+  shieldGained: 55
 --- !u!1001 &1741317206090716099
 PrefabInstance:
   m_ObjectHideFlags: 0
