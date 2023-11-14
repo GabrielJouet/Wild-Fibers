@@ -3257,6 +3257,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hider: {fileID: 4541158167663177530}
+  pauseButtonSprite: {fileID: 21300000, guid: 1b3814f61476c4542a1550d009e2a189, type: 3}
+  unPauseButtonSprite: {fileID: 21300000, guid: c88a9b6fb8968264ea8f80e842adc930,
+    type: 3}
+  pauseButton: {fileID: 4541158168452975451}
 --- !u!1 &4541158169195229927
 GameObject:
   m_ObjectHideFlags: 0

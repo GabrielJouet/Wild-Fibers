@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -13,6 +14,25 @@ namespace UI
         /// </summary>
         [SerializeField]
         private GameObject hider;
+
+        [Header("Pause button")]
+        /// <summary>
+        /// Pause button sprite.
+        /// </summary>
+        [SerializeField] 
+        private Sprite pauseButtonSprite;
+        
+        /// <summary>
+        /// Unpause button sprite.
+        /// </summary>
+        [SerializeField] 
+        private Sprite unPauseButtonSprite;
+        
+        /// <summary>
+        /// Pause button display component.
+        /// </summary>
+        [SerializeField] 
+        private Image pauseButton;
 
 
         /// <summary>
@@ -39,6 +59,7 @@ namespace UI
         {
             Time.timeScale = 0f;
             Paused = true;
+            UpdatePauseButton();
         }
 
 
@@ -49,6 +70,7 @@ namespace UI
         {
             Time.timeScale = 1f;
             Paused = false;
+            UpdatePauseButton();
         }
 
 
@@ -59,6 +81,17 @@ namespace UI
         {
             Paused = !Paused;
             Time.timeScale = Paused ? 0f : 1f;
+            UpdatePauseButton();
+        }
+
+
+        /// <summary>
+        /// Method used to update the pause button.
+        /// </summary>
+        private void UpdatePauseButton()
+        {
+            if (pauseButton)
+                pauseButton.sprite = Paused ? unPauseButtonSprite : pauseButtonSprite;
         }
 
 
