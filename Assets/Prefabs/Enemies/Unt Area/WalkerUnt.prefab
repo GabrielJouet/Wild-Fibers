@@ -218,7 +218,7 @@ MonoBehaviour:
   <Resistance>k__BackingField: 25
   <SpeedMax>k__BackingField: 0.45
   <LivesTaken>k__BackingField: 1
-  <GoldGained>k__BackingField: 7
+  <GoldGained>k__BackingField: 6
   <Flying>k__BackingField: 0
   <DamageTransform>k__BackingField: {fileID: 3623001225806360375}
   <Description>k__BackingField: Walkers are the dominant cast in an Unt hive. Their

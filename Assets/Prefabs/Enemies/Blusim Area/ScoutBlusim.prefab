@@ -218,7 +218,7 @@ MonoBehaviour:
   <Resistance>k__BackingField: 0
   <SpeedMax>k__BackingField: 0.4
   <LivesTaken>k__BackingField: 1
-  <GoldGained>k__BackingField: 2
+  <GoldGained>k__BackingField: 3
   <Flying>k__BackingField: 1
   <DamageTransform>k__BackingField: {fileID: 1049263690152909913}
   <Description>k__BackingField: A special pheromone used on a Maggot will lead to

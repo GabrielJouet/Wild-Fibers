@@ -217,7 +217,7 @@ MonoBehaviour:
   <Resistance>k__BackingField: 0
   <SpeedMax>k__BackingField: 0.1
   <LivesTaken>k__BackingField: 1
-  <GoldGained>k__BackingField: 0
+  <GoldGained>k__BackingField: 1
   <Flying>k__BackingField: 0
   <DamageTransform>k__BackingField: {fileID: 1049263690152909913}
   <Description>k__BackingField: A fresh-spawned maggot that cannot protects itself.

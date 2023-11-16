@@ -218,7 +218,7 @@ MonoBehaviour:
   <Resistance>k__BackingField: 0
   <SpeedMax>k__BackingField: 0.17
   <LivesTaken>k__BackingField: 2
-  <GoldGained>k__BackingField: 13
+  <GoldGained>k__BackingField: 12
   <Flying>k__BackingField: 0
   <DamageTransform>k__BackingField: {fileID: 1049263690152909913}
   <Description>k__BackingField: A special Blusim that spawns by mistake. When a pheromone

@@ -218,7 +218,7 @@ MonoBehaviour:
   <Resistance>k__BackingField: 55
   <SpeedMax>k__BackingField: 0.25
   <LivesTaken>k__BackingField: 2
-  <GoldGained>k__BackingField: 10
+  <GoldGained>k__BackingField: 11
   <Flying>k__BackingField: 0
   <DamageTransform>k__BackingField: {fileID: 3623001225806360375}
   <Description>k__BackingField: Despite lacking rear legs, Scyther front legs have
