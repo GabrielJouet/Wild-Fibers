@@ -154,7 +154,7 @@ MonoBehaviour:
   transformRange: {fileID: 975679726211895701}
   towerCollider: {fileID: 2644389516715710698}
   selector: {fileID: 4342711334488492381}
-  <Description>k__BackingField: A spiker and larger version of the bramble
+  <Description>k__BackingField: A spiker and larger version of the vine crawler
   <Name>k__BackingField: Spike Grower
   <LibraryDescription>k__BackingField: Usually found in dryer places, this plant
     is one of the best offense against crowds. Its unique vines size and spike hardness
@@ -166,7 +166,7 @@ MonoBehaviour:
     type: 3}
   <TimeShots>k__BackingField: 3.7
   <Damage>k__BackingField: 15
-  <ArmorThrough>k__BackingField: 15
+  <ArmorThrough>k__BackingField: 0
   <Shots>k__BackingField: 1
   <Range>k__BackingField: 0.95
   <HitFlying>k__BackingField: 1

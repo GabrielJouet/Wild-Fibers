@@ -168,7 +168,7 @@ MonoBehaviour:
   <Damage>k__BackingField: 15
   <ArmorThrough>k__BackingField: 15
   <Shots>k__BackingField: 3
-  <Range>k__BackingField: 1.2
+  <Range>k__BackingField: 1
   <HitFlying>k__BackingField: 0
   <ShotsRandomly>k__BackingField: 0
   <ArmorThroughMalus>k__BackingField: 0

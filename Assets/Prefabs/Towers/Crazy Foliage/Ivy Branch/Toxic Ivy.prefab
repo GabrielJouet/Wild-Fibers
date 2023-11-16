@@ -173,7 +173,7 @@ MonoBehaviour:
   <Range>k__BackingField: 1.1
   <HitFlying>k__BackingField: 1
   <ShotsRandomly>k__BackingField: 1
-  <ArmorThroughMalus>k__BackingField: 15
+  <ArmorThroughMalus>k__BackingField: 0
   <Dot>k__BackingField: 2
   <DotDuration>k__BackingField: 3.5
   <Upgrades>k__BackingField:
